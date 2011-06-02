@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AriCliModel.CntAriCli" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAIAAgBAAAIAAAABQAAAAAAA=</HashCode>
+      <FileName>CntAriCli.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Address" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAgCAAAIAAAACAAAAAoBAgACAQIAgkAAAII=</HashCode>
+      <FileName>Address.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Email" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAgAAAAIAAAAJAAAACQAAgAAAAAA=</HashCode>
+      <FileName>Email.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.AriClinicContext" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQCAQACBAQAQAAAAAAAAAAAAEAAABEAAIAAAAAAA=</HashCode>
+      <FileName>EntityDiagrams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.HealthcareCompany" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAQAAAQGAAAAAgAAAAAAQAAAAEEAAAAAAAAgAAAAI=</HashCode>
+      <FileName>HealthcareCompany.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Log" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABBAEAAAARAACEEAAAAAAAAAAAAACAAAAAAAAAAQQ=</HashCode>
+      <FileName>Log.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Permission" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAKAAAASAAgAEAAIABAABAEAAAQBAAAAAAAA=</HashCode>
+      <FileName>Permission.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Process" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAACAIAAgAAQQIAEEEACBEAAAABAAAAA=</HashCode>
+      <FileName>Process.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.Telephone" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACQAAAAEAAAAAAAAABEAAAARAAgAAAAAA=</HashCode>
+      <FileName>Telephone.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.User" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAIAAEACACAAAAAwAAAAEAAACAAAQAgAAEAA=</HashCode>
+      <FileName>User.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.UserGroup" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAECAAAAAAAAAAAAAAAAQAAAAEAAAQEAAAABAAAAA=</HashCode>
+      <FileName>UserGroup.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliModel.PermissionView">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQMAAAACAAAAQAAAAUAAQQBAAFEEAQAQBAAAAAAAA=</HashCode>
+      <FileName>PermissionView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

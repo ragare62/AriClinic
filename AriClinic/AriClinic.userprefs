@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AriCliWeb\AnestheticTicketForm.aspx.cs" ctype="Workbench">
+    <Files>
+      <File FileName="AriCliWeb\App_GlobalResources\GeneralResource.resx" Line="1" Column="1" />
+      <File FileName="AriCliWeb\AnestheticServiceNoteForm.aspx.cs" Line="1" Column="1" />
+      <File FileName="AriCliWeb\AnestheticServiceNoteForm.aspx" Line="181" Column="12" />
+      <File FileName="AriCliWeb\AnestheticTicketForm.aspx.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="AriCliWeb" expanded="True">
+            <Node name="AnestheticTicketForm.aspx" expanded="True">
+              <Node name="AnestheticTicketForm.aspx.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

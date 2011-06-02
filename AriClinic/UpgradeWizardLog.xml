@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\AriCliModel.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="App.Config" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\App.Config" />
+  <event action="Analyze" type="Success" name="AriCliModel" path="D:\AriClinic_Alfa\AriClinic\AriCliModel\AriCliModel.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\AriCliConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\App.config" />
+  <event action="Analyze" type="Success" name="AriCliConsole" path="D:\AriClinic_Alfa\AriClinic\AriCliConsole\AriCliConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AddressForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AddressForm.aspx" />
+  <event action="Analyze" type="Success" name="AddressForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AddressForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="AnestheticServiceNoteForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="AnestheticServiceNoteGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" />
+  <event action="Analyze" type="Success" name="AnestheticTicketForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" />
+  <event action="Analyze" type="Success" name="ConstantsResource.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_GlobalResources\ConstantsResource.resx" />
+  <event action="Analyze" type="Success" name="FilterResource.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_GlobalResources\FilterResource.resx" />
+  <event action="Analyze" type="Success" name="GeneralResource.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_GlobalResources\GeneralResource.resx" />
+  <event action="Analyze" type="Success" name="InsuranceGrid.aspx.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_LocalResources\InsuranceGrid.aspx.resx" />
+  <event action="Analyze" type="Success" name="RptView.aspx.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_LocalResources\RptView.aspx.resx" />
+  <event action="Analyze" type="Success" name="ServiceCategoryGrid.aspx.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_LocalResources\ServiceCategoryGrid.aspx.resx" />
+  <event action="Analyze" type="Success" name="ServiceGrid.aspx.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_LocalResources\ServiceGrid.aspx.resx" />
+  <event action="Analyze" type="Success" name="TaxTypeGrid.aspx.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\App_LocalResources\TaxTypeGrid.aspx.resx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicForm.aspx" />
+  <event action="Analyze" type="Success" name="ClinicForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicGrid.aspx" />
+  <event action="Analyze" type="Success" name="ClinicGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ClinicGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerForm.aspx" />
+  <event action="Analyze" type="Success" name="CustomerForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerGrid.aspx" />
+  <event action="Analyze" type="Success" name="CustomerGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerTab.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerTab.aspx" />
+  <event action="Analyze" type="Success" name="CustomerTab.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\CustomerTab.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Default.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Default.aspx" />
+  <event action="Analyze" type="Success" name="Default.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Default.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\EmailForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\EmailForm.aspx" />
+  <event action="Analyze" type="Success" name="EmailForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\EmailForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ExternalInvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ExternalInvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="ExternalInvoiceLineForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ExternalInvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
+  <event action="Analyze" type="Success" name="GoogleMapsPage.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" />
+  <event action="Analyze" type="Success" name="HealthcareCompanyForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceForm.aspx" />
+  <event action="Analyze" type="Success" name="InsuranceForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceGrid.aspx" />
+  <event action="Analyze" type="Success" name="InsuranceGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="InsuranceServiceForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="InsuranceServiceGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceForm.aspx" />
+  <event action="Analyze" type="Success" name="InvoiceForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="InvoiceGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="InvoiceLineForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\InvoiceLineForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\MainMenu.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\MainMenu.aspx" />
+  <event action="Analyze" type="Success" name="MainMenu.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\MainMenu.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ParameterForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ParameterForm.aspx" />
+  <event action="Analyze" type="Success" name="ParameterForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ParameterForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientForm.aspx" />
+  <event action="Analyze" type="Success" name="PatientForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientGrid.aspx" />
+  <event action="Analyze" type="Success" name="PatientGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientTab.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientTab.aspx" />
+  <event action="Analyze" type="Success" name="PatientTab.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PatientTab.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentForm.aspx" />
+  <event action="Analyze" type="Success" name="PaymentForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentGrid.aspx" />
+  <event action="Analyze" type="Success" name="PaymentGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodForm.aspx" />
+  <event action="Analyze" type="Success" name="PaymentMethodForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" />
+  <event action="Analyze" type="Success" name="PaymentMethodGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionForm.aspx" />
+  <event action="Analyze" type="Success" name="PermissionForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionGrid.aspx" />
+  <event action="Analyze" type="Success" name="PermissionGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PermissionGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyForm.aspx" />
+  <event action="Analyze" type="Success" name="PolicyForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyGrid.aspx" />
+  <event action="Analyze" type="Success" name="PolicyGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\PolicyGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureForm.aspx" />
+  <event action="Analyze" type="Success" name="ProcedureForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureGrid.aspx" />
+  <event action="Analyze" type="Success" name="ProcedureGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcedureGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessForm.aspx" />
+  <event action="Analyze" type="Success" name="ProcessForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessGrid.aspx" />
+  <event action="Analyze" type="Success" name="ProcessGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProcessGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalForm.aspx" />
+  <event action="Analyze" type="Success" name="ProfessionalForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
+  <event action="Analyze" type="Success" name="ProfessionalGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
+  <event action="Analyze" type="Success" name="RptCategorySrvForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" />
+  <event action="Analyze" type="Success" name="RptInvoicePatientForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" />
+  <event action="Analyze" type="Success" name="RptInvoicePeriodForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPaymentsForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPaymentsForm.aspx" />
+  <event action="Analyze" type="Success" name="RptPaymentsForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPaymentsForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" />
+  <event action="Analyze" type="Success" name="RptProfessionalSrvForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPruebasForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPruebasForm.aspx" />
+  <event action="Analyze" type="Success" name="RptPruebasForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptPruebasForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" />
+  <event action="Analyze" type="Success" name="RptServiceComparerForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptTicketsForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptTicketsForm.aspx" />
+  <event action="Analyze" type="Success" name="RptTicketsForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptTicketsForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Analyze" type="Success" name="RptView.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" />
+  <event action="Analyze" type="Success" name="ServiceCategoryForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" />
+  <event action="Analyze" type="Success" name="ServiceCategoryGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="ServiceForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="ServiceGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="ServiceNoteForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="ServiceNoteGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\SettlementGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\SettlementGrid.aspx" />
+  <event action="Analyze" type="Success" name="SettlementGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\SettlementGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="TaxTypeForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="TaxTypeGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="TaxWithholdingTypeForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="TaxWithholdingTypeGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TelephoneForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TelephoneForm.aspx" />
+  <event action="Analyze" type="Success" name="TelephoneForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TelephoneForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Test.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Test.aspx" />
+  <event action="Analyze" type="Success" name="Test.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\Test.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketForm.aspx" />
+  <event action="Analyze" type="Success" name="TicketForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketGrid.aspx" />
+  <event action="Analyze" type="Success" name="TicketGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\TicketGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
+  <event action="Analyze" type="Success" name="UscAddressGrid.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscEmailGrid.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscEmailGrid.ascx" />
+  <event action="Analyze" type="Success" name="UscEmailGrid.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscEmailGrid.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" />
+  <event action="Analyze" type="Success" name="UscInsuranceServiceGrid.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" />
+  <event action="Analyze" type="Success" name="UscInvoiceLineGrid.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscLogin.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscLogin.ascx" />
+  <event action="Analyze" type="Success" name="UscLogin.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscLogin.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" />
+  <event action="Analyze" type="Success" name="UscTelephoneGrid.ascx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserForm.aspx" />
+  <event action="Analyze" type="Success" name="UserForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGrid.aspx" />
+  <event action="Analyze" type="Success" name="UserGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupForm.aspx" />
+  <event action="Analyze" type="Success" name="UserGroupForm.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupGrid.aspx" />
+  <event action="Analyze" type="Success" name="UserGroupGrid.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\UserGroupGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="web.config" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="AriCliWeb" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="App.Config" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\App.Config" />
+  <event action="Analyze" type="Success" name="RptAnesNote.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptAnesNote.resx" />
+  <event action="Analyze" type="Success" name="RptInsuranceDebt.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInsuranceDebt.resx" />
+  <event action="Analyze" type="Success" name="RptInvoice.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInvoice.resx" />
+  <event action="Analyze" type="Success" name="RptInvoicesPeriod.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInvoicesPeriod.resx" />
+  <event action="Analyze" type="Success" name="RptNomenclator.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptNomenclator.resx" />
+  <event action="Analyze" type="Success" name="RptParamInvoices.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptParamInvoices.resx" />
+  <event action="Analyze" type="Success" name="RptParamTickets.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptParamTickets.resx" />
+  <event action="Analyze" type="Success" name="RptPatientDebt.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPatientDebt.resx" />
+  <event action="Analyze" type="Success" name="RptPatientInvoice.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPatientInvoice.resx" />
+  <event action="Analyze" type="Success" name="RptPayments.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPayments.resx" />
+  <event action="Analyze" type="Success" name="RptServCategory.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServCategory.resx" />
+  <event action="Analyze" type="Success" name="RptServicesComparer.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServicesComparer.resx" />
+  <event action="Analyze" type="Success" name="RptServNote.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServNote.resx" />
+  <event action="Analyze" type="Success" name="RptServProfessional.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServProfessional.resx" />
+  <event action="Analyze" type="Success" name="RptTicket.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicket.resx" />
+  <event action="Analyze" type="Success" name="RptTickets.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTickets.resx" />
+  <event action="Analyze" type="Success" name="RptTicketsNoPaid.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicketsNoPaid.resx" />
+  <event action="Analyze" type="Success" name="RptTicketsPaid.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicketsPaid.resx" />
+  <event action="Analyze" type="Success" name="SubInvoiceFooter.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubInvoiceFooter.resx" />
+  <event action="Analyze" type="Success" name="SubInvoiceLine.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubInvoiceLine.resx" />
+  <event action="Analyze" type="Success" name="SubServiceComp.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubServiceComp.resx" />
+  <event action="Analyze" type="Success" name="subServNoteTicket.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\subServNoteTicket.resx" />
+  <event action="Analyze" type="Success" name="AriCliReport" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Analyze" type="Success" name="AriClinic" path="D:\Ariclinic_Alfa\AriClinic\AriClinic.sln" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Upgrade" type="Success" name="Register Directives" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Upgrade" type="Success" name="RptView.aspx" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="Http Handlers" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="Handlers (IIS7+)" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="web.config" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="AriCliWeb" path="D:\AriClinic_Alfa\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Upgrade" type="Success" name="RptAnesNote.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptAnesNote.resx" />
+  <event action="Upgrade" type="Success" name="RptInsuranceDebt.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInsuranceDebt.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoice.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInvoice.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoicesPeriod.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptInvoicesPeriod.resx" />
+  <event action="Upgrade" type="Success" name="RptNomenclator.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptNomenclator.resx" />
+  <event action="Upgrade" type="Success" name="RptParamInvoices.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptParamInvoices.resx" />
+  <event action="Upgrade" type="Success" name="RptParamTickets.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptParamTickets.resx" />
+  <event action="Upgrade" type="Success" name="RptPatientDebt.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPatientDebt.resx" />
+  <event action="Upgrade" type="Success" name="RptPatientInvoice.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPatientInvoice.resx" />
+  <event action="Upgrade" type="Success" name="RptPayments.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptPayments.resx" />
+  <event action="Upgrade" type="Success" name="RptServCategory.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServCategory.resx" />
+  <event action="Upgrade" type="Success" name="RptServicesComparer.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServicesComparer.resx" />
+  <event action="Upgrade" type="Success" name="RptServNote.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServNote.resx" />
+  <event action="Upgrade" type="Success" name="RptServProfessional.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptServProfessional.resx" />
+  <event action="Upgrade" type="Success" name="RptTicket.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicket.resx" />
+  <event action="Upgrade" type="Success" name="RptTickets.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTickets.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsNoPaid.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicketsNoPaid.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsPaid.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\RptTicketsPaid.resx" />
+  <event action="Upgrade" type="Success" name="SubInvoiceFooter.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubInvoiceFooter.resx" />
+  <event action="Upgrade" type="Success" name="SubInvoiceLine.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubInvoiceLine.resx" />
+  <event action="Upgrade" type="Success" name="SubServiceComp.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\SubServiceComp.resx" />
+  <event action="Upgrade" type="Success" name="subServNoteTicket.resx" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\subServNoteTicket.resx" />
+  <event action="Upgrade" type="Success" name="AriCliReport" path="D:\AriClinic_Alfa\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Upgrade" type="Success" name="AriClinic" path="D:\Ariclinic_Alfa\AriClinic\AriClinic.sln" />
+</log>

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliModel", "..\AriClinic\AriCliModel\AriCliModel.csproj", "{B1CAF779-D00A-4A1B-9662-06B466832A3C}"
+EndProject
+Project("{00000000-0000-0000-0000-000000000000}") = "AriCliWebTest", "AriCliWebTest\AriCliWebTest.csproj", "{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
