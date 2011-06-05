@@ -27,7 +27,7 @@
         <p>
           Test AriClinic
         </p>
-        <asp:Button ID="btnTest" runat="server" Text="TEST" />
+        <asp:Button ID="btnTest" runat="server" Text="TEST" onclick="btnTest_Click" />
           <br />
         <br />
         <asp:TextBox ID="txtTest" runat="server" TextMode="MultiLine" Height="204px" 
