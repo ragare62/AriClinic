@@ -57,6 +57,15 @@ public partial class Default {
     protected global::System.Web.UI.WebControls.Button btnTest;
     
     /// <summary>
+    /// btnProgess control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnProgess;
+    
+    /// <summary>
     /// txtTest control.
     /// </summary>
     /// <remarks>
@@ -64,4 +73,22 @@ public partial class Default {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtTest;
+    
+    /// <summary>
+    /// RadProgressManager1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadProgressManager RadProgressManager1;
+    
+    /// <summary>
+    /// RadProgressArea1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadProgressArea RadProgressArea1;
 }
