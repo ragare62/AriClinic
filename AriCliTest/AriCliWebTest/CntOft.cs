@@ -27,7 +27,7 @@ namespace AriCliWebTest
         /// <returns>OleDb connection1</returns>
         public static OleDbConnection GetOftConnection(string path)
         {
-            return new OleDbConnection(path);
+            return new OleDbConnection(GetConnectionString(path));
         }
 
         /// <summary>
@@ -42,8 +42,10 @@ namespace AriCliWebTest
             ctx.Delete(ctx.Addresses); // elimar direcciones.
             ctx.Delete(ctx.Emails); // eliminar correos electrónicos
             ctx.Delete(ctx.Telephones); // eliminar teléfonos.
+            ctx.Delete(ctx.Policies); // eliminar las pólizas.
+
             ctx.Delete(ctx.Customers); // eliminar los clientes.
-            ctx.Delete(ctx.Patients); // por último, los pcaientes.
+            ctx.Delete(ctx.Patients); // por último, los pacientes.
             ctx.SaveChanges();
 
             // (2) Lleer todos los pacientes en OFT
@@ -57,32 +59,41 @@ namespace AriCliWebTest
             // (2.0) Por cada fila lieda de la tabla, damos de alta el 
             // paciente correspondiente con sus direcciones, teléfonosç
             // y correo electrónico.
-            foreach (DataRow dr in ds.Tables["ConFacturas"].Rows)
+            foreach (DataRow dr in ds.Tables["ConHistoriales"].Rows)
             {
                 ++nreg; // un registro más (para saber por donde va)
 
                 // (2.1) Crear cliente
                 Customer customer = new Customer();
-                customer.VATIN = (string)dr["NumDni"];
+                if (dr["NumDni"] != DBNull.Value)
+                    customer.VATIN = (string)dr["NumDni"];
                 customer.FullName = (string)dr["Nombre"];
                 customer.ComercialName = (string)dr["Nombre"];
+                customer.OftId = (int)dr["NumHis"];
                 ctx.Add(customer);
 
                 // (2.2) Crear paciente y asignarle el cliente
                 Patient patient = new Patient();
                 patient.Name = (string)dr["Nom"];
                 patient.Surname1 = (string)dr["Apell1"];
-                patient.Surname2 = (string)dr["Apell2"];
+                if (dr["Apell2"] != DBNull.Value)
+                    patient.Surname2 = (string)dr["Apell2"];
                 patient.FullName = (string)dr["Nombre"];
-                patient.BornDate = (DateTime)dr["FechaNac"];
+                if (dr["FechaNac"] != DBNull.Value) 
+                    patient.BornDate = (DateTime)dr["FechaNac"];
+                patient.Sex = "M";
+                if (dr["Sexo"] != DBNull.Value)
+                    if ((byte)dr["Sexo"] == 2) patient.Sex = "W";
                 patient.Customer = customer;
+                patient.OftId = (int)dr["NumHis"];
                 ctx.Add(patient);
 
                 // (2.3) Crear la dirección y asignársela a cliente y paciente.
                 Address address = new Address();
                 address.Street = (string)dr["Direccion"];
                 address.City = (string)dr["Poblacion"];
-                address.PostCode = (string)dr["CodPostal"];
+                if (dr["CodPostal"] != DBNull.Value)
+                    address.PostCode = (string)dr["CodPostal"];
                 address.Province = (string)dr["Provincia"];
                 address.Type = "Primary";
                 ctx.Add(address);
@@ -91,7 +102,7 @@ namespace AriCliWebTest
 
                 // (2.4) Lo mismo para los teléfono.
                 Telephone telephone = new Telephone();
-                if ((string)dr["Tel1"] != "")
+                if (dr["Tel1"] != DBNull.Value)
                 {
                     telephone.Number = (string)dr["Tel1"];
                     telephone.Type = "Primary";
@@ -99,7 +110,7 @@ namespace AriCliWebTest
                     patient.Telephones.Add(telephone);
                     customer.Telephones.Add(telephone);
                 }
-                if ((string)dr["Tel2"] != "")
+                if (dr["Tel2"] != DBNull.Value)
                 {
                     telephone = new Telephone();
                     telephone.Number = (string)dr["Tel2"];
@@ -108,7 +119,7 @@ namespace AriCliWebTest
                     patient.Telephones.Add(telephone);
                     customer.Telephones.Add(telephone);
                 }
-                if ((string)dr["Movil"] != "")
+                if (dr["Movil"] != DBNull.Value)
                 {
                     telephone = new Telephone();
                     telephone.Number = (string)dr["Movil"];
@@ -120,12 +131,17 @@ namespace AriCliWebTest
 
                 // (2.5) Igual pero para correos electrónicos
                 Email email = new Email();
-                email.Url = (string)dr["Email"];
+                if (dr["Email"] != DBNull.Value)
+                    email.Url = (string)dr["Email"];
                 email.Type = "Primary";
                 ctx.Add(email);
                 patient.Emails.Add(email);
                 customer.Emails.Add(email);
             }
+        }
+
+        public static void ImportDiary(OleDbConnection con, AriClinicContext ctx)
+        {
         }
 
         #region Auxiliary functions

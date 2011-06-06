@@ -12,12 +12,14 @@ public partial class Default : System.Web.UI.Page
     protected void btnTest_Click(object sender, EventArgs e)
     {
         // open OFT connection
-        OleDbConnection con = CntOft.GetOftConnection("C:\\ariclinic_beta\\AriClinic\\AriCliImport\\DataBase\\OFT.mdb");
+        OleDbConnection con = CntOft.GetOftConnection("OFT");
         // open AriClinic connection
-        AriClinicContext ctx = new AriClinicContext("AriClinicContext");
+        AriClinicContext ctx = new AriClinicContext("MIESTETIC");
         // start importing things
         txtTest.Text = String.Format("{0}\n", "Importando pacientes...");
         // (1) Patients
         CntOft.ImportPatientCustomer(con, ctx);
+        ctx.SaveChanges();
+        txtTest.Text = "Importación de pacientes finalizada.\n";
     }
 }

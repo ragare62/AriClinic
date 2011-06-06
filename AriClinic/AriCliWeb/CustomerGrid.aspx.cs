@@ -52,7 +52,7 @@ public partial class CustomerGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = ctx.Customers;
+        RadGrid1.DataSource = CntAriCli.GetCustomers(ctx);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -145,7 +145,7 @@ public partial class CustomerGrid : System.Web.UI.Page
 
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.Customers;
+        RadGrid1.DataSource = CntAriCli.GetCustomers(ctx);
         RadGrid1.Rebind();
     }
 }

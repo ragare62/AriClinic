@@ -232,7 +232,13 @@ namespace AriCliModel
                           && i.Insurance.InsuranceId == insurance.InsuranceId
                     select i).FirstOrDefault<InsuranceService>();
         }
-
+        public static IList<Patient> GetPatients(AriClinicContext ctx)
+        {
+            return (from p in ctx.Patients
+                    orderby p.FullName
+                    select p).ToList<Patient>();
+                    
+        }
         public static Patient GetPatient(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Patients
@@ -397,6 +403,13 @@ namespace AriCliModel
             return (from c in ctx.Customers
                     where c.PersonId == customerId
                     select c).FirstOrDefault<Customer>();
+        }
+
+        public static IList<Customer> GetCustomers(AriClinicContext ctx)
+        {
+            return (from c in ctx.Customers
+                    orderby c.FullName
+                    select c).ToList<Customer>();
         }
 
         public static void UpdateCustomerRelatedData(Patient pat, AriClinicContext ctx)
@@ -940,6 +953,7 @@ namespace AriCliModel
             ctx.SaveChanges();
             return true;
         }
+
 
     }
 }

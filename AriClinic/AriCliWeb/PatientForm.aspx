@@ -411,7 +411,7 @@ right: 610px;
                      ToolTip="Fecha de nacimiento"></asp:Label>
           <br />
           <telerik:RadDatePicker ID="rddpBornDate" runat="server" Culture="es-ES" 
-                MinDate="1900-01-01" TabIndex="3">
+                MinDate="" TabIndex="3">
               <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                   ViewSelectorText="x">
               </Calendar>
