@@ -59,6 +59,32 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftAno;
+		public virtual int Oft_Ano 
+		{ 
+		    get
+		    {
+		        return this.oftAno;
+		    }
+		    set
+		    {
+		        this.oftAno = value;
+		    }
+		}
+		
+		private int oftNumNota;
+		public virtual int Oft_NumNota 
+		{ 
+		    get
+		    {
+		        return this.oftNumNota;
+		    }
+		    set
+		    {
+		        this.oftNumNota = value;
+		    }
+		}
+		
 		private User user;
 		public virtual User User 
 		{ 

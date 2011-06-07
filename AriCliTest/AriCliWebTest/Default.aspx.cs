@@ -23,8 +23,9 @@ public partial class Default : System.Web.UI.Page
 
     protected void btnTest_Click(object sender, EventArgs e)
     {
-        int i2 = 4;
+        int i2 = 7;
         int i = 0;
+        int i3 = 0;
         decimal per = 0;
         // open OFT connection
         OleDbConnection con = CntOft.GetOftConnection("OFT");
@@ -33,41 +34,90 @@ public partial class Default : System.Web.UI.Page
         // start importing things
         RadProgressContext context = RadProgressContext.Current;
         context.SecondaryTotal = i2.ToString();
-        // (1) Patients
-        System.Threading.Thread.Sleep(100);
-        i++;
-        context.SecondaryValue = i.ToString();
-        context.CurrentOperationText = i.ToString() + " Importando pacientes... ";
-        per = (i / i2) * 100;
-        context.SecondaryPercent = per.ToString();
-        CntOft.ImportPatientCustomer(con, ctx);
 
-        // (2) Tax types
-        System.Threading.Thread.Sleep(100);
-        i++;
-        context.SecondaryValue = i.ToString();
-        context.CurrentOperationText = i.ToString() + " Importando tipos de IVA... ";
-        per = (i / i2) * 100;
-        context.SecondaryPercent = per.ToString();
-        CntOft.ImportTaxTypes(con, ctx);
+        #region Importaciones probadas
+       // // (0) Borrar todo
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Borrando registros existentes... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.BigDelete(ctx);
 
-        // (3) Services 
-        System.Threading.Thread.Sleep(100);
-        i++;
-        context.SecondaryValue = i.ToString();
-        context.CurrentOperationText = i.ToString() +" Importando servicios... ";
-        per = (i / i2) * 100;
-        context.SecondaryPercent = per.ToString();
-        CntOft.ImportCategories(con, ctx);
+       // // (1) Patients
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando pacientes... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportPatientCustomer(con, ctx);
 
-        // (4) Porfesionales
+       // // (2) Tax types
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando tipos de IVA... ";
+       //i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportTaxTypes(con, ctx);
+
+       // // (3) Services 
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando servicios... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportCategories(con, ctx);
+
+       // // (4) Porfesionales
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando médicos... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportProfessionals(con, ctx);
+
+       // // (5) Aseguradoras y pólizas
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando aseguradoras y pólizas... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportAssurancePolicies(con, ctx);
+
+       // // (6) Notas de servicio
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando notas de servicio... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportServiceNote(con, ctx);
+       // // (7) Formas de pago
+       // System.Threading.Thread.Sleep(100);
+       // i++;
+       // context.SecondaryValue = i.ToString();
+       // context.CurrentOperationText = i.ToString() + " Importando formas de pago... ";
+       // i3 = (i / i2) * 100;
+       // context.SecondaryPercent = i3.ToString();
+       // CntOft.ImportPaymentTypes(con, ctx);
+        #endregion
+
+
+
+        #region Importaciones por probar
+        // (7) Formas de pago
         System.Threading.Thread.Sleep(100);
         i++;
         context.SecondaryValue = i.ToString();
-        context.CurrentOperationText = i.ToString() + " Importando médicos... ";
-        per = (i / i2) * 100;
-        context.SecondaryPercent = per.ToString();
-        CntOft.ImportProfessionals(con, ctx);
+        context.CurrentOperationText = i.ToString() + " Importando pagos... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportPayments(con, ctx);
+        #endregion
 
         txtTest.Text = "Proceso finalizado";
         

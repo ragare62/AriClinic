@@ -27,23 +27,26 @@
         <p>
           Test AriClinic
         </p>
-        <asp:Button ID="btnTest" runat="server" Text="TEST" onclick="btnTest_Click" /> &nbsp;<asp:Button 
-              ID="btnProgess" runat="server" Text="Progreso" onclick="btnProgess_Click" />
-          <br />
+        <asp:Button ID="btnTest" runat="server" Text="TEST" onclick="btnTest_Click" />
+        &nbsp;
+        <asp:Button 
+          ID="btnProgess" runat="server" Text="Progreso" onclick="btnProgess_Click" />
+        <br />
+        <telerik:radprogressmanager id="RadProgressManager1" runat="server" />
+        <telerik:radprogressarea id="RadProgressArea1" runat="server" displaycancelbutton="False"
+                                 progressindicators="FilesCountBar,
+                                 FilesCount,
+                                 FilesCountPercent,                      
+                                 SelectedFilesCount,                      
+                                 CurrentFileName,                      
+                                 TimeElapsed,                      
+                                 TimeEstimated">
+        </telerik:radprogressarea>
         <br />
         <asp:TextBox ID="txtTest" runat="server" TextMode="MultiLine" Height="204px" 
-              Width="435px"></asp:TextBox>
-              <br />
-              <telerik:radprogressmanager id="RadProgressManager1" runat="server" />
-<telerik:radprogressarea id="RadProgressArea1" runat="server" displaycancelbutton="False"
-    progressindicators="FilesCountBar,
-                          FilesCount,
-                          FilesCountPercent,                      
-                          SelectedFilesCount,                      
-                          CurrentFileName,                      
-                          TimeElapsed,                      
-                          TimeEstimated">
-</telerik:radprogressarea>
+                     Width="435px"></asp:TextBox>
+        <br />
+
       </div>
     </form>
   </body>

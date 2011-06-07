@@ -287,6 +287,9 @@ height: 30px;
                       <telerik:RadMenuItem runat="server" Owner="" Text="Tipos de retención" 
                                            Value="taxwt">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Owner="" Text="Formas de pago" 
+                            Value="paymentmethod">
+                        </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" 
                                            Text="Categorias de servicios médicos" Value="scat">
                       </telerik:RadMenuItem>
@@ -298,8 +301,6 @@ height: 30px;
                   <telerik:RadMenuItem runat="server" Text="Aseguradoras" Value="ins">
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Clientes" Value="customer">
-                  </telerik:RadMenuItem >
-                  <telerik:RadMenuItem runat="server" Text="Formas de pago" Value="paymentmethod">
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Tickets" Value="ticket">
                   </telerik:RadMenuItem >

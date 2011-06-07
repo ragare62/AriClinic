@@ -33,6 +33,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftId;
+		public virtual int OftId 
+		{ 
+		    get
+		    {
+		        return this.oftId;
+		    }
+		    set
+		    {
+		        this.oftId = value;
+		    }
+		}
+		
 		private string name;
 		public virtual string Name 
 		{ 

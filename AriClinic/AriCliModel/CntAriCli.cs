@@ -19,6 +19,7 @@ namespace AriCliModel
             else
                 return false;
         }
+
         #region Criptography
         public static string GetHashCode(string password)
         {
@@ -232,13 +233,14 @@ namespace AriCliModel
                           && i.Insurance.InsuranceId == insurance.InsuranceId
                     select i).FirstOrDefault<InsuranceService>();
         }
+
         public static IList<Patient> GetPatients(AriClinicContext ctx)
         {
             return (from p in ctx.Patients
                     orderby p.FullName
                     select p).ToList<Patient>();
-                    
         }
+
         public static Patient GetPatient(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Patients
@@ -569,7 +571,6 @@ namespace AriCliModel
             return mTickets;
         }
 
-
         public static IList<Payment> GetPayments(DateTime fromDate, DateTime toDate, int clinicId, AriClinicContext ctx)
         {
             if (clinicId == 0)
@@ -830,7 +831,7 @@ namespace AriCliModel
         public static IList<Professional> GetProfessionalTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.Tickets
-                                    where t.TicketDate >= fromDate && t.TicketDate <= toDate
+                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                                select t.Professional).Distinct<Professional>().ToList<Professional>();
 
             return professional;
@@ -839,7 +840,7 @@ namespace AriCliModel
         public static IList<Service> GetServices(AriClinicContext ctx)
         {
             List<Service> services = (from s in ctx.Services
-                                    select s).ToList<Service>();
+                                      select s).ToList<Service>();
 
             return services;
         }
@@ -857,20 +858,24 @@ namespace AriCliModel
                     where inv.InvoiceDate <= ffin && inv.Customer.PersonId == idCustomer
                     select inv).ToList<Invoice>();
         }
+
         public static IList<Diary> GetDiaries(AriClinicContext ctx)
         {
             return ctx.Diaries.ToList<Diary>();
         }
+
         public static Diary GetDiary(int id, AriClinicContext ctx)
         {
             return (from a in ctx.Diaries
                     where a.DiaryId == id
                     select a).FirstOrDefault<Diary>();
         }
+
         public static IList<AppointmentType> GetAppointmentTypes(AriClinicContext ctx)
         {
             return ctx.AppointmentTypes.ToList<AppointmentType>();
         }
+
         public static AppointmentType GetAppointmentType(int id, AriClinicContext ctx)
         {
             return (from at in ctx.AppointmentTypes
@@ -883,9 +888,9 @@ namespace AriCliModel
             return (from a in ctx.AppointmentInfos
                     orderby a.BeginDateTime descending
                     select a).ToList<AppointmentInfo>();
-                   
             //return ctx.AppointmentInfos.ToList<AppointmentInfo>();
         }
+
         public static IList<AppointmentInfo> GetPatientAppointments(int patientId, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -907,6 +912,7 @@ namespace AriCliModel
                     where a.Diary.DiaryId == diary.DiaryId
                     select a).ToList<AppointmentInfo>();
         }
+
         public static IList<AppointmentInfo> GetAppointments(DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -918,22 +924,25 @@ namespace AriCliModel
         {
             return (from a in ctx.AppointmentInfos
                     where a.Diary.DiaryId == diary.DiaryId
-                    && a.BeginDateTime >= start && a.EndDateTime <= end
+                          && a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
+
         public static IList<AppointmentInfo> GetAppointments(Professional professional, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.Professional.PersonId == professional.PersonId
                     select a).ToList<AppointmentInfo>();
         }
+
         public static IList<AppointmentInfo> GetAppointments(Professional professional, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.Professional.PersonId == professional.PersonId
-                    && a.BeginDateTime >= start && a.EndDateTime <= end
+                          && a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
+
         public static string GetAppointmentSubject(AppointmentInfo app)
         {
             if (app.Arrival == null || NullDateTime(app.Arrival))
@@ -954,6 +963,62 @@ namespace AriCliModel
             return true;
         }
 
+        public static bool PayNote(PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, AriClinicContext ctx)
+        {
+            Payment p = null; // payment to be created
+            Ticket t = null; // related ticket
+            //(0) Control if amount > pending in note
+            decimal total_paid = 0;
+            foreach (Ticket tk in note.Tickets)
+                total_paid += tk.Paid;
+            if ((note.Total - total_paid) < amount) return false; // amount bigger than debt.
 
+
+            //(1) Look for a ticket (inside note) with the same amount
+            t = (from tk in note.Tickets
+                 where (tk.Amount - tk.Paid) == amount
+                 select tk).FirstOrDefault<Ticket>();
+            if (t != null)
+            {
+                // (1.1) It exists.
+                CreatePayment(t, pm, amount, dt, des, note, cl, ctx);
+            }
+            else
+            {
+                // (1.2) It doesn't exist
+                var rs = from tk in note.Tickets
+                         orderby (tk.Amount - tk.Paid)
+                         select tk;
+                foreach (Ticket tk in rs)
+                {
+                    if (tk.Amount - tk.Paid >= amount)
+                    {
+                        CreatePayment(tk, pm, amount, dt, des, note, cl, ctx);
+                        break; // out
+                    }
+                    else
+                    {
+                        decimal paid = tk.Amount - tk.Paid;
+                        amount = amount - paid;
+                        CreatePayment(tk, pm, paid, dt, des, note, cl, ctx);
+                    }
+                }
+            }
+            ctx.SaveChanges();
+            return true;
+        }
+
+        public static void CreatePayment(Ticket t, PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, AriClinicContext ctx)
+        {
+            Payment p = new Payment();
+            p.Amount = amount;
+            p.Clinic = cl;
+            p.PaymentDate = dt;
+            p.PaymentMethod = pm;
+
+            p.Ticket = t;
+            t.Paid = t.Paid + amount;
+            ctx.Add(p);
+        }
     }
 }

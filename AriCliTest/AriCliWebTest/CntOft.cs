@@ -21,6 +21,33 @@ namespace AriCliWebTest
         //
         private static decimal per = 0;
 
+
+        public static void BigDelete(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.Payments);
+            ctx.Delete(ctx.Tickets);
+            ctx.Delete(ctx.ServiceNotes);
+            ctx.Delete(ctx.Policies);
+            ctx.Delete(ctx.Insurances);
+            ctx.Delete(ctx.InsuranceServices);
+            ctx.Delete(ctx.Professionals);
+            ctx.Delete(ctx.Services);
+            ctx.Delete(ctx.ServiceCategories);
+            ctx.Delete(ctx.TaxTypes);
+            ctx.Delete(ctx.Addresses); // eliminar direcciones.
+            ctx.Delete(ctx.Emails); // eliminar correos electrónicos
+            ctx.Delete(ctx.Telephones); // eliminar teléfonos.
+            ctx.Delete(ctx.Policies); // eliminar las pólizas.
+            ctx.Delete(ctx.PaymentMethods);
+
+            ctx.Delete(ctx.Clinics); // clínicas.
+            ctx.Delete(ctx.Customers); // eliminar los clientes.
+            ctx.Delete(ctx.Patients); // por último, los pacientes.
+            ctx.SaveChanges();
+
+        }
+
+
         /// <summary>
         /// Obtiene un connector para acceder a la base de datos OFT
         /// </summary>
@@ -142,7 +169,11 @@ namespace AriCliWebTest
             }
             ctx.SaveChanges();
         }
-
+        /// <summary>
+        /// Importa los tipos de IVA
+        /// </summary>
+        /// <param name="con"></param>
+        /// <param name="ctx"></param>
         public static void ImportTaxTypes(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
@@ -253,15 +284,71 @@ namespace AriCliWebTest
                 Professional p = new Professional();
                 p.ComercialName = (string)dr["NomMed"];
                 p.FullName = p.ComercialName;
+                p.OftId = (int)dr["IdMed"];
                 ctx.Add(p);
             }
             ctx.SaveChanges();
         }
 
+        public static void ImportAssurancePolicies(OleDbConnection con, AriClinicContext ctx)
+        {
+            //(0) Borrar las aseguradoras y pólizas previas.
+            ctx.Delete(ctx.Policies);
+            ctx.Delete(ctx.Insurances);
+            ctx.Delete(ctx.InsuranceServices);
+
+            //(1) Por defecto creamos una aseguradora que es la clínica de Valencia.
+            Insurance insurance = new Insurance();
+            insurance.Name = "MIESTETIC (Valencia)";
+            insurance.Internal = true;
+            ctx.Add(insurance);
+
+            //(2) Ahora leemos, de nuevo, todos los tipos de servicio porque en OFT
+            // ellos llevan los importes y en nuestro caso son los Insurance services
+            string sql = "SELECT * FROM ServMed";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConServicios");
+            int nreg = ds.Tables["ConServicios"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConServicios"].Rows)
+            {
+                int id = (int)dr["IdServMed"];
+                InsuranceService ins = new InsuranceService();
+                ins.Insurance = insurance;
+                ins.Service = (from s in ctx.Services
+                               where s.OftId == id
+                               select s).FirstOrDefault<Service>();
+                ins.Price = (decimal)dr["Importe"];
+                ctx.Add(ins);
+            }
+
+            //(3) por último asignamos una póliza a todos los clientes que tenemos dados de alta.
+            foreach (Customer cus in ctx.Customers)
+            {
+                Policy pol = new Policy();
+                pol.Customer = cus;
+                pol.Insurance = insurance;
+                ctx.Add(pol);
+            }
+            ctx.SaveChanges();
+        }
+
+
+
         public static void ImportServiceNote(OleDbConnection con, AriClinicContext ctx)
         {
-            //(0) Borrar las notas de servcio previas
+            //(0) Borrar las notas de servicio y tickets previos
+            ctx.Delete(ctx.Tickets);
             ctx.Delete(ctx.ServiceNotes);
+            ctx.SaveChanges();
+
+            // Nos hace falta una clínica, la creamos ahora
+            Clinic cl = new Clinic();
+            cl.Name = "Clinica Valencia";
+            ctx.Add(cl);
+            ctx.SaveChanges();
 
             //(1) Leer las notas de servicio OFT
             string sql = "SELECT * FROM NotaServicio";
@@ -281,7 +368,113 @@ namespace AriCliWebTest
                                where cus.OftId == id
                                select cus).FirstOrDefault<Customer>();
                 sn.ServiceNoteDate = (DateTime)dr["Fecha"];
+                decimal total = (decimal)dr["Total"];
+                sn.Total = total;
+                sn.Clinic = cl;
+                sn.Oft_Ano = (int)dr["Ano"];
+                sn.Oft_NumNota = (int)dr["NumNota"];
+                ctx.Add(sn);
+            }
+            ctx.SaveChanges();
 
+            //(2) Importar la líneas de las notas de servicio
+            sql = "SELECT * FROM LinNotaServicio";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConLineasServicio");
+            nreg = ds.Tables["ConLineasServicio"].Rows.Count;
+            reg = 0;
+            foreach (DataRow dr in ds.Tables["ConLineasServicio"].Rows)
+            {
+                reg++;
+
+                int idSer = (int)dr["IdServMed"];
+                int idAno = (int)dr["Ano"];
+                int idNumNota = (int)dr["NumNota"];
+                int idProfessional = (int)dr["IdMed"];
+
+                Ticket tk = new Ticket();
+                tk.InsuranceService = (from ins in ctx.InsuranceServices
+                                       where ins.Service.OftId == idSer
+                                       select ins).FirstOrDefault<InsuranceService>();
+                tk.ServiceNote = (from sn in ctx.ServiceNotes
+                                  where sn.Oft_Ano == idAno && sn.Oft_NumNota == idNumNota
+                                  select sn).FirstOrDefault<ServiceNote>();
+                tk.Amount = (decimal)dr["Importe"];
+                tk.Professional = (from p in ctx.Professionals
+                                   where p.OftId == idProfessional
+                                   select p).FirstOrDefault<Professional>();
+                if (tk.ServiceNote.Professional == null)
+                    tk.ServiceNote.Professional = tk.Professional;
+                tk.Description = (string)dr["Descripcion"];
+                tk.Clinic = cl;
+                tk.TicketDate = tk.ServiceNote.ServiceNoteDate;
+                // hay notas sin cliente, no deberia pero las hay
+                if (tk.ServiceNote.Customer != null)
+                    tk.Policy = tk.ServiceNote.Customer.Policies[0];
+                ctx.Add(tk);
+            }
+            ctx.SaveChanges();
+        }
+
+        public static void ImportPaymentTypes(OleDbConnection con, AriClinicContext ctx)
+        {
+            //(1) Borrar antiguas formas de pago
+            ctx.Delete(ctx.PaymentMethods);
+
+            //(2) Lleer todos los pacientes en OFT
+            string sql = "SELECT * FROM FormaPago";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConFPago");
+            int nreg = ds.Tables["ConFPago"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConFPago"].Rows)
+            {
+                PaymentMethod pm = new PaymentMethod();
+                pm.Name = (string)dr["NomFormaPago"];
+                pm.OftId = (int)dr["IdFormaPago"];
+                ctx.Add(pm);
+            }
+            ctx.SaveChanges();
+        }
+
+        public static void ImportPayments(OleDbConnection con, AriClinicContext ctx)
+        {
+            //(1) Borrar antiguos pagos
+            ctx.Delete(ctx.Payments);
+            foreach (Ticket tt in ctx.Tickets)
+            {
+                tt.Paid = 0;
+            }
+            ctx.SaveChanges();
+            //(2) Obtener la clínica por defecto
+            Clinic cl = ctx.Clinics.FirstOrDefault<Clinic>();
+
+            //(3) Leer todos los pagos y darlos de alta.
+            string sql = "SELECT * FROM LinNotaPago";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConPagos");
+            foreach (DataRow dr in ds.Tables["ConPagos"].Rows)
+            {
+                int id = (int)dr["IdFormaPago"];
+                PaymentMethod pm = (from p in ctx.PaymentMethods
+                                    where p.OftId == id
+                                    select p).FirstOrDefault<PaymentMethod>();
+                int idAno = (int)dr["Ano"];
+                int idNumNota = (int)dr["NumNota"];
+                ServiceNote note = (from n in ctx.ServiceNotes
+                                    where n.Oft_Ano == idAno && n.Oft_NumNota == idNumNota
+                                    select n).FirstOrDefault<ServiceNote>();
+
+                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, cl, ctx);
+                if (!res)
+                {
+                }
             }
         }
 

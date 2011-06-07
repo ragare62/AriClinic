@@ -59,6 +59,32 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftId;
+		public virtual int OftId 
+		{ 
+		    get
+		    {
+		        return this.oftId;
+		    }
+		    set
+		    {
+		        this.oftId = value;
+		    }
+		}
+		
+		private string description;
+		public virtual string Description 
+		{ 
+		    get
+		    {
+		        return this.description;
+		    }
+		    set
+		    {
+		        this.description = value;
+		    }
+		}
+		
 		private PaymentMethod paymentMethod;
 		public virtual PaymentMethod PaymentMethod 
 		{ 
