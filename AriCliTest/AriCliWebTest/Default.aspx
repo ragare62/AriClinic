@@ -27,7 +27,7 @@
         <p>
           Test AriClinic
         </p>
-        <asp:Button ID="btnTest" runat="server" Text="TEST" onclick="btnTest_Click" />
+        <asp:Button ID="btnTest" runat="server" Text="IMPORTAR AHORA" onclick="btnTest_Click" />
         &nbsp;
         <asp:Button 
           ID="btnProgess" runat="server" Text="Progreso" onclick="btnProgess_Click" />

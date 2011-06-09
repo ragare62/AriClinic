@@ -195,7 +195,10 @@
           <asp:Label ID="lblTitle" runat="server" Text="Tickets" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
-        
+        <div id="ChekcArea" class="normalText" style="width:100%">
+            <asp:CheckBox ID="chkPaid" runat="server" Text="Sólo no pagados" 
+                AutoPostBack="True" Checked="True" oncheckedchanged="chkPaid_CheckedChanged" />
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="100%" 
                            AllowPaging="True" Culture="es-ES" 

@@ -296,21 +296,25 @@ namespace AriCliModel
             if (notPaid)
             {
                 var rs = from t in ctx.Tickets
+                         orderby t.TicketDate descending
                          where t.Amount != t.Paid
                          select t;
                 return rs.ToList<Ticket>();
             }
             else
             {
-                return ctx.Tickets.ToList<Ticket>();
+                return (from t in ctx.Tickets
+                        orderby t.TicketDate descending
+                        select t).ToList<Ticket>();
             }
         }
 
         public static IList<Ticket> GeTickets(bool notPaid, Customer cus, AriClinicContext ctx)
         {
-            var rs = GetTickets(notPaid, ctx);
-            var rs2 = from t in rs
+            var rs2 = from t in ctx.Tickets
+                      orderby t.TicketDate descending
                       where t.Policy.Customer.PersonId == cus.PersonId
+                      && t.Amount > t.Paid
                       select t;
             return rs2.ToList<Ticket>();
         }
@@ -322,6 +326,7 @@ namespace AriCliModel
                 if (type == "P")
                 {
                     var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
                              where t.TicketDate >= fromDate
                                    && t.TicketDate <= toDate
                                    && t.Policy.Insurance.InsuranceId == insuranceId
@@ -332,6 +337,7 @@ namespace AriCliModel
                 else
                 {
                     var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
                              where t.TicketDate >= fromDate
                                    && t.TicketDate <= toDate
                                    && t.Policy.Insurance.InsuranceId == insuranceId
@@ -345,6 +351,7 @@ namespace AriCliModel
                 if (type == "P")
                 {
                     var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
                              where t.TicketDate >= fromDate
                                    && t.TicketDate <= toDate
                                    && (t.Amount == t.Paid)
@@ -354,6 +361,7 @@ namespace AriCliModel
                 else
                 {
                     var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
                              where t.TicketDate >= fromDate
                                    && t.TicketDate <= toDate
                                    && (t.Amount != t.Paid)

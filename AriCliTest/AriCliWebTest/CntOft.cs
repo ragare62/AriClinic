@@ -24,6 +24,9 @@ namespace AriCliWebTest
 
         public static void BigDelete(AriClinicContext ctx)
         {
+            ctx.Delete(ctx.AppointmentInfos);
+            ctx.Delete(ctx.AppointmentTypes);
+            ctx.Delete(ctx.Diaries);
             ctx.Delete(ctx.Payments);
             ctx.Delete(ctx.Tickets);
             ctx.Delete(ctx.ServiceNotes);
@@ -412,7 +415,7 @@ namespace AriCliWebTest
                 tk.TicketDate = tk.ServiceNote.ServiceNoteDate;
                 // hay notas sin cliente, no deberia pero las hay
                 if (tk.ServiceNote.Customer != null)
-                    tk.Policy = tk.ServiceNote.Customer.Policies[0];
+                    tk.Policy = tk.ServiceNote.Customer.Policies.FirstOrDefault<Policy>();
                 ctx.Add(tk);
             }
             ctx.SaveChanges();
@@ -478,8 +481,116 @@ namespace AriCliWebTest
             }
         }
 
+        public static void ImportAppointmentType(OleDbConnection con, AriClinicContext ctx)
+        {
+            //(1) Primero borrar citas y los tipos de cita anteriores
+            ctx.Delete(ctx.AppointmentInfos);
+            ctx.Delete(ctx.AppointmentTypes);
+
+            //(2) Leer los tipos de OFT y darlos de alta en AriClinic
+            string sql = "SELECT * FROM TiposCita";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConTiposCita");
+            foreach (DataRow dr in ds.Tables["ConTiposCita"].Rows)
+            {
+                int id = (int)dr["IdTipCit"];
+                DateTime durac = (DateTime)dr["Durac"];
+                AppointmentType apptype = new AppointmentType();
+                apptype.Name = (string)dr["NomTipCit"];
+                apptype.Duration = durac.Minute;
+                apptype.OftId = id;
+                ctx.Add(apptype);
+            }
+            ctx.SaveChanges();
+        }
         public static void ImportDiary(OleDbConnection con, AriClinicContext ctx)
         {
+            //(1) Borramos las agendas anteriores
+            ctx.Delete(ctx.Diaries);
+
+            //(2) Leer las agendas OFT y darlas de alta en AriClinic
+            string sql = "SELECT * FROM LibrosCita";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConLibrosCita");
+            foreach (DataRow dr in ds.Tables["ConLibrosCita"].Rows)
+            {
+                int id = (int)dr["IdLibCit"];
+                Diary dia = new Diary();
+                dia.BeginHour = (DateTime)dr["HrIni"];
+                dia.EndHour = (DateTime)dr["HrFin"];
+                dia.Name = (string)dr["NomLibCit"];
+                dia.TimeStep = 10;
+                dia.OftId = id;
+                ctx.Add(dia);
+            }
+            ctx.SaveChanges();
+        }
+
+        public static void ImportAppointmentInfo(OleDbConnection con, AriClinicContext ctx)
+        {
+            
+            //(1) Borramos las citas anteriores.
+            ctx.Delete(ctx.AppointmentInfos);
+
+            //(2) Leer las agendas OFT y darlas de alta en AriClinic
+            string sql = "SELECT * FROM Citas";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConCitas");
+
+            int nreg = ds.Tables["ConCitas"].Rows.Count;
+
+            int i2 = 0;
+            int i3 = 0;
+            int i4 = 0;
+            foreach (DataRow dr in ds.Tables["ConCitas"].Rows)
+            {
+                i3++;
+                AppointmentInfo app = new AppointmentInfo();
+                int id = (int)dr["IdTipCit"];
+                app.AppointmentType = (from at in ctx.AppointmentTypes
+                                       where at.OftId == id
+                                       select at).FirstOrDefault<AppointmentType>();
+                id = (int)dr["IdLibCit"];
+                app.Diary = (from d in ctx.Diaries
+                             where d.OftId == id
+                             select d).FirstOrDefault<Diary>();
+                id = (int)dr["NumHis"];
+                app.Patient = (from p in ctx.Patients
+                               where p.OftId == id
+                               select p).FirstOrDefault<Patient>();
+                id = (int)dr["IdMed"];
+                app.Professional = (from pr in ctx.Professionals
+                                    where pr.OftId == id
+                                    select pr).FirstOrDefault<Professional>();
+
+                i4++;
+                DateTime dt = (DateTime)dr["Fecha"];
+                DateTime ht = (DateTime)dr["Hora"];
+                DateTime dd = new DateTime(dt.Year, dt.Month, dt.Day, ht.Hour, ht.Minute, ht.Second);
+                app.BeginDateTime = dd;
+                ht = (DateTime)dr["HrFin"];
+                dd = new DateTime(dt.Year, dt.Month, dt.Day, ht.Hour, ht.Minute, ht.Second);
+                app.EndDateTime = dd;
+                ht = (DateTime)dr["Durac"];
+                app.Duration = ht.Minute;
+                if (app.Patient != null)
+                {
+                    i2++;
+                    app.Subject = CntAriCli.GetAppointmentSubject(app);
+                }
+                else
+                {
+                    app.Subject = "SIN PACIENTE";
+                }
+                ctx.Add(app);
+            }
+            ctx.SaveChanges();
         }
 
         #region Auxiliary functions

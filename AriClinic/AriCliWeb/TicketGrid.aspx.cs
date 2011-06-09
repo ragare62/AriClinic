@@ -121,7 +121,7 @@ public partial class TicketGrid : System.Web.UI.Page
     {
         // RadGrid1.DataSource = asn.Procedures;
         // load grid data
-        RefreshGrid(false);
+        RefreshGrid(false, chkPaid.Checked);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -268,7 +268,7 @@ public partial class TicketGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-        RefreshGrid(true);
+        RefreshGrid(true,chkPaid.Checked);
         if (e.Argument == "new") 
         { 
             RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
@@ -284,7 +284,7 @@ public partial class TicketGrid : System.Web.UI.Page
                     tck = CntAriCli.GetTicket(ticketId, ctx);
                     ctx.Delete(tck);
                     ctx.SaveChanges();
-                    RefreshGrid(true);
+                    RefreshGrid(true, chkPaid.Checked);
                     Session["DeleteId"] = null;
                 }
                 catch (Exception ex)
@@ -298,7 +298,7 @@ public partial class TicketGrid : System.Web.UI.Page
         }
     }
 
-    protected void RefreshGrid(bool rebind)
+    protected void RefreshGrid(bool rebind, bool notpaid)
     {
         if (asn != null)
         {
@@ -315,15 +315,20 @@ public partial class TicketGrid : System.Web.UI.Page
         else
         {
             if (pat == null && cus == null)
-                RadGrid1.DataSource = CntAriCli.GetTickets(notPaid, ctx);
+                RadGrid1.DataSource = CntAriCli.GetTickets(notpaid, ctx);
             else
             {
                 if (pat != null)
-                    RadGrid1.DataSource = CntAriCli.GeTickets(notPaid, cus, ctx);
+                    RadGrid1.DataSource = CntAriCli.GeTickets(notpaid, cus, ctx);
                 if (cus != null)
                     RadGrid1.DataSource = CntAriCli.GetTicketsNotInvoiced(cus, ctx);
             }
         }
         if (rebind) RadGrid1.Rebind();
+    }
+
+    protected void chkPaid_CheckedChanged(object sender, EventArgs e)
+    {
+        RefreshGrid(true, chkPaid.Checked);
     }
 }

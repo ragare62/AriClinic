@@ -7,7 +7,7 @@ function openAppointment(url) {
     w.focus();
 }
 function AppointmentEditing(sender, eventArgs) {
-    alert("Appointment Editing");
+    //alert("Appointment Editing");
     var apt = eventArgs.get_appointment();
     var url = "AppointmentForm.aspx?AppointmentId=" + apt.get_id() + "&DiaryId=" + gup("DiaryId");
     openAppointment(url);
@@ -15,7 +15,7 @@ function AppointmentEditing(sender, eventArgs) {
 }
 
 function AppointmentInserting(sender, eventArgs) {
-    alert("Appointment Inserting");
+    //alert("Appointment Inserting");
     var start = formatDate(eventArgs.get_startTime());
     //var isAllDay = eventArgs.get_isAllDay();
     var url = "AppointmentForm.aspx?BeginDateTime=" + start + "&DiaryId=" + gup("DiaryId");
@@ -25,7 +25,7 @@ function AppointmentInserting(sender, eventArgs) {
 
 
 function AppointmentMoveEnd(sender, eventArgs) {
-    alert("Appointment MoveEnd");
+    //alert("Appointment MoveEnd");
     var apt = eventArgs.get_appointment();
     var url = "AppointmentForm.aspx?AppointmentId=" + apt.get_id()
                         + "&BeginDateTime=" + formatDate(eventArgs.get_newStartTime());
@@ -33,7 +33,7 @@ function AppointmentMoveEnd(sender, eventArgs) {
     eventArgs.set_cancel(false);
 }
 function AppointmentResizeEnd(sender, eventArgs) {
-    alert("Appointment ResizeEnd");
+    //alert("Appointment ResizeEnd");
     var apt = eventArgs.get_appointment();
     url = "AppointmentForm.aspx?AppointmentId=" + apt.get_id()
                     + "&BeginDateTime=" + formatDate(apt.get_start())

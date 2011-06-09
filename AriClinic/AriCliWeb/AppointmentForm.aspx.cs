@@ -124,7 +124,7 @@ public partial class AppointmentForm : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
-        string command = "CancelEdit();";
+        string command = "CloseAndRebind();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 

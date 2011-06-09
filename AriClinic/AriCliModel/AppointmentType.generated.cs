@@ -59,6 +59,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftId;
+		public virtual int OftId 
+		{ 
+		    get
+		    {
+		        return this.oftId;
+		    }
+		    set
+		    {
+		        this.oftId = value;
+		    }
+		}
+		
 		private IList<AppointmentInfo> appointmentsRelated = new List<AppointmentInfo>();
 		public virtual IList<AppointmentInfo> AppointmentsRelated 
 		{ 
