@@ -25,7 +25,7 @@ public partial class TicketGrid : System.Web.UI.Page
     int serviceNoteId = 0;
     string type = "";
     Permission per = null;
-
+    
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
     {
