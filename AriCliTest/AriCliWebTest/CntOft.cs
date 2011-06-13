@@ -24,6 +24,8 @@ namespace AriCliWebTest
 
         public static void BigDelete(AriClinicContext ctx)
         {
+            ctx.Delete(ctx.InvoiceLines);
+            ctx.Delete(ctx.Invoices);
             ctx.Delete(ctx.AppointmentInfos);
             ctx.Delete(ctx.AppointmentTypes);
             ctx.Delete(ctx.Diaries);
@@ -204,8 +206,6 @@ namespace AriCliWebTest
             ctx.SaveChanges();
         }
 
-
-
         /// <summary>
         /// Traspasa los datos que corresponden a servicios y categorias de servicio
         /// </summary>
@@ -337,8 +337,6 @@ namespace AriCliWebTest
             }
             ctx.SaveChanges();
         }
-
-
 
         public static void ImportServiceNote(OleDbConnection con, AriClinicContext ctx)
         {
@@ -505,6 +503,7 @@ namespace AriCliWebTest
             }
             ctx.SaveChanges();
         }
+
         public static void ImportDiary(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borramos las agendas anteriores
@@ -589,6 +588,76 @@ namespace AriCliWebTest
                     app.Subject = "SIN PACIENTE";
                 }
                 ctx.Add(app);
+            }
+            ctx.SaveChanges();
+        }
+
+        public static void ImportInvoices(OleDbConnection con, AriClinicContext ctx)
+        {
+            //(0) Delete previous invoices
+            ctx.Delete(ctx.InvoiceLines);
+            ctx.Delete(ctx.Invoices);
+
+            //
+            
+
+            //(1) Read OFT invoices and import to Ariclinic
+            string sql = "SELECT * FROM Factura";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConFacturas");
+            foreach (DataRow dr in ds.Tables["ConFacturas"].Rows)
+            {
+                Invoice inv = new Invoice();
+                inv.InvoiceDate = (DateTime)dr["Fecha"];
+                inv.Year = (int)dr["Ano"];
+                inv.InvoiceNumber = (int)dr["NumFactura"];
+                inv.Serial = "F"; // we must to set serial parameter to "F"
+                int id = (int)dr["NumHis"];
+                inv.Customer = (from c in ctx.Customers
+                                where c.OftId == id
+                                select c).FirstOrDefault<Customer>();
+                inv.Total = (decimal)dr["Total"];
+                ctx.Add(inv);
+            }
+            ctx.SaveChanges();
+
+            //(2) Importe invoice lines;
+            int idTipoIva = 0;
+            int idServMed = 0;
+            int Ano = 0;
+            int NumFac = 0;
+
+            sql = "SELECT * FROM LinFactura";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConLineasFactura");
+            foreach (DataRow dr in ds.Tables["ConLineasFactura"].Rows)
+            {
+                InvoiceLine il = new InvoiceLine();
+                idTipoIva = (int)dr["IdTipoIva"];
+                idServMed = (int)dr["IdServMed"];
+                Ano = (int)dr["Ano"];
+                NumFac = (int)dr["NumFactura"];
+                TaxType tx = (from t in ctx.TaxTypes
+                              where t.OftId == idTipoIva
+                              select t).FirstOrDefault<TaxType>();
+                Service sv = (from s in ctx.Services
+                              where s.OftId == idServMed
+                              select s).FirstOrDefault<Service>();
+                sv.TaxType = tx;
+                Invoice inv = (from iv in ctx.Invoices
+                               where iv.Year == Ano
+                               && iv.InvoiceNumber == NumFac
+                               select iv).FirstOrDefault<Invoice>();
+                il.Invoice = inv;
+                il.TaxType = tx;
+                il.TaxPercentage = tx.Percentage;
+                il.Amount = (decimal)dr["Importe"];
+                il.Description = (string)dr["Descripcion"];
+                ctx.Add(il);
             }
             ctx.SaveChanges();
         }
