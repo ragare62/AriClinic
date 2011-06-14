@@ -14,6 +14,7 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
@@ -134,32 +135,6 @@ namespace AriCliModel
 		    set
 		    {
 		        this.subject = value;
-		    }
-		}
-		
-		private bool smsReminder;
-		public virtual bool SmsReminder 
-		{ 
-		    get
-		    {
-		        return this.smsReminder;
-		    }
-		    set
-		    {
-		        this.smsReminder = value;
-		    }
-		}
-		
-		private bool emailReminder;
-		public virtual bool EmailReminder 
-		{ 
-		    get
-		    {
-		        return this.emailReminder;
-		    }
-		    set
-		    {
-		        this.emailReminder = value;
 		    }
 		}
 		

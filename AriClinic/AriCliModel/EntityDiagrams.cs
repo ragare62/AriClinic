@@ -14,15 +14,15 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using AriCliModel;
 using Telerik.OpenAccess.Metadata;
+using AriCliModel;
 
 
 namespace AriCliModel	
 {	
 	public partial class AriClinicContext : OpenAccessContext
 	{
-		private static string connectionStringName = "AriClinicContext";
+		private static string connectionStringName = @"";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		
@@ -364,9 +364,9 @@ namespace AriCliModel
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
-			backend.Backend = "mysql";
-			return backend;
+					return backend;
 		}
 	}
 }
 #pragma warning restore 1591
+
