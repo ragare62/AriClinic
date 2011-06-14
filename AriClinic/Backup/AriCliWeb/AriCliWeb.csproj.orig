@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D788F8FA-94A0-4A4D-BF3A-AB25ABD3C932}</ProjectGuid>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AriCliWeb</RootNamespace>
+    <AssemblyName>AriCliWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Extensions">
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+<<<<<<< HEAD
+    <Reference Include="Telerik.Reporting, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.ReportViewer.WebForms, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+=======
+    <Reference Include="Telerik.OpenAccess.Web, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.Reporting, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.ReportViewer.WebForms, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+>>>>>>> 5e6a778686bb65b74ddc694cf7b37b1dde90db26
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\ConstantsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstantsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\FilterResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilterResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GeneralResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AddressForm.aspx.cs">
+      <DependentUpon>AddressForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressForm.aspx.designer.cs">
+      <DependentUpon>AddressForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\RadEditor.Dialogs.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadEditor.Dialogs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicForm.aspx.cs">
+      <DependentUpon>ClinicForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClinicForm.aspx.designer.cs">
+      <DependentUpon>ClinicForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicGrid.aspx.cs">
+      <DependentUpon>ClinicGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClinicGrid.aspx.designer.cs">
+      <DependentUpon>ClinicGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CntWeb.cs" />
+    <Compile Include="AnestheticTicketForm.aspx.cs">
+      <DependentUpon>AnestheticTicketForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnestheticTicketForm.aspx.designer.cs">
+      <DependentUpon>AnestheticTicketForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnestheticServiceNoteForm.aspx.cs">
+      <DependentUpon>AnestheticServiceNoteForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnestheticServiceNoteForm.aspx.designer.cs">
+      <DependentUpon>AnestheticServiceNoteForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnestheticServiceNoteGrid.aspx.cs">
+      <DependentUpon>AnestheticServiceNoteGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnestheticServiceNoteGrid.aspx.designer.cs">
+      <DependentUpon>AnestheticServiceNoteGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentTypeForm.aspx.cs">
+      <DependentUpon>AppointmentTypeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppointmentTypeForm.aspx.designer.cs">
+      <DependentUpon>AppointmentTypeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentTypeGrid.aspx.cs">
+      <DependentUpon>AppointmentTypeGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppointmentTypeGrid.aspx.designer.cs">
+      <DependentUpon>AppointmentTypeGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentForm.aspx.cs">
+      <DependentUpon>AppointmentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppointmentForm.aspx.designer.cs">
+      <DependentUpon>AppointmentForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentGrid.aspx.cs">
+      <DependentUpon>AppointmentGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppointmentGrid.aspx.designer.cs">
+      <DependentUpon>AppointmentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentsPatient.aspx.cs">
+      <DependentUpon>DocumentsPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DocumentsPatient.aspx.designer.cs">
+      <DependentUpon>DocumentsPatient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulerGeneral.aspx.cs">
+      <DependentUpon>SchedulerGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchedulerGeneral.aspx.designer.cs">
+      <DependentUpon>SchedulerGeneral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiaryForm.aspx.cs">
+      <DependentUpon>DiaryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiaryForm.aspx.designer.cs">
+      <DependentUpon>DiaryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiaryGrid.aspx.cs">
+      <DependentUpon>DiaryGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiaryGrid.aspx.designer.cs">
+      <DependentUpon>DiaryGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalInvoiceLineForm.aspx.cs">
+      <DependentUpon>ExternalInvoiceLineForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExternalInvoiceLineForm.aspx.designer.cs">
+      <DependentUpon>ExternalInvoiceLineForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoogleMapsPage.aspx.cs">
+      <DependentUpon>GoogleMapsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoogleMapsPage.aspx.designer.cs">
+      <DependentUpon>GoogleMapsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptCategorySrvForm.aspx.cs">
+      <DependentUpon>RptCategorySrvForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptCategorySrvForm.aspx.designer.cs">
+      <DependentUpon>RptCategorySrvForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoicePatientForm.aspx.cs">
+      <DependentUpon>RptInvoicePatientForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptInvoicePatientForm.aspx.designer.cs">
+      <DependentUpon>RptInvoicePatientForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoicePeriodForm.aspx.cs">
+      <DependentUpon>RptInvoicePeriodForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptInvoicePeriodForm.aspx.designer.cs">
+      <DependentUpon>RptInvoicePeriodForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptProfessionalSrvForm.aspx.cs">
+      <DependentUpon>RptProfessionalSrvForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptProfessionalSrvForm.aspx.designer.cs">
+      <DependentUpon>RptProfessionalSrvForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptPruebasForm.aspx.cs">
+      <DependentUpon>RptPruebasForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptPruebasForm.aspx.designer.cs">
+      <DependentUpon>RptPruebasForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptServiceComparerForm.aspx.cs">
+      <DependentUpon>RptServiceComparerForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptServiceComparerForm.aspx.designer.cs">
+      <DependentUpon>RptServiceComparerForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceNoteGrid.aspx.cs">
+      <DependentUpon>ServiceNoteGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceNoteGrid.aspx.designer.cs">
+      <DependentUpon>ServiceNoteGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceNoteForm.aspx.cs">
+      <DependentUpon>ServiceNoteForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceNoteForm.aspx.designer.cs">
+      <DependentUpon>ServiceNoteForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ParameterForm.aspx.cs">
+      <DependentUpon>ParameterForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ParameterForm.aspx.designer.cs">
+      <DependentUpon>ParameterForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SettlementGrid.aspx.cs">
+      <DependentUpon>SettlementGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SettlementGrid.aspx.designer.cs">
+      <DependentUpon>SettlementGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureGrid.aspx.cs">
+      <DependentUpon>ProcedureGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcedureGrid.aspx.designer.cs">
+      <DependentUpon>ProcedureGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureForm.aspx.cs">
+      <DependentUpon>ProcedureForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcedureForm.aspx.designer.cs">
+      <DependentUpon>ProcedureForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfessionalGrid.aspx.cs">
+      <DependentUpon>ProfessionalGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfessionalGrid.aspx.designer.cs">
+      <DependentUpon>ProfessionalGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfessionalForm.aspx.cs">
+      <DependentUpon>ProfessionalForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfessionalForm.aspx.designer.cs">
+      <DependentUpon>ProfessionalForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxWithholdingTypeForm.aspx.cs">
+      <DependentUpon>TaxWithholdingTypeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaxWithholdingTypeForm.aspx.designer.cs">
+      <DependentUpon>TaxWithholdingTypeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxWithholdingTypeGrid.aspx.cs">
+      <DependentUpon>TaxWithholdingTypeGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaxWithholdingTypeGrid.aspx.designer.cs">
+      <DependentUpon>TaxWithholdingTypeGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerTab.aspx.cs">
+      <DependentUpon>CustomerTab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerTab.aspx.designer.cs">
+      <DependentUpon>CustomerTab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptPaymentsForm.aspx.cs">
+      <DependentUpon>RptPaymentsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptPaymentsForm.aspx.designer.cs">
+      <DependentUpon>RptPaymentsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptView.aspx.cs">
+      <DependentUpon>RptView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptView.aspx.designer.cs">
+      <DependentUpon>RptView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicketsForm.aspx.cs">
+      <DependentUpon>RptTicketsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptTicketsForm.aspx.designer.cs">
+      <DependentUpon>RptTicketsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentGrid.aspx.cs">
+      <DependentUpon>PaymentGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentGrid.aspx.designer.cs">
+      <DependentUpon>PaymentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentForm.aspx.cs">
+      <DependentUpon>PaymentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.aspx.designer.cs">
+      <DependentUpon>PaymentForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodGrid.aspx.cs">
+      <DependentUpon>PaymentMethodGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentMethodGrid.aspx.designer.cs">
+      <DependentUpon>PaymentMethodGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMethodForm.aspx.cs">
+      <DependentUpon>PaymentMethodForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentMethodForm.aspx.designer.cs">
+      <DependentUpon>PaymentMethodForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceGrid.aspx.cs">
+      <DependentUpon>InvoiceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvoiceGrid.aspx.designer.cs">
+      <DependentUpon>InvoiceGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceForm.aspx.cs">
+      <DependentUpon>InvoiceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvoiceForm.aspx.designer.cs">
+      <DependentUpon>InvoiceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerGrid.aspx.cs">
+      <DependentUpon>CustomerGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerGrid.aspx.designer.cs">
+      <DependentUpon>CustomerGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerForm.aspx.cs">
+      <DependentUpon>CustomerForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.aspx.designer.cs">
+      <DependentUpon>CustomerForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UscInvoiceLineGrid.ascx.cs">
+      <DependentUpon>UscInvoiceLineGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscInvoiceLineGrid.ascx.designer.cs">
+      <DependentUpon>UscInvoiceLineGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceLineForm.aspx.cs">
+      <DependentUpon>InvoiceLineForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvoiceLineForm.aspx.designer.cs">
+      <DependentUpon>InvoiceLineForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceServiceGrid.aspx.cs">
+      <DependentUpon>InsuranceServiceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsuranceServiceGrid.aspx.designer.cs">
+      <DependentUpon>InsuranceServiceGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketGrid.aspx.cs">
+      <DependentUpon>TicketGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketGrid.aspx.designer.cs">
+      <DependentUpon>TicketGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketForm.aspx.cs">
+      <DependentUpon>TicketForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketForm.aspx.designer.cs">
+      <DependentUpon>TicketForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientTab.aspx.cs">
+      <DependentUpon>PatientTab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientTab.aspx.designer.cs">
+      <DependentUpon>PatientTab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyGrid.aspx.cs">
+      <DependentUpon>PolicyGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PolicyGrid.aspx.designer.cs">
+      <DependentUpon>PolicyGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PolicyForm.aspx.cs">
+      <DependentUpon>PolicyForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PolicyForm.aspx.designer.cs">
+      <DependentUpon>PolicyForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientGrid.aspx.cs">
+      <DependentUpon>PatientGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientGrid.aspx.designer.cs">
+      <DependentUpon>PatientGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientForm.aspx.cs">
+      <DependentUpon>PatientForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientForm.aspx.designer.cs">
+      <DependentUpon>PatientForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceForm.aspx.cs">
+      <DependentUpon>InsuranceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsuranceForm.aspx.designer.cs">
+      <DependentUpon>InsuranceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceGrid.aspx.cs">
+      <DependentUpon>InsuranceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsuranceGrid.aspx.designer.cs">
+      <DependentUpon>InsuranceGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceServiceForm.aspx.cs">
+      <DependentUpon>InsuranceServiceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsuranceServiceForm.aspx.designer.cs">
+      <DependentUpon>InsuranceServiceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForm.aspx.cs">
+      <DependentUpon>ServiceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceForm.aspx.designer.cs">
+      <DependentUpon>ServiceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGrid.aspx.cs">
+      <DependentUpon>ServiceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceGrid.aspx.designer.cs">
+      <DependentUpon>ServiceGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxTypeForm.aspx.cs">
+      <DependentUpon>TaxTypeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaxTypeForm.aspx.designer.cs">
+      <DependentUpon>TaxTypeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxTypeGrid.aspx.cs">
+      <DependentUpon>TaxTypeGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaxTypeGrid.aspx.designer.cs">
+      <DependentUpon>TaxTypeGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCategoryForm.aspx.cs">
+      <DependentUpon>ServiceCategoryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceCategoryForm.aspx.designer.cs">
+      <DependentUpon>ServiceCategoryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCategoryGrid.aspx.cs">
+      <DependentUpon>ServiceCategoryGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceCategoryGrid.aspx.designer.cs">
+      <DependentUpon>ServiceCategoryGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UscEmailGrid.ascx.cs">
+      <DependentUpon>UscEmailGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscEmailGrid.ascx.designer.cs">
+      <DependentUpon>UscEmailGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EmailForm.aspx.cs">
+      <DependentUpon>EmailForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmailForm.aspx.designer.cs">
+      <DependentUpon>EmailForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TelephoneForm.aspx.cs">
+      <DependentUpon>TelephoneForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TelephoneForm.aspx.designer.cs">
+      <DependentUpon>TelephoneForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UscInsuranceServiceGrid.ascx.cs">
+      <DependentUpon>UscInsuranceServiceGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscInsuranceServiceGrid.ascx.designer.cs">
+      <DependentUpon>UscInsuranceServiceGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UscTelephoneGrid.ascx.cs">
+      <DependentUpon>UscTelephoneGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscTelephoneGrid.ascx.designer.cs">
+      <DependentUpon>UscTelephoneGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="HealthcareCompanyForm.aspx.cs">
+      <DependentUpon>HealthcareCompanyForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HealthcareCompanyForm.aspx.designer.cs">
+      <DependentUpon>HealthcareCompanyForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionForm.aspx.cs">
+      <DependentUpon>PermissionForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermissionForm.aspx.designer.cs">
+      <DependentUpon>PermissionForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionGrid.aspx.cs">
+      <DependentUpon>PermissionGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermissionGrid.aspx.designer.cs">
+      <DependentUpon>PermissionGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessGrid.aspx.cs">
+      <DependentUpon>ProcessGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcessGrid.aspx.designer.cs">
+      <DependentUpon>ProcessGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessForm.aspx.cs">
+      <DependentUpon>ProcessForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcessForm.aspx.designer.cs">
+      <DependentUpon>ProcessForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UscAddressGrid.ascx.cs">
+      <DependentUpon>UscAddressGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscAddressGrid.ascx.designer.cs">
+      <DependentUpon>UscAddressGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGrid.aspx.cs">
+      <DependentUpon>UserGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGrid.aspx.designer.cs">
+      <DependentUpon>UserGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm.aspx.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserForm.aspx.designer.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.aspx.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMenu.aspx.designer.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UscLogin.ascx.cs">
+      <DependentUpon>UscLogin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscLogin.ascx.designer.cs">
+      <DependentUpon>UscLogin.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroupForm.aspx.cs">
+      <DependentUpon>UserGroupForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGroupForm.aspx.designer.cs">
+      <DependentUpon>UserGroupForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroupGrid.aspx.cs">
+      <DependentUpon>UserGroupGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGroupGrid.aspx.designer.cs">
+      <DependentUpon>UserGroupGrid.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadCaptcha\0.wav" />
+    <Content Include="App_Data\RadCaptcha\1.wav" />
+    <Content Include="App_Data\RadCaptcha\2.wav" />
+    <Content Include="App_Data\RadCaptcha\3.wav" />
+    <Content Include="App_Data\RadCaptcha\4.wav" />
+    <Content Include="App_Data\RadCaptcha\5.wav" />
+    <Content Include="App_Data\RadCaptcha\6.wav" />
+    <Content Include="App_Data\RadCaptcha\7.wav" />
+    <Content Include="App_Data\RadCaptcha\8.wav" />
+    <Content Include="App_Data\RadCaptcha\9.wav" />
+    <Content Include="App_Data\RadCaptcha\A.wav" />
+    <Content Include="App_Data\RadCaptcha\B.wav" />
+    <Content Include="App_Data\RadCaptcha\C.wav" />
+    <Content Include="App_Data\RadCaptcha\D.wav" />
+    <Content Include="App_Data\RadCaptcha\E.wav" />
+    <Content Include="App_Data\RadCaptcha\F.wav" />
+    <Content Include="App_Data\RadCaptcha\G.wav" />
+    <Content Include="App_Data\RadCaptcha\H.wav" />
+    <Content Include="App_Data\RadCaptcha\I.wav" />
+    <Content Include="App_Data\RadCaptcha\J.wav" />
+    <Content Include="App_Data\RadCaptcha\K.wav" />
+    <Content Include="App_Data\RadCaptcha\L.wav" />
+    <Content Include="App_Data\RadCaptcha\M.wav" />
+    <Content Include="App_Data\RadCaptcha\N.wav" />
+    <Content Include="App_Data\RadCaptcha\O.wav" />
+    <Content Include="App_Data\RadCaptcha\P.wav" />
+    <Content Include="App_Data\RadCaptcha\Q.wav" />
+    <Content Include="App_Data\RadCaptcha\R.wav" />
+    <Content Include="App_Data\RadCaptcha\S.wav" />
+    <Content Include="App_Data\RadCaptcha\T.wav" />
+    <Content Include="App_Data\RadCaptcha\U.wav" />
+    <Content Include="App_Data\RadCaptcha\V.wav" />
+    <Content Include="App_Data\RadCaptcha\W.wav" />
+    <Content Include="App_Data\RadCaptcha\X.wav" />
+    <Content Include="App_Data\RadCaptcha\Y.wav" />
+    <Content Include="App_Data\RadCaptcha\Z.wav" />
+    <Content Include="AriClinicStyle.css" />
+    <Content Include="AddressForm.aspx" />
+    <Content Include="ClinicForm.aspx" />
+    <Content Include="ClinicGrid.aspx" />
+    <Content Include="AnestheticTicketForm.aspx" />
+    <Content Include="AnestheticServiceNoteForm.aspx" />
+    <Content Include="AnestheticServiceNoteGrid.aspx" />
+    <Content Include="AppointmentTypeForm.aspx" />
+    <Content Include="AppointmentTypeGrid.aspx" />
+    <Content Include="AppointmentForm.aspx" />
+    <Content Include="AppointmentGrid.aspx" />
+    <Content Include="DocumentsPatient.aspx" />
+    <Content Include="images\logo_blanco_horizontal_w200.png" />
+    <Content Include="images\logo_blanco_vertical.png" />
+    <Content Include="images\toolbar\books.png" />
+    <Content Include="images\toolbar\book_blue.png" />
+    <Content Include="images\toolbar\book_red.png" />
+    <Content Include="images\toolbar\bottle_of_pills.png" />
+    <Content Include="images\toolbar\cabinet.png" />
+    <Content Include="images\toolbar\calculator.png" />
+    <Content Include="images\toolbar\calendar.png" />
+    <Content Include="images\toolbar\creditcards.png" />
+    <Content Include="images\toolbar\doctor.png" />
+    <Content Include="images\toolbar\exit.png" />
+    <Content Include="images\toolbar\users3.png" />
+    <Content Include="images\toolbar\users_family.png" />
+    <Content Include="SchedulerGeneral.aspx" />
+    <Content Include="DiaryForm.aspx" />
+    <Content Include="DiaryGrid.aspx" />
+    <Content Include="ExternalInvoiceLineForm.aspx" />
+    <Content Include="GoogleMapsPage.aspx" />
+    <Content Include="images\book_open.png" />
+    <Content Include="images\book_open2.png" />
+    <Content Include="images\currency_euro_16.png" />
+    <Content Include="images\documents_gear.png" />
+    <Content Include="images\printer.png" />
+    <Content Include="RptCategorySrvForm.aspx" />
+    <Content Include="RptInvoicePatientForm.aspx" />
+    <Content Include="RptInvoicePeriodForm.aspx" />
+    <Content Include="RptProfessionalSrvForm.aspx" />
+    <Content Include="RptPruebasForm.aspx" />
+    <Content Include="RptServiceComparerForm.aspx" />
+    <Content Include="SchedulerGeneral.js" />
+    <Content Include="ServiceNoteGrid.aspx" />
+    <Content Include="ServiceNoteForm.aspx" />
+    <Content Include="dialog_box.css" />
+    <Content Include="dialog_box.js" />
+    <Content Include="dialog_box.html" />
+    <Content Include="images\dialog_close.gif" />
+    <Content Include="images\error_bg.jpg" />
+    <Content Include="images\error_header.gif" />
+    <Content Include="images\form_blue.png" />
+    <Content Include="images\message_bg.jpg" />
+    <Content Include="images\message_header.gif" />
+    <Content Include="images\overlay.png" />
+    <Content Include="images\prompt_bg.jpg" />
+    <Content Include="images\prompt_header.gif" />
+    <Content Include="images\query_bg.jpg" />
+    <Content Include="images\query_header.gif" />
+    <Content Include="images\success_bg.jpg" />
+    <Content Include="images\success_header.gif" />
+    <Content Include="images\warning_bg.jpg" />
+    <Content Include="images\warning_header.gif" />
+    <Content Include="ParameterForm.aspx" />
+    <Content Include="SettlementGrid.aspx" />
+    <Content Include="ProcedureGrid.aspx" />
+    <Content Include="ProcedureForm.aspx" />
+    <Content Include="ProfessionalGrid.aspx" />
+    <Content Include="ProfessionalForm.aspx" />
+    <Content Include="TaxWithholdingTypeForm.aspx" />
+    <Content Include="TaxWithholdingTypeGrid.aspx" />
+    <Content Include="CustomerTab.aspx" />
+    <Content Include="RptPaymentsForm.aspx" />
+    <Content Include="ReportFunctions.js" />
+    <Content Include="RptView.aspx" />
+    <Content Include="RptTicketsForm.aspx" />
+    <Content Include="PaymentGrid.aspx" />
+    <Content Include="PaymentForm.aspx" />
+    <Content Include="PaymentMethodGrid.aspx" />
+    <Content Include="PaymentMethodForm.aspx" />
+    <Content Include="InvoiceGrid.aspx" />
+    <Content Include="InvoiceForm.aspx" />
+    <Content Include="CustomerGrid.aspx" />
+    <Content Include="CustomerForm.aspx" />
+    <Content Include="UscInvoiceLineGrid.ascx" />
+    <Content Include="InvoiceLineForm.aspx" />
+    <Content Include="InsuranceServiceGrid.aspx" />
+    <Content Include="TicketGrid.aspx" />
+    <Content Include="TicketForm.aspx" />
+    <Content Include="PatientTab.aspx" />
+    <Content Include="PolicyGrid.aspx" />
+    <Content Include="PolicyForm.aspx" />
+    <Content Include="images\folder_cubes_16.png" />
+    <Content Include="PatientGrid.aspx" />
+    <Content Include="PatientForm.aspx" />
+    <Content Include="InsuranceForm.aspx" />
+    <Content Include="InsuranceGrid.aspx" />
+    <Content Include="InsuranceServiceForm.aspx" />
+    <Content Include="ServiceForm.aspx" />
+    <Content Include="ServiceGrid.aspx" />
+    <Content Include="TaxTypeForm.aspx" />
+    <Content Include="TaxTypeGrid.aspx" />
+    <Content Include="ServiceCategoryForm.aspx" />
+    <Content Include="ServiceCategoryGrid.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Test.aspx" />
+    <Content Include="UscEmailGrid.ascx" />
+    <Content Include="EmailForm.aspx" />
+    <Content Include="TelephoneForm.aspx" />
+    <Content Include="UscInsuranceServiceGrid.ascx" />
+    <Content Include="UscTelephoneGrid.ascx" />
+    <Content Include="HealthcareCompanyForm.aspx" />
+    <Content Include="PermissionForm.aspx" />
+    <Content Include="PermissionGrid.aspx" />
+    <Content Include="ProcessGrid.aspx" />
+    <Content Include="ProcessForm.aspx" />
+    <Content Include="UscAddressGrid.ascx" />
+    <Content Include="UserGrid.aspx" />
+    <Content Include="UserForm.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="GeneralFormFunctions.js" />
+    <Content Include="images\document_add_16.png" />
+    <Content Include="images\document_add.png" />
+    <Content Include="images\document_delete_16.png" />
+    <Content Include="images\document_edit_16.png" />
+    <Content Include="images\document_gear_16.png" />
+    <Content Include="images\document_ok.png" />
+    <Content Include="images\document_out_16.png" />
+    <Content Include="images\document_out.png" />
+    <Content Include="images\logo_web.png" />
+    <Content Include="images\logo_web_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Data\RadSpell\de-DE.tdf" />
+    <None Include="App_Data\RadSpell\en-US.tdf" />
+    <None Include="App_Data\RadSpell\fr-FR.tdf" />
+    <Content Include="images\mini_logo.png" />
+    <Content Include="MainMenu.aspx" />
+    <Content Include="UscLogin.ascx" />
+    <Content Include="UserGroupForm.aspx" />
+    <Content Include="UserGroupGrid.aspx" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
+      <Project>{B1CAF779-D00A-4A1B-9662-06B466832A3C}</Project>
+      <Name>AriCliModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AriCliReport\AriCliReport.csproj">
+      <Project>{AFF8F504-D105-456C-889C-23E901358A9F}</Project>
+      <Name>AriCliReport</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\GeneralResource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GeneralResource.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ConstantsResource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ConstantsResource.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\FilterResource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>FilterResource.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ServiceCategoryGrid.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\TaxTypeGrid.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ServiceGrid.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\InsuranceGrid.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RptView.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="docs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\SchedulerGeneral.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\RadEditor.Dialogs.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadEditor.Dialogs.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53128</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+    </VisualStudio>
+    <MonoDevelop>
+      <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="true" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
