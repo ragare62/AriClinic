@@ -200,5 +200,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<External_invoice> externalInvoices = new List<External_invoice>();
+		public virtual IList<External_invoice> External_invoices 
+		{ 
+		    get
+		    {
+		        return this.externalInvoices;
+		    }
+		}
+		
 	}
 }

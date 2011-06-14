@@ -18,44 +18,44 @@ using Telerik.OpenAccess;
 
 namespace AriCliModel	
 {
-	public partial class ExternalInvoiceLine : InvoiceLine
+	public partial class DiagnosticAssigned
 	{
-		private decimal comissionAmount;
-		public virtual decimal ComissionAmount 
+		private int diagnosticAssignedId;
+		public virtual int DiagnosticAssignedId 
 		{ 
 		    get
 		    {
-		        return this.comissionAmount;
+		        return this.diagnosticAssignedId;
 		    }
 		    set
 		    {
-		        this.comissionAmount = value;
+		        this.diagnosticAssignedId = value;
 		    }
 		}
 		
-		private ExternalInvoice externalInvoice;
-		public virtual ExternalInvoice ExternalInvoice 
+		private DateTime diagnosticDate;
+		public virtual DateTime DiagnosticDate 
 		{ 
 		    get
 		    {
-		        return this.externalInvoice;
+		        return this.diagnosticDate;
 		    }
 		    set
 		    {
-		        this.externalInvoice = value;
+		        this.diagnosticDate = value;
 		    }
 		}
 		
-		private External_invoice externalInvoice;
-		public virtual External_invoice External_invoice 
+		private string comments;
+		public virtual string Comments 
 		{ 
 		    get
 		    {
-		        return this.externalInvoice;
+		        return this.comments;
 		    }
 		    set
 		    {
-		        this.externalInvoice = value;
+		        this.comments = value;
 		    }
 		}
 		

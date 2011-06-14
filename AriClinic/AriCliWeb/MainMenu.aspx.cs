@@ -223,6 +223,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "docs":
                 RadAjaxManager1.ResponseScripts.Add("LaunchDocuments();");
                 break;
+            case "diagnostic":
+                RadAjaxManager1.ResponseScripts.Add("LaunchDiagnostic();");
+                break;
             default:
                 break;
         }
