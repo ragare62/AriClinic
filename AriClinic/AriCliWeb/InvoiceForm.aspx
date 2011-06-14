@@ -235,11 +235,12 @@ width: 642px;
           </TargetControls>
         </telerik:TextBoxSetting>
         <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="0" 
-                                       DecimalSeparator="." GroupSeparator="." GroupSizes="3" MaxValue="999999999" 
-                                       MinValue="0" NegativePattern="-n" PositivePattern="n" Validation-IsRequired="true">
-          <TargetControls>
-            <telerik:TargetInput ControlID="txtCustomerId" />
-          </TargetControls>
+                                       DecimalSeparator="," GroupSeparator="." 
+              GroupSizes="3" MaxValue="999999999" 
+                                       MinValue="0" NegativePattern="-n" 
+              PositivePattern="n" Validation-IsRequired="true">
+
+<Validation IsRequired="True"></Validation>
         </telerik:NumericTextBoxSetting>
         <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="2" 
                                        DecimalSeparator="," GroupSeparator="." 

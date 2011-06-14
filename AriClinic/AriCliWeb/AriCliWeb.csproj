@@ -56,8 +56,9 @@
     <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
       <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Reporting, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
-    <Reference Include="Telerik.ReportViewer.WebForms, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.OpenAccess.Web, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
   </ItemGroup>
@@ -912,7 +913,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51850</DevelopmentServerPort>
+          <DevelopmentServerPort>53128</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

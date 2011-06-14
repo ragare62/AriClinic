@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="AriClinicContext" namespace="AriCliModel" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+            <MetaProperty Id="894540f7-09e4-4098-b057-cee796fed2d5" Name="SmsReminder" accessModifier="Public" inheritanceModifier="None" Type="Boolean" label="SmsReminder : Boolean" kind="Default" nullable="false" hasGetter="false" hasSetter="false" identity="false" isNavigable="false" loadBehavior="Default" />
+            <MetaProperty Id="59cdac8f-32bc-4edb-b7a6-d5267b0810ba" Name="EmailReminder" accessModifier="Public" inheritanceModifier="None" Type="Boolean" label="EmailReminder : Boolean" kind="Default" nullable="false" hasGetter="false" hasSetter="false" identity="false" isNavigable="false" loadBehavior="Default" />
   <orm:orm name="AriClinicContext" backend="mysql" xmlns:orm="http://tempuri.org/ORM">
     <orm:namespace name="AriCliModel" default="true">
       <orm:class name="User" uniqueId="8e1c6e71-eeb6-42cd-a482-ebd970cbce86">
@@ -1199,8 +1201,12 @@
         <orm:field name="subject" property="Subject" uniqueId="d8600f00-1108-4baf-9f77-6a9f83516c74" type="System.String">
           <orm:column name="subject" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
-        <orm:field name="appointmentType" property="AppointmentType" uniqueId="ee5cbf1a-b2d5-4773-a960-85c62a66c8ea" type="AriCliModel.AppointmentType">
-          <orm:reference uniqueId="ca9145d4-4355-4e75-a009-6dfd48ea83b1" />
+          <orm:field name="smsReminder" property="SmsReminder" uniqueId="894540f7-09e4-4098-b057-cee796fed2d5" type="System.Boolean">
+            <orm:column name="sms_remider" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+          </orm:field>
+          <orm:field name="emailReminder" property="EmailReminder" uniqueId="59cdac8f-32bc-4edb-b7a6-d5267b0810ba" type="System.Boolean">
+            <orm:column name="email_reminder" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+          </orm:field>
         </orm:field>
         <orm:field name="fatherAppointment" property="FatherAppointment" uniqueId="1b5410a6-e4c7-47d9-884a-86e79cc20e30" type="AriCliModel.AppointmentInfo">
           <orm:reference uniqueId="c01fa72e-e718-4781-9e3c-a14422ad78d4" />
@@ -1733,6 +1739,8 @@
         <orm:column name="status" sql-type="varchar" nullable="true" length="1" scale="0" ado-type="Varchar" />
         <orm:column name="duration" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="subject" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+          <orm:column name="sms_remider" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+          <orm:column name="email_reminder" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
         <orm:index name="idx_appointment_user_id">
           <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
@@ -1819,7 +1827,7 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-      </AssociationTargets>
+          <associationConnector edgePoints="[(2 : 3.79884615384615); (3.375 : 3.79884615384615); (3.375 : 5.517705078125); (3.47916666666667 : 5.517705078125 : JumpStart); (3.79025333333333 : 5.517705078125 : JumpEnd); (7.41666666666667 : 5.517705078125 : JumpStart); (7.58333333333333 : 5.517705078125 : JumpEnd); (7.91666666666667 : 5.517705078125 : JumpStart); (8.08333333333333 : 5.517705078125 : JumpEnd); (9.01041391666667 : 5.517705078125 : JumpStart); (9.17708058333333 : 5.517705078125 : JumpEnd); (9.94791716666667 : 5.517705078125 : JumpStart); (10.1145838333333 : 5.517705078125 : JumpEnd); (12.9479166666667 : 5.517705078125 : JumpStart); (13.1145833333333 : 5.517705078125 : JumpEnd); (13.8854161666667 : 5.517705078125 : JumpStart); (14.0520828333333 : 5.517705078125 : JumpEnd); (14.3541666666667 : 5.517705078125 : JumpStart); (14.6145833333333 : 5.517705078125 : JumpEnd); (17.1666666666667 : 5.517705078125 : JumpStart); (17.3333333333333 : 5.517705078125 : JumpEnd); (17.3385394166667 : 5.517705078125 : JumpStart); (17.6145838333333 : 5.517705078125 : JumpEnd); (19.9166641666667 : 5.517705078125 : JumpStart); (20.0833308333333 : 5.517705078125 : JumpEnd); (20.75 : 5.517705078125); (20.75 : 6.5); (21.125 : 6.5)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <navigationalProperties>
         <classHasNavigationalProperties Id="21c34b37-0c6e-4792-8db1-c47de729b244">
           <NavigationalProperty Id="4f0e1afa-f830-4ec6-96f8-ccca051f5760" name="UserGroup" type="UserGroup" label="UserGroup : UserGroup" nullable="true" kind="Persistent" fieldName="userGroup" isDependent="false" isManaged="false" />
@@ -1871,7 +1879,7 @@
         <classHasNavigationalProperties Id="fedf7916-c72d-4e06-8912-917d6f3ffa26">
           <NavigationalProperty Id="cf3f967f-b65b-4f2d-8ebb-71673407a00c" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="b4fa96b0-404d-4847-b290-81671e8e2bba">
+          <associationConnector edgePoints="[(21.875 : 5.375); (21.875 : 4.60909505208333); (17.6145838333333 : 4.60909505208333 : JumpStart); (17.3385394166667 : 4.60909505208333 : JumpEnd); (17.2083333333333 : 4.60909505208333 : JumpStart); (17.0416666666667 : 4.60909505208333 : JumpEnd); (16.4583333333333 : 4.60909505208333 : JumpStart); (16.2916666666667 : 4.60909505208333 : JumpEnd); (14.6145833333333 : 4.60909505208333 : JumpStart); (14.3541666666667 : 4.60909505208333 : JumpEnd); (13.1145833333333 : 4.60909505208333 : JumpStart); (12.9479166666667 : 4.60909505208333 : JumpEnd); (10.1145838333333 : 4.60909505208333 : JumpStart); (9.94791716666667 : 4.60909505208333 : JumpEnd); (8.08333333333333 : 4.60909505208333 : JumpStart); (7.91666666666667 : 4.60909505208333 : JumpEnd); (7.75 : 4.60909505208333); (7.75 : 5.330205078125); (3.79025333333333 : 5.330205078125 : JumpStart); (3.47916666666667 : 5.330205078125 : JumpEnd); (3.45833333333333 : 5.330205078125 : JumpStart); (3.29166666666667 : 5.330205078125 : JumpEnd); (3.20833333333333 : 5.330205078125 : JumpStart); (3.04166666666667 : 5.330205078125 : JumpEnd); (2.375 : 5.330205078125); (2.375 : 3.89576923076923); (2 : 3.89576923076923)]" fixedFrom="Algorithm" fixedTo="NotFixed">
           <NavigationalProperty Id="069710d3-7b32-4701-8bc3-fab6c23ee6af" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ab117a74-8493-4420-a037-15a0a45b2a23">
@@ -1886,7 +1894,7 @@
       <AssociationTargets>
         <Association Id="b3ba6165-c5f3-4051-abc3-d4da371d830e" SourceMultiplicity="ZeroOne" name="TelephoneHasHealthcareCompany">
           <DomainClassMoniker name="/AriClinicContext/HealthcareCompany" />
-          <targetNavigationalProperty>
+          <classShape Id="c3ea25f6-4eee-45b5-b2ac-abac672f4b8f" absoluteBounds="21.125, 7.125, 1.5, 2.4648893229166671">
             <associationDefinesTargetProperty Id="41a6f888-8667-4b0c-ab52-aadf27310b83">
               <NavigationalPropertyMoniker name="/AriClinicContext/HealthcareCompany/Telephones" />
             </associationDefinesTargetProperty>
@@ -1901,7 +1909,7 @@
           <DomainClassMoniker name="/AriClinicContext/Clinic" />
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="8650b3e1-84e7-4a9a-a810-8c21824113d8">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Telephones" />
+          <associationConnector edgePoints="[(21.125 : 8.35744466145833); (20.875 : 8.35744466145833); (20.875 : 8.25); (21.125 : 8.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
@@ -1924,7 +1932,7 @@
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
-      <navigationalProperties>
+          <associationConnector edgePoints="[(11.875 : 9.625); (11.7083333333333 : 9.625 : JumpStart); (11.5416666666667 : 9.625 : JumpEnd); (11.375 : 9.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         <classHasNavigationalProperties Id="20a48eda-4de8-42d0-b238-32a1d5ce7a42">
           <NavigationalProperty Id="67f19856-98a6-4678-bd3b-069a4d0b892b" name="HealthcareCompany" type="HealthcareCompany" label="HealthcareCompany : HealthcareCompany" nullable="true" kind="Persistent" fieldName="healthcareCompany" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -1947,7 +1955,7 @@
             <associationDefinesTargetProperty Id="ec11bcbd-abf0-4e1c-8988-63266f378834">
               <NavigationalPropertyMoniker name="/AriClinicContext/HealthcareCompany/Emails" />
             </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
+          <associationConnector edgePoints="[(11.375 : 8.625); (12.9479166666667 : 8.625 : JumpStart); (13.1145833333333 : 8.625 : JumpEnd); (13.8854161666667 : 8.625 : JumpStart); (14.0520828333333 : 8.625 : JumpEnd); (14.3541666666667 : 8.625 : JumpStart); (14.5208333333333 : 8.625 : JumpEnd); (14.53125 : 8.625); (14.53125 : 4.16679361979167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="c8d1bf87-dee6-492c-a359-2fafa1818ce9">
               <NavigationalPropertyMoniker name="/AriClinicContext/Email/HealthcareCompany" />
@@ -1955,7 +1963,7 @@
           </sourceNavigationalProperty>
         </Association>
         <Association Id="37ab835c-63b4-41ec-aef0-8f13e2f6c2be" SourceMultiplicity="ZeroOne" name="EmailHasClinic">
-          <DomainClassMoniker name="/AriClinicContext/Clinic" />
+          <associationConnector edgePoints="[(10.0312505 : 8); (10.0312505 : 3.3735405390625); (12.9479166666667 : 3.3735405390625 : JumpStart); (13.1145833333333 : 3.3735405390625 : JumpEnd); (14 : 3.3735405390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="42c09163-8ade-4a5b-a890-c4a6584f0e88">
               <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Emails" />
@@ -1970,7 +1978,7 @@
         <Association Id="2a2bb83e-3648-4d4c-9db2-a468abc95d91" SourceMultiplicity="ZeroOne" name="EmailHasPerson">
           <DomainClassMoniker name="/AriClinicContext/Person" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="32bf282d-eb78-43d1-aa64-e07c40971a62">
+          <associationConnector edgePoints="[(11.875 : 9.781252); (11.625 : 9.781252); (11.625 : 9.125); (10.7083333333333 : 9.125 : JumpStart); (10.5416666666667 : 9.125 : JumpEnd); (10.2708333333333 : 9.125 : JumpStart); (10.1041666666667 : 9.125 : JumpEnd); (9.88020808333333 : 9.125 : JumpStart); (9.71354141666667 : 9.125 : JumpEnd); (9.4062505 : 9.125); (9.4062505 : 9.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
               <NavigationalPropertyMoniker name="/AriClinicContext/Person/Emails" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
@@ -2023,7 +2031,7 @@
     <DomainClass Id="a18fb2f9-120a-4728-b365-09425a55d782" name="Process" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="326d4760-19fe-42b6-ab32-dfea1811b354" name="ProcessId" type="Int32" label="ProcessId : Int32" kind="Persistent" identity="true" fieldName="processId" />
       <Property Id="d9a60d87-a50a-44e5-af9e-8aa6947550a9" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
-      <Property Id="3c5378cd-35c9-45d1-9335-59156d723acd" name="Description" label="Description : String" kind="Persistent" fieldName="description" />
+          <associationConnector edgePoints="[(6.25 : 12.6740364583333); (7.04166666666667 : 12.6740364583333 : JumpStart); (7.20833333333333 : 12.6740364583333 : JumpEnd); (8.04166666666667 : 12.6740364583333 : JumpStart); (8.20833333333333 : 12.6740364583333 : JumpEnd); (9.05728916666667 : 12.6740364583333 : JumpStart); (9.22395583333333 : 12.6740364583333 : JumpEnd); (9.375 : 12.6740364583333)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <Property Id="a769689d-353f-4dee-98cb-01be0133de26" name="Code" label="Code : String" kind="Persistent" fieldName="code" />
       <AssociationTargets>
         <Association Id="f9f5c702-c5d4-4f06-833e-c960eddd95a7" SourceMultiplicity="ZeroOne" name="ProcessHasProcess">
@@ -2045,7 +2053,7 @@
           <NavigationalProperty Id="9ec482b2-cdf0-4e42-b929-5644278c4cc9" name="ParentProcess" type="Process" label="ParentProcess : Process" nullable="true" kind="Persistent" fieldName="parentProcess" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="75f20cde-4cef-4a25-9856-9265d2d70810">
-          <NavigationalProperty Id="28ae6235-d5ef-46ee-9fd5-ae3e6ce05763" name="Processes" type="IList&lt;Process&gt;" label="Processes : IList&lt;Process&gt;" nullable="true" kind="Persistent" fieldName="processes" isDependent="false" isManaged="false" />
+          <associationConnector edgePoints="[(17 : 6.625); (17.1666666666667 : 6.625 : JumpStart); (17.3333333333333 : 6.625 : JumpEnd); (17.3385394166667 : 6.625 : JumpStart); (17.6145838333333 : 6.625 : JumpEnd); (17.75 : 6.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="75844379-fbf3-47cd-9d21-9032a1bfe53b">
           <NavigationalProperty Id="71aef017-10b7-4a18-8053-edfd70b0541d" name="Permissions" type="IList&lt;Permission&gt;" label="Permissions : IList&lt;Permission&gt;" nullable="true" kind="Persistent" fieldName="permissions" isDependent="false" isManaged="false" />
@@ -2053,7 +2061,7 @@
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="16e9ff9c-88ba-4bf6-9689-8eea65dbc8e4" name="Permission" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="b949a687-9e0d-4818-9483-bfadbe0a088c" name="PermissionId" type="Int32" label="PermissionId : Int32" kind="Persistent" identity="true" fieldName="permissionId" />
+          <associationConnector edgePoints="[(14.875 : 6.625); (14.6145833333333 : 6.625 : JumpStart); (14.3541666666667 : 6.625 : JumpEnd); (14.0520828333333 : 6.625 : JumpStart); (13.8854161666667 : 6.625 : JumpEnd); (13.1145833333333 : 6.625 : JumpStart); (12.9479166666667 : 6.625 : JumpEnd); (10.1145838333333 : 6.625 : JumpStart); (9.94791716666667 : 6.625 : JumpEnd); (9.17708058333333 : 6.625 : JumpStart); (9.01041391666667 : 6.625 : JumpEnd); (8.08333333333333 : 6.625 : JumpStart); (7.91666666666667 : 6.625 : JumpEnd); (7.58333333333333 : 6.625 : JumpStart); (7.41666666666667 : 6.625 : JumpEnd); (6.4375 : 6.625); (6.4375 : 8.84469075520833); (5.375 : 8.84469075520833); (5.375 : 10.9375); (4.6875 : 10.9375); (4.6875 : 11.78125); (5.375 : 11.78125); (5.375 : 11.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <Property Id="488c9d8e-1c75-487c-97a3-6756a9786be1" name="View" type="Boolean" label="View : Boolean" kind="Persistent" fieldName="view" />
       <Property Id="51215961-ca38-4fb0-8ee8-ca7c29312c8f" name="Modify" type="Boolean" label="Modify : Boolean" kind="Persistent" fieldName="modify" />
       <Property Id="65108892-256c-4587-9c0c-205746cfba6d" name="Create" type="Boolean" label="Create : Boolean" kind="Persistent" fieldName="create" />
@@ -2068,7 +2076,7 @@
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="376d3690-947e-4c8b-8090-95f455b05553">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Permission/UserGroup" />
+          <generalizationConnector edgePoints="[(9.09374725 : 9.5); (9.09374725 : 5.43119791666667); (8.08333333333333 : 5.43119791666667 : JumpStart); (7.91666666666667 : 5.43119791666667 : JumpEnd); (7.58333333333333 : 5.43119791666667 : JumpStart); (7.41666666666667 : 5.43119791666667 : JumpEnd); (3.79025333333333 : 5.43119791666667 : JumpStart); (3.47916666666667 : 5.43119791666667 : JumpEnd); (3.45833333333333 : 5.43119791666667 : JumpStart); (3.29166666666667 : 5.43119791666667 : JumpEnd); (3.20833333333333 : 5.43119791666667 : JumpStart); (3.04166666666667 : 5.43119791666667 : JumpEnd); (2.125 : 5.43119791666667)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -2081,13 +2089,13 @@
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="7a9cf307-50a2-437a-a0d5-10a58153c2d9">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Permission/Process" />
+          <generalizationConnector edgePoints="[(9.24218875 : 10); (9.24218875 : 10.4375); (13.8854161666667 : 10.4375 : JumpStart); (14.0520828333333 : 10.4375 : JumpEnd); (14.3541666666667 : 10.4375 : JumpStart); (14.5208333333333 : 10.4375 : JumpEnd); (15.1041636666667 : 10.4375 : JumpStart); (15.2708303333333 : 10.4375 : JumpEnd); (15.3541646666667 : 10.4375 : JumpStart); (15.5208313333333 : 10.4375 : JumpEnd); (15.6041656666667 : 10.4375 : JumpStart); (15.7708323333333 : 10.4375 : JumpEnd); (15.8541666666667 : 10.4375 : JumpStart); (16.0208333333333 : 10.4375 : JumpEnd); (16.3541686666667 : 10.4375 : JumpStart); (16.5208353333333 : 10.4375 : JumpEnd); (17.4479171666667 : 10.4375 : JumpStart); (17.6145838333333 : 10.4375 : JumpEnd); (19.625 : 10.4375)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="7061494d-71d9-4fa5-a085-52f5304e44d3">
+          <associationConnector edgePoints="[(2.125 : 5.2276025390625); (2.29166666666667 : 5.2276025390625 : JumpStart); (2.45833333333333 : 5.2276025390625 : JumpEnd); (3.04166666666667 : 5.2276025390625 : JumpStart); (3.20833333333333 : 5.2276025390625 : JumpEnd); (3.29166666666667 : 5.2276025390625 : JumpStart); (3.45833333333333 : 5.2276025390625 : JumpEnd); (3.47916666666667 : 5.2276025390625 : JumpStart); (3.79025333333333 : 5.2276025390625 : JumpEnd); (5.47916666666667 : 5.2276025390625 : JumpStart); (5.64583333333333 : 5.2276025390625 : JumpEnd); (7.66666666666667 : 5.2276025390625 : JumpStart); (7.83333333333333 : 5.2276025390625 : JumpEnd); (7.91666666666667 : 5.2276025390625 : JumpStart); (8.08333333333333 : 5.2276025390625 : JumpEnd); (9.94791716666667 : 5.2276025390625 : JumpStart); (10.1145838333333 : 5.2276025390625 : JumpEnd); (12.9479166666667 : 5.2276025390625 : JumpStart); (13.1145833333333 : 5.2276025390625 : JumpEnd); (14.3541666666667 : 5.2276025390625 : JumpStart); (14.6145833333333 : 5.2276025390625 : JumpEnd); (16.2916666666667 : 5.2276025390625 : JumpStart); (16.4583333333333 : 5.2276025390625 : JumpEnd); (17.1666666666667 : 5.2276025390625 : JumpStart); (17.3333333333333 : 5.2276025390625 : JumpEnd); (17.3385394166667 : 5.2276025390625 : JumpStart); (17.6145838333333 : 5.2276025390625 : JumpEnd); (19.9999975 : 5.2276025390625); (19.9999975 : 10)]" fixedFrom="Algorithm" fixedTo="Algorithm">
           <NavigationalProperty Id="4fa718e6-7e91-49fc-befe-9e481a7c69f8" name="UserGroup" type="UserGroup" label="UserGroup : UserGroup" nullable="true" kind="Persistent" fieldName="userGroup" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="6c525605-0884-4548-bcb2-8ada0fb5780c">
@@ -2102,7 +2110,7 @@
       <Property Id="6bd60764-4695-4544-9a89-99a54b98eb0c" name="Country" label="Country : String" kind="Persistent" fieldName="country" />
       <Property Id="043cac3b-c047-4aab-bfa7-d7f68eaec600" name="City" label="City : String" kind="Persistent" fieldName="city" />
       <Property Id="5667d007-cb2c-411f-b5d0-535056124bcc" name="AddressId" type="Int32" label="AddressId : Int32" kind="Persistent" identity="true" fieldName="addressId" />
-      <Property Id="d2b5413a-e8a2-4d09-852e-43dce601c50f" name="Type" label="Type : String" kind="Persistent" fieldName="type" />
+          <associationConnector edgePoints="[(23.4687475 : 5.53219075520833); (23.4687475 : 6.9375); (21.9583333333333 : 6.9375 : JumpStart); (21.7916666666667 : 6.9375 : JumpEnd); (20.0833308333333 : 6.9375 : JumpStart); (19.9166641666667 : 6.9375 : JumpEnd); (19.5 : 6.9375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <Property Id="0241b803-84d5-4504-8aae-bb77b96b510b" name="Province" label="Province : String" kind="Persistent" fieldName="province" />
       <AssociationTargets>
         <Association Id="5afde3e6-983f-479e-b7ea-1c7aefd32f00" SourceMultiplicity="ZeroOne" name="AddressHasHealthcareCompany">
@@ -2117,7 +2125,7 @@
               <NavigationalPropertyMoniker name="/AriClinicContext/Address/HealthcareCompany" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
-        </Association>
+          <associationConnector edgePoints="[(16.875 : 13.7989957682292); (17.4479171666667 : 13.7989957682292 : JumpStart); (17.6145838333333 : 13.7989957682292 : JumpEnd); (24.2812525 : 13.7989957682292); (24.2812525 : 5.53219075520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         <Association Id="cc38f222-7cc4-4a9b-bfce-89a8003a0f35" SourceMultiplicity="ZeroOne" name="AddressHasClinic">
           <DomainClassMoniker name="/AriClinicContext/Clinic" />
           <targetNavigationalProperty>
@@ -2133,7 +2141,7 @@
         </Association>
         <Association Id="30746c62-c691-49ee-8e02-a30a39769348" SourceMultiplicity="ZeroOne" name="AddressHasPerson">
           <DomainClassMoniker name="/AriClinicContext/Person" />
-          <targetNavigationalProperty>
+          <associationConnector edgePoints="[(15.187497 : 10.875); (15.187497 : 7.125); (14.6145833333333 : 7.125 : JumpStart); (14.3541666666667 : 7.125 : JumpEnd); (14.0520828333333 : 7.125 : JumpStart); (13.8854161666667 : 7.125 : JumpEnd); (13.1145833333333 : 7.125 : JumpStart); (12.9479166666667 : 7.125 : JumpEnd); (10.1145838333333 : 7.125 : JumpStart); (9.94791716666667 : 7.125 : JumpEnd); (9.17708058333333 : 7.125 : JumpStart); (9.01041391666667 : 7.125 : JumpEnd); (8.08333333333333 : 7.125 : JumpStart); (7.91666666666667 : 7.125 : JumpEnd); (7.5 : 7.125); (7.5 : 5.330205078125); (3.79025333333333 : 5.330205078125 : JumpStart); (3.47916666666667 : 5.330205078125 : JumpEnd); (3.45833333333333 : 5.330205078125 : JumpStart); (3.29166666666667 : 5.330205078125 : JumpEnd); (3.20833333333333 : 5.330205078125 : JumpStart); (3.04166666666667 : 5.330205078125 : JumpEnd); (2.375 : 5.330205078125); (2.375 : 3.84730769230769); (2 : 3.84730769230769)]" fixedFrom="Algorithm" fixedTo="NotFixed">
             <associationDefinesTargetProperty Id="8d736209-e643-49ea-857c-33016966a793">
               <NavigationalPropertyMoniker name="/AriClinicContext/Person/Addresses" />
             </associationDefinesTargetProperty>
@@ -2141,7 +2149,7 @@
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="9e149975-7b7f-487f-a9bf-9178b3694b30">
               <NavigationalPropertyMoniker name="/AriClinicContext/Address/Person" />
-            </associationDefinesSourceProperty>
+          <associationConnector edgePoints="[(15.437498 : 10.875); (15.437498 : 7.203125); (15.8541666666667 : 7.203125 : JumpStart); (16.0208333333333 : 7.203125 : JumpEnd); (17.25 : 7.203125); (17.25 : 4.73409505208333); (17.125 : 4.73409505208333); (17.125 : 3.43759721484375); (16.4583333333333 : 3.43759721484375 : JumpStart); (16.2916666666667 : 3.43759721484375 : JumpEnd); (16.125 : 3.43759721484375)]" fixedFrom="Algorithm" fixedTo="NotFixed">
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
@@ -2149,14 +2157,14 @@
         <classHasNavigationalProperties Id="52cf90f4-6f66-4cc7-8141-60a5a477d4b6">
           <NavigationalProperty Id="bd2a251d-f22a-450d-b945-e586fd368bea" name="HealthcareCompany" type="HealthcareCompany" label="HealthcareCompany : HealthcareCompany" nullable="true" kind="Persistent" fieldName="healthcareCompany" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="f9737be4-1fed-4bd3-bd1c-4363da917cfc">
+          <classShape Id="5a2bbe3f-4285-470f-a86d-f9337de14c5b" absoluteBounds="1.25, 6.125, 2, 2.8494921874999992">
           <NavigationalProperty Id="475f5fca-d900-4681-bbbd-b62e946193e1" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="b82bad0a-67c7-4a08-8dc4-98da4614c209">
-          <NavigationalProperty Id="5d94c5fd-c7af-4619-9c69-435e54e4d653" name="Person" type="Person" label="Person : Person" nullable="true" kind="Persistent" fieldName="person" isDependent="false" isManaged="false" />
+              <elementListCompartment Id="ee60d065-e5c1-4817-8661-f83e582fecff" absoluteBounds="1.2650000000000001, 6.635, 1.9700000000000002, 1.9801025390624998" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+              <elementListCompartment Id="5daf5fd8-8ae1-431c-ad4c-904e01969d40" absoluteBounds="1.2650000000000001, 8.6251025390625, 1.9700000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
         </classHasNavigationalProperties>
       </navigationalProperties>
-    </DomainClass>
+          <associationConnector edgePoints="[(3.25 : 7.65131109375); (3.47916666666667 : 7.65131109375 : JumpStart); (3.64583333333333 : 7.65131109375 : JumpEnd); (4.25 : 7.65131109375); (4.25 : 8.875); (5.125 : 8.875); (5.125 : 10.015625); (5.29166666666667 : 10.015625 : JumpStart); (5.61458333333333 : 10.015625 : JumpEnd); (5.80729329166667 : 10.015625 : JumpStart); (5.97395995833333 : 10.015625 : JumpEnd); (7 : 10.015625); (7 : 9.875); (7.04166666666667 : 9.875 : JumpStart); (7.20833333333333 : 9.875 : JumpEnd); (8.75 : 9.875); (8.75 : 9.1328125); (9.01041391666667 : 9.1328125 : JumpStart); (9.33333283333334 : 9.1328125 : JumpEnd); (9.71354141666667 : 9.1328125 : JumpStart); (9.88020808333333 : 9.1328125 : JumpEnd); (10.1041666666667 : 9.1328125 : JumpStart); (10.2708333333333 : 9.1328125 : JumpEnd); (10.5416666666667 : 9.1328125 : JumpStart); (10.7083333333333 : 9.1328125 : JumpEnd); (12.9479166666667 : 9.1328125 : JumpStart); (13.1145833333333 : 9.1328125 : JumpEnd); (13.8854161666667 : 9.1328125 : JumpStart); (14.0520828333333 : 9.1328125 : JumpEnd); (14.3541666666667 : 9.1328125 : JumpStart); (14.5208333333333 : 9.1328125 : JumpEnd); (15.1041636666667 : 9.1328125 : JumpStart); (15.2708303333333 : 9.1328125 : JumpEnd); (15.3541646666667 : 9.1328125 : JumpStart); (15.5208313333333 : 9.1328125 : JumpEnd); (15.6041656666667 : 9.1328125 : JumpStart); (15.7708323333333 : 9.1328125 : JumpEnd); (15.8541666666667 : 9.1328125 : JumpStart); (16.0208333333333 : 9.1328125 : JumpEnd); (17.4479171666667 : 9.1328125 : JumpStart); (17.6145838333333 : 9.1328125 : JumpEnd); (19.9166641666667 : 9.1328125 : JumpStart); (20.0833308333333 : 9.1328125 : JumpEnd); (20.8125015 : 9.1328125); (20.8125015 : 10)]" fixedFrom="Algorithm" fixedTo="Algorithm">
     <DomainClass Id="16705959-b1fc-4b65-957c-b21a289d5598" name="Clinic" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="1098167c-8cfe-4102-ae77-8eda3d7e6965" name="ClinicId" type="Int32" label="ClinicId : Int32" kind="Persistent" identity="true" fieldName="clinicId" />
       <Property Id="4aa3ad69-c0b1-433f-97a0-991c3cbe8840" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
@@ -2164,14 +2172,14 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="9e190339-0a39-4099-ae21-a273ce28754b">
           <NavigationalProperty Id="c738dc86-f17c-417b-98e3-eeecf722bbfc" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
+          <classShape Id="8892703f-3aae-4999-8649-5c77db94a708" absoluteBounds="4.5, 6.125, 1.875, 2.6571907552083331">
         <classHasNavigationalProperties Id="955c3269-0a3b-4c6a-91c2-76dbb9244754">
           <NavigationalProperty Id="beb980c6-426e-4ebf-8b8d-360f253c8278" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="97ca0377-8944-4e65-ae52-29969f88e41b">
+              <elementListCompartment Id="f7c1b28e-3fcc-444f-b753-232116222fc6" absoluteBounds="4.515, 6.635, 1.8450000000000002, 1.7878011067708333" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+              <elementListCompartment Id="a8c331f4-14f6-4d60-b2c3-8dfc20d77615" absoluteBounds="4.515, 8.4328011067708335, 1.8450000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
           <NavigationalProperty Id="31f109b4-cae5-4a32-8aa1-141b8bf3be79" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="08aed4c1-553e-4562-82ce-995f6d920b9b">
+          <associationConnector edgePoints="[(4.5 : 6.825655546875); (3.64583333333333 : 6.825655546875 : JumpStart); (3.47916666666667 : 6.825655546875 : JumpEnd); (3.25 : 6.825655546875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
           <NavigationalProperty Id="18eee30d-cb08-4f47-a141-23734ed22406" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="1f412812-3335-43b3-a8e9-55daaac631cd">
@@ -2179,7 +2187,7 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="faf2959e-d473-4929-8260-932c5c43b9f3">
           <NavigationalProperty Id="a285f343-5a3b-4428-9274-37482e917050" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
+          <associationConnector edgePoints="[(6.375 : 7.5703125); (7.91666666666667 : 7.5703125 : JumpStart); (8.08333333333333 : 7.5703125 : JumpEnd); (9.01041391666667 : 7.5703125 : JumpStart); (9.17708058333333 : 7.5703125 : JumpEnd); (9.94791716666667 : 7.5703125 : JumpStart); (10.1145838333333 : 7.5703125 : JumpEnd); (12.9479166666667 : 7.5703125 : JumpStart); (13.1145833333333 : 7.5703125 : JumpEnd); (13.8854161666667 : 7.5703125 : JumpStart); (14.0520828333333 : 7.5703125 : JumpEnd); (14.3541666666667 : 7.5703125 : JumpStart); (14.6145833333333 : 7.5703125 : JumpEnd); (15.1041636666667 : 7.5703125 : JumpStart); (15.2708303333333 : 7.5703125 : JumpEnd); (15.3541646666667 : 7.5703125 : JumpStart); (15.5208313333333 : 7.5703125 : JumpEnd); (15.687499 : 7.5703125); (15.687499 : 10.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
         <classHasNavigationalProperties Id="f96289b3-3f85-4c53-8ee6-01f7708a5eba">
           <NavigationalProperty Id="ae933aa9-7649-4afb-91fc-8b6d1a95ff3a" name="Service_notes" type="IList&lt;ServiceNote&gt;" label="Service_notes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -2187,7 +2195,7 @@
     </DomainClass>
     <DomainClass Id="3c11c626-c882-4fff-b20b-04a6e1273531" name="Person" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="aed4c8e7-a19c-486b-87ef-9d93888a9ba9" name="PersonId" type="Int32" label="PersonId : Int32" kind="Persistent" identity="true" fieldName="personId" />
-      <Property Id="61c809a8-d7a7-4b7d-9061-328cb834f499" name="FullName" label="FullName : String" kind="Persistent" fieldName="fullName" />
+          <associationConnector edgePoints="[(5.53125 : 8.78219075520833); (5.53125 : 10.9375); (7.189453125 : 10.9375); (7.189453125 : 12.0754850260417); (9.05728916666667 : 12.0754850260417 : JumpStart); (9.22395583333333 : 12.0754850260417 : JumpEnd); (9.28125 : 12.0754850260417); (9.28125 : 12.0112939453125); (9.375 : 12.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <navigationalProperties>
         <classHasNavigationalProperties Id="3e0e1051-95e2-43a6-9b74-429c76632f7d">
           <NavigationalProperty Id="2579686b-b868-4e3b-9664-1af0789dd66b" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="false" />
@@ -2195,7 +2203,7 @@
         <classHasNavigationalProperties Id="803c1a03-5bd1-42fe-a59c-5fa2d35b22bb">
           <NavigationalProperty Id="c575eb09-7aeb-498f-b032-3aa126f0b55a" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="88a8bf28-33fc-48a2-97c0-e27586ace8e2">
+          <associationConnector edgePoints="[(5.4375 : 6.125); (5.4375 : 5.580205078125); (3.79025333333333 : 5.580205078125 : JumpStart); (3.47916666666667 : 5.580205078125 : JumpEnd); (3.125 : 5.580205078125); (3.125 : 4.04115384615385); (2.45833333333333 : 4.04115384615385 : JumpStart); (2.29166666666667 : 4.04115384615385 : JumpEnd); (2 : 4.04115384615385)]" fixedFrom="Algorithm" fixedTo="NotFixed">
           <NavigationalProperty Id="8649d1e7-d0d3-4674-b1d2-24ded8d8eb17" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
@@ -2233,7 +2241,7 @@
           <DomainClassMoniker name="/AriClinicContext/ServiceCategory" />
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="ec70ef47-2749-4c1d-8f0a-06da41ef8f17">
-              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceCategory/Services" />
+          <associationConnector edgePoints="[(13.9687495 : 10.875); (13.9687495 : 5.330205078125); (13.1145833333333 : 5.330205078125 : JumpStart); (12.9479166666667 : 5.330205078125 : JumpEnd); (10.1145838333333 : 5.330205078125 : JumpStart); (9.94791716666667 : 5.330205078125 : JumpEnd); (8.08333333333333 : 5.330205078125 : JumpStart); (7.91666666666667 : 5.330205078125 : JumpEnd); (3.79025333333333 : 5.330205078125 : JumpStart); (3.47916666666667 : 5.330205078125 : JumpEnd); (3.45833333333333 : 5.330205078125 : JumpStart); (3.29166666666667 : 5.330205078125 : JumpEnd); (3.20833333333333 : 5.330205078125 : JumpStart); (3.04166666666667 : 5.330205078125 : JumpEnd); (2.375 : 5.330205078125); (2.375 : 3.94423076923077); (2 : 3.94423076923077)]" fixedFrom="Algorithm" fixedTo="NotFixed">
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
@@ -2271,13 +2279,13 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="5ed09ae2-ce2d-45b0-95f3-4fe76c8de200">
           <NavigationalProperty Id="dbf0d833-dda8-40c3-8482-07ca2c714556" name="Parameters" type="IList&lt;Parameter&gt;" label="Parameters : IList&lt;Parameter&gt;" nullable="true" kind="Persistent" fieldName="parameters" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
+          <generalizationConnector edgePoints="[(9.1406225 : 10); (9.1406225 : 14.8236500963542); (7.20833333333333 : 14.8236500963542 : JumpStart); (7.04166666666667 : 14.8236500963542 : JumpEnd); (3.5 : 14.8236500963542)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="a3fba74f-e42c-4451-8123-99f82a0e396a" name="Insurance" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="6c2dd54f-c86b-4170-b995-7e0a3a47348e" name="InsuranceId" type="Int32" label="InsuranceId : Int32" kind="Persistent" identity="true" fieldName="insuranceId" />
       <Property Id="57a5e17f-3b74-417d-9e4f-2e8980624b72" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
-      <Property Id="4762ed2f-abbe-4f75-8809-a315cfac7d1c" name="Internal" type="Boolean" label="Internal : Boolean" kind="Persistent" fieldName="_internal" />
+          <associationConnector edgePoints="[(1.58214970703125 : 11.875); (1.58214970703125 : 10.6875); (3.91666666666667 : 10.6875 : JumpStart); (4.08333333333333 : 10.6875 : JumpEnd); (4.51041716666667 : 10.6875 : JumpStart); (4.67708383333333 : 10.6875 : JumpEnd); (4.72916666666667 : 10.6875 : JumpStart); (4.89583333333333 : 10.6875 : JumpEnd); (4.9375 : 10.6875); (4.9375 : 9.0369921875); (3.3125 : 9.0369921875); (3.3125 : 5.93205287760417); (3.47916666666667 : 5.93205287760417 : JumpStart); (3.64583333333333 : 5.93205287760417 : JumpEnd); (5.35416666666667 : 5.93205287760417 : JumpStart); (5.52083333333333 : 5.93205287760417 : JumpEnd); (7.41666666666667 : 5.93205287760417 : JumpStart); (7.58333333333333 : 5.93205287760417 : JumpEnd); (7.91666666666667 : 5.93205287760417 : JumpStart); (8.08333333333333 : 5.93205287760417 : JumpEnd); (9.01041391666667 : 5.93205287760417 : JumpStart); (9.17708058333333 : 5.93205287760417 : JumpEnd); (9.94791716666667 : 5.93205287760417 : JumpStart); (10.1145838333333 : 5.93205287760417 : JumpEnd); (10.875 : 5.93205287760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <navigationalProperties>
         <classHasNavigationalProperties Id="31c7499d-617d-4458-975a-d448f7facc55">
           <NavigationalProperty Id="997a8526-8f65-49e8-ba8f-b4943950e235" name="InsuranceServices" type="IList&lt;InsuranceService&gt;" label="InsuranceServices : IList&lt;InsuranceService&gt;" nullable="true" kind="Persistent" fieldName="insuranceServices" isDependent="false" isManaged="false" />
@@ -2285,7 +2293,7 @@
         <classHasNavigationalProperties Id="abb68a1b-cd00-4014-951e-e12022616349">
           <NavigationalProperty Id="d8b3a2a4-0e36-4f4b-9004-36d0026b1f3c" name="Policies" type="IList&lt;Policy&gt;" label="Policies : IList&lt;Policy&gt;" nullable="true" kind="Persistent" fieldName="policies" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-      </navigationalProperties>
+          <associationConnector edgePoints="[(2.1018034140625 : 11.875); (2.1018034140625 : 10.640625); (0.484375 : 10.640625); (0.484375 : 3.875); (0.5 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
     </DomainClass>
     <DomainClass Id="cb40bf37-53d1-4b1a-9d3d-0ad0b7487eef" name="InsuranceService" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="6bd1bb73-1d0b-4b2f-af3d-677ed5c2b61e" name="InsuranceServiceId" type="Int32" label="InsuranceServiceId : Int32" kind="Persistent" identity="true" fieldName="insuranceServiceId" />
@@ -2293,7 +2301,7 @@
       <AssociationTargets>
         <Association Id="e65372c7-0a89-435f-ac09-5434367da9f0" SourceMultiplicity="ZeroOne" name="InsuranceServiceHasInsurance">
           <DomainClassMoniker name="/AriClinicContext/Insurance" />
-          <targetNavigationalProperty>
+          <associationConnector edgePoints="[(15.9375 : 14.87830078125); (15.9375 : 15.6980431197917); (3.5 : 15.6980431197917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
             <associationDefinesTargetProperty Id="d223c576-b6cf-498d-856f-a83ce80ab497">
               <NavigationalPropertyMoniker name="/AriClinicContext/Insurance/InsuranceServices" />
             </associationDefinesTargetProperty>
@@ -2315,7 +2323,7 @@
             <associationDefinesSourceProperty Id="1c8c625b-cbd1-488b-aded-e159c3a23bf6">
               <NavigationalPropertyMoniker name="/AriClinicContext/InsuranceService/Service" />
             </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
+          <associationConnector edgePoints="[(7.125 : 9.75); (7.125 : 15.1151144375); (3.5 : 15.1151144375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         </Association>
       </AssociationTargets>
       <navigationalProperties>
@@ -2323,7 +2331,7 @@
           <NavigationalProperty Id="fec97d20-2384-484e-93e0-b1be96bc1220" name="Insurance" type="Insurance" label="Insurance : Insurance" nullable="true" kind="Persistent" fieldName="insurance" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="bed52342-009a-4fbf-af2d-e44c77d034dc">
-          <NavigationalProperty Id="9c26f350-982a-48a4-a8a0-28783f88a3cd" name="Service" type="Service" label="Service : Service" nullable="true" kind="Persistent" fieldName="service" isDependent="false" isManaged="false" />
+          <associationConnector edgePoints="[(5.75 : 9.4375); (5.61458333333333 : 9.4375 : JumpStart); (5.04166666666667 : 9.4375 : JumpEnd); (4.875 : 9.4375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="e8f6948c-605d-4fa1-a002-19e9870f77d9">
           <NavigationalProperty Id="c75f4b46-0d85-4625-ac9e-10c26d7fb232" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
@@ -2331,7 +2339,7 @@
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="60d531d5-f095-40bb-a72e-ba6109c98e06" name="Patient" namespace="AriCliModel" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="78e8a425-9cd9-430c-a5cd-14ef69a8f681" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
+          <generalizationConnector edgePoints="[(16.437502 : 10.875); (16.437502 : 9.28125); (16.0208333333333 : 9.28125 : JumpStart); (15.8541666666667 : 9.28125 : JumpEnd); (15.7708323333333 : 9.28125 : JumpStart); (15.6041656666667 : 9.28125 : JumpEnd); (15.5208313333333 : 9.28125 : JumpStart); (15.3541646666667 : 9.28125 : JumpEnd); (15.2708303333333 : 9.28125 : JumpStart); (15.1041636666667 : 9.28125 : JumpEnd); (14.5208333333333 : 9.28125 : JumpStart); (14.3541666666667 : 9.28125 : JumpEnd); (14.0520828333333 : 9.28125 : JumpStart); (13.8854161666667 : 9.28125 : JumpEnd); (13.1145833333333 : 9.28125 : JumpStart); (12.9479166666667 : 9.28125 : JumpEnd); (11.7083333333333 : 9.28125 : JumpStart); (11.5416666666667 : 9.28125 : JumpEnd); (10.7083333333333 : 9.28125 : JumpStart); (10.5416666666667 : 9.28125 : JumpEnd); (10.2708333333333 : 9.28125 : JumpStart); (10.1041666666667 : 9.28125 : JumpEnd); (9.88020808333333 : 9.28125 : JumpStart); (9.71354141666667 : 9.28125 : JumpEnd); (9.48958383333333 : 9.28125 : JumpStart); (9.01041391666666 : 9.28125 : JumpEnd); (8.83333333333333 : 9.28125 : JumpStart); (8.66666666666667 : 9.28125 : JumpEnd); (8.08333333333333 : 9.28125 : JumpStart); (7.91666666666667 : 9.28125 : JumpEnd); (7.25 : 9.28125)]" fixedFrom="Algorithm" fixedTo="NotFixed" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
       <Property Id="2e6701c7-b212-4674-9eb7-8a7ac116c471" name="Surname1" label="Surname1 : String" kind="Persistent" fieldName="surname1" />
       <Property Id="85b0f7cf-ad06-4115-83ff-44436567854b" name="Surname2" label="Surname2 : String" kind="Persistent" fieldName="surname2" />
       <Property Id="8bc2ae89-4166-441e-8318-016f44572a51" name="BornDate" type="DateTime" label="BornDate : DateTime" kind="Persistent" fieldName="bornDate" />
@@ -2344,7 +2352,7 @@
             <associationDefinesTargetProperty Id="87a5ca0a-47fd-445e-a4eb-88ee9e8202ac">
               <NavigationalPropertyMoniker name="/AriClinicContext/Customer/Patients" />
             </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
+          <associationConnector edgePoints="[(6.62500175 : 11); (6.62500175 : 10.21875); (6.27083283333333 : 10.21875 : JumpStart); (6.10416616666667 : 10.21875 : JumpEnd); (5.97395995833333 : 10.21875 : JumpStart); (5.80729329166667 : 10.21875 : JumpEnd); (5.61458333333333 : 10.21875 : JumpStart); (5.29166666666667 : 10.21875 : JumpEnd); (5.125 : 10.21875); (5.125 : 8.875); (3.5625 : 8.875); (3.5625 : 3.99269230769231); (3.45833333333333 : 3.99269230769231 : JumpStart); (3.29166666666667 : 3.99269230769231 : JumpEnd); (2.45833333333333 : 3.99269230769231 : JumpStart); (2.29166666666667 : 3.99269230769231 : JumpEnd); (2 : 3.99269230769231)]" fixedFrom="Algorithm" fixedTo="NotFixed">
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="5f9ad6c9-e480-46b5-a82d-d29f7ccbc128">
               <NavigationalPropertyMoniker name="/AriClinicContext/Patient/Customer" />
@@ -2352,7 +2360,7 @@
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
-      <navigationalProperties>
+          <associationConnector edgePoints="[(6.1874995 : 11); (6.1874995 : 10); (7 : 10); (7 : 9.875); (7.04166666666667 : 9.875 : JumpStart); (7.20833333333333 : 9.875 : JumpEnd); (8 : 9.875); (8 : 2.83028645833333); (12.9479166666667 : 2.83028645833333 : JumpStart); (13.1145833333333 : 2.83028645833333 : JumpEnd); (13.625 : 2.83028645833333); (13.625 : 2.64589680989583); (14 : 2.64589680989583)]" fixedFrom="Algorithm" fixedTo="NotFixed">
         <classHasNavigationalProperties Id="86fcdee7-d48c-4fd3-adc8-8147016f015d">
           <NavigationalProperty Id="5fd8ecb8-046f-4dbd-9336-06670282b2c5" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -2360,7 +2368,7 @@
           <NavigationalProperty Id="b589bb41-b47e-4bce-bef8-33176f7706e9" name="Appointments" type="IList&lt;AppointmentInfo&gt;" label="Appointments : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
-    </DomainClass>
+          <associationConnector edgePoints="[(4.75 : 11.17187375); (4.67708383333333 : 11.17187375 : JumpStart); (4.51041716666667 : 11.17187375 : JumpEnd); (4.08333333333333 : 11.17187375 : JumpStart); (3.91666666666667 : 11.17187375 : JumpEnd); (2.70019253125 : 11.17187375); (2.70019253125 : 11.875)]" fixedFrom="NotFixed" fixedTo="Algorithm">
     <DomainClass Id="228b0d09-c944-4c32-9ad0-8622e9062742" name="Customer" namespace="AriCliModel" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="285ba712-5899-4bd4-908b-d5d41ff93fe1" name="ComercialName" label="ComercialName : String" kind="Persistent" fieldName="comercialName" />
       <Property Id="bc630d0d-6c57-4a67-975b-1ad4636c4413" name="VATIN" label="VATIN : String" kind="Persistent" fieldName="vATIN" />
@@ -2368,7 +2376,7 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="5d9e2779-b689-4038-9ecf-a16002277e9d">
           <NavigationalProperty Id="5bb3445b-7b54-43a7-8e1e-d1755f668262" name="Patients" type="IList&lt;Patient&gt;" label="Patients : IList&lt;Patient&gt;" nullable="true" kind="Persistent" fieldName="patients" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
+          <associationConnector edgePoints="[(4.75 : 11.367189375); (4.67708383333333 : 11.367189375 : JumpStart); (4.51041716666667 : 11.367189375 : JumpEnd); (4.08333333333333 : 11.367189375 : JumpStart); (3.91666666666667 : 11.367189375 : JumpEnd); (3.0781225 : 11.367189375); (3.0781225 : 11.875)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
         <classHasNavigationalProperties Id="d7c50d27-8d6d-4f83-90f2-653a48b00089">
           <NavigationalProperty Id="557b8c14-0fb2-44c8-a417-8f396e93f3bb" name="Policies" type="IList&lt;Policy&gt;" label="Policies : IList&lt;Policy&gt;" nullable="true" kind="Persistent" fieldName="policies" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -2384,7 +2392,7 @@
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e9822f71-dacb-4c06-be9e-c144574a5184" name="Policy" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="89306aba-7bff-47b0-856b-ad7b78bd0381" name="PolicyId" type="Int32" label="PolicyId : Int32" kind="Persistent" identity="true" fieldName="policyId" />
+          <associationConnector edgePoints="[(7 : 11.25); (7.1875 : 11.25); (7.1875 : 10.0625); (13.8854161666667 : 10.0625 : JumpStart); (14.0520828333333 : 10.0625 : JumpEnd); (14.3541666666667 : 10.0625 : JumpStart); (14.5208333333333 : 10.0625 : JumpEnd); (15.1041636666667 : 10.0625 : JumpStart); (15.2708303333333 : 10.0625 : JumpEnd); (15.3541646666667 : 10.0625 : JumpStart); (15.5208313333333 : 10.0625 : JumpEnd); (15.6041656666667 : 10.0625 : JumpStart); (15.7708323333333 : 10.0625 : JumpEnd); (15.8541666666667 : 10.0625 : JumpStart); (16.0208333333333 : 10.0625 : JumpEnd); (16.3541686666667 : 10.0625 : JumpStart); (16.5208353333333 : 10.0625 : JumpEnd); (17.4479171666667 : 10.0625 : JumpStart); (17.6145838333333 : 10.0625 : JumpEnd); (19.5625 : 10.0625); (19.5625 : 9.9375); (20.4375 : 9.9375); (20.4375 : 10)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <Property Id="f9046fa8-684a-4be4-8156-a1fb3b8f6dff" name="PolicyNumber" label="PolicyNumber : String" kind="Persistent" fieldName="policyNumber" />
       <Property Id="e8e485c1-350a-4676-9c7c-6f27e9747179" name="BeginDate" type="DateTime" label="BeginDate : DateTime" kind="Persistent" fieldName="beginDate" />
       <Property Id="daad4c05-1954-489c-991e-173507618613" name="EndDate" type="DateTime" label="EndDate : DateTime" kind="Persistent" fieldName="endDate" />
@@ -2399,7 +2407,7 @@
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="1d40a1d7-7839-4f83-8332-ed37bd6e4b95">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Policy/Insurance" />
+          <associationConnector edgePoints="[(2.75 : 10.375); (3.91666666666667 : 10.375 : JumpStart); (4.08333333333333 : 10.375 : JumpEnd); (4.5937505 : 10.375); (4.5937505 : 11.875)]" fixedFrom="NotFixed" fixedTo="Algorithm">
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -2407,7 +2415,7 @@
           <DomainClassMoniker name="/AriClinicContext/Customer" />
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="cd79e962-ef40-4f06-91ea-0c4d1a521822">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Customer/Policies" />
+          <associationConnector edgePoints="[(4 : 9.625); (4 : 13.2035953776042); (4.5 : 13.2035953776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
@@ -2422,7 +2430,7 @@
           <NavigationalProperty Id="4e338a87-9f9f-445c-82f9-9ba2d09bd8d1" name="Insurance" type="Insurance" label="Insurance : Insurance" nullable="true" kind="Persistent" fieldName="insurance" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="8ac5fa07-0f81-467e-bbed-2c4fefb9ff2e">
-          <NavigationalProperty Id="4ada67cd-c211-4ccd-bf3c-94e9eca7795c" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
+          <associationConnector edgePoints="[(18.375 : 1.125); (18.375 : 0.875); (16.375 : 0.875); (16.375 : 5.330205078125); (14.6145833333333 : 5.330205078125 : JumpStart); (14.3541666666667 : 5.330205078125 : JumpEnd); (13.1145833333333 : 5.330205078125 : JumpStart); (12.9479166666667 : 5.330205078125 : JumpEnd); (10.1145838333333 : 5.330205078125 : JumpStart); (9.94791716666667 : 5.330205078125 : JumpEnd); (8.08333333333333 : 5.330205078125 : JumpStart); (7.91666666666667 : 5.330205078125 : JumpEnd); (3.79025333333333 : 5.330205078125 : JumpStart); (3.47916666666667 : 5.330205078125 : JumpEnd); (3.45833333333333 : 5.330205078125 : JumpStart); (3.29166666666667 : 5.330205078125 : JumpEnd); (3.20833333333333 : 5.330205078125 : JumpStart); (3.04166666666667 : 5.330205078125 : JumpEnd); (2.375 : 5.330205078125); (2.375 : 3.75038461538462); (2 : 3.75038461538462)]" fixedFrom="Algorithm" fixedTo="NotFixed">
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="20569c15-4a2a-4394-a0ac-217686e73042">
           <NavigationalProperty Id="62f427c0-ce5f-47b9-aa0f-52e44a317c77" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
@@ -2430,7 +2438,7 @@
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="81658aad-4683-4e68-bfa0-e2850855a10d" name="Ticket" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="6a5f223b-4b5b-4093-bff8-e6e3e85264c0" name="TicketId" type="Int32" label="TicketId : Int32" kind="Persistent" identity="true" fieldName="ticketId" />
+          <associationConnector edgePoints="[(17.5312505 : 4.35909505208333); (17.5312505 : 15.4805115729167); (16.0208333333333 : 15.4805115729167 : JumpStart); (15.8541666666667 : 15.4805115729167 : JumpEnd); (3.5 : 15.4805115729167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <Property Id="242431e3-f40f-46ec-900d-845da74266d2" name="TicketDate" type="DateTime" label="TicketDate : DateTime" kind="Persistent" fieldName="ticketDate" />
       <Property Id="4f8433f1-aa9b-4662-a24e-9bf1e868be92" name="Description" label="Description : String" kind="Persistent" fieldName="description" />
       <Property Id="54961ea0-55eb-4d99-b510-0b6561742d7d" name="Amount" type="Decimal" label="Amount : Decimal" kind="Persistent" fieldName="amount" />
@@ -2438,7 +2446,7 @@
       <Property Id="b73b4827-8c23-4f95-a9ba-6a39fd2fbf47" name="Comments" label="Comments : String" kind="Persistent" fieldName="comments" />
       <Property Id="1f5c6432-5369-424b-ba20-5d779f114383" name="Checked" type="Boolean" label="Checked : Boolean" kind="Persistent" fieldName="_checked" />
       <AssociationTargets>
-        <Association Id="4cf5dd98-fa65-4af5-b35e-452c900c4c39" SourceMultiplicity="ZeroOne" name="TicketHasPolicy">
+          <associationConnector edgePoints="[(17.5312505 : 4.35909505208333); (17.5312505 : 11.4923805870362); (19.625 : 11.4923805870362)]" fixedFrom="NotFixed" fixedTo="NotFixed">
           <DomainClassMoniker name="/AriClinicContext/Policy" />
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="7f6d1c78-7390-499d-885e-b64a2e69fe25">
@@ -2446,7 +2454,7 @@
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="8d5a7a52-d964-4dcf-bf0b-2dd007b3c7e0">
+          <associationConnector edgePoints="[(17.375 : 2.64589680989583); (16.4583333333333 : 2.64589680989583 : JumpStart); (16.2916666666667 : 2.64589680989583 : JumpEnd); (16.125 : 2.64589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
               <NavigationalPropertyMoniker name="/AriClinicContext/Ticket/Policy" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
@@ -2454,7 +2462,7 @@
         <Association Id="72e8f79e-5c8e-4dd8-b62d-714157b633f3" SourceMultiplicity="ZeroOne" name="TicketHasInsuranceService">
           <DomainClassMoniker name="/AriClinicContext/InsuranceService" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="d2ad2326-4d5a-423e-bf61-811477dda5ef">
+          <associationConnector edgePoints="[(16.875 : 12.6144356776327); (17.5312505 : 12.6144356776327); (17.5312505 : 4.35909505208333)]" fixedFrom="NotFixed" fixedTo="NotFixed">
               <NavigationalPropertyMoniker name="/AriClinicContext/InsuranceService/Tickets" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
@@ -2462,7 +2470,7 @@
             <associationDefinesSourceProperty Id="9ae33f33-3620-4a65-b314-75dabc460274">
               <NavigationalPropertyMoniker name="/AriClinicContext/Ticket/InsuranceService" />
             </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
+          <associationConnector edgePoints="[(17.42187275 : 4.35909505208333); (17.42187275 : 8.95599609375); (16.0208333333333 : 8.95599609375 : JumpStart); (15.8541666666667 : 8.95599609375 : JumpEnd); (15.7708323333333 : 8.95599609375 : JumpStart); (15.6041656666667 : 8.95599609375 : JumpEnd); (15.5208313333333 : 8.95599609375 : JumpStart); (15.3541646666667 : 8.95599609375 : JumpEnd); (15.2708303333333 : 8.95599609375 : JumpStart); (15.1041636666667 : 8.95599609375 : JumpEnd); (14.5208333333333 : 8.95599609375 : JumpStart); (14.3541666666667 : 8.95599609375 : JumpEnd); (14.0520828333333 : 8.95599609375 : JumpStart); (13.8854161666667 : 8.95599609375 : JumpEnd); (13.1145833333333 : 8.95599609375 : JumpStart); (12.9479166666667 : 8.95599609375 : JumpEnd); (10.2708333333333 : 8.95599609375 : JumpStart); (10.1041666666667 : 8.95599609375 : JumpEnd); (9.88020808333333 : 8.95599609375 : JumpStart); (9.71354141666667 : 8.95599609375 : JumpEnd); (9.33333283333333 : 8.95599609375 : JumpStart); (9.01041391666667 : 8.95599609375 : JumpEnd); (8.08333333333333 : 8.95599609375 : JumpStart); (7.91666666666667 : 8.95599609375 : JumpEnd); (5.61458333333333 : 8.95599609375 : JumpStart); (5.16666666666667 : 8.95599609375 : JumpEnd); (3.25 : 8.95599609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
         </Association>
         <Association Id="1cfc5b60-be25-44b0-94f4-01bfd95ae774" SourceMultiplicity="ZeroOne" name="TicketHasUser">
           <DomainClassMoniker name="/AriClinicContext/User" />
@@ -2478,20 +2486,20 @@
           </sourceNavigationalProperty>
         </Association>
         <Association Id="c3a47176-ff4c-4164-b943-31fbca029de4" SourceMultiplicity="ZeroOne" name="TicketHasClinic">
-          <DomainClassMoniker name="/AriClinicContext/Clinic" />
+          <classShape Id="a2b37813-55d8-42b6-ac5a-9b252f36c0d7" isExpanded="false" absoluteBounds="0.5, 9, 1.5, 0.5">
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="787d912b-d3c3-4569-bdae-434ef4734534">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Tickets" />
-            </associationDefinesTargetProperty>
+              <elementListCompartment Id="0404fdd5-3778-4b68-910d-e06b9eacd672" absoluteBounds="0.515, 9.51, 1.4700000000000002, 0.63399251302083326" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+              <elementListCompartment Id="3d4bf6e5-acae-40fc-bf3c-d023d201bd21" absoluteBounds="0.515, 10.153992513020834, 1.4700000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="b402dae4-5064-4882-a7f1-09e031040a41">
+          <generalizationConnector edgePoints="[(1.625 : 8.9744921875); (1.625 : 9)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
               <NavigationalPropertyMoniker name="/AriClinicContext/Ticket/Clinic" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
         <Association Id="eea3a819-b088-4050-b1a1-b096d09489f8" SourceMultiplicity="One" name="TicketHasProfessional">
-          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <associationConnector edgePoints="[(0.5 : 9.25); (0.125 : 9.25); (0.125 : 13.9728011067708); (1.125 : 13.9728011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="c55c0124-0dc4-4263-9662-6c534cf25705">
               <NavigationalPropertyMoniker name="/AriClinicContext/Professional/Tickets" />
@@ -2506,13 +2514,13 @@
         <Association Id="bc69de17-36c7-4e70-a52a-4815ae50906b" SourceMultiplicity="ZeroOne" name="TicketHasServiceNote">
           <DomainClassMoniker name="/AriClinicContext/ServiceNote" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="ce4281dd-2806-4fff-b175-5b6a4f6738b9">
+          <generalizationConnector edgePoints="[(5.25 : 8.78219075520833); (5.25 : 9.90625); (5.20833333333333 : 9.90625 : JumpStart); (5.04166666666667 : 9.90625 : JumpEnd); (5.02083333333333 : 9.90625 : JumpStart); (4.72916666666667 : 9.90625 : JumpEnd); (4.08333333333333 : 9.90625 : JumpStart); (3.91666666666667 : 9.90625 : JumpEnd); (3.25 : 9.90625)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="1f83631e-ca7d-46d1-80dd-05beb8b0c84b">
               <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/Tickets" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
             <associationDefinesSourceProperty Id="566492f2-b897-46f0-904c-a31ecdc3daa7">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Ticket/ServiceNote" />
+          <associationConnector edgePoints="[(1.5 : 9.78125); (0.9999995 : 9.78125); (0.9999995 : 9.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -2534,11 +2542,11 @@
           <NavigationalProperty Id="dc8a9dec-8aea-42d9-aa63-5cdd1c832ade" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="d3e409e2-ca98-46bf-9d78-fe5a673d3b92">
-          <NavigationalProperty Id="cad88e77-89eb-47ce-a99d-f024d6764548" name="ServiceNote" type="ServiceNote" label="ServiceNote : ServiceNote" nullable="true" kind="Persistent" fieldName="serviceNote" isDependent="false" isManaged="false" />
+          <classShape Id="ad258c33-cec8-4512-b15e-eeefd8f74a6b" absoluteBounds="3.875, 0.5, 3.375, 4.5802050781249992">
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="34452404-da96-45ad-bb74-7b8fd4c5f007">
-          <NavigationalProperty Id="577ee35f-7cd7-46ce-ae67-e65cb376d479" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
+              <elementListCompartment Id="18dcdfc3-7b2b-47f4-9ed9-f17b43cf8e7e" absoluteBounds="3.8900000000000006, 1.01, 3.3449999999999998, 3.7108154296875" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+              <elementListCompartment Id="2a58b73c-5c60-49b4-8200-ef8abdbdf85b" absoluteBounds="3.89, 4.7308154296875, 3.3449999999999998, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
         <classHasNavigationalProperties Id="b94fa9b0-43ab-4ecd-b97c-3a961d37ba56">
           <NavigationalProperty Id="cd08edba-cf6e-471e-827e-acbf6b17047a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -2565,7 +2573,7 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-      </AssociationTargets>
+          <associationConnector edgePoints="[(5.5625 : 5.080205078125); (5.5625 : 5.330205078125); (3.625 : 5.330205078125); (3.625 : 3.70192307692308); (2 : 3.70192307692308)]" fixedFrom="Algorithm" fixedTo="NotFixed">
       <navigationalProperties>
         <classHasNavigationalProperties Id="9389f7a7-4c89-4083-9423-e7dbd362410c">
           <NavigationalProperty Id="a26c3897-6d49-4b82-9265-aa76ad1d55ce" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
@@ -2573,7 +2581,7 @@
         <classHasNavigationalProperties Id="b8145d15-a94c-4bbb-8aa5-0c1cee7d14fe">
           <NavigationalProperty Id="6fabb14f-ad10-4e39-b3dd-ca8b7b04010c" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="c0a1b599-9c64-4541-8d15-907236abf381">
+          <associationConnector edgePoints="[(3.875 : 2.53033773106971); (3.70692 : 2.53033773106971); (3.70692 : 5.80161075520833); (3.64583333333333 : 5.80161075520833 : JumpStart); (3.47916666666667 : 5.80161075520833 : JumpEnd); (1.00212 : 5.80161075520833); (1.00212 : 8.91808); (0.41808 : 8.91808); (0.41808 : 12.8926485533854); (1.125 : 12.8926485533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
           <NavigationalProperty Id="0c4a83af-15bb-499d-a9a1-80893a9d608f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
@@ -2581,7 +2589,7 @@
     <DomainClass Id="268b2f41-699f-41a0-a947-5da0c78ac8d7" name="InvoiceLine" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="c2f4f951-ed20-4645-957d-cce39154f021" name="InvoiceLineId" type="Int32" label="InvoiceLineId : Int32" kind="Persistent" identity="true" fieldName="invoiceLineId" />
       <Property Id="96fcdcc1-5420-4e75-bcae-8bdc67d40239" name="Description" label="Description : String" kind="Persistent" fieldName="description" />
-      <Property Id="486a8edd-31d6-42e6-9a2a-f67bd4a85f90" name="TaxPercentage" type="Decimal" label="TaxPercentage : Decimal" kind="Persistent" fieldName="taxPercentage" />
+          <associationConnector edgePoints="[(3.875 : 4.62317946213942); (3.79025333333333 : 4.62317946213942 : JumpStart); (3.47916666666667 : 4.62317946213942 : JumpEnd); (3.45833333333333 : 4.62317946213942 : JumpStart); (3.29166666666667 : 4.62317946213942 : JumpEnd); (3.20833333333333 : 4.62317946213942 : JumpStart); (3.04166666666667 : 4.62317946213942 : JumpEnd); (2.45833333333333 : 4.62317946213942 : JumpStart); (2.29166666666667 : 4.62317946213942 : JumpEnd); (2.125 : 4.62317946213942)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <Property Id="b36da676-d31b-4fb1-8432-07414fe1b6c8" name="Amount" type="Decimal" label="Amount : Decimal" kind="Persistent" fieldName="amount" />
       <AssociationTargets>
         <Association Id="b7285c46-5607-4534-a55b-08e99de4554f" SourceMultiplicity="ZeroOne" name="InvoiceLineHasInvoice">

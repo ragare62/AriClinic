@@ -8,14 +8,18 @@ using System.Web.Security;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
+using AriCliModel;
+using System.Linq;
 
 public partial class Test : System.Web.UI.Page 
 {
+    AriClinicContext ctx = new AriClinicContext("AriClinicContext");
     protected void Page_Load(object sender, EventArgs e)
     {
         
         if (!IsPostBack)
         {
+            //RadComboBox1.DataSource = ctx.Patients;
         }
     }
 
@@ -47,4 +51,31 @@ public partial class Test : System.Web.UI.Page
     {
         var v = e.Item.Value;
     }
+
+    protected void RadComboBox1_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        RadComboBox combo = (RadComboBox)sender;
+        var rs = from p in ctx.Patients
+                 orderby p.FullName ascending
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Patient pat in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(pat.FullName,pat.PersonId.ToString()));
+        }
+    }
+
+    protected void RadComboBox1_ItemsRequested1(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        var rs = from p in ctx.Patients
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Patient pat in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(pat.FullName, pat.PersonId.ToString()));
+        }
+    }
+
 }

@@ -57,38 +57,11 @@ public partial class Test {
     protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
     
     /// <summary>
-    /// RadToolBar1 control.
+    /// RadComboBox1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadToolBar RadToolBar1;
-    
-    /// <summary>
-    /// RadFileExplorer1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadFileExplorer RadFileExplorer1;
-    
-    /// <summary>
-    /// RadUpload1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadUpload RadUpload1;
-    
-    /// <summary>
-    /// RadProgressManager1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadProgressManager RadProgressManager1;
+    protected global::Telerik.Web.UI.RadComboBox RadComboBox1;
 }

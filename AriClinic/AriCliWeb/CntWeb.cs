@@ -70,5 +70,12 @@ namespace AriCliWeb
             }
         }
 
+        public static string PlainString(Object o)
+        {
+            string s = o.ToString();
+            s.Replace(",", "");
+            return s;
+        }
+
     }
 }

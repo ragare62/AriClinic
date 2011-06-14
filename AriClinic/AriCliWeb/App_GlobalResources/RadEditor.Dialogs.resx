@@ -1799,7 +1799,4 @@ Press "OK" to confirm deletion.</value>
   <data name="StyleBuilder_Visible" xml:space="preserve">
     <value>Visible</value>
   </data>
-  <data name="StyleBuilder_Words" xml:space="preserve">
-    <value>Words</value>
-  </data>
 </root>
