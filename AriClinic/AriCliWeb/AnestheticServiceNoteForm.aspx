@@ -386,10 +386,10 @@ width: 392px;
           <br />
           <telerik:RadDatePicker ID="rddpServiceNoteDate" Runat="server" TabIndex="2" 
                                  Culture="es-ES" MinDate="1900-01-01" >
-            <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+            <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" Runat="server"
                       ViewSelectorText="x">
             </Calendar>
-            <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2">
+            <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2" Runat="server">
             </DateInput>
             <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="2" />
           </telerik:RadDatePicker>
@@ -546,8 +546,8 @@ width: 392px;
                 </div>
               </td>
               <td>
-                <div ID="ProcedureName3" class="normalText">
-                  <asp:Label ID="lblProcedureName3" runat="server" Text="Procedimiento:" 
+                <div id="ProcedureName3" class="normalText">
+                  <asp:Label id="lblProcedureName3" runat="server" Text="Procedimiento:" 
                              ToolTip="Procedimiento asignado al ticket"></asp:Label>
                   <br />
                   <asp:TextBox ID="txtProcedureName3" runat="server" Enabled="False" 

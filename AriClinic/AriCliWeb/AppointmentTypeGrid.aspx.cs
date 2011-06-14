@@ -23,7 +23,7 @@ public partial class AppointmentTypeGrid : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         else
         {
-            user = (User)Session["User"];
+            user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
                             where p.Code == "agenda"

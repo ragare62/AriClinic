@@ -25,7 +25,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     Professional srg = null;
     Procedure proc = null;
     AnestheticServiceNote asn = null;
-    bool firstTime = false;
+    bool firstTime;
     int policyId = 0;
     int customerId = 0;
     int insuranceServiceId = 0;
@@ -51,7 +51,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         else
         {
-            user = (User)Session["User"];
+            user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
                             where p.Code == "ticket"
                             select p).FirstOrDefault<Process>();
@@ -169,11 +169,19 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             ctx.Add(asn);
         }
         else
-        {
+        {                
             asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+            if (procedurechanged)
+            {
+                firstTime = true;
+
+                asn.AnestheticTickets.Clear();
+                asn.Procedures.Clear();
+            }
             UnloadData(asn);
         }
         ctx.SaveChanges();
+        
 
         return UpdateRelatedTickets(asn);
     }
@@ -414,9 +422,10 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             txtSurgeonName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
         }
     }
-  
+    bool procedurechanged = false;
     protected void txtProcedureId1_TextChanged(object sender, EventArgs e)
     {
+        procedurechanged = true;
         Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId1.Text), ctx);
         if (proc != null)
         {
@@ -432,6 +441,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
 
     protected void txtProcedureId2_TextChanged(object sender, EventArgs e)
     {
+        procedurechanged = true;
         Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId2.Text), ctx);
         if (proc != null)
         {
@@ -447,6 +457,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
 
     protected void txtProcedureId3_TextChanged(object sender, EventArgs e)
     {
+        procedurechanged = true;
         Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId3.Text), ctx);
         if (proc != null)
         {

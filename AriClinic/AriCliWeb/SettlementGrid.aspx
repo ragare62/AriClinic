@@ -137,7 +137,7 @@
                            AllowPaging="True" AllowFilteringByColumn="True" Culture="es-ES" 
                            AllowSorting="True" ShowGroupPanel="True" AllowMultiRowSelection="true"
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
-                           onneeddatasource="RadGrid1_NeedDataSource" GridLines="None"
+                           onneeddatasource="RadGrid1_NeedDataSource" GridLines="None" ShowFooter="true"
                            meta:resourcekey="RadGrid1Resource1">
             <GroupingSettings CaseSensitive="False" />
             <ClientSettings AllowDragToGroup="True" Selecting-AllowRowSelect="true">

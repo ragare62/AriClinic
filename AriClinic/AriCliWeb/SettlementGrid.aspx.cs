@@ -33,7 +33,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         else
         {
-            user = (User)Session["User"];
+            user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
                             where p.Code == "policy"
                             select p).FirstOrDefault<Process>();
@@ -99,7 +99,11 @@ public partial class SettelmentGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RefreshGrid(false);
+        if (!DataOk())
+            RefreshGrid(false);
+        else
+            RefreshGrid(true);
+        
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -216,7 +220,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
             , Int32.Parse(rdcbInsurance.SelectedValue)
             , rdcbType.SelectedValue
             , ctx);
-        RadGrid1.Rebind();
+        //RadGrid1.Rebind();
     }
     protected bool DataOk()
     {
@@ -284,7 +288,8 @@ public partial class SettelmentGrid : System.Web.UI.Page
         {
             btnUnDo.Visible = true;
         }
-        RefreshGrid(true);
+        //RefreshGrid(true);
+        RadGrid1.Rebind();
     }
     protected void DoPayments()
     {

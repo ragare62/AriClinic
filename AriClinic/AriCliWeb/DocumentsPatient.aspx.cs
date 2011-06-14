@@ -26,7 +26,7 @@ public partial class DocumentsPatient : System.Web.UI.Page
         ctx = new AriClinicContext("AriClinicContext");
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
-        User u = (User)Session["User"];
+        User u = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
         u = CntAriCli.GetUser(u.UserId, ctx);
         // controla that root docs folder exists
         if (!CntDocs.DocsExists(this)) CntDocs.CreateDocs(this);

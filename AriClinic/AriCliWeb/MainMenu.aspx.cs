@@ -19,6 +19,7 @@ public partial class MainMenu : System.Web.UI.Page
     User user = null;
     HealthcareCompany hc = null;
     Clinic cl = null;
+
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -27,7 +28,7 @@ public partial class MainMenu : System.Web.UI.Page
         lblDeveloper.Text = String.Format("VRS {0}", strVersion);
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
-        User u = (User)Session["User"];
+        User u = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
         ChekPermissions(u.UserGroup, RadMenu1.Items);
         SetSessionValues();
     }
@@ -36,6 +37,7 @@ public partial class MainMenu : System.Web.UI.Page
     {
 
     }
+   
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
@@ -50,13 +52,13 @@ public partial class MainMenu : System.Web.UI.Page
         // First check if a user is logged
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
-        user = (User)Session["User"];
+        user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
         lblUser.Text = user.Name;
 
         // Clinic
         if (Session["Clinic"] != null)
         {
-            cl = (Clinic)Session["Clinic"];
+            cl =CntAriCli.GetClinic((Session["Clinic"] as Clinic).ClinicId, ctx);
             lblUser.Text = String.Format("{0} ({1})", user.Name, cl.Name);
         }
 
@@ -67,7 +69,7 @@ public partial class MainMenu : System.Web.UI.Page
         // Show company and user values
         if (Session["Company"] != null)
         {
-            hc = (HealthcareCompany)Session["Company"];
+            hc = CntAriCli.GetHealthCompany(ctx);
             lblHealthcareCompany.Text = hc.Name;
         }
     }
@@ -78,6 +80,7 @@ public partial class MainMenu : System.Web.UI.Page
         Launcher(e.Item.Value);
 
     }
+    
     protected void ChekPermissions(UserGroup ug, RadMenuItemCollection col)
     {
         foreach (RadMenuItem i in col) 
@@ -107,6 +110,7 @@ public partial class MainMenu : System.Web.UI.Page
         Launcher(e.Item.Value);
 
     }
+   
     protected void Launcher(string process)
     {
         switch (process)

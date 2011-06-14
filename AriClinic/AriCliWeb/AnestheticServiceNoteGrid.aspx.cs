@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
+using System.Collections.Generic;
 
 public partial class AnestheticServiceNoteGrid : System.Web.UI.Page 
 {
@@ -23,7 +24,7 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         else
         {
-            user = (User)Session["User"];
+            user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
                             where p.Code == "asn"
                             select p).FirstOrDefault<Process>();
@@ -34,6 +35,7 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
             type = Request.QueryString["Type"];
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
+        RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -52,6 +54,12 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
+        //List<AnestheticServiceNote> servnote = new List<AnestheticServiceNote>();
+        //foreach (AnestheticServiceNote item in ctx.AnestheticServiceNotes)
+        //{
+        //    servnote.Add(CntAriCli.GetAnestheticServiceNote(item.AnestheticServiceNoteId, ctx));
+        //}
+        //RadGrid1.DataSource = servnote;
         RadGrid1.DataSource = ctx.AnestheticServiceNotes;
     }
 
@@ -137,7 +145,6 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
                     string command = String.Format("ariDialog('Servicios','{0}','prompt',null,0,0)", message);
                     RadAjaxManager1.ResponseScripts.Add(command);
 
-
                     //Service ser = (from s in ctx.Services
                     //               where s.ServiceId == id
                     //               select s).FirstOrDefault<Service>();
@@ -153,40 +160,38 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-            RefreshGrid();
-            if (e.Argument == "new")
+        RefreshGrid();
+        if (e.Argument == "new")
+        {
+            RadGrid1.Rebind();
+            RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
+        }
+        if (e.Argument == "yes")
+        {
+            if (Session["DeleteId"] != null)
             {
-                RadGrid1.Rebind();
-                RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
-            }
-            if (e.Argument == "yes")
-            {
-                if (Session["DeleteId"] != null)
+                try
                 {
-                    try
-                    {
-                        anestheticServiceNoteId = (int)Session["DeleteId"];
-                        AnestheticServiceNote asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
-                        CntAriCli.DeleteAnestheticServiceNote(asn, ctx);
-                        RefreshGrid();
-                        Session["DeleteId"] = null;
-                    }
-                    catch (Exception ex)
-                    {
-                        Session["Exception"] = ex;
-                        string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
-                            , Resources.GeneralResource.DeleteRecordFail);
-                        RadAjaxManager1.ResponseScripts.Add(command);
-                    }
+                    anestheticServiceNoteId = (int)Session["DeleteId"];
+                    AnestheticServiceNote asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+                    CntAriCli.DeleteAnestheticServiceNote(asn, ctx);
+                    RefreshGrid();
+                    Session["DeleteId"] = null;
+                }
+                catch (Exception ex)
+                {
+                    Session["Exception"] = ex;
+                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
+                        , Resources.GeneralResource.DeleteRecordFail);
+                    RadAjaxManager1.ResponseScripts.Add(command);
                 }
             }
-
-
+        }
     }
 
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.AnestheticServiceNotes;
+        //RadGrid1.DataSource = ctx.AnestheticServiceNotes;
         RadGrid1.Rebind();
     }
 }
