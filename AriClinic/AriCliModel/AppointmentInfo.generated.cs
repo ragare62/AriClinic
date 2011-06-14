@@ -138,32 +138,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private bool smsReminder;
-		public virtual bool SmsReminder 
-		{ 
-		    get
-		    {
-		        return this.smsReminder;
-		    }
-		    set
-		    {
-		        this.smsReminder = value;
-		    }
-		}
-		
-		private bool emailReminder;
-		public virtual bool EmailReminder 
-		{ 
-		    get
-		    {
-		        return this.emailReminder;
-		    }
-		    set
-		    {
-		        this.emailReminder = value;
-		    }
-		}
-		
 		private AppointmentType appointmentType;
 		public virtual AppointmentType AppointmentType 
 		{ 
