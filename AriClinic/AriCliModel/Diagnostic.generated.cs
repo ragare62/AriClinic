@@ -14,49 +14,35 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
 {
-	public partial class ExternalInvoiceLine : InvoiceLine
+	public partial class Diagnostic
 	{
-		private decimal comissionAmount;
-		public virtual decimal ComissionAmount 
+		private int diagnosticId;
+		public virtual int DiagnosticId 
 		{ 
 		    get
 		    {
-		        return this.comissionAmount;
+		        return this.diagnosticId;
 		    }
 		    set
 		    {
-		        this.comissionAmount = value;
+		        this.diagnosticId = value;
 		    }
 		}
 		
-		private ExternalInvoice externalInvoice;
-		public virtual ExternalInvoice ExternalInvoice 
+		private string name;
+		public virtual string Name 
 		{ 
 		    get
 		    {
-		        return this.externalInvoice;
+		        return this.name;
 		    }
 		    set
 		    {
-		        this.externalInvoice = value;
-		    }
-		}
-		
-		private External_invoice externalInvoice;
-		public virtual External_invoice External_invoice 
-		{ 
-		    get
-		    {
-		        return this.externalInvoice;
-		    }
-		    set
-		    {
-		        this.externalInvoice = value;
+		        this.name = value;
 		    }
 		}
 		

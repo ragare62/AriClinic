@@ -337,6 +337,30 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Diagnostic> Diagnostics 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Diagnostic>();
+	    	}
+		}
+		
+		public IQueryable<External_invoice> External_invoices 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<External_invoice>();
+	    	}
+		}
+		
+		public IQueryable<DiagnosticAssigned> DiagnosticAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<DiagnosticAssigned>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

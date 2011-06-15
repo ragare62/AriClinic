@@ -161,6 +161,20 @@
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DiagnosticGrid.aspx.cs">
+      <DependentUpon>DiagnosticGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticGrid.aspx.designer.cs">
+      <DependentUpon>DiagnosticGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiagnosticForm.aspx.cs">
+      <DependentUpon>DiagnosticForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticForm.aspx.designer.cs">
+      <DependentUpon>DiagnosticForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DocumentsPatient.aspx.cs">
       <DependentUpon>DocumentsPatient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -715,6 +729,8 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="DiagnosticGrid.aspx" />
+    <Content Include="DiagnosticForm.aspx" />
     <Content Include="DocumentsPatient.aspx" />
     <Content Include="images\logo_blanco_horizontal_w200.png" />
     <Content Include="images\logo_blanco_vertical.png" />

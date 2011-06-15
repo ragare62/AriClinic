@@ -1028,5 +1028,17 @@ namespace AriCliModel
             t.Paid = t.Paid + amount;
             ctx.Add(p);
         }
+        public static IList<Diagnostic> GetDiagnostics(AriClinicContext ctx)
+        {
+            return (from d in ctx.Diagnostics
+                    orderby d.Name
+                    select d).ToList<Diagnostic>();
+        }
+        public static Diagnostic GetDiagnostic(int id, AriClinicContext ctx)
+        {
+            return (from d in ctx.Diagnostics
+                    where d.DiagnosticId == id
+                    select d).FirstOrDefault<Diagnostic>();
+        }
     }
 }

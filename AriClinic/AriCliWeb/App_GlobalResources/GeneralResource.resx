@@ -198,6 +198,9 @@
   <data name="Message" xml:space="preserve">
     <value>Mensaje</value>
   </data>
+  <data name="NameNeeded" xml:space="preserve">
+    <value>Se necesita un nombre / descripción.</value>
+  </data>
   <data name="NoNomenclatorService" xml:space="preserve">
     <value>La aseguradora no tiene el servicio asignado en nomenclator.</value>
   </data>
