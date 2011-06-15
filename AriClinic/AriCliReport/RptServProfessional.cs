@@ -35,6 +35,7 @@ using AriCliModel;
         public RptServProfessional(DateTime fDate, DateTime tDate, string idProfesional,  AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             fromDate = fDate; toDate = tDate;
             companyname= CntAriCli.GetHealthCompany(ctx1).Name;
             if (idProfesional.Equals("0"))
@@ -68,6 +69,7 @@ using AriCliModel;
 
         private void iniChart(AriClinicContext ctx1)
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             IList<Professional> prof = CntAriCli.GetProfessionalTickets(fromDate, toDate, ctx1);
             chart1.PlotArea.XAxis.AutoScale = true;
             chart1.PlotArea.XAxis.Items.Clear();

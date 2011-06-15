@@ -28,6 +28,7 @@ namespace AriCliReport
         public RptInvoice(int idInvoice, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             Invoice invoice = CntAriCli.GetInvoice(idInvoice, ctx1);
             if (invoice != null)

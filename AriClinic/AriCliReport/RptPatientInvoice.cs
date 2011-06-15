@@ -29,6 +29,7 @@ namespace AriCliReport
         public RptPatientInvoice(int idCustomer, DateTime ffin, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoicesByCustomer(ffin, idCustomer, ctx1);
             this.DataSource = invoices;
@@ -38,6 +39,7 @@ namespace AriCliReport
         public RptPatientInvoice(DateTime ffin, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoices(new DateTime(), ffin, ctx1);
             this.DataSource = invoices;

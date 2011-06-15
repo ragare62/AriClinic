@@ -22,7 +22,7 @@
           <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
         </Scripts>
       </telerik:RadScriptManager>
-      <telerik:RadWindowManager ID="RadWindowManager1" runat="server" 
+      <telerik:radwindowmanager id="RadWindowManager1" runat="server" 
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
@@ -132,6 +132,10 @@
           <asp:Button ID="btnSearch" runat="server" Text="Buscar" 
                       onclick="btnSearch_Click" />
         </div>
+        <div  class="normalText" style="background-color: #ECF3FC">
+        <asp:CheckBox ID="chkSelec" runat="server" Text="Seleccionar todos" 
+                        oncheckedchanged="chkSelec_CheckedChanged" AutoPostBack="True" />
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="100%" 
                            AllowPaging="True" AllowFilteringByColumn="True" Culture="es-ES" 
@@ -150,7 +154,8 @@
               <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
               </ExpandCollapseColumn>
               <Columns>
-                <telerik:GridClientSelectColumn UniqueName="chkSelected"></telerik:GridClientSelectColumn>
+                <%--<telerik:GridClientSelectColumn UniqueName="chkSelected"></telerik:GridClientSelectColumn>--%>
+                <telerik:GridButtonColumn UniqueName="SelectColumn" CommandName="Selecion" Text="+" ButtonType="PushButton"/>
                 <telerik:GridBoundColumn DataField="TicketId" DataType="System.Int32" 
                                          FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
                                          HeaderText="ID" 

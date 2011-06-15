@@ -32,6 +32,7 @@ namespace AriCliReport
         public RptInvoicesPeriod(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             fromDate = fDate; toDate = tDate;
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoices(fromDate, toDate, ctx1);

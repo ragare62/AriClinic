@@ -26,6 +26,7 @@ namespace AriCliReport
         public RptTicketsNoPaid(DateTime fDate, DateTime tDate,int insuranceId, AriClinicContext ctx)
             : this()
         {
+            ctx = new AriClinicContext("AriClinicContext");
             fromDate = fDate; toDate = tDate;
             this.DataSource = CntAriCli.GetTickets(fDate, tDate, insuranceId, "NP", ctx);
         }

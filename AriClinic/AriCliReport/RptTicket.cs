@@ -29,6 +29,7 @@ namespace AriCliReport
         public RptTicket(int idticket, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             this.DataSource = CntAriCli.GetTicket(idticket, ctx1);
         }

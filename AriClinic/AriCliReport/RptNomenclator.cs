@@ -31,6 +31,7 @@ namespace AriCliReport
         public RptNomenclator(AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Procedure> listProc = (from p in ctx1.Procedures select p).ToList<Procedure>();
             this.DataSource = listProc;

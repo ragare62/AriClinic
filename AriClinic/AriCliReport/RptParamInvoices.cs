@@ -34,6 +34,7 @@ namespace AriCliReport
         public RptParamInvoices(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             fromDate = fDate;
             toDate = tDate;
             //companyname = CntAriCli.GetHealthCompany(ctx1).Name;
@@ -63,6 +64,7 @@ namespace AriCliReport
 
         private void iniChart(AriClinicContext ctx1)
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             IList<Invoice> invoices = CntAriCli.GetInvoices(fromDate, toDate, ctx1);
             chart1.PlotArea.XAxis.AutoScale = true;
             chart1.PlotArea.XAxis.Items.Clear();

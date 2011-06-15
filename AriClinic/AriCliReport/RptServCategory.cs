@@ -31,6 +31,7 @@ namespace AriCliReport
         public RptServCategory(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             fromDate = fDate; toDate = tDate;
             companyname= CntAriCli.GetHealthCompany(ctx1).Name;
             this.DataSource = CntAriCli.GetTickets(fromDate, toDate, ctx1); 
