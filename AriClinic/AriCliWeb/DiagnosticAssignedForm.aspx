@@ -23,10 +23,42 @@
           <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
         </Scripts>
       </telerik:RadScriptManager>
-      <script type="text/javascript" src="GeneralFormFunctions.js">
-        //Put your JavaScript code here.
-      </script>
-      <script type="text/javascript" src="dialog_box.js"></script>
+
+      <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+        <script type="text/javascript" src="GeneralFormFunctions.js"></script>
+        <script type="text/javascript" src="dialog_box.js"></script>
+        <script type="text/javascript">
+          function refreshField(v1, v2, v3, v4, type) {
+              var combo;
+              if (type)
+              {
+                  switch (type)
+                  {
+                      case "Patient":
+                          combo = $find("<%= rdcPatient.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          break;
+                      case "Diagnostic":
+                          combo = $find("<%= rdcDiagnostic.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          break;
+                  }
+              }
+          }
+          function loadCombo(combo, v1, v3)
+          {
+              var items = combo.get_items();
+              items.clear();
+              var comboItem = new Telerik.Web.UI.RadComboBoxItem();
+              comboItem.set_text(v3);
+              comboItem.set_value(v1);
+              items.add(comboItem);
+              combo.commitChanges();
+              comboItem.select();
+          }
+        </script>
+      </telerik:RadCodeBlock>
+
       <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <AjaxSettings>
           <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
@@ -69,7 +101,7 @@
                                    ToolTip="Haga clic aquí para buscar un paciente" 
                                    OnClientClick="searchPatient();" />
                   <br />
-                  <telerik:RadComboBox runat="server" ID="rdcPatient" Height="20px" 
+                  <telerik:RadComboBox runat="server" ID="rdcPatient" Height="100px" 
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." 
                                        onitemsrequested="rdcPatient_ItemsRequested" ItemsPerRequest="10" 
@@ -92,12 +124,12 @@
                 <div id="Diagnostic">
                   <asp:Label ID="lblDiagnostic" runat="server" Text="Diagnóstico:" 
                              ToolTip="Diagnóstico a asignar"></asp:Label>
-                             <asp:ImageButton ID="btnDiagnostic" runat="server" 
+                  <asp:ImageButton ID="btnDiagnostic" runat="server" 
                                    ImageUrl="~/images/search_mini.png" CausesValidation="false"
                                    ToolTip="Haga clic aquí para buscar un diagnóstico" 
                                    OnClientClick="searchDiagnostic();" />
                   <br />
-                  <telerik:RadComboBox runat="server" ID="rdcDiagnostic" Height="22px" 
+                  <telerik:RadComboBox runat="server" ID="rdcDiagnostic" Height="100px" 
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." 
                                        onitemsrequested="rdcDiagnostic_ItemsRequested" ItemsPerRequest="10" 

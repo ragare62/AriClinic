@@ -205,6 +205,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se necesita un diagnóstico.
+        /// </summary>
+        internal static string DiagnosticNeeded {
+            get {
+                return ResourceManager.GetString("DiagnosticNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NO existe la agenda.
         /// </summary>
         internal static string DiaryDoesNotExists {

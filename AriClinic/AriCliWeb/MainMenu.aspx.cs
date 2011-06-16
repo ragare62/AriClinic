@@ -230,6 +230,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "diagnostic":
                 RadAjaxManager1.ResponseScripts.Add("LaunchDiagnostic();");
                 break;
+            case "diagnosticassigned":
+                RadAjaxManager1.ResponseScripts.Add("LaunchDiagnosticAssigned();");
+                break;
             default:
                 break;
         }

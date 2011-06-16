@@ -222,6 +222,10 @@ height: 30px;
               var w1 = window.open("DiagnosticGrid.aspx", "DIAGNOSTIC", "width=500, height=500,resizable=1")
               w1.focus();
           }
+          function LaunchDiagnosticAssigned() {
+              var w1 = window.open("DiagnosticAssignedGrid.aspx", "DIAGNOSTICASSIGNED", "width=800, height=600,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -379,6 +383,9 @@ height: 30px;
                             </Items>
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Diagnósticos asignados" 
+                            Value="diagnosticassigned">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

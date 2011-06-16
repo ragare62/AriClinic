@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Configuration;
 using System.Web.Security;
@@ -25,6 +24,7 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
     int patientId = 0;
 
     Permission per = null;
+
     #endregion Variables declarations
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -51,18 +51,23 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
             diagnosticAssigned = CntAriCli.GetDiagnosticAssigned(diagnosticAssignedId, ctx);
             LoadData(diagnosticAssigned);
         }
+        else
+        {
+            rdpDiagnosticDate.SelectedDate = DateTime.Now;
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
+
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
         if (ctx != null)
             ctx.Dispose();
     }
+
     #endregion Init Load Unload events
     
     #region Page events (clics)
@@ -83,23 +88,41 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
         string command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
+
     #endregion Page events (clics)
 
     #region Auxiliary functions
     protected bool DataOk()
     {
         string command = "";
-        // check combo values
-        //if (txtName.Text == "")
-        //{
-        //    command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
-        //        ,Resources.GeneralResource.Warning
-        //        ,Resources.GeneralResource.NameNeeded);
-        //    RadAjaxManager1.ResponseScripts.Add(command);
-        //    return false;
-        //}
+        if (rdpDiagnosticDate.SelectedDate == null)
+        {
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
+                                    , Resources.GeneralResource.Warning
+                                    , Resources.GeneralResource.DateNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return false;
+        }
+        if (rdcDiagnostic.SelectedValue == "")
+        {
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
+                                    , Resources.GeneralResource.Warning
+                                    , Resources.GeneralResource.DiagnosticNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return false;
+        }
+        if (rdcPatient.SelectedValue == "")
+        {
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
+                                    , Resources.GeneralResource.Warning
+                                    , Resources.GeneralResource.PatientNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return false;
+        }
+
         return true;
     }
+
     protected bool CreateChange()
     {
         if (!DataOk())
@@ -118,17 +141,56 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
+
     protected void LoadData(DiagnosticAssigned da)
     {
-        //txtDiagnosticId.Text = ser.DiagnosticId.ToString();
-        //txtName.Text = ser.Name;
+        // Load patient data
+        rdcPatient.Items.Clear();
+        rdcPatient.Items.Add(new RadComboBoxItem(da.Patient.FullName, da.Patient.PersonId.ToString()));
+
+        // Load diagnostic data
+        rdcDiagnostic.Items.Clear();
+        rdcDiagnostic.Items.Add(new RadComboBoxItem(da.Diagnostic.Name, da.Diagnostic.DiagnosticId.ToString()));
+
+        rdpDiagnosticDate.SelectedDate = da.DiagnosticDate;
+        txtComments.Text = da.Comments;
     }
+
     protected void UnloadData(DiagnosticAssigned da)
     {
-        //ser.Name = txtName.Text;
+        da.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        da.DiagnosticDate = (DateTime)rdpDiagnosticDate.SelectedDate;
+        da.Diagnostic = CntAriCli.GetDiagnostic(int.Parse(rdcDiagnostic.SelectedValue), ctx);
+        da.Comments = txtComments.Text;
     }
+
     #endregion Auxiliary functions
 
+    protected void rdcPatient_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Patients
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Patient pat in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(pat.FullName, pat.PersonId.ToString()));
+        }
+    }
 
-
+    protected void rdcDiagnostic_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from d in ctx.Diagnostics
+                 where d.Name.StartsWith(e.Text)
+                 select d;
+        foreach (Diagnostic dia in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(dia.Name, dia.DiagnosticId.ToString()));
+        }
+    }
 }

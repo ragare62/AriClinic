@@ -46,14 +46,6 @@
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Web.Extensions">
     </Reference>
-    <Reference Include="Telerik.Web.Design, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2011\Bin40\Telerik.Web.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Web.UI, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2011\Bin40\Telerik.Web.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
       <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
     </Reference>
@@ -69,6 +61,7 @@
     </Reference>
     <Reference Include="Telerik.Reporting, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
     <Reference Include="Telerik.ReportViewer.WebForms, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.Web.UI, Version=2010.3.1317.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_GlobalResources\ConstantsResource.Designer.cs">
@@ -161,6 +154,13 @@
     </Compile>
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiagnosticAssignedGrid.aspx.cs">
+      <DependentUpon>DiagnosticAssignedGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticAssignedGrid.aspx.designer.cs">
+      <DependentUpon>DiagnosticAssignedGrid.aspx</DependentUpon>
     </Compile>
     <Compile Include="DiagnosticAssignedForm.aspx.cs">
       <DependentUpon>DiagnosticAssignedForm.aspx</DependentUpon>
@@ -730,6 +730,7 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="DiagnosticAssignedGrid.aspx" />
     <Content Include="DiagnosticAssignedForm.aspx" />
     <Content Include="DiagnosticGrid.aspx" />
     <Content Include="DiagnosticForm.aspx" />
@@ -948,7 +949,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

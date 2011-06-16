@@ -165,6 +165,9 @@
   <data name="DeleteRecordQuestion" xml:space="preserve">
     <value>¿Desea realmente borrar el registro?</value>
   </data>
+  <data name="DiagnosticNeeded" xml:space="preserve">
+    <value>Se necesita un diagnóstico</value>
+  </data>
   <data name="DiaryDoesNotExists" xml:space="preserve">
     <value>NO existe la agenda</value>
   </data>
