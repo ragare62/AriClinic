@@ -30,6 +30,7 @@ namespace AriCliReport
         public RptInsuranceDebt(AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Ticket> tickets = CntAriCli.GetTickets(true,ctx1);//.GetInvoicesByCustomer(ffin, idCustomer, ctx1);
             this.DataSource = tickets;
@@ -39,6 +40,7 @@ namespace AriCliReport
         public RptInsuranceDebt(int idInsurance, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Ticket> tickets = CntAriCli.GetTickets(true, ctx1);//.GetInvoicesByCustomer(ffin, idCustomer, ctx1);
             this.DataSource =(from tick in tickets

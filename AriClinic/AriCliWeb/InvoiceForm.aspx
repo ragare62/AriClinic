@@ -105,8 +105,6 @@ width: 339px;
 {
 z-index: 1;
 left: 490px;
-top: 105px;
-position: absolute;
 height: 44px;
 width: 159px;
 }
@@ -118,9 +116,6 @@ width: 159px;
 {
 z-index: 1;
 left: 14px;
-top: 160px;
-position: absolute;
-height: 233px;
 width: 632px;
 }
       
@@ -129,8 +124,6 @@ width: 632px;
 {
 z-index: 1;
 left: 10px;
-top: 406px;
-position: absolute;
 height: 44px;
 width: 641px;
 }
@@ -139,8 +132,6 @@ width: 641px;
 {
 z-index: 1;
 left: 10px;
-top: 460px;
-position: absolute;
 height: 26px;
 width: 642px;
 }
@@ -257,7 +248,7 @@ width: 642px;
                                  AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
       </telerik:RadToolTipManager>
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" 
-                            style="z-index: 1; left: 0px; top:0px; position: absolute; height: 478px; width: 664px">
+                            style="z-index: 1; left: 0px; top:0px; position:absolute; height: 478px; width: 664px">
         <%--Line 1--%>
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
@@ -325,25 +316,27 @@ width: 642px;
           <br />
           <asp:TextBox ID="txtInvoiceTotal" runat="server" TabIndex="10" Width="152px" style="text-align:right"></asp:TextBox>
         </div>
+        <div style="position: absolute; top: 160px">
         <%--Line 4--%>
-        <div ID="InvoiceLines" class="normalText">
+        <div id="InvoiceLines" class="normalText">
           <asp:Label ID="lblInvoiceLines" runat="server" Text="Lineas de factura:" 
                      ToolTip="Nombre comercial del cliente al que se le emite la factura"></asp:Label>
           <br />
           <uc1:UscInvoiceLineGrid ID="UscInvoiceLineGrid1" runat="server" />
         </div>
         <%--Line 5--%>
-        <div ID="Message" class="messageText">
+        <div id="Message" class="messageText">
           <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
         </div>
         <%--Line 6--%>
-        <div ID="Buttons" class="buttonsFomat">
+        <div id="Buttons" class="buttonsFomat">
           <asp:ImageButton ID="btnAccept" runat="server" TabIndex="6" 
                            ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;
           <asp:ImageButton ID="btnCancel" runat="server" TabIndex="7" 
                            ImageUrl="~/images/document_out.png" CausesValidation="False" 
                            onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
+        </div>
         </div>
       </telerik:RadAjaxPanel>
     </form>

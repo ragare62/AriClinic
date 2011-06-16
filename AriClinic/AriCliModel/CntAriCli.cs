@@ -1028,5 +1028,35 @@ namespace AriCliModel
             t.Paid = t.Paid + amount;
             ctx.Add(p);
         }
+
+        public static List<AnestheticServiceNote> GetAnestheticServiceNotesByPerson(Person p, AriClinicContext ctx)
+        {
+            Customer cust;
+            if (p is Patient)
+                cust = (p as Patient).Customer;
+            else if (p is Customer)
+                cust = (p as Customer);
+            else 
+                cust = new Customer();
+
+            return (from anes in ctx.AnestheticServiceNotes
+                      where anes.Customer == cust
+                      select anes).ToList<AnestheticServiceNote>();
+        }
+
+        public static List<ServiceNote> GetServiceNotesByPerson(Person p, AriClinicContext ctx)
+        {
+            Customer cust;
+            if (p is Patient)
+                cust = (p as Patient).Customer;
+            else if (p is Customer)
+                cust = (p as Customer);
+            else
+                cust = new Customer();
+
+            return (from anes in ctx.ServiceNotes
+                    where anes.Customer == cust
+                    select anes).ToList<ServiceNote>();
+        }
     }
 }

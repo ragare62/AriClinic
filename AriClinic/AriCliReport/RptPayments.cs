@@ -26,6 +26,7 @@ namespace AriCliReport
         public RptPayments(DateTime fDate, DateTime tDate,int clinicId, AriClinicContext ctx)
             : this()
         {
+            ctx = new AriClinicContext("AriClinicContext");
             fromDate = fDate; toDate = tDate;
             this.DataSource = CntAriCli.GetPayments(fDate, tDate, clinicId, ctx);
         }

@@ -36,6 +36,7 @@ namespace AriCliReport
         public RptParamTickets(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             fromDate = fDate;
             toDate = tDate;
 
@@ -59,6 +60,7 @@ namespace AriCliReport
 
         private void iniChartMonth(AriClinicContext ctx1)
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             IList<Ticket> tickets = CntAriCli.GetTickets(fromDate, toDate, ctx1);
             chart1.PlotArea.XAxis.Items.Clear();
             chart1.PlotArea.XAxis.AutoScale = false;
@@ -97,6 +99,7 @@ namespace AriCliReport
 
         private void iniChartWeek(AriClinicContext ctx1)
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             IList<Ticket> tickets = CntAriCli.GetTickets(fromDate, toDate, ctx1);
             chart1.PlotArea.XAxis.Items.Clear();
             chart1.Legend.Visible = false;
@@ -139,6 +142,7 @@ namespace AriCliReport
 
         private void iniChartWeekProfessional(AriClinicContext ctx1)
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             IList<Ticket> tickets = CntAriCli.GetTickets(fromDate, toDate, ctx1);
             chart1.PlotArea.XAxis.Items.Clear();
             //chart1.PlotArea.XAxis.Appearance.TextAppearance.

@@ -14,6 +14,11 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
     Permission per = null;
     int serviceNoteId = 0;
 
+    Patient pat = null;
+    Customer cus = null;
+    int patientId = 0;
+    int customerId = 0;
+
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -32,6 +37,18 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
+        if (Request.QueryString["PatientId"] != null)
+        {
+            patientId = Int32.Parse(Request.QueryString["PatientId"]);
+            pat = CntAriCli.GetPatient(patientId, ctx);
+            cus = pat.Customer;
+        }
+        // read passed customer if any
+        if (Request.QueryString["CustomerId"] != null)
+        {
+            customerId = Int32.Parse(Request.QueryString["CustomerId"]);
+            cus = CntAriCli.GetCustomer(customerId, ctx);
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -52,7 +69,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = ctx.ServiceNotes;
+        RefreshGrid();
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -153,7 +170,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-            RefreshGrid();
+        RadGrid1.Rebind();
             if (e.Argument == "new")
             {
                 RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
@@ -169,7 +186,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
                         ServiceNote sn = CntAriCli.GetServiceNote(serviceNoteId, ctx);
                         ctx.Delete(sn);
                         ctx.SaveChanges();
-                        RefreshGrid();
+                        RadGrid1.Rebind();
                         Session["DeleteId"] = null;
                     }
                     catch (Exception ex)
@@ -187,7 +204,16 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
 
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.ServiceNotes;
-        RadGrid1.Rebind();
+        if (pat == null && cus == null)
+            RadGrid1.DataSource = ctx.ServiceNotes;
+        else
+        {
+            if (pat != null)
+                RadGrid1.DataSource = CntAriCli.GetServiceNotesByPerson(pat, ctx);
+            if (cus != null)
+                RadGrid1.DataSource = CntAriCli.GetServiceNotesByPerson(cus, ctx);
+        }
+
+        //RadGrid1.Rebind();
     }
 }

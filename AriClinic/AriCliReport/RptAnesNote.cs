@@ -28,6 +28,7 @@ namespace AriCliReport
         public RptAnesNote(int idanesnote, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             AnestheticServiceNote aneNote = CntAriCli.GetAnestheticServiceNote(idanesnote, ctx1);
             if (aneNote != null)

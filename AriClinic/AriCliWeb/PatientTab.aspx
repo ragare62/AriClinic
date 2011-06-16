@@ -60,15 +60,22 @@
             <telerik:RadTabStrip ID="RadTabStrip1" runat="server" 
                 ontabclick="RadTabStrip1_TabClick" SelectedIndex="0">
                 <Tabs>
-                    <telerik:RadTab runat="server" Selected="True" Text="Filiación" Value="patient">
+                    <telerik:RadTab runat="server" Text="Filiación" Value="patient" Selected="True">
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="His. Administrativo" Value="policy">
+                    <telerik:RadTab runat="server" Text="His. Administrativo" Value="policy" 
+                        SelectedIndex="0">
                         <Tabs>
-                            <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy">
+                            <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
+                                Selected="True">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Tickets" Value="ticket">
                             </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Cobros" Value="payment">
+                            <telerik:RadTab runat="server" Owner="" Text="Nota de servicio" Value="servnote">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Owner="" Text="Nota de anestésico" Value="anesnote">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Owner="" Text="Cobros" Value="payment" 
+                                Selected="True">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Facturas" Value="invoice">
                             </telerik:RadTab>

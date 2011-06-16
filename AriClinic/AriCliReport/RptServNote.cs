@@ -29,6 +29,7 @@ namespace AriCliReport
         public RptServNote(int idservnote, AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             ServiceNote servNote = CntAriCli.GetServiceNote(idservnote, ctx1);
             this.DataSource = servNote;

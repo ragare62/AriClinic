@@ -28,6 +28,7 @@ namespace AriCliReport
         public RptTickets(DateTime fDate, DateTime tDate, int insuranceId, AriClinicContext ctx, int noVoucher)
         : this()
         {
+            ctx = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx).Name;
 
             fromDate = fDate;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
+using System.Collections;
 
 public partial class SettelmentGrid : System.Web.UI.Page 
 {
@@ -121,21 +122,58 @@ public partial class SettelmentGrid : System.Web.UI.Page
             string name = "";
             string command = "";
             GridDataItem gdi;
-            int id = 0;
-            
-            id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
-            
+            string id = "";
+            ArrayList selectedItems;
+
             // assign javascript function to select button
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
             // payed?
+
+            if (Session["selectedItems"] == null)
+            {
+                selectedItems = new ArrayList();
+            }
+            else
+            {
+                selectedItems = (ArrayList)Session["selectedItems"];
+            }
+            id = e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]].ToString();
+            if (selectedItems.Contains(id))
+            {
+                //e.Item.Selected = true;
+                gdi.BackColor = Color.LightGreen;
+                //gdi["Policy.Insurance.Name"].BackColor = Color.LightGreen;
+            }
+
+            else
+            {
+                gdi.BackColor = new Color();
+                //e.Item.Selected = false;
+            }
+
+        //}
+        //if (e.Item is GridDataItem)
+        //{
+            //ImageButton imgb = null;
+            //string name = "";
+            //string command = "";
+            //GridDataItem gdi;
+            //int id = 0;
+            
+            //id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
+            
+            //// assign javascript function to select button
+            //imgb = (ImageButton)e.Item.FindControl("Select");
+            //gdi = (GridDataItem)e.Item;
+            //// payed?
             
             // backgroud color for primary types
-            if (gdi["Checked"].Text == "True")
-            {
-                //gdi["Policy.Insurance.Name"].BackColor = Color.LightGreen;
-                gdi["Policy.Insurance.Name"].BackColor = Color.LightGreen;
-            }
+            //if (gdi["Checked"].Text == "True")
+            //{
+            //    //gdi["Policy.Insurance.Name"].BackColor = Color.LightGreen;
+            //    gdi["Policy.Insurance.Name"].BackColor = Color.LightGreen;
+            //}
             name = String.Format("{0} ({1}: {2})"
                                  , gdi["Policy.Customer.FullName"].Text
                                  , gdi["Description"].Text
@@ -167,6 +205,36 @@ public partial class SettelmentGrid : System.Web.UI.Page
 
     protected void RadGrid1_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
     {
+        //lblMensaje.Visible = false;
+        ArrayList selectedItems;
+        if (Session["selectedItems"] == null)
+        {
+            selectedItems = new ArrayList();
+        }
+        else
+        {
+            selectedItems = (ArrayList)Session["selectedItems"];
+        }
+        if (e.CommandName == "Selecion" && e.Item is GridDataItem)
+        {
+            GridDataItem dataItem = (GridDataItem)e.Item;
+            string idTick = dataItem.OwnerTableView.DataKeyValues[dataItem.ItemIndex]["TicketId"].ToString();
+            if (!selectedItems.Contains(idTick))
+            {
+                selectedItems.Add(idTick);
+                //e.Item.Selected = true;
+                e.Item.BackColor = Color.LightGreen;
+                
+            }
+            else
+            {
+                selectedItems.Remove(idTick);
+                e.Item.BackColor = new Color();
+                //e.Item.Selected = false;
+            }
+
+            Session["selectedItems"] = selectedItems;
+        }
         // weonly process commands with a datasource (our image buttons)
         if (e.CommandSource == null)
             return;
@@ -215,6 +283,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
             return;
         }
         if (!DataOk()) return;
+        
         RadGrid1.DataSource = CntAriCli.GetTickets((DateTime)rddpFromDate.SelectedDate
             , (DateTime)rddpToDate.SelectedDate
             , Int32.Parse(rdcbInsurance.SelectedValue)
@@ -293,12 +362,16 @@ public partial class SettelmentGrid : System.Web.UI.Page
     }
     protected void DoPayments()
     {
+        ArrayList selectedItems = (ArrayList)Session["selectedItems"];
         PaymentMethod pm = CntAriCli.GetPaymentMethod(Int32.Parse(rdcbPayementForm.SelectedValue), ctx);
         cl = CntAriCli.GetClinic(Int32.Parse(rdcbClinic.SelectedValue), ctx);
         DateTime pd = (DateTime)rddpPayDate.SelectedDate;
-        foreach(GridDataItem item in RadGrid1.SelectedItems)
-        {
-            int id = Int32.Parse(item["TicketId"].Text);
+        //foreach(GridDataItem item in RadGrid1.SelectedItems)
+        //{
+        //    int id = Int32.Parse(item["TicketId"].Text);
+        foreach (string item in selectedItems)
+	    {
+            int id = int.Parse(item);
             Ticket tck = CntAriCli.GetTicket(id, ctx);
             // Delete previous payments
             ctx.Delete(tck.Payments);
@@ -313,22 +386,30 @@ public partial class SettelmentGrid : System.Web.UI.Page
             ctx.Add(p);
             ctx.SaveChanges();
         }
-        RefreshGrid(true);
+        
         lblMessage.Text = Resources.GeneralResource.PaymentsDone;
+        Session["selectedItems"] = new ArrayList();
+        RadGrid1.Rebind();
     }
     protected void UnDoPayments()
     {
-        foreach (GridDataItem item in RadGrid1.SelectedItems)
+        ArrayList selectedItems = (ArrayList)Session["selectedItems"];
+        //foreach (GridDataItem item in RadGrid1.SelectedItems)
+        //{
+        //    int id = Int32.Parse(item["TicketId"].Text);
+        foreach (string item in selectedItems)
         {
-            int id = Int32.Parse(item["TicketId"].Text);
+            int id = int.Parse(item);    
             Ticket tck = CntAriCli.GetTicket(id, ctx);
             // Delete previous payments
             ctx.Delete(tck.Payments);
             tck.Paid = 0;
             ctx.SaveChanges();
         }
-        RefreshGrid(true);
+        
         lblMessage.Text = Resources.GeneralResource.PaymentsUnDone;
+        Session["selectedItems"] = new ArrayList();
+        RadGrid1.Rebind();
     }
 
     protected void btnDo_Click(object sender, EventArgs e)
@@ -339,5 +420,27 @@ public partial class SettelmentGrid : System.Web.UI.Page
     protected void btnUnDo_Click(object sender, EventArgs e)
     {
         UnDoPayments();
+    }
+
+    protected void chkSelec_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkSelec.Checked == true)
+        {
+            ArrayList selectedItems = selectedItems = new ArrayList();
+            IList<Ticket> tick = CntAriCli.GetTickets((DateTime)rddpFromDate.SelectedDate
+            , (DateTime)rddpToDate.SelectedDate
+            , Int32.Parse(rdcbInsurance.SelectedValue)
+            , rdcbType.SelectedValue
+            , ctx);
+            foreach (Ticket item in tick)
+            {
+                selectedItems.Add(item.TicketId.ToString());
+            }
+            Session["selectedItems"] = selectedItems;
+        }
+        else
+            Session["selectedItems"] = new ArrayList();
+
+        RadGrid1.Rebind();
     }
 }

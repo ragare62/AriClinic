@@ -22,7 +22,7 @@ namespace AriCliModel
 {	
 	public partial class AriClinicContext : OpenAccessContext
 	{
-		private static string connectionStringName = @"";
+		private static string connectionStringName = @"AriClinicContext";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		
@@ -340,7 +340,8 @@ namespace AriCliModel
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
-					return backend;
+			backend.Backend = "mysql";
+			return backend;
 		}
 	}
 }

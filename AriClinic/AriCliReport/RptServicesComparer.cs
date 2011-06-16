@@ -29,6 +29,7 @@ namespace AriCliReport
         public RptServicesComparer(AriClinicContext ctx1)
             : this()
         {
+            ctx1 = new AriClinicContext("AriClinicContext");
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Service> insServ = CntAriCli.GetServices(ctx1);
             this.DataSource = insServ;
