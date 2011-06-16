@@ -9,7 +9,7 @@
 
 
 
-public partial class ExternalInvoiceLineForm {
+public partial class DiagnosticAssignedForm {
     
     /// <summary>
     /// RadStyleSheetManager1 control.
@@ -37,15 +37,6 @@ public partial class ExternalInvoiceLineForm {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
-    
-    /// <summary>
-    /// RadScriptBlock1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadScriptBlock RadScriptBlock1;
     
     /// <summary>
     /// RadAjaxManager1 control.
@@ -102,211 +93,94 @@ public partial class ExternalInvoiceLineForm {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// lblInvoiceLineId control.
+    /// lblPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblInvoiceLineId;
+    protected global::System.Web.UI.WebControls.Label lblPatient;
     
     /// <summary>
-    /// txtInvoiceLineId control.
+    /// btnPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtInvoiceLineId;
+    protected global::System.Web.UI.WebControls.ImageButton btnPatient;
     
     /// <summary>
-    /// lblInvoiceSerial control.
+    /// rdcPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblInvoiceSerial;
+    protected global::Telerik.Web.UI.RadComboBox rdcPatient;
     
     /// <summary>
-    /// txtInvoiceSerial control.
+    /// lblDiagnosticDate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtInvoiceSerial;
+    protected global::System.Web.UI.WebControls.Label lblDiagnosticDate;
     
     /// <summary>
-    /// lblYear control.
+    /// rdpDiagnosticDate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblYear;
+    protected global::Telerik.Web.UI.RadDatePicker rdpDiagnosticDate;
     
     /// <summary>
-    /// txtYear control.
+    /// lblDiagnostic control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtYear;
+    protected global::System.Web.UI.WebControls.Label lblDiagnostic;
     
     /// <summary>
-    /// lblInvoiceNumber control.
+    /// btnDiagnostic control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblInvoiceNumber;
+    protected global::System.Web.UI.WebControls.ImageButton btnDiagnostic;
     
     /// <summary>
-    /// txtInvoiceNumber control.
+    /// rdcDiagnostic control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtInvoiceNumber;
+    protected global::Telerik.Web.UI.RadComboBox rdcDiagnostic;
     
     /// <summary>
-    /// lblTicketId control.
+    /// lblComments control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTicketId;
+    protected global::System.Web.UI.WebControls.Label lblComments;
     
     /// <summary>
-    /// btnTicketId control.
+    /// txtComments control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnTicketId;
-    
-    /// <summary>
-    /// txtTicketId control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtTicketId;
-    
-    /// <summary>
-    /// lblTicketData control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTicketData;
-    
-    /// <summary>
-    /// txtTicketData control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtTicketData;
-    
-    /// <summary>
-    /// lblTaxType control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTaxType;
-    
-    /// <summary>
-    /// rdcbTaxType control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcbTaxType;
-    
-    /// <summary>
-    /// lblDescription control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblDescription;
-    
-    /// <summary>
-    /// txtDescription control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtDescription;
-    
-    /// <summary>
-    /// lblTaxPercentage control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTaxPercentage;
-    
-    /// <summary>
-    /// txtTaxPercentage control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtTaxPercentage;
-    
-    /// <summary>
-    /// lblAmount control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblAmount;
-    
-    /// <summary>
-    /// txtAmount control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtAmount;
-    
-    /// <summary>
-    /// lblComissionAmount control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblComissionAmount;
-    
-    /// <summary>
-    /// txtComissionAmount control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtComissionAmount;
+    protected global::System.Web.UI.WebControls.TextBox txtComments;
     
     /// <summary>
     /// btnAccept control.

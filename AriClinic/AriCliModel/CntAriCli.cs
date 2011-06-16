@@ -1040,5 +1040,24 @@ namespace AriCliModel
                     where d.DiagnosticId == id
                     select d).FirstOrDefault<Diagnostic>();
         }
+        public static IList<DiagnosticAssigned> GetDiagnosticsAssigned(AriClinicContext ctx)
+        {
+            return (from da in ctx.DiagnosticAssigneds
+                    orderby da.DiagnosticDate descending
+                    select da).ToList<DiagnosticAssigned>();
+        }
+        public static IList<DiagnosticAssigned> GetDiagnosticsAssigned(Patient patient, AriClinicContext ctx)
+        {
+            return (from da in ctx.DiagnosticAssigneds
+                    orderby da.DiagnosticDate descending
+                    where da.Patient.PersonId == patient.PersonId
+                    select da).ToList<DiagnosticAssigned>();
+        }
+        public static DiagnosticAssigned GetDiagnosticAssigned(int id, AriClinicContext ctx) 
+        {
+            return (from da in ctx.DiagnosticAssigneds
+                    where da.DiagnosticAssignedId == id
+                    select da).FirstOrDefault<DiagnosticAssigned>();
+        }
     }
 }

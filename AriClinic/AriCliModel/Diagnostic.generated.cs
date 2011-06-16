@@ -46,5 +46,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<DiagnosticAssigned> diagnosticAssigneds = new List<DiagnosticAssigned>();
+		public virtual IList<DiagnosticAssigned> DiagnosticAssigneds 
+		{ 
+		    get
+		    {
+		        return this.diagnosticAssigneds;
+		    }
+		}
+		
 	}
 }

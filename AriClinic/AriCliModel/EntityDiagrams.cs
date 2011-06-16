@@ -14,15 +14,15 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
 using AriCliModel;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
 {	
 	public partial class AriClinicContext : OpenAccessContext
 	{
-		private static string connectionStringName = @"AriClinicContext";
+		private static string connectionStringName = "AriClinicContext";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		
@@ -297,22 +297,6 @@ namespace AriCliModel
 	    	}
 		}
 		
-		public IQueryable<ExternalInvoice> ExternalInvoices 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoice>();
-	    	}
-		}
-		
-		public IQueryable<ExternalInvoiceLine> ExternalInvoiceLines 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoiceLine>();
-	    	}
-		}
-		
 		public IQueryable<Diary> Diaries 
 		{
 	    	get
@@ -370,4 +354,3 @@ namespace AriCliModel
 	}
 }
 #pragma warning restore 1591
-

@@ -46,6 +46,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string externalInvoiceLines;
+		public virtual string ExternalInvoiceLines 
+		{ 
+		    get
+		    {
+		        return this.externalInvoiceLines;
+		    }
+		    set
+		    {
+		        this.externalInvoiceLines = value;
+		    }
+		}
+		
 		private Professional professional;
 		public virtual Professional Professional 
 		{ 
@@ -69,15 +82,6 @@ namespace AriCliModel
 		    set
 		    {
 		        this.invoice = value;
-		    }
-		}
-		
-		private IList<ExternalInvoiceLine> externalInvoiceLines = new List<ExternalInvoiceLine>();
-		public virtual IList<ExternalInvoiceLine> ExternalInvoiceLines 
-		{ 
-		    get
-		    {
-		        return this.externalInvoiceLines;
 		    }
 		}
 		

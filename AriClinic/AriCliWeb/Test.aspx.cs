@@ -26,7 +26,7 @@ public partial class Test : System.Web.UI.Page
     protected void btnTest_Click(object sender, EventArgs e)
     {
         string title = "Confirmado";
-        string message = "Silvia me está mirando?";
+        string message = "deff?";
         string type = "success";
         string modal = "10";
         string width = "300";

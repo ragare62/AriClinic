@@ -59,5 +59,31 @@ namespace AriCliModel
 		    }
 		}
 		
+		private Diagnostic diagnostic;
+		public virtual Diagnostic Diagnostic 
+		{ 
+		    get
+		    {
+		        return this.diagnostic;
+		    }
+		    set
+		    {
+		        this.diagnostic = value;
+		    }
+		}
+		
+		private Patient patient;
+		public virtual Patient Patient 
+		{ 
+		    get
+		    {
+		        return this.patient;
+		    }
+		    set
+		    {
+		        this.patient = value;
+		    }
+		}
+		
 	}
 }

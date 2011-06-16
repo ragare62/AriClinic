@@ -14,7 +14,6 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
@@ -180,15 +179,6 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.serviceNotes;
-		    }
-		}
-		
-		private IList<ExternalInvoice> externalInvoices = new List<ExternalInvoice>();
-		public virtual IList<ExternalInvoice> ExternalInvoices 
-		{ 
-		    get
-		    {
-		        return this.externalInvoices;
 		    }
 		}
 		
