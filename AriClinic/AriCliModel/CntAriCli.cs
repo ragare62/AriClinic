@@ -1058,5 +1058,6 @@ namespace AriCliModel
                     where anes.Customer == cust
                     select anes).ToList<ServiceNote>();
         }
+        }
     }
 }

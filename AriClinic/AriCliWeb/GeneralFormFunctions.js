@@ -73,3 +73,7 @@ function searchAppointmentType() {
     var w1 = window.open("AppointmentTypeGrid.aspx?Type=S", "APPOINTMENTS", "width=600,height=500,resizable=1");
     w1.focus();
 }
+function searchDiagnostic() {
+    var w1 = window.open("DiagnosticGrid.aspx?Type=S", "DIAGNOSTICS", "width=500,height=400,resizable=1");
+    w1.focus;
+}

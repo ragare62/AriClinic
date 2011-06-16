@@ -14,13 +14,51 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
 {
-	public partial class ExternalInvoice : Invoice
+	public partial class External_invoice
 	{
+		private int? personId;
+		public virtual int? Person_id 
+		{ 
+		    get
+		    {
+		        return this.personId;
+		    }
+		    set
+		    {
+		        this.personId = value;
+		    }
+		}
+		
+		private int invoiceId;
+		public virtual int Invoice_id 
+		{ 
+		    get
+		    {
+		        return this.invoiceId;
+		    }
+		    set
+		    {
+		        this.invoiceId = value;
+		    }
+		}
+		
+		private string externalInvoiceLines;
+		public virtual string ExternalInvoiceLines 
+		{ 
+		    get
+		    {
+		        return this.externalInvoiceLines;
+		    }
+		    set
+		    {
+		        this.externalInvoiceLines = value;
+		    }
+		}
+		
 		private Professional professional;
 		public virtual Professional Professional 
 		{ 
@@ -34,12 +72,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<ExternalInvoiceLine> externalInvoiceLines = new List<ExternalInvoiceLine>();
-		public virtual IList<ExternalInvoiceLine> ExternalInvoiceLines 
+		private Invoice invoice;
+		public virtual Invoice Invoice 
 		{ 
 		    get
 		    {
-		        return this.externalInvoiceLines;
+		        return this.invoice;
+		    }
+		    set
+		    {
+		        this.invoice = value;
 		    }
 		}
 		

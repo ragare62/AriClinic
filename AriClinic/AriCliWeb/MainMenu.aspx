@@ -218,6 +218,10 @@ height: 30px;
               var w1 = window.open("DocumentsPatient.aspx", "DOCS", "width=800, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchDiagnostic() {
+              var w1 = window.open("DiagnosticGrid.aspx", "DIAGNOSTIC", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -369,6 +373,10 @@ height: 30px;
                     Value="clinicalrecord">
                     <Items>
                         <telerik:RadMenuItem runat="server" Text="Datos básicos" Value="basedata">
+                            <Items>
+                                <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
+                                </telerik:RadMenuItem>
+                            </Items>
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
                         </telerik:RadMenuItem>

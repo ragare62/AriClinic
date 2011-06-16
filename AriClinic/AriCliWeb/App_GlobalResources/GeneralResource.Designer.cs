@@ -304,6 +304,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se necesita un nombre / descripción..
+        /// </summary>
+        internal static string NameNeeded {
+            get {
+                return ResourceManager.GetString("NameNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La aseguradora no tiene el servicio asignado en nomenclator..
         /// </summary>
         internal static string NoNomenclatorService {

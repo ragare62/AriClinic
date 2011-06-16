@@ -46,18 +46,24 @@
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Web.Extensions">
     </Reference>
-    <Reference Include="Telerik.Reporting, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.ReportViewer.WebForms, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    <Reference Include="Telerik.Web.Design, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Telerik.OpenAccess, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    <Reference Include="Telerik.Web.UI, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2011\Bin40\Telerik.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.Web, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+    <Reference Include="Telerik.OpenAccess, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.Web, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.Web.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Telerik.Web.Design, Version=2011.1.315.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
@@ -161,6 +167,27 @@
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DiagnosticAssignedForm.aspx.cs">
+      <DependentUpon>DiagnosticAssignedForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticAssignedForm.aspx.designer.cs">
+      <DependentUpon>DiagnosticAssignedForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiagnosticGrid.aspx.cs">
+      <DependentUpon>DiagnosticGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticGrid.aspx.designer.cs">
+      <DependentUpon>DiagnosticGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiagnosticForm.aspx.cs">
+      <DependentUpon>DiagnosticForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiagnosticForm.aspx.designer.cs">
+      <DependentUpon>DiagnosticForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DocumentsPatient.aspx.cs">
       <DependentUpon>DocumentsPatient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,13 +215,6 @@
     </Compile>
     <Compile Include="DiaryGrid.aspx.designer.cs">
       <DependentUpon>DiaryGrid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalInvoiceLineForm.aspx.cs">
-      <DependentUpon>ExternalInvoiceLineForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ExternalInvoiceLineForm.aspx.designer.cs">
-      <DependentUpon>ExternalInvoiceLineForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="GoogleMapsPage.aspx.cs">
       <DependentUpon>GoogleMapsPage.aspx</DependentUpon>
@@ -715,6 +735,9 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="DiagnosticAssignedForm.aspx" />
+    <Content Include="DiagnosticGrid.aspx" />
+    <Content Include="DiagnosticForm.aspx" />
     <Content Include="DocumentsPatient.aspx" />
     <Content Include="images\logo_blanco_horizontal_w200.png" />
     <Content Include="images\logo_blanco_vertical.png" />
@@ -733,7 +756,6 @@
     <Content Include="SchedulerGeneral.aspx" />
     <Content Include="DiaryForm.aspx" />
     <Content Include="DiaryGrid.aspx" />
-    <Content Include="ExternalInvoiceLineForm.aspx" />
     <Content Include="GoogleMapsPage.aspx" />
     <Content Include="images\book_open.png" />
     <Content Include="images\book_open2.png" />

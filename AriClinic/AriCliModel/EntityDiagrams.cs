@@ -14,8 +14,8 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
-using Telerik.OpenAccess.Metadata;
 using AriCliModel;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
@@ -297,22 +297,6 @@ namespace AriCliModel
 	    	}
 		}
 		
-		public IQueryable<ExternalInvoice> ExternalInvoices 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoice>();
-	    	}
-		}
-		
-		public IQueryable<ExternalInvoiceLine> ExternalInvoiceLines 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoiceLine>();
-	    	}
-		}
-		
 		public IQueryable<Diary> Diaries 
 		{
 	    	get
@@ -337,6 +321,30 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Diagnostic> Diagnostics 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Diagnostic>();
+	    	}
+		}
+		
+		public IQueryable<External_invoice> External_invoices 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<External_invoice>();
+	    	}
+		}
+		
+		public IQueryable<DiagnosticAssigned> DiagnosticAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<DiagnosticAssigned>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -346,4 +354,3 @@ namespace AriCliModel
 	}
 }
 #pragma warning restore 1591
-
