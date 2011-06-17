@@ -88,6 +88,14 @@ public partial class PatientTab : System.Web.UI.Page
                 frame.Attributes["src"] = String.Format("TicketGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
                     , pat.PersonId);
                 break;
+            case "servnote":
+                frame.Attributes["src"] = String.Format("ServiceNoteGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                    , pat.PersonId);
+                break;
+            case "anesnote":
+                frame.Attributes["src"] = String.Format("AnestheticServiceNoteGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                    , pat.PersonId);
+                break;
             case "invoice":
                 frame.Attributes["src"] = String.Format("InvoiceGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
                     , pat.PersonId);

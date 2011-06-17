@@ -22,7 +22,11 @@ namespace AriCliModel
 {	
 	public partial class AriClinicContext : OpenAccessContext
 	{
+<<<<<<< HEAD
 		private static string connectionStringName = @"AriClinicContext";
+=======
+		private static string connectionStringName = "AriClinicContext";
+>>>>>>> 4feafad9ad2b889106764ca1a9b75e79c2b055a6
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		

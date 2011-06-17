@@ -26,9 +26,10 @@ namespace AriCliReport
             this.textBox23 = new Telerik.Reporting.TextBox();
             this.subReport1 = new Telerik.Reporting.SubReport();
             this.subInvoiceLine1 = new AriCliReport.SubInvoiceLine();
+            this.reportFooterSection1 = new Telerik.Reporting.ReportFooterSection();
             this.subReport2 = new Telerik.Reporting.SubReport();
             this.subInvoiceFooter1 = new AriCliReport.SubInvoiceFooter();
-            this.reportFooterSection1 = new Telerik.Reporting.ReportFooterSection();
+            this.textBox3 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.subInvoiceLine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.subInvoiceFooter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -103,7 +104,8 @@ namespace AriCliReport
             this.textBox2,
             this.textBox1,
             this.textBox23,
-            this.subReport1});
+            this.subReport1,
+            this.textBox3});
             this.groupHeaderSection1.Name = "groupHeaderSection1";
             // 
             // textBox22
@@ -215,6 +217,13 @@ namespace AriCliReport
             // 
             this.subInvoiceLine1.Name = "subInvoiceLine1";
             // 
+            // reportFooterSection1
+            // 
+            this.reportFooterSection1.Height = new Telerik.Reporting.Drawing.Unit(0.30003944039344788D, Telerik.Reporting.Drawing.UnitType.Inch);
+            this.reportFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
+            this.subReport2});
+            this.reportFooterSection1.Name = "reportFooterSection1";
+            // 
             // subReport2
             // 
             this.subReport2.Location = new Telerik.Reporting.Drawing.PointU(new Telerik.Reporting.Drawing.Unit(0.0083335237577557564D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(3.9418537198798731E-05D, Telerik.Reporting.Drawing.UnitType.Inch));
@@ -227,12 +236,13 @@ namespace AriCliReport
             // 
             this.subInvoiceFooter1.Name = "SubInvoiceFooter";
             // 
-            // reportFooterSection1
+            // textBox3
             // 
-            this.reportFooterSection1.Height = new Telerik.Reporting.Drawing.Unit(0.30003944039344788D, Telerik.Reporting.Drawing.UnitType.Inch);
-            this.reportFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.subReport2});
-            this.reportFooterSection1.Name = "reportFooterSection1";
+            this.textBox3.Format = "{0:dd/MM/yyyy}";
+            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(new Telerik.Reporting.Drawing.Unit(3.2083339691162109D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.20007880032062531D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(new Telerik.Reporting.Drawing.Unit(2.7999603748321533D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.19999997317790985D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox3.Value = "=Customer.VATIN";
             // 
             // RptInvoice
             // 
@@ -279,5 +289,6 @@ namespace AriCliReport
         private SubInvoiceFooter subInvoiceFooter1;
         private Telerik.Reporting.ReportFooterSection reportFooterSection1;
         private Telerik.Reporting.TextBox textBox6;
+        private Telerik.Reporting.TextBox textBox3;
     }
 }
