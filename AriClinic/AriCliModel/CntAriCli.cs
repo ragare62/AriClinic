@@ -927,7 +927,7 @@ namespace AriCliModel
                     where a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
-        
+
         public static IList<AppointmentInfo> GetAppointments(Diary diary, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1036,12 +1036,12 @@ namespace AriCliModel
                 cust = (p as Patient).Customer;
             else if (p is Customer)
                 cust = (p as Customer);
-            else 
+            else
                 cust = new Customer();
 
             return (from anes in ctx.AnestheticServiceNotes
-                      where anes.Customer == cust
-                      select anes).ToList<AnestheticServiceNote>();
+                    where anes.Customer == cust
+                    select anes).ToList<AnestheticServiceNote>();
         }
 
         public static List<ServiceNote> GetServiceNotesByPerson(Person p, AriClinicContext ctx)
@@ -1088,5 +1088,6 @@ namespace AriCliModel
             return (from da in ctx.DiagnosticAssigneds
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
+        }
     }
 }
