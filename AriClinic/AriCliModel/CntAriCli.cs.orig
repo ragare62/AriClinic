@@ -1028,7 +1028,6 @@ namespace AriCliModel
             t.Paid = t.Paid + amount;
             ctx.Add(p);
         }
-<<<<<<< HEAD
 
         public static List<AnestheticServiceNote> GetAnestheticServiceNotesByPerson(Person p, AriClinicContext ctx)
         {
@@ -1058,7 +1057,8 @@ namespace AriCliModel
             return (from anes in ctx.ServiceNotes
                     where anes.Customer == cust
                     select anes).ToList<ServiceNote>();
-=======
+        }
+<<<<<<< HEAD
         public static IList<Diagnostic> GetDiagnostics(AriClinicContext ctx)
         {
             return (from d in ctx.Diagnostics
@@ -1084,12 +1084,14 @@ namespace AriCliModel
                     where da.Patient.PersonId == patient.PersonId
                     select da).ToList<DiagnosticAssigned>();
         }
-        public static DiagnosticAssigned GetDiagnosticAssigned(int id, AriClinicContext ctx) 
+        public static DiagnosticAssigned GetDiagnosticAssigned(int id, AriClinicContext ctx)
         {
             return (from da in ctx.DiagnosticAssigneds
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
->>>>>>> 4feafad9ad2b889106764ca1a9b75e79c2b055a6
         }
+=======
+        
+>>>>>>> 3a0a51800d371999c611e4d5b461bddded375ed1
     }
 }

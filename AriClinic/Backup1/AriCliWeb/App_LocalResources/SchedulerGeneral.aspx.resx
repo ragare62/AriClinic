@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblTitleResource1.Text" xml:space="preserve">
+    <value>Agendas</value>
+  </data>
+  <data name="lblTitleResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageResource1.Title" xml:space="preserve">
+    <value>Agendas</value>
+  </data>
+  <data name="RadAjaxLoadingPanel1Resource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxLoadingPanel1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxManager1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxPanel1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedAllDayEvent" xml:space="preserve">
+    <value>Todo el dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedCalendarCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedCalendarOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedCalendarToday" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedDaily" xml:space="preserve">
+    <value>Diariamente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedDay" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedDays" xml:space="preserve">
+    <value>dia(s)</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedDescription" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedDone" xml:space="preserve">
+    <value>Hecho</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEditAppointment" xml:space="preserve">
+    <value>Editar cita</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEndAfter" xml:space="preserve">
+    <value>Fin después</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEndByThisDate" xml:space="preserve">
+    <value>Fin alrededor</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEndDateRequired" xml:space="preserve">
+    <value>Necesita fecha final</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEndTimeRequired" xml:space="preserve">
+    <value>Necesita fecha final</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEvery" xml:space="preserve">
+    <value>Cada</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedEveryWeekday" xml:space="preserve">
+    <value>Cada dia </value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedFirst" xml:space="preserve">
+    <value>primero</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedFourth" xml:space="preserve">
+    <value>cuarto</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedFrom" xml:space="preserve">
+    <value>Hora inicio</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedHourly" xml:space="preserve">
+    <value>Cada hora</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedHours" xml:space="preserve">
+    <value>hora(s)</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedInvalidNumber" xml:space="preserve">
+    <value>Número inválido</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedLast" xml:space="preserve">
+    <value>último</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedMaskDay" xml:space="preserve">
+    <value>dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedMaskWeekday" xml:space="preserve">
+    <value>dia semanal</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedMaskWeekendDay" xml:space="preserve">
+    <value>dia fin de semana</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedMonthly" xml:space="preserve">
+    <value>Mensualmente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedMonths" xml:space="preserve">
+    <value>mes(es)</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedNewAppointment" xml:space="preserve">
+    <value>Nueva cita</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedNoEndDate" xml:space="preserve">
+    <value>No hay fecha final</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedOccurrences" xml:space="preserve">
+    <value>casos</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedOf" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedOfEvery" xml:space="preserve">
+    <value>de cada</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedRecurEvery" xml:space="preserve">
+    <value>Repite cada</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedRecurrence" xml:space="preserve">
+    <value>Repetición</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedReset" xml:space="preserve">
+    <value>reset excepciones</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedSecond" xml:space="preserve">
+    <value>segundo</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedStartDateRequired" xml:space="preserve">
+    <value>Necesita fecha inicio</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedStartTimeBeforeEndTime" xml:space="preserve">
+    <value>Fecha inicio debe ser menor que final</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedStartTimeRequired" xml:space="preserve">
+    <value>Necesita hora de inicio</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedSubject" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedSubjectRequired" xml:space="preserve">
+    <value>Indique el asunto de la cita siguiente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedThe" xml:space="preserve">
+    <value>El</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedThird" xml:space="preserve">
+    <value>tercero</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedTo" xml:space="preserve">
+    <value>Hora final</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedWeekly" xml:space="preserve">
+    <value>semanalmente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedWeeks" xml:space="preserve">
+    <value>semana(s) de</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedWorking" xml:space="preserve">
+    <value>Trabajando...</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AdvancedYearly" xml:space="preserve">
+    <value>Anualmente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.AllDay" xml:space="preserve">
+    <value>todo el dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmDeleteText" xml:space="preserve">
+    <value>¿Seguro que quiere borrar la cita?</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmDeleteTitle" xml:space="preserve">
+    <value>Confirmar borrado</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceDeleteOccurrence" xml:space="preserve">
+    <value>Borra sólo este caso.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceDeleteSeries" xml:space="preserve">
+    <value>Borrar las repeticiones.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceDeleteTitle" xml:space="preserve">
+    <value>Borrando una cita repetida.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceEditOccurrence" xml:space="preserve">
+    <value>Editar sólo esta cita.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceEditSeries" xml:space="preserve">
+    <value>Editar la serie.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceEditTitle" xml:space="preserve">
+    <value>Editar una cita que se repite.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceMoveOccurrence" xml:space="preserve">
+    <value>Mover sólo este caso.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceMoveSeries" xml:space="preserve">
+    <value>Mover la serie.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceMoveTitle" xml:space="preserve">
+    <value>Moviendo una cita recurrente.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceResizeOccurrence" xml:space="preserve">
+    <value>Cambiar duración de este caso sólo</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceResizeSeries" xml:space="preserve">
+    <value>Cambiar duración en la serie.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmRecurrenceResizeTitle" xml:space="preserve">
+    <value>Cambiar duración de una cita recurrente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmResetExceptionsText" xml:space="preserve">
+    <value>¿Quiere borrar todas la excepciones recurrentes?</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ConfirmResetExceptionsTitle" xml:space="preserve">
+    <value>Confirma reset de excepciones</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ContextMenuAddAppointment" xml:space="preserve">
+    <value>Nueva cita</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ContextMenuAddRecurringAppointment" xml:space="preserve">
+    <value>Nueva cita recurrente.</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ContextMenuDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ContextMenuEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ContextMenuGoToToday" xml:space="preserve">
+    <value>Ir a hoy</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderDay" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderMonth" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderMultiDay" xml:space="preserve">
+    <value>Multi-dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderNextDay" xml:space="preserve">
+    <value>Dia siguiente</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderPrevDay" xml:space="preserve">
+    <value>dia anterior</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderTimeline" xml:space="preserve">
+    <value>Linea de tiempo</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderToday" xml:space="preserve">
+    <value>hoy</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.HeaderWeek" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.Reminder" xml:space="preserve">
+    <value>Recordatorio</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderBeforeStart" xml:space="preserve">
+    <value>antes de inicio</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderDay" xml:space="preserve">
+    <value>dia</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderDays" xml:space="preserve">
+    <value>dias</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderDismiss" xml:space="preserve">
+    <value>Descartar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderDismissAll" xml:space="preserve">
+    <value>Descartar todo</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderDueIn" xml:space="preserve">
+    <value>hecho en</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderHour" xml:space="preserve">
+    <value>hora</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderHours" xml:space="preserve">
+    <value>horas</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderMinute" xml:space="preserve">
+    <value>minuto</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderMinutes" xml:space="preserve">
+    <value>minutos</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderNone" xml:space="preserve">
+    <value>Ninguna</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderOpenItem" xml:space="preserve">
+    <value>Abrir ítem</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderOverdue" xml:space="preserve">
+    <value>sobrecargado</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.Reminders" xml:space="preserve">
+    <value>Recordatorios</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderSnooze" xml:space="preserve">
+    <value>Snooze</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderSnoozeHint" xml:space="preserve">
+    <value>Cilc en Snooze para repetir</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderWeek" xml:space="preserve">
+    <value>semana</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ReminderWeeks" xml:space="preserve">
+    <value>semanas</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.Show24Hours" xml:space="preserve">
+    <value>Mostrar 24 horas....</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ShowAdvancedForm" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ShowBusinessHours" xml:space="preserve">
+    <value>Mostrar horas laborables...</value>
+  </data>
+  <data name="RadScheduler1Resource1.Localization.ShowMore" xml:space="preserve">
+    <value>mas...</value>
+  </data>
+  <data name="RadScheduler1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadToolTipManager1Resource1.ManualCloseButtonText" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="RadToolTipManager1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Close" xml:space="preserve">
+    <value>Cerrrar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Maximize" xml:space="preserve">
+    <value>Maximizar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Minimize" xml:space="preserve">
+    <value>Minimizar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.PinOff" xml:space="preserve">
+    <value>Fijar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.PinOn" xml:space="preserve">
+    <value>No fijar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Reload" xml:space="preserve">
+    <value>Recargar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Restore" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="RadWindowManager1Resource1.Localization.Yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="RadWindowManager1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+</root>

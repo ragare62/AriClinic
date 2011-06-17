@@ -1088,6 +1088,5 @@ namespace AriCliModel
             return (from da in ctx.DiagnosticAssigneds
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
-        }
     }
 }

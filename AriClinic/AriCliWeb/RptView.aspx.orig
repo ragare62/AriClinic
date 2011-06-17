@@ -1,14 +1,17 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RptView.aspx.cs" Inherits="RptView" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 
+
+
+
+
+
+
 <<<<<<< HEAD
+<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=5.0.11.510, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" Namespace="Telerik.ReportViewer.WebForms" TagPrefix="telerik" %>
 =======
-
-
-
->>>>>>> f14511f08c1e30bde292833429fdb108eb7d886f
-<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" Namespace="Telerik.ReportViewer.WebForms" TagPrefix="telerik" %>
-
+<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" Namespace="Telerik.ReportViewer.WebForms" TagPrefix="telerik" %>
+>>>>>>> 3a0a51800d371999c611e4d5b461bddded375ed1
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AFF8F504-D105-456C-889C-23E901358A9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AriCliReport</RootNamespace>
+    <AssemblyName>AriCliReport</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+<<<<<<< HEAD
+    <Reference Include="Telerik.Reporting, Version=5.0.11.510, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.OpenAccess, Version=2011.1.411.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.411.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.1.411.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+=======
+    <Reference Include="Telerik.Reporting, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.OpenAccess, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+>>>>>>> 3a0a51800d371999c611e4d5b461bddded375ed1
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="RptAnesNote.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAnesNote.Designer.cs">
+      <DependentUpon>RptAnesNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInsuranceDebt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInsuranceDebt.Designer.cs">
+      <DependentUpon>RptInsuranceDebt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoice.Designer.cs">
+      <DependentUpon>RptInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoicesPeriod.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoicesPeriod.Designer.cs">
+      <DependentUpon>RptInvoicesPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptNomenclator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptNomenclator.Designer.cs">
+      <DependentUpon>RptNomenclator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptParamTickets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptParamTickets.Designer.cs">
+      <DependentUpon>RptParamTickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptParamInvoices.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptParamInvoices.Designer.cs">
+      <DependentUpon>RptParamInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptPatientDebt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPatientDebt.Designer.cs">
+      <DependentUpon>RptPatientDebt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptPatientInvoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPatientInvoice.Designer.cs">
+      <DependentUpon>RptPatientInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptServCategory.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptServCategory.Designer.cs">
+      <DependentUpon>RptServCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptServicesComparer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptServicesComparer.Designer.cs">
+      <DependentUpon>RptServicesComparer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptServNote.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptServNote.Designer.cs">
+      <DependentUpon>RptServNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptServProfessional.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptServProfessional.Designer.cs">
+      <DependentUpon>RptServProfessional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicket.Designer.cs">
+      <DependentUpon>RptTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicketsNoPaid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicketsNoPaid.Designer.cs">
+      <DependentUpon>RptTicketsNoPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicketsPaid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicketsPaid.Designer.cs">
+      <DependentUpon>RptTicketsPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptPayments.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPayments.Designer.cs">
+      <DependentUpon>RptPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RptTickets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTickets.Designer.cs">
+      <DependentUpon>RptTickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubInvoiceFooter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SubInvoiceFooter.Designer.cs">
+      <DependentUpon>SubInvoiceFooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubInvoiceLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SubInvoiceLine.Designer.cs">
+      <DependentUpon>SubInvoiceLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubServiceComp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SubServiceComp.Designer.cs">
+      <DependentUpon>SubServiceComp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="subServNoteTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="subServNoteTicket.Designer.cs">
+      <DependentUpon>subServNoteTicket.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
+      <Project>{B1CAF779-D00A-4A1B-9662-06B466832A3C}</Project>
+      <Name>AriCliModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Logo_150.png" />
+    <Content Include="images\Logo_300.png" />
+    <Content Include="images\logo_impr.png" />
+    <Content Include="images\logo_impr2.png" />
+    <Content Include="images\logo_web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RptAnesNote.resx">
+      <DependentUpon>RptAnesNote.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInsuranceDebt.resx">
+      <DependentUpon>RptInsuranceDebt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoice.resx">
+      <DependentUpon>RptInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoicesPeriod.resx">
+      <DependentUpon>RptInvoicesPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptNomenclator.resx">
+      <DependentUpon>RptNomenclator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptParamTickets.resx">
+      <DependentUpon>RptParamTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptParamInvoices.resx">
+      <DependentUpon>RptParamInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPatientDebt.resx">
+      <DependentUpon>RptPatientDebt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPatientInvoice.resx">
+      <DependentUpon>RptPatientInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptServCategory.resx">
+      <DependentUpon>RptServCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptServicesComparer.resx">
+      <DependentUpon>RptServicesComparer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptServNote.resx">
+      <DependentUpon>RptServNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptServProfessional.resx">
+      <DependentUpon>RptServProfessional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicket.resx">
+      <DependentUpon>RptTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicketsNoPaid.resx">
+      <DependentUpon>RptTicketsNoPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicketsPaid.resx">
+      <DependentUpon>RptTicketsPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPayments.resx">
+      <DependentUpon>RptPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTickets.resx">
+      <DependentUpon>RptTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubInvoiceFooter.resx">
+      <DependentUpon>SubInvoiceFooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubInvoiceLine.resx">
+      <DependentUpon>SubInvoiceLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubServiceComp.resx">
+      <DependentUpon>SubServiceComp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="subServNoteTicket.resx">
+      <DependentUpon>subServNoteTicket.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
