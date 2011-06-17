@@ -14,25 +14,13 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
 {
 	public partial class Diagnostic
 	{
-		private int diagnosticId;
-		public virtual int DiagnosticId 
-		{ 
-		    get
-		    {
-		        return this.diagnosticId;
-		    }
-		    set
-		    {
-		        this.diagnosticId = value;
-		    }
-		}
-		
 		private string name;
 		public virtual string Name 
 		{ 
@@ -43,6 +31,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.name = value;
+		    }
+		}
+		
+		private int diagnosticId;
+		public virtual int DiagnosticId 
+		{ 
+		    get
+		    {
+		        return this.diagnosticId;
+		    }
+		    set
+		    {
+		        this.diagnosticId = value;
 		    }
 		}
 		

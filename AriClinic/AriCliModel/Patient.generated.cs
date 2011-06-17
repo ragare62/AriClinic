@@ -14,6 +14,7 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
@@ -121,7 +122,7 @@ namespace AriCliModel
 		}
 		
 		private IList<DiagnosticAssigned> diagnosticAssigneds = new List<DiagnosticAssigned>();
-		public virtual IList<DiagnosticAssigned> DiagnosticAssigneds 
+		public virtual IList<DiagnosticAssigned> Diagnostic_assigneds 
 		{ 
 		    get
 		    {

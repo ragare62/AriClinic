@@ -19,53 +19,31 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class PaymentMethod
+	public partial class ExternalInvoiceLine : InvoiceLine
 	{
-		private int paymentMethodId;
-		public virtual int PaymentMethodId 
+		private decimal comissionAmount;
+		public virtual decimal ComissionAmount 
 		{ 
 		    get
 		    {
-		        return this.paymentMethodId;
+		        return this.comissionAmount;
 		    }
 		    set
 		    {
-		        this.paymentMethodId = value;
+		        this.comissionAmount = value;
 		    }
 		}
 		
-		private int oftId;
-		public virtual int OftId 
+		private ExternalInvoice externalInvoice;
+		public virtual ExternalInvoice ExternalInvoice 
 		{ 
 		    get
 		    {
-		        return this.oftId;
+		        return this.externalInvoice;
 		    }
 		    set
 		    {
-		        this.oftId = value;
-		    }
-		}
-		
-		private string name;
-		public virtual string Name 
-		{ 
-		    get
-		    {
-		        return this.name;
-		    }
-		    set
-		    {
-		        this.name = value;
-		    }
-		}
-		
-		private IList<Payment> payments = new List<Payment>();
-		public virtual IList<Payment> Payments 
-		{ 
-		    get
-		    {
-		        return this.payments;
+		        this.externalInvoice = value;
 		    }
 		}
 		

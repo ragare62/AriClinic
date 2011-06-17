@@ -14,25 +14,13 @@ using System.Linq.Expressions;
 using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
+using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
 {
 	public partial class DiagnosticAssigned
 	{
-		private int diagnosticAssignedId;
-		public virtual int DiagnosticAssignedId 
-		{ 
-		    get
-		    {
-		        return this.diagnosticAssignedId;
-		    }
-		    set
-		    {
-		        this.diagnosticAssignedId = value;
-		    }
-		}
-		
 		private DateTime diagnosticDate;
 		public virtual DateTime DiagnosticDate 
 		{ 
@@ -43,6 +31,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.diagnosticDate = value;
+		    }
+		}
+		
+		private int diagnosticAssignedId;
+		public virtual int DiagnosticAssignedId 
+		{ 
+		    get
+		    {
+		        return this.diagnosticAssignedId;
+		    }
+		    set
+		    {
+		        this.diagnosticAssignedId = value;
 		    }
 		}
 		
@@ -59,19 +60,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Diagnostic diagnostic;
-		public virtual Diagnostic Diagnostic 
-		{ 
-		    get
-		    {
-		        return this.diagnostic;
-		    }
-		    set
-		    {
-		        this.diagnostic = value;
-		    }
-		}
-		
 		private Patient patient;
 		public virtual Patient Patient 
 		{ 
@@ -82,6 +70,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.patient = value;
+		    }
+		}
+		
+		private Diagnostic diagnostic;
+		public virtual Diagnostic Diagnostic 
+		{ 
+		    get
+		    {
+		        return this.diagnostic;
+		    }
+		    set
+		    {
+		        this.diagnostic = value;
 		    }
 		}
 		

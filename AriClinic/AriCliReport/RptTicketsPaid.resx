@@ -117,15 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=5.0.11.510, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
     <value>0.1in</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAF0AAAAeCAYAAABOvRIBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOtwAA
-        DrcBHI9bQQAAC4ZJREFUaEPtWgl0lcUVjt2oEgiLICL7KiKecrRWWiuVYlGRfZMtbLIVaBUFAalFFkHA
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOtgAA
+        DrYBzsi5pQAAC4ZJREFUaEPtWgl0lcUVjt2oEgiLICL7KiKecrRWWiuVYlGRfZMtbLIVaBUFAalFFkHA
         DUGqWIVyRKymHKqIrVKW5CV5edlDQjZICAlrgOxkv/2++2eeLy8hG4ETj8w575A3b2b+O9/c+93vzs8t
         d88MFo+b7cYiQNBvfm4sBh7XA/Cez1ib6PGMo9yBsr/bdEeF/uthQ0Nes95BJ7C9ZgVL6/GB0tE7SFqN
         C5DuMxzC/jsnBMhvF0VIpylBCj6B6YmD4achg1TfttU76DSQQL/xr1TJzS8RW0ymtJ1oB+B2WffPU8Jm

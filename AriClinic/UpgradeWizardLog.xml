@@ -95,6 +95,9 @@
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" />
   <event action="Analyze" type="Success" name="DiagnosticAssignedForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" />
+  <event action="Analyze" type="Success" name="DiagnosticAssignedGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" />
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticForm.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticForm.aspx" />
   <event action="Analyze" type="Success" name="DiagnosticForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DiagnosticForm.aspx" />
