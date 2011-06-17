@@ -43,16 +43,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.OpenAccess, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    <Reference Include="Telerik.Reporting, Version=5.0.11.316, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.OpenAccess, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2010.3.1125.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.1.316.10, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Reporting, Version=4.2.10.1110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RptAnesNote.cs">
@@ -208,6 +208,7 @@
   <ItemGroup>
     <EmbeddedResource Include="RptAnesNote.resx">
       <DependentUpon>RptAnesNote.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RptInsuranceDebt.resx">
       <DependentUpon>RptInsuranceDebt.cs</DependentUpon>
