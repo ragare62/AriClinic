@@ -77,3 +77,11 @@ function searchDiagnostic() {
     var w1 = window.open("DiagnosticGrid.aspx?Type=S", "DIAGNOSTICS", "width=500,height=400,resizable=1");
     w1.focus;
 }
+function searchDrug() {
+    var w1 = window.open("DrugGrid.aspx?Type=S", "DRUGS", "width=500,height=400,resizable=1");
+    w1.focus;
+}
+function searchExamination() {
+    var w1 = window.open("ExaminationGrid.aspx?Type=S", "EXAMINATIONS", "width=500,height=400,resizable=1");
+    w1.focus;
+}

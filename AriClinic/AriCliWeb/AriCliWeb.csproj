@@ -157,6 +157,62 @@
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TreatmentGrid.aspx.cs">
+      <DependentUpon>TreatmentGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TreatmentGrid.aspx.designer.cs">
+      <DependentUpon>TreatmentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TreatmentForm.aspx.cs">
+      <DependentUpon>TreatmentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TreatmentForm.aspx.designer.cs">
+      <DependentUpon>TreatmentForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationAssignedForm.aspx.cs">
+      <DependentUpon>ExaminationAssignedForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminationAssignedForm.aspx.designer.cs">
+      <DependentUpon>ExaminationAssignedForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationGrid.aspx.cs">
+      <DependentUpon>ExaminationGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminationGrid.aspx.designer.cs">
+      <DependentUpon>ExaminationGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationAssignedGrid.aspx.cs">
+      <DependentUpon>ExaminationAssignedGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminationAssignedGrid.aspx.designer.cs">
+      <DependentUpon>ExaminationAssignedGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationForm.aspx.cs">
+      <DependentUpon>ExaminationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminationForm.aspx.designer.cs">
+      <DependentUpon>ExaminationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DrugGrid.aspx.cs">
+      <DependentUpon>DrugGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DrugGrid.aspx.designer.cs">
+      <DependentUpon>DrugGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DrugForm.aspx.cs">
+      <DependentUpon>DrugForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DrugForm.aspx.designer.cs">
+      <DependentUpon>DrugForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DiagnosticAssignedGrid.aspx.cs">
       <DependentUpon>DiagnosticAssignedGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -732,6 +788,14 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="TreatmentGrid.aspx" />
+    <Content Include="TreatmentForm.aspx" />
+    <Content Include="ExaminationAssignedForm.aspx" />
+    <Content Include="ExaminationGrid.aspx" />
+    <Content Include="ExaminationAssignedGrid.aspx" />
+    <Content Include="ExaminationForm.aspx" />
+    <Content Include="DrugGrid.aspx" />
+    <Content Include="DrugForm.aspx" />
     <Content Include="DiagnosticAssignedGrid.aspx" />
     <Content Include="DiagnosticAssignedForm.aspx" />
     <Content Include="DiagnosticGrid.aspx" />
@@ -951,7 +1015,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

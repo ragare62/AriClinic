@@ -174,11 +174,17 @@
   <data name="DiaryNeeded" xml:space="preserve">
     <value>Se necesita una agenda</value>
   </data>
+  <data name="DrugNeeded" xml:space="preserve">
+    <value>Se necita un fármaco</value>
+  </data>
   <data name="EndHourNeeded" xml:space="preserve">
     <value>Se necesita una hora de final</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="ExaminationNeeded" xml:space="preserve">
+    <value>Se necesita una exploración</value>
   </data>
   <data name="FromGreatherThanTo" xml:space="preserve">
     <value>Desde mayor que hasta</value>

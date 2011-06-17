@@ -226,6 +226,22 @@ height: 30px;
               var w1 = window.open("DiagnosticAssignedGrid.aspx", "DIAGNOSTICASSIGNED", "width=800, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchDrug() {
+              var w1 = window.open("DrugGrid.aspx", "DRUG", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchTreatment() {
+              var w1 = window.open("TreatmentGrid.aspx", "TREATMENTS", "width=800, height=600,resizable=1")
+              w1.focus();
+          }
+          function LaunchExamination() {
+              var w1 = window.open("ExaminationGrid.aspx", "EXAMINATIONS", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchExaminationAssigned() {
+              var w1 = window.open("ExaminationAssignedGrid.aspx", "EXAMINATIONASSIGNED", "width=800, height=600,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -380,12 +396,21 @@ height: 30px;
                             <Items>
                                 <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
+                                </telerik:RadMenuItem>
                             </Items>
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Diagnósticos asignados" 
                             Value="diagnosticassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tratamientos" Value="treatment">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Exploraciones asignadas" 
+                            Value="examinationassigned">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

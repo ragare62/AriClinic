@@ -522,8 +522,14 @@
         <orm:field name="appointments" property="Appointments" uniqueId="b589bb41-b47e-4bce-bef8-33176f7706e9" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="patient" order-by="" uniqueId="5e19c0ee-7f0a-4309-8f20-3946b3607df4" />
         </orm:field>
-        <orm:field name="diagnosticAssigneds" property="Diagnostic_assigneds" uniqueId="28cf2459-cfd2-473b-a8ba-b565cf82dbab" type="AriCliModel.DiagnosticAssigned">
+        <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" uniqueId="28cf2459-cfd2-473b-a8ba-b565cf82dbab" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="patient" order-by="" uniqueId="2d0b5a96-8a45-464b-a981-57dedc61ce15" />
+        </orm:field>
+        <orm:field name="treatments" property="Treatments" uniqueId="fbc3d972-6169-4f0f-a63a-5ec3e8b5b53a" type="AriCliModel.Treatment">
+          <orm:collection element-class="AriCliModel.Treatment" inverse-field="patient1" order-by="" uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f" />
+        </orm:field>
+        <orm:field name="examinationAssigneds" property="ExaminationAssigneds" uniqueId="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" type="AriCliModel.ExaminationAssigned">
+          <orm:collection element-class="AriCliModel.ExaminationAssigned" inverse-field="patient" order-by="" uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
       </orm:class>
       <orm:class name="Customer" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
@@ -1301,6 +1307,87 @@
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="diagnostic" order-by="" uniqueId="a93981ea-fd65-4dc2-b81b-379b15368fd1" />
         </orm:field>
       </orm:class>
+      <orm:class name="Drug" update-schema="true" uniqueId="2250b05d-4908-44af-a999-98e7034a0723">
+        <orm:table name="drug" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="drugId" />
+        </orm:identity>
+        <orm:field name="drugId" property="DrugId" uniqueId="022baec2-a437-4f64-ae94-707a37ebbe4c" type="System.Int32">
+          <orm:column name="drug_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="797a0794-da78-4176-9994-557c3401d182" type="System.String">
+          <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Treatment" update-schema="true" uniqueId="311fd894-f124-4eca-adb1-01e3c7f27824">
+        <orm:table name="treatment" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="treatmentId" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.Treatment" />
+        <orm:field name="treatmentId" property="TreatmentId" uniqueId="2a60076b-3999-4f17-9f4b-a48bb3f1c449" type="System.Int32">
+          <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="treatmentDate" property="TreatmentDate" uniqueId="0a043529-20e4-4021-8052-bb77c2a15c6d" type="System.DateTime">
+          <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="recommend" property="Recommend" uniqueId="bccab8ee-7582-4457-9be9-8b31bacb5f64" type="System.String">
+          <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="drug" property="Drug" uniqueId="09987183-29ff-4a93-a247-8e1290d707e7" type="AriCliModel.Drug">
+          <orm:reference uniqueId="50c135e7-730d-46f8-8f9e-757c13048502" />
+        </orm:field>
+        <orm:field name="patient1" property="Patient" uniqueId="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" type="AriCliModel.Patient">
+          <orm:reference uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f" />
+        </orm:field>
+        <orm:index name="idx_treatment_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="UnitType" update-schema="true" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
+        <orm:table name="unit_type" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="unitTypeId" />
+        </orm:identity>
+        <orm:field name="unitTypeId" property="UnitTypeId" uniqueId="7ad63f0a-5b7a-4c21-bf26-0d470e9430da" type="System.Int32">
+          <orm:column name="unit_type_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="1ebb6f9e-e462-43b5-ae49-eea30edd3083" type="System.String">
+          <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Examination" use-default-mapping="true" update-schema="true" uniqueId="700e85fc-a419-4899-8ecf-74904ab2ac3f">
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="examinationId" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.Examination" />
+        <orm:field name="examinationId" property="ExaminationId" uniqueId="ff181e29-c778-4416-a181-884c0223049c" type="System.Int32">
+          <orm:column name="examination_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="be4516bc-0bb5-43a4-a0ab-f1e70ccd82cc" type="System.String">
+          <orm:column name="nme" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="ExaminationAssigned" update-schema="true" uniqueId="288cf8b7-4286-454c-a27c-9f111d59aa2a">
+        <orm:table name="examination_assigned" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="examinationAssignedId" />
+        </orm:identity>
+        <orm:field name="examinationAssignedId" property="ExaminationAssignedId" uniqueId="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" type="System.Int32" />
+        <orm:field name="examinationDate" property="ExaminationDate" uniqueId="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" type="System.DateTime" />
+        <orm:field name="comments" property="Comments" uniqueId="9bc0a6f2-1499-490f-a205-1c66e95be447" type="System.String" />
+        <orm:field name="examination" property="Examination" uniqueId="3cd64684-2d95-4642-9f1c-96f6e0e89ad5" type="AriCliModel.Examination">
+          <orm:reference uniqueId="67479349-596c-45e3-99a2-55ac07e739b6" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" uniqueId="96cef444-12db-4a98-80fb-6d78ecf88187" type="AriCliModel.Patient">
+          <orm:reference uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="user_group">
@@ -1846,6 +1933,29 @@
       <orm:table name="diagnostic">
         <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
         <orm:column name="diagnostic_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="drug">
+        <orm:column name="drug_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+      </orm:table>
+      <orm:table name="unit_type">
+        <orm:column name="unit_type_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+      </orm:table>
+      <orm:table name="examination_assigned">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="examination_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+      </orm:table>
+      <orm:table name="treatment">
+        <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="drug_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.Drug" target-field="drugId" />
+        <orm:index name="idx_treatment_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -2440,7 +2550,13 @@
           <NavigationalProperty Id="b589bb41-b47e-4bce-bef8-33176f7706e9" name="Appointments" type="IList&lt;AppointmentInfo&gt;" label="Appointments : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b9f9e842-4aa0-45aa-abbc-43603018f0bb">
-          <NavigationalProperty Id="28cf2459-cfd2-473b-a8ba-b565cf82dbab" name="Diagnostic_assigneds" type="IList&lt;Diagnostic_assigned&gt;" label="Diagnostic_assigneds : IList&lt;Diagnostic_assigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="28cf2459-cfd2-473b-a8ba-b565cf82dbab" name="DiagnosticAssigneds" type="IList&lt;DiagnosticAssigned&gt;" label="DiagnosticAssigneds : IList&lt;DiagnosticAssigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="b2479975-0865-4ce2-9124-3f7718f8af3d">
+          <NavigationalProperty Id="fbc3d972-6169-4f0f-a63a-5ec3e8b5b53a" name="Treatments" type="IList&lt;Treatment&gt;" label="Treatments : IList&lt;Treatment&gt;" nullable="true" kind="Persistent" fieldName="treatments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ec2557ba-ed0f-4f77-80f9-42d6ae8871a9">
+          <NavigationalProperty Id="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" name="ExaminationAssigneds" type="IList&lt;ExaminationAssigned&gt;" label="ExaminationAssigneds : IList&lt;ExaminationAssigned&gt;" nullable="true" kind="Persistent" fieldName="examinationAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -3403,7 +3519,7 @@
           <DomainClassMoniker name="/AriClinicContext/Patient" />
           <targetNavigationalProperty>
             <associationDefinesTargetProperty Id="f8d0c31f-2ffb-4b3b-a69d-b90739f3ba86">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/Diagnostic_assigneds" />
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/DiagnosticAssigneds" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
@@ -3441,6 +3557,90 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="9c5d23dc-3a63-4d52-919c-232f1ca5a003">
           <NavigationalProperty Id="634a188d-1bd3-4325-9b41-ae37284cc86a" name="DiagnosticAssigneds" type="IList&lt;DiagnosticAssigned&gt;" label="DiagnosticAssigneds : IList&lt;DiagnosticAssigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="2250b05d-4908-44af-a999-98e7034a0723" name="Drug" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="022baec2-a437-4f64-ae94-707a37ebbe4c" name="DrugId" type="Int32" label="DrugId : Int32" identity="true" />
+      <Property Id="797a0794-da78-4176-9994-557c3401d182" name="Name" label="Name : String" />
+    </DomainClass>
+    <DomainClass Id="311fd894-f124-4eca-adb1-01e3c7f27824" name="Treatment" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="2a60076b-3999-4f17-9f4b-a48bb3f1c449" name="TreatmentId" type="Int32" label="TreatmentId : Int32" identity="true" />
+      <Property Id="0a043529-20e4-4021-8052-bb77c2a15c6d" name="TreatmentDate" type="DateTime" label="TreatmentDate : DateTime" />
+      <Property Id="bccab8ee-7582-4457-9be9-8b31bacb5f64" name="Recommend" label="Recommend : String" />
+      <AssociationTargets>
+        <Association Id="50c135e7-730d-46f8-8f9e-757c13048502" SourceMultiplicity="ZeroOne" name="TreatmentHasDrug">
+          <DomainClassMoniker name="/AriClinicContext/Drug" />
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="13234fd5-a517-4fe7-a62b-e7466bc15c1d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Treatment/Drug" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="91de658c-e0a4-465d-b6df-ec82354bd30f" SourceMultiplicity="ZeroOne" name="TreatmentHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b0e9726b-9624-4839-a038-f6533a7752f1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/Treatments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4d090cdf-3c85-4578-82a3-c95aa9a925a1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Treatment/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="7603cf5e-ed23-4d14-b2bd-79a03358f8d4">
+          <NavigationalProperty Id="09987183-29ff-4a93-a247-8e1290d707e7" name="Drug" type="Drug" label="Drug : Drug" nullable="true" kind="Persistent" fieldName="drug" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1a272bbf-5c3e-4633-a685-88ce04904c23">
+          <NavigationalProperty Id="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee" name="UnitType" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="7ad63f0a-5b7a-4c21-bf26-0d470e9430da" name="UnitTypeId" type="Int32" label="UnitTypeId : Int32" identity="true" />
+      <Property Id="1ebb6f9e-e462-43b5-ae49-eea30edd3083" name="Name" label="Name : String" />
+    </DomainClass>
+    <DomainClass Id="700e85fc-a419-4899-8ecf-74904ab2ac3f" name="Examination" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="ff181e29-c778-4416-a181-884c0223049c" name="ExaminationId" type="Int32" label="ExaminationId : Int32" identity="true" />
+      <Property Id="be4516bc-0bb5-43a4-a0ab-f1e70ccd82cc" name="Name" label="Name : String" />
+    </DomainClass>
+    <DomainClass Id="288cf8b7-4286-454c-a27c-9f111d59aa2a" name="ExaminationAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" name="ExaminationAssignedId" type="Int32" label="ExaminationAssignedId : Int32" identity="true" />
+      <Property Id="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" name="ExaminationDate" type="DateTime" label="ExaminationDate : DateTime" />
+      <Property Id="9bc0a6f2-1499-490f-a205-1c66e95be447" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="67479349-596c-45e3-99a2-55ac07e739b6" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasExamination">
+          <DomainClassMoniker name="/AriClinicContext/Examination" />
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="582fb0cc-5d06-45ad-97cf-1efcf6787e2f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ExaminationAssigned/Examination" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="edc3defa-4c18-4b3e-b752-c95f7aa7db72" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7d584e60-033c-42f5-a1af-29d7420e3342">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/ExaminationAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="415fdfbb-c7ae-4f27-8750-b0da7997f40a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ExaminationAssigned/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="f7de5e31-4117-4814-acfa-f369b0991515">
+          <NavigationalProperty Id="3cd64684-2d95-4642-9f1c-96f6e0e89ad5" name="Examination" type="Examination" label="Examination : Examination" nullable="true" kind="Persistent" fieldName="examination" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="682a1ef2-36a3-47cb-bfdd-1089da11ad12">
+          <NavigationalProperty Id="96cef444-12db-4a98-80fb-6d78ecf88187" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -3486,6 +3686,11 @@
         <entitySetProperty name="AppointmentInfos" namespace="AriCliModel" type="AppointmentInfo" label="AppointmentInfos : IQueryable&lt;AriCliModel.AppointmentInfo&gt;" />
         <entitySetProperty name="DiagnosticAssigneds" namespace="AriCliModel" type="DiagnosticAssigned" label="DiagnosticAssigneds : IQueryable&lt;AriCliModel.DiagnosticAssigned&gt;" />
         <entitySetProperty name="Diagnostics" namespace="AriCliModel" type="Diagnostic" label="Diagnostics : IQueryable&lt;AriCliModel.Diagnostic&gt;" />
+        <entitySetProperty name="Drugs" type="Drug" label="Drugs : IQueryable&lt;Drug&gt;" />
+        <entitySetProperty name="Treatments" type="Treatment" label="Treatments : IQueryable&lt;Treatment&gt;" />
+        <entitySetProperty name="UnitTypes" type="UnitType" label="UnitTypes : IQueryable&lt;UnitType&gt;" />
+        <entitySetProperty name="Examinations" type="Examination" label="Examinations : IQueryable&lt;Examination&gt;" />
+        <entitySetProperty name="ExaminationAssigneds" type="ExaminationAssigned" label="ExaminationAssigneds : IQueryable&lt;ExaminationAssigned&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

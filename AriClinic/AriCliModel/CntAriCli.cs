@@ -1089,5 +1089,53 @@ namespace AriCliModel
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
         }
+        public static IList<Drug> GetDrugs(AriClinicContext ctx)
+        {
+            return (from d in ctx.Drugs
+                    orderby d.Name
+                    select d).ToList<Drug>();
+        }
+        public static Drug GetDrug(int id, AriClinicContext ctx)
+        {
+            return (from d in ctx.Drugs
+                    where d.DrugId == id
+                    select d).FirstOrDefault<Drug>();
+        }
+        public static IList<Treatment> GetTreatments(AriClinicContext ctx)
+        {
+            return (from t in ctx.Treatments
+                    orderby t.TreatmentDate descending
+                    select t).ToList<Treatment>();
+        }
+        public static Treatment GetTreatment(int id, AriClinicContext ctx)
+        {
+            return (from t in ctx.Treatments
+                    where t.TreatmentId == id
+                    select t).FirstOrDefault<Treatment>();
+        }
+        public static IList<Examination> GetExaminations(AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    orderby e.Name
+                    select e).ToList<Examination>();
+        }
+        public static Examination GetExamination(int id, AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    where e.ExaminationId == id
+                    select e).FirstOrDefault<Examination>();
+        }
+        public static IList<ExaminationAssigned> GetExaminationsAssigned(AriClinicContext ctx)
+        {
+            return (from ea in ctx.ExaminationAssigneds
+                    orderby ea.ExaminationDate descending
+                    select ea).ToList<ExaminationAssigned>();
+        }
+        public static ExaminationAssigned GetExaminationAssigned(int id, AriClinicContext ctx)
+        {
+            return (from ea in ctx.ExaminationAssigneds
+                    where ea.ExaminationAssignedId == id
+                    select ea).FirstOrDefault<ExaminationAssigned>();
+        }
     }
 }

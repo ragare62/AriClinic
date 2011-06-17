@@ -4,15 +4,16 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
-using System.Drawing;
 
-public partial class DiaryGrid : System.Web.UI.Page 
+public partial class ExaminationAssignedGrid : System.Web.UI.Page 
 {
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
+    ExaminationAssigned ExaminationAssigned = null;
+    int ExaminationAssignedId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -23,12 +24,12 @@ public partial class DiaryGrid : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         else
         {
-            user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
+            user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "agenda"
+                            where p.Code == "Examinationassigned"
                             select p).FirstOrDefault<Process>();
-            if (proc != null) per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
+            per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
@@ -53,7 +54,7 @@ public partial class DiaryGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = ctx.Diaries;
+        RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -66,7 +67,6 @@ public partial class DiaryGrid : System.Web.UI.Page
         if (e.Item is GridDataItem)
         {
             ImageButton imgb = null;
-            HyperLink hiper = null;
             string name = "";
             string command = "";
             GridDataItem gdi;
@@ -77,32 +77,26 @@ public partial class DiaryGrid : System.Web.UI.Page
             // assign javascript function to select button
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
-
-            name = gdi["Name"].Text;
+            name = gdi["Patient.FullName"].Text + ": " + gdi["Examination.Name"].Text;
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
                                     , null
                                     , name
                                     , null
-                                    , "Drug");
+                                    , "Examination");
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditDiaryRecord({0});", id);
+            command = String.Format("return EditExaminationAssignedRecord({0});", id);
             imgb.OnClientClick = command;
-
-            // assign url to open hyperlink
-            hiper = (HyperLink)e.Item.FindControl("Open");
-            if (hiper != null)
-                hiper.NavigateUrl = String.Format("SchedulerGeneral.aspx?DiaryId={0}", id);
-
 
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
-            command = String.Format("return confirm('{0} {1}');", Resources.GeneralResource.DeleteRecordQuestion, name);
-            imgb.OnClientClick = command;
+            string message = Resources.GeneralResource.DeleteRecordQuestion;
+            message = String.Format("{0}<br/>{1}", message, name);
+            command = String.Format("ariDialog('Examinationos asignados','{0}','prompt',null,0,0)", message);
             imgb.Visible = per.Create;
         }
     }
@@ -126,12 +120,12 @@ public partial class DiaryGrid : System.Web.UI.Page
                 case "Edit":
                     break;
                 case "Delete":
-                    Diary agenda = (from a in ctx.Diaries
-                                     where a.DiaryId == id
-                                     select a).FirstOrDefault<Diary>();
-                    ctx.Delete(agenda);
-                    ctx.SaveChanges();
-                    RefreshGrid();
+                    Session["DeleteId"] = id;
+                    string message = Resources.GeneralResource.DeleteRecordQuestion;
+                    GridDataItem gdi = (GridDataItem)e.Item;
+                    message = String.Format("{0}<br/>{1}: {2}", message, gdi["Patient.FullName"].Text, gdi["Examination.Name"].Text);
+                    string command = String.Format("ariDialog('Servicios','{0}','prompt',null,0,0)", message);
+                    RadAjaxManager1.ResponseScripts.Add(command);
                     break;
             }
         }
@@ -142,16 +136,40 @@ public partial class DiaryGrid : System.Web.UI.Page
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
         RefreshGrid();
-        if (e.Argument == "new") 
-        { 
+        if (e.Argument == "new")
+        {
             RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
             RadGrid1.Rebind();
+        }
+        if (e.Argument == "yes")
+        {
+            if (Session["DeleteId"] != null)
+            {
+                try
+                {
+                    ExaminationAssignedId = (int)Session["DeleteId"];
+                    ExaminationAssigned = (from da in ctx.ExaminationAssigneds
+                                          where da.ExaminationAssignedId == ExaminationAssignedId
+                                          select da).FirstOrDefault<ExaminationAssigned>();
+                    ctx.Delete(ExaminationAssigned);
+                    ctx.SaveChanges();
+                    RefreshGrid();
+                    Session["DeleteId"] = null;
+                }
+                catch (Exception ex)
+                {
+                    Session["Exception"] = ex;
+                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
+                                                   , Resources.GeneralResource.DeleteRecordFail);
+                    RadAjaxManager1.ResponseScripts.Add(command);
+                }
+            }
         }
     }
 
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.Diaries;
+        RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
         RadGrid1.Rebind();
     }
 }

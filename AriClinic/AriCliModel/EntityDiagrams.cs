@@ -352,6 +352,46 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Drug> Drugs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Drug>();
+	    	}
+		}
+		
+		public IQueryable<Treatment> Treatments 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Treatment>();
+	    	}
+		}
+		
+		public IQueryable<UnitType> UnitTypes 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<UnitType>();
+	    	}
+		}
+		
+		public IQueryable<Examination> Examinations 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Examination>();
+	    	}
+		}
+		
+		public IQueryable<ExaminationAssigned> ExaminationAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ExaminationAssigned>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

@@ -232,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se necita un fármaco.
+        /// </summary>
+        internal static string DrugNeeded {
+            get {
+                return ResourceManager.GetString("DrugNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se necesita una hora de final.
         /// </summary>
         internal static string EndHourNeeded {
@@ -246,6 +255,15 @@ namespace Resources {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se necesita una exploración.
+        /// </summary>
+        internal static string ExaminationNeeded {
+            get {
+                return ResourceManager.GetString("ExaminationNeeded", resourceCulture);
             }
         }
         

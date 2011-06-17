@@ -233,6 +233,18 @@ public partial class MainMenu : System.Web.UI.Page
             case "diagnosticassigned":
                 RadAjaxManager1.ResponseScripts.Add("LaunchDiagnosticAssigned();");
                 break;
+            case "drug":
+                RadAjaxManager1.ResponseScripts.Add("LaunchDrug();");
+                break;
+            case "treatment":
+                RadAjaxManager1.ResponseScripts.Add("LaunchTreatment();");
+                break;
+            case "examination":
+                RadAjaxManager1.ResponseScripts.Add("LaunchExamination();");
+                break;
+            case "examinationassigned":
+                RadAjaxManager1.ResponseScripts.Add("LaunchExaminationAssigned();");
+                break;
             default:
                 break;
         }
