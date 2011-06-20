@@ -19,7 +19,6 @@ public partial class PatientTab : System.Web.UI.Page
     Permission per = null;
     HtmlControl frame = null;
     
-
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -57,7 +56,6 @@ public partial class PatientTab : System.Web.UI.Page
         {
             frame = (HtmlControl)this.FindControl("FrmArea");
             frame.Attributes["src"] = String.Format("PatientForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
-            
         }
     }
 
@@ -78,39 +76,47 @@ public partial class PatientTab : System.Web.UI.Page
         {
             case "patient":
                 frame.Attributes["src"] = String.Format("PatientForm.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "policy":
                 frame.Attributes["src"] = String.Format("PolicyGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "ticket":
                 frame.Attributes["src"] = String.Format("TicketGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "servnote":
                 frame.Attributes["src"] = String.Format("ServiceNoteGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "anesnote":
                 frame.Attributes["src"] = String.Format("AnestheticServiceNoteGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "invoice":
                 frame.Attributes["src"] = String.Format("InvoiceGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "payment":
                 frame.Attributes["src"] = String.Format("PaymentGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "appointment":
                 frame.Attributes["src"] = String.Format("AppointmentGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
                 break;
             case "docs":
                 frame.Attributes["src"] = String.Format("DocumentsPatient.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
-                    , pat.PersonId);
+                                                        , pat.PersonId);
+                break;
+            case "diagnosticassigned":
+                frame.Attributes["src"] = String.Format("DiagnosticAssignedGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                                        , pat.PersonId);
+                break;
+            case "treatment":
+                frame.Attributes["src"] = String.Format("TreatmentGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                                        , pat.PersonId);
                 break;
         }
     }

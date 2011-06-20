@@ -58,12 +58,12 @@
         </div>
         <div id="TabArea" class="normalText" style="width:100%">
             <telerik:RadTabStrip ID="RadTabStrip1" runat="server" 
-                ontabclick="RadTabStrip1_TabClick" SelectedIndex="1">
+                ontabclick="RadTabStrip1_TabClick" SelectedIndex="0">
                 <Tabs>
-                    <telerik:RadTab runat="server" Text="Filiación" Value="patient">
+                    <telerik:RadTab runat="server" Text="Filiación" Value="patient" Selected="True">
                     </telerik:RadTab>
                     <telerik:RadTab runat="server" Text="His. Administrativo" Value="policy" 
-                        SelectedIndex="0" Selected="True">
+                        SelectedIndex="0">
                         <Tabs>
                             <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
                                 Selected="True">
@@ -81,8 +81,12 @@
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="appointment">
+                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="diagnosticassigned">
                         <Tabs>
+                            <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
+                            </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Citas" Value="appointment">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Documentos" Value="docs">

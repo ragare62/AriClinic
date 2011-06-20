@@ -105,7 +105,7 @@
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." 
                                        onitemsrequested="rdcPatient_ItemsRequested" ItemsPerRequest="10" 
-                                       Width="314px" >
+                                       Width="314px" TabIndex="1" >
                   </telerik:RadComboBox>
                 </div>
               </td>
@@ -114,7 +114,13 @@
                   <asp:Label ID="lblTreatmentDate" runat="server" Text="Fecha del tratamiento:" 
                              ToolTip="Fecha en la que se pautó el tratamiento"></asp:Label>
                   <br />
-                  <telerik:RadDatePicker ID="rdpTreatmentDate" runat="server">
+                  <telerik:RadDatePicker ID="rdpTreatmentDate" runat="server" TabIndex="2">
+                      <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                          ViewSelectorText="x">
+                      </Calendar>
+                      <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2">
+                      </DateInput>
+                      <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="2" />
                   </telerik:RadDatePicker>
                 </div>
               </td>
@@ -133,7 +139,7 @@
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." 
                                        onitemsrequested="rdcDrug_ItemsRequested" ItemsPerRequest="10" 
-                                       Width="446px" >
+                                       Width="446px" TabIndex="3" >
                   </telerik:RadComboBox>
                 </div>
               </td>
@@ -145,7 +151,7 @@
                              ToolTip="Posologia o comentarios"></asp:Label>
                   <br />
                   <asp:TextBox ID="txtRecommend" runat="server" TextMode="MultiLine" Height="155px" 
-                               Width="462px"></asp:TextBox>
+                               Width="462px" TabIndex="4"></asp:TextBox>
                 </div>
               </td>
             </tr>
@@ -153,11 +159,13 @@
               <td colspan="2">
                 <div ID="Buttons" class="buttonsFomat">
                   <asp:ImageButton ID="btnAccept" runat="server" 
-                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
+                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" 
+                        ToolTip="Guardar y salir" TabIndex="5" />
                   &nbsp;
                   <asp:ImageButton ID="btnCancel" runat="server" 
                                    ImageUrl="~/images/document_out.png" CausesValidation="False" 
-                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
+                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar" 
+                        TabIndex="6" />
                 </div>
               </td>
             </tr>

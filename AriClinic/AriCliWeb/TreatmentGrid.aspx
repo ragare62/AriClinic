@@ -113,7 +113,7 @@
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" 
                             HorizontalAlign="NotSet" 
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
-        <div id="TitleArea" class="titleBar2">
+        <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           
           <asp:Label ID="lblTitle" runat="server" Text="Tratamientos" 

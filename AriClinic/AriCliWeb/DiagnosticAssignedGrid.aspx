@@ -27,6 +27,7 @@
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+        <script type="text/javascript" src="GeneralFormFunctions.js"></script>
         <script type="text/javascript">
           // In order to show item changes in the grid
           function refreshGrid(arg)
@@ -49,6 +50,18 @@
           function EditDiagnosticAssignedRecord(id)
           {
               var w2 = window.open("DiagnosticAssignedForm.aspx?DiagnosticAssignedId=" + id, null, "width=600, height=500,resizable=1");
+              w2.focus();
+          }
+          function NewDiagnosticAssignedRecordInTab()
+          {
+              alert("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'));
+              var w1 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditDiagnosticAssignedRecordInTab(id)
+          {
+              var w2 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId') + 
+                                   "&DiagnosticAssignedId=" + id, null, "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -113,9 +126,8 @@
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" 
                             HorizontalAlign="NotSet" 
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
-        <div id="TitleArea" class="titleBar2">
+        <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          
           <asp:Label ID="lblTitle" runat="server" Text="Diagnósticos asignados" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
@@ -161,6 +173,12 @@
                                          HeaderText="Diagnóstico" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="Diagnostic.Name" UniqueName="Diagnostic.Name">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Comments" 
+                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
+                                         HeaderText="Observaciones" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Comments" UniqueName="Comments">
                 </telerik:GridBoundColumn>
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 

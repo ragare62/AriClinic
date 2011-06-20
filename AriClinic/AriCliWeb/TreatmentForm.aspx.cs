@@ -55,6 +55,16 @@ public partial class TreatmentForm : System.Web.UI.Page
         {
             rdpTreatmentDate.SelectedDate = DateTime.Now;
         }
+        //
+        if (Request.QueryString["PatientId"] != null)
+        {
+            patientId = int.Parse(Request.QueryString["PatientId"]);
+            patient = CntAriCli.GetPatient(patientId, ctx);
+            // fix rdc with patient
+            rdcPatient.Items.Clear();
+            rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
+            rdcPatient.SelectedValue = patient.PersonId.ToString();
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
