@@ -78,6 +78,21 @@
               </td>
             </tr>
             <tr>
+            <td></td>
+                
+            <td>
+                <div id="ExaminationType" class="normalText">
+                <asp:Label id="lblExaminationType" runat="server" Text="Tipo de exploración"></asp:Label>
+                <br />
+                <telerik:RadComboBox ID="rdcExaminationType" runat="server" Height="16px" 
+                        Width="284px">
+                </telerik:RadComboBox>
+
+                </div>
+            </td>
+
+            </tr>
+            <tr>
               <td colspan="2">
                 <div ID="Buttons" class="buttonsFomat">
                   <asp:ImageButton ID="btnAccept" runat="server" 

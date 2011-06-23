@@ -19,46 +19,37 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class Examination
+	public interface BasicOpticalTest
 	{
-		private int examinationId;
-		public virtual int ExaminationId 
+		decimal CloseVisualAcuityRightEye 
 		{ 
-		    get
-		    {
-		        return this.examinationId;
-		    }
-		    set
-		    {
-		        this.examinationId = value;
-		    }
+			get;
+			set;
 		}
-		
-		private string name;
-		public virtual string Name 
+		decimal CloseVisualAcuityLeftEye 
 		{ 
-		    get
-		    {
-		        return this.name;
-		    }
-		    set
-		    {
-		        this.name = value;
-		    }
+			get;
+			set;
 		}
-		
-		private ExaminationType examinationType;
-		public virtual ExaminationType ExaminationType 
+		decimal CloseVisualAcuityBothEyes 
 		{ 
-		    get
-		    {
-		        return this.examinationType;
-		    }
-		    set
-		    {
-		        this.examinationType = value;
-		    }
+			get;
+			set;
 		}
-		
+		decimal FarVisualAcuityRightEye 
+		{ 
+			get;
+			set;
+		}
+		decimal FarVisualAcuityLeftEye 
+		{ 
+			get;
+			set;
+		}
+		decimal FarVisualAcuityBothEyes 
+		{ 
+			get;
+			set;
+		}
 	}
 }

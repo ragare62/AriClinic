@@ -19,18 +19,18 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class Examination
+	public partial class ExaminationType
 	{
-		private int examinationId;
-		public virtual int ExaminationId 
+		private string code;
+		public virtual string Code 
 		{ 
 		    get
 		    {
-		        return this.examinationId;
+		        return this.code;
 		    }
 		    set
 		    {
-		        this.examinationId = value;
+		        this.code = value;
 		    }
 		}
 		
@@ -44,19 +44,6 @@ namespace AriCliModel
 		    set
 		    {
 		        this.name = value;
-		    }
-		}
-		
-		private ExaminationType examinationType;
-		public virtual ExaminationType ExaminationType 
-		{ 
-		    get
-		    {
-		        return this.examinationType;
-		    }
-		    set
-		    {
-		        this.examinationType = value;
 		    }
 		}
 		

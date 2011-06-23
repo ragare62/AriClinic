@@ -946,6 +946,7 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="anestheticServiceNoteId" />
         </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.AnestheticServiceNote" />
         <orm:field name="anestheticServiceNoteId" property="AnestheticServiceNoteId" null-value="none" uniqueId="c5772d09-7c5d-4f4b-94f7-0817639dbcf9" type="System.Int32">
           <orm:column name="anesthetic_service_note_id" sql-type="INTEGER" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
@@ -1297,6 +1298,7 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="diagnosticId" />
         </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.Diagnostic" />
         <orm:field name="name" property="Name" uniqueId="75c69857-8cbd-492c-8314-008de5b14e72" type="System.String">
           <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
         </orm:field>
@@ -1327,13 +1329,13 @@
         </orm:identity>
         <orm:discriminator discriminator-value="AriCliModel.Treatment" />
         <orm:field name="treatmentId" property="TreatmentId" uniqueId="2a60076b-3999-4f17-9f4b-a48bb3f1c449" type="System.Int32">
-          <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="treatment_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="treatmentDate" property="TreatmentDate" uniqueId="0a043529-20e4-4021-8052-bb77c2a15c6d" type="System.DateTime">
           <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         </orm:field>
         <orm:field name="recommend" property="Recommend" uniqueId="bccab8ee-7582-4457-9be9-8b31bacb5f64" type="System.String">
-          <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="recommend" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="drug" property="Drug" uniqueId="09987183-29ff-4a93-a247-8e1290d707e7" type="AriCliModel.Drug">
           <orm:reference uniqueId="50c135e7-730d-46f8-8f9e-757c13048502" />
@@ -1370,23 +1372,446 @@
         <orm:field name="name" property="Name" uniqueId="be4516bc-0bb5-43a4-a0ab-f1e70ccd82cc" type="System.String">
           <orm:column name="nme" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="examinationType" property="ExaminationType" uniqueId="6da1da55-80e6-4a5f-8b91-381e77d7a1aa" type="AriCliModel.ExaminationType">
+          <orm:reference uniqueId="d59ff054-36c3-412a-b19b-16505ef6b1be" />
+        </orm:field>
       </orm:class>
-      <orm:class name="ExaminationAssigned" update-schema="true" uniqueId="288cf8b7-4286-454c-a27c-9f111d59aa2a">
-        <orm:table name="examination_assigned" />
+      <orm:class name="ExaminationAssigned" use-default-mapping="true" update-schema="true" uniqueId="288cf8b7-4286-454c-a27c-9f111d59aa2a">
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="examinationAssignedId" />
         </orm:identity>
-        <orm:field name="examinationAssignedId" property="ExaminationAssignedId" uniqueId="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" type="System.Int32" />
-        <orm:field name="examinationDate" property="ExaminationDate" uniqueId="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" type="System.DateTime" />
-        <orm:field name="comments" property="Comments" uniqueId="9bc0a6f2-1499-490f-a205-1c66e95be447" type="System.String" />
+        <orm:field name="examinationAssignedId" property="ExaminationAssignedId" uniqueId="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" type="System.Int32">
+          <orm:column name="examination_assigned_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="examinationDate" property="ExaminationDate" uniqueId="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" type="System.DateTime">
+          <orm:column name="examination_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="9bc0a6f2-1499-490f-a205-1c66e95be447" type="System.String">
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
         <orm:field name="examination" property="Examination" uniqueId="3cd64684-2d95-4642-9f1c-96f6e0e89ad5" type="AriCliModel.Examination">
           <orm:reference uniqueId="67479349-596c-45e3-99a2-55ac07e739b6" />
         </orm:field>
         <orm:field name="patient" property="Patient" uniqueId="96cef444-12db-4a98-80fb-6d78ecf88187" type="AriCliModel.Patient">
           <orm:reference uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
+        <orm:index name="idx_examination_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
+      <orm:class name="ExaminationType" use-default-mapping="true" update-schema="true" uniqueId="7e17bf9c-15f2-4f20-97cc-83848325bf68">
+        <orm:identity>
+          <orm:single-field field-name="code" />
+        </orm:identity>
+        <orm:field name="code" property="Code" uniqueId="62c0a189-ee6e-4754-8011-f3421060ec68" type="System.String">
+          <orm:column name="code" sql-type="VARCHAR" nullable="false" length="255" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="2d3ec66d-eede-4b7b-9380-fd99b80514af" type="System.String">
+          <orm:column name="nme" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Refractometry" update-schema="true" uniqueId="fe7a23dd-f2c7-4ee8-aa1f-836ab270bf35" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:table name="refractometry" />
+        <orm:discriminator discriminator-value="AriCliModel.Refractometry" />
+        <orm:field name="withoutGlassesTests" property="WithoutGlassesTests" uniqueId="da511ec6-9f8f-4981-8b5c-7a1199a90f1a" type="AriCliModel.WithoutGlassesTest">
+          <orm:collection element-class="AriCliModel.WithoutGlassesTest" inverse-field="refractometry" order-by="" uniqueId="c6b00c22-f2ae-4ce3-afd3-860bfd8ea60d" />
+        </orm:field>
+        <orm:field name="glassesTests" property="GlassesTests" uniqueId="8286b3b3-062a-4d9f-982a-d349bc13d998" type="AriCliModel.GlassesTest">
+          <orm:collection element-class="AriCliModel.GlassesTest" inverse-field="refractometry" order-by="" uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
+        </orm:field>
+        <orm:field name="contactLensesTests" property="ContactLensesTests" uniqueId="661471b3-8432-4d04-819d-ac9039168d6e" type="AriCliModel.ContactLensesTest">
+          <orm:collection element-class="AriCliModel.ContactLensesTest" inverse-field="refractometry" order-by="" uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
+        </orm:field>
+        <orm:field name="opticalObjectiveExaminations" property="OpticalObjectiveExaminations" uniqueId="3f545ff5-a577-48bb-8dd0-454f7f6b6d45" type="AriCliModel.OpticalObjectiveExamination">
+          <orm:collection element-class="AriCliModel.OpticalObjectiveExamination" inverse-field="refractometry" order-by="" uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
+        </orm:field>
+        <orm:field name="subjectiveOpticalExaminations" property="SubjectiveOpticalExaminations" uniqueId="72c84ef6-c246-45d5-8456-942d365946b4" type="AriCliModel.SubjectiveOpticalExamination">
+          <orm:collection element-class="AriCliModel.SubjectiveOpticalExamination" inverse-field="refractometry" order-by="" uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
+        </orm:field>
+        <orm:field name="prescriptionGlasses" property="PrescriptionGlasses" uniqueId="7ab05881-fbea-4ab4-9536-759c9212bd18" type="AriCliModel.PrescriptionGlasses">
+          <orm:collection element-class="AriCliModel.PrescriptionGlasses" inverse-field="refractometry" order-by="" uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
+        </orm:field>
+        <orm:field name="cycloplegias" property="Cycloplegias" uniqueId="05144adb-dc6b-4336-9c07-2aaadb4c44a0" type="AriCliModel.Cycloplegia">
+          <orm:collection element-class="AriCliModel.Cycloplegia" inverse-field="refractometry" order-by="" uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="WithoutGlassesTest" update-schema="true" uniqueId="608e44f0-9f59-42ff-b0f7-c3737c16cf4f">
+        <orm:table name="without_glasses_test" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="36351fe8-d26d-49c4-8f67-09bb8c5d3377" type="System.Int32">
+          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="dbe3474d-da9b-4535-98c4-8010258d22d6" type="System.String">
+          <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="close_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="close_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="close_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal">
+          <orm:column name="far_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="refractometry" property="Refractometry" uniqueId="781e6bd8-9201-4ddc-b73b-48db77170d27" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="c6b00c22-f2ae-4ce3-afd3-860bfd8ea60d" />
+        </orm:field>
+        <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_without_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="GlassesTest" update-schema="true" uniqueId="09c08a0b-fa62-480e-899e-0c032d7af798">
+        <orm:table name="glasses_test" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="51580991-e335-4f52-a08e-bba2644a5917" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="5be0c9ea-3875-4ad9-a702-0529284bb66f" type="System.String" />
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" member-definition-type="AriCliModel.OpticalTest" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="f9cbf401-21e6-4d05-8e7d-ef9371c2838e" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
+        </orm:field>
+        <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="ContactLensesTest" update-schema="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
+        <orm:table name="contact_lenses_test" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="48fa93f9-c151-4aba-83a3-92dde0503f47" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="77b3d36a-b2de-4d75-a55a-fcf501e9c458" type="System.String" />
+        <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" member-definition-type="AriCliModel.BasicOpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="a656b602-f848-44e1-ae8c-405be2dffe49" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
+        </orm:field>
+        <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="OpticalObjectiveExamination" update-schema="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
+        <orm:table name="optical_objective_examination" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="3f6fe27e-708f-48a3-9d7f-51b0304938f6" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="6f71fcf5-07de-4795-a476-3dddccdc7ec1" type="System.String" />
+        <orm:field name="k1RightEye" property="K1RightEye" uniqueId="f6ff3fc6-171c-40b0-9a41-07d8ebc707a7" type="System.Decimal" />
+        <orm:field name="k1LeftEye" property="K1LeftEye" uniqueId="eee9539e-7121-477f-86a0-fe5a8b5bee7e" type="System.Decimal" />
+        <orm:field name="k2RightEye" property="K2RightEye" uniqueId="ef8e21fb-db8e-409a-902d-aaadda5bad64" type="System.Decimal" />
+        <orm:field name="k2LeftEye" property="K2LeftEye" uniqueId="fb188204-4132-41d9-9656-0efa2cc58bef" type="System.Decimal" />
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" member-definition-type="AriCliModel.OpticalTest" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="d27fd34e-1540-4b5f-bbae-bf1120c510e9" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
+        </orm:field>
+        <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="SubjectiveOpticalExamination" update-schema="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
+        <orm:table name="subjective_optical_examination" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="b98118e6-865d-4238-94b8-78d26831d765" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="50be6531-22d2-43fd-bbea-9a9efc200e85" type="System.String" />
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" member-definition-type="AriCliModel.OpticalTest" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="1d5b9437-b3a0-4606-819d-61e9722f09ab" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
+        </orm:field>
+        <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="PrescriptionGlasses" update-schema="true" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
+        <orm:table name="prescription_glasses" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="f2bfef09-b704-4bcc-9c4c-4dec09bab9b0" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="a542bf77-9c41-492f-81a5-e4318af7a267" type="System.String" />
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" member-definition-type="AriCliModel.OpticalTest" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="17b294eb-14ee-49c2-8b78-98dd407a537d" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
+        </orm:field>
+        <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="Cycloplegia" update-schema="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
+        <orm:table name="cycloplegia" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:field name="id" property="Id" uniqueId="d9cb7322-887e-4876-9b20-e25e3a549bed" type="System.Int32" />
+        <orm:field name="comments" property="Comments" uniqueId="f583e255-0e3c-4545-9874-3a586acd4045" type="System.String" />
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" member-definition-type="AriCliModel.OpticalTest" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" member-definition-type="AriCliModel.OpticalTest" type="System.Decimal" />
+        <orm:field name="refractometry" property="Refractometry" uniqueId="35980df8-8908-470c-912e-d4f54ff0887c" type="AriCliModel.Refractometry">
+          <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
+        </orm:field>
+        <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
+        <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.Decimal" />
+        <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.Decimal" />
+        <orm:field name="farAxisRightEye" property="FarAxisRightEye" uniqueId="398f71a4-7a26-4323-b9a0-442004dce273" type="System.Decimal" />
+        <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" uniqueId="684f35b7-9b04-41d0-b640-950c74ec1883" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" uniqueId="7b9e8681-7242-487f-b1d9-d9d9603f2c12" type="System.Decimal" />
+        <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" uniqueId="e27ca8c6-e2dc-4945-a097-2606c776a9fc" type="System.Decimal" />
+        <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" uniqueId="6ccbc6c6-178d-46a2-bf68-5695687c4814" type="System.Decimal" />
+        <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" uniqueId="7a14d82e-1550-4e5a-901a-7064e1dabc92" type="System.Decimal" />
+        <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" uniqueId="b10636b6-c7fe-42d0-a801-e92371a1912d" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" uniqueId="c342d638-236e-4970-9686-82e7c1183e70" type="System.Decimal" />
+        <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" uniqueId="59b680c4-e9b8-465b-b1f8-3bb1057704ce" type="System.Decimal" />
+        <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" uniqueId="d0f105ec-d03b-4b20-be04-b91838847d9f" type="System.Decimal" />
+        <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" uniqueId="a67247f1-54ba-423d-811d-f07d11f14c6d" type="System.String" />
+        <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" uniqueId="b30a72dd-6420-446c-8899-6f1ee0ec928f" type="System.Decimal" />
+        <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" uniqueId="6db08ab8-3f57-432f-a231-4069d8d3bcf1" type="System.Decimal" />
+        <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" uniqueId="ab883fcb-1ae3-4395-81d1-0c67f59a102b" type="System.Decimal" />
+        <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" uniqueId="4bc062df-40dd-4b3b-bf04-365320637630" type="System.Decimal" />
+        <orm:field name="closePrismRightEye" property="ClosePrismRightEye" uniqueId="e6ab423c-3548-4ad2-b1dc-afde6becab7c" type="System.Decimal" />
+        <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" uniqueId="c89abaf9-6ba5-44ac-b8d2-a81852764c8e" type="System.Decimal" />
+        <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" uniqueId="3c436aca-1ce9-4d6d-8ec1-b3e3404d2bda" type="System.Decimal" />
+        <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" uniqueId="2cb35a00-8836-4ae0-b033-4cb8b8338f5d" type="System.Decimal" />
+        <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" uniqueId="6d179a6e-e637-4d7a-ba22-bf49514ff31d" type="System.Decimal" />
+        <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" uniqueId="8eee1054-541f-40ac-97c4-bc9c630b73d2" type="System.Decimal" />
+        <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" uniqueId="b267e115-e5ff-4f08-8e43-3b5fe6f19551" type="System.Decimal" />
+        <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" uniqueId="ba9b5db0-4597-4f9f-8eb9-b54416d51c0b" type="System.Decimal" />
+        <orm:field name="bothAxisRightEye" property="BothAxisRightEye" uniqueId="cf55186c-45e6-4480-a22f-77760a55505a" type="System.Decimal" />
+        <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" uniqueId="8b8ca433-3125-4fbf-a14b-e0885ed86908" type="System.Decimal" />
+        <orm:field name="bothPrismRightEye" property="BothPrismRightEye" uniqueId="d3d44750-cfe6-46d1-ab53-9c474eb7b5f4" type="System.Decimal" />
+        <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" uniqueId="343024cb-2e7c-4ddd-9e0f-a10996330e45" type="System.Decimal" />
+        <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" uniqueId="dab15276-d81b-47c9-8757-5cf46d3a901b" type="System.Decimal" />
+        <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" uniqueId="71a7ded6-740d-4a5d-a118-6d7577d2e327" type="System.Decimal" />
+        <orm:field name="farCenters" property="FarCenters" uniqueId="dca0ccda-0674-4330-94e2-580ac18c6910" type="System.Decimal" />
+        <orm:field name="closeCenters" property="CloseCenters" uniqueId="1bfa4f17-866e-46b2-bc1c-fcdc79bede91" type="System.Decimal" />
+        <orm:field name="bothCenters" property="BothCenters" uniqueId="35718c72-7c8d-46d7-b644-79914fe0ab7c" type="System.Decimal" />
+        <orm:field name="farAcuity" property="FarAcuity" uniqueId="a4bcb0db-30c1-46dd-9384-e1df8c8e6ccb" type="System.Decimal" />
+        <orm:field name="closeAcuity" property="CloseAcuity" uniqueId="ee9b95d9-9f3d-4d71-8037-8c51092e82ca" type="System.Decimal" />
+        <orm:field name="bothAcuity" property="BothAcuity" uniqueId="e0dca4a1-a1b0-4216-b212-0de5c43437aa" type="System.Decimal" />
+      </orm:interface>
+      <orm:interface name="BasicOpticalTest" uniqueId="882ea496-4175-4942-8f83-a565464b4ee8">
+        <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" uniqueId="a7bd5ddd-d14c-4393-8d57-d7c7738ebb78" type="System.Decimal" />
+        <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" uniqueId="75c6762a-93d0-4050-a7e3-427d398de2f1" type="System.Decimal" />
+        <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" uniqueId="0dc86275-18b2-4eac-a27e-c174425ffdf2" type="System.Decimal" />
+        <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" uniqueId="8a164c8f-12e3-4525-8e41-9f1385a2845d" type="System.Decimal" />
+        <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" uniqueId="80772c9c-b98a-4979-96b8-2e2dbeb9ac0f" type="System.Decimal" />
+        <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" uniqueId="1bdbf246-ea68-43fa-ac4b-0b24e255beca" type="System.Decimal" />
+      </orm:interface>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="user_group">
@@ -1941,10 +2366,231 @@
         <orm:column name="unit_type_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
       </orm:table>
-      <orm:table name="examination_assigned">
-        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="examination_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+      <orm:table name="refractometry">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:constraint name="ref_refractometry_examination_assigned">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="without_glasses_test">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="close_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_without_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="glasses_test">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="contact_lenses_test">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="close_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_both_eyes" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="optical_objective_examination">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="k1_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="k1_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="k2_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="k2_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prims_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_centers" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="close_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="subjective_optical_examination">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="far_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prims_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_centers" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="close_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="prescription_glasses">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="far_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prims_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_centers" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="close_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="cycloplegia">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="far_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prims_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_visual_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_sphericity_centers" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="close_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_sphericity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_cylinder_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_axis_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_prism_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_right_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity_left_eye" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_centers" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="far_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="close_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="both_acuity" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -3596,11 +4242,31 @@
     <DomainClass Id="700e85fc-a419-4899-8ecf-74904ab2ac3f" name="Examination" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="ff181e29-c778-4416-a181-884c0223049c" name="ExaminationId" type="Int32" label="ExaminationId : Int32" identity="true" />
       <Property Id="be4516bc-0bb5-43a4-a0ab-f1e70ccd82cc" name="Name" label="Name : String" />
+      <AssociationTargets>
+        <Association Id="d59ff054-36c3-412a-b19b-16505ef6b1be" SourceMultiplicity="ZeroOne" name="ExaminationHasExaminationType">
+          <DomainClassMoniker name="/AriClinicContext/ExaminationType" />
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="cd248e5c-568a-4fe4-a0aa-421dc03ad6c6">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Examination/ExaminationType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c64b3a9d-135d-4a48-8ff3-f3602cd6916c">
+          <NavigationalProperty Id="6da1da55-80e6-4a5f-8b91-381e77d7a1aa" name="ExaminationType" type="ExaminationType" label="ExaminationType : ExaminationType" nullable="true" kind="Persistent" fieldName="examinationType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
     </DomainClass>
     <DomainClass Id="288cf8b7-4286-454c-a27c-9f111d59aa2a" name="ExaminationAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" name="ExaminationAssignedId" type="Int32" label="ExaminationAssignedId : Int32" identity="true" />
       <Property Id="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" name="ExaminationDate" type="DateTime" label="ExaminationDate : DateTime" />
       <Property Id="9bc0a6f2-1499-490f-a205-1c66e95be447" name="Comments" label="Comments : String" />
+      <inheritors>
+        <inheritance Id="807f1f44-44d0-4cdd-8243-dbd4f6011845">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+        </inheritance>
+      </inheritors>
       <AssociationTargets>
         <Association Id="67479349-596c-45e3-99a2-55ac07e739b6" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasExamination">
           <DomainClassMoniker name="/AriClinicContext/Examination" />
@@ -3630,6 +4296,456 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="682a1ef2-36a3-47cb-bfdd-1089da11ad12">
           <NavigationalProperty Id="96cef444-12db-4a98-80fb-6d78ecf88187" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="7e17bf9c-15f2-4f20-97cc-83848325bf68" name="ExaminationType" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="62c0a189-ee6e-4754-8011-f3421060ec68" name="Code" label="Code : String" identity="true" />
+      <Property Id="2d3ec66d-eede-4b7b-9380-fd99b80514af" name="Name" label="Name : String" />
+    </DomainClass>
+    <DomainClass Id="fe7a23dd-f2c7-4ee8-aa1f-836ab270bf35" name="Refractometry" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c7338f5b-9d2b-42dc-a2ff-cc5503c2c976">
+          <NavigationalProperty Id="da511ec6-9f8f-4981-8b5c-7a1199a90f1a" name="WithoutGlassesTests" type="IList&lt;WithoutGlassesTest&gt;" label="WithoutGlassesTests : IList&lt;WithoutGlassesTest&gt;" nullable="true" kind="Persistent" fieldName="withoutGlassesTests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="2ac6af0e-e118-44f6-b93a-ddc20c95758b">
+          <NavigationalProperty Id="8286b3b3-062a-4d9f-982a-d349bc13d998" name="GlassesTests" type="IList&lt;GlassesTest&gt;" label="GlassesTests : IList&lt;GlassesTest&gt;" nullable="true" kind="Persistent" fieldName="glassesTests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="dbddae06-75ba-4d8b-a0ed-09fb699cccf5">
+          <NavigationalProperty Id="661471b3-8432-4d04-819d-ac9039168d6e" name="ContactLensesTests" type="IList&lt;ContactLensesTest&gt;" label="ContactLensesTests : IList&lt;ContactLensesTest&gt;" nullable="true" kind="Persistent" fieldName="contactLensesTests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="6d77852a-7c5f-4ac3-9398-a0a17d2ee6d4">
+          <NavigationalProperty Id="3f545ff5-a577-48bb-8dd0-454f7f6b6d45" name="OpticalObjectiveExaminations" type="IList&lt;OpticalObjectiveExamination&gt;" label="OpticalObjectiveExaminations : IList&lt;OpticalObjectiveExamination&gt;" nullable="true" kind="Persistent" fieldName="opticalObjectiveExaminations" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9984b075-09d0-48c0-9c8b-fdcea934c69f">
+          <NavigationalProperty Id="72c84ef6-c246-45d5-8456-942d365946b4" name="SubjectiveOpticalExaminations" type="IList&lt;SubjectiveOpticalExamination&gt;" label="SubjectiveOpticalExaminations : IList&lt;SubjectiveOpticalExamination&gt;" nullable="true" kind="Persistent" fieldName="subjectiveOpticalExaminations" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="49e7af65-705f-423f-a761-8ded25b0e657">
+          <NavigationalProperty Id="7ab05881-fbea-4ab4-9536-759c9212bd18" name="PrescriptionGlasses" type="IList&lt;PrescriptionGlasses&gt;" label="PrescriptionGlasses : IList&lt;PrescriptionGlasses&gt;" nullable="true" kind="Persistent" fieldName="prescriptionGlasses" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3d76ceda-4d7a-47d5-bc31-86db705c6981">
+          <NavigationalProperty Id="05144adb-dc6b-4336-9c07-2aaadb4c44a0" name="Cycloplegias" type="IList&lt;Cycloplegia&gt;" label="Cycloplegias : IList&lt;Cycloplegia&gt;" nullable="true" kind="Persistent" fieldName="cycloplegias" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <Interface Id="ce87cd35-5310-47b4-88ff-a7eb6f7238c3" name="OpticalTest" showPropertiesCompartment="true">
+      <Property Id="805e31a5-4693-4052-9f24-760b3cadd3e3" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" />
+      <Property Id="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" />
+      <Property Id="398f71a4-7a26-4323-b9a0-442004dce273" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" />
+      <Property Id="684f35b7-9b04-41d0-b640-950c74ec1883" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" />
+      <Property Id="7b9e8681-7242-487f-b1d9-d9d9603f2c12" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" />
+      <Property Id="e27ca8c6-e2dc-4945-a097-2606c776a9fc" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" />
+      <Property Id="6ccbc6c6-178d-46a2-bf68-5695687c4814" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" />
+      <Property Id="7a14d82e-1550-4e5a-901a-7064e1dabc92" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" />
+      <Property Id="b10636b6-c7fe-42d0-a801-e92371a1912d" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" />
+      <Property Id="c342d638-236e-4970-9686-82e7c1183e70" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" />
+      <Property Id="59b680c4-e9b8-465b-b1f8-3bb1057704ce" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" />
+      <Property Id="d0f105ec-d03b-4b20-be04-b91838847d9f" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" />
+      <Property Id="b30a72dd-6420-446c-8899-6f1ee0ec928f" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" />
+      <Property Id="6db08ab8-3f57-432f-a231-4069d8d3bcf1" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" />
+      <Property Id="ab883fcb-1ae3-4395-81d1-0c67f59a102b" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" />
+      <Property Id="4bc062df-40dd-4b3b-bf04-365320637630" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" />
+      <Property Id="e6ab423c-3548-4ad2-b1dc-afde6becab7c" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" />
+      <Property Id="c89abaf9-6ba5-44ac-b8d2-a81852764c8e" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" />
+      <Property Id="3c436aca-1ce9-4d6d-8ec1-b3e3404d2bda" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" />
+      <Property Id="2cb35a00-8836-4ae0-b033-4cb8b8338f5d" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" />
+      <Property Id="6d179a6e-e637-4d7a-ba22-bf49514ff31d" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" />
+      <Property Id="8eee1054-541f-40ac-97c4-bc9c630b73d2" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" />
+      <Property Id="b267e115-e5ff-4f08-8e43-3b5fe6f19551" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" />
+      <Property Id="ba9b5db0-4597-4f9f-8eb9-b54416d51c0b" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" />
+      <Property Id="cf55186c-45e6-4480-a22f-77760a55505a" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" />
+      <Property Id="8b8ca433-3125-4fbf-a14b-e0885ed86908" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" />
+      <Property Id="d3d44750-cfe6-46d1-ab53-9c474eb7b5f4" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" />
+      <Property Id="343024cb-2e7c-4ddd-9e0f-a10996330e45" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" />
+      <Property Id="dab15276-d81b-47c9-8757-5cf46d3a901b" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" />
+      <Property Id="71a7ded6-740d-4a5d-a118-6d7577d2e327" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" />
+      <Property Id="dca0ccda-0674-4330-94e2-580ac18c6910" name="FarCenters" type="Decimal" label="FarCenters : Decimal" />
+      <Property Id="1bfa4f17-866e-46b2-bc1c-fcdc79bede91" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" />
+      <Property Id="35718c72-7c8d-46d7-b644-79914fe0ab7c" name="BothCenters" type="Decimal" label="BothCenters : Decimal" />
+      <Property Id="a4bcb0db-30c1-46dd-9384-e1df8c8e6ccb" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" />
+      <Property Id="ee9b95d9-9f3d-4d71-8037-8c51092e82ca" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" />
+      <Property Id="e0dca4a1-a1b0-4216-b212-0de5c43437aa" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" />
+      <implementors>
+        <DomainClassMoniker name="/AriClinicContext/GlassesTest" />
+        <DomainClassMoniker name="/AriClinicContext/OpticalObjectiveExamination" />
+        <DomainClassMoniker name="/AriClinicContext/SubjectiveOpticalExamination" />
+        <DomainClassMoniker name="/AriClinicContext/PrescriptionGlasses" />
+        <DomainClassMoniker name="/AriClinicContext/Cycloplegia" />
+      </implementors>
+    </Interface>
+    <Interface Id="882ea496-4175-4942-8f83-a565464b4ee8" name="BasicOpticalTest" showPropertiesCompartment="true">
+      <Property Id="a7bd5ddd-d14c-4393-8d57-d7c7738ebb78" name="CloseVisualAcuityRightEye" type="Decimal" label="CloseVisualAcuityRightEye : Decimal" />
+      <Property Id="75c6762a-93d0-4050-a7e3-427d398de2f1" name="CloseVisualAcuityLeftEye" type="Decimal" label="CloseVisualAcuityLeftEye : Decimal" />
+      <Property Id="0dc86275-18b2-4eac-a27e-c174425ffdf2" name="CloseVisualAcuityBothEyes" type="Decimal" label="CloseVisualAcuityBothEyes : Decimal" />
+      <Property Id="8a164c8f-12e3-4525-8e41-9f1385a2845d" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" />
+      <Property Id="80772c9c-b98a-4979-96b8-2e2dbeb9ac0f" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" />
+      <Property Id="1bdbf246-ea68-43fa-ac4b-0b24e255beca" name="FarVisualAcuityBothEyes" type="Decimal" label="FarVisualAcuityBothEyes : Decimal" />
+      <implementors>
+        <DomainClassMoniker name="/AriClinicContext/WithoutGlassesTest" />
+        <DomainClassMoniker name="/AriClinicContext/ContactLensesTest" />
+      </implementors>
+    </Interface>
+    <DomainClass Id="608e44f0-9f59-42ff-b0f7-c3737c16cf4f" name="WithoutGlassesTest" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="36351fe8-d26d-49c4-8f67-09bb8c5d3377" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="dbe3474d-da9b-4535-98c4-8010258d22d6" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="c6b00c22-f2ae-4ce3-afd3-860bfd8ea60d" SourceMultiplicity="ZeroOne" name="WithoutGlassesTestHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d95e9cb7-d146-4bb2-9da5-a4f55bf56456">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/WithoutGlassesTests" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="d96d86d3-492f-4cd8-8a56-79b33318b168">
+              <NavigationalPropertyMoniker name="/AriClinicContext/WithoutGlassesTest/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="c202182d-bbbf-4d6f-8fac-ff9076e23aac" name="CloseVisualAcuityRightEye" type="Decimal" label="CloseVisualAcuityRightEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="0a0b9b38-955a-4eaf-9d04-c7a19b3cd586" name="CloseVisualAcuityLeftEye" type="Decimal" label="CloseVisualAcuityLeftEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="a4647ca2-3dda-47b6-87f8-1b9e6c44c1d7" name="CloseVisualAcuityBothEyes" type="Decimal" label="CloseVisualAcuityBothEyes : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="66836ef9-abf3-461c-a5fa-7e7fa695115c" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="0f03f15b-2a1f-44b4-96ea-05f3cb574f4d" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="68ec81d9-59d5-42a3-a0ac-cbd8464e21e6" name="FarVisualAcuityBothEyes" type="Decimal" label="FarVisualAcuityBothEyes : Decimal" providingTypeName="BasicOpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="83743c21-11ae-483b-a63f-e3887a09feac">
+          <NavigationalProperty Id="781e6bd8-9201-4ddc-b73b-48db77170d27" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="09c08a0b-fa62-480e-899e-0c032d7af798" name="GlassesTest" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="51580991-e335-4f52-a08e-bba2644a5917" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="5be0c9ea-3875-4ad9-a702-0529284bb66f" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" SourceMultiplicity="ZeroOne" name="GlassesTestHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="bc557b62-1810-4fb1-a2df-5d1439cef296">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/GlassesTests" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="29fe037e-da5a-4c97-9220-7501eb7fe928">
+              <NavigationalPropertyMoniker name="/AriClinicContext/GlassesTest/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="07254cac-e7d3-4f7a-a257-dfda3d6522f1" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="983a6007-23ce-4351-a377-050751476350" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e6935a8f-d681-4d68-8b91-8ff26dd57890" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a6397f91-16b7-4070-998e-492797891bc5" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="040c4d0a-df4e-45f4-9417-999a916f24bd" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a5e1e37f-df29-4b7f-a192-f89428d74d15" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="37374ced-3b1e-41a6-a521-738085588702" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5dde3f3e-9d96-4d0e-a441-f22ad0c281d4" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4c86b7bd-0402-4589-a2c4-53fa8f57f0e3" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="84315a97-5b1e-4bcf-af9a-1ca0a6b09ed2" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="da6ebb36-c421-4332-800b-9ee92fdbcab8" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4a02c538-e2d6-4cff-9900-f966b1396430" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5c584741-b748-4bbf-a9d3-872ab26e1dd0" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="154a200d-6631-4f89-80de-88d1da6f0ef1" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f78e7eae-d65a-442f-a1bc-eaee94bf7414" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f64756a1-095a-4410-b88c-faae0759f39d" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="1274fce1-7960-4feb-ba30-95733373d6d8" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e3be0b04-180e-43ae-8b78-48e7cc979571" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a91aca4e-143f-48d5-ac92-d166188b9c4b" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="503965e0-8c43-446a-93b3-0c1ef63e5329" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="19fc9907-a03b-40d2-b8a3-f7bb92d2a909" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="44c7491c-9909-4744-93ce-4376bbe29da0" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="61ae2951-d691-45b6-b45b-442cd9a02c07" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a6a0a303-a96d-4fca-8dd8-c0d69c91e19d" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="55da0854-bb35-4441-9166-244a96de24d8" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="630319a0-f697-4b25-8b33-89285d45a1c2" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="33df3dca-78c7-4c86-b908-2ac6e90ce32f" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3ef3e0cc-7d98-4a45-a56b-8db59ff70a43" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="51587ebf-cc88-417d-8ace-5599bbe300d3" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="cf0c00bc-e614-4af1-8894-721886e05406" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="562efad6-63ca-4a3e-9f2b-e5f148f8c31d" name="FarCenters" type="Decimal" label="FarCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e49b07f2-4f9a-48cd-b354-3e910c518bb5" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="1568185f-082b-4d6e-811a-54053f1a0dce" name="BothCenters" type="Decimal" label="BothCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4d83070e-34fe-4c3a-b7a7-3fe9c9f5fbf9" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="42acca86-8426-4169-806e-eb145c821d7b" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="2769447e-5ca8-4e19-b45f-a8346e0247a0" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" providingTypeName="OpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6c6178af-2556-4f69-9768-33a638a3f4ac">
+          <NavigationalProperty Id="f9cbf401-21e6-4d05-8e7d-ef9371c2838e" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="7b1d9965-d616-4e2b-a91e-54810d093626" name="ContactLensesTest" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="48fa93f9-c151-4aba-83a3-92dde0503f47" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="77b3d36a-b2de-4d75-a55a-fcf501e9c458" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="979f0350-7f05-4e61-8e75-b3aab98d9d74" SourceMultiplicity="ZeroOne" name="ContactLensesTestHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="09c5fb3a-a6bf-4643-867b-8633f6939def">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/ContactLensesTests" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="8c56b1b2-f30b-4dfe-9a54-6dfc3b2efef0">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ContactLensesTest/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="cff58fcd-7675-4700-9ef8-174a4753a03f" name="CloseVisualAcuityRightEye" type="Decimal" label="CloseVisualAcuityRightEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="3a3e21c7-6231-4438-9129-38e715b21c0c" name="CloseVisualAcuityLeftEye" type="Decimal" label="CloseVisualAcuityLeftEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="a05b7a65-c1c7-4282-83df-5076eaeac8e0" name="CloseVisualAcuityBothEyes" type="Decimal" label="CloseVisualAcuityBothEyes : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="a77addc0-a3bf-4651-8546-220c94a38e0c" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="8623bd60-8085-4b13-8a70-1ce0f19c3f96" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="BasicOpticalTest" />
+      <implementedProperty Id="22a6e748-d05d-4eb4-96ef-a22f95a9fa88" name="FarVisualAcuityBothEyes" type="Decimal" label="FarVisualAcuityBothEyes : Decimal" providingTypeName="BasicOpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="1f265097-870d-4847-8feb-53e25bd98e60">
+          <NavigationalProperty Id="a656b602-f848-44e1-ae8c-405be2dffe49" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="9d01f009-036a-4e73-82c0-cce42caa4998" name="OpticalObjectiveExamination" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="3f6fe27e-708f-48a3-9d7f-51b0304938f6" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="6f71fcf5-07de-4795-a476-3dddccdc7ec1" name="Comments" label="Comments : String" />
+      <Property Id="f6ff3fc6-171c-40b0-9a41-07d8ebc707a7" name="K1RightEye" type="Decimal" label="K1RightEye : Decimal" />
+      <Property Id="eee9539e-7121-477f-86a0-fe5a8b5bee7e" name="K1LeftEye" type="Decimal" label="K1LeftEye : Decimal" />
+      <Property Id="ef8e21fb-db8e-409a-902d-aaadda5bad64" name="K2RightEye" type="Decimal" label="K2RightEye : Decimal" />
+      <Property Id="fb188204-4132-41d9-9656-0efa2cc58bef" name="K2LeftEye" type="Decimal" label="K2LeftEye : Decimal" />
+      <AssociationTargets>
+        <Association Id="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" SourceMultiplicity="ZeroOne" name="OpticalObjectiveExaminationHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="f5c047a2-cc5d-440a-8a6b-c0a97e7396d6">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/OpticalObjectiveExaminations" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="8d40f540-c31b-4759-b02a-5c87bf4582ca">
+              <NavigationalPropertyMoniker name="/AriClinicContext/OpticalObjectiveExamination/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="99534e76-8e22-4b9c-bb94-c78cc82db538" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c1c40a3d-888e-42d1-a764-57a6a1fe33ed" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3a4105a9-1711-44f5-a542-a9b7c02c01b5" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="dee97848-730b-404f-9751-1ba5322083a8" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7ec1570e-ea87-4c26-a4f6-3e54c393bdf4" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="60dd6600-3172-4a33-85f0-a7507061a803" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c72565e2-1fd2-49ce-85bb-fb8417ab53a3" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e53d15b6-e69d-4638-bcce-8fa30335c4aa" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="1724a204-f886-447e-ae1a-8b2354276a8a" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="afe3797a-4bed-4ae7-af72-bda47551fac7" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3376151b-c79a-4907-bd98-223d04574645" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e5c5f024-4af8-4b72-b7e1-88023e9f377c" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="36992543-a078-42b5-8536-0b8c380713c4" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7a57f5fd-e19f-4f0a-8215-cd5722d8cc8e" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c9bbd67e-cc7c-4b96-be31-081b184fe69f" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="da05be84-6187-4879-a729-12288ea57302" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="68d02721-2cdc-4175-99d2-b379b849ed56" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="03743f7d-50c5-40cd-be17-151126932e07" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="fbc64568-8aa5-4561-b3d8-bdb694a9e879" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f197776b-32a4-4826-8411-0f454d1a44a8" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="fb541539-6577-451c-ae38-13c82d6262c1" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5baf519f-b5e8-40cb-b174-170f9e047bb0" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b40ed257-d3f0-4831-81fe-54d9c5e0302b" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="0dacb152-e392-48d7-8d81-297d96a895b7" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f482c770-0a96-4e0a-b78e-4c00a7a1c573" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="88047bb8-e242-4642-b646-761c5239d624" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c6892888-0a38-4fc7-90f5-3fbb837aa5c8" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="054b5a74-efc9-49c9-b42a-75a0ec05cfbf" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f013aa22-7338-45b0-aaca-b85445038d87" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="0df39713-e94a-4ffd-9b7b-2e38ddf62fac" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5cbe7012-68f3-4f2d-b2de-ce76f578f60d" name="FarCenters" type="Decimal" label="FarCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4b307aaa-2ad5-4833-95cf-531804bfcb00" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="26c11366-aeb9-44be-b8e0-37f054b0f41a" name="BothCenters" type="Decimal" label="BothCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7ef563ed-b180-40c8-8859-f1169be3ad14" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="19690c06-8358-4fac-a2e2-c1985779a768" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e250b271-e1c5-4fae-9408-3e659e1c3f97" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" providingTypeName="OpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="78bc3b9c-ec67-405a-9cd4-7d2763a97b27">
+          <NavigationalProperty Id="d27fd34e-1540-4b5f-bbae-bf1120c510e9" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="fe353f33-341f-4144-9eab-3c5a20ab69bc" name="SubjectiveOpticalExamination" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="b98118e6-865d-4238-94b8-78d26831d765" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="50be6531-22d2-43fd-bbea-9a9efc200e85" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="2520f8e6-7612-496c-8eff-d79648a81438" SourceMultiplicity="ZeroOne" name="SubjectiveOpticalExaminationHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="417e27e3-0334-4cdb-afcf-484734d0caf0">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/SubjectiveOpticalExaminations" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e50b5d22-9d8f-4c03-b12b-75aa39a30cd9">
+              <NavigationalPropertyMoniker name="/AriClinicContext/SubjectiveOpticalExamination/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="41e9ea93-7433-4a96-bb5c-62844775c513" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="bd897ca1-b669-417c-ae26-7244e4fcceda" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="af16114c-2bec-49a7-b580-cfea5d287091" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="76e1387c-e8ba-42c9-8399-517c1950c915" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3b4f804f-8e3f-433a-9514-09b054641b78" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b2b41bc4-9e7c-42c5-ae4c-ea37a0654145" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="dcd1c794-68e7-49a5-8835-98a0e9330224" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="ef6112c3-a064-4cef-8f6a-1154f7520636" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="6283f8e3-96b4-4504-9dc7-8e81b53beefe" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="9da081b9-4b28-4ffd-8f29-454f073fc949" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4110d07f-5b2b-4003-bbcc-f71fd9273e7f" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="0dbfbd73-1bdb-4d6d-ae22-2b41c78fa9ab" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8dcb2099-00e0-483a-a3ea-0160af6d0ff5" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="381118c5-eec0-4b8a-ad4f-a17146c6ed15" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="fff36225-5f51-4a58-aa18-f97ab07bb9d2" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="0a0c2ab8-ccf7-4c03-af08-da0ba3c5742b" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="019437c5-cabf-4c44-af6b-dbb882e716af" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5d4dc1d3-8fbc-4709-80cb-fb7ef78e8e71" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="717fb856-e310-487b-ac73-405f87b6da42" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e91bc40b-ebdd-4937-8938-753cc56ac83b" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="979b04f6-eace-41cf-9ec0-aae5457edcf8" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="6bf28cc7-80f1-4ee8-9fee-202b8f6c5870" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5d6c6758-8c8f-45b3-be7f-f98c7366dec5" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f8d158dc-df5e-4dab-b1b3-39a8aa028719" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="787fcc0c-6fbe-4b4c-8344-a4cf33c2be03" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f4452190-06db-4429-8f38-f37b0182233b" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f2cd314f-517e-4013-bdaf-696a925914a7" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="d31e5aab-805e-4f2d-b15a-19f80bdbc706" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a0bd59a7-f6d0-4faa-af20-2627bce2a8fb" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="aa8b4a8f-421f-4cff-8a43-f29ab207eada" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="446cedba-8b34-4f18-be3d-6366c8aec679" name="FarCenters" type="Decimal" label="FarCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="442fb5aa-ac31-4c3a-9e07-2b8cd7e64754" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="a238c316-3fa7-4156-a11e-88fe7f6e0bd7" name="BothCenters" type="Decimal" label="BothCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="d7843d72-9e21-4897-82cd-615c8909e6ff" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="1ed35868-03d3-49f2-bc93-114529afa06b" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e1788281-1610-4225-9e2c-c8894e2a11a6" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" providingTypeName="OpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ca033e95-f501-4f47-93c6-db8086e2897d">
+          <NavigationalProperty Id="1d5b9437-b3a0-4606-819d-61e9722f09ab" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="316f1351-4de8-430e-b241-7f579f1a68d0" name="PrescriptionGlasses" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="f2bfef09-b704-4bcc-9c4c-4dec09bab9b0" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="a542bf77-9c41-492f-81a5-e4318af7a267" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="4ef29db0-e22a-491e-9af2-2122c262bbd3" SourceMultiplicity="ZeroOne" name="PrescriptionGlassesHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5ad2cb90-42de-46ee-981f-7d4259c9d3e1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/PrescriptionGlasses" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="beb87b64-1e61-4cfa-8122-8d48cb2fa183">
+              <NavigationalPropertyMoniker name="/AriClinicContext/PrescriptionGlasses/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="831b6335-a356-44e4-8e32-f287cb503304" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="ffe1a798-79a2-4364-95f3-14ef3f06a2c8" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="669501d7-3ff5-413b-a90b-6de76f428b27" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="91a1d38a-2a3f-4618-b761-e532e2497a86" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7cf73b73-1321-4c86-9e69-a09c2bff8c23" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3cbd6823-16b7-46db-bdc2-9fc59e2174b7" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="0a3a2e52-adfc-44a1-82c5-a846e262f59c" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8264cf06-f79c-4179-b900-3f62790ea46f" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="771d9021-50c8-4823-99a3-4d532a96a0c8" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="19d27a26-3555-4da4-b9db-11fc1fdf1a6f" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="2ddd6fdd-7948-4cd5-b6eb-48a00f3cc389" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b848117e-97a0-4073-afb4-5224d2b25fa5" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7d5135fe-615f-4d8b-9a48-5ec513c77393" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c307275c-0ac3-497c-a7be-99827b4e6943" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="f115f0ea-9803-43bc-9f76-b61b1c6c45f3" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b20b481b-f8a4-4851-9089-bca8fd9c90c7" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="9cdb0f9d-ff4a-47c3-b707-bd74d04f507b" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8922c08d-e20f-42f1-804a-7e651a8940f2" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="aa94eb37-f06d-44fb-afa7-9e174ded4f6d" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c56577e2-02d1-4c47-8ca3-c29377b595c5" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="856e28a5-26b3-4419-bb7e-ae94fd1f6cfb" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="05a98578-e363-40dc-811d-cc96d485617d" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="66916bef-56cb-4daa-b7f9-feabf70ab248" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8875e660-6721-4bc2-a35b-0030b4347802" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="ea2c7744-2ff2-4472-b911-4ef71ff5abeb" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="385bc605-a783-458b-b485-322bc225d1ad" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5b118059-8f2c-46b8-97d7-4999c8474298" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="2887684b-7e2f-4631-8b4d-2086504348c6" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b7ed373f-e631-4e4d-bbd9-5631b4d55e04" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="3a6ca6e6-008d-42bc-8a42-3a55db83bc12" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="ccebb123-c728-4040-a0e9-c4742b7c76c9" name="FarCenters" type="Decimal" label="FarCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="53e4f1cd-5f16-4690-b024-8343fcc1e098" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="9f13d6a1-5aab-45f9-869c-4e0284753ffa" name="BothCenters" type="Decimal" label="BothCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="483fab45-8cf9-4d36-8967-3f3717b73d7f" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5d25dc9b-7d36-422e-b6f8-0e93ca6ad59b" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="621df2fa-7295-45d4-a658-f72919e25eb6" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" providingTypeName="OpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6e93ec6c-ac99-4611-9b4c-090421da0b77">
+          <NavigationalProperty Id="17b294eb-14ee-49c2-8b78-98dd407a537d" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="5d1eedaa-9608-44dd-b060-76a30d407308" name="Cycloplegia" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="d9cb7322-887e-4876-9b20-e25e3a549bed" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="f583e255-0e3c-4545-9874-3a586acd4045" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="f1067528-c77a-4dad-922f-e84be3c90b22" SourceMultiplicity="ZeroOne" name="CycloplegiaHasRefractometry">
+          <DomainClassMoniker name="/AriClinicContext/Refractometry" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="6dccdfb8-6580-4fa1-ab2d-cd40922daa9c">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Refractometry/Cycloplegias" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="0f96928f-9fdc-43e5-a488-e5abc5173265">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Cycloplegia/Refractometry" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <implementedProperty Id="75c79e07-8333-4bc5-97a3-b86d026ecc05" name="FarSphericityRightEye" type="Decimal" label="FarSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="d0a2e84c-e5a7-4293-92e7-cc94d1233dd8" name="FarCylinderRightEye" type="Decimal" label="FarCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="274b9d59-b10f-470d-9778-8c742c7781ff" name="FarAxisRightEye" type="Decimal" label="FarAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b7e63d57-88b3-4d00-aef3-24a29601f85f" name="FarPrimsRightEye" type="Decimal" label="FarPrimsRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="b1d4ef82-d6e3-4d27-998f-9dfa6a2424a2" name="FarVisualAcuityRightEye" type="Decimal" label="FarVisualAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8d96121f-4ac3-4e57-9dc4-0ac3ec851d8f" name="FarSphericityLeftEye" type="Decimal" label="FarSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="42517bf2-dee0-4732-911e-4744ae014d5a" name="FarCylinderLeftEye" type="Decimal" label="FarCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="20fa1b91-734c-47c6-b539-7e4c0ba14568" name="FarAxisLeftEye" type="Decimal" label="FarAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="83077199-fa73-4898-a2f6-01d1c28414c4" name="FarPrismLeftEye" type="Decimal" label="FarPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="c647997b-4337-4c69-9e77-980a5621509e" name="FarVisualAcuityLeftEye" type="Decimal" label="FarVisualAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7e0b92fe-0ae2-4b78-b556-ebf6138d8b67" name="CloseSphericityRightEye" type="Decimal" label="CloseSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="da1fe00c-bb32-4a39-bbeb-5ca9a260dbf1" name="CloseSphericityLeftEye" type="Decimal" label="CloseSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="fd6bfc62-640d-450e-aac3-5269ea894d5b" name="CloseCylinderRightEye" type="Decimal" label="CloseCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="82bfde54-25c8-4c2c-96a8-b66a36df1213" name="CloseCylinderLeftEye" type="Decimal" label="CloseCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="876d3681-10d3-41ce-8fd1-d0cfb158d9c9" name="CloseAxisRightEye" type="Decimal" label="CloseAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="03575a80-3ddf-4195-8641-398d40ad83fb" name="CloseAxisLeftEye" type="Decimal" label="CloseAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="419839df-32e4-431b-8e54-237e6fddb2f8" name="ClosePrismRightEye" type="Decimal" label="ClosePrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="5104672b-56de-405d-b2c3-6a3a5db0a994" name="ClosePrismLeftEye" type="Decimal" label="ClosePrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="84b4ef3f-2327-44c3-ba02-475786ce4b8a" name="CloseAcuityRightEye" type="Decimal" label="CloseAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="08631d88-ca14-4fb6-8689-ff9ac16fa568" name="CloseAcuityLeftEye" type="Decimal" label="CloseAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="90c010b8-daa2-4a02-88e6-78231dfe7545" name="BothSphericityRightEye" type="Decimal" label="BothSphericityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e817ee40-4528-4116-9f65-9d91451a90a3" name="BothSphericityLeftEye" type="Decimal" label="BothSphericityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="fcf3a61e-f107-4e36-87c2-494eeb848acc" name="BothCylinderRightEye" type="Decimal" label="BothCylinderRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e53179e8-ccbb-4d94-b236-2e52547ca525" name="BothCylinderLeftEye" type="Decimal" label="BothCylinderLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="7684b96b-a806-445a-89b3-bfdf8170236c" name="BothAxisRightEye" type="Decimal" label="BothAxisRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="e789d954-7e13-437c-ab7b-109ad0fcc05e" name="BothAxisLeftEye" type="Decimal" label="BothAxisLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8a6aea6a-62b7-46bd-8566-30f4ec7dce59" name="BothPrismRightEye" type="Decimal" label="BothPrismRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4ae9ea1f-d70c-4657-a01e-d452dc0ec528" name="BothPrismLeftEye" type="Decimal" label="BothPrismLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="d3b2227c-2dc6-4a71-8b5e-3fc95501c326" name="BothAcuityRightEye" type="Decimal" label="BothAcuityRightEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="1a6f0024-b5c6-4263-89d9-631dce68492a" name="BothAcuityLeftEye" type="Decimal" label="BothAcuityLeftEye : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="85df2632-a6cd-4195-8fad-1687ced2f5c0" name="FarCenters" type="Decimal" label="FarCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="6bbe2857-c875-4337-b634-8c6e1e590b2e" name="CloseCenters" type="Decimal" label="CloseCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="4f8643d7-a78f-4faf-b221-234ec9032763" name="BothCenters" type="Decimal" label="BothCenters : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="056d0e37-0c37-4bb1-b58a-e534e993eb9a" name="FarAcuity" type="Decimal" label="FarAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="38f6ca7a-6906-461f-939b-112492ab2264" name="CloseAcuity" type="Decimal" label="CloseAcuity : Decimal" providingTypeName="OpticalTest" />
+      <implementedProperty Id="8cff63d4-dc08-4ac2-9ff9-5e296d3eb43f" name="BothAcuity" type="Decimal" label="BothAcuity : Decimal" providingTypeName="OpticalTest" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="a0ce9057-0238-4760-b5d9-cefaae7cb0d1">
+          <NavigationalProperty Id="35980df8-8908-470c-912e-d4f54ff0887c" name="Refractometry" type="Refractometry" label="Refractometry : Refractometry" nullable="true" kind="Persistent" fieldName="refractometry" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -3680,6 +4796,15 @@
         <entitySetProperty name="UnitTypes" type="UnitType" label="UnitTypes : IQueryable&lt;UnitType&gt;" />
         <entitySetProperty name="Examinations" type="Examination" label="Examinations : IQueryable&lt;Examination&gt;" />
         <entitySetProperty name="ExaminationAssigneds" type="ExaminationAssigned" label="ExaminationAssigneds : IQueryable&lt;ExaminationAssigned&gt;" />
+        <entitySetProperty name="ExaminationTypes" type="ExaminationType" label="ExaminationTypes : IQueryable&lt;ExaminationType&gt;" />
+        <entitySetProperty name="Refractometries" type="Refractometry" label="Refractometries : IQueryable&lt;Refractometry&gt;" />
+        <entitySetProperty name="WithoutGlassesTests" type="WithoutGlassesTest" label="WithoutGlassesTests : IQueryable&lt;WithoutGlassesTest&gt;" />
+        <entitySetProperty name="GlassesTests" type="GlassesTest" label="GlassesTests : IQueryable&lt;GlassesTest&gt;" />
+        <entitySetProperty name="ContactLensesTests" type="ContactLensesTest" label="ContactLensesTests : IQueryable&lt;ContactLensesTest&gt;" />
+        <entitySetProperty name="OpticalObjectiveExaminations" type="OpticalObjectiveExamination" label="OpticalObjectiveExaminations : IQueryable&lt;OpticalObjectiveExamination&gt;" />
+        <entitySetProperty name="SubjectiveOpticalExaminations" type="SubjectiveOpticalExamination" label="SubjectiveOpticalExaminations : IQueryable&lt;SubjectiveOpticalExamination&gt;" />
+        <entitySetProperty name="PrescriptionGlasses" type="PrescriptionGlasses" label="PrescriptionGlasses : IQueryable&lt;PrescriptionGlasses&gt;" />
+        <entitySetProperty name="Cycloplegias" type="Cycloplegia" label="Cycloplegias : IQueryable&lt;Cycloplegia&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

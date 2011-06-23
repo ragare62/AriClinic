@@ -129,6 +129,24 @@ public partial class ExaminationForm {
     protected global::System.Web.UI.WebControls.TextBox txtName;
     
     /// <summary>
+    /// lblExaminationType control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblExaminationType;
+    
+    /// <summary>
+    /// rdcExaminationType control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcExaminationType;
+    
+    /// <summary>
     /// btnAccept control.
     /// </summary>
     /// <remarks>

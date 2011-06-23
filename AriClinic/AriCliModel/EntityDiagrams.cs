@@ -392,6 +392,78 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<ExaminationType> ExaminationTypes 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ExaminationType>();
+	    	}
+		}
+		
+		public IQueryable<Refractometry> Refractometries 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Refractometry>();
+	    	}
+		}
+		
+		public IQueryable<WithoutGlassesTest> WithoutGlassesTests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<WithoutGlassesTest>();
+	    	}
+		}
+		
+		public IQueryable<GlassesTest> GlassesTests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<GlassesTest>();
+	    	}
+		}
+		
+		public IQueryable<ContactLensesTest> ContactLensesTests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ContactLensesTest>();
+	    	}
+		}
+		
+		public IQueryable<OpticalObjectiveExamination> OpticalObjectiveExaminations 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<OpticalObjectiveExamination>();
+	    	}
+		}
+		
+		public IQueryable<SubjectiveOpticalExamination> SubjectiveOpticalExaminations 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<SubjectiveOpticalExamination>();
+	    	}
+		}
+		
+		public IQueryable<PrescriptionGlasses> PrescriptionGlasses 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<PrescriptionGlasses>();
+	    	}
+		}
+		
+		public IQueryable<Cycloplegia> Cycloplegias 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Cycloplegia>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

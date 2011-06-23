@@ -27,6 +27,7 @@
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+        <script type="text/javascript" src="GeneralFormFunctions.js"></script>
         <script type="text/javascript">
           // In order to show item changes in the grid
           function refreshGrid(arg)
@@ -49,6 +50,17 @@
           function EditTreatmentRecord(id)
           {
               var w2 = window.open("TreatmentForm.aspx?TreatmentId=" + id, null, "width=600, height=500,resizable=1");
+              w2.focus();
+          }
+          function NewTreatmentRecordInTab()
+          {
+              var w1 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditTreatmentRecordInTab(id)
+          {
+              var w2 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId') + 
+                                   "&TreatmentId=" + id, null, "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()

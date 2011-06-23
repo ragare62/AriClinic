@@ -54,7 +54,6 @@
           }
           function NewDiagnosticAssignedRecordInTab()
           {
-              alert("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'));
               var w1 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
               w1.focus();
           }

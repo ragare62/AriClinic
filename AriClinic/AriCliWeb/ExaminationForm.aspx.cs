@@ -20,6 +20,8 @@ public partial class ExaminationForm : System.Web.UI.Page
     Examination examination = null;
     int examinationId = 0;
     Permission per = null;
+    ExaminationType examinationType = null;
+    string examinationCode = "";
     #endregion Variables declarations
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -46,6 +48,7 @@ public partial class ExaminationForm : System.Web.UI.Page
             examination = CntAriCli.GetExamination(examinationId, ctx);
             LoadData(examination);
         }
+        LoadExaminationTypeCombo(examination);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -121,6 +124,22 @@ public partial class ExaminationForm : System.Web.UI.Page
     protected void UnloadData(Examination ex)
     {
         ex.Name = txtName.Text;
+        // Examination type treatment
+        ex.ExaminationType = CntAriCli.GetExaminationType(rdcExaminationType.SelectedValue, ctx);
+    }
+    protected void LoadExaminationTypeCombo(Examination ex)
+    {
+        rdcExaminationType.Items.Clear();
+        foreach (ExaminationType et in CntAriCli.GetExaminationTypes(ctx))
+        {
+            rdcExaminationType.Items.Add(new RadComboBoxItem(et.Name, et.Code));
+        }
+
+        // Implicity there's always a 'general' type;
+        if (ex == null)
+            rdcExaminationType.SelectedValue = "general";
+        else
+            rdcExaminationType.SelectedValue = ex.ExaminationType.Code;
     }
     #endregion Auxiliary functions
 

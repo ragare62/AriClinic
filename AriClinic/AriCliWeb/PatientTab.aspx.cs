@@ -118,6 +118,10 @@ public partial class PatientTab : System.Web.UI.Page
                 frame.Attributes["src"] = String.Format("TreatmentGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
                                                         , pat.PersonId);
                 break;
+            case "examination":
+                frame.Attributes["src"] = String.Format("ExaminationAssignedGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                                        , pat.PersonId);
+                break;
         }
     }
     #endregion

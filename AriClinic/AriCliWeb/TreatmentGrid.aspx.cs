@@ -79,6 +79,8 @@ public partial class TreatmentGrid : System.Web.UI.Page
         {
             ImageButton imgb = (ImageButton)e.Item.FindControl("New");
             imgb.Visible = per.Create;
+            if (patient != null)
+                imgb.OnClientClick = "NewTreatmentRecordInTab();";
         }
         if (e.Item is GridDataItem)
         {
@@ -105,7 +107,10 @@ public partial class TreatmentGrid : System.Web.UI.Page
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditTreatmentRecord({0});", id);
+            if (patient != null)
+                command = String.Format("return EditTreatmentRecordInTab({0});", id);
+            else
+                command = String.Format("return EditTreatmentRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button

@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
+using System.Web.UI.HtmlControls;
 
 public partial class ExaminationAssignedGrid : System.Web.UI.Page 
 {
@@ -14,6 +15,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
     Permission per = null;
     ExaminationAssigned ExaminationAssigned = null;
     int ExaminationAssignedId = 0;
+    Patient patient = null;
+    int patientId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -34,6 +37,19 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
+        // check if grid is call from a tab 
+        if (type == "InTab")
+        {
+            HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
+            tt.Attributes["class"] = "ghost";
+            // hide patient column
+            RadGrid1.Columns.FindByDataField("Patient.FullName").Visible = false;
+        }
+        if (Request.QueryString["PatientId"] != null)
+        {
+            patientId = int.Parse(Request.QueryString["PatientId"]);
+            patient = CntAriCli.GetPatient(patientId, ctx);
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -54,7 +70,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
+        RefreshGrid(false);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -62,6 +78,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         if (e.Item is GridCommandItem)
         {
             ImageButton imgb = (ImageButton)e.Item.FindControl("New");
+            if (patient != null)
+                imgb.OnClientClick = "NewExaminationAssignedRecordInTab();";
             imgb.Visible = per.Create;
         }
         if (e.Item is GridDataItem)
@@ -89,7 +107,10 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditExaminationAssignedRecord({0});", id);
+            if (patient != null)
+                command = String.Format("return EditExaminationAssignedRecordInTab({0});", id);
+            else
+                command = String.Format("return EditExaminationAssignedRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -135,7 +156,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-        RefreshGrid();
+        RefreshGrid(true);
         if (e.Argument == "new")
         {
             RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
@@ -153,7 +174,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
                                           select da).FirstOrDefault<ExaminationAssigned>();
                     ctx.Delete(ExaminationAssigned);
                     ctx.SaveChanges();
-                    RefreshGrid();
+                    RefreshGrid(true);
                     Session["DeleteId"] = null;
                 }
                 catch (Exception ex)
@@ -167,9 +188,13 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         }
     }
 
-    protected void RefreshGrid()
+    protected void RefreshGrid(bool rebind)
     {
-        RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
-        RadGrid1.Rebind();
+        if (patient == null)
+            RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
+        else
+            RadGrid1.DataSource = patient.ExaminationAssigneds;
+        if (rebind)
+            RadGrid1.Rebind();
     }
 }

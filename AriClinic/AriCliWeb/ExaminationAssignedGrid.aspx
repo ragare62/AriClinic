@@ -27,6 +27,7 @@
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+        <script type ="text/javascript" src="GeneralFormFunctions.js"></script>
         <script type="text/javascript">
           // In order to show item changes in the grid
           function refreshGrid(arg)
@@ -49,6 +50,17 @@
           function EditExaminationAssignedRecord(id)
           {
               var w2 = window.open("ExaminationAssignedForm.aspx?ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
+              w2.focus();
+          }
+          function NewExaminationAssignedRecordInTab()
+          {
+              var w1 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditExaminationAssignedRecordInTab(id)
+          {
+              var w2 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId') + 
+                                   "&ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -113,7 +125,7 @@
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" 
                             HorizontalAlign="NotSet" 
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
-        <div id="TitleArea" class="titleBar2">
+        <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           
           <asp:Label ID="lblTitle" runat="server" Text="Exploraciones asignadas" 

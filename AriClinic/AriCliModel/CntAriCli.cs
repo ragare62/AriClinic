@@ -1137,5 +1137,17 @@ namespace AriCliModel
                     where ea.ExaminationAssignedId == id
                     select ea).FirstOrDefault<ExaminationAssigned>();
         }
+        public static IList<ExaminationType> GetExaminationTypes(AriClinicContext ctx)
+        {
+            return (from et in ctx.ExaminationTypes
+                    orderby et.Name
+                    select et).ToList<ExaminationType>();
+        }
+        public static ExaminationType GetExaminationType(string code, AriClinicContext ctx)
+        {
+            return (from et in ctx.ExaminationTypes
+                    where et.Code == code
+                    select et).FirstOrDefault<ExaminationType>();
+        }
     }
 }
