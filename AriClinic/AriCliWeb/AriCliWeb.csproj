@@ -157,6 +157,20 @@
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WithoutGlassesForm.aspx.cs">
+      <DependentUpon>WithoutGlassesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WithoutGlassesForm.aspx.designer.cs">
+      <DependentUpon>WithoutGlassesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RefractometryForm.aspx.cs">
+      <DependentUpon>RefractometryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RefractometryForm.aspx.designer.cs">
+      <DependentUpon>RefractometryForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TreatmentGrid.aspx.cs">
       <DependentUpon>TreatmentGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -788,6 +802,9 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="WithoutGlassesForm.aspx" />
+    <Content Include="images\disk_blue_ok.png" />
+    <Content Include="RefractometryForm.aspx" />
     <Content Include="TreatmentGrid.aspx" />
     <Content Include="TreatmentForm.aspx" />
     <Content Include="ExaminationAssignedForm.aspx" />
@@ -1015,7 +1032,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

@@ -1149,5 +1149,11 @@ namespace AriCliModel
                     where et.Code == code
                     select et).FirstOrDefault<ExaminationType>();
         }
+        public static WithoutGlassesTest GetWithoutGlassesTest(int id, AriClinicContext ctx)
+        {
+            return (from wh in ctx.WithoutGlassesTests
+                    where wh.Id == id
+                    select wh).FirstOrDefault<WithoutGlassesTest>();
+        }
     }
 }

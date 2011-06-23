@@ -9,7 +9,7 @@
 
 
 
-public partial class ExaminationAssignedGrid {
+public partial class RefractometryForm {
     
     /// <summary>
     /// RadStyleSheetManager1 control.
@@ -39,40 +39,13 @@ public partial class ExaminationAssignedGrid {
     protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
     
     /// <summary>
-    /// RadWindowManager1 control.
+    /// RadCodeBlock1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
-    
-    /// <summary>
-    /// RadScriptBlock1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadScriptBlock RadScriptBlock1;
-    
-    /// <summary>
-    /// RadToolTipManager1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
-    
-    /// <summary>
-    /// RadAjaxLoadingPanel1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
+    protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
     
     /// <summary>
     /// RadAjaxManager1 control.
@@ -93,6 +66,24 @@ public partial class ExaminationAssignedGrid {
     protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
     
     /// <summary>
+    /// RadInputManager1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadInputManager RadInputManager1;
+    
+    /// <summary>
+    /// RadToolTipManager1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
+    
+    /// <summary>
     /// RadAjaxPanel1 control.
     /// </summary>
     /// <remarks>
@@ -100,15 +91,6 @@ public partial class ExaminationAssignedGrid {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
-    
-    /// <summary>
-    /// TitleArea control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl TitleArea;
     
     /// <summary>
     /// lblTitle control.
@@ -120,38 +102,128 @@ public partial class ExaminationAssignedGrid {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// lblExaminationType control.
+    /// lblPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblExaminationType;
+    protected global::System.Web.UI.WebControls.Label lblPatient;
     
     /// <summary>
-    /// rdcExaminationType control.
+    /// btnPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcExaminationType;
+    protected global::System.Web.UI.WebControls.ImageButton btnPatient;
     
     /// <summary>
-    /// RadGrid1 control.
+    /// rdcPatient control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadGrid RadGrid1;
+    protected global::Telerik.Web.UI.RadComboBox rdcPatient;
     
     /// <summary>
-    /// lblMessage control.
+    /// lblExaminationDate control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblMessage;
+    protected global::System.Web.UI.WebControls.Label lblExaminationDate;
+    
+    /// <summary>
+    /// rdpExaminationDate control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadDatePicker rdpExaminationDate;
+    
+    /// <summary>
+    /// lblExamination control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblExamination;
+    
+    /// <summary>
+    /// btnExamination control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnExamination;
+    
+    /// <summary>
+    /// rdcExamination control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcExamination;
+    
+    /// <summary>
+    /// lblComments control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblComments;
+    
+    /// <summary>
+    /// txtComments control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtComments;
+    
+    /// <summary>
+    /// RadTabStrip1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTabStrip RadTabStrip1;
+    
+    /// <summary>
+    /// FrmArea control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl FrmArea;
+    
+    /// <summary>
+    /// btnAccept control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnAccept;
+    
+    /// <summary>
+    /// btnCancel control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnCancel;
 }

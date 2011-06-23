@@ -44,24 +44,83 @@
           }
           function NewExaminationAssignedRecord()
           {
-              var w1 = window.open("ExaminationAssignedForm.aspx", null, "width=600, height=500,resizable=1");
-              w1.focus();
+              var combo = $find("<%= rdcExaminationType.ClientID %>");
+              var examType = combo.get_value();
+              var w1;
+              switch (examType)
+              {
+                  case "general":
+                      w1 = window.open("ExaminationAssignedForm.aspx", null, "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "refractometry":
+                      w1 = window.open("RefractometryForm.aspx", null, "width=800, height=700,resizable=1");
+                      w1.focus();
+                      break;
+                  default:
+                      alert("Type " + examType + " not defined");
+              }
           }
-          function EditExaminationAssignedRecord(id)
+          function EditExaminationAssignedRecord(id, examType)
           {
-              var w2 = window.open("ExaminationAssignedForm.aspx?ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
-              w2.focus();
+              var w2;
+              switch (examType)
+              {
+                  case "general":
+                      w2 = window.open("ExaminationAssignedForm.aspx?ExaminationAssignedId=" + id, null,
+                                       "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "refractometry":
+                      w2 = window.open("RefractometryForm.aspx?ExaminationAssignedId=" + id, null,
+                                       "width=800, height=700,resizable=1");
+                      w2.focus();
+                      break;
+                  default:
+                      alert("Type " + examType + " not defined");
+              }
+
           }
           function NewExaminationAssignedRecordInTab()
           {
-              var w1 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
-              w1.focus();
+              var combo = $find("<%= rdcExaminationType.ClientID %>");
+              var examType = combo.get_value();
+              var w1;
+              switch (examType)
+              {
+                  case "general":
+                      w1 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId'), null,
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "refractometry":
+                      w1 = window.open("RefractometryForm.aspx?PatientId=" + gup('PatientId'), null,
+                                       "width=800, height=700,resizable=1");
+                      w1.focus();
+                      break;
+                  default:
+                      alert("Type " + examType + " not defined");
+              }
+
           }
-          function EditExaminationAssignedRecordInTab(id)
+          function EditExaminationAssignedRecordInTab(id, examType)
           {
-              var w2 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId') + 
-                                   "&ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
-              w2.focus();
+              var w2;
+              switch (examType)
+              {
+                  case "general":
+                      w2 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId') +
+                                       "&ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "refractometry":
+                      w2 = window.open("RefractomeryForm.aspx?PatientId=" + gup('PatientId') +
+                                       "&ExaminationAssignedId=" + id, null, "width=800, height=700,resizable=1");
+                      w2.focus();
+                      break;
+                       default:
+                      alert("Type " + examType + " not defined");
+              }
           }
           function CloseWindow()
           {
@@ -131,7 +190,13 @@
           <asp:Label ID="lblTitle" runat="server" Text="Exploraciones asignadas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
-
+        <div id="ExaminationType" class="normalText">
+          <asp:Label ID="lblExaminationType" runat="server" Text="Elija tipo para nuevos registros: "></asp:Label>
+          <telerik:RadComboBox ID="rdcExaminationType" runat="server" Width="400px" 
+                               EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                               ItemsPerRequest="10" Height="100px">
+          </telerik:RadComboBox>
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" 
                            AllowPaging="True" AllowFilteringByColumn="True" 
@@ -173,6 +238,19 @@
                                          HeaderText="Exploración" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="Examination.Name" UniqueName="Examination.Name">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Comments" 
+                                         FilterControlToolTip="Filtrar por exploración" FilterImageToolTip="Filtro"
+                                         HeaderText="Resumen" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Comments" UniqueName="Comments">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Examination.ExaminationType.Code" 
+                                         FilterControlToolTip="Filtrar por exploración" FilterImageToolTip="Filtro"
+                                         HeaderText="Codigo Tipo" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" Visible="false"
+                                         SortExpression="Examination.ExaminationType.Code"
+                                         UniqueName="Examination.ExaminationType.Code">
                 </telerik:GridBoundColumn>
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 

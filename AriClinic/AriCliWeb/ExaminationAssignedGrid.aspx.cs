@@ -52,6 +52,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
+        // load types
+        LoadExaminationTypeCombo();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -87,6 +89,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             ImageButton imgb = null;
             string name = "";
             string command = "";
+            string type = "";
             GridDataItem gdi;
             int id = 0;
             
@@ -96,6 +99,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
             name = gdi["Patient.FullName"].Text + ": " + gdi["Examination.Name"].Text;
+            type = gdi["Examination.ExaminationType.Code"].Text;
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
                                     , null
@@ -108,16 +112,16 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             if (patient != null)
-                command = String.Format("return EditExaminationAssignedRecordInTab({0});", id);
+                command = String.Format("return EditExaminationAssignedRecordInTab({0},'{1}');", id, type);
             else
-                command = String.Format("return EditExaminationAssignedRecord({0});", id);
+                command = String.Format("return EditExaminationAssignedRecord({0},'{1}');", id, type);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
             string message = Resources.GeneralResource.DeleteRecordQuestion;
             message = String.Format("{0}<br/>{1}", message, name);
-            command = String.Format("ariDialog('Examinationos asignados','{0}','prompt',null,0,0)", message);
+            command = String.Format("ariDialog('Exploraciones asignadas','{0}','prompt',null,0,0)", message);
             imgb.Visible = per.Create;
         }
     }
@@ -197,4 +201,19 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         if (rebind)
             RadGrid1.Rebind();
     }
+
+    protected void LoadExaminationTypeCombo()
+    {
+        rdcExaminationType.Items.Clear();
+        var rs = from et in ctx.ExaminationTypes
+                 orderby et.Name
+                 select et;
+        foreach (ExaminationType exty in rs)
+        {
+            rdcExaminationType.Items.Add(new RadComboBoxItem(exty.Name, exty.Code));
+        }
+        // we asume that there's a general type always
+        rdcExaminationType.SelectedValue = "general";
+    }
+
 }
