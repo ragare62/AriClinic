@@ -1,10 +1,10 @@
 using System;
 using AriCliModel;
+using AriCliWeb;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Configuration;
 using System.Web.Security;
@@ -17,6 +17,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
     #region Variables declarations
     AriClinicContext ctx = null;
     User user = null;
+    Refractometry refractometry = null;
     WithoutGlassesTest withoutGlasses = null;
     int id = 0;
     Permission per = null;
@@ -47,12 +48,17 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
             withoutGlasses = CntAriCli.GetWithoutGlassesTest(id, ctx);
             LoadData(withoutGlasses);
         }
+        if (Request.QueryString["RefractometryId"] != null)
+        {
+            id = int.Parse(Request.QueryString["RefractometryId"]);
+            refractometry = (Refractometry)CntAriCli.GetExaminationAssigned(id, ctx);
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
+
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
@@ -96,6 +102,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
         //}
         return true;
     }
+
     protected bool CreateChange()
     {
         if (!DataOk())
@@ -103,6 +110,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
         if (withoutGlasses == null)
         {
             withoutGlasses = new WithoutGlassesTest();
+            withoutGlasses.Refractometry = refractometry;
             UnloadData(withoutGlasses);
             ctx.Add(withoutGlasses);
         }
@@ -114,16 +122,31 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
+
     protected void LoadData(WithoutGlassesTest wtg)
     {
+        txtCloseAcuityBothEyes.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityBothEyes);
+        txtCloseAcuityLeftEye.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityLeftEye);
+        txtCloseAcuityRightEye.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityRightEye);
+
+        txtFarAcuityBothEyes.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityBothEyes);
+        txtFarAcuityLeftEye.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityLeftEye);
+        txtFarAcuityRightEye.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityRightEye);
+
         txtComments.Text = wtg.Comments;
     }
+
     protected void UnloadData(WithoutGlassesTest wtg)
     {
+        wtg.CloseVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtCloseAcuityBothEyes.Text);
+        wtg.CloseVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtCloseAcuityLeftEye.Text);
+        wtg.CloseVisualAcuityRightEye = CntWeb.SetPossibleNull(txtCloseAcuityRightEye.Text);
+
+        wtg.FarVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtFarAcuityBothEyes.Text);
+        wtg.FarVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtFarAcuityLeftEye.Text);
+        wtg.FarVisualAcuityRightEye = CntWeb.SetPossibleNull(txtFarAcuityRightEye.Text);
+
         wtg.Comments = txtComments.Text;
     }
     #endregion Auxiliary functions
-
-
-
 }

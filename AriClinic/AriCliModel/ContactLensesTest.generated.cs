@@ -47,8 +47,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeVisualAcuityRightEye;
-		public virtual decimal CloseVisualAcuityRightEye 
+		private Decimal? closeVisualAcuityRightEye;
+		public virtual Decimal? CloseVisualAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -60,8 +60,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeVisualAcuityLeftEye;
-		public virtual decimal CloseVisualAcuityLeftEye 
+		private Decimal? closeVisualAcuityLeftEye;
+		public virtual Decimal? CloseVisualAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -73,8 +73,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeVisualAcuityBothEyes;
-		public virtual decimal CloseVisualAcuityBothEyes 
+		private Decimal? closeVisualAcuityBothEyes;
+		public virtual Decimal? CloseVisualAcuityBothEyes 
 		{ 
 		    get
 		    {
@@ -86,8 +86,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farVisualAcuityRightEye;
-		public virtual decimal FarVisualAcuityRightEye 
+		private Decimal? farVisualAcuityRightEye;
+		public virtual Decimal? FarVisualAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -99,8 +99,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farVisualAcuityLeftEye;
-		public virtual decimal FarVisualAcuityLeftEye 
+		private Decimal? farVisualAcuityLeftEye;
+		public virtual Decimal? FarVisualAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -112,8 +112,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farVisualAcuityBothEyes;
-		public virtual decimal FarVisualAcuityBothEyes 
+		private Decimal? farVisualAcuityBothEyes;
+		public virtual Decimal? FarVisualAcuityBothEyes 
 		{ 
 		    get
 		    {

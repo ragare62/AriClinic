@@ -77,5 +77,26 @@ namespace AriCliWeb
             return s;
         }
 
+        public static string GetPossibleNull(decimal? value)
+        {
+            if (value == null)
+                return "";
+            else
+                return value.ToString();
+        }
+        public static decimal? SetPossibleNull(string value)
+        {
+            if (value == "")
+                return null;
+            else
+            {
+                decimal v;
+                if (decimal.TryParse(value, out v))
+                    return v;
+                else
+                    return null;
+            }
+        }
+
     }
 }

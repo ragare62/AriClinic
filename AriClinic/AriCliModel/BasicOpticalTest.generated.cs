@@ -21,32 +21,32 @@ namespace AriCliModel
 {
 	public interface BasicOpticalTest
 	{
-		decimal CloseVisualAcuityRightEye 
+		Decimal? CloseVisualAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseVisualAcuityLeftEye 
+		Decimal? CloseVisualAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseVisualAcuityBothEyes 
+		Decimal? CloseVisualAcuityBothEyes 
 		{ 
 			get;
 			set;
 		}
-		decimal FarVisualAcuityRightEye 
+		Decimal? FarVisualAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarVisualAcuityLeftEye 
+		Decimal? FarVisualAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarVisualAcuityBothEyes 
+		Decimal? FarVisualAcuityBothEyes 
 		{ 
 			get;
 			set;
