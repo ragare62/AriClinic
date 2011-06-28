@@ -35,7 +35,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
             user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "WithoutGlasses"
+                            where p.Code == "examinationassigned"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;

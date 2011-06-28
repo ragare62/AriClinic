@@ -22,6 +22,8 @@ public partial class RefractometryForm : System.Web.UI.Page
     int examinationId = 0;
     int examinationAssignedId = 0;
     int patientId = 0;
+    HtmlControl frame = null;
+    bool firstTime = false;
 
     Permission per = null;
 
@@ -85,13 +87,22 @@ public partial class RefractometryForm : System.Web.UI.Page
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "";
-        if (examination == null)
+        if (refractometry == null)
+        {
             command = "CloseAndRebind('new')";
+            firstTime = true;
+        }
         else
+        {
             command = "CloseAndRebind('')";
+            firstTime = false;
+        }
         if (!CreateChange())
             return;
-        RadAjaxManager1.ResponseScripts.Add(command);
+        if (firstTime)
+            Response.Redirect(String.Format("Refractometry.aspx?ExaminationAssignedId={0}",refractometry.ExaminationAssignedId));
+        else
+            RadAjaxManager1.ResponseScripts.Add(command);
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -146,7 +157,7 @@ public partial class RefractometryForm : System.Web.UI.Page
         }
         else
         {
-            examination = CntAriCli.GetExamination(examinationId, ctx);
+            refractometry = (Refractometry)CntAriCli.GetExaminationAssigned(examinationAssignedId, ctx);
             UnloadData(refractometry);
         }
         ctx.SaveChanges();
@@ -162,6 +173,10 @@ public partial class RefractometryForm : System.Web.UI.Page
         // Load Examination data
         rdcExamination.Items.Clear();
         rdcExamination.Items.Add(new RadComboBoxItem(rf.Examination.Name, rf.Examination.ExaminationId.ToString()));
+
+        // Now we must load tabstrip
+        frame = (HtmlControl)this.FindControl("FrmArea");
+        frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
 
         rdpExaminationDate.SelectedDate = rf.ExaminationDate;
         txtComments.Text = rf.Comments;
@@ -198,7 +213,7 @@ public partial class RefractometryForm : System.Web.UI.Page
         combo.Items.Clear();
         var rs = from d in ctx.Examinations
                  where d.Name.StartsWith(e.Text)
-                 && d.ExaminationType.Code == "refractrometry"
+                       && d.ExaminationType.Code == "refractrometry"
                  select d;
         foreach (Examination dia in rs)
         {
