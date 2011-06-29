@@ -11,6 +11,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
     User user = null;
     HealthcareCompany hc = null;
     string type = "";
+    string gt = ""; // internal type 
     Permission per = null;
     int examinationId = 0;
 
@@ -33,6 +34,8 @@ public partial class ExaminationGrid : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
+        if (Request.QueryString["GT"] != null)
+            gt = Request.QueryString["GT"];
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -53,7 +56,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = CntAriCli.GetExaminations(ctx);
+        RefreshGrid(false);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -134,7 +137,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-            RefreshGrid();
+            RefreshGrid(true);
             if (e.Argument == "new")
             {
                 RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
@@ -152,7 +155,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
                                        select s).FirstOrDefault<Examination>();
                         ctx.Delete(ser);
                         ctx.SaveChanges();
-                        RefreshGrid();
+                        RefreshGrid(true);
                         Session["DeleteId"] = null;
                     }
                     catch (Exception ex)
@@ -168,9 +171,13 @@ public partial class ExaminationGrid : System.Web.UI.Page
 
     }
 
-    protected void RefreshGrid()
+    protected void RefreshGrid(bool rebind)
     {
-        RadGrid1.DataSource = CntAriCli.GetExaminations(ctx);
-        RadGrid1.Rebind();
+        if (gt == "")
+            RadGrid1.DataSource = CntAriCli.GetExaminations(ctx);
+        else
+            RadGrid1.DataSource = CntAriCli.GetExaminations(gt, ctx);
+        if (rebind)
+            RadGrid1.Rebind();
     }
 }

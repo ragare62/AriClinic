@@ -46,6 +46,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
         {
             id = Int32.Parse(Request.QueryString["WithoutGlassesId"]);
             withoutGlasses = CntAriCli.GetWithoutGlassesTest(id, ctx);
+            refractometry = withoutGlasses.Refractometry;
             LoadData(withoutGlasses);
         }
         if (Request.QueryString["RefractometryId"] != null)
@@ -116,10 +117,14 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
         }
         else
         {
-            withoutGlasses = CntAriCli.GetWithoutGlassesTest(id, ctx);
+            withoutGlasses = CntAriCli.GetWithoutGlassesTest(withoutGlasses.Id, ctx);
             UnloadData(withoutGlasses);
         }
         ctx.SaveChanges();
+        RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','success',null,0,0)"
+                ,Resources.GeneralResource.Success
+                ,Resources.GeneralResource.CorrectlyStored));
+        Response.Redirect(String.Format("WithoutGlassesForm.aspx?WithoutGlassesId={0}",withoutGlasses.Id));
         return true;
     }
 

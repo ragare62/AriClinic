@@ -84,7 +84,7 @@
                 <div id="ExaminationType" class="normalText">
                 <asp:Label id="lblExaminationType" runat="server" Text="Tipo de exploración"></asp:Label>
                 <br />
-                <telerik:RadComboBox ID="rdcExaminationType" runat="server" Height="16px" 
+                <telerik:RadComboBox ID="rdcExaminationType" runat="server" Height="100px" 
                         Width="284px">
                 </telerik:RadComboBox>
 

@@ -123,11 +123,11 @@
               <td colspan="2" class="normalText">
                 <div id="Examination">
                   <asp:Label ID="lblExamination" runat="server" Text="Exploración:" 
-                             ToolTip="Diagnóstico a asignar"></asp:Label>
+                             ToolTip="Exploración a asignar"></asp:Label>
                   <asp:ImageButton ID="btnExamination" runat="server" 
                                    ImageUrl="~/images/search_mini.png" CausesValidation="false"
-                                   ToolTip="Haga clic aquí para buscar un diagnóstico" 
-                                   OnClientClick="searchExamination();" />
+                                   ToolTip="Haga clic aquí para buscar una exploración" 
+                                   OnClientClick="searchExamination('refractometry');" />
                   <br />
                   <telerik:RadComboBox runat="server" ID="rdcExamination" Height="100px" 
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"

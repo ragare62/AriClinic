@@ -1119,6 +1119,13 @@ namespace AriCliModel
                     orderby e.Name
                     select e).ToList<Examination>();
         }
+        public static IList<Examination> GetExaminations(string gt, AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    orderby e.Name
+                    where e.ExaminationType.Code == gt
+                    select e).ToList<Examination>();
+        }
         public static Examination GetExamination(int id, AriClinicContext ctx)
         {
             return (from e in ctx.Examinations

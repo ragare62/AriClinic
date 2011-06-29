@@ -100,7 +100,7 @@ public partial class RefractometryForm : System.Web.UI.Page
         if (!CreateChange())
             return;
         if (firstTime)
-            Response.Redirect(String.Format("Refractometry.aspx?ExaminationAssignedId={0}",refractometry.ExaminationAssignedId));
+            Response.Redirect(String.Format("RefractometryForm.aspx?ExaminationAssignedId={0}",refractometry.ExaminationAssignedId));
         else
             RadAjaxManager1.ResponseScripts.Add(command);
     }
@@ -176,7 +176,11 @@ public partial class RefractometryForm : System.Web.UI.Page
 
         // Now we must load tabstrip
         frame = (HtmlControl)this.FindControl("FrmArea");
-        frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+        if (refractometry.WithoutGlassesTests.Count() == 0)
+            frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+        else
+            frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}&WithoutGlassesId={1}", 
+                refractometry.ExaminationAssignedId, refractometry.WithoutGlassesTests[0].Id);
 
         rdpExaminationDate.SelectedDate = rf.ExaminationDate;
         txtComments.Text = rf.Comments;
@@ -213,7 +217,7 @@ public partial class RefractometryForm : System.Web.UI.Page
         combo.Items.Clear();
         var rs = from d in ctx.Examinations
                  where d.Name.StartsWith(e.Text)
-                       && d.ExaminationType.Code == "refractrometry"
+                       && d.ExaminationType.Code == "refractometry"
                  select d;
         foreach (Examination dia in rs)
         {

@@ -144,6 +144,9 @@
   <data name="ContainsTicketsInvoiced" xml:space="preserve">
     <value>La nota contiene tickets ya facturados.</value>
   </data>
+  <data name="CorrectlyStored" xml:space="preserve">
+    <value>Guardado correctamente.</value>
+  </data>
   <data name="CustomerDoesNotExists" xml:space="preserve">
     <value>El cliente no existe</value>
   </data>
@@ -281,6 +284,9 @@
   </data>
   <data name="SexValueNeeded" xml:space="preserve">
     <value>Especifique el sexo</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Correcto</value>
   </data>
   <data name="TaxTypeNeeded" xml:space="preserve">
     <value>Debe asignar un tipo de IVA</value>

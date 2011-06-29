@@ -82,7 +82,7 @@ namespace AriCliWeb
             if (value == null)
                 return "";
             else
-                return value.ToString();
+                return String.Format("{0:0.0###}",value);
         }
         public static decimal? SetPossibleNull(string value)
         {

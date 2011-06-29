@@ -68,27 +68,27 @@
                 <asp:Label ID="lblFarAcuity" runat="server" Text="Agudeza visual lejos"></asp:Label>
               </td>
               <td>
-                <asp:TextBox ID="txtFarAcuityRightEye" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFarAcuityRightEye" runat="server" CssClass="centered"></asp:TextBox>
               </td>
               <td>
-                <asp:TextBox ID="txtFarAcuityLeftEye" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFarAcuityLeftEye" runat="server" CssClass="centered"></asp:TextBox>
               </td>
               <td>
-                <asp:TextBox ID="txtFarAcuityBothEyes" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFarAcuityBothEyes" runat="server" CssClass="centered"></asp:TextBox>
               </td>
             </tr>
             <tr>
               <td>
-                <asp:Label ID="lblCloseAcuity" runat="server" Text="Agudeza visual cerca"></asp:Label>
+                <asp:Label ID="lblCloseAcuity" runat="server" Text="Agudeza visual cerca" CssClass="centered"></asp:Label>
               </td>
               <td>
-                <asp:TextBox ID="txtCloseAcuityRightEye" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCloseAcuityRightEye" runat="server" CssClass="centered"></asp:TextBox>
               </td>
               <td>
-                <asp:TextBox ID="txtCloseAcuityLeftEye" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCloseAcuityLeftEye" runat="server" CssClass="centered"></asp:TextBox>
               </td>
               <td>
-                <asp:TextBox ID="txtCloseAcuityBothEyes" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCloseAcuityBothEyes" runat="server" CssClass="centered"></asp:TextBox>
               </td>
             </tr> 
             <tr>
