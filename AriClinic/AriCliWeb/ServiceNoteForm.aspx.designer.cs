@@ -120,13 +120,13 @@ public partial class ServiceNoteForm {
     protected global::System.Web.UI.WebControls.TextBox txtServiceNoteId;
     
     /// <summary>
-    /// lblCustomerId control.
+    /// lblComercialName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblCustomerId;
+    protected global::System.Web.UI.WebControls.Label lblComercialName;
     
     /// <summary>
     /// btnCustomerId control.
@@ -138,31 +138,13 @@ public partial class ServiceNoteForm {
     protected global::System.Web.UI.WebControls.ImageButton btnCustomerId;
     
     /// <summary>
-    /// txtCustomerId control.
+    /// rdcComercialName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtCustomerId;
-    
-    /// <summary>
-    /// lblComercialName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblComercialName;
-    
-    /// <summary>
-    /// txtComercialName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtComercialName;
+    protected global::Telerik.Web.UI.RadComboBox rdcComercialName;
     
     /// <summary>
     /// lblTicketDate control.
@@ -201,13 +183,13 @@ public partial class ServiceNoteForm {
     protected global::Telerik.Web.UI.RadComboBox rdcbClinic;
     
     /// <summary>
-    /// lblProfessionalId control.
+    /// lblProfessionalName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProfessionalId;
+    protected global::System.Web.UI.WebControls.Label lblProfessionalName;
     
     /// <summary>
     /// btnProfessionalId control.
@@ -219,31 +201,13 @@ public partial class ServiceNoteForm {
     protected global::System.Web.UI.WebControls.ImageButton btnProfessionalId;
     
     /// <summary>
-    /// txtProfessionalId control.
+    /// rdcProfessionalName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalId;
-    
-    /// <summary>
-    /// lblProfessionalName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProfessionalName;
-    
-    /// <summary>
-    /// txtProfessionalName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalName;
+    protected global::Telerik.Web.UI.RadComboBox rdcProfessionalName;
     
     /// <summary>
     /// lblTotal control.

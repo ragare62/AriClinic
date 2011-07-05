@@ -408,7 +408,7 @@ namespace AriCliModel
                     select t).ToList<Ticket>();
         }
 
-        public static Customer GetCustomer(int customerId, AriClinicContext ctx)
+        public static Customer GetCustomer(int? customerId, AriClinicContext ctx)
         {
             return (from c in ctx.Customers
                     where c.PersonId == customerId
@@ -607,7 +607,7 @@ namespace AriCliModel
                     select tw).FirstOrDefault<TaxWithholdingType>();
         }
 
-        public static Professional GetProfessional(int id, AriClinicContext ctx)
+        public static Professional GetProfessional(int? id, AriClinicContext ctx)
         {
             return (from p in ctx.Professionals
                     where p.PersonId == id

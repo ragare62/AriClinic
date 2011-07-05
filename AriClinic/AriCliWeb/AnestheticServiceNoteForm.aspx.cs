@@ -58,48 +58,54 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
         }
-        // 
-        if (Request.QueryString["CustomerId"] != null)
-        {
-            customerId = Int32.Parse(Request.QueryString["CustomerId"]);
-            cus = CntAriCli.GetCustomer(customerId, ctx);
-            txtCustomerId.Text = cus.PersonId.ToString();
-            txtComercialName.Text = cus.FullName;
-            // if a patient has been passed we can not touch it
-            txtCustomerId.Enabled = false;
-            txtComercialName.Enabled = false;
-            btnCustomerId.Visible = false;
-        }
-        else
-        {
-            LoadClinicCombo(null);
-        }
-        if (Session["Clinic"] != null)
-            cl = (Clinic)Session["Clinic"];
-        // 
-        if (Request.QueryString["AnestheticServiceNoteId"] != null)
-        {
-            anestheticServiceNoteId = Int32.Parse(Request.QueryString["AnestheticServiceNoteId"]);
-            asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
-            cus = asn.Customer;
-            customerId = cus.PersonId;
-            LoadData(asn);
-            // Load internal frame
-            HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
-            frm.Attributes["src"] = String.Format("TicketGrid.aspx?AnestheticServiceNoteId={0}", anestheticServiceNoteId);
-        }
-        else
-        {
-            // If there isn't a ticket the default date must be today
-            rddpServiceNoteDate.SelectedDate = DateTime.Now;
-            LoadClinicCombo(null);
-            //HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
-            //frm.Attributes["src"] = "TicketGrid.aspx?AnestheticServiceNoteId=0";
-        }
+
+       
+            if (Request.QueryString["CustomerId"] != null)
+            {
+                customerId = Int32.Parse(Request.QueryString["CustomerId"]);
+                cus = CntAriCli.GetCustomer(customerId, ctx);
+                //txtCustomerId.Text = cus.PersonId.ToString();
+
+                rdcComercialName.Items.Clear();
+                rdcComercialName.Items.Add(new RadComboBoxItem(cus.FullName, cus.PersonId.ToString()));
+                rdcComercialName.SelectedValue = cus.PersonId.ToString();
+                rdcComercialName.Enabled = false;
+
+                btnCustomerId.Visible = false;
+            }
+            else
+            {
+                LoadClinicCombo(null);
+            }
+            if (Session["Clinic"] != null)
+                cl = (Clinic)Session["Clinic"];
+            // 
+            if (Request.QueryString["AnestheticServiceNoteId"] != null)
+            {
+                anestheticServiceNoteId = Int32.Parse(Request.QueryString["AnestheticServiceNoteId"]);
+                asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+                cus = asn.Customer;
+                customerId = cus.PersonId;
+                LoadData(asn);
+                // Load internal frame
+                HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
+                frm.Attributes["src"] = String.Format("TicketGrid.aspx?AnestheticServiceNoteId={0}", anestheticServiceNoteId);
+            }
+            else
+            {
+                // If there isn't a ticket the default date must be today
+                rddpServiceNoteDate.SelectedDate = DateTime.Now;
+                LoadClinicCombo(null);
+                //HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
+                //frm.Attributes["src"] = "TicketGrid.aspx?AnestheticServiceNoteId=0";
+            }
+        
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+            Session.Add("procedurechanged", false);
     }
 
     protected void Page_Unload(object sender, EventArgs e)
@@ -119,7 +125,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //if (asn == null)
         //    command = "CloseAndRebind('new')";
         //else
-            command = "CloseAndRebind('')";
+        command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
         RadAjaxManager1.ResponseScripts.Add(command);
@@ -138,11 +144,11 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected bool DataOk()
     {
         string errorMessage = "";
-        if (txtCustomerId.Text == "")
+        if (rdcComercialName.SelectedValue == "")
             errorMessage += Resources.GeneralResource.CustomerNeeded + "<br/>";
-        if (txtProfessionalId.Text == "")
+        if (rdcProfessionalName.SelectedValue == "")
             errorMessage += Resources.GeneralResource.ProfessionalNeeded + "<br/>";
-        if (txtProcedureId1.Text == "")
+        if (rdcProcedureName1.SelectedValue == "")
             errorMessage += Resources.GeneralResource.ProcedureNeeded + "<br/>";
 
         if (errorMessage != "")
@@ -161,6 +167,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     {
         if (!DataOk())
             return false;
+
         if (asn == null)
         {
             firstTime = true;
@@ -169,9 +176,12 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             ctx.Add(asn);
         }
         else
-        {                
+        { 
             asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
-            if (procedurechanged)
+            bool procedurechanged = false;
+            if(Session["procedurechanged"]!=null)
+                procedurechanged = (bool)Session["procedurechanged"];
+            if (procedurechanged )
             {
                 firstTime = true;
 
@@ -182,7 +192,6 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
         ctx.SaveChanges();
         
-
         return UpdateRelatedTickets(asn);
     }
 
@@ -228,8 +237,10 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void LoadData(AnestheticServiceNote asn)
     {
         txtAnestheticServiceNoteId.Text = asn.AnestheticServiceNoteId.ToString();
-        txtCustomerId.Text = asn.Customer.PersonId.ToString();
-        txtComercialName.Text = asn.Customer.FullName;
+        //txtCustomerId.Text = asn.Customer.PersonId.ToString();
+        rdcComercialName.Items.Clear();
+        rdcComercialName.Items.Add(new RadComboBoxItem(asn.Customer.FullName, asn.Customer.PersonId.ToString()));
+        rdcComercialName.SelectedValue = asn.Customer.PersonId.ToString();
         rddpServiceNoteDate.SelectedDate = asn.ServiceNoteDate;
         LoadClinicCombo(asn);
         txtTotal.Text = asn.Total.ToString();
@@ -238,33 +249,47 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         chkCkecked2.Checked = asn.Chk2;
         if (asn.Professional != null)
         {
-            txtProfessionalId.Text = asn.Professional.PersonId.ToString();
-            txtProfessionalName.Text = asn.Professional.FullName;
+            //txtProfessionalId.Text = asn.Professional.PersonId.ToString();
+            rdcProfessionalName.Items.Clear();
+            rdcProfessionalName.Items.Add(new RadComboBoxItem(asn.Professional.FullName, asn.Professional.PersonId.ToString()));
+            rdcProfessionalName.SelectedValue = asn.Professional.PersonId.ToString();
         }
         if (asn.Surgeon != null) 
         {
-            txtSurgeonId.Text = asn.Surgeon.PersonId.ToString();
-            txtSurgeonName.Text = asn.Surgeon.FullName;
+            //txtSurgeonId.Text = asn.Surgeon.PersonId.ToString();
+            rdcSurgeonName.Items.Clear();
+            rdcSurgeonName.Items.Add(new RadComboBoxItem(asn.Surgeon.FullName, asn.Surgeon.PersonId.ToString()));
+            rdcSurgeonName.SelectedValue = asn.Surgeon.PersonId.ToString();
+            //txtSurgeonName.Text = asn.Surgeon.FullName;
         }
         if (asn.Procedures[0] != null)
         {
-            txtProcedureId1.Text = asn.Procedures[0].ProcedureId.ToString();
-            txtProcedureName1.Text = asn.Procedures[0].Name;
+            //txtProcedureId1.Text = asn.Procedures[0].ProcedureId.ToString();
+            rdcProcedureName1.Items.Clear();
+            rdcProcedureName1.Items.Add(new RadComboBoxItem(asn.Procedures[0].Name, asn.Procedures[0].ProcedureId.ToString()));
+            rdcProcedureName1.SelectedValue = asn.Procedures[0].ProcedureId.ToString();
+            //txtProcedureName1.Text = asn.Procedures[0].Name;
         }
         if (asn.Procedures.Count > 1)
         {
             if (asn.Procedures[1] != null)
             {
-                txtProcedureId2.Text = asn.Procedures[1].ProcedureId.ToString();
-                txtProcedureName2.Text = asn.Procedures[1].Name;
+                //txtProcedureId2.Text = asn.Procedures[1].ProcedureId.ToString();
+                //txtProcedureName2.Text = asn.Procedures[1].Name;
+                rdcProcedureName2.Items.Clear();
+                rdcProcedureName2.Items.Add(new RadComboBoxItem(asn.Procedures[1].Name, asn.Procedures[1].ProcedureId.ToString()));
+                rdcProcedureName2.SelectedValue = asn.Procedures[1].ProcedureId.ToString();
             }
         }
         if (asn.Procedures.Count > 2)
         {
             if (asn.Procedures[2] != null)
             {
-                txtProcedureId3.Text = asn.Procedures[2].ProcedureId.ToString();
-                txtProcedureName3.Text = asn.Procedures[2].Name;
+                //txtProcedureId3.Text = asn.Procedures[2].ProcedureId.ToString();
+                //txtProcedureName3.Text = asn.Procedures[2].Name;
+                rdcProcedureName3.Items.Clear();
+                rdcProcedureName3.Items.Add(new RadComboBoxItem(asn.Procedures[2].Name, asn.Procedures[2].ProcedureId.ToString()));
+                rdcProcedureName3.SelectedValue = asn.Procedures[2].ProcedureId.ToString();
             }
         }
     }
@@ -282,20 +307,20 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //
         asn.Chk1 = chkChecked.Checked;
         asn.Chk2 = chkCkecked2.Checked;
-        customerId = Int32.Parse(txtCustomerId.Text);
-        asn.Customer = CntAriCli.GetCustomer(customerId, ctx);
-        if (txtProfessionalId.Text != "")
+        //customerId = Int32.Parse(txtCustomerId.Text);
+        asn.Customer = CntAriCli.GetCustomer(int.Parse(rdcComercialName.SelectedValue), ctx);
+        if (rdcProfessionalName.SelectedValue != "")
         {
-            professionalId = Int32.Parse(txtProfessionalId.Text);
+            professionalId = Int32.Parse(rdcProfessionalName.SelectedValue);
             asn.Professional = CntAriCli.GetProfessional(professionalId, ctx);
         }
         else
         {
             asn.Professional = null;
         }
-        if (txtSurgeonId.Text != "")
+        if (rdcSurgeonName.SelectedValue != "")
         {
-            surgeonId = Int32.Parse(txtSurgeonId.Text);
+            surgeonId = Int32.Parse(rdcSurgeonName.SelectedValue);
             asn.Surgeon = CntAriCli.GetProfessional(surgeonId, ctx);
         }
         else
@@ -304,22 +329,21 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
 
         asn.Procedures.Clear();
-        if (txtProcedureId1.Text != "")
+        if (rdcProcedureName1.SelectedValue != "")
         {
-            procedureId = Int32.Parse(txtProcedureId1.Text);
-            asn.Procedures.Add( CntAriCli.GetProcedure(procedureId, ctx));
-        }
-        if (txtProcedureId2.Text != "")
-        {
-            procedureId = Int32.Parse(txtProcedureId2.Text);
+            procedureId = Int32.Parse(rdcProcedureName1.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
-        if (txtProcedureId3.Text != "")
+        if (rdcProcedureName2.SelectedValue != "")
         {
-            procedureId = Int32.Parse(txtProcedureId3.Text);
+            procedureId = Int32.Parse(rdcProcedureName2.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
-
+        if (rdcProcedureName3.SelectedValue != "")
+        {
+            procedureId = Int32.Parse(rdcProcedureName3.SelectedValue);
+            asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
+        }
     }
 
     protected void LoadClinicCombo(AnestheticServiceNote asn)
@@ -374,103 +398,104 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
                 break;
         }
     }
-    
+
     #region Searching outside
-    protected void txtCustomerId_TextChanged(object sender, EventArgs e)
-    {
-        Customer cus = CntAriCli.GetCustomer(int.Parse(txtCustomerId.Text), ctx);
-        if (cus != null)
-        {
-            txtCustomerId.Text = cus.PersonId.ToString();
-            txtComercialName.Text = cus.FullName;
-        }
-        else
-        {
-            txtCustomerId.Text = "";
-            txtComercialName.Text = Resources.GeneralResource.CustomerDoesNotExists;
-        }
+    
+    //protected void txtProcedureId1_TextChanged(object sender, EventArgs e)
+    //{
+    //    procedurechanged = true;
+    //    Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId1.Text), ctx);
+    //    if (proc != null)
+    //    {
+    //        //txtProcedureId1.Text = proc.ProcedureId.ToString();
+    //        txtProcedureName1.Text = proc.Name;
+    //    }
+    //    else
+    //    {
+    //        txtProcedureId1.Text = "";
+    //        txtProcedureName1.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+    //    }
+    //}
 
-    }
+    //protected void txtProcedureId2_TextChanged(object sender, EventArgs e)
+    //{
+    //    procedurechanged = true;
+    //    Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId2.Text), ctx);
+    //    if (proc != null)
+    //    {
+    //        txtProcedureId2.Text = proc.ProcedureId.ToString();
+    //        txtProcedureName2.Text = proc.Name;
+    //    }
+    //    else
+    //    {
+    //        txtProcedureId2.Text = "";
+    //        txtProcedureName2.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+    //    }
+    //}
 
-    protected void txtProfessionalId_TextChanged(object sender, EventArgs e)
-    {
-        Professional prof = CntAriCli.GetProfessional(int.Parse(txtProfessionalId.Text), ctx);
-        if (prof != null)
-        {
-            txtProfessionalId.Text = prof.PersonId.ToString();
-            txtProfessionalName.Text = prof.FullName;
-        }
-        else
-        {
-            txtProfessionalId.Text = "";
-            txtProfessionalName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
-        }
+    //protected void txtProcedureId3_TextChanged(object sender, EventArgs e)
+    //{
+    //    procedurechanged = true;
+    //    Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId3.Text), ctx);
+    //    if (proc != null)
+    //    {
+    //        txtProcedureId3.Text = proc.ProcedureId.ToString();
+    //        txtProcedureName3.Text = proc.Name;
+    //    }
+    //    else
+    //    {
+    //        txtProcedureId3.Text = "";
+    //        txtProcedureName3.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+    //    }
+    //}
+    #endregion
 
-    }
-
-    protected void txtSurgeonId_TextChanged(object sender, EventArgs e)
+    #region [inteligence search events]
+    protected void rdcComercialName_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        Professional prof = CntAriCli.GetProfessional(int.Parse(txtSurgeonId.Text), ctx);
-        if (prof != null)
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.Customers
+                 where c.FullName.StartsWith(e.Text)
+                 select c;
+        foreach (Customer cus in rs)
         {
-            txtSurgeonId.Text = prof.PersonId.ToString();
-            txtSurgeonName.Text = prof.FullName;
-        }
-        else
-        {
-            txtSurgeonId.Text = "";
-            txtSurgeonName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
-        }
-    }
-    bool procedurechanged = false;
-    protected void txtProcedureId1_TextChanged(object sender, EventArgs e)
-    {
-        procedurechanged = true;
-        Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId1.Text), ctx);
-        if (proc != null)
-        {
-            txtProcedureId1.Text = proc.ProcedureId.ToString();
-            txtProcedureName1.Text = proc.Name;
-        }
-        else
-        {
-            txtProcedureId1.Text = "";
-            txtProcedureName1.Text = Resources.GeneralResource.ProcedureDoesNotExists;
-        }
-    }
-
-    protected void txtProcedureId2_TextChanged(object sender, EventArgs e)
-    {
-        procedurechanged = true;
-        Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId2.Text), ctx);
-        if (proc != null)
-        {
-            txtProcedureId2.Text = proc.ProcedureId.ToString();
-            txtProcedureName2.Text = proc.Name;
-        }
-        else
-        {
-            txtProcedureId2.Text = "";
-            txtProcedureName2.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+            combo.Items.Add(new RadComboBoxItem(cus.FullName, cus.PersonId.ToString()));
         }
     }
 
-    protected void txtProcedureId3_TextChanged(object sender, EventArgs e)
+    protected void rdctxtProfessionalName_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        procedurechanged = true;
-        Procedure proc = CntAriCli.GetProcedure(int.Parse(txtProcedureId3.Text), ctx);
-        if (proc != null)
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Professionals
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Professional prof in rs)
         {
-            txtProcedureId3.Text = proc.ProcedureId.ToString();
-            txtProcedureName3.Text = proc.Name;
+            combo.Items.Add(new RadComboBoxItem(prof.FullName, prof.PersonId.ToString()));
         }
-        else
+    }
+
+    protected void rdcProcedureName_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Procedures
+                 where p.Name.StartsWith(e.Text)
+                 select p;
+        foreach (Procedure proc in rs)
         {
-            txtProcedureId3.Text = "";
-            txtProcedureName3.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+            combo.Items.Add(new RadComboBoxItem(proc.Name, proc.ProcedureId.ToString()));
         }
     }
     #endregion
-
-
+    
+    protected void rdcProcedureName_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        Session.Add("procedurechanged", true);
+    }
 }

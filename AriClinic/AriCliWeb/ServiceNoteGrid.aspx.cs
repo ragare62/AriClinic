@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
+using System.Web.UI.HtmlControls;
 
 public partial class ServiceNoteGrid : System.Web.UI.Page 
 {
@@ -34,9 +35,21 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
+        
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
+        {
             type = Request.QueryString["Type"];
+
+            //cheks if is call from customer form tabs
+            if (type == "InTab")
+            {
+                HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
+                tt.Attributes["class"] = "ghost";
+                // hide patient column
+                RadGrid1.Columns.FindByDataField("Customer.FullName").Visible = false;
+            }
+        }
         if (Request.QueryString["PatientId"] != null)
         {
             patientId = Int32.Parse(Request.QueryString["PatientId"]);

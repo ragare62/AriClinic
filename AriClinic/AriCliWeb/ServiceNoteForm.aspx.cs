@@ -57,11 +57,14 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         {
             customerId = Int32.Parse(Request.QueryString["CustomerId"]);
             cus = CntAriCli.GetCustomer(customerId, ctx);
-            txtCustomerId.Text = cus.PersonId.ToString();
-            txtComercialName.Text = cus.FullName;
+            //txtCustomerId.Text = cus.PersonId.ToString();
+
+            rdcComercialName.Items.Clear();
+            rdcComercialName.Items.Add(new RadComboBoxItem(cus.FullName, cus.PersonId.ToString()));
+            rdcComercialName.SelectedValue = cus.PersonId.ToString();
+            //txtComercialName.Text = cus.FullName;
             // if a patient has been passed we can not touch it
-            txtCustomerId.Enabled = false;
-            txtComercialName.Enabled = false;
+            //txtCustomerId.Enabled = false;
             btnCustomerId.Visible = false;
         }
         else
@@ -130,9 +133,9 @@ public partial class ServiceNoteForm : System.Web.UI.Page
     protected bool DataOk()
     {
         string errorMessage = "";
-        if (txtCustomerId.Text == "")
+        if (rdcComercialName.SelectedValue == "")
             errorMessage += Resources.GeneralResource.CustomerNeeded + "<br/>";
-        if (txtProfessionalId.Text == "")
+        if (rdcProfessionalName.SelectedValue == "")
             errorMessage += Resources.GeneralResource.ProfessionalNeeded + "<br/>";
         if (errorMessage != "")
         {
@@ -180,15 +183,22 @@ public partial class ServiceNoteForm : System.Web.UI.Page
     protected void LoadData(ServiceNote sn)
     {
         txtServiceNoteId.Text = sn.ServiceNoteId.ToString();
-        txtCustomerId.Text = sn.Customer.PersonId.ToString();
-        txtComercialName.Text = sn.Customer.FullName;
+        //txtCustomerId.Text = sn.Customer.PersonId.ToString();
+
+        rdcComercialName.Items.Clear();
+        rdcComercialName.Items.Add(new RadComboBoxItem(sn.Customer.FullName, sn.Customer.PersonId.ToString()));
+        rdcComercialName.SelectedValue = sn.Customer.PersonId.ToString();
+        //txtComercialName.Text = sn.Customer.FullName;
         rddpServiceNoteDate.SelectedDate = sn.ServiceNoteDate;
         LoadClinicCombo(sn);
         txtTotal.Text = sn.Total.ToString();
         if (sn.Professional != null)
         {
-            txtProfessionalId.Text = sn.Professional.PersonId.ToString();
-            txtProfessionalName.Text = sn.Professional.FullName;
+            //txtProfessionalId.Text = sn.Professional.PersonId.ToString();
+            rdcProfessionalName.Items.Clear();
+            rdcProfessionalName.Items.Add(new RadComboBoxItem(sn.Professional.FullName, sn.Professional.PersonId.ToString()));
+            rdcProfessionalName.SelectedValue = sn.Professional.PersonId.ToString();
+            //txtProfessionalName.Text = sn.Professional.FullName;
         }
     }
 
@@ -203,11 +213,11 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         decimal.TryParse(txtTotal.Text, out tt);
         sn.Total = tt;
         //
-        customerId = Int32.Parse(txtCustomerId.Text);
+        customerId = Int32.Parse(rdcComercialName.SelectedValue);
         sn.Customer = CntAriCli.GetCustomer(customerId, ctx);
-        if (txtProfessionalId.Text != "")
+        if (rdcProfessionalName.SelectedValue != "")
         {
-            professionalId = Int32.Parse(txtProfessionalId.Text);
+            professionalId = Int32.Parse(rdcProfessionalName.SelectedValue);
             sn.Professional = CntAriCli.GetProfessional(professionalId, ctx);
         }
         else
@@ -267,35 +277,7 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         }
     }
     #region Searching outside
-    protected void txtCustomerId_TextChanged(object sender, EventArgs e)
-    {
-        Customer cus = CntAriCli.GetCustomer(int.Parse(txtCustomerId.Text), ctx);
-        if (cus != null)
-        {
-            txtCustomerId.Text = cus.PersonId.ToString();
-            txtComercialName.Text = cus.FullName;
-        }
-        else
-        {
-            txtCustomerId.Text = "";
-            txtComercialName.Text = Resources.GeneralResource.CustomerDoesNotExists;
-        }
-
-    }
-    protected void txtProfessionalId_TextChanged(object sender, EventArgs e)
-    {
-        Professional prof = CntAriCli.GetProfessional(int.Parse(txtProfessionalId.Text), ctx);
-        if (prof != null)
-        {
-            txtProfessionalId.Text = prof.PersonId.ToString();
-            txtProfessionalName.Text = prof.FullName;
-        }
-        else
-        {
-            txtProfessionalId.Text = "";
-            txtProfessionalName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
-        }
-    }
+    
     #endregion
 
     protected void btnInvoice_Click(object sender, ImageClickEventArgs e)
@@ -326,6 +308,34 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         else
         {
             RadAjaxManager1.ResponseScripts.Add(String.Format("EditInvoiceRecord({0});", sn.Invoice.InvoiceId));
+        }
+    }
+
+    protected void rdctxtProfessionalName_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Professionals
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Professional prof in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(prof.FullName, prof.PersonId.ToString()));
+        }
+    }
+
+    protected void rdcComercialName_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.Customers
+                 where c.FullName.StartsWith(e.Text)
+                 select c;
+        foreach (Customer cus in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(cus.FullName, cus.PersonId.ToString()));
         }
     }
 

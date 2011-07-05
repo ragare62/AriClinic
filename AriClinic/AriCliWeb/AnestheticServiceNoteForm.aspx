@@ -10,212 +10,172 @@
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
     <link href="dialog_box.css" rel="Stylesheet" type="text/css" />
-<style type="text/css">
-/* Line 1 */
-#TitleArea
-{
-z-index: 1;
-left: 5px;
-top: 0px;
-position: absolute;
-height: 19px;
-width: 676px;
-}
-#AnestheticServiceNoteId
-{
-z-index: 1;
-left: 5px;
-top: 40px;
-position: absolute;
-height: 44px;
-width: 99px;
-}
-#CustomerId
-{
-z-index: 1;
-left: 121px;
-top: 40px;
-position: absolute;
-height: 44px;
-width: 99px;
-}
-#ComercialName
-{
-z-index: 1;
-left: 234px;
-top: 40px;
-position: absolute;
-height: 44px;
-width: 291px;
-}
-#TicketDate
-{
-z-index: 1;
-left: 538px;
-top: 40px;
-position: absolute;
-height: 44px;
-width: 147px;
-right: 7px;
-}
-#Policy
-{
-z-index: 1;
-left: 8px;
-top: 95px;
-position: absolute;
-height: 44px;
-width: 223px;
-bottom: 169px;
-}
-#InsuranceServiceId
-{
-z-index: 1;
-left: 245px;
-top: 95px;
-position: absolute;
-height: 44px;
-width: 93px;
-}
-#InsuranceServiceName
-{
-z-index: 1;
-left: 350px;
-top: 95px;
-position: absolute;
-height: 44px;
-width: 337px;
-}
-#Clinic
-{
-z-index: 1;
-left: 11px;
-top: 97px;
-position: absolute;
-height: 44px;
-width: 178px;
-bottom: 430px;
-}       
-#Description
-{
-z-index: 1;
-left: 247px;
-top: 155px;
-position: absolute;
-height: 44px;
-width: 291px;
-}
-#Total
-{
-z-index: 1;
-left: 565px;
-top: 96px;
-position: absolute;
-height: 44px;
-width: 120px;
-}
-/* */
-#SurgeonId
-{
-z-index: 1;
-left: 11px;
-top: 151px;
-position: absolute;
-height: 44px;
-width: 73px;
-right: 617px;
-}
-#SurgeonName
-{
-z-index: 1;
-left: 91px;
-top: 150px;
-position: absolute;
-height: 44px;
-width: 195px;
-}             
+    <style type="text/css">
+      /* Line 1 */
+      #TitleArea
+      {
+      z-index: 1;
+      left: 5px;
+      top: 0px;
+      position: absolute;
+      height: 19px;
+      width: 676px;
+      }
+      #AnestheticServiceNoteId
+      {
+      z-index: 1;
+      left: 5px;
+      top: 40px;
+      position: absolute;
+      height: 44px;
+      width: 99px;
+      }
+      #ComercialName
+      {
+      z-index: 1;
+      left: 121px;
+      top: 40px;
+      position: absolute;
+      height: 44px;
+      width: 287px;
+      }
+      #TicketDate
+      {
+      z-index: 1;
+      left: 430px;
+      top: 40px;
+      position: absolute;
+      height: 44px;
+      width: 147px;
+      right: 7px;
+      }
+      #Policy
+      {
+      z-index: 1;
+      left: 8px;
+      top: 95px;
+      position: absolute;
+      height: 44px;
+      width: 223px;
+      bottom: 169px;
+      }
+      #InsuranceServiceId
+      {
+      z-index: 1;
+      left: 245px;
+      top: 95px;
+      position: absolute;
+      height: 44px;
+      width: 93px;
+      }
+      #InsuranceServiceName
+      {
+      z-index: 1;
+      left: 350px;
+      top: 95px;
+      position: absolute;
+      height: 44px;
+      width: 337px;
+      }
+      #Clinic
+      {
+      z-index: 1;
+      left: 11px;
+      top: 97px;
+      position: absolute;
+      height: 44px;
+      width: 178px;
+      bottom: 430px;
+      }       
+      #Description
+      {
+      z-index: 1;
+      left: 247px;
+      top: 155px;
+      position: absolute;
+      height: 44px;
+      width: 291px;
+      }
+      #Total
+      {
+      z-index: 1;
+      left: 465px;
+      top: 96px;
+      position: absolute;
+      height: 44px;
+      width: 120px;
+      }
+      /* */
+      #SurgeonName
+      {
+      z-index: 1;
+      left: 11px;
+      top: 150px;
+      position: absolute;
+      height: 44px;
+      width: 252px;
+      }             
 
-#ProfessionalId
-{
-z-index: 1;
-left: 202px;
-top: 96px;
-position: absolute;
-height: 44px;
-width: 82px;
-}
+      #ProfessionalName
+      {
+      z-index: 1;
+      left: 202px;
+      top: 97px;
+      position: absolute;
+      height: 44px;
+      width: 254px;
+      right: 155px;
+      }
+      #ProcedureName
+      {
+      z-index: 1;
+      left: 434px;
+      top: 280px;
+      position: absolute;
+      height: 44px;
+      width: 252px;
+      }
 
-#ProfessionalName
-{
-z-index: 1;
-left: 292px;
-top: 97px;
-position: absolute;
-height: 44px;
-width: 254px;
-right: 155px;
-}
+      #Checked
+      {
+      z-index: 1;
+      left: 14px;
+      top: 239px;
+      position: absolute;
+      height: 68px;
+      width: 259px;
+      }
 
-#ProcedureId
-{
-z-index: 1;
-left: 327px;
-top: 281px;
-position: absolute;
-height: 44px;
-width: 82px;
-}
+      #tickets
+      {
+      z-index: 1;
+      left: 13px;
+      top: 320px;
+      position: absolute;
+      height: 277px;
+      width: 676px;
+      }
+      #Buttons
+      {
+      z-index: 1;
+      left: 17px;
+      top: 618px;
+      position: absolute;
+      height: 26px;
+      width: 674px;
+      }
 
-#ProcedureName
-{
-z-index: 1;
-left: 434px;
-top: 280px;
-position: absolute;
-height: 44px;
-width: 252px;
-}
+      #Procedures
+      {
+      z-index: 1;
+      left: 293px;
+      top: 155px;
+      position: absolute;
+      height: 156px;
+      width: 293px;
+      }             
 
-#Checked
-{
-z-index: 1;
-left: 14px;
-top: 239px;
-position: absolute;
-height: 68px;
-width: 259px;
-}
-
-#tickets
-{
-z-index: 1;
-left: 13px;
-top: 320px;
-position: absolute;
-height: 277px;
-width: 676px;
-}
-#Buttons
-{
-z-index: 1;
-left: 17px;
-top: 618px;
-position: absolute;
-height: 26px;
-width: 674px;
-}
-
-#Procedures
-{
-z-index: 1;
-left: 293px;
-top: 155px;
-position: absolute;
-height: 156px;
-width: 392px;
-}             
-
-</style>
+    </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   </head>
   <body id="content">
@@ -240,33 +200,51 @@ width: 392px;
                   switch (type)
                   {
                       case "Customer":
-                          document.getElementById('<%= txtCustomerId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtComercialName.ClientID %>').value = v3;
+                          combo = $find("<%= rdcComercialName.ClientID %>");
+                          loadCombo(combo, v1, v3);
                           $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Professional":
-                          document.getElementById('<%= txtProfessionalId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtProfessionalName.ClientID %>').value = v3;
+                          combo = $find("<%= rdcProfessionalName.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Professional2":
-                          document.getElementById('<%= txtSurgeonId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtSurgeonName.ClientID %>').value = v3;
+                          combo = $find("<%= rdcSurgeonName.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Procedure":
-                          document.getElementById('<%= txtProcedureId1.ClientID %>').value = v1;
-                          document.getElementById('<%= txtProcedureName1.ClientID %>').value = v3;
+                          combo = $find("<%= rdcProcedureName1.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Procedure1":
-                          document.getElementById('<%= txtProcedureId2.ClientID %>').value = v1;
-                          document.getElementById('<%= txtProcedureName2.ClientID %>').value = v3;
+                          combo = $find("<%= rdcProcedureName2.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Procedure2":
-                          document.getElementById('<%= txtProcedureId3.ClientID %>').value = v1;
-                          document.getElementById('<%= txtProcedureName3.ClientID %>').value = v3;
+                          combo = $find("<%= rdcProcedureName3.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                   }
               }
           }
+
+          function loadCombo(combo, v1, v3)
+          {
+              var items = combo.get_items();
+              items.clear();
+              var comboItem = new Telerik.Web.UI.RadComboBoxItem();
+              comboItem.set_text(v3);
+              comboItem.set_value(v1);
+              items.add(comboItem);
+              combo.commitChanges();
+              comboItem.select();
+          }
+
           function updateTotal()
           {
               //alert("Inside updateTotal()");
@@ -346,10 +324,10 @@ width: 392px;
       </telerik:RadInputManager>
       <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                  AutoTooltipify="true" RelativeTo="Element" 
-          Position="TopCenter" TabIndex="3">
+                                 Position="TopCenter" TabIndex="3">
       </telerik:RadToolTipManager>
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"           
-          style="z-index: 1; left: 0px; top:0px; position: absolute; height: 645px; width: 705px">
+                            style="z-index: 1; left: 0px; top:0px; position: absolute; height: 645px; width: 705px">
         <%--Line 1--%>
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
@@ -362,36 +340,33 @@ width: 392px;
           <br />
           <asp:TextBox ID="txtAnestheticServiceNoteId" runat="server" Enabled="false" Width="89px" TabIndex="1" ></asp:TextBox>
         </div>
-        <div ID="CustomerId" class="normalText">
-          <asp:Label ID="lblCustomerId" runat="server" Text="CLI ID:" 
-                     ToolTip="Identificador del cliente, lo usa internamente el sistema"></asp:Label>
+        <div id="ComercialName" class="normalText">
+          <asp:Label ID="lblComercialName" runat="server" Text="Paciente / Cliente:" 
+                     ToolTip="Cliente del ticket"></asp:Label>
           <asp:ImageButton ID="btnCustomerId" runat="server" ImageUrl="~/images/search_mini.png" CausesValidation="false"
                            OnClientClick="searchCustomer();" 
                            ToolTip="Haga clic aquí para buscar un cliente" style="height: 10px" />
           <br />
-          <asp:TextBox ID="txtCustomerId" runat="server" TabIndex="1" 
-                       Width="89px" AutoPostBack="True" 
-                       ontextchanged="txtCustomerId_TextChanged"></asp:TextBox>
-        </div>
-        <div id="ComercialName" class="normalText">
-          <asp:Label ID="lblComercialName" runat="server" Text="Paciente / Cliente:" 
-                     ToolTip="Cliente del ticket"></asp:Label>
-          <br />
-          <asp:TextBox ID="txtComercialName" runat="server" Width="287px" TabIndex="3" 
-                       Enabled="False" ></asp:TextBox>
+          <telerik:RadComboBox runat="server" ID="rdcComercialName" Height="100px" Width="287px" ItemsPerRequest="10" 
+                               EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                               EmptyMessage="Escriba aquí ..." TabIndex="2" AutoPostBack="True"
+                               onitemsrequested="rdcComercialName_ItemsRequested">
+          </telerik:RadComboBox>
+        <%--<asp:TextBox ID="txtComercialName" runat="server" Width="287px" TabIndex="3" 
+        Enabled="False" ></asp:TextBox>--%>
         </div>
         <div ID="TicketDate" class="normalText">
           <asp:Label ID="lblTicketDate" runat="server" Text="Fecha:" 
                      ToolTip="Fecha del ticket"></asp:Label>
           <br />
-          <telerik:RadDatePicker ID="rddpServiceNoteDate" Runat="server" TabIndex="2" 
+          <telerik:RadDatePicker ID="rddpServiceNoteDate" Runat="server" TabIndex="3" 
                                  Culture="es-ES" MinDate="1900-01-01" >
             <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" Runat="server"
                       ViewSelectorText="x">
             </Calendar>
-            <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2" Runat="server">
+            <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="3" Runat="server">
             </DateInput>
-            <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="2" />
+            <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="3" />
           </telerik:RadDatePicker>
         </div>
         <%--Line 3--%>
@@ -399,35 +374,32 @@ width: 392px;
           <asp:Label ID="lblClinic" runat="server" Text="Clinica:" 
                      ToolTip="Clínica a la que asigna el ticket"></asp:Label>
           <br />
-          <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="3" 
+          <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="4" 
                                Width="171px" Height="24px">
           </telerik:RadComboBox>
-        </div>
-        <div ID="ProfessionalId" class="normalText">
-          <asp:Label ID="lblProfessionalId" runat="server" Text="PROF ID:" 
-                     ToolTip="Identificador del profesional, lo usa internamente el sistema"></asp:Label>
-          <asp:ImageButton ID="btnProfessionalId" runat="server" 
-                           CausesValidation="false" ImageUrl="~/images/search_mini.png" 
-                           OnClientClick="searchProfessional();"  
-                           ToolTip="Haga clic aquí para buscar profesionales" />
-          <br />
-          <asp:TextBox ID="txtProfessionalId" runat="server" AutoPostBack="True" 
-                       TabIndex="4" 
-                       Width="75px" ontextchanged="txtProfessionalId_TextChanged"></asp:TextBox>
         </div>
         <div ID="ProfessionalName" class="normalText">
           <asp:Label ID="lblProfessionalName" runat="server" Text="Profesional:" 
                      ToolTip="Profesional asignado al ticket"></asp:Label>
+          <asp:ImageButton ID="ImageButton4" runat="server" 
+                           CausesValidation="false" ImageUrl="~/images/search_mini.png" 
+                           OnClientClick="searchProfessional();"  
+                           ToolTip="Haga clic aquí para buscar profesionales" />
           <br />
-          <asp:TextBox ID="txtProfessionalName" runat="server" Enabled="False" 
-                       TabIndex="13" Width="247px"></asp:TextBox>
+          <telerik:RadComboBox runat="server" ID="rdcProfessionalName" Height="100px" Width="247px" ItemsPerRequest="10" 
+                               EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                               EmptyMessage="Escriba aquí ..." TabIndex="5" AutoPostBack="True"
+                               onitemsrequested="rdctxtProfessionalName_ItemsRequested">
+          </telerik:RadComboBox>
+        <%--<asp:TextBox ID="txtProfessionalName" runat="server" Enabled="False" 
+        TabIndex="13" Width="247px"></asp:TextBox>--%>
         </div>
         <div ID="Total" class="normalTextRight">
           <asp:Label ID="lblTotal" runat="server" Text="Total:" 
                      ToolTip="Total de los tickets de esta nota"></asp:Label>
           <br />
           <asp:TextBox ID="txtTotal" runat="server"
-                       TabIndex="11" Width="98px" style="text-align:right" ></asp:TextBox>
+                       TabIndex="6" Width="98px" style="text-align:right" ></asp:TextBox>
         </div>
         <%--Line 4--%>
         <div ID="Checked" class="normalText">
@@ -442,22 +414,21 @@ width: 392px;
         </div>
         <%--Line 4.1--%>
         <%--Line 4.2--%>
-        <div ID="SurgeonId" class="normalText">
-          <asp:Label ID="lblSurgeonId" runat="server" Text="CRG ID:" 
-                     ToolTip="Identificador del cirujano (Profesional también)"></asp:Label>
+        <div ID="SurgeonName" class="normalText">
+          <asp:Label ID="lblSurgeonName" runat="server" Text="Cirujano:" 
+                     ToolTip="Cirujano que ha participado"></asp:Label>
           <asp:ImageButton ID="btnSurgeonId" runat="server" CausesValidation="false" 
                            ImageUrl="~/images/search_mini.png" OnClientClick="searchProfessional2();" 
                            ToolTip="Haga clic aquí para buscar profesionales (cirujanos)" />
           <br />
-          <asp:TextBox ID="txtSurgeonId" runat="server" AutoPostBack="True" 
-                       ontextchanged="txtSurgeonId_TextChanged" TabIndex="5" Width="60px"></asp:TextBox>
-        </div>
-        <div ID="SurgeonName" class="normalText">
-          <asp:Label ID="lblSurgeonName" runat="server" Text="Cirujano:" 
-                     ToolTip="Cirujano que ha participado"></asp:Label>
-          <br />
-          <asp:TextBox ID="txtSurgeonName" runat="server" Enabled="False" 
-                       TabIndex="16" Width="191px"></asp:TextBox>
+          <telerik:RadComboBox runat="server" ID="rdcSurgeonName" Height="100px" 
+                               Width="247px" ItemsPerRequest="10" 
+                               EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                               EmptyMessage="Escriba aquí ..." TabIndex="7" 
+                               AutoPostBack="True" onitemsrequested="rdctxtProfessionalName_ItemsRequested">
+          </telerik:RadComboBox>
+        <%--<asp:TextBox ID="txtSurgeonName" runat="server" Enabled="False" 
+        TabIndex="16" Width="191px"></asp:TextBox>--%>
         </div>
         <%--Line 5--%>
         <div ID="tickets" class="embGrid">
@@ -468,10 +439,10 @@ width: 392px;
         </div>
         <%--Line 6--%>
         <div ID="Buttons" class="buttonsFomat">
-          <asp:ImageButton ID="btnAccept" runat="server" TabIndex="20" 
+          <asp:ImageButton ID="btnAccept" runat="server" TabIndex="11" 
                            ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;
-          <asp:ImageButton ID="btnCancel" runat="server" TabIndex="21" 
+          <asp:ImageButton ID="btnCancel" runat="server" TabIndex="12" 
                            ImageUrl="~/images/document_out.png" CausesValidation="False" 
                            onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
         </div>
@@ -482,76 +453,65 @@ width: 392px;
           <table style="width: 100%;">
             <tr>
               <td>
-                <div ID="ProcedureId1" class="normalText">
-                  <asp:Label ID="lblProcedureId1" runat="server" Text="PROC ID(1):" 
-                             ToolTip="Identificador del procedimiento, lo usa internamente el sistema"></asp:Label>
+                <div ID="ProcedureName1" class="normalText">
+                  <asp:Label ID="lblProcedureName1" runat="server" Text="Procedimiento:" 
+                             ToolTip="Procedimiento asignado al ticket"></asp:Label>
                   <asp:ImageButton ID="ImageButton1" runat="server" 
                                    CausesValidation="false" ImageUrl="~/images/search_mini.png" 
                                    OnClientClick="searchProcedure();" 
                                    ToolTip="Haga clic aquí para buscar procedimientos" />
                   <br />
-                  <asp:TextBox ID="txtProcedureId1" runat="server" AutoPostBack="True" 
-                               TabIndex="6" Width="75px" 
-                               ontextchanged="txtProcedureId1_TextChanged"></asp:TextBox>
-                </div>
-              </td>
-              <td>
-                <div ID="ProcedureName1" class="normalText">
-                  <asp:Label ID="lblProcedureName1" runat="server" Text="Procedimiento:" 
-                             ToolTip="Procedimiento asignado al ticket"></asp:Label>
-                  <br />
-                  <asp:TextBox ID="txtProcedureName1" runat="server" Enabled="False" 
-                               TabIndex="18" Width="241px"></asp:TextBox>
+                  <telerik:RadComboBox runat="server" ID="rdcProcedureName1" Height="100px" 
+                        Width="285px" ItemsPerRequest="10" 
+                                       EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                       EmptyMessage="Escriba aquí ..." TabIndex="8" AutoPostBack="True" 
+                                       onitemsrequested="rdcProcedureName_ItemsRequested" 
+                        onselectedindexchanged="rdcProcedureName_SelectedIndexChanged">
+                  </telerik:RadComboBox>
+                <%--<asp:TextBox ID="txtProcedureName1" runat="server" Enabled="False" 
+                TabIndex="18" Width="241px"></asp:TextBox>--%>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>
-                <div ID="ProcedureId2" class="normalText">
-                  <asp:Label ID="lblProcedureId2" runat="server" Text="PROC ID (2):" 
-                             ToolTip="Identificador del procedimiento, lo usa internamente el sistema"></asp:Label>
-                  <asp:ImageButton ID="ImageButton2" runat="server" 
-                                   CausesValidation="false" ImageUrl="~/images/search_mini.png" 
-                                   OnClientClick="searchProcedure1();" 
-                                   ToolTip="Haga clic aquí para buscar procedimientos" />
-                  <br />
-                  <asp:TextBox ID="txtProcedureId2" runat="server" AutoPostBack="True" 
-                               TabIndex="7" Width="75px" 
-                               ontextchanged="txtProcedureId2_TextChanged"></asp:TextBox>
-                </div>
-              </td>
               <td>
                 <div ID="ProcedureName2" class="normalText">
                   <asp:Label ID="lblProcedureName2" runat="server" Text="Procedimiento:" 
                              ToolTip="Procedimiento asignado al ticket"></asp:Label>
+                  <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" 
+                                   ImageUrl="~/images/search_mini.png" OnClientClick="searchProcedure1();" 
+                                   ToolTip="Haga clic aquí para buscar procedimientos" />
                   <br />
-                  <asp:TextBox ID="txtProcedureName2" runat="server" Enabled="False" 
-                               TabIndex="18" Width="241px"></asp:TextBox>
+                  <%-- <asp:TextBox ID="txtProcedureName2" runat="server" Enabled="False" 
+                  TabIndex="18" Width="241px"></asp:TextBox>--%>
+                  <telerik:RadComboBox runat="server" ID="rdcProcedureName2" Height="100px" 
+                        Width="285px" ItemsPerRequest="10" 
+                                       EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                       EmptyMessage="Escriba aquí ..." TabIndex="9" 
+                        AutoPostBack="True" onitemsrequested="rdcProcedureName_ItemsRequested" 
+                        onselectedindexchanged="rdcProcedureName_SelectedIndexChanged">
+                  </telerik:RadComboBox>
                 </div>
               </td>
             </tr>
             <tr>
               <td>
-                <div ID="ProcedureId3" class="normalText">
-                  <asp:Label ID="lblProcedureId3" runat="server" Text="PROC ID (3):" 
-                             ToolTip="Identificador del procedimiento, lo usa internamente el sistema"></asp:Label>
-                  <asp:ImageButton ID="ImageButton3" runat="server" 
-                                   CausesValidation="false" ImageUrl="~/images/search_mini.png" 
-                                   OnClientClick="searchProcedure2();" 
-                                   ToolTip="Haga clic aquí para buscar procedimientos" />
-                  <br />
-                  <asp:TextBox ID="txtProcedureId3" runat="server" AutoPostBack="True" 
-                               TabIndex="8" Width="75px" 
-                               ontextchanged="txtProcedureId3_TextChanged"></asp:TextBox>
-                </div>
-              </td>
-              <td>
                 <div id="ProcedureName3" class="normalText">
                   <asp:Label id="lblProcedureName3" runat="server" Text="Procedimiento:" 
                              ToolTip="Procedimiento asignado al ticket"></asp:Label>
+                  <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="false" 
+                                   ImageUrl="~/images/search_mini.png" OnClientClick="searchProcedure2();" 
+                                   ToolTip="Haga clic aquí para buscar procedimientos" />
                   <br />
-                  <asp:TextBox ID="txtProcedureName3" runat="server" Enabled="False" 
-                               TabIndex="18" Width="241px"></asp:TextBox>
+                  <telerik:RadComboBox runat="server" ID="rdcProcedureName3" Height="100px" 
+                        Width="285px" ItemsPerRequest="10" 
+                                       EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                       EmptyMessage="Escriba aquí ..." TabIndex="10" 
+                        AutoPostBack="True" onitemsrequested="rdcProcedureName_ItemsRequested" 
+                        onselectedindexchanged="rdcProcedureName_SelectedIndexChanged">
+                  </telerik:RadComboBox>
+                <%--<asp:TextBox ID="txtProcedureName3" runat="server" Enabled="False" 
+                TabIndex="18" Width="241px"></asp:TextBox>--%>
                 </div>
               </td>
             </tr>

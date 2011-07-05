@@ -34,16 +34,28 @@
                   switch (type)
                   {
                       case "Customer":
-                          document.getElementById('<%= txtCustomerId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtComercialName.ClientID %>').value = v3;
+                          combo = $find("<%= rdcComercialName.ClientID %>");
+                          loadCombo(combo, v1, v3);
                           $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
                       case "Professional":
-                          document.getElementById('<%= txtProfessionalId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtProfessionalName.ClientID %>').value = v3;
+                          combo = $find("<%= rdcProfessionalName.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                           break;
+                      default: break;
                   }
               }
+          }
+          function loadCombo(combo, v1, v3) {
+              var items = combo.get_items();
+              items.clear();
+              var comboItem = new Telerik.Web.UI.RadComboBoxItem();
+              comboItem.set_text(v3);
+              comboItem.set_value(v1);
+              items.add(comboItem);
+              combo.commitChanges();
+              comboItem.select();
           }
           function updateTotal()
           {
@@ -150,25 +162,20 @@
               </div>
             </td>
             <td>
-              <div ID="CustomerId" class="normalText">
-                <asp:Label ID="lblCustomerId" runat="server" Text="CLI ID:" 
-                           ToolTip="Identificador del cliente, lo usa internamente el sistema"></asp:Label>
+              <div id="ComercialName" class="normalText">
+                <asp:Label ID="lblComercialName" runat="server" Text="Paciente / Cliente:" 
+                           ToolTip="Cliente del ticket"></asp:Label>
                 <asp:ImageButton ID="btnCustomerId" runat="server" ImageUrl="~/images/search_mini.png" CausesValidation="false"
                                  OnClientClick="searchCustomer();" 
                                  ToolTip="Haga clic aquí para buscar un cliente" style="height: 10px" />
                 <br />
-                <asp:TextBox ID="txtCustomerId" runat="server" TabIndex="2" 
-                             Width="89px" AutoPostBack="True" 
-                             ontextchanged="txtCustomerId_TextChanged"></asp:TextBox>
-              </div>
-            </td>
-            <td>
-              <div id="ComercialName" class="normalText">
-                <asp:Label ID="lblComercialName" runat="server" Text="Paciente / Cliente:" 
-                           ToolTip="Cliente del ticket"></asp:Label>
-                <br />
-                <asp:TextBox ID="txtComercialName" runat="server" Width="250px" TabIndex="3" 
-                             Enabled="False" ></asp:TextBox>
+               <%-- <asp:TextBox ID="txtComercialName" runat="server" Width="250px" TabIndex="3" 
+                             Enabled="False" ></asp:TextBox>--%>
+                <telerik:RadComboBox runat="server" ID="rdcComercialName" Height="100px" Width="250px" ItemsPerRequest="10" 
+                EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                EmptyMessage="Escriba aquí ..." TabIndex="1" AutoPostBack="True"
+                onitemsrequested="rdcComercialName_ItemsRequested">
+              </telerik:RadComboBox>
               </div>
             </td>
             <td>
@@ -176,14 +183,14 @@
                 <asp:Label ID="lblTicketDate" runat="server" Text="Fecha:" 
                            ToolTip="Fecha del ticket"></asp:Label>
                 <br />
-                <telerik:RadDatePicker ID="rddpServiceNoteDate" Runat="server" TabIndex="4" 
+                <telerik:RadDatePicker ID="rddpServiceNoteDate" Runat="server" TabIndex="2" 
                                        Culture="es-ES" MinDate="1900-01-01" >
                   <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                             ViewSelectorText="x">
                   </Calendar>
-                  <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="5">
+                  <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2">
                   </DateInput>
-                  <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="5" />
+                  <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="2" />
                 </telerik:RadDatePicker>
               </div>
             </td>
@@ -195,32 +202,26 @@
                 <asp:Label ID="lblClinic" runat="server" Text="Clinica:" 
                            ToolTip="Clínica a la que asigna el ticket"></asp:Label>
                 <br />
-                <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="9" 
+                <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="3" 
                                      Width="171px" Height="24px">
                 </telerik:RadComboBox>
-              </div>
-            </td>
-            <td>
-              <div ID="ProfessionalId" class="normalText">
-                <asp:Label ID="lblProfessionalId" runat="server" Text="PROF ID:" 
-                           ToolTip="Identificador del profesional, lo usa internamente el sistema"></asp:Label>
-                <asp:ImageButton ID="btnProfessionalId" runat="server" 
-                                 CausesValidation="false" ImageUrl="~/images/search_mini.png" 
-                                 OnClientClick="searchProfessional();"  
-                                 ToolTip="Haga clic aquí para buscar profesionales" />
-                <br />
-                <asp:TextBox ID="txtProfessionalId" runat="server" AutoPostBack="True" 
-                             TabIndex="12" 
-                             Width="75px" ontextchanged="txtProfessionalId_TextChanged"></asp:TextBox>
               </div>
             </td>
             <td>
               <div ID="ProfessionalName" class="normalText">
                 <asp:Label ID="lblProfessionalName" runat="server" Text="Profesional:" 
                            ToolTip="Profesional asignado al ticket"></asp:Label>
+                <asp:ImageButton ID="btnProfessionalId" runat="server" 
+                                 CausesValidation="false" ImageUrl="~/images/search_mini.png" 
+                                 OnClientClick="searchProfessional();"  ToolTip="Haga clic aquí para buscar profesionales" />
                 <br />
-                <asp:TextBox ID="txtProfessionalName" runat="server" Enabled="False" 
-                             TabIndex="13" Width="250px"></asp:TextBox>
+                <%--<asp:TextBox ID="txtProfessionalName" runat="server" Enabled="False" 
+                             TabIndex="13" Width="250px"></asp:TextBox>--%>
+                <telerik:RadComboBox runat="server" ID="rdcProfessionalName" Height="100px" Width="250px" ItemsPerRequest="10" 
+                EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                EmptyMessage="Escriba aquí ..." TabIndex="5" AutoPostBack="True"
+                onitemsrequested="rdctxtProfessionalName_ItemsRequested">
+              </telerik:RadComboBox>
               </div>
             </td>
             <td>
@@ -229,7 +230,7 @@
                            ToolTip="Total de los tickets de esta nota"></asp:Label>
                 <br />
                 <asp:TextBox ID="txtTotal" runat="server"
-                             TabIndex="11" Width="98px" style="text-align:right" ></asp:TextBox>
+                             TabIndex="6" Width="98px" style="text-align:right" ></asp:TextBox>
               </div>
             </td>
           </tr>
@@ -252,10 +253,10 @@
                 <asp:ImageButton ID="btnInvoice" runat="server" TabIndex="20" 
                                  ImageUrl="~/images/documents_gear.png" onclick="btnInvoice_Click" ToolTip="Generar factura" />
                 &nbsp;
-                <asp:ImageButton ID="btnAccept" runat="server" TabIndex="20" 
+                <asp:ImageButton ID="btnAccept" runat="server" TabIndex="7" 
                                  ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
                 &nbsp;
-                <asp:ImageButton ID="btnCancel" runat="server" TabIndex="21" 
+                <asp:ImageButton ID="btnCancel" runat="server" TabIndex="8" 
                                  ImageUrl="~/images/document_out.png" CausesValidation="False" 
                                  onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
               </div>

@@ -3048,7 +3048,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane</AppConfigConnectionString>
     <InitialCatalog>ariclinic_dev</InitialCatalog>
     <NamingSettings>
       <ClassRules>

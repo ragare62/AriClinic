@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
+using System.Web.UI.HtmlControls;
 
 public partial class ServiceGrid : System.Web.UI.Page 
 {
@@ -28,6 +29,14 @@ public partial class ServiceGrid : System.Web.UI.Page
                             where p.Code == "scat"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
+        }
+        //cheks if is call from customer form tabs
+        if (type == "InTab")
+        {
+            HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
+            tt.Attributes["class"] = "ghost";
+            // hide patient column
+            RadGrid1.Columns.FindByDataField("Patient.FullName").Visible = false;
         }
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)

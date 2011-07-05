@@ -120,13 +120,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.TextBox txtAnestheticServiceNoteId;
     
     /// <summary>
-    /// lblCustomerId control.
+    /// lblComercialName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblCustomerId;
+    protected global::System.Web.UI.WebControls.Label lblComercialName;
     
     /// <summary>
     /// btnCustomerId control.
@@ -138,31 +138,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.ImageButton btnCustomerId;
     
     /// <summary>
-    /// txtCustomerId control.
+    /// rdcComercialName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtCustomerId;
-    
-    /// <summary>
-    /// lblComercialName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblComercialName;
-    
-    /// <summary>
-    /// txtComercialName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtComercialName;
+    protected global::Telerik.Web.UI.RadComboBox rdcComercialName;
     
     /// <summary>
     /// lblTicketDate control.
@@ -201,33 +183,6 @@ public partial class AnestheticServiceNoteForm {
     protected global::Telerik.Web.UI.RadComboBox rdcbClinic;
     
     /// <summary>
-    /// lblProfessionalId control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProfessionalId;
-    
-    /// <summary>
-    /// btnProfessionalId control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnProfessionalId;
-    
-    /// <summary>
-    /// txtProfessionalId control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalId;
-    
-    /// <summary>
     /// lblProfessionalName control.
     /// </summary>
     /// <remarks>
@@ -237,13 +192,22 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.Label lblProfessionalName;
     
     /// <summary>
-    /// txtProfessionalName control.
+    /// ImageButton4 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalName;
+    protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
+    
+    /// <summary>
+    /// rdcProfessionalName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcProfessionalName;
     
     /// <summary>
     /// lblTotal control.
@@ -291,13 +255,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.CheckBox chkCkecked2;
     
     /// <summary>
-    /// lblSurgeonId control.
+    /// lblSurgeonName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblSurgeonId;
+    protected global::System.Web.UI.WebControls.Label lblSurgeonName;
     
     /// <summary>
     /// btnSurgeonId control.
@@ -309,31 +273,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.ImageButton btnSurgeonId;
     
     /// <summary>
-    /// txtSurgeonId control.
+    /// rdcSurgeonName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtSurgeonId;
-    
-    /// <summary>
-    /// lblSurgeonName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblSurgeonName;
-    
-    /// <summary>
-    /// txtSurgeonName control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtSurgeonName;
+    protected global::Telerik.Web.UI.RadComboBox rdcSurgeonName;
     
     /// <summary>
     /// lblTicket control.
@@ -381,13 +327,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.Label lblProcedures;
     
     /// <summary>
-    /// lblProcedureId1 control.
+    /// lblProcedureName1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProcedureId1;
+    protected global::System.Web.UI.WebControls.Label lblProcedureName1;
     
     /// <summary>
     /// ImageButton1 control.
@@ -399,58 +345,13 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
     
     /// <summary>
-    /// txtProcedureId1 control.
+    /// rdcProcedureName1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureId1;
-    
-    /// <summary>
-    /// lblProcedureName1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProcedureName1;
-    
-    /// <summary>
-    /// txtProcedureName1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureName1;
-    
-    /// <summary>
-    /// lblProcedureId2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProcedureId2;
-    
-    /// <summary>
-    /// ImageButton2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
-    
-    /// <summary>
-    /// txtProcedureId2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureId2;
+    protected global::Telerik.Web.UI.RadComboBox rdcProcedureName1;
     
     /// <summary>
     /// lblProcedureName2 control.
@@ -462,40 +363,22 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.Label lblProcedureName2;
     
     /// <summary>
-    /// txtProcedureName2 control.
+    /// ImageButton2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureName2;
+    protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
     
     /// <summary>
-    /// lblProcedureId3 control.
+    /// rdcProcedureName2 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProcedureId3;
-    
-    /// <summary>
-    /// ImageButton3 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
-    
-    /// <summary>
-    /// txtProcedureId3 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureId3;
+    protected global::Telerik.Web.UI.RadComboBox rdcProcedureName2;
     
     /// <summary>
     /// lblProcedureName3 control.
@@ -507,11 +390,20 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.Label lblProcedureName3;
     
     /// <summary>
-    /// txtProcedureName3 control.
+    /// ImageButton3 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProcedureName3;
+    protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+    
+    /// <summary>
+    /// rdcProcedureName3 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcProcedureName3;
 }
