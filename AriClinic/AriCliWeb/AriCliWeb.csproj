@@ -60,9 +60,9 @@
       <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.Web.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Telerik.Web.UI, Version=2010.3.1317.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+    <Reference Include="Telerik.Web.UI, Version=2011.1.519.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2011\Bin40\Telerik.Web.UI.dll</HintPath>
+      <HintPath>C:\Program Files\Telerik\RadControls for ASP.NET AJAX Q1 2011\Bin40\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +156,13 @@
     </Compile>
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GlassesTestForm.aspx.cs">
+      <DependentUpon>GlassesTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GlassesTestForm.aspx.designer.cs">
+      <DependentUpon>GlassesTestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WithoutGlassesForm.aspx.cs">
       <DependentUpon>WithoutGlassesForm.aspx</DependentUpon>
@@ -802,6 +809,7 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="GlassesTestForm.aspx" />
     <Content Include="WithoutGlassesForm.aspx" />
     <Content Include="images\disk_blue_ok.png" />
     <Content Include="RefractometryForm.aspx" />
