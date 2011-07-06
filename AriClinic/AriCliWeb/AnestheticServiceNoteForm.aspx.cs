@@ -86,7 +86,8 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
                 asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
                 cus = asn.Customer;
                 customerId = cus.PersonId;
-                LoadData(asn);
+                if(!IsPostBack)
+                    LoadData(asn);
                 // Load internal frame
                 HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
                 frm.Attributes["src"] = String.Format("TicketGrid.aspx?AnestheticServiceNoteId={0}", anestheticServiceNoteId);
@@ -122,10 +123,11 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "";
-        //if (asn == null)
-        //    command = "CloseAndRebind('new')";
-        //else
         command = "CloseAndRebind('')";
+
+        if (!DataOk())
+            return;
+        
         if (!CreateChange())
             return;
         RadAjaxManager1.ResponseScripts.Add(command);
@@ -165,9 +167,6 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
 
     protected bool CreateChange()
     {
-        if (!DataOk())
-            return false;
-
         if (asn == null)
         {
             firstTime = true;
@@ -184,6 +183,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             if (procedurechanged )
             {
                 firstTime = true;
+                Session["procedurechanged"] = null;
 
                 asn.AnestheticTickets.Clear();
                 asn.Procedures.Clear();
@@ -497,5 +497,6 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void rdcProcedureName_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
         Session.Add("procedurechanged", true);
+        CreateChange();       
     }
 }
