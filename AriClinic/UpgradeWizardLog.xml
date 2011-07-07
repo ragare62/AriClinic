@@ -113,9 +113,27 @@
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DocumentsPatient.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DocumentsPatient.aspx" />
   <event action="Analyze" type="Success" name="DocumentsPatient.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DocumentsPatient.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugForm.aspx" />
+  <event action="Analyze" type="Success" name="DrugForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugGrid.aspx" />
+  <event action="Analyze" type="Success" name="DrugGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\DrugGrid.aspx" />
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\EmailForm.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\EmailForm.aspx" />
   <event action="Analyze" type="Success" name="EmailForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\EmailForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" />
+  <event action="Analyze" type="Success" name="ExaminationAssignedForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" />
+  <event action="Analyze" type="Success" name="ExaminationAssignedGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationForm.aspx" />
+  <event action="Analyze" type="Success" name="ExaminationForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationGrid.aspx" />
+  <event action="Analyze" type="Success" name="ExaminationGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ExaminationGrid.aspx" />
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
   <event action="Analyze" type="Success" name="GoogleMapsPage.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\GoogleMapsPage.aspx" />
@@ -200,6 +218,9 @@
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
   <event action="Analyze" type="Success" name="ProfessionalGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\ProfessionalGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RefractometryForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RefractometryForm.aspx" />
+  <event action="Analyze" type="Success" name="RefractometryForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RefractometryForm.aspx" />
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
   <event action="Analyze" type="Success" name="RptCategorySrvForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" />
@@ -275,6 +296,12 @@
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TicketGrid.aspx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TicketGrid.aspx" />
   <event action="Analyze" type="Success" name="TicketGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TicketGrid.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentForm.aspx" />
+  <event action="Analyze" type="Success" name="TreatmentForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentForm.aspx" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentGrid.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentGrid.aspx" />
+  <event action="Analyze" type="Success" name="TreatmentGrid.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\TreatmentGrid.aspx" />
   <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
   <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
   <event action="Analyze" type="Success" name="UscAddressGrid.ascx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\UscAddressGrid.ascx" />
@@ -311,6 +338,9 @@
   <event action="Analyze" type="Success" name="Config Sections" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
   <event action="Analyze" type="Success" name="Render Extensions" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
   <event action="Analyze" type="Success" name="web.config" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
+  <event action="Analyze" type="Success" name="Register Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" />
+  <event action="Analyze" type="Success" name="WithoutGlassesForm.aspx" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" />
   <event action="Analyze" type="Success" name="AriCliWeb" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliWeb\AriCliWeb.csproj" />
   <event action="Analyze" type="Success" name="AriClinic" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriClinic.sln" />
   <event action="Upgrade" type="Success" name="Assembly References" path="D:\Aplicaciones_NET\ariclinic_beta\AriClinic\AriCliReport\AriCliReport.csproj" />

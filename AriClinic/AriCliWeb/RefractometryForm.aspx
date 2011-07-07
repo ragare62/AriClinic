@@ -152,7 +152,7 @@
             <tr>
                 <td colspan="2">
                     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Office2007" 
-                        SelectedIndex="0">
+                        SelectedIndex="0" ontabclick="RadTabStrip1_TabClick">
                         <Tabs>
                             <telerik:RadTab runat="server" Text="Sin gafas" Value="T1" Selected="True">
                             </telerik:RadTab>

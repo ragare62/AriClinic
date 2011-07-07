@@ -1162,5 +1162,11 @@ namespace AriCliModel
                     where wh.Id == id
                     select wh).FirstOrDefault<WithoutGlassesTest>();
         }
+        public static GlassesTest GetGlassesTest(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.GlassesTests
+                    where gt.Id == id
+                    select gt).FirstOrDefault<GlassesTest>();
+        }
     }
 }

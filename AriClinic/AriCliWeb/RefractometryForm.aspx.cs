@@ -224,4 +224,26 @@ public partial class RefractometryForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(dia.Name, dia.ExaminationId.ToString()));
         }
     }
+
+    protected void RadTabStrip1_TabClick(object sender, RadTabStripEventArgs e)
+    {
+        frame = (HtmlControl)this.FindControl("FrmArea");
+        switch (e.Tab.Value)
+        {
+            case "T1":
+                if (refractometry.WithoutGlassesTests.Count() == 0)
+                    frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("WithoutGlassesForm.aspx?RefractometryId={0}&WithoutGlassesId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.WithoutGlassesTests[0].Id);
+                break;
+            case "T2":
+                if (refractometry.GlassesTests.Count() == 0)
+                    frame.Attributes["src"] = String.Format("GlassesTestForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("GlassesTestForm.aspx?RefractometryId={0}&GlassesTestId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.GlassesTests[0].Id);
+                break;
+        }
+    }
 }
