@@ -157,6 +157,13 @@
     <Compile Include="AppointmentGrid.aspx.designer.cs">
       <DependentUpon>AppointmentGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContactLensesTestForm.aspx.cs">
+      <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactLensesTestForm.aspx.designer.cs">
+      <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GlassesTestForm.aspx.cs">
       <DependentUpon>GlassesTestForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -809,6 +816,7 @@
     <Content Include="AppointmentTypeGrid.aspx" />
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
+    <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="GlassesTestForm.aspx" />
     <Content Include="WithoutGlassesForm.aspx" />
     <Content Include="images\disk_blue_ok.png" />
@@ -1040,7 +1048,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

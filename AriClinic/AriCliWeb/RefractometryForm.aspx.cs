@@ -244,6 +244,13 @@ public partial class RefractometryForm : System.Web.UI.Page
                     frame.Attributes["src"] = String.Format("GlassesTestForm.aspx?RefractometryId={0}&GlassesTestId={1}",
                         refractometry.ExaminationAssignedId, refractometry.GlassesTests[0].Id);
                 break;
+            case "T3":
+                if (refractometry.ContactLensesTests.Count() == 0)
+                    frame.Attributes["src"] = String.Format("ContactLensesTestForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("ContactLensesTestForm.aspx?RefractometryId={0}&ContactLensesTestId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.ContactLensesTests[0].Id);
+                break;
         }
     }
 }
