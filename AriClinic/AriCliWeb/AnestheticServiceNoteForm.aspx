@@ -273,6 +273,12 @@
               }
               return;
           }
+          function EditInvoiceRecord(id) {
+              var w2 = window.open("InvoiceForm.aspx?InvoiceId=" + id + "&Caller=sn"
+                                   , "tck_er1"
+                                   , "width=700, height=490,resizable=1");
+              w2.focus();
+          }
         </script>
 
       </telerik:RadScriptBlock>

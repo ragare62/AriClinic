@@ -485,16 +485,16 @@ namespace AriCliModel
             // erase possible service note relation
             if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.ServiceNotes.Count; i++)
+                for (int i = 0; i < inv.ServiceNotes.Count; i++)
                 {
                      inv.ServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.AnestheticServiceNotes.Count; i++)
+                for (int i = 0; i < inv.AnestheticServiceNotes.Count; i++)
                 {
-                    inv.ServiceNotes.ElementAt(i).Invoice = null;
+                    inv.AnestheticServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             // delete lines

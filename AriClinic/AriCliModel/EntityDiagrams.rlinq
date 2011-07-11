@@ -984,6 +984,9 @@
             </orm:constraint>
           </orm:reference>
         </orm:field>
+        <orm:field name="invoice" property="Invoice" uniqueId="b3ca6729-53ed-48e7-bd49-577c9fb51f45" type="AriCliModel.Invoice">
+          <orm:reference uniqueId="d45d2155-22cb-4c8d-b744-e9b8001ec633" />
+        </orm:field>
         <orm:field name="procedures" property="Procedures" null-value="none" uniqueId="eb8d61de-6a14-4837-9945-d14956d5448a" type="AriCliModel.Procedure">
           <orm:join-table uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" association-name="ProceduresReferenceAnestheticServiceNotes">
             <orm:table name="anesthetic_service_note_procedures" join-table="true" />
@@ -997,9 +1000,6 @@
         </orm:field>
         <orm:field name="anestheticTickets" property="AnestheticTickets" null-value="none" uniqueId="ff06956c-cb14-4eaf-8527-3b8a65d7bb43" type="AriCliModel.AnestheticTicket">
           <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="anestheticServiceNote" managed="true" order-by="" uniqueId="1c269c58-1377-4b9c-9203-df724a9e552f" />
-        </orm:field>
-        <orm:field name="invoice" property="Invoice" uniqueId="b3ca6729-53ed-48e7-bd49-577c9fb51f45" type="AriCliModel.Invoice">
-          <orm:reference uniqueId="d45d2155-22cb-4c8d-b744-e9b8001ec633" />
         </orm:field>
         <orm:index name="idx_anesthetic_service_note_user_id">
           <orm:column name="user_id" sql-type="INTEGER" nullable="true" scale="0" ado-type="Int32" />
