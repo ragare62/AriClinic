@@ -481,14 +481,28 @@ namespace AriCliModel
             // only the last invoice can be deleted
             if (inv.InvoiceNumber != n)
                 return false;
+
+            // erase possible service note relation
+            if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
+            {
+                for (int i = 1; i <= inv.ServiceNotes.Count; i++)
+                {
+                     inv.ServiceNotes.ElementAt(i).Invoice = null;
+                }
+            }
+            else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
+            {
+                for (int i = 1; i <= inv.AnestheticServiceNotes.Count; i++)
+                {
+                    inv.ServiceNotes.ElementAt(i).Invoice = null;
+                }
+            }
             // delete lines
             ctx.Delete(inv.InvoiceLines);
-            // erase possible service note relation
-            if (inv.ServiceNotes.Count > 0)
-                foreach (ServiceNote sn in inv.ServiceNotes)
-                    sn.Invoice = null;
+
             // delete invoice
             ctx.Delete(inv);
+
             return true;
         }
 
@@ -1167,6 +1181,53 @@ namespace AriCliModel
             return (from gt in ctx.GlassesTests
                     where gt.Id == id
                     select gt).FirstOrDefault<GlassesTest>();
+        }
+        public static int InvoiceAnesthesicServiceNote(AnestheticServiceNote asn, AriClinicContext ctx)
+        {
+            // it there's an invoice related to this service 
+            // we do nothing and return 0
+            if (asn.Invoice != null)
+                return 0;
+
+            // invoice
+            Invoice i = new Invoice();
+            Decimal total = 0;
+            i.Customer = asn.Customer;
+            asn.Invoice = i; // this make the relationship
+            i.InvoiceDate = asn.ServiceNoteDate;
+            i.Serial = CntAriCli.GetHealthCompany(ctx).InvoiceSerial;
+            i.Year = i.InvoiceDate.Year;
+            i.InvoiceNumber = CntAriCli.GetNextInvoiceNumber(i.Serial, i.Year, ctx);
+            ctx.Add(i);
+
+            // invoice lines
+            foreach (Ticket t in asn.AnestheticTickets)
+            {
+                InvoiceLine il = new InvoiceLine();
+                il.Invoice = i;
+                il.Ticket = t;
+                il.Description = t.Description;
+                il.Amount = t.Amount;
+                il.TaxType = t.InsuranceService.Service.TaxType;
+                il.TaxPercentage = il.TaxType.Percentage;
+                total += il.Amount;
+                ctx.Add(il);
+            }
+            i.Total = total;
+
+            // save the work and return id
+            ctx.SaveChanges();
+            return i.InvoiceId;
+        }
+
+        public static bool ContainsAnesthesicTicketsInvoiced(AnestheticServiceNote asn, AriClinicContext ctx)
+        {
+            foreach (Ticket t in asn.AnestheticTickets)
+            {
+                if (t.InvoiceLines.Count > 0)
+                    return true;
+            }
+            return false;
         }
     }
 }

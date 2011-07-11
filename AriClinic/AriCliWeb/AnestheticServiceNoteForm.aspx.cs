@@ -499,4 +499,35 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         Session.Add("procedurechanged", true);
         CreateChange();       
     }
+
+    protected void btnInvoice_Click(object sender, ImageClickEventArgs e)
+    {
+        if (asn == null) return;
+        if (asn.Invoice == null)
+        {
+            if (CntAriCli.ContainsAnesthesicTicketsInvoiced(asn, ctx))
+            {
+                RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','error',null,0,0);"
+                                   , Resources.GeneralResource.Error
+                                   , Resources.GeneralResource.ContainsTicketsInvoiced));
+                return;
+            }
+            int invoiceId = CntAriCli.InvoiceAnesthesicServiceNote(asn, ctx);
+            Invoice i = CntAriCli.GetInvoice(invoiceId, ctx);
+            if (i != null)
+            {
+                RadAjaxManager1.ResponseScripts.Add(String.Format("EditInvoiceRecord({0});", i.InvoiceId));
+            }
+            else
+            {
+                RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','error',null,0,0);"
+                                   , Resources.GeneralResource.Error
+                                   , Resources.GeneralResource.InvoiceError));
+            }
+        }
+        else
+        {
+            RadAjaxManager1.ResponseScripts.Add(String.Format("EditInvoiceRecord({0});", asn.Invoice.InvoiceId));
+        }
+    }
 }

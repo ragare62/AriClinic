@@ -439,6 +439,9 @@
         </div>
         <%--Line 6--%>
         <div ID="Buttons" class="buttonsFomat">
+            <asp:ImageButton ID="btnInvoice" runat="server" 
+                ImageUrl="~/images/documents_gear.png" onclick="btnInvoice_Click" TabIndex="20" 
+                ToolTip="Generar factura" />
           <asp:ImageButton ID="btnAccept" runat="server" TabIndex="12" 
                            ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;
