@@ -124,6 +124,10 @@ height: 30px;
               var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "fullscreen=yes,resizable=1")
               w1.focus();
           }
+          function LaunchChecks() {
+              var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "fullscreen=yes,resizable=1")
+              w1.focus();
+          }
           function LaunchInvoice()
           {
               var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1")
@@ -337,6 +341,8 @@ height: 30px;
                   <telerik:RadMenuItem runat="server" Text="Cobros" Value="payment">
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Liquidaciones" Value="settlement">
+                  </telerik:RadMenuItem >
+                  <telerik:RadMenuItem runat="server" Text="Comprobantes" Value="checks">
                   </telerik:RadMenuItem >
                 </Items>
               </telerik:RadMenuItem>

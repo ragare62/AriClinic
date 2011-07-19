@@ -88,6 +88,7 @@ public partial class MainMenu : System.Web.UI.Page
             Process pr = (from p in ctx.Processes
                           where p.Code == i.Value
                           select p).FirstOrDefault<Process>();
+           
             if (pr != null)
             {
                 Permission per = CntAriCli.GetPermission(ug, pr, ctx);
@@ -187,6 +188,9 @@ public partial class MainMenu : System.Web.UI.Page
                 break;
             case "settlement":
                 RadAjaxManager1.ResponseScripts.Add("LaunchSettlement();");
+                break;
+            case "checks":
+                RadAjaxManager1.ResponseScripts.Add("LaunchChecks();");
                 break;
             case "rtickets":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRTickets();");

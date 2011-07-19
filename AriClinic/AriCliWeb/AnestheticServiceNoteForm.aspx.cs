@@ -530,4 +530,10 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             RadAjaxManager1.ResponseScripts.Add(String.Format("EditInvoiceRecord({0});", asn.Invoice.InvoiceId));
         }
     }
+
+    protected void chkCkecked2_CheckedChanged(object sender, EventArgs e)
+    {
+        Session.Add("procedurechanged", true);
+        CreateChange();       
+    }
 }

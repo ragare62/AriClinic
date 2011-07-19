@@ -201,6 +201,15 @@ public partial class SettelmentGrid {
     protected global::System.Web.UI.WebControls.Button btnSearch;
     
     /// <summary>
+    /// btnComp control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnComp;
+    
+    /// <summary>
     /// chkSelec control.
     /// </summary>
     /// <remarks>
@@ -217,6 +226,15 @@ public partial class SettelmentGrid {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadGrid RadGrid1;
+    
+    /// <summary>
+    /// Actions control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Actions;
     
     /// <summary>
     /// lblClinic control.
