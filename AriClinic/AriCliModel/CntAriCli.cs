@@ -1273,5 +1273,11 @@ namespace AriCliModel
             }
             return false;
         }
+        public static ContactLensesTest GetContactLensesTest(int id, AriClinicContext ctx)
+        {
+            return (from cl in ctx.ContactLensesTests
+                    where cl.Id == id
+                    select cl).FirstOrDefault<ContactLensesTest>();
+        }
     }
 }
