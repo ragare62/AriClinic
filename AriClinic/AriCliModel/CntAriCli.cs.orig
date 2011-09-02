@@ -408,7 +408,7 @@ namespace AriCliModel
                     select t).ToList<Ticket>();
         }
 
-        public static Customer GetCustomer(int customerId, AriClinicContext ctx)
+        public static Customer GetCustomer(int? customerId, AriClinicContext ctx)
         {
             return (from c in ctx.Customers
                     where c.PersonId == customerId
@@ -481,14 +481,28 @@ namespace AriCliModel
             // only the last invoice can be deleted
             if (inv.InvoiceNumber != n)
                 return false;
+
+            // erase possible service note relation
+            if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
+            {
+                for (int i = 1; i <= inv.ServiceNotes.Count; i++)
+                {
+                     inv.ServiceNotes.ElementAt(i).Invoice = null;
+                }
+            }
+            else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
+            {
+                for (int i = 1; i <= inv.AnestheticServiceNotes.Count; i++)
+                {
+                    inv.ServiceNotes.ElementAt(i).Invoice = null;
+                }
+            }
             // delete lines
             ctx.Delete(inv.InvoiceLines);
-            // erase possible service note relation
-            if (inv.ServiceNotes.Count > 0)
-                foreach (ServiceNote sn in inv.ServiceNotes)
-                    sn.Invoice = null;
+
             // delete invoice
             ctx.Delete(inv);
+
             return true;
         }
 
@@ -607,7 +621,7 @@ namespace AriCliModel
                     select tw).FirstOrDefault<TaxWithholdingType>();
         }
 
-        public static Professional GetProfessional(int id, AriClinicContext ctx)
+        public static Professional GetProfessional(int? id, AriClinicContext ctx)
         {
             return (from p in ctx.Professionals
                     where p.PersonId == id
@@ -927,7 +941,7 @@ namespace AriCliModel
                     where a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
-        
+
         public static IList<AppointmentInfo> GetAppointments(Diary diary, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1036,12 +1050,12 @@ namespace AriCliModel
                 cust = (p as Patient).Customer;
             else if (p is Customer)
                 cust = (p as Customer);
-            else 
+            else
                 cust = new Customer();
 
             return (from anes in ctx.AnestheticServiceNotes
-                      where anes.Customer == cust
-                      select anes).ToList<AnestheticServiceNote>();
+                    where anes.Customer == cust
+                    select anes).ToList<AnestheticServiceNote>();
         }
 
         public static List<ServiceNote> GetServiceNotesByPerson(Person p, AriClinicContext ctx)
@@ -1058,7 +1072,6 @@ namespace AriCliModel
                     where anes.Customer == cust
                     select anes).ToList<ServiceNote>();
         }
-<<<<<<< HEAD
         public static IList<Diagnostic> GetDiagnostics(AriClinicContext ctx)
         {
             return (from d in ctx.Diagnostics
@@ -1090,8 +1103,139 @@ namespace AriCliModel
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
         }
+        public static IList<Drug> GetDrugs(AriClinicContext ctx)
+        {
+            return (from d in ctx.Drugs
+                    orderby d.Name
+                    select d).ToList<Drug>();
+        }
+        public static Drug GetDrug(int id, AriClinicContext ctx)
+        {
+            return (from d in ctx.Drugs
+                    where d.DrugId == id
+                    select d).FirstOrDefault<Drug>();
+        }
+        public static IList<Treatment> GetTreatments(AriClinicContext ctx)
+        {
+            return (from t in ctx.Treatments
+                    orderby t.TreatmentDate descending
+                    select t).ToList<Treatment>();
+        }
+        public static Treatment GetTreatment(int id, AriClinicContext ctx)
+        {
+            return (from t in ctx.Treatments
+                    where t.TreatmentId == id
+                    select t).FirstOrDefault<Treatment>();
+        }
+        public static IList<Examination> GetExaminations(AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    orderby e.Name
+                    select e).ToList<Examination>();
+        }
+        public static IList<Examination> GetExaminations(string gt, AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    orderby e.Name
+                    where e.ExaminationType.Code == gt
+                    select e).ToList<Examination>();
+        }
+        public static Examination GetExamination(int id, AriClinicContext ctx)
+        {
+            return (from e in ctx.Examinations
+                    where e.ExaminationId == id
+                    select e).FirstOrDefault<Examination>();
+        }
+        public static IList<ExaminationAssigned> GetExaminationsAssigned(AriClinicContext ctx)
+        {
+            return (from ea in ctx.ExaminationAssigneds
+                    orderby ea.ExaminationDate descending
+                    select ea).ToList<ExaminationAssigned>();
+        }
+        public static ExaminationAssigned GetExaminationAssigned(int id, AriClinicContext ctx)
+        {
+            return (from ea in ctx.ExaminationAssigneds
+                    where ea.ExaminationAssignedId == id
+                    select ea).FirstOrDefault<ExaminationAssigned>();
+        }
+        public static IList<ExaminationType> GetExaminationTypes(AriClinicContext ctx)
+        {
+            return (from et in ctx.ExaminationTypes
+                    orderby et.Name
+                    select et).ToList<ExaminationType>();
+        }
+        public static ExaminationType GetExaminationType(string code, AriClinicContext ctx)
+        {
+            return (from et in ctx.ExaminationTypes
+                    where et.Code == code
+                    select et).FirstOrDefault<ExaminationType>();
+        }
+        public static WithoutGlassesTest GetWithoutGlassesTest(int id, AriClinicContext ctx)
+        {
+            return (from wh in ctx.WithoutGlassesTests
+                    where wh.Id == id
+                    select wh).FirstOrDefault<WithoutGlassesTest>();
+        }
+        public static GlassesTest GetGlassesTest(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.GlassesTests
+                    where gt.Id == id
+                    select gt).FirstOrDefault<GlassesTest>();
+        }
+<<<<<<< HEAD
+        public static ContactLensesTest GetContactLensesTest(int id, AriClinicContext ctx)
+        {
+            return (from cl in ctx.ContactLensesTests
+                    where cl.Id == id
+                    select cl).FirstOrDefault<ContactLensesTest>();
 =======
-        
->>>>>>> 3a0a51800d371999c611e4d5b461bddded375ed1
+        public static int InvoiceAnesthesicServiceNote(AnestheticServiceNote asn, AriClinicContext ctx)
+        {
+            // it there's an invoice related to this service 
+            // we do nothing and return 0
+            if (asn.Invoice != null)
+                return 0;
+
+            // invoice
+            Invoice i = new Invoice();
+            Decimal total = 0;
+            i.Customer = asn.Customer;
+            asn.Invoice = i; // this make the relationship
+            i.InvoiceDate = asn.ServiceNoteDate;
+            i.Serial = CntAriCli.GetHealthCompany(ctx).InvoiceSerial;
+            i.Year = i.InvoiceDate.Year;
+            i.InvoiceNumber = CntAriCli.GetNextInvoiceNumber(i.Serial, i.Year, ctx);
+            ctx.Add(i);
+
+            // invoice lines
+            foreach (Ticket t in asn.AnestheticTickets)
+            {
+                InvoiceLine il = new InvoiceLine();
+                il.Invoice = i;
+                il.Ticket = t;
+                il.Description = t.Description;
+                il.Amount = t.Amount;
+                il.TaxType = t.InsuranceService.Service.TaxType;
+                il.TaxPercentage = il.TaxType.Percentage;
+                total += il.Amount;
+                ctx.Add(il);
+            }
+            i.Total = total;
+
+            // save the work and return id
+            ctx.SaveChanges();
+            return i.InvoiceId;
+        }
+
+        public static bool ContainsAnesthesicTicketsInvoiced(AnestheticServiceNote asn, AriClinicContext ctx)
+        {
+            foreach (Ticket t in asn.AnestheticTickets)
+            {
+                if (t.InvoiceLines.Count > 0)
+                    return true;
+            }
+            return false;
+>>>>>>> origin/master
+        }
     }
 }

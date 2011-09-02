@@ -611,12 +611,6 @@ Press "OK" to confirm deletion.</value>
   <data name="ImageEditor_Crop" xml:space="preserve">
     <value>Crop</value>
   </data>
-  <data name="ImageEditor_DisableCrop" xml:space="preserve">
-    <value>Disable Crop</value>
-  </data>
-  <data name="ImageEditor_EnableCrop" xml:space="preserve">
-    <value>Enable Crop</value>
-  </data>
   <data name="ImageEditor_Flip" xml:space="preserve">
     <value>Flip</value>
   </data>
@@ -635,7 +629,7 @@ Press "OK" to confirm deletion.</value>
   <data name="ImageEditor_Resize" xml:space="preserve">
     <value>Resize</value>
   </data>
-  <data name="ImageEditor_RestoreImage" xml:space="preserve">
+  <data name="ImageEditor_Reset" xml:space="preserve">
     <value>Restore Image</value>
   </data>
   <data name="ImageEditor_Rotate" xml:space="preserve">
@@ -647,7 +641,7 @@ Press "OK" to confirm deletion.</value>
   <data name="ImageEditor_SaveAs" xml:space="preserve">
     <value>Save As...</value>
   </data>
-  <data name="ImageManager_ActualSize" xml:space="preserve">
+  <data name="Common_ActualSize" xml:space="preserve">
     <value>Actual Size</value>
   </data>
   <data name="ImageManager_AlertDimensions" xml:space="preserve">
@@ -659,16 +653,16 @@ Press "OK" to confirm deletion.</value>
   <data name="ImageManager_AlertWidth" xml:space="preserve">
     <value>Please, provide valid image width.</value>
   </data>
-  <data name="ImageManager_BestFit" xml:space="preserve">
+  <data name="Common_BestFit" xml:space="preserve">
     <value>Best Fit</value>
   </data>
   <data name="ImageManager_Title" xml:space="preserve">
     <value>Image Manager</value>
   </data>
-  <data name="ImageManager_ZoomIn" xml:space="preserve">
+  <data name="Common_ZoomIn" xml:space="preserve">
     <value>Zoom In</value>
   </data>
-  <data name="ImageManager_ZoomOut" xml:space="preserve">
+  <data name="Common_ZoomOut" xml:space="preserve">
     <value>Zoom Out</value>
   </data>
   <data name="ImageMap_AlertDeleteAllAreas" xml:space="preserve">
@@ -1801,5 +1795,164 @@ Press "OK" to confirm deletion.</value>
   </data>
   <data name="StyleBuilder_Words" xml:space="preserve">
     <value>Words</value>
+  </data>
+  <data name="ImageEditor_AddText" xml:space="preserve">
+    <value>Add Text</value>
+  </data>
+  <data name="ImageEditor_Print" xml:space="preserve">
+    <value>Print Image</value>
+  </data>
+  <data name="ImageEditor_Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="ImageEditor_RotateLeft" xml:space="preserve">
+    <value>Rotate Left by 90 degrees</value>
+  </data>
+  <data name="ImageEditor_RotateRight" xml:space="preserve">
+    <value>Rotate Right by 90 degrees</value>
+  </data>
+  <data name="ImageEditor_Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ImageEditor_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ImageEditor_AddText_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ImageEditor_AddText_ColorToolTip" xml:space="preserve">
+    <value>The color of the text to add</value>
+  </data>
+  <data name="ImageEditor_AddText_CurrentColorText" xml:space="preserve">
+    <value>(Current Color is {0})</value>
+  </data>
+  <data name="ImageEditor_AddText_FontFamily" xml:space="preserve">
+    <value>Font Family</value>
+  </data>
+  <data name="ImageEditor_AddText_FontFamilyToolTip" xml:space="preserve">
+    <value>The font family of the text to add</value>
+  </data>
+  <data name="ImageEditor_AddText_FontSize" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+  <data name="ImageEditor_AddText_FontSizeToolTip" xml:space="preserve">
+    <value>The size of the text to add</value>
+  </data>
+  <data name="ImageEditor_AddText_PickColorToolTip" xml:space="preserve">
+    <value>Pick Color</value>
+  </data>
+  <data name="ImageEditor_AddText_SampleText" xml:space="preserve">
+    <value>Your text here...</value>
+  </data>
+  <data name="ImageEditor_AddText_Title" xml:space="preserve">
+    <value>Insert Text</value>
+  </data>
+  <data name="ImageEditor_Common_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="ImageEditor_Common_SliderDrag" xml:space="preserve">
+    <value>Drag to change the value</value>
+  </data>
+  <data name="ImageEditor_Common_SwapWidthHeight" xml:space="preserve">
+    <value>Swap Width and Height</value>
+  </data>
+  <data name="ImageEditor_Common_X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="ImageEditor_Common_Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="ImageEditor_Crop_AspectRatio" xml:space="preserve">
+    <value>Aspect Ratio</value>
+  </data>
+  <data name="ImageEditor_Crop_AspectRatioToolTip" xml:space="preserve">
+    <value>Select Aspect Ratio</value>
+  </data>
+  <data name="ImageEditor_Crop_Button" xml:space="preserve">
+    <value>Crop</value>
+  </data>
+  <data name="ImageEditor_Crop_Title" xml:space="preserve">
+    <value>Crop Image</value>
+  </data>
+  <data name="ImageEditor_Flip_None" xml:space="preserve">
+    <value>Flip None</value>
+  </data>
+  <data name="ImageEditor_Flip_Title" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="ImageEditor_Opacity_TextboxToolTip" xml:space="preserve">
+    <value>Enter a value between 0 and 100%</value>
+  </data>
+  <data name="ImageEditor_Opacity_Title" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="ImageEditor_Print_Button" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="ImageEditor_Print_Title" xml:space="preserve">
+    <value>Print Image</value>
+  </data>
+  <data name="ImageEditor_Resize_Button" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="ImageEditor_Resize_Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="ImageEditor_Resize_PercentageToolTip" xml:space="preserve">
+    <value>Percentage of original Width x Height [0,100%]</value>
+  </data>
+  <data name="ImageEditor_Resize_PresetSizes" xml:space="preserve">
+    <value>Preset Sizes</value>
+  </data>
+  <data name="ImageEditor_Resize_PresetSizesToolTip" xml:space="preserve">
+    <value>Select Preset Width x Height</value>
+  </data>
+  <data name="ImageEditor_Resize_Title" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="ImageEditor_Rotate_DropDownToolTip" xml:space="preserve">
+    <value>Select a rotation angle</value>
+  </data>
+  <data name="ImageEditor_Rotate_Title" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="ImageEditor_Save_ClientRadioText" xml:space="preserve">
+    <value>Download Image</value>
+  </data>
+  <data name="ImageEditor_Save_FileNameLabel" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="ImageEditor_Save_FileNameToolTip" xml:space="preserve">
+    <value>Enter File Name</value>
+  </data>
+  <data name="ImageEditor_Save_ServerRadioText" xml:space="preserve">
+    <value>Save Image on Server</value>
+  </data>
+  <data name="ImageEditor_Save_Title" xml:space="preserve">
+    <value>Save Image</value>
+  </data>
+  <data name="ImageEditor_StatusBar_LastAction" xml:space="preserve">
+    <value>Last Action</value>
+  </data>
+  <data name="ImageEditor_StatusBar_Position" xml:space="preserve">
+    <value>Pos.</value>
+  </data>
+  <data name="ImageEditor_StatusBar_Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="ImageEditor_StatusBar_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ImageEditor_Zoom_ActualSizeToolTip" xml:space="preserve">
+    <value>Zoom to 100%</value>
+  </data>
+  <data name="ImageEditor_Zoom_BestFitToolTip" xml:space="preserve">
+    <value>Fit image in editable area</value>
+  </data>
+  <data name="ImageEditor_Zoom_TextboxToolTip" xml:space="preserve">
+    <value>Enter a value between 0 and 100%</value>
+  </data>
+  <data name="ImageEditor_Zoom_Title" xml:space="preserve">
+    <value>Zoom</value>
   </data>
 </root>

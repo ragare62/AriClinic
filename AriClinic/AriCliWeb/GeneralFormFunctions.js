@@ -10,7 +10,7 @@ function CancelEdit()
 {
     window.close();
 }
-// gup stands fro Get Url Parameters
+// gup stands from Get Url Parameters
 function gup(name)
 {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
