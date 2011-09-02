@@ -273,6 +273,12 @@
               }
               return;
           }
+          function EditInvoiceRecord(id) {
+              var w2 = window.open("InvoiceForm.aspx?InvoiceId=" + id + "&Caller=sn"
+                                   , "tck_er1"
+                                   , "width=700, height=490,resizable=1");
+              w2.focus();
+          }
         </script>
 
       </telerik:RadScriptBlock>
@@ -410,7 +416,8 @@
                         Text="Se incluye bomba dolor." TabIndex="10" />
           <br />
           <asp:CheckBox ID="chkCkecked2" runat="server" 
-                        Text="Todos con comprobante" TabIndex="11" />
+                        Text="Todos con comprobante" TabIndex="11" AutoPostBack="True" 
+                oncheckedchanged="chkCkecked2_CheckedChanged" />
         </div>
         <%--Line 4.1--%>
         <%--Line 4.2--%>

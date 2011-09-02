@@ -6,10 +6,10 @@
     <file relUrl="UscInsuranceServiceGrid.ascx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TaxTypeForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="InsuranceServiceForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="bin/AriCliReport.dll" publishTime="07/07/2011 09:15:25" />
+    <file relUrl="bin/AriCliReport.dll" publishTime="07/18/2011 14:18:45" />
     <file relUrl="App_LocalResources/RptView.aspx.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="RptCategorySrvForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="App_LocalResources/TaxTypeGrid.aspx.resx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="TreatmentForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="dialog_box.css" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/query_bg.jpg" publishTime="07/01/2011 12:02:52" />
     <file relUrl="Test.aspx" publishTime="07/01/2011 12:02:52" />
@@ -24,7 +24,7 @@
     <file relUrl="images/document_out_16.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="DiaryGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="InvoiceForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="bin/AriCliModel.pdb" publishTime="07/07/2011 09:15:24" />
+    <file relUrl="bin/AriCliModel.pdb" publishTime="07/18/2011 14:18:44" />
     <file relUrl="App_Data/RadCaptcha/R.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="App_Data/RadCaptcha/B.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="images/message_header.gif" publishTime="07/01/2011 12:02:52" />
@@ -32,20 +32,17 @@
     <file relUrl="DocumentsPatient.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/I.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="TicketGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="GlassesTestForm.aspx" publishTime="07/07/2011 08:23:06" />
     <file relUrl="App_LocalResources/ServiceCategoryGrid.aspx.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TicketForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/book_open2.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/dialog_close.gif" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/logo_web_30.png" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="SettlementGrid.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="SettlementGrid.aspx" publishTime="07/18/2011 10:06:11" />
     <file relUrl="DrugGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="bin/Telerik.OpenAccess.35.Extensions.dll" publishTime="04/11/2011 19:34:30" />
     <file relUrl="images/warning_bg.jpg" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TreatmentGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="AnestheticServiceNoteGrid.aspx" publishTime="07/01/2011 12:48:11" />
-    <file relUrl="AppointmentTypeGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="images/toolbar/exit.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/Z.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="RptInvoicePeriodForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/success_bg.jpg" publishTime="07/01/2011 12:02:52" />
@@ -53,9 +50,10 @@
     <file relUrl="PaymentForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TaxWithholdingTypeForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_LocalResources/InsuranceGrid.aspx.resx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="bin/AriCliWeb.dll" publishTime="07/07/2011 09:15:27" />
+    <file relUrl="bin/AriCliWeb.dll" publishTime="07/18/2011 14:18:47" />
     <file relUrl="images/overlay.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TaxWithholdingTypeGrid.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="App_Data/RadCaptcha/V.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="App_Data/RadCaptcha/U.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="App_Data/RadCaptcha/L.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="images/logo_web.png" publishTime="07/01/2011 12:02:52" />
@@ -71,7 +69,7 @@
     <file relUrl="images/toolbar/book_blue.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/message_bg.jpg" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/document_gear_16.png" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="bin/AriCliWeb.pdb" publishTime="07/07/2011 09:15:27" />
+    <file relUrl="bin/AriCliWeb.pdb" publishTime="07/18/2011 14:18:47" />
     <file relUrl="PatientTab.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/5.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="images/book_open.png" publishTime="07/01/2011 12:02:52" />
@@ -86,18 +84,19 @@
     <file relUrl="App_Data/RadCaptcha/N.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="images/prompt_header.gif" publishTime="07/01/2011 12:02:52" />
     <file relUrl="WithoutGlassesForm.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="DiaryForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ServiceCategoryGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/T.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="ProcessForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/logo_blanco_horizontal_w200.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="UscInvoiceLineGrid.ascx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/document_ok.png" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="web.config" publishTime="07/07/2011 09:09:35" />
+    <file relUrl="web.config" publishTime="07/11/2011 11:51:40" />
     <file relUrl="images/toolbar/book_red.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="dialog_box.html" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ServiceGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/printer.png" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="App_Data/RadCaptcha/7.wav" publishTime="03/15/2011 17:20:28" />
+    <file relUrl="GlassesTestForm.aspx" publishTime="07/07/2011 08:23:06" />
     <file relUrl="AddressForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ServiceForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ServiceCategoryForm.aspx" publishTime="07/01/2011 12:02:52" />
@@ -122,8 +121,8 @@
     <file relUrl="CustomerForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/error_bg.jpg" publishTime="07/01/2011 12:02:52" />
     <file relUrl="Default.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="bin/AriCliReport.pdb" publishTime="07/07/2011 09:15:25" />
-    <file relUrl="bin/AriCliModel.dll" publishTime="07/07/2011 09:15:24" />
+    <file relUrl="bin/AriCliReport.pdb" publishTime="07/18/2011 14:18:45" />
+    <file relUrl="bin/AriCliModel.dll" publishTime="07/18/2011 14:18:44" />
     <file relUrl="PolicyGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="favicon.ico" publishTime="07/01/2011 12:02:52" />
     <file relUrl="bin/Telerik.OpenAccess.40.Extensions.dll" publishTime="04/11/2011 19:34:30" />
@@ -140,11 +139,9 @@
     <file relUrl="App_Data/RadCaptcha/K.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="bin/Telerik.OpenAccess.Web.dll" publishTime="04/11/2011 19:34:28" />
     <file relUrl="bin/Telerik.Web.UI.dll" publishTime="05/18/2011 15:44:48" />
-    <file relUrl="App_Data/RadCaptcha/F.wav" publishTime="03/15/2011 17:20:28" />
-    <file relUrl="RptServiceComparerForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="TreatmentForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="PaymentMethodForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="GoogleMapsPage.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="images/document_out.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/6.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="images/toolbar/users_family.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ExaminationForm.aspx" publishTime="07/01/2011 12:02:52" />
@@ -153,17 +150,19 @@
     <file relUrl="App_LocalResources/SchedulerGeneral.aspx.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/0.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="DrugForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="InvoiceGrid.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="App_Data/RadCaptcha/F.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="AriClinicStyle.css" publishTime="07/07/2011 08:23:06" />
     <file relUrl="App_Data/RadCaptcha/J.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="App_Data/RadCaptcha/M.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="ExaminationGrid.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="AnestheticServiceNoteForm.aspx" publishTime="07/18/2011 13:41:32" />
     <file relUrl="App_Data/RadCaptcha/W.wav" publishTime="03/15/2011 17:20:28" />
-    <file relUrl="App_Data/RadCaptcha/X.wav" publishTime="03/15/2011 17:20:28" />
+    <file relUrl="App_LocalResources/TaxTypeGrid.aspx.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ProcedureGrid.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="images/toolbar/exit.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="UserGroupForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="DiagnosticGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="DiaryForm.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="AppointmentTypeGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="CustomerTab.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/disk_blue_ok.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="InsuranceServiceGrid.aspx" publishTime="07/01/2011 12:02:52" />
@@ -178,10 +177,11 @@
     <file relUrl="images/toolbar/cabinet.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_LocalResources/ServiceGrid.aspx.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="PaymentMethodGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="App_Data/RadCaptcha/V.wav" publishTime="03/15/2011 17:20:28" />
+    <file relUrl="images/documents_gear.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="UscTelephoneGrid.ascx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/document_add.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/document_delete_16.png" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="App_Data/RadCaptcha/7.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="App_GlobalResources/GeneralResource.resx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="RptProfessionalSrvForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/prompt_bg.jpg" publishTime="07/01/2011 12:02:52" />
@@ -190,7 +190,7 @@
     <file relUrl="RefractometryForm.aspx" publishTime="07/07/2011 08:23:06" />
     <file relUrl="ExaminationAssignedForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ClinicGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="images/document_out.png" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="images/toolbar/bottle_of_pills.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="images/success_header.gif" publishTime="07/01/2011 12:02:52" />
     <file relUrl="UscEmailGrid.ascx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/P.wav" publishTime="03/15/2011 17:20:28" />
@@ -199,19 +199,19 @@
     <file relUrl="images/folder_cubes_16.png" publishTime="07/01/2011 12:02:52" />
     <file relUrl="UserForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="PatientGrid.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="ServiceNoteForm.aspx" publishTime="07/05/2011 08:26:31" />
-    <file relUrl="images/toolbar/bottle_of_pills.png" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="RptServiceComparerForm.aspx" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="App_Data/RadCaptcha/X.wav" publishTime="03/15/2011 17:20:28" />
     <file relUrl="SchedulerGeneral.js" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ExaminationAssignedGrid.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="GeneralFormFunctions.js" publishTime="07/01/2011 12:02:52" />
     <file relUrl="TelephoneForm.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="images/documents_gear.png" publishTime="07/01/2011 12:02:52" />
+    <file relUrl="ServiceNoteForm.aspx" publishTime="07/05/2011 08:26:31" />
     <file relUrl="RptPaymentsForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="ParameterForm.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="RptView.aspx" publishTime="07/01/2011 12:02:52" />
     <file relUrl="App_Data/RadCaptcha/C.wav" publishTime="03/15/2011 17:20:28" />
-    <file relUrl="MainMenu.aspx" publishTime="07/01/2011 12:02:52" />
-    <file relUrl="AnestheticServiceNoteForm.aspx" publishTime="07/06/2011 14:01:03" />
+    <file relUrl="MainMenu.aspx" publishTime="07/18/2011 09:20:12" />
+    <file relUrl="InvoiceGrid.aspx" publishTime="07/01/2011 12:02:52" />
   </publishProfile>
   <publishProfile publishUrl="D:\A_Publicar\ANES" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Anestesia" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="False">
     <file relUrl="images/currency_euro_16.png" publishTime="04/13/2011 16:35:59" />
@@ -281,6 +281,7 @@
     <file relUrl="images/prompt_header.gif" publishTime="04/13/2011 16:35:59" />
     <file relUrl="ServiceCategoryGrid.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="App_LocalResources/RptView.aspx.resx" publishTime="04/13/2011 16:35:59" />
+    <file relUrl="images/documents_gear.png" publishTime="04/13/2011 16:35:59" />
     <file relUrl="ProcessForm.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="UscInvoiceLineGrid.ascx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="images/document_ok.png" publishTime="04/13/2011 16:35:59" />
@@ -324,7 +325,6 @@
     <file relUrl="bin/Telerik.OpenAccess.40.Extensions.xml" publishTime="08/04/2010 15:54:46" />
     <file relUrl="App_Data/RadCaptcha/H.wav" publishTime="04/13/2011 16:35:58" />
     <file relUrl="App_Data/RadCaptcha/K.wav" publishTime="04/13/2011 16:35:58" />
-    <file relUrl="ServiceNoteForm.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="bin/Telerik.Web.UI.dll" publishTime="11/08/2010 15:31:00" />
     <file relUrl="App_Data/RadCaptcha/F.wav" publishTime="04/13/2011 16:35:58" />
     <file relUrl="PaymentMethodForm.aspx" publishTime="04/13/2011 16:35:59" />
@@ -374,7 +374,7 @@
     <file relUrl="App_Data/RadCaptcha/X.wav" publishTime="04/13/2011 16:35:58" />
     <file relUrl="GeneralFormFunctions.js" publishTime="04/13/2011 16:35:59" />
     <file relUrl="TelephoneForm.aspx" publishTime="04/13/2011 16:35:59" />
-    <file relUrl="images/documents_gear.png" publishTime="04/13/2011 16:35:59" />
+    <file relUrl="ServiceNoteForm.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="RptPaymentsForm.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="ParameterForm.aspx" publishTime="04/13/2011 16:35:59" />
     <file relUrl="RptView.aspx" publishTime="04/26/2011 10:41:51" />

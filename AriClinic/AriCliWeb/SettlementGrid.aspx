@@ -22,7 +22,7 @@
           <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
         </Scripts>
       </telerik:RadScriptManager>
-      <telerik:radwindowmanager id="RadWindowManager1" runat="server" 
+      <telerik:RadWindowManager id="RadWindowManager1" runat="server" 
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
@@ -122,7 +122,8 @@
           </telerik:RadComboBox>
           &nbsp;
           <asp:Label ID="lblType" runat="server" Text="Tipo: "></asp:Label>
-          <telerik:RadComboBox ID="rdcbType" runat="server">
+          <telerik:RadComboBox ID="rdcbType" runat="server" 
+                onselectedindexchanged="rdcbType_SelectedIndexChanged">
             <Items>
               <telerik:RadComboBoxItem runat="server" Text="No pagados" Value="NP" />
               <telerik:RadComboBoxItem runat="server" Text="Pagados" Value="P" />
@@ -131,6 +132,9 @@
           &nbsp;
           <asp:Button ID="btnSearch" runat="server" Text="Buscar" 
                       onclick="btnSearch_Click" />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnComp" runat="server" Text="Desmarcar comprobante" 
+                Visible="false" onclick="btnComp_Click" Width="168px" />
         </div>
         <div  class="normalText" style="background-color: #ECF3FC">
         <asp:CheckBox ID="chkSelec" runat="server" Text="Seleccionar todos" 
@@ -262,7 +266,7 @@
             </HeaderContextMenu>
           </telerik:RadGrid>
         </div>
-        <div id="Actions" class="normalTextRight" style="width:100%">
+        <div id="Actions" class="normalTextRight" runat="server" style="width:100%">
           <asp:Label ID="lblClinic" runat="server" Text="Clinica de pago: " Visible="false"></asp:Label>
           <telerik:RadComboBox ID="rdcbClinic" runat="server" Visible="false">
           </telerik:RadComboBox>

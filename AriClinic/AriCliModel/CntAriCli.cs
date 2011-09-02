@@ -323,7 +323,7 @@ namespace AriCliModel
         {
             if (insuranceId != 0)
             {
-                if (type == "P")
+                if (type.Equals("P"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -334,7 +334,7 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
-                else
+                else if(type.Equals("NP"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -345,6 +345,29 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
+                else if (type.Equals("C"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && t.Policy.Insurance.InsuranceId == insuranceId
+                                   && (t.Checked==true)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("SC"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && t.Policy.Insurance.InsuranceId == insuranceId
+                                   && (t.Checked == false)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else { return new List<Ticket>(); }
             }
             else
             {
@@ -358,7 +381,7 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
-                else
+                else if (type.Equals("NP"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -368,6 +391,27 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
+                else if (type.Equals("C"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && (t.Checked==true)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("SC"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && (t.Checked == false)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else { return new List<Ticket>(); }
             }
         }
 
@@ -485,16 +529,16 @@ namespace AriCliModel
             // erase possible service note relation
             if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.ServiceNotes.Count; i++)
+                for (int i = 0; i < inv.ServiceNotes.Count; i++)
                 {
                      inv.ServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.AnestheticServiceNotes.Count; i++)
+                for (int i = 0; i < inv.AnestheticServiceNotes.Count; i++)
                 {
-                    inv.ServiceNotes.ElementAt(i).Invoice = null;
+                    inv.AnestheticServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             // delete lines

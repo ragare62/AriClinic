@@ -71,6 +71,21 @@ public partial class SettelmentGrid : System.Web.UI.Page
             // hide patient column
             RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
         }
+        else if (type == "comprobante")
+        {
+            HtmlControl tt = (HtmlControl)this.FindControl("Actions");
+            tt.Attributes["class"] = "ghost";
+            // hide patient column
+            RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
+            btnComp.Visible = true;
+
+            lblTitle.Text = "Comprobantes";
+
+            rdcbType.AutoPostBack = true;
+            rdcbType.Items.Clear();
+            rdcbType.Items.Add(new RadComboBoxItem("Con comprobante", "C"));
+            rdcbType.Items.Add(new RadComboBoxItem("Sin comprobante", "SC"));
+        }
         else
         {
             //
@@ -291,6 +306,22 @@ public partial class SettelmentGrid : System.Web.UI.Page
             , ctx);
         //RadGrid1.Rebind();
     }
+    protected void RefreshGrid(bool rebind, bool comprobante)
+    {
+        if (!rebind)
+        {
+            RadGrid1.DataSource = new List<Ticket>();
+            return;
+        }
+        if (!DataOk()) return;
+
+        RadGrid1.DataSource = CntAriCli.GetTickets((DateTime)rddpFromDate.SelectedDate
+            , (DateTime)rddpToDate.SelectedDate
+            , Int32.Parse(rdcbInsurance.SelectedValue)
+            , rdcbType.SelectedValue
+            , ctx);
+        //RadGrid1.Rebind();
+    }
     protected bool DataOk()
     {
         if (rddpFromDate.SelectedDate == null || rddpToDate == null)
@@ -360,6 +391,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
         //RefreshGrid(true);
         RadGrid1.Rebind();
     }
+   
     protected void DoPayments()
     {
         ArrayList selectedItems = (ArrayList)Session["selectedItems"];
@@ -442,5 +474,43 @@ public partial class SettelmentGrid : System.Web.UI.Page
             Session["selectedItems"] = new ArrayList();
 
         RadGrid1.Rebind();
+    }
+
+    protected void btnComp_Click(object sender, EventArgs e)
+    {
+        ArrayList selectedItems = (ArrayList)Session["selectedItems"];
+
+        foreach (string item in selectedItems)
+        {
+            int id = int.Parse(item);
+            Ticket tck = CntAriCli.GetTicket(id, ctx);
+
+            if (rdcbType.SelectedValue.Equals("SC"))
+            {
+                tck.Checked = true;
+            }
+            else
+            {
+                tck.Checked = false;
+            }
+        }
+        Session["selectedItems"] = new ArrayList();
+        ctx.SaveChanges();
+
+        chkSelec.Checked = false;
+
+        RadGrid1.Rebind();
+    }
+
+    protected void rdcbType_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        if (rdcbType.SelectedValue.Equals("C"))
+        {
+            btnComp.Text = "Desmarcar comprobante";
+        }
+        else
+        {
+            btnComp.Text = "Marcar comprobante";
+        }
     }
 }
