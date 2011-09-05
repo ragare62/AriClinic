@@ -303,6 +303,9 @@
   <data name="TicketNeeded" xml:space="preserve">
     <value>Se necesita un ticket</value>
   </data>
+  <data name="UnitTypeNeeded" xml:space="preserve">
+    <value>Se necesita un tipo de unidad</value>
+  </data>
   <data name="UserNeedsPassword" xml:space="preserve">
     <value>Un usuario nuevo necesita contraseña</value>
   </data>

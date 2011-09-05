@@ -246,6 +246,10 @@ height: 30px;
               var w1 = window.open("ExaminationAssignedGrid.aspx", "EXAMINATIONASSIGNED", "width=800, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchUnitType() {
+              var w1 = window.open("UnitTypeGrid.aspx", "UNITTYPE", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -275,7 +279,8 @@ height: 30px;
         </div>
         <div id="MenuArea">
           <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%"
-                           onitemclick="RadMenu1_ItemClick">
+                           onitemclick="RadMenu1_ItemClick" 
+                style="top: 0px; left: 0px; height: 34px">
             <Items>
               <telerik:RadMenuItem runat="server" Text="Administración" Value="admin">
                 <Items>
@@ -405,6 +410,8 @@ height: 30px;
                                 <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
                                 </telerik:RadMenuItem>
                             </Items>
                         </telerik:RadMenuItem>

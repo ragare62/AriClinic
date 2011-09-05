@@ -18,7 +18,7 @@ using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
-{	
+{
 	public partial class AriClinicContext : OpenAccessContext
 	{
 		private static string connectionStringName = @"AriClinicContext";
@@ -461,6 +461,14 @@ namespace AriCliModel
 	    	get
 	    	{
 	        	return this.GetAll<Cycloplegia>();
+	    	}
+		}
+		
+		public IQueryable<LabTest> LabTests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LabTest>();
 	    	}
 		}
 		

@@ -249,6 +249,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "examinationassigned":
                 RadAjaxManager1.ResponseScripts.Add("LaunchExaminationAssigned();");
                 break;
+            case "unittype":
+                RadAjaxManager1.ResponseScripts.Add("LaunchUnitType();");
+                break;
             default:
                 break;
         }

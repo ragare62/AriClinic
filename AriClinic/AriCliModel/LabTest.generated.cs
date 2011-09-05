@@ -19,18 +19,18 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class UnitType
+	public partial class LabTest
 	{
-		private int unitTypeId;
-		public virtual int UnitTypeId 
+		private int labTestId;
+		public virtual int LabTestId 
 		{ 
 		    get
 		    {
-		        return this.unitTypeId;
+		        return this.labTestId;
 		    }
 		    set
 		    {
-		        this.unitTypeId = value;
+		        this.labTestId = value;
 		    }
 		}
 		
@@ -47,12 +47,42 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<LabTest> labTests = new List<LabTest>();
-		public virtual IList<LabTest> LabTests 
+		private decimal minValue;
+		public virtual decimal MinValue 
 		{ 
 		    get
 		    {
-		        return this.labTests;
+		        return this.minValue;
+		    }
+		    set
+		    {
+		        this.minValue = value;
+		    }
+		}
+		
+		private decimal maxValue;
+		public virtual decimal MaxValue 
+		{ 
+		    get
+		    {
+		        return this.maxValue;
+		    }
+		    set
+		    {
+		        this.maxValue = value;
+		    }
+		}
+		
+		private UnitType unitType;
+		public virtual UnitType UnitType 
+		{ 
+		    get
+		    {
+		        return this.unitType;
+		    }
+		    set
+		    {
+		        this.unitType = value;
 		    }
 		}
 		
