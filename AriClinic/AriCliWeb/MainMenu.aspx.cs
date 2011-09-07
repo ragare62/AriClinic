@@ -252,6 +252,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "unittype":
                 RadAjaxManager1.ResponseScripts.Add("LaunchUnitType();");
                 break;
+            case "labtest":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLabTest();");
+                break;
             default:
                 break;
         }

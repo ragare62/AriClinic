@@ -164,6 +164,20 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LabTestForm.aspx.cs">
+      <DependentUpon>LabTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LabTestForm.aspx.designer.cs">
+      <DependentUpon>LabTestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LabTestGrid.aspx.cs">
+      <DependentUpon>LabTestGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LabTestGrid.aspx.designer.cs">
+      <DependentUpon>LabTestGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UnitTypeGrid.aspx.cs">
       <DependentUpon>UnitTypeGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -831,6 +845,8 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="LabTestForm.aspx" />
+    <Content Include="LabTestGrid.aspx" />
     <Content Include="UnitTypeGrid.aspx" />
     <Content Include="UnitTypeForm.aspx" />
     <Content Include="GlassesTestForm.aspx" />
@@ -1064,7 +1080,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

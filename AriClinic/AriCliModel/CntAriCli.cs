@@ -1279,6 +1279,7 @@ namespace AriCliModel
                     where cl.Id == id
                     select cl).FirstOrDefault<ContactLensesTest>();
         }
+
         public static IList<UnitType> GetUnitTypes(AriClinicContext ctx)
         {
             return (from ut in ctx.UnitTypes
@@ -1289,6 +1290,18 @@ namespace AriCliModel
             return (from ut in ctx.UnitTypes
                     where ut.UnitTypeId == id
                     select ut).FirstOrDefault<UnitType>();
+        }
+
+        public static IList<LabTest> GetLabTests(AriClinicContext ctx)
+        {
+            return (from lt in ctx.LabTests
+                    select lt).ToList<LabTest>();
+        }
+        public static LabTest GetLabTest(int id, AriClinicContext ctx)
+        {
+            return (from lt in ctx.LabTests
+                    where lt.LabTestId == id
+                    select lt).FirstOrDefault<LabTest>();
         }
     }
 }

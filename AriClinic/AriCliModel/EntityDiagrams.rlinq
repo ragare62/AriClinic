@@ -82,7 +82,9 @@
         <orm:field name="vATIN" property="VATIN" behavior="readwrite" null-value="none" uniqueId="409a674f-3917-4bd7-8709-210930266e57" type="System.String">
           <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         </orm:field>
-        <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String" />
+        <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String">
+          <orm:column name="invoice_serial" sql-type="varchar" nullable="false" length="10" scale="0" ado-type="Varchar" />
+        </orm:field>
         <orm:field name="telephones" property="Telephones" behavior="readwrite" null-value="none" uniqueId="cf3f967f-b65b-4f2d-8ebb-71673407a00c" type="AriCliModel.Telephone">
           <orm:collection element-class="AriCliModel.Telephone" inverse-field="healthcareCompany" managed="true" order-by="" uniqueId="b3ba6165-c5f3-4051-abc3-d4da371d830e" />
         </orm:field>
@@ -1348,6 +1350,9 @@
         <orm:field name="patient1" property="Patient" behavior="readwrite" uniqueId="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" type="AriCliModel.Patient">
           <orm:reference uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f" />
         </orm:field>
+        <orm:index name="idx_treatment_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="UnitType" update-schema="true" behavior="readwrite" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
         <orm:table name="unit_type" />
@@ -1401,6 +1406,9 @@
         <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="96cef444-12db-4a98-80fb-6d78ecf88187" type="AriCliModel.Patient">
           <orm:reference uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
+        <orm:index name="idx_examination_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="ExaminationType" use-default-mapping="true" update-schema="true" behavior="readwrite" uniqueId="7e17bf9c-15f2-4f20-97cc-83848325bf68">
         <orm:identity>
@@ -1444,28 +1452,28 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="36351fe8-d26d-49c4-8f67-09bb8c5d3377" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="dbe3474d-da9b-4535-98c4-8010258d22d6" type="System.String">
-          <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="781e6bd8-9201-4ddc-b73b-48db77170d27" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="c6b00c22-f2ae-4ce3-afd3-860bfd8ea60d" />
@@ -1609,28 +1617,28 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="48fa93f9-c151-4aba-83a3-92dde0503f47" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="77b3d36a-b2de-4d75-a55a-fcf501e9c458" type="System.String">
-          <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="a656b602-f848-44e1-ae8c-405be2dffe49" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
@@ -1917,126 +1925,129 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="f2bfef09-b704-4bcc-9c4c-4dec09bab9b0" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="a542bf77-9c41-492f-81a5-e4318af7a267" type="System.String">
-          <orm:column name="comments" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAxisRightEye" property="FarAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_prims_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_prims_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="System.String">
-          <orm:column name="close_sphericity_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="close_sphericity_centers" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closePrismRightEye" property="ClosePrismRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_prism_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_prism_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAxisRightEye" property="BothAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothPrismRightEye" property="BothPrismRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_prism_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_prism_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCenters" property="FarCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeCenters" property="CloseCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCenters" property="BothCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAcuity" property="FarAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuity" property="CloseAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuity" property="BothAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="17b294eb-14ee-49c2-8b78-98dd407a537d" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:table name="cycloplegia" />
@@ -2170,21 +2181,29 @@
           <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
-      <orm:class name="LabTest" update-schema="true" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
+      <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="labTestId" />
         </orm:identity>
-        <orm:field name="labTestId" property="LabTestId" behavior="readwrite" uniqueId="24c16a96-255e-41f9-821a-f7c2aa8fa88d" type="System.Int32" />
-        <orm:field name="name" property="Name" behavior="readwrite" uniqueId="ed90a2ee-d676-42b6-9fcd-2d19161454ef" type="System.String" />
-        <orm:field name="minValue" property="MinValue" behavior="readwrite" uniqueId="680856ea-26bd-4638-89e4-22970d81b95d" type="System.Decimal" />
-        <orm:field name="maxValue" property="MaxValue" behavior="readwrite" uniqueId="c692eee6-317b-4950-983d-c98847c1b1d5" type="System.Decimal" />
+        <orm:field name="labTestId" property="LabTestId" behavior="readwrite" uniqueId="24c16a96-255e-41f9-821a-f7c2aa8fa88d" type="System.Int32">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" behavior="readwrite" uniqueId="ed90a2ee-d676-42b6-9fcd-2d19161454ef" type="System.String">
+          <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="minValue" property="MinValue" behavior="readwrite" uniqueId="680856ea-26bd-4638-89e4-22970d81b95d" type="System.Decimal">
+          <orm:column name="min_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="maxValue" property="MaxValue" behavior="readwrite" uniqueId="c692eee6-317b-4950-983d-c98847c1b1d5" type="System.Decimal">
+          <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
         <orm:field name="unitType" property="UnitType" behavior="readwrite" uniqueId="c6062d87-c465-4c5f-b04c-0247ad90010f" type="AriCliModel.UnitType">
           <orm:reference uniqueId="afe631f1-6cbc-464e-bdf2-01c5fb7e7fdf" />
         </orm:field>
         <orm:index name="idx_lab_test_unit_type_id">
-          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -2265,6 +2284,7 @@
         <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+        <orm:column name="invoice_serial" sql-type="varchar" nullable="false" length="10" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="email">
         <orm:column name="url" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
@@ -2974,12 +2994,12 @@
       </orm:table>
       <orm:table name="lab_test">
         <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="min_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
-        <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+        <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:index name="idx_lab_test_unit_type_id">
-          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:table>
     </orm:schema>

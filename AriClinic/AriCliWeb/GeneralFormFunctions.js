@@ -111,4 +111,9 @@ function searchExamination(arg)
     }
     w1.focus;
 }
+function searchUnitType() {
+    var w1 = window.open("UnitTypeGrid.aspx?Type=S", "UNITTYPES", "width=500,height=400,resizable=1");
+    w1.focus;
+}
+
 

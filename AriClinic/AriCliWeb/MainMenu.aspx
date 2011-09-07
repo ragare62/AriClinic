@@ -250,7 +250,11 @@ height: 30px;
               var w1 = window.open("UnitTypeGrid.aspx", "UNITTYPE", "width=500, height=500,resizable=1")
               w1.focus();
           }
-        </script>
+          function LaunchLabTest() {
+              var w1 = window.open("LabTestGrid.aspx", "LABTESTS", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
+                  </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
         <telerik:RadSkinManager ID="RadSkinManager1" runat="server">
@@ -412,6 +416,9 @@ height: 30px;
                                 <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Pruebas de laboratorio" 
+                                    Value="labtest">
                                 </telerik:RadMenuItem>
                             </Items>
                         </telerik:RadMenuItem>
