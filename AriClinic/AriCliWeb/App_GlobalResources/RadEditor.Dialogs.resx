@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Copyright" xml:space="preserve">
     <value>Copyright 2002-2011 ©Telerik  All rights reserved.</value>
@@ -1954,5 +1954,11 @@ Press "OK" to confirm deletion.</value>
   </data>
   <data name="ImageEditor_Zoom_Title" xml:space="preserve">
     <value>Zoom</value>
+  </data>
+  <data name="TrackChangesDialog_InitialContent" xml:space="preserve">
+    <value>Initial Content</value>
+  </data>
+  <data name="TrackChangesDialog_TrackChanges" xml:space="preserve">
+    <value>Track Changes</value>
   </data>
 </root>
