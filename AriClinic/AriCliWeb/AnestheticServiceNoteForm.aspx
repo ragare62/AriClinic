@@ -499,7 +499,7 @@
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." TabIndex="8" 
                         AutoPostBack="True" onitemsrequested="rdcProcedureName_ItemsRequested" 
-                        onselectedindexchanged="rdcProcedureName_SelectedIndexChanged">
+                        onselectedindexchanged="rdcProcedureName2_SelectedIndexChanged">
                   </telerik:RadComboBox>
                 </div>
               </td>
@@ -518,7 +518,7 @@
                                        EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                        EmptyMessage="Escriba aquí ..." TabIndex="9" 
                         AutoPostBack="True" onitemsrequested="rdcProcedureName_ItemsRequested" 
-                        onselectedindexchanged="rdcProcedureName_SelectedIndexChanged">
+                        onselectedindexchanged="rdcProcedureName3_SelectedIndexChanged">
                   </telerik:RadComboBox>
                 <%--<asp:TextBox ID="txtProcedureName3" runat="server" Enabled="False" 
                 TabIndex="18" Width="241px"></asp:TextBox>--%>

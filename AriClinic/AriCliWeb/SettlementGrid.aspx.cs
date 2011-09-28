@@ -76,7 +76,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
             HtmlControl tt = (HtmlControl)this.FindControl("Actions");
             tt.Attributes["class"] = "ghost";
             // hide patient column
-            RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
+            //RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
             btnComp.Visible = true;
 
             lblTitle.Text = "Comprobantes";
@@ -85,6 +85,8 @@ public partial class SettelmentGrid : System.Web.UI.Page
             rdcbType.Items.Clear();
             rdcbType.Items.Add(new RadComboBoxItem("Con comprobante", "C"));
             rdcbType.Items.Add(new RadComboBoxItem("Sin comprobante", "SC"));
+
+            RadGrid1.PageSize = 6;
         }
         else
         {

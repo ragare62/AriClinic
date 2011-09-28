@@ -429,11 +429,25 @@ namespace AriCliModel
                     select inv).FirstOrDefault<Invoice>();
         }
 
+        public static ProfessionalInvoice GetProfessionalInvoice(int invoiceId, AriClinicContext ctx)
+        {
+            return (from inv in ctx.ProfessionalInvoices
+                    where inv.InvoiceId == invoiceId
+                    select inv).FirstOrDefault<ProfessionalInvoice>();
+        }
+
         public static InvoiceLine GetInvoiceLine(int invoiceLineId, AriClinicContext ctx)
         {
             return (from il in ctx.InvoiceLines
                     where il.InvoiceLineId == invoiceLineId
                     select il).FirstOrDefault<InvoiceLine>();
+        }
+
+        public static ProfessionalInvoiceLine GetProfessionalInvoiceLine(int invoiceLineId, AriClinicContext ctx)
+        {
+            return (from il in ctx.ProfessionalInvoiceLines
+                    where il.InvoiceLineId == invoiceLineId
+                    select il).FirstOrDefault<ProfessionalInvoiceLine>();
         }
 
         public static IList<Ticket> GetTicketsNotInvoiced(AriClinicContext ctx)
@@ -509,12 +523,31 @@ namespace AriCliModel
             return total;
         }
 
+        public static Decimal GetProfessionalInvoiceTotal(ProfessionalInvoice inv)
+        {
+            Decimal total = 0;
+            foreach (ProfessionalInvoiceLine invl in inv.ProfessionalInvoiceLines)
+            {
+                total += invl.Amount;
+            }
+            return total;
+        }
+
         public static int GetNextInvoiceNumber(string serial, int year, AriClinicContext ctx)
         {
             int v = (from inv in ctx.Invoices
                      where inv.Serial == serial
                            && inv.Year == year
                      select inv.InvoiceNumber).Max();
+            return ++v;
+        }
+
+        public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
+        {
+            int v = (from inv in prof.ProfessionalInvoices
+                     where inv.Year == year
+                     select inv.InvoiceNumber).Max();
+
             return ++v;
         }
 
@@ -550,9 +583,37 @@ namespace AriCliModel
             return true;
         }
 
+        public static bool DeleteProfessionalInvoice(ProfessionalInvoice inv, AriClinicContext ctx)
+        {
+            // Last invoice number?
+            int n = GetNextProfessionalInvoiceNumber(inv.Professional, inv.Year, ctx) - 1;
+            // only the last invoice can be deleted
+            if (inv.InvoiceNumber != n)
+                return false;
+
+            // delete lines
+            ctx.Delete(inv.ProfessionalInvoiceLines);
+
+            // delete invoice
+            ctx.Delete(inv);
+
+            return true;
+        }
+
         public static bool CorrectInvoiceDate(DateTime date, AriClinicContext ctx)
         {
             var rs = from i in ctx.Invoices
+                     where i.InvoiceDate > date
+                     select i;
+            if (rs.Count() > 0)
+                return false;
+            else
+                return true;
+        }
+
+        public static bool CorrectProfessionalInvoiceDate(DateTime date, Professional prof)
+        {
+            var rs = from i in prof.ProfessionalInvoices
                      where i.InvoiceDate > date
                      select i;
             if (rs.Count() > 0)

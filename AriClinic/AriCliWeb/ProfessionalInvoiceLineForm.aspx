@@ -1,18 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InvoiceForm.aspx.cs" Inherits="InvoiceForm" %>
-
-<%@ Register src="UscInvoiceLineGrid.ascx" tagname="UscInvoiceLineGrid" tagprefix="uc1" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProfessionalInvoiceLineForm.aspx.cs" Inherits="AriCliWeb.ProfessionalInvoiceLineForm" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head runat="server">
+  <head id="Head1" runat="server">
     <title>
-      Factura
+      Linea de factura
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-/* Line 1 */
+    /* Line 1 */
 #TitleArea
 {
 z-index: 1;
@@ -23,7 +21,7 @@ height: 19px;
 width: 646px;
 }
 /* Line 2 */
-#InvoiceId
+#InvoiceLineId
 {
 z-index: 1;
 left: 5px;
@@ -35,7 +33,7 @@ width: 99px;
 #InvoiceFrame
 {
 z-index: 1;
-left: 128px;
+left: 309px;
 top: 35px;
 position: absolute;
 height: 59px;
@@ -70,60 +68,73 @@ height: 44px;
 width: 146px;
 right: 8px;
 }
-            
-#InvoiceDate
-{
-z-index: 1;
-left: 493px;
-top: 40px;
-position: absolute;
-height: 44px;
-width: 157px;
-}
 
 /* Line 3 */
-#CustomerId
+#TicketId
 {
 z-index: 1;
 left: 13px;
-top: 105px;
+top: 110px;
 position: absolute;
 height: 43px;
 width: 93px;
 }
-#CustomerName
+#TicketData
 {
 z-index: 1;
-left: 129px;
-top: 105px;
+left: 121px;
+top: 110px;
 position: absolute;
 height: 44px;
-width: 339px;
+width: 291px;
 }
-            
-#InvoiceTotal
+#TaxType
 {
 z-index: 1;
-left: 490px;
+left: 428px;
+top: 110px;
+position: absolute;
 height: 44px;
-width: 159px;
+width: 223px;
+bottom: 261px;
 }
-
 
 /* Line 4 */
-            
-#InvoiceLines
+      
+#Description
 {
 z-index: 1;
-left: 14px;
-width: 632px;
+left: 12px;
+top: 160px;
+position: absolute;
+height: 44px;
+width: 291px;
 }
-      
+#TaxPercentage
+{
+z-index: 1;
+left: 376px;
+top: 160px;
+position: absolute;
+height: 44px;
+width: 108px;
+} 
+#Amount
+{
+z-index: 1;
+left: 542px;
+top: 160px;
+position: absolute;
+height: 44px;
+width: 108px;
+}             
 /* Line 5 */
 #Message
 {
 z-index: 1;
-left: 10px;
+left: 11px;
+top: 218px;
+position: absolute;
 height: 44px;
 width: 641px;
 }
@@ -132,11 +143,11 @@ width: 641px;
 {
 z-index: 1;
 left: 10px;
+top: 277px;
+position: absolute;
 height: 26px;
 width: 642px;
 }
-
-
 
             
 </style>
@@ -157,49 +168,21 @@ width: 642px;
         <script type="text/javascript" src="GeneralFormFunctions.js">
         </script>
         <script type="text/javascript">
-            function refreshGrid(arg) {
-                //alert("Hello from refreshGrid");
-                if (!arg) {
-                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("");
-                }
-                else {
-                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(arg);
-                }
-            }
-            function NewInvoiceLineRecord() {
 
-                var w1 = window.open("InvoiceLineForm.aspx?InvoiceId=" + gup("InvoiceId"), "invl_nr1", "width=720, height=320,resizable=1");
-                w1.focus();
+            //Put your JavaScript code here.
+            function refreshField(v1, v2, v3, v4, type) {
+                if (type) {
+                    switch (type) {
+                        case "Ticket":
+                            //alert("V1: " + v1 + " V2:" + v2 + " V3:" + v3);
+                            document.getElementById('<%= txtTicketId.ClientID %>').value = v1;
+                            document.getElementById('<%= txtTicketData.ClientID %>').value = v3;
+                            document.getElementById('<%= txtAmount.ClientID %>').value = v2;
+                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
+                            break;
+                    }
+                }
             }
-            
-            function EditInvoiceLineRecord(id) {
-                var w2 = window.open("InvoiceLineForm.aspx?InvoiceId=" + gup("InvoiceId") + "&InvoiceLineId=" + id, "invl_er1", "width=720, height=320,resizable=1");
-                w2.focus();
-            }
-            function CloseWindow() {
-                window.close();
-            }
-            // To return selected values to caller 
-            function Selection(v1, v2, v3, v4, type) {
-                window.opener.refreshField(v1, v2, v3, v4, type);
-                window.close();
-                return false;
-            }
-          //Put your JavaScript code here.
-          function refreshField(v1, v2, v3, v4, type)
-          {
-              if (type)
-              {
-                  switch (type)
-                  {
-                      case "Customer":
-                          document.getElementById('<%= txtCustomerId.ClientID %>').value = v1;
-                          document.getElementById('<%= txtCustomerName.ClientID %>').value = v3;
-                          //$find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
-                          break;
-                  }
-              }
-          }
         </script>
 
       </telerik:RadScriptBlock>
@@ -224,22 +207,26 @@ width: 642px;
         </telerik:TextBoxSetting>
         <telerik:TextBoxSetting>
           <TargetControls>
+            <telerik:TargetInput ControlID="txtPatientName" />
+            <telerik:TargetInput ControlID="txtTicketId" />
+            <telerik:TargetInput ControlID="txtInsuranceServiceName" />
           </TargetControls>
         </telerik:TextBoxSetting>
         <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="0" 
-                                       DecimalSeparator="," GroupSeparator="." 
-              GroupSizes="3" MaxValue="999999999" 
-                                       MinValue="0" NegativePattern="-n" 
-              PositivePattern="n" Validation-IsRequired="true">
-
-<Validation IsRequired="True"></Validation>
+                                       DecimalSeparator="." GroupSeparator="." GroupSizes="3" MaxValue="999999999" 
+                                       MinValue="0" NegativePattern="-n" PositivePattern="n">
+          <TargetControls>
+            <telerik:TargetInput ControlID="txtInvoiceLineId" />
+            <telerik:TargetInput ControlID="txtPatientId" />
+            <telerik:TargetInput ControlID="txtTicketId" />
+          </TargetControls>
         </telerik:NumericTextBoxSetting>
         <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="2" 
                                        DecimalSeparator="," GroupSeparator="." 
                                        GroupSizes="3" NegativePattern="-n" 
                                        PositivePattern="n" Validation-IsRequired="true">
           <TargetControls>
-            
+            <telerik:TargetInput ControlID="txtAmount" />
           </TargetControls>
 
           <Validation IsRequired="True"></Validation>
@@ -249,18 +236,18 @@ width: 642px;
                                  AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
       </telerik:RadToolTipManager>
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" 
-                            style="z-index: 1; left: 0px; top:0px; position:absolute; height: 478px; width: 664px">
+          style="z-index: 1; left: 0px; top:0px; position: absolute; height: 319px; width: 664px">
         <%--Line 1--%>
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          <asp:Label ID="lblTitle" runat="server" Text="Factura"></asp:Label>
+          <asp:Label ID="lblTitle" runat="server" Text="Linea de factura"></asp:Label>
         </div>
         <%--Line 2--%>
-        <div id="InvoiceId" class="normalText">
-          <asp:Label ID="lblInvoiceId" runat="server" Text="FAC ID:" 
-                     ToolTip="Identificador de factura, lo usa internamente el sistema" ></asp:Label>
+        <div id="InvoiceLineId" class="normalText">
+          <asp:Label ID="lblInvoiceLineId" runat="server" Text="FACLIN ID:" 
+                     ToolTip="Identificador de ticket, lo usa internamente el sistema" ></asp:Label>
           <br />
-          <asp:TextBox ID="txtInvoiceId" runat="server" Enabled="false" Width="89px" TabIndex="1" ></asp:TextBox>
+          <asp:TextBox ID="txtInvoiceLineId" runat="server" Enabled="false" Width="89px" TabIndex="1" ></asp:TextBox>
         </div>
         <div ID="InvoiceFrame" class="normalText frameData">
           <div ID="InvoiceSerial" class="normalText">
@@ -271,73 +258,81 @@ width: 642px;
                          TabIndex="8" Width="64px"></asp:TextBox>
           </div>
           <div ID="Year" class="normalText">
-            <asp:Label ID="lblYear" runat="server" Text="Año:" 
-                       ToolTip="Año de la factura"></asp:Label>
+            <asp:Label ID="lblYear" runat="server" Text="AÃ±o:" 
+                       ToolTip="AÃ±o de la factura"></asp:Label>
             <br />
             <asp:TextBox ID="txtYear" runat="server" Enabled="False" TabIndex="8" 
                          Width="64px"></asp:TextBox>
           </div>
           <div ID="InvoiceNumber" class="normalText">
-            <asp:Label ID="lblInvoiceNumber" runat="server" Text="Número:"
-                       ToolTip="Número de factura. Consecutivo según serie y año"></asp:Label>
+            <asp:Label ID="lblInvoiceNumber" runat="server" Text="NÃºmero:"
+                       ToolTip="NÃºmero de factura. Consecutivo segÃºn serie y aÃ±o"></asp:Label>
             <br />
             <asp:TextBox ID="txtInvoiceNumber" runat="server" Enabled="False" TabIndex="8" 
                          Width="137px"></asp:TextBox>
           </div>
         </div>
-        <div ID="InvoiceDate" class="normalText">
-          <asp:Label ID="lblInvoiceDate" runat="server" Text="Fecha de factura:" 
-                     ToolTip="Fecha de emisión de la factura"></asp:Label>
-          <br />
-          <telerik:RadDatePicker ID="rddpInvoiceDate" runat="server">
-          </telerik:RadDatePicker>
-        </div>
         <%--Line 3--%>
-        <div ID="CustomerId" class="normalText">
-          <asp:Label ID="lblCustomerId" runat="server" Text="CLI ID:" 
-                     ToolTip="Identificador de cliente, lo usa internamente el sistema"></asp:Label>
-          <asp:ImageButton ID="btnCustomerId" runat="server" 
+        <div ID="TicketId" class="normalText">
+          <asp:Label ID="lblTicketId" runat="server" Text="TCK ID:" Visible="false"
+                     ToolTip="Identificador de ticket asociado, lo usa internamente el sistema"></asp:Label>
+          <asp:ImageButton ID="btnTicketId" runat="server" Visible="false"
                            ImageUrl="~/images/search_mini.png" CausesValidation="false"
-                           ToolTip="Haga clic aquí para buscar un cliente" 
-                           onclick="btnCustomerId_Click" />
+                           ToolTip="Haga clic aquÃ­ para buscar un ticket" 
+                           onclick="btnTicketId_Click" />
           <br />
-          <asp:TextBox ID="txtCustomerId" runat="server" TabIndex="7" 
-                       Width="89px" AutoPostBack="True" 
-                       ontextchanged="txtCustomerId_TextChanged"></asp:TextBox>
+          <asp:TextBox ID="txtTicketId" runat="server" TabIndex="7" 
+                       Width="89px" AutoPostBack="True" Visible="false" 
+                       ontextchanged="txtTicketId_TextChanged"></asp:TextBox>
         </div>
-        <div ID="CustomerName" class="normalText">
-          <asp:Label ID="lblCustomerName" runat="server" Text="Nombre del cliente:" 
-                     ToolTip="Nombre comercial del cliente al que se le emite la factura"></asp:Label>
+        <div ID="TicketData" class="normalText">
+          <asp:Label ID="lblTicketData" runat="server" Text="Ticket asociado:" Visible="false"
+                     ToolTip="Ticket asociado, cuando esta factura proviene de un ticket"></asp:Label>
           <br />
-          <asp:TextBox ID="txtCustomerName" runat="server" TabIndex="10" Width="330px"></asp:TextBox>
-        </div>
-        <div ID="InvoiceTotal" class="normalTextRight">
-          <asp:Label ID="lblInvoiceTotal" runat="server" Text="Total factura:" 
-                     ToolTip="Total factura (iva incluido)"></asp:Label>
+          
+        </div><asp:TextBox ID="txtTicketData" runat="server" TabIndex="10" Width="287px" Visible="false"></asp:TextBox>
+        <div ID="TaxType" class="normalText">
+          <asp:Label ID="lblTaxType" runat="server" Text="Tipo de IVA:" 
+                     ToolTip="Tipo de IVA aplicable"></asp:Label>
           <br />
-          <asp:TextBox ID="txtInvoiceTotal" runat="server" TabIndex="10" Width="152px" style="text-align:right"></asp:TextBox>
+          <telerik:RadComboBox ID="rdcbTaxType" runat="server" TabIndex="6" Width="222px" 
+                AutoPostBack="True" onselectedindexchanged="rdcbTaxType_SelectedIndexChanged"  >
+          </telerik:RadComboBox>
         </div>
-        <div style="position: absolute; top: 160px">
         <%--Line 4--%>
-        <div id="InvoiceLines" class="normalText">
-          <asp:Label ID="lblInvoiceLines" runat="server" Text="Lineas de factura:" 
-                     ToolTip="Nombre comercial del cliente al que se le emite la factura"></asp:Label>
+        <div ID="Description" class="normalText">
+          <asp:Label ID="lblDescription" runat="server" Text="DescripciÃ³n del servicio:" 
+                     ToolTip="DexripciÃ³n del servicio del ticket"></asp:Label>
           <br />
-          <uc1:UscInvoiceLineGrid ID="UscInvoiceLineGrid1" runat="server" />
+          <asp:TextBox ID="txtDescription" runat="server" TabIndex="10" 
+                       Width="287px"></asp:TextBox>
+        </div>
+        <div ID="TaxPercentage" class="normalTextRight">
+          <asp:Label ID="lblTaxPercentage" runat="server" Text="IVA (%):" 
+                     ToolTip="Porcentage de IVA aplicado"></asp:Label>
+          <br />
+          <asp:TextBox ID="txtTaxPercentage" runat="server" style="text-align:right" 
+                       TabIndex="11" Width="98px" Enabled="false"></asp:TextBox>
+        </div>
+        <div ID="Amount" class="normalTextRight">
+          <asp:Label ID="lblAmount" runat="server" Text="Importe:" 
+                     ToolTip="Importe del ticket"></asp:Label>
+          <br />
+          <asp:TextBox ID="txtAmount" runat="server"
+                       TabIndex="11" Width="98px" style="text-align:right" ></asp:TextBox>
         </div>
         <%--Line 5--%>
-        <div id="Message" class="messageText">
+        <div ID="Message" class="messageText">
           <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
         </div>
         <%--Line 6--%>
-        <div id="Buttons" class="buttonsFomat">
+        <div ID="Buttons" class="buttonsFomat">
           <asp:ImageButton ID="btnAccept" runat="server" TabIndex="6" 
                            ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;
           <asp:ImageButton ID="btnCancel" runat="server" TabIndex="7" 
                            ImageUrl="~/images/document_out.png" CausesValidation="False" 
                            onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
-        </div>
         </div>
       </telerik:RadAjaxPanel>
     </form>

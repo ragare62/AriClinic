@@ -178,13 +178,13 @@
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
                                          SortExpression="Policy.Customer.FullName" UniqueName="Policy.Customer.FullName">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Clinic.Name" 
+                <telerik:GridBoundColumn DataField="Clinic.Name" Visible="false"
                                          FilterControlToolTip="Filtrar por clínica" FilterImageToolTip="Filtro"
                                          HeaderText="Clínica" 
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
                                          SortExpression="Clinic.Name" UniqueName="Clinic.Name">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Policy.Insurance.Name" 
+                <telerik:GridBoundColumn DataField="Policy.Insurance.Name" Visible="false"
                                          FilterControlToolTip="Filtrar por paciente" FilterImageToolTip="Filtro"
                                          HeaderText="Aseguradora" 
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 

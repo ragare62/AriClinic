@@ -252,6 +252,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "unittype":
                 RadAjaxManager1.ResponseScripts.Add("LaunchUnitType();");
                 break;
+            case "profInvoice":
+                RadAjaxManager1.ResponseScripts.Add("LaunchProfiIvoice();");
+                break;
             default:
                 break;
         }

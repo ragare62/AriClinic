@@ -82,7 +82,9 @@
         <orm:field name="vATIN" property="VATIN" behavior="readwrite" null-value="none" uniqueId="409a674f-3917-4bd7-8709-210930266e57" type="System.String">
           <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         </orm:field>
-        <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String" />
+        <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String">
+          <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
         <orm:field name="telephones" property="Telephones" behavior="readwrite" null-value="none" uniqueId="cf3f967f-b65b-4f2d-8ebb-71673407a00c" type="AriCliModel.Telephone">
           <orm:collection element-class="AriCliModel.Telephone" inverse-field="healthcareCompany" managed="true" order-by="" uniqueId="b3ba6165-c5f3-4051-abc3-d4da371d830e" />
         </orm:field>
@@ -405,6 +407,9 @@
         <orm:field name="invoiceLines" property="InvoiceLines" behavior="readwrite" null-value="none" uniqueId="c3e2f6ee-82b4-47b2-9192-12e4571c6dd2" type="AriCliModel.InvoiceLine">
           <orm:collection element-class="AriCliModel.InvoiceLine" inverse-field="taxType" managed="true" order-by="" uniqueId="9faa0be1-faee-4b0a-acd2-3f110e820019" />
         </orm:field>
+        <orm:field name="professionalInvoiceLines" property="ProfessionalInvoiceLines" behavior="readwrite" uniqueId="38926bf8-3d5f-476b-86b7-0f1a78fb185b" type="AriCliModel.ProfessionalInvoiceLine">
+          <orm:collection element-class="AriCliModel.ProfessionalInvoiceLine" inverse-field="taxType" order-by="" uniqueId="431df532-07c2-450a-9c97-4c1c702ebf91" />
+        </orm:field>
       </orm:class>
       <orm:class name="Service" behavior="readwrite" uniqueId="934be2ea-af2e-4982-8660-59ba8f334ec1">
         <orm:table name="service" />
@@ -662,6 +667,9 @@
         <orm:field name="payments" property="Payments" behavior="readwrite" null-value="none" uniqueId="cd08edba-cf6e-471e-827e-acbf6b17047a" type="AriCliModel.Payment">
           <orm:collection element-class="AriCliModel.Payment" inverse-field="ticket" managed="true" order-by="" uniqueId="535f7bc0-a295-47cf-9dcf-b0667fb009a3" />
         </orm:field>
+        <orm:field name="professionalInvoiceLines" property="ProfessionalInvoiceLines" behavior="readwrite" uniqueId="cb93d86f-1f0b-4303-8e2a-6240ff230cb2" type="AriCliModel.ProfessionalInvoiceLine">
+          <orm:collection element-class="AriCliModel.ProfessionalInvoiceLine" inverse-field="ticket" order-by="" uniqueId="4cccc8dc-3959-4803-853c-159ec4f2dccb" />
+        </orm:field>
         <orm:index name="idx_ticket_user_id">
           <orm:column name="user_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" target-class="AriCliModel.User" target-field="userId" />
         </orm:index>
@@ -897,6 +905,9 @@
         <orm:field name="appointments" property="Appointments" behavior="readwrite" uniqueId="499d8c79-57e3-48c8-8ebf-c23e52751080" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="professional" order-by="" uniqueId="c34baf57-2048-4142-af3a-60f0a539fa48" />
         </orm:field>
+        <orm:field name="professionalInvoices" property="ProfessionalInvoices" behavior="readwrite" uniqueId="3171a10c-3a67-4b64-a804-30a48f3a14c0" type="AriCliModel.ProfessionalInvoice">
+          <orm:collection element-class="AriCliModel.ProfessionalInvoice" inverse-field="professional" order-by="" uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74" />
+        </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:column name="tax_withholding_type_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
@@ -986,6 +997,9 @@
         </orm:field>
         <orm:field name="invoice" property="Invoice" behavior="readwrite" uniqueId="b3ca6729-53ed-48e7-bd49-577c9fb51f45" type="AriCliModel.Invoice">
           <orm:reference uniqueId="d45d2155-22cb-4c8d-b744-e9b8001ec633" />
+        </orm:field>
+        <orm:field name="professionalInvoice" property="ProfessionalInvoice" behavior="readwrite" uniqueId="6e4637e9-f81a-4e76-81cd-e0ebc40c145e" type="AriCliModel.ProfessionalInvoice">
+          <orm:reference uniqueId="367aa4dc-cd27-4873-87d6-251c6117a067" />
         </orm:field>
         <orm:field name="procedures" property="Procedures" behavior="readwrite" null-value="none" uniqueId="eb8d61de-6a14-4837-9945-d14956d5448a" type="AriCliModel.Procedure">
           <orm:join-table uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" association-name="ProceduresReferenceAnestheticServiceNotes">
@@ -1092,6 +1106,9 @@
           <orm:reference uniqueId="763d4fa6-b6ea-4653-9351-28968a1e87c8">
             <orm:column name="invoice_id" sql-type="integer" nullable="true" scale="0" ado-type="" target-class="AriCliModel.Invoice" target-field="invoiceId" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="professionalInvoice" property="ProfessionalInvoice" behavior="readwrite" uniqueId="d45e7f6c-d3d7-4575-81e0-b42a8815832f" type="AriCliModel.ProfessionalInvoice">
+          <orm:reference uniqueId="6f8148fa-9d4f-4ef3-b31e-88fd4e95c0e2" />
         </orm:field>
         <orm:field name="tickets" property="Tickets" behavior="readwrite" null-value="none" uniqueId="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="serviceNote" managed="true" order-by="" uniqueId="bc69de17-36c7-4e70-a52a-4815ae50906b" />
@@ -1348,6 +1365,9 @@
         <orm:field name="patient1" property="Patient" behavior="readwrite" uniqueId="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" type="AriCliModel.Patient">
           <orm:reference uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f" />
         </orm:field>
+        <orm:index name="idx_treatment_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="UnitType" update-schema="true" behavior="readwrite" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
         <orm:table name="unit_type" />
@@ -1401,6 +1421,9 @@
         <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="96cef444-12db-4a98-80fb-6d78ecf88187" type="AriCliModel.Patient">
           <orm:reference uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
+        <orm:index name="idx_examination_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="ExaminationType" use-default-mapping="true" update-schema="true" behavior="readwrite" uniqueId="7e17bf9c-15f2-4f20-97cc-83848325bf68">
         <orm:identity>
@@ -1444,28 +1467,28 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="36351fe8-d26d-49c4-8f67-09bb8c5d3377" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="dbe3474d-da9b-4535-98c4-8010258d22d6" type="System.String">
-          <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="781e6bd8-9201-4ddc-b73b-48db77170d27" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="c6b00c22-f2ae-4ce3-afd3-860bfd8ea60d" />
@@ -1609,28 +1632,28 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="48fa93f9-c151-4aba-83a3-92dde0503f47" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="77b3d36a-b2de-4d75-a55a-fcf501e9c458" type="System.String">
-          <orm:column name="comments" sql-type="longtext" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeVisualAcuityRightEye" property="CloseVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityLeftEye" property="CloseVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeVisualAcuityBothEyes" property="CloseVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="close_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="close_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityBothEyes" property="FarVisualAcuityBothEyes" behavior="readwrite" member-definition-type="AriCliModel.BasicOpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_both_eyes" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="far_visual_acuity_both_eyes" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="a656b602-f848-44e1-ae8c-405be2dffe49" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
@@ -1917,126 +1940,129 @@
           <orm:single-field field-name="id" />
         </orm:identity>
         <orm:field name="id" property="Id" behavior="readwrite" uniqueId="f2bfef09-b704-4bcc-9c4c-4dec09bab9b0" type="System.Int32">
-          <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="a542bf77-9c41-492f-81a5-e4318af7a267" type="System.String">
-          <orm:column name="comments" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAxisRightEye" property="FarAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farPrimsRightEye" property="FarPrimsRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_prims_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_prims_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityRightEye" property="FarVisualAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_visual_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farSphericityLeftEye" property="FarSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCylinderLeftEye" property="FarCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAxisLeftEye" property="FarAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farPrismLeftEye" property="FarPrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farVisualAcuityLeftEye" property="FarVisualAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_visual_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_visual_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityRightEye" property="CloseSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityLeftEye" property="CloseSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeSphericityCenters" property="CloseSphericityCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="System.String">
-          <orm:column name="close_sphericity_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="close_sphericity_centers" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="closeCylinderRightEye" property="CloseCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeCylinderLeftEye" property="CloseCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAxisRightEye" property="CloseAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAxisLeftEye" property="CloseAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closePrismRightEye" property="ClosePrismRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_prism_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_prism_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closePrismLeftEye" property="ClosePrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuityRightEye" property="CloseAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuityLeftEye" property="CloseAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothSphericityRightEye" property="BothSphericityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_sphericity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_sphericity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothSphericityLeftEye" property="BothSphericityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_sphericity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_sphericity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCylinderRightEye" property="BothCylinderRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_cylinder_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_cylinder_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCylinderLeftEye" property="BothCylinderLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_cylinder_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_cylinder_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAxisRightEye" property="BothAxisRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_axis_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_axis_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAxisLeftEye" property="BothAxisLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_axis_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_axis_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothPrismRightEye" property="BothPrismRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_prism_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_prism_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothPrismLeftEye" property="BothPrismLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_prism_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_prism_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuityRightEye" property="BothAcuityRightEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity_right_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity_right_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuityLeftEye" property="BothAcuityLeftEye" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity_left_eye" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity_left_eye" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farCenters" property="FarCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeCenters" property="CloseCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothCenters" property="BothCenters" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_centers" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_centers" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="farAcuity" property="FarAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="far_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="far_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="closeAcuity" property="CloseAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="close_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="close_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="bothAcuity" property="BothAcuity" behavior="readwrite" member-definition-type="AriCliModel.OpticalTest" type="Decimal?">
-          <orm:column name="both_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="both_acuity" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="refractometry" property="Refractometry" behavior="readwrite" uniqueId="17b294eb-14ee-49c2-8b78-98dd407a537d" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:table name="cycloplegia" />
@@ -2170,21 +2196,101 @@
           <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
-      <orm:class name="LabTest" update-schema="true" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
+      <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="labTestId" />
         </orm:identity>
-        <orm:field name="labTestId" property="LabTestId" behavior="readwrite" uniqueId="24c16a96-255e-41f9-821a-f7c2aa8fa88d" type="System.Int32" />
-        <orm:field name="name" property="Name" behavior="readwrite" uniqueId="ed90a2ee-d676-42b6-9fcd-2d19161454ef" type="System.String" />
-        <orm:field name="minValue" property="MinValue" behavior="readwrite" uniqueId="680856ea-26bd-4638-89e4-22970d81b95d" type="System.Decimal" />
-        <orm:field name="maxValue" property="MaxValue" behavior="readwrite" uniqueId="c692eee6-317b-4950-983d-c98847c1b1d5" type="System.Decimal" />
+        <orm:field name="labTestId" property="LabTestId" behavior="readwrite" uniqueId="24c16a96-255e-41f9-821a-f7c2aa8fa88d" type="System.Int32">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" behavior="readwrite" uniqueId="ed90a2ee-d676-42b6-9fcd-2d19161454ef" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="minValue" property="MinValue" behavior="readwrite" uniqueId="680856ea-26bd-4638-89e4-22970d81b95d" type="System.Decimal">
+          <orm:column name="min_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="maxValue" property="MaxValue" behavior="readwrite" uniqueId="c692eee6-317b-4950-983d-c98847c1b1d5" type="System.Decimal">
+          <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
         <orm:field name="unitType" property="UnitType" behavior="readwrite" uniqueId="c6062d87-c465-4c5f-b04c-0247ad90010f" type="AriCliModel.UnitType">
           <orm:reference uniqueId="afe631f1-6cbc-464e-bdf2-01c5fb7e7fdf" />
         </orm:field>
         <orm:index name="idx_lab_test_unit_type_id">
-          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="ProfessionalInvoice" update-schema="true" behavior="readwrite" uniqueId="969aeafa-657a-43a8-881f-18286159b9ff">
+        <orm:table name="professional_invoice" />
+        <orm:identity>
+          <orm:single-field field-name="invoiceId" />
+        </orm:identity>
+        <orm:field name="invoiceId" property="InvoiceId" behavior="readwrite" uniqueId="1b0307bb-8acf-4673-8f78-48634fdb3915" type="System.Int32">
+          <orm:column name="invoice_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="invoiceDate" property="InvoiceDate" behavior="readwrite" uniqueId="ea36c6ab-f351-4ecc-abc0-f7b05e8c8618" type="System.DateTime">
+          <orm:column name="invoice_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="year" property="Year" behavior="readwrite" uniqueId="08e381a7-faf3-49f8-9d38-a2499c903184" type="System.Int32">
+          <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="invoiceNumber" property="InvoiceNumber" behavior="readwrite" uniqueId="c7cfdde3-a5a0-474d-99bd-c080210f90cf" type="System.Int32">
+          <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="total" property="Total" behavior="readwrite" uniqueId="2bee66a5-fbca-4cd2-bb35-e77d573718aa" type="System.Decimal">
+          <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="serial" property="Serial" behavior="readwrite" uniqueId="4c5c4b87-2991-4b15-a6db-b7535cf75b15" type="System.String">
+          <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="af45273a-d3db-44a1-812b-50e86bedbecf" type="AriCliModel.Professional">
+          <orm:reference uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74" />
+        </orm:field>
+        <orm:field name="professionalInvoiceLines" property="ProfessionalInvoiceLines" behavior="readwrite" uniqueId="ebdb3355-ffe5-45f6-9ca5-2d19541437be" type="AriCliModel.ProfessionalInvoiceLine">
+          <orm:collection element-class="AriCliModel.ProfessionalInvoiceLine" inverse-field="professionalInvoice" order-by="" uniqueId="d4724e8f-9545-4830-8e09-e8fe6838192f" />
+        </orm:field>
+        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="915702c3-fd89-4552-a5d5-fe10b9e150a6" type="AriCliModel.ServiceNote">
+          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professionalInvoice" order-by="" uniqueId="6f8148fa-9d4f-4ef3-b31e-88fd4e95c0e2" />
+        </orm:field>
+        <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" behavior="readwrite" uniqueId="d1cb0fc6-f627-435b-bf87-609a02fd4e54" type="AriCliModel.AnestheticServiceNote">
+          <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="professionalInvoice" order-by="" uniqueId="367aa4dc-cd27-4873-87d6-251c6117a067" />
+        </orm:field>
+        <orm:index name="idx_professional_invoice_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="ProfessionalInvoiceLine" update-schema="true" behavior="readwrite" uniqueId="13b14f6d-b078-42e9-88ee-427a1517d35b">
+        <orm:table name="professional_invoice_line" />
+        <orm:identity>
+          <orm:single-field field-name="invoiceLineId" />
+        </orm:identity>
+        <orm:field name="invoiceLineId" property="InvoiceLineId" behavior="readwrite" uniqueId="b334622c-6613-43bc-902d-c922be706f4c" type="System.Int32">
+          <orm:column name="invoice_line_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="description" property="Description" behavior="readwrite" uniqueId="926e84d8-15be-4347-be1b-7d0e0cb44db7" type="System.String">
+          <orm:column name="description" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="taxPercentage" property="TaxPercentage" behavior="readwrite" uniqueId="16e526ed-05fb-4a61-b29e-e7bcd587882c" type="System.Decimal">
+          <orm:column name="tax_percentage" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="amount" property="Amount" behavior="readwrite" uniqueId="3f3fbac3-cfe2-458f-996c-98cccb0c3854" type="System.Decimal">
+          <orm:column name="amount" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="professionalInvoice" property="ProfessionalInvoice" behavior="readwrite" uniqueId="0b7e2d75-2c4b-4a81-8cd8-e08ac163de52" type="AriCliModel.ProfessionalInvoice">
+          <orm:reference uniqueId="d4724e8f-9545-4830-8e09-e8fe6838192f" />
+        </orm:field>
+        <orm:field name="ticket" property="Ticket" behavior="readwrite" uniqueId="6c494391-1ceb-4bb2-8dc7-4c79042025c4" type="AriCliModel.Ticket">
+          <orm:reference uniqueId="4cccc8dc-3959-4803-853c-159ec4f2dccb" />
+        </orm:field>
+        <orm:field name="taxType" property="TaxType" behavior="readwrite" uniqueId="6e4feff9-1870-4f5b-af19-03c8e5a0de40" type="AriCliModel.TaxType">
+          <orm:reference uniqueId="431df532-07c2-450a-9c97-4c1c702ebf91" />
+        </orm:field>
+        <orm:index name="idx_professional_invoice_line_invoice_id">
+          <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_professional_invoice_line_ticket_id">
+          <orm:column name="ticket_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -2265,6 +2371,7 @@
         <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+        <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="email">
         <orm:column name="url" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
@@ -2973,20 +3080,46 @@
         <orm:column name="both_acuity" sql-type="decimal" nullable="true" length="10" scale="5" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
       </orm:table>
       <orm:table name="lab_test">
-        <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="min_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
-        <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+        <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:index name="idx_lab_test_unit_type_id">
-          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
+          <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="professional_invoice">
+        <orm:column name="invoice_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="invoice_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+        <orm:index name="idx_professional_invoice_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="professional_invoice_line">
+        <orm:column name="invoice_line_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="description" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="tax_percentage" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="amount" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="ticket_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_professional_invoice_line_invoice_id">
+          <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_professional_invoice_line_ticket_id">
+          <orm:column name="ticket_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane</AppConfigConnectionString>
     <InitialCatalog>ariclinic_dev</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -3437,6 +3570,9 @@
         <classHasNavigationalProperties Id="37f1dc5e-8e30-4962-b8b2-28d90196f532">
           <NavigationalProperty Id="c3e2f6ee-82b4-47b2-9192-12e4571c6dd2" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="604ce1f2-24a1-4fbe-a129-26f0b4117ab1">
+          <NavigationalProperty Id="38926bf8-3d5f-476b-86b7-0f1a78fb185b" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="934be2ea-af2e-4982-8660-59ba8f334ec1" name="Service" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -3766,6 +3902,9 @@
         <classHasNavigationalProperties Id="b94fa9b0-43ab-4ecd-b97c-3a961d37ba56">
           <NavigationalProperty Id="cd08edba-cf6e-471e-827e-acbf6b17047a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0ec67108-909e-4b31-9e3e-ff8f9547aa75">
+          <NavigationalProperty Id="cb93d86f-1f0b-4303-8e2a-6240ff230cb2" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="720f360f-2910-403a-b0d2-6d001953524c" name="Invoice" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4038,6 +4177,9 @@
         <classHasNavigationalProperties Id="d60d6ff0-fd52-4234-99d8-9396dfce6c7d">
           <NavigationalProperty Id="499d8c79-57e3-48c8-8ebf-c23e52751080" name="Appointments" type="IList&lt;AppointmentInfo&gt;" label="Appointments : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="57e35fb0-6d73-4450-9a6b-5f9f9e1d29aa">
+          <NavigationalProperty Id="3171a10c-3a67-4b64-a804-30a48f3a14c0" name="ProfessionalInvoices" type="IList&lt;ProfessionalInvoice&gt;" label="ProfessionalInvoices : IList&lt;ProfessionalInvoice&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoices" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e6ce65e6-2ed0-405c-8c36-5189a2dde9aa" name="Procedure" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4222,6 +4364,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="367aa4dc-cd27-4873-87d6-251c6117a067" SourceMultiplicity="ZeroOne" name="AnestheticServiceNoteHasProfessionalInvoice">
+          <DomainClassMoniker name="/AriClinicContext/ProfessionalInvoice" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="977edf3e-4de6-4bae-a723-93fb078dba05">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoice/AnestheticServiceNotes" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="7354d2c7-5676-436e-ae65-71a481401919">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AnestheticServiceNote/ProfessionalInvoice" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="073ff109-dbb0-428b-9cc4-dfab8f1ca706">
@@ -4247,6 +4402,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="c95ddde8-b941-47bc-9bb1-ad4dfb558e70">
           <NavigationalProperty Id="b3ca6729-53ed-48e7-bd49-577c9fb51f45" name="Invoice" type="Invoice" label="Invoice : Invoice" nullable="true" kind="Persistent" fieldName="invoice" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a57ec1c5-8418-473a-9fd2-6dfdd86c6712">
+          <NavigationalProperty Id="6e4637e9-f81a-4e76-81cd-e0ebc40c145e" name="ProfessionalInvoice" type="ProfessionalInvoice" label="ProfessionalInvoice : ProfessionalInvoice" nullable="true" kind="Persistent" fieldName="professionalInvoice" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4346,6 +4504,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="6f8148fa-9d4f-4ef3-b31e-88fd4e95c0e2" SourceMultiplicity="ZeroOne" name="ServiceNoteHasProfessionalInvoice">
+          <DomainClassMoniker name="/AriClinicContext/ProfessionalInvoice" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="bb100bf6-3a0a-4ffc-b1e7-d306aa04bb85">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoice/ServiceNotes" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="62190ee0-3829-4442-b6fe-a396ae519ee5">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/ProfessionalInvoice" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="3086adab-a368-41d9-95fe-fcacb337894b">
@@ -4365,6 +4536,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="2718a393-4f59-4d07-b29c-8f00155a6855">
           <NavigationalProperty Id="be1fb3cc-6a4d-497f-9255-b272c79f5c48" name="Invoice" type="Invoice" label="Invoice : Invoice" nullable="true" kind="Persistent" fieldName="invoice" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5c1ed77d-2ac3-4c4d-bed4-daf411b78727">
+          <NavigationalProperty Id="d45e7f6c-d3d7-4575-81e0-b42a8815832f" name="ProfessionalInvoice" type="ProfessionalInvoice" label="ProfessionalInvoice : ProfessionalInvoice" nullable="true" kind="Persistent" fieldName="professionalInvoice" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5189,6 +5363,101 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="969aeafa-657a-43a8-881f-18286159b9ff" name="ProfessionalInvoice" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="1b0307bb-8acf-4673-8f78-48634fdb3915" name="InvoiceId" type="System.Int32" label="InvoiceId : System.Int32" identity="true" />
+      <Property Id="ea36c6ab-f351-4ecc-abc0-f7b05e8c8618" name="InvoiceDate" type="DateTime" label="InvoiceDate : DateTime" />
+      <Property Id="08e381a7-faf3-49f8-9d38-a2499c903184" name="Year" type="Int32" label="Year : Int32" />
+      <Property Id="c7cfdde3-a5a0-474d-99bd-c080210f90cf" name="InvoiceNumber" type="Int32" label="InvoiceNumber : Int32" />
+      <Property Id="2bee66a5-fbca-4cd2-bb35-e77d573718aa" name="Total" type="Decimal" label="Total : Decimal" />
+      <Property Id="4c5c4b87-2991-4b15-a6db-b7535cf75b15" name="Serial" label="Serial : String" />
+      <AssociationTargets>
+        <Association Id="27175d91-0156-49d7-b9ff-09ea0208af74" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceHasProfessional">
+          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5548ce5e-087e-4816-906a-323e765e50e1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/ProfessionalInvoices" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e460f287-36ae-424e-8416-c582042d230d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoice/Professional" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="a2063a0b-0421-4b78-aace-0ba52d296a78">
+          <NavigationalProperty Id="ebdb3355-ffe5-45f6-9ca5-2d19541437be" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="74536dc5-6672-4048-843a-35cee4c6eb89">
+          <NavigationalProperty Id="915702c3-fd89-4552-a5d5-fe10b9e150a6" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ec33bffa-91c4-4681-bc3d-2bc98076f071">
+          <NavigationalProperty Id="d1cb0fc6-f627-435b-bf87-609a02fd4e54" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a4889d0b-2ad6-40d0-9df4-2b0615cd59cd">
+          <NavigationalProperty Id="af45273a-d3db-44a1-812b-50e86bedbecf" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="13b14f6d-b078-42e9-88ee-427a1517d35b" name="ProfessionalInvoiceLine" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="b334622c-6613-43bc-902d-c922be706f4c" name="InvoiceLineId" type="System.Int32" label="InvoiceLineId : System.Int32" identity="true" />
+      <Property Id="926e84d8-15be-4347-be1b-7d0e0cb44db7" name="Description" label="Description : String" />
+      <Property Id="16e526ed-05fb-4a61-b29e-e7bcd587882c" name="TaxPercentage" type="Decimal" label="TaxPercentage : Decimal" />
+      <Property Id="3f3fbac3-cfe2-458f-996c-98cccb0c3854" name="Amount" type="Decimal" label="Amount : Decimal" />
+      <AssociationTargets>
+        <Association Id="d4724e8f-9545-4830-8e09-e8fe6838192f" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceLineHasProfessionalInvoice">
+          <DomainClassMoniker name="/AriClinicContext/ProfessionalInvoice" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="066f9672-a9ad-46f1-bb03-91246d76737f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoice/ProfessionalInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="c98e09cb-2db8-47f6-bf89-5ae46844c4c8">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoiceLine/ProfessionalInvoice" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="4cccc8dc-3959-4803-853c-159ec4f2dccb" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceLineHasTicket">
+          <DomainClassMoniker name="/AriClinicContext/Ticket" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="c57a0452-782e-4d98-befb-599e2c650b17">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Ticket/ProfessionalInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="d46b4a05-8c10-4b48-90cf-2d1453a4ba0a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoiceLine/Ticket" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="431df532-07c2-450a-9c97-4c1c702ebf91" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceLineHasTaxType">
+          <DomainClassMoniker name="/AriClinicContext/TaxType" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7394dfb0-8622-476e-883c-bd8b8bf6a60e">
+              <NavigationalPropertyMoniker name="/AriClinicContext/TaxType/ProfessionalInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="542b9a0a-fc2e-4590-b133-311c11acebeb">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProfessionalInvoiceLine/TaxType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="e369a8e7-74db-4e0d-845e-e84861341ae5">
+          <NavigationalProperty Id="0b7e2d75-2c4b-4a81-8cd8-e08ac163de52" name="ProfessionalInvoice" type="ProfessionalInvoice" label="ProfessionalInvoice : ProfessionalInvoice" nullable="true" kind="Persistent" fieldName="professionalInvoice" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="4345766f-6dbc-4fc9-b592-94109717d56b">
+          <NavigationalProperty Id="6c494391-1ceb-4bb2-8dc7-4c79042025c4" name="Ticket" type="Ticket" label="Ticket : Ticket" nullable="true" kind="Persistent" fieldName="ticket" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a56f3a79-23c2-49e3-8752-cf1136a2ec3f">
+          <NavigationalProperty Id="6e4feff9-1870-4f5b-af19-03c8e5a0de40" name="TaxType" type="TaxType" label="TaxType : TaxType" nullable="true" kind="Persistent" fieldName="taxType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -5246,6 +5515,8 @@
         <entitySetProperty name="PrescriptionGlasses" type="PrescriptionGlasses" label="PrescriptionGlasses : IQueryable&lt;PrescriptionGlasses&gt;" />
         <entitySetProperty name="Cycloplegias" type="Cycloplegia" label="Cycloplegias : IQueryable&lt;Cycloplegia&gt;" />
         <entitySetProperty name="LabTests" type="LabTest" label="LabTests : IQueryable&lt;LabTest&gt;" />
+        <entitySetProperty name="ProfessionalInvoices" type="ProfessionalInvoice" label="ProfessionalInvoices : IQueryable&lt;ProfessionalInvoice&gt;" />
+        <entitySetProperty name="ProfessionalInvoiceLines" type="ProfessionalInvoiceLine" label="ProfessionalInvoiceLines : IQueryable&lt;ProfessionalInvoiceLine&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

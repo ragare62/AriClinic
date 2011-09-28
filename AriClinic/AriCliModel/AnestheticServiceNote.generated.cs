@@ -164,6 +164,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private ProfessionalInvoice professionalInvoice;
+		public virtual ProfessionalInvoice ProfessionalInvoice 
+		{ 
+		    get
+		    {
+		        return this.professionalInvoice;
+		    }
+		    set
+		    {
+		        this.professionalInvoice = value;
+		    }
+		}
+		
 		private IList<Procedure> procedures = new List<Procedure>();
 		public virtual IList<Procedure> Procedures 
 		{ 
