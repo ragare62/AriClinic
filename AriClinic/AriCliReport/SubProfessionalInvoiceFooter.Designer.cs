@@ -33,6 +33,8 @@ namespace AriCliReport
             this.textBox8 = new Telerik.Reporting.TextBox();
             this.textBox10 = new Telerik.Reporting.TextBox();
             this.groupHeaderSection2 = new Telerik.Reporting.GroupHeaderSection();
+            this.textBox4 = new Telerik.Reporting.TextBox();
+            this.textBox12 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // detail
@@ -58,8 +60,7 @@ namespace AriCliReport
             this.textBox5.Style.BorderWidth.Top = new Telerik.Reporting.Drawing.Unit(0.800000011920929D, Telerik.Reporting.Drawing.UnitType.Point);
             this.textBox5.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox5.Style.Visible = true;
-            this.textBox5.Value = "=SUM(Amount)-SUM(Amount)*ProfessionalInvoice.Professional.TaxWithholdingType.Perc" +
-                "entage/100";
+            this.textBox5.Value = "=SUM(Amount)-AriCliReport.RptProfessionalInvoice.getPorceRetencion()";
             // 
             // textBox6
             // 
@@ -166,7 +167,9 @@ namespace AriCliReport
             this.textBox16,
             this.textBox14,
             this.textBox17,
-            this.textBox18});
+            this.textBox18,
+            this.textBox4,
+            this.textBox12});
             this.reportFooterSection1.Name = "reportFooterSection1";
             // 
             // textBox15
@@ -202,7 +205,7 @@ namespace AriCliReport
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(new Telerik.Reporting.Drawing.Unit(1.2676773071289063D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.20000012218952179D, Telerik.Reporting.Drawing.UnitType.Inch));
             this.textBox14.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox14.Value = "=SUM(Amount)*ProfessionalInvoice.Professional.TaxWithholdingType.Percentage/100";
+            this.textBox14.Value = "= AriCliReport.RptProfessionalInvoice.getPorceRetencion()";
             // 
             // textBox17
             // 
@@ -293,6 +296,28 @@ namespace AriCliReport
             this.groupHeaderSection2.Name = "groupHeaderSection2";
             this.groupHeaderSection2.Style.Visible = false;
             // 
+            // textBox4
+            // 
+            this.textBox4.Format = "{0:###,##0.00}";
+            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(new Telerik.Reporting.Drawing.Unit(1.6000000238418579D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.2999211847782135D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(new Telerik.Reporting.Drawing.Unit(0.59988242387771606D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.20000012218952179D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox4.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox4.Style.Font.Bold = true;
+            this.textBox4.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox4.Style.Visible = true;
+            this.textBox4.Value = "Base:";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Angle = 0D;
+            this.textBox12.Format = "{0:C2}";
+            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(new Telerik.Reporting.Drawing.Unit(2.1999614238739014D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.2999211847782135D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(new Telerik.Reporting.Drawing.Unit(1.1999998092651367D, Telerik.Reporting.Drawing.UnitType.Inch), new Telerik.Reporting.Drawing.Unit(0.20000012218952179D, Telerik.Reporting.Drawing.UnitType.Inch));
+            this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox12.Value = "= AriCliReport.RptProfessionalInvoice.getBaseRetencion()";
+            // 
             // SubProfessionalInvoiceFooter
             // 
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
@@ -342,5 +367,7 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox16;
         private Telerik.Reporting.TextBox textBox17;
         private Telerik.Reporting.TextBox textBox18;
+        private Telerik.Reporting.TextBox textBox4;
+        private Telerik.Reporting.TextBox textBox12;
     }
 }

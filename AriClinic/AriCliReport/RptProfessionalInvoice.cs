@@ -61,6 +61,32 @@ namespace AriCliReport
             return String.Format("{0}-{1:000000}", invoice.Serial, invoice.InvoiceNumber);
         }
 
+        public static decimal getPorceRetencion()
+        {
+            decimal total = 0;
+            decimal ivas = 0;
+            foreach (ProfessionalInvoiceLine item in invoice.ProfessionalInvoiceLines)
+            {
+                total += item.Amount;
+                ivas += item.Amount * item.TaxPercentage/100;
+            }
+
+            return (total - ivas) * invoice.Professional.TaxWithholdingType.Percentage/100;
+        }
+
+        public static decimal getBaseRetencion()
+        {
+            decimal total = 0;
+            decimal ivas = 0;
+            foreach (ProfessionalInvoiceLine item in invoice.ProfessionalInvoiceLines)
+            {
+                total += item.Amount;
+                ivas += item.Amount * item.TaxPercentage / 100;
+            }
+
+            return total - ivas;
+        }
+
         #region[Professional]
         private void ProfessionalData(ProfessionalInvoice Invoice)
         {
