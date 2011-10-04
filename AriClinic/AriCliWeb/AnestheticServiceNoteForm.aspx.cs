@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
+using System.Collections.Generic;
 
 public partial class AnestheticServiceNoteForm : System.Web.UI.Page 
 {
@@ -185,6 +186,14 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
                 firstTime = true;
                 Session["procedurechanged"] = null;
 
+                IList<AnestheticTicket> tickets = asn.AnestheticTickets;
+                
+                foreach (AnestheticTicket item in tickets)
+                {
+                    ctx.Delete(CntAriCli.GetTicket(item.TicketId, ctx));
+                }
+                ctx.SaveChanges();
+
                 asn.AnestheticTickets.Clear();
                 asn.Procedures.Clear();
             }
@@ -329,9 +338,9 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
 
         asn.Procedures.Clear();
-        if (rdcProcedureName1.SelectedValue != "")
+        if (rdcProcedureName3.SelectedValue != "")
         {
-            procedureId = Int32.Parse(rdcProcedureName1.SelectedValue);
+            procedureId = Int32.Parse(rdcProcedureName3.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
         if (rdcProcedureName2.SelectedValue != "")
@@ -339,9 +348,9 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             procedureId = Int32.Parse(rdcProcedureName2.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
-        if (rdcProcedureName3.SelectedValue != "")
+        if (rdcProcedureName1.SelectedValue != "")
         {
-            procedureId = Int32.Parse(rdcProcedureName3.SelectedValue);
+            procedureId = Int32.Parse(rdcProcedureName1.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
     }
@@ -497,9 +506,19 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void rdcProcedureName_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
         Session.Add("procedurechanged", true);
+        Session.Add("procedurechangedId", (sender as RadComboBox).UniqueID);
         CreateChange();       
     }
-
+    protected void rdcProcedureName2_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        Session.Add("procedurechanged", true);
+        CreateChange();
+    }
+    protected void rdcProcedureName3_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        Session.Add("procedurechanged", true);
+        CreateChange();
+    }
     protected void btnInvoice_Click(object sender, ImageClickEventArgs e)
     {
         if (asn == null) return;
@@ -536,4 +555,6 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         Session.Add("procedurechanged", true);
         CreateChange();       
     }
+
+   
 }

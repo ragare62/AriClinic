@@ -26,7 +26,7 @@ public partial class ProfessionalGrid : System.Web.UI.Page
         {
             user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "customer"
+                            where p.Code == "professional"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
@@ -82,10 +82,11 @@ public partial class ProfessionalGrid : System.Web.UI.Page
             gdi = (GridDataItem)e.Item;
 
             name = gdi["FullName"].Text;
+            Professional prof = CntAriCli.GetProfessional(id, ctx); 
             if (callNumber > 0) call = String.Format("Professional{0}", callNumber);
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
-                                    , null
+                                    , prof.InvoiceSerial
                                     , name
                                     , null
                                     , call);

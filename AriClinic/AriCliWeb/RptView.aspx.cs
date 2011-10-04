@@ -93,6 +93,9 @@ public partial class RptView : System.Web.UI.Page
                     case "paraminvoice":
                         LoadParamInvoice();
                         break;
+                    case "professionalinvoice":
+                        LoadProfessionalInvoice();
+                        break;
                 }
             }
             catch (Exception ex)
@@ -228,6 +231,15 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["Invoice"] != null)
         {
             RptInvoice rtck = new RptInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
+            ReportViewer1.Report = rtck;
+        }
+    }
+
+    protected void LoadProfessionalInvoice()
+    {
+        if (Request.QueryString["Invoice"] != null)
+        {
+            RptProfessionalInvoice rtck = new RptProfessionalInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
             ReportViewer1.Report = rtck;
         }
     }

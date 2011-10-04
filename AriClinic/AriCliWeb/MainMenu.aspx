@@ -250,6 +250,11 @@ height: 30px;
               var w1 = window.open("UnitTypeGrid.aspx", "UNITTYPE", "width=500, height=500,resizable=1")
               w1.focus();
           }
+
+          function LaunchProfiIvoice() {
+              var w1 = window.open("ProfessionalInvoiceGrid.aspx","PROFINV", "fullscreen=yes,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -349,6 +354,8 @@ height: 30px;
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Comprobantes" Value="checks">
                   </telerik:RadMenuItem >
+                    <telerik:RadMenuItem runat="server" Text="Profesionales" Value="profInvoice">
+                    </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Citación" Value="citation">

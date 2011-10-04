@@ -91,5 +91,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<ProfessionalInvoiceLine> professionalInvoiceLines = new List<ProfessionalInvoiceLine>();
+		public virtual IList<ProfessionalInvoiceLine> ProfessionalInvoiceLines 
+		{ 
+		    get
+		    {
+		        return this.professionalInvoiceLines;
+		    }
+		}
+		
 	}
 }

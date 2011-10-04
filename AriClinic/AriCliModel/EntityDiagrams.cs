@@ -472,6 +472,22 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<ProfessionalInvoice> ProfessionalInvoices 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ProfessionalInvoice>();
+	    	}
+		}
+		
+		public IQueryable<ProfessionalInvoiceLine> ProfessionalInvoiceLines 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ProfessionalInvoiceLine>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

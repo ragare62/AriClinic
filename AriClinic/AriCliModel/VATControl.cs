@@ -368,7 +368,7 @@ namespace AriCliModel
 
                         }
 
-                        break;
+                       
                     default:
                         // NIF de las restantes entidades, cuyo dígito de control es un número.
                         //
