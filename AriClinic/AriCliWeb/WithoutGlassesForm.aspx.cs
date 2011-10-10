@@ -91,7 +91,7 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
     #region Auxiliary functions
     protected bool DataOk()
     {
-        string command = "";
+        //string command = "";
         // check combo values
         //if (txtName.Text == "")
         //{

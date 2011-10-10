@@ -86,16 +86,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private User user;
+		private User user1;
 		public virtual User User 
 		{ 
 		    get
 		    {
-		        return this.user;
+		        return this.user1;
 		    }
 		    set
 		    {
-		        this.user = value;
+		        this.user1 = value;
 		    }
 		}
 		

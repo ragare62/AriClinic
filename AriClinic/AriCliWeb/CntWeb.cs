@@ -84,17 +84,17 @@ namespace AriCliWeb
             else
                 return String.Format("{0:0.0###}",value);
         }
-        public static decimal? SetPossibleNull(string value)
+        public static decimal SetPossibleNull(string value)
         {
             if (value == "")
-                return null;
+                return decimal.MaxValue;
             else
             {
                 decimal v;
                 if (decimal.TryParse(value, out v))
                     return v;
                 else
-                    return null;
+                    return decimal.MaxValue;
             }
         }
 

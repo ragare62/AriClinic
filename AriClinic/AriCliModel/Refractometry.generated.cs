@@ -21,66 +21,66 @@ namespace AriCliModel
 {
 	public partial class Refractometry : ExaminationAssigned
 	{
-		private IList<WithoutGlassesTest> withoutGlassesTests = new List<WithoutGlassesTest>();
-		public virtual IList<WithoutGlassesTest> WithoutGlassesTests 
-		{ 
-		    get
-		    {
-		        return this.withoutGlassesTests;
-		    }
-		}
-		
-		private IList<GlassesTest> glassesTests = new List<GlassesTest>();
-		public virtual IList<GlassesTest> GlassesTests 
-		{ 
-		    get
-		    {
-		        return this.glassesTests;
-		    }
-		}
-		
-		private IList<ContactLensesTest> contactLensesTests = new List<ContactLensesTest>();
-		public virtual IList<ContactLensesTest> ContactLensesTests 
-		{ 
-		    get
-		    {
-		        return this.contactLensesTests;
-		    }
-		}
-		
-		private IList<OpticalObjectiveExamination> opticalObjectiveExaminations = new List<OpticalObjectiveExamination>();
-		public virtual IList<OpticalObjectiveExamination> OpticalObjectiveExaminations 
-		{ 
-		    get
-		    {
-		        return this.opticalObjectiveExaminations;
-		    }
-		}
-		
-		private IList<SubjectiveOpticalExamination> subjectiveOpticalExaminations = new List<SubjectiveOpticalExamination>();
-		public virtual IList<SubjectiveOpticalExamination> SubjectiveOpticalExaminations 
-		{ 
-		    get
-		    {
-		        return this.subjectiveOpticalExaminations;
-		    }
-		}
-		
-		private IList<PrescriptionGlasses> prescriptionGlasses = new List<PrescriptionGlasses>();
+		private IList<PrescriptionGlasses> prescriptionGlasses1 = new List<PrescriptionGlasses>();
 		public virtual IList<PrescriptionGlasses> PrescriptionGlasses 
 		{ 
 		    get
 		    {
-		        return this.prescriptionGlasses;
+		        return this.prescriptionGlasses1;
 		    }
 		}
 		
-		private IList<Cycloplegia> cycloplegias = new List<Cycloplegia>();
+		private IList<OpticalObjectiveExamination> opticalObjectiveExaminations1 = new List<OpticalObjectiveExamination>();
+		public virtual IList<OpticalObjectiveExamination> OpticalObjectiveExaminations 
+		{ 
+		    get
+		    {
+		        return this.opticalObjectiveExaminations1;
+		    }
+		}
+		
+		private IList<GlassesTest> glassesTests1 = new List<GlassesTest>();
+		public virtual IList<GlassesTest> GlassesTests 
+		{ 
+		    get
+		    {
+		        return this.glassesTests1;
+		    }
+		}
+		
+		private IList<WithoutGlassesTest> withoutGlassesTests1 = new List<WithoutGlassesTest>();
+		public virtual IList<WithoutGlassesTest> WithoutGlassesTests 
+		{ 
+		    get
+		    {
+		        return this.withoutGlassesTests1;
+		    }
+		}
+		
+		private IList<ContactLensesTest> contactLensesTests1 = new List<ContactLensesTest>();
+		public virtual IList<ContactLensesTest> ContactLensesTests 
+		{ 
+		    get
+		    {
+		        return this.contactLensesTests1;
+		    }
+		}
+		
+		private IList<SubjectiveOpticalExamination> subjectiveOpticalExaminations1 = new List<SubjectiveOpticalExamination>();
+		public virtual IList<SubjectiveOpticalExamination> SubjectiveOpticalExaminations 
+		{ 
+		    get
+		    {
+		        return this.subjectiveOpticalExaminations1;
+		    }
+		}
+		
+		private IList<Cycloplegia> cycloplegias1 = new List<Cycloplegia>();
 		public virtual IList<Cycloplegia> Cycloplegias 
 		{ 
 		    get
 		    {
-		        return this.cycloplegias;
+		        return this.cycloplegias1;
 		    }
 		}
 		

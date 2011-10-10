@@ -86,38 +86,38 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Insurance insurance;
+		private Insurance insurance1;
 		public virtual Insurance Insurance 
 		{ 
 		    get
 		    {
-		        return this.insurance;
+		        return this.insurance1;
 		    }
 		    set
 		    {
-		        this.insurance = value;
+		        this.insurance1 = value;
 		    }
 		}
 		
-		private Customer customer;
+		private Customer customer1;
 		public virtual Customer Customer 
 		{ 
 		    get
 		    {
-		        return this.customer;
+		        return this.customer1;
 		    }
 		    set
 		    {
-		        this.customer = value;
+		        this.customer1 = value;
 		    }
 		}
 		
-		private IList<Ticket> tickets = new List<Ticket>();
+		private IList<Ticket> tickets1 = new List<Ticket>();
 		public virtual IList<Ticket> Tickets 
 		{ 
 		    get
 		    {
-		        return this.tickets;
+		        return this.tickets1;
 		    }
 		}
 		

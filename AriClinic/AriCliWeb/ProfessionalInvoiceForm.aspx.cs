@@ -24,7 +24,6 @@ namespace AriCliWeb
         HealthcareCompany hc = null;
         Professional prof = null;
         ProfessionalInvoice inv = null;
-        int healthCareCompanyId = 0;
         int ProfessionalId = 0;
         int invoiceId = 0;
         string caller = "";
@@ -162,7 +161,11 @@ namespace AriCliWeb
             //inv.Serial = txtInvoiceSerial.Text;
             inv.Year = Int32.Parse(txtYear.Text);
             inv.Serial = txtInvoiceSerial.Text;
-            if (inv.InvoiceNumber == 0)
+            ProfessionalId = Int32.Parse(txtProfessionalId.Text);
+            inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
+            inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
+            inv.Total = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            if (txtInvoiceNumber.Text == "")
             {
                 try
                 {
@@ -174,10 +177,7 @@ namespace AriCliWeb
                 }
             }
 
-            inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
-            ProfessionalId = Int32.Parse(txtProfessionalId.Text);
-            inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
-            inv.Total = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            
         }
 
         #endregion Auxiliary functions

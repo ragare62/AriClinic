@@ -14,9 +14,7 @@ namespace AriCliWeb
         Invoice inv = null;
         InvoiceLine invl = null;
         int invoiceId = 0;
-        int invoiceLineId = 0;
 
-        User user = null;
         string caller = "";
         string type = "";
 

@@ -18,27 +18,16 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     AriClinicContext ctx;// = null;
     User user = null;
     Clinic cl = null;
-    Policy pol = null;
     Customer cus = null;
-    InsuranceService insuranceService = null;
-    Insurance insurance = null;
-    Professional prof = null;
-    Professional srg = null;
-    Procedure proc = null;
     AnestheticServiceNote asn = null;
     bool firstTime;
-    int policyId = 0;
     int customerId = 0;
-    int insuranceServiceId = 0;
-    int ticketId = 0;
     int clinicId = 0;
-    int insuranceId = 0;
     int professionalId = 0;
     int surgeonId = 0;
     int procedureId = 0;
     int anestheticServiceNoteId = 0;
     Permission per = null;
-    HtmlControl frame = null;
 
     #endregion Variables declarations
    
@@ -98,8 +87,6 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
                 // If there isn't a ticket the default date must be today
                 rddpServiceNoteDate.SelectedDate = DateTime.Now;
                 LoadClinicCombo(null);
-                //HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
-                //frm.Attributes["src"] = "TicketGrid.aspx?AnestheticServiceNoteId=0";
             }
         
     }
@@ -131,6 +118,9 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         
         if (!CreateChange())
             return;
+
+        ctx.SaveChanges();
+
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -199,7 +189,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             }
             UnloadData(asn);
         }
-        ctx.SaveChanges();
+        //ctx.SaveChanges();
         
         return UpdateRelatedTickets(asn);
     }
@@ -271,7 +261,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             rdcSurgeonName.SelectedValue = asn.Surgeon.PersonId.ToString();
             //txtSurgeonName.Text = asn.Surgeon.FullName;
         }
-        if (asn.Procedures[0] != null)
+        if (asn.Procedures.Count>0 && asn.Procedures[0] != null)
         {
             //txtProcedureId1.Text = asn.Procedures[0].ProcedureId.ToString();
             rdcProcedureName1.Items.Clear();
@@ -338,9 +328,10 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
 
         asn.Procedures.Clear();
-        if (rdcProcedureName3.SelectedValue != "")
+
+        if (rdcProcedureName1.SelectedValue != "")
         {
-            procedureId = Int32.Parse(rdcProcedureName3.SelectedValue);
+            procedureId = Int32.Parse(rdcProcedureName1.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
         if (rdcProcedureName2.SelectedValue != "")
@@ -348,11 +339,13 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             procedureId = Int32.Parse(rdcProcedureName2.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
-        if (rdcProcedureName1.SelectedValue != "")
+        if (rdcProcedureName3.SelectedValue != "")
         {
-            procedureId = Int32.Parse(rdcProcedureName1.SelectedValue);
+            procedureId = Int32.Parse(rdcProcedureName3.SelectedValue);
             asn.Procedures.Add(CntAriCli.GetProcedure(procedureId, ctx));
         }
+        
+        
     }
 
     protected void LoadClinicCombo(AnestheticServiceNote asn)

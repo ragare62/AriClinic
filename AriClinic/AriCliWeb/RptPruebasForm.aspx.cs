@@ -13,8 +13,6 @@ namespace AriCliWeb
         #region Variables declarations
         AriClinicContext ctx = null;
         User user = null;
-        ServiceCategory scat = null;
-        int serviceCategoryId = 0;
         Permission per = null;
 
         #endregion Variables declarations

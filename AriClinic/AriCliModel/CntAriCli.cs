@@ -5,7 +5,7 @@ using System.Text;
 using AriCliModel;
 using Telerik.OpenAccess;
 using System.Security.Cryptography;
-using System.Linq;
+
 
 namespace AriCliModel
 {
@@ -544,11 +544,15 @@ namespace AriCliModel
 
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
-            int v = (from inv in prof.ProfessionalInvoices
-                     where inv.Year == year
-                     select inv.InvoiceNumber).Max();
+            if (prof.ProfessionalInvoices.Count > 0)
+            {
+                int v = (from inv in prof.ProfessionalInvoices
+                         where inv.Year == year
+                         select inv.InvoiceNumber).Max();
 
-            return ++v;
+                return ++v;
+            }
+            else return 1;
         }
 
         public static bool DeleteInvoice(Invoice inv, AriClinicContext ctx)
@@ -1029,7 +1033,7 @@ namespace AriCliModel
         public static AppointmentInfo GetAppointment(int id, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.AppointmentId == id
+                    where a.Appointment_id == id
                     select a).FirstOrDefault<AppointmentInfo>();
         }
 

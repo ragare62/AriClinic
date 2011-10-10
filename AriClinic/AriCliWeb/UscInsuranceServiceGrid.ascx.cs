@@ -13,7 +13,6 @@ namespace AriCliWeb
         AriClinicContext ctx = null;
         Insurance ins = null;
         int insuranceId = 0;
-        User user = null;
         string caller = "";
         string type = "";
 

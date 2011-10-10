@@ -206,7 +206,7 @@ namespace AriCliModel
             //
             char dc = GetDcCif(nif);
 
-            if ((!(dc == null)))
+            if ((!(dc.Equals(' '))))
             {
                 nif = nifTemp + dc;
             }

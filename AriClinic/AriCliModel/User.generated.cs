@@ -86,24 +86,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Log> logs = new List<Log>();
-		public virtual IList<Log> Logs 
-		{ 
-		    get
-		    {
-		        return this.logs;
-		    }
-		}
-		
-		private IList<Ticket> tickets = new List<Ticket>();
-		public virtual IList<Ticket> Tickets 
-		{ 
-		    get
-		    {
-		        return this.tickets;
-		    }
-		}
-		
 		private IList<InvoiceLine> invoiceLines = new List<InvoiceLine>();
 		public virtual IList<InvoiceLine> InvoiceLines 
 		{ 
@@ -131,15 +113,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
-		{ 
-		    get
-		    {
-		        return this.anestheticServiceNotes;
-		    }
-		}
-		
 		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
 		public virtual IList<ServiceNote> Service_notes 
 		{ 
@@ -155,6 +128,33 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.appointments;
+		    }
+		}
+		
+		private IList<Log> logs1 = new List<Log>();
+		public virtual IList<Log> Logs 
+		{ 
+		    get
+		    {
+		        return this.logs1;
+		    }
+		}
+		
+		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
+		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.anestheticServiceNotes;
+		    }
+		}
+		
+		private IList<Ticket> tickets1 = new List<Ticket>();
+		public virtual IList<Ticket> Tickets 
+		{ 
+		    get
+		    {
+		        return this.tickets1;
 		    }
 		}
 		

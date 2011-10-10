@@ -211,7 +211,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     {
         LoadStatusCombo(app);
         if (app == null) return; // There isn't any agenda to show
-        txtAppointmentId.Text = String.Format("{0:00000000}", app.AppointmentId);
+        txtAppointmentId.Text = String.Format("{0:00000000}", app.Appointment_id);
         txtPatientId.Text = app.Patient.PersonId.ToString();
         txtPatientName.Text = app.Patient.FullName;
         txtDiaryId.Text = app.Diary.DiaryId.ToString();

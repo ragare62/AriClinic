@@ -15,7 +15,6 @@ namespace AriCliReport
     {
         static DateTime fromDate;
         static DateTime toDate;
-        static Boolean nVoucher;
 
         public RptTicketsPaid()
         {

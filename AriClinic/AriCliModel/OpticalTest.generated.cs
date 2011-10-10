@@ -21,187 +21,187 @@ namespace AriCliModel
 {
 	public interface OpticalTest
 	{
-		Decimal? FarSphericityRightEye 
+		decimal FarSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarCylinderRightEye 
+		decimal FarCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarAxisRightEye 
+		decimal FarAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarPrimsRightEye 
+		decimal FarPrimsRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarVisualAcuityRightEye 
+		decimal FarVisualAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarSphericityLeftEye 
+		decimal FarSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarCylinderLeftEye 
+		decimal FarCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarAxisLeftEye 
+		decimal FarAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarPrismLeftEye 
+		decimal FarPrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarVisualAcuityLeftEye 
+		decimal FarVisualAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseSphericityRightEye 
+		decimal CloseSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseSphericityLeftEye 
+		decimal CloseSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		string CloseSphericityCenters 
+		decimal CloseCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseCylinderRightEye 
+		decimal CloseCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseCylinderLeftEye 
+		decimal CloseAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseAxisRightEye 
+		decimal CloseAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseAxisLeftEye 
+		decimal ClosePrismRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? ClosePrismRightEye 
+		decimal ClosePrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? ClosePrismLeftEye 
+		decimal CloseAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseAcuityRightEye 
+		decimal CloseAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseAcuityLeftEye 
+		decimal BothSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothSphericityRightEye 
+		decimal BothSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothSphericityLeftEye 
+		decimal BothCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothCylinderRightEye 
+		decimal BothCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothCylinderLeftEye 
+		decimal BothAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothAxisRightEye 
+		decimal BothAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothAxisLeftEye 
+		decimal BothPrismRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothPrismRightEye 
+		decimal BothPrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothPrismLeftEye 
+		decimal BothAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothAcuityRightEye 
+		decimal BothAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothAcuityLeftEye 
+		decimal FarCenters 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarCenters 
+		decimal CloseCenters 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseCenters 
+		decimal BothCenters 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothCenters 
+		decimal FarAcuity 
 		{ 
 			get;
 			set;
 		}
-		Decimal? FarAcuity 
+		decimal CloseAcuity 
 		{ 
 			get;
 			set;
 		}
-		Decimal? CloseAcuity 
+		decimal BothAcuity 
 		{ 
 			get;
 			set;
 		}
-		Decimal? BothAcuity 
+		decimal CloseSphericityCenters 
 		{ 
 			get;
 			set;

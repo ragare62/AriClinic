@@ -47,8 +47,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? closeVisualAcuityRightEye;
-		public virtual Decimal? CloseVisualAcuityRightEye 
+		private decimal closeVisualAcuityRightEye;
+		public virtual decimal CloseVisualAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -60,8 +60,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? closeVisualAcuityLeftEye;
-		public virtual Decimal? CloseVisualAcuityLeftEye 
+		private decimal closeVisualAcuityLeftEye;
+		public virtual decimal CloseVisualAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -73,8 +73,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? closeVisualAcuityBothEyes;
-		public virtual Decimal? CloseVisualAcuityBothEyes 
+		private decimal closeVisualAcuityBothEyes;
+		public virtual decimal CloseVisualAcuityBothEyes 
 		{ 
 		    get
 		    {
@@ -86,8 +86,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? farVisualAcuityRightEye;
-		public virtual Decimal? FarVisualAcuityRightEye 
+		private decimal farVisualAcuityRightEye;
+		public virtual decimal FarVisualAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -99,8 +99,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? farVisualAcuityLeftEye;
-		public virtual Decimal? FarVisualAcuityLeftEye 
+		private decimal farVisualAcuityLeftEye;
+		public virtual decimal FarVisualAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -112,8 +112,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Decimal? farVisualAcuityBothEyes;
-		public virtual Decimal? FarVisualAcuityBothEyes 
+		private decimal farVisualAcuityBothEyes;
+		public virtual decimal FarVisualAcuityBothEyes 
 		{ 
 		    get
 		    {
@@ -125,16 +125,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Refractometry refractometry;
+		private Refractometry refractometry1;
 		public virtual Refractometry Refractometry 
 		{ 
 		    get
 		    {
-		        return this.refractometry;
+		        return this.refractometry1;
 		    }
 		    set
 		    {
-		        this.refractometry = value;
+		        this.refractometry1 = value;
 		    }
 		}
 		

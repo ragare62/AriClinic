@@ -138,39 +138,12 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Ticket> tickets = new List<Ticket>();
-		public virtual IList<Ticket> Tickets 
-		{ 
-		    get
-		    {
-		        return this.tickets;
-		    }
-		}
-		
 		private IList<AnestheticTicket> anestheticTickets = new List<AnestheticTicket>();
 		public virtual IList<AnestheticTicket> AnestheticTickets 
 		{ 
 		    get
 		    {
 		        return this.anestheticTickets;
-		    }
-		}
-		
-		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
-		{ 
-		    get
-		    {
-		        return this.anestheticServiceNotes;
-		    }
-		}
-		
-		private IList<AnestheticServiceNote> anestheticServiceNotes1 = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes1 
-		{ 
-		    get
-		    {
-		        return this.anestheticServiceNotes1;
 		    }
 		}
 		
@@ -183,30 +156,48 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<ExternalInvoice> externalInvoices = new List<ExternalInvoice>();
-		public virtual IList<ExternalInvoice> ExternalInvoices 
-		{ 
-		    get
-		    {
-		        return this.externalInvoices;
-		    }
-		}
-		
-		private IList<AppointmentInfo> appointments = new List<AppointmentInfo>();
-		public virtual IList<AppointmentInfo> Appointments 
-		{ 
-		    get
-		    {
-		        return this.appointments;
-		    }
-		}
-		
 		private IList<ProfessionalInvoice> professionalInvoices = new List<ProfessionalInvoice>();
 		public virtual IList<ProfessionalInvoice> ProfessionalInvoices 
 		{ 
 		    get
 		    {
 		        return this.professionalInvoices;
+		    }
+		}
+		
+		private IList<AnestheticServiceNote> anestheticServiceNotes2 = new List<AnestheticServiceNote>();
+		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.anestheticServiceNotes2;
+		    }
+		}
+		
+		private IList<AnestheticServiceNote> anestheticServiceNotes11 = new List<AnestheticServiceNote>();
+		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes1 
+		{ 
+		    get
+		    {
+		        return this.anestheticServiceNotes11;
+		    }
+		}
+		
+		private IList<AppointmentInfo> appointments1 = new List<AppointmentInfo>();
+		public virtual IList<AppointmentInfo> Appointments 
+		{ 
+		    get
+		    {
+		        return this.appointments1;
+		    }
+		}
+		
+		private IList<Ticket> tickets1 = new List<Ticket>();
+		public virtual IList<Ticket> Tickets 
+		{ 
+		    get
+		    {
+		        return this.tickets1;
 		    }
 		}
 		

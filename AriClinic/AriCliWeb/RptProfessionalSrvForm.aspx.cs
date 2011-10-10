@@ -14,8 +14,6 @@ namespace AriCliWeb
         #region Variables declarations
         AriClinicContext ctx = null;
         User user = null;
-        ServiceCategory scat = null;
-        int serviceCategoryId = 0;
         Permission per = null;
 
         #endregion Variables declarations
@@ -24,16 +22,17 @@ namespace AriCliWeb
         {
             ctx = new AriClinicContext("AriClinicContext");
             // security control, it must be a user logged
+            // security control, it must be a user logged
             if (Session["User"] == null)
                 Response.Redirect("Default.aspx");
             else
             {
-                //user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
-                //Process proc = (from p in ctx.Processes
-                //                where p.Code == "rtickets"
-                //                select p).FirstOrDefault<Process>();
-                //per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
-                //btnAccept.Visible = per.Modify;
+                user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
+                Process proc = (from p in ctx.Processes
+                                where p.Code == "usergroup"
+                                select p).FirstOrDefault<Process>();
+                per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
+                btnAccept.Visible = per.Modify;
             }
         }
 

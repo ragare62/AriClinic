@@ -69,21 +69,12 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Invoice> invoices = new List<Invoice>();
-		public virtual IList<Invoice> Invoices 
+		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
+		public virtual IList<ServiceNote> Service_notes 
 		{ 
 		    get
 		    {
-		        return this.invoices;
-		    }
-		}
-		
-		private IList<Policy> policies = new List<Policy>();
-		public virtual IList<Policy> Policies 
-		{ 
-		    get
-		    {
-		        return this.policies;
+		        return this.serviceNotes;
 		    }
 		}
 		
@@ -96,12 +87,21 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
-		public virtual IList<ServiceNote> Service_notes 
+		private IList<Invoice> invoices = new List<Invoice>();
+		public virtual IList<Invoice> Invoices 
 		{ 
 		    get
 		    {
-		        return this.serviceNotes;
+		        return this.invoices;
+		    }
+		}
+		
+		private IList<Policy> policies1 = new List<Policy>();
+		public virtual IList<Policy> Policies 
+		{ 
+		    get
+		    {
+		        return this.policies1;
 		    }
 		}
 		
