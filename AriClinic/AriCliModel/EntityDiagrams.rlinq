@@ -2296,11 +2296,14 @@
         <orm:field name="invoiceNumber" property="InvoiceNumber" behavior="readwrite" uniqueId="c7cfdde3-a5a0-474d-99bd-c080210f90cf" type="System.Int32">
           <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
-        <orm:field name="total" property="Total" behavior="readwrite" uniqueId="2bee66a5-fbca-4cd2-bb35-e77d573718aa" type="System.Decimal">
+        <orm:field name="amount" property="Amount" behavior="readwrite" uniqueId="2bee66a5-fbca-4cd2-bb35-e77d573718aa" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         </orm:field>
         <orm:field name="serial" property="Serial" behavior="readwrite" uniqueId="4c5c4b87-2991-4b15-a6db-b7535cf75b15" type="System.String">
           <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="taxWithHoldingPercentage" property="TaxWithHoldingPercentage" behavior="readwrite" uniqueId="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" type="System.Decimal">
+          <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         </orm:field>
         <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="af45273a-d3db-44a1-812b-50e86bedbecf" type="AriCliModel.Professional">
           <orm:reference uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74">
@@ -2985,6 +2988,7 @@
         <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+        <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         <orm:index name="idx_professional_invoice_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
@@ -5499,8 +5503,9 @@
       <Property Id="ea36c6ab-f351-4ecc-abc0-f7b05e8c8618" name="InvoiceDate" type="DateTime" label="InvoiceDate : DateTime" />
       <Property Id="08e381a7-faf3-49f8-9d38-a2499c903184" name="Year" type="Int32" label="Year : Int32" />
       <Property Id="c7cfdde3-a5a0-474d-99bd-c080210f90cf" name="InvoiceNumber" type="Int32" label="InvoiceNumber : Int32" />
-      <Property Id="2bee66a5-fbca-4cd2-bb35-e77d573718aa" name="Total" type="Decimal" label="Total : Decimal" />
+      <Property Id="2bee66a5-fbca-4cd2-bb35-e77d573718aa" name="Amount" type="Decimal" label="Amount : Decimal" />
       <Property Id="4c5c4b87-2991-4b15-a6db-b7535cf75b15" name="Serial" label="Serial : String" />
+      <Property Id="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" name="TaxWithHoldingPercentage" type="Decimal" label="TaxWithHoldingPercentage : Decimal" />
       <AssociationTargets>
         <Association Id="27175d91-0156-49d7-b9ff-09ea0208af74" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceHasProfessional">
           <DomainClassMoniker name="/AriClinicContext/Professional" />

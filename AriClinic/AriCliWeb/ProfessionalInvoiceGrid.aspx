@@ -159,7 +159,7 @@
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
                                          SortExpression="Professional.ComercialName" UniqueName="Professional.ComercialName">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Total" DataType="System.Decimal" DataFormatString="{0:C}"
+                <telerik:GridBoundColumn DataField="Amount" DataType="System.Decimal" DataFormatString="{0:C}"
                                          FilterControlToolTip="Filtrar por importe" FilterImageToolTip="Filtro"
                                          HeaderText="Total"
                                          ReadOnly="True" SortExpression="Total" 

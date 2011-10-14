@@ -153,7 +153,7 @@ namespace AriCliWeb
             rddpInvoiceDate.SelectedDate = inv.InvoiceDate;
             txtProfessionalId.Text = inv.Professional.PersonId.ToString();
             txtProfessionalName.Text = inv.Professional.ComercialName;
-            txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", inv.Total);
+            txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", inv.Amount);
         }
 
         protected void UnloadData(ProfessionalInvoice inv)
@@ -164,7 +164,8 @@ namespace AriCliWeb
             ProfessionalId = Int32.Parse(txtProfessionalId.Text);
             inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
             inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
-            inv.Total = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            inv.Amount = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            inv.TaxWithHoldingPercentage = inv.Professional.TaxWithholdingType.Percentage / 100;
             if (txtInvoiceNumber.Text == "")
             {
                 try

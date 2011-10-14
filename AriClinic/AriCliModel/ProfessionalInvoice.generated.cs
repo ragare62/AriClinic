@@ -73,16 +73,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal total;
-		public virtual decimal Total 
+		private decimal amount;
+		public virtual decimal Amount 
 		{ 
 		    get
 		    {
-		        return this.total;
+		        return this.amount;
 		    }
 		    set
 		    {
-		        this.total = value;
+		        this.amount = value;
 		    }
 		}
 		
@@ -96,6 +96,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.serial = value;
+		    }
+		}
+		
+		private decimal taxWithHoldingPercentage;
+		public virtual decimal TaxWithHoldingPercentage 
+		{ 
+		    get
+		    {
+		        return this.taxWithHoldingPercentage;
+		    }
+		    set
+		    {
+		        this.taxWithHoldingPercentage = value;
 		    }
 		}
 		
