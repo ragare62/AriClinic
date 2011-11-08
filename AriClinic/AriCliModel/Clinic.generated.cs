@@ -105,21 +105,21 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
-		{ 
-		    get
-		    {
-		        return this.anestheticServiceNotes;
-		    }
-		}
-		
 		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
 		public virtual IList<ServiceNote> Service_notes 
 		{ 
 		    get
 		    {
 		        return this.serviceNotes;
+		    }
+		}
+		
+		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
+		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.anestheticServiceNotes;
 		    }
 		}
 		

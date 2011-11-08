@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AriCliModel;
+using Telerik.Web.UI;
 
 namespace AriCliWeb
 {
-    public partial class RptInvoicePatientForm : System.Web.UI.Page
+    public partial class RptSurgeonSrvForm : System.Web.UI.Page
     {
         #region Variables declarations
         AriClinicContext ctx = null;
@@ -37,6 +38,11 @@ namespace AriCliWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                loadComboProf();
+                cmbprof.SelectedValue = "0";
+            }
         }
 
         protected void Page_Unload(object sender, EventArgs e)
@@ -53,11 +59,13 @@ namespace AriCliWeb
         {
             if (!DataOk()) return;
 
-            string command = String.Format("reportPatientInvoice('{0}')"
-                                            , rddpToDate.SelectedDate);
+            string command = String.Format("reportSurgeonSrv('{0}','{1}',{2})"
+                                            , rddpFromDate.SelectedDate
+                                            , rddpToDate.SelectedDate
+                                            , cmbprof.SelectedValue);
 
             RadAjaxManager1.ResponseScripts.Add(command);
-
+            
         }
 
         protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -71,13 +79,30 @@ namespace AriCliWeb
         #region Auxiliary functions
         protected bool DataOk()
         {
-            if (rddpToDate.SelectedDate == null)
+            if (rddpFromDate.SelectedDate == null || rddpToDate.SelectedDate == null)
             {
                 lblMessage.Text = Resources.GeneralResource.DateNeeded;
                 return false;
             }
+            if (rddpFromDate.SelectedDate > rddpToDate.SelectedDate)
+            {
+                lblMessage.Text = Resources.GeneralResource.FromGreatherThanTo;
+                return false;
+            }
             return true;
+        }
+
+        private void loadComboProf()
+        {
+            List<Professional> prof = (List<Professional>)CntAriCli.GetSurgeonTickets(ctx);
+            prof.Sort((x, y) => string.Compare(x.FullName, y.FullName));
+            foreach (Professional p in prof)
+            {
+                cmbprof.Items.Add(new RadComboBoxItem(p.FullName, p.PersonId.ToString()));
+            }
+            cmbprof.Items.Add(new RadComboBoxItem("TODOS", "0"));
         }
         #endregion Auxiliary functions
     }
+
 }

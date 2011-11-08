@@ -21,7 +21,6 @@ public partial class InvoiceForm : System.Web.UI.Page
     HealthcareCompany hc = null;
     Customer cus = null;
     Invoice inv = null;
-    int healthCareCompanyId = 0;
     int customerId = 0;
     int invoiceId = 0;
     string caller = "";

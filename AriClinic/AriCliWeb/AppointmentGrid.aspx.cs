@@ -152,7 +152,7 @@ public partial class AppointmentGrid : System.Web.UI.Page
                     break;
                 case "Delete":
                     AppointmentInfo app = (from a in ctx.AppointmentInfos
-                                                   where a.AppointmentId == id
+                                                   where a.Appointment_id == id
                                                    select a).FirstOrDefault<AppointmentInfo>();
                     ctx.Delete(app);
                     ctx.SaveChanges();

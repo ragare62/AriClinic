@@ -158,6 +158,20 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RptProfessionalInvoicesForm.aspx.cs">
+      <DependentUpon>RptProfessionalInvoicesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptProfessionalInvoicesForm.aspx.designer.cs">
+      <DependentUpon>RptProfessionalInvoicesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptSurgeonSrvForm.aspx.cs">
+      <DependentUpon>RptSurgeonSrvForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptSurgeonSrvForm.aspx.designer.cs">
+      <DependentUpon>RptSurgeonSrvForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProfessionalInvoiceForm.aspx.cs">
       <DependentUpon>ProfessionalInvoiceForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -853,6 +867,8 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="RptProfessionalInvoicesForm.aspx" />
+    <Content Include="RptSurgeonSrvForm.aspx" />
     <Content Include="ProfessionalInvoiceForm.aspx" />
     <Content Include="ProfessionalInvoiceGrid.aspx" />
     <Content Include="ProfessionalInvoiceLineForm.aspx" />

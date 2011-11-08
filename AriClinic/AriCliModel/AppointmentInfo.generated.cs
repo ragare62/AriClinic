@@ -22,7 +22,7 @@ namespace AriCliModel
 	public partial class AppointmentInfo
 	{
 		private int appointmentId;
-		public virtual int AppointmentId 
+		public virtual int Appointment_id 
 		{ 
 		    get
 		    {
@@ -151,19 +151,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private AppointmentInfo fatherAppointment;
-		public virtual AppointmentInfo FatherAppointment 
-		{ 
-		    get
-		    {
-		        return this.fatherAppointment;
-		    }
-		    set
-		    {
-		        this.fatherAppointment = value;
-		    }
-		}
-		
 		private Diary diary;
 		public virtual Diary Diary 
 		{ 
@@ -190,19 +177,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
-		    }
-		}
-		
 		private Patient patient;
 		public virtual Patient Patient 
 		{ 
@@ -213,6 +187,32 @@ namespace AriCliModel
 		    set
 		    {
 		        this.patient = value;
+		    }
+		}
+		
+		private Professional professional1;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional1;
+		    }
+		    set
+		    {
+		        this.professional1 = value;
+		    }
+		}
+		
+		private AppointmentInfo fatherAppointment;
+		public virtual AppointmentInfo FatherAppointment 
+		{ 
+		    get
+		    {
+		        return this.fatherAppointment;
+		    }
+		    set
+		    {
+		        this.fatherAppointment = value;
 		    }
 		}
 		

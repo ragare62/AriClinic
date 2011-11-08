@@ -5,7 +5,7 @@ using System.Text;
 using AriCliModel;
 using Telerik.OpenAccess;
 using System.Security.Cryptography;
-using System.Linq;
+
 
 namespace AriCliModel
 {
@@ -544,11 +544,15 @@ namespace AriCliModel
 
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
-            int v = (from inv in prof.ProfessionalInvoices
-                     where inv.Year == year
-                     select inv.InvoiceNumber).Max();
+            if (prof.ProfessionalInvoices.Count > 0)
+            {
+                int v = (from inv in prof.ProfessionalInvoices
+                         where inv.Year == year
+                         select inv.InvoiceNumber).Max();
 
-            return ++v;
+                return ++v;
+            }
+            else return 1;
         }
 
         public static bool DeleteInvoice(Invoice inv, AriClinicContext ctx)
@@ -946,6 +950,23 @@ namespace AriCliModel
             return tickets;
         }
 
+        public static IList<AnestheticTicket> GetTicketsByCirujano(DateTime fromDate, DateTime toDate, string ProfessionalId, AriClinicContext ctx)
+        {
+            int idProf = int.Parse(ProfessionalId);
+            return (from t in ctx.AnestheticTickets
+                    where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon.PersonId == idProf
+                    select t).Distinct().ToList<AnestheticTicket>();
+        }
+
+        public static IList<AnestheticTicket> GetTicketsAnestesicos(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<AnestheticTicket> tickets = (from t in ctx.AnestheticTickets
+                                    where t.TicketDate >= fromDate && t.TicketDate <= toDate
+                                    select t).ToList<AnestheticTicket>();
+
+            return tickets;
+        }
+
         public static void DeleteAnestheticServiceNote(AnestheticServiceNote ansn, AriClinicContext ctx)
         {
             foreach (AnestheticTicket at in ansn.AnestheticTickets)
@@ -960,6 +981,24 @@ namespace AriCliModel
             List<Professional> professional = (from t in ctx.Tickets
                                                where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                                select t.Professional).Distinct<Professional>().ToList<Professional>();
+
+            return professional;
+        }
+
+        public static IList<Professional> GetSurgeonTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<Professional> professional = (from t in ctx.AnestheticTickets
+                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon!=null
+                                               select t.Surgeon).Distinct<Professional>().ToList<Professional>();
+
+            return professional;
+        }
+
+        public static IList<Professional> GetSurgeonTickets(AriClinicContext ctx)
+        {
+            List<Professional> professional = (from t in ctx.AnestheticTickets
+                                               where t.Surgeon !=null
+                                               select t.Surgeon).Distinct<Professional>().ToList<Professional>();
 
             return professional;
         }
@@ -1029,7 +1068,7 @@ namespace AriCliModel
         public static AppointmentInfo GetAppointment(int id, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.AppointmentId == id
+                    where a.Appointment_id == id
                     select a).FirstOrDefault<AppointmentInfo>();
         }
 
@@ -1350,6 +1389,24 @@ namespace AriCliModel
             return (from ut in ctx.UnitTypes
                     where ut.UnitTypeId == id
                     select ut).FirstOrDefault<UnitType>();
+        }
+
+        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
+                                    where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate
+                                                 select i).ToList<ProfessionalInvoice>();
+
+            return invoice;
+        }
+
+        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate,string idProfessional, AriClinicContext ctx)
+        {
+            List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
+                                                 where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate && i.Professional.PersonId.ToString()==idProfessional
+                                                 select i).ToList<ProfessionalInvoice>();
+
+            return invoice;
         }
     }
 }

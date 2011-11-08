@@ -47,16 +47,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private AnestheticServiceNote anestheticServiceNote;
+		private AnestheticServiceNote anestheticServiceNote1;
 		public virtual AnestheticServiceNote AnestheticServiceNote 
 		{ 
 		    get
 		    {
-		        return this.anestheticServiceNote;
+		        return this.anestheticServiceNote1;
 		    }
 		    set
 		    {
-		        this.anestheticServiceNote = value;
+		        this.anestheticServiceNote1 = value;
 		    }
 		}
 		

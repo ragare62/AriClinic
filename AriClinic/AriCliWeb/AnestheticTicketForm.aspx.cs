@@ -22,7 +22,6 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
     InsuranceService insuranceService = null;
     Insurance insurance = null;
     Professional prof = null;
-    Professional srg = null;
     Procedure proc = null;
     AnestheticTicket tck = null;
     AnestheticServiceNote asn = null;
@@ -31,12 +30,10 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
     int insuranceServiceId = 0;
     int ticketId = 0;
     int clinicId = 0;
-    int insuranceId = 0;
     int professionalId = 0;
     int surgeonId = 0;
     int procedureId = 0;
     int anestheticTicketId = 0;
-    int anestheticServiceNoteId = 0;
     Permission per = null;
 
     #endregion Variables declarations
@@ -97,56 +94,58 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         {
             anestheticTicketId = int.Parse(Request.QueryString["AnestheticTicketId"]);
             ticketId = anestheticTicketId; 
-            tck = (AnestheticTicket)   CntAriCli.GetTicket(anestheticTicketId, ctx);
-            rddpTicketDate.SelectedDate = tck.TicketDate;
-            txtCustomerId.Text = tck.Policy.Customer.PersonId.ToString();
-            cus = CntAriCli.GetCustomer(tck.Policy.Customer.PersonId, ctx);
-            LoadPolicyCombo(tck);
-            txtComercialName.Text = cus.ComercialName;
-            chkChecked.Checked = tck.Checked;
-            if (tck.Professional != null)
-            {
-                txtProfessionalId.Text = tck.Professional.PersonId.ToString();
-                txtProfessionalName.Text = tck.Professional.FullName;
-            }
-            if (tck.Procedure != null)
-            {
-                txtProcedureId.Text = tck.Procedure.ProcedureId.ToString();
-                txtProcedureName.Text = tck.Procedure.Name;
-            }
-            if (tck.Surgeon != null)
-            {
-                txtSurgeonId.Text = tck.Surgeon.PersonId.ToString(); 
-                txtSurgeonName.Text = tck.Surgeon.FullName; 
-            }
-            //
-            LoadClinicCombo(tck);
-            txtInsuranceServiceId.Text = tck.InsuranceService.InsuranceServiceId.ToString();
-            txtInsuranceServiceName.Text = tck.InsuranceService.Service.Name;
-            txtDescription.Text = tck.Description;
-            txtAmount.Text = tck.Amount.ToString();
-            txtComments.Text = tck.Comments;
+            tck = (AnestheticTicket)CntAriCli.GetTicket(anestheticTicketId, ctx);
+
+            LoadData(tck);
+            //rddpTicketDate.SelectedDate = tck.TicketDate;
+            //txtCustomerId.Text = tck.Policy.Customer.PersonId.ToString();
+            //cus = CntAriCli.GetCustomer(tck.Policy.Customer.PersonId, ctx);
+            //LoadPolicyCombo(tck);
+            //txtComercialName.Text = cus.ComercialName;
+            //chkChecked.Checked = tck.Checked;
+            //if (tck.Professional != null)
+            //{
+            //    txtProfessionalId.Text = tck.Professional.PersonId.ToString();
+            //    txtProfessionalName.Text = tck.Professional.FullName;
+            //}
+            //if (tck.Procedure != null)
+            //{
+            //    txtProcedureId.Text = tck.Procedure.ProcedureId.ToString();
+            //    txtProcedureName.Text = tck.Procedure.Name;
+            //}
+            //if (tck.Surgeon != null)
+            //{
+            //    txtSurgeonId.Text = tck.Surgeon.PersonId.ToString(); 
+            //    txtSurgeonName.Text = tck.Surgeon.FullName; 
+            //}
+            ////
+            //LoadClinicCombo(tck);
+            //txtInsuranceServiceId.Text = tck.InsuranceService.InsuranceServiceId.ToString();
+            //txtInsuranceServiceName.Text = tck.InsuranceService.Service.Name;
+            //txtDescription.Text = tck.Description;
+            //txtAmount.Text = tck.Amount.ToString();
+            //txtComments.Text = tck.Comments;
         }
         //
-        if (Request.QueryString["AnestheticServiceNoteId"] != null)
-        {
-            anestheticServiceNoteId = int.Parse(Request.QueryString["AnestheticServiceNoteid"]);
-            asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
-            rddpTicketDate.SelectedDate = asn.ServiceNoteDate; rddpTicketDate.Enabled = false;
-            txtCustomerId.Text = asn.Customer.PersonId.ToString(); txtCustomerId.Enabled = false;
-            cus = asn.Customer; LoadPolicyCombo(null);
-            txtComercialName.Text = asn.Customer.ComercialName; txtComercialName.Enabled = false;
-            txtProfessionalId.Text = asn.Professional.PersonId.ToString(); txtProfessionalId.Enabled = false;
-            txtProfessionalName.Text = asn.Professional.FullName; txtProfessionalName.Enabled = false;
-            txtProcedureId.Text = asn.Procedures[0].ProcedureId.ToString(); txtProcedureId.Enabled = false;
-            txtProcedureName.Text = asn.Procedures[0].Name; txtProcedureName.Enabled = false;
-            if (asn.Surgeon != null)
-            {
-                txtSurgeonId.Text = asn.Surgeon.PersonId.ToString(); txtSurgeonId.Enabled = false;
-                txtSurgeonName.Text = asn.Surgeon.FullName; txtSurgeonName.Enabled = false;
-            }
-            SetFocus(FindControl("txtInsuranceServiceId"));
-        }
+        //if (Request.QueryString["AnestheticServiceNoteId"] != null)
+        //{
+        //    anestheticServiceNoteId = int.Parse(Request.QueryString["AnestheticServiceNoteid"]);
+        //    asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+        //    rddpTicketDate.SelectedDate = asn.ServiceNoteDate; rddpTicketDate.Enabled = false;
+        //    txtCustomerId.Text = asn.Customer.PersonId.ToString(); txtCustomerId.Enabled = false;
+        //    cus = asn.Customer; LoadPolicyCombo(null);
+        //    txtComercialName.Text = asn.Customer.ComercialName; txtComercialName.Enabled = false;
+        //    txtProfessionalId.Text = asn.Professional.PersonId.ToString(); txtProfessionalId.Enabled = false;
+        //    txtProfessionalName.Text = asn.Professional.FullName; txtProfessionalName.Enabled = false;
+        //    txtProcedureId.Text = asn.Procedures[0].ProcedureId.ToString(); txtProcedureId.Enabled = false;
+        //    txtProcedureName.Text = asn.Procedures[0].Name; txtProcedureName.Enabled = false;
+        //    if (asn.Surgeon != null)
+        //    {
+        //        txtSurgeonId.Text = asn.Surgeon.PersonId.ToString(); txtSurgeonId.Enabled = false;
+        //        txtSurgeonName.Text = asn.Surgeon.FullName; txtSurgeonName.Enabled = false;
+        //    }
+        //    SetFocus(FindControl("txtInsuranceServiceId"));
+        //}
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -221,31 +220,29 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         txtCustomerId.Text = tck.Policy.Customer.PersonId.ToString();
         txtComercialName.Text = tck.Policy.Customer.FullName;
         rddpTicketDate.SelectedDate = tck.TicketDate;
-        LoadPolicyCombo(tck);
-        LoadClinicCombo(tck);
-        txtInsuranceServiceId.Text = tck.InsuranceService.InsuranceServiceId.ToString();
-        txtInsuranceServiceName.Text = tck.InsuranceService.Service.Name;
-        txtDescription.Text = tck.Description;
-        //txtAmount.Text = String.Format("{0:###,##0.00}", tck.Amount);
-        txtAmount.Text = tck.Amount.ToString();
-        //
-        chkChecked.Checked = tck.Checked;
         if (tck.Professional != null)
         {
             txtProfessionalId.Text = tck.Professional.PersonId.ToString();
             txtProfessionalName.Text = tck.Professional.FullName;
         }
-        if (tck.Surgeon != null) 
-             
-        {
-            txtSurgeonId.Text = tck.Surgeon.PersonId.ToString();
-            txtSurgeonName.Text = tck.Surgeon.FullName;
-        }
+        chkChecked.Checked = tck.Checked;
         if (tck.Procedure != null)
         {
             txtProcedureId.Text = tck.Procedure.ProcedureId.ToString();
             txtProcedureName.Text = tck.Procedure.Name;
         }
+        if (tck.Surgeon != null)
+        {
+            txtSurgeonId.Text = tck.Surgeon.PersonId.ToString();
+            txtSurgeonName.Text = tck.Surgeon.FullName;
+        }
+        LoadPolicyCombo(tck);
+        txtInsuranceServiceId.Text = tck.InsuranceService.InsuranceServiceId.ToString();
+        txtInsuranceServiceName.Text = tck.InsuranceService.Service.Name;
+        LoadClinicCombo(tck);
+        txtDescription.Text = tck.Description;
+        //txtAmount.Text = String.Format("{0:###,##0.00}", tck.Amount);
+        txtAmount.Text = tck.Amount.ToString();    
         txtComments.Text = tck.Comments;
     }
 
@@ -358,7 +355,6 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         }
     }
     #endregion Auxiliary functions
-
 
     #region Searching outside
     protected void txtCustomerId_TextChanged(object sender, EventArgs e)
@@ -476,6 +472,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         }
     }
     #endregion
+   
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
         customerId = Int32.Parse(e.Argument);

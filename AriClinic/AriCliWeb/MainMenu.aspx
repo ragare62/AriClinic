@@ -173,6 +173,10 @@ height: 30px;
               var w1 = window.open("RptProfessionalSrvForm.aspx", "RPROFESSONALSRV", "width=440, height=300,resizable=1")
               w1.focus();
           }
+          function LaunchRSurgeonSrv() {
+              var w1 = window.open("RptSurgeonSrvForm.aspx", "RSURGEONSRV", "width=440, height=300,resizable=1")
+              w1.focus();
+          }
           function LaunchRCategorySrv()
           {
               var w1 = window.open("RptCategorySrvForm.aspx", "RCATEGORYSRV", "width=440, height=280,resizable=1")
@@ -253,6 +257,11 @@ height: 30px;
 
           function LaunchProfiIvoice() {
               var w1 = window.open("ProfessionalInvoiceGrid.aspx","PROFINV", "fullscreen=yes,resizable=1")
+              w1.focus();
+          }
+
+          function LaunchProfInvoices() {
+              var w1 = window.open("RptProfessionalInvoicesForm.aspx", "PROFINVS", "width=440, height=300,resizable=1")
               w1.focus();
           }
         </script>
@@ -381,6 +390,9 @@ height: 30px;
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 
+                                           Value="profInvoices">
+                      </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Adeudos" Value="debt">
@@ -396,6 +408,8 @@ height: 30px;
                   <telerik:RadMenuItem runat="server" Text="Servicios" Value="rservices">
                     <Items>
                       <telerik:RadMenuItem runat="server" Text="por profesional" Value="rprofessionalsrv">
+                      </telerik:RadMenuItem>
+                       <telerik:RadMenuItem runat="server" Text="por cirujano" Value="rsurgeonsrv">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Text="por categoria" Value="rcategorysrv">
                       </telerik:RadMenuItem>

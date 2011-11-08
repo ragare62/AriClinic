@@ -57,6 +57,9 @@ public partial class RptView : System.Web.UI.Page
                     case "professionalsrv":
                         LoadProfessionalSrv();
                         break;
+                    case "surgeonsrv":
+                        LoadSurgeonSrv();
+                        break;
                     case "categorysrv":
                         LoadCategorySrv();
                         break;
@@ -95,6 +98,9 @@ public partial class RptView : System.Web.UI.Page
                         break;
                     case "professionalinvoice":
                         LoadProfessionalInvoice();
+                        break;
+                    case "professionalinvoices":
+                        LoadProfessionalInvoices();
                         break;
                 }
             }
@@ -183,6 +189,23 @@ public partial class RptView : System.Web.UI.Page
         ReportViewer1.Report = rtck;
     }
 
+    protected void LoadSurgeonSrv()
+    {
+        // search parameters
+        if (Request.QueryString["FromDate"] == null
+            || Request.QueryString["ToDate"] == null)
+        {
+            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            return;
+        }
+        DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
+        DateTime toDate = DateTime.Parse(Request.QueryString["ToDate"]);
+        string professional = Request.QueryString["Professional"];
+
+        RptServSurgeon rtck = new RptServSurgeon(fromDate, toDate, professional, ctx);
+        ReportViewer1.Report = rtck;
+    }
+
     protected void LoadCategorySrv()
     {
         // search parameters
@@ -242,6 +265,23 @@ public partial class RptView : System.Web.UI.Page
             RptProfessionalInvoice rtck = new RptProfessionalInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
             ReportViewer1.Report = rtck;
         }
+    }
+
+    protected void LoadProfessionalInvoices()
+    {
+        if (Request.QueryString["FromDate"] == null
+            || Request.QueryString["ToDate"] == null)
+        {
+            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            return;
+        }
+        DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
+        DateTime toDate = DateTime.Parse(Request.QueryString["ToDate"]);
+        string professional = Request.QueryString["Professional"];
+
+        RptProfessionalInvoices rtck = new RptProfessionalInvoices(fromDate, toDate, professional, ctx);
+        ReportViewer1.Report = rtck;
+        
     }
 
     private void Loadnomenclator()

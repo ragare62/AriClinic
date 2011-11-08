@@ -11,7 +11,6 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
 {
     AriClinicContext ctx = null;
     User user = null;
-    HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
     int anestheticServiceNoteId = 0;

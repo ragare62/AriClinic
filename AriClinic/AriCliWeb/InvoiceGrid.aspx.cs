@@ -10,11 +10,9 @@ public partial class InvoiceGrid : System.Web.UI.Page
 {
     AriClinicContext ctx = null;
     User user = null;
-    HealthcareCompany hc = null;
     Patient pat = null;
     Invoice inv = null;
     Customer cus = null;
-    int invoiceId = 0;
     int patientId = 0;
     int customerId = 0;
     string type = "";

@@ -12,10 +12,8 @@ namespace AriCliWeb
     {
         AriClinicContext ctx = null;
         User user = null;
-        HealthcareCompany hc = null;
         ProfessionalInvoice inv = null;
         Professional prof = null;
-        int invoiceId = 0;
         int professionalId = 0;
         string type = "";
         Permission per = null;

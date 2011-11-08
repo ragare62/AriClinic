@@ -73,12 +73,21 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Telephone> telephones = new List<Telephone>();
+		private IList<Address> addresses = new List<Address>();
+		public virtual IList<Address> Addresses 
+		{ 
+		    get
+		    {
+		        return this.addresses;
+		    }
+		}
+		
+		private IList<Telephone> telephones1 = new List<Telephone>();
 		public virtual IList<Telephone> Telephones 
 		{ 
 		    get
 		    {
-		        return this.telephones;
+		        return this.telephones1;
 		    }
 		}
 		
@@ -88,15 +97,6 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.emails;
-		    }
-		}
-		
-		private IList<Address> addresses = new List<Address>();
-		public virtual IList<Address> Addresses 
-		{ 
-		    get
-		    {
-		        return this.addresses;
 		    }
 		}
 		

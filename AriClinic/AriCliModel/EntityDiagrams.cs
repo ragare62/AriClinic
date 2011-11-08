@@ -296,22 +296,6 @@ namespace AriCliModel
 	    	}
 		}
 		
-		public IQueryable<ExternalInvoice> ExternalInvoices 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoice>();
-	    	}
-		}
-		
-		public IQueryable<ExternalInvoiceLine> ExternalInvoiceLines 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExternalInvoiceLine>();
-	    	}
-		}
-		
 		public IQueryable<Diary> Diaries 
 		{
 	    	get
@@ -389,14 +373,6 @@ namespace AriCliModel
 	    	get
 	    	{
 	        	return this.GetAll<ExaminationAssigned>();
-	    	}
-		}
-		
-		public IQueryable<ExaminationType> ExaminationTypes 
-		{
-	    	get
-	    	{
-	        	return this.GetAll<ExaminationType>();
 	    	}
 		}
 		
@@ -485,6 +461,22 @@ namespace AriCliModel
 	    	get
 	    	{
 	        	return this.GetAll<ProfessionalInvoiceLine>();
+	    	}
+		}
+		
+		public IQueryable<ExaminationType> ExaminationTypes 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ExaminationType>();
+	    	}
+		}
+		
+		public IQueryable<Nomenclator> Nomenclators 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Nomenclator>();
 	    	}
 		}
 		

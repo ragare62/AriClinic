@@ -42,6 +42,14 @@ function reportProfesionalSrv(fromDate, toDate, prof) {
                          , "RTICKETS2", "width=800, height=600,resizable=1");
     w1.focus();
 }
+function reportSurgeonSrv(fromDate, toDate, prof) {
+    var w1 = window.open("RptView.aspx?Report=surgeonsrv"
+                         + "&FromDate=" + fromDate
+                         + "&ToDate=" + toDate
+                         + "&Professional=" + prof
+                         , "RTICKETS2", "width=800, height=600,resizable=1");
+    w1.focus();
+}
 function reportCategorySrv(fromDate, toDate) {
     var w1 = window.open("RptView.aspx?Report=categorysrv"
                          + "&FromDate=" + fromDate
@@ -99,5 +107,13 @@ function reportParamInvoice(fromDate, toDate) {
                          + "&FromDate=" + fromDate
                          + "&ToDate=" + toDate
                          , "RTICKETS2", "width=800, height=600,resizable=1");
+    w1.focus();
+}
+function reportprofessionalinvoices(fromDate, toDate, prof) {
+    var w1 = window.open("RptView.aspx?Report=professionalinvoices"
+                         + "&FromDate=" + fromDate
+                         + "&ToDate=" + toDate
+                         +"&Professional="+ prof
+                         , "RINVOICE", "width=800, height=600,resizable=1");
     w1.focus();
 }

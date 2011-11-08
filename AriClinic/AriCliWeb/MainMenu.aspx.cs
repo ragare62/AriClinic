@@ -201,6 +201,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rprofessionalsrv":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRProfessionalSrv();");
                 break;
+            case "rsurgeonsrv":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRSurgeonSrv();");
+                break;
             case "rcategorysrv":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRCategorySrv();");
                 break;
@@ -254,6 +257,9 @@ public partial class MainMenu : System.Web.UI.Page
                 break;
             case "profInvoice":
                 RadAjaxManager1.ResponseScripts.Add("LaunchProfiIvoice();");
+                break;
+            case "profInvoices":
+                RadAjaxManager1.ResponseScripts.Add("LaunchProfInvoices();");
                 break;
             default:
                 break;

@@ -109,12 +109,6 @@
     <Compile Include="ExaminationType.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
-    <Compile Include="ExternalInvoice.generated.cs">
-      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalInvoiceLine.generated.cs">
-      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
-    </Compile>
     <Compile Include="GlassesTest.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -137,6 +131,9 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="Log.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Nomenclator.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="OpticalObjectiveExamination.generated.cs">

@@ -46,6 +46,18 @@
     <Reference Include="Telerik.Reporting, Version=5.1.11.713, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RptProfessionalInvoices.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptProfessionalInvoices.Designer.cs">
+      <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptServSurgeon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptServSurgeon.Designer.cs">
+      <DependentUpon>RptServSurgeon.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -215,6 +227,12 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RptProfessionalInvoices.resx">
+      <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptServSurgeon.resx">
+      <DependentUpon>RptServSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>
     </EmbeddedResource>

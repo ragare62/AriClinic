@@ -112,19 +112,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Policy policy;
-		public virtual Policy Policy 
-		{ 
-		    get
-		    {
-		        return this.policy;
-		    }
-		    set
-		    {
-		        this.policy = value;
-		    }
-		}
-		
 		private InsuranceService insuranceService;
 		public virtual InsuranceService InsuranceService 
 		{ 
@@ -135,19 +122,6 @@ namespace AriCliModel
 		    set
 		    {
 		        this.insuranceService = value;
-		    }
-		}
-		
-		private User user;
-		public virtual User User 
-		{ 
-		    get
-		    {
-		        return this.user;
-		    }
-		    set
-		    {
-		        this.user = value;
 		    }
 		}
 		
@@ -164,19 +138,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
-		    }
-		}
-		
 		private ServiceNote serviceNote;
 		public virtual ServiceNote ServiceNote 
 		{ 
@@ -187,6 +148,45 @@ namespace AriCliModel
 		    set
 		    {
 		        this.serviceNote = value;
+		    }
+		}
+		
+		private User user1;
+		public virtual User User 
+		{ 
+		    get
+		    {
+		        return this.user1;
+		    }
+		    set
+		    {
+		        this.user1 = value;
+		    }
+		}
+		
+		private Policy policy1;
+		public virtual Policy Policy 
+		{ 
+		    get
+		    {
+		        return this.policy1;
+		    }
+		    set
+		    {
+		        this.policy1 = value;
+		    }
+		}
+		
+		private Professional professional1;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional1;
+		    }
+		    set
+		    {
+		        this.professional1 = value;
 		    }
 		}
 		

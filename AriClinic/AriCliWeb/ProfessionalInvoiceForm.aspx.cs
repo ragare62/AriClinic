@@ -24,7 +24,6 @@ namespace AriCliWeb
         HealthcareCompany hc = null;
         Professional prof = null;
         ProfessionalInvoice inv = null;
-        int healthCareCompanyId = 0;
         int ProfessionalId = 0;
         int invoiceId = 0;
         string caller = "";
@@ -154,7 +153,7 @@ namespace AriCliWeb
             rddpInvoiceDate.SelectedDate = inv.InvoiceDate;
             txtProfessionalId.Text = inv.Professional.PersonId.ToString();
             txtProfessionalName.Text = inv.Professional.ComercialName;
-            txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", inv.Total);
+            txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", inv.Amount);
         }
 
         protected void UnloadData(ProfessionalInvoice inv)
@@ -162,7 +161,12 @@ namespace AriCliWeb
             //inv.Serial = txtInvoiceSerial.Text;
             inv.Year = Int32.Parse(txtYear.Text);
             inv.Serial = txtInvoiceSerial.Text;
-            if (inv.InvoiceNumber == 0)
+            ProfessionalId = Int32.Parse(txtProfessionalId.Text);
+            inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
+            inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
+            inv.Amount = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            inv.TaxWithHoldingPercentage = inv.Professional.TaxWithholdingType.Percentage / 100;
+            if (txtInvoiceNumber.Text == "")
             {
                 try
                 {
@@ -174,10 +178,7 @@ namespace AriCliWeb
                 }
             }
 
-            inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
-            ProfessionalId = Int32.Parse(txtProfessionalId.Text);
-            inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
-            inv.Total = CntAriCli.GetProfessionalInvoiceTotal(inv);
+            
         }
 
         #endregion Auxiliary functions

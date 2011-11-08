@@ -21,7 +21,6 @@ namespace AriCliWeb
         int patientId = 0;
         int customerId = 0;
         int professionalId = 0;
-        User user = null;
         string caller = "";
 
         #endregion Variables definition

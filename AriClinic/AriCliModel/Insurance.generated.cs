@@ -69,12 +69,12 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Policy> policies = new List<Policy>();
+		private IList<Policy> policies1 = new List<Policy>();
 		public virtual IList<Policy> Policies 
 		{ 
 		    get
 		    {
-		        return this.policies;
+		        return this.policies1;
 		    }
 		}
 		

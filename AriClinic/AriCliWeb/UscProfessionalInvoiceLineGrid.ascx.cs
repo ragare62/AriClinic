@@ -17,9 +17,6 @@ namespace AriCliWeb
         ProfessionalInvoice inv = null;
         ProfessionalInvoiceLine invl = null;
         int invoiceId = 0;
-        int invoiceLineId = 0;
-
-        User user = null;
         string caller = "";
         string type = "";
 

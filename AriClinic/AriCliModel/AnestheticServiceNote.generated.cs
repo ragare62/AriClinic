@@ -47,19 +47,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal total;
-		public virtual decimal Total 
-		{ 
-		    get
-		    {
-		        return this.total;
-		    }
-		    set
-		    {
-		        this.total = value;
-		    }
-		}
-		
 		private bool chk1;
 		public virtual bool Chk1 
 		{ 
@@ -86,81 +73,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private User user;
-		public virtual User User 
+		private decimal total;
+		public virtual decimal Total 
 		{ 
 		    get
 		    {
-		        return this.user;
+		        return this.total;
 		    }
 		    set
 		    {
-		        this.user = value;
-		    }
-		}
-		
-		private Clinic clinic;
-		public virtual Clinic Clinic 
-		{ 
-		    get
-		    {
-		        return this.clinic;
-		    }
-		    set
-		    {
-		        this.clinic = value;
-		    }
-		}
-		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
-		    }
-		}
-		
-		private Professional surgeon;
-		public virtual Professional Surgeon 
-		{ 
-		    get
-		    {
-		        return this.surgeon;
-		    }
-		    set
-		    {
-		        this.surgeon = value;
-		    }
-		}
-		
-		private Customer customer;
-		public virtual Customer Customer 
-		{ 
-		    get
-		    {
-		        return this.customer;
-		    }
-		    set
-		    {
-		        this.customer = value;
-		    }
-		}
-		
-		private Invoice invoice;
-		public virtual Invoice Invoice 
-		{ 
-		    get
-		    {
-		        return this.invoice;
-		    }
-		    set
-		    {
-		        this.invoice = value;
+		        this.total = value;
 		    }
 		}
 		
@@ -177,6 +99,84 @@ namespace AriCliModel
 		    }
 		}
 		
+		private Clinic clinic;
+		public virtual Clinic Clinic 
+		{ 
+		    get
+		    {
+		        return this.clinic;
+		    }
+		    set
+		    {
+		        this.clinic = value;
+		    }
+		}
+		
+		private User user;
+		public virtual User User 
+		{ 
+		    get
+		    {
+		        return this.user;
+		    }
+		    set
+		    {
+		        this.user = value;
+		    }
+		}
+		
+		private Invoice invoice;
+		public virtual Invoice Invoice 
+		{ 
+		    get
+		    {
+		        return this.invoice;
+		    }
+		    set
+		    {
+		        this.invoice = value;
+		    }
+		}
+		
+		private Customer customer;
+		public virtual Customer Customer 
+		{ 
+		    get
+		    {
+		        return this.customer;
+		    }
+		    set
+		    {
+		        this.customer = value;
+		    }
+		}
+		
+		private Professional professional2;
+		public virtual Professional Surgeon 
+		{ 
+		    get
+		    {
+		        return this.professional2;
+		    }
+		    set
+		    {
+		        this.professional2 = value;
+		    }
+		}
+		
+		private Professional professional1;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional1;
+		    }
+		    set
+		    {
+		        this.professional1 = value;
+		    }
+		}
+		
 		private IList<Procedure> procedures = new List<Procedure>();
 		public virtual IList<Procedure> Procedures 
 		{ 
@@ -186,12 +186,12 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AnestheticTicket> anestheticTickets = new List<AnestheticTicket>();
+		private IList<AnestheticTicket> anestheticTickets1 = new List<AnestheticTicket>();
 		public virtual IList<AnestheticTicket> AnestheticTickets 
 		{ 
 		    get
 		    {
-		        return this.anestheticTickets;
+		        return this.anestheticTickets1;
 		    }
 		}
 		
