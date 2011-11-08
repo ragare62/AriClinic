@@ -538,7 +538,7 @@
       </orm:class>
       <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
-        <orm:discriminator discriminator-value="AriCliModel.MetaClass1" />
+        <orm:discriminator discriminator-value="AriCliModel.Customer" />
         <orm:field name="comercialName" property="ComercialName" behavior="readwrite" null-value="none" uniqueId="285ba712-5899-4bd4-908b-d5d41ff93fe1" type="System.String">
           <orm:column name="comercial_name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
         </orm:field>
@@ -607,6 +607,7 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="ticketId" />
         </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.Ticket" />
         <orm:field name="ticketId" property="TicketId" behavior="readwrite" null-value="none" uniqueId="6a5f223b-4b5b-4093-bff8-e6e3e85264c0" type="System.Int32">
           <orm:column name="ticket_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
@@ -1408,6 +1409,7 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="examinationAssignedId" />
         </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.ExaminationAssigned" />
         <orm:field name="examinationAssignedId" property="ExaminationAssignedId" behavior="readwrite" uniqueId="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" type="System.Int32">
           <orm:column name="examination_assigned_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
@@ -3122,7 +3124,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_vig</AppConfigConnectionString>
     <InitialCatalog>ariclinic_dev</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -3800,6 +3802,11 @@
       <Property Id="acd1a614-a98a-4866-b1e9-f4f8d5ff4eb3" name="Paid" type="Decimal" label="Paid : Decimal" kind="Persistent" fieldName="paid" />
       <Property Id="b73b4827-8c23-4f95-a9ba-6a39fd2fbf47" name="Comments" label="Comments : String" kind="Persistent" fieldName="comments" />
       <Property Id="1f5c6432-5369-424b-ba20-5d779f114383" name="Checked" type="Boolean" label="Checked : Boolean" kind="Persistent" fieldName="_checked" />
+      <inheritors>
+        <inheritance Id="ad9725f9-eaba-49d4-9a90-16640fb1b63e">
+          <DomainClassMoniker name="/AriClinicContext/AnestheticTicket" />
+        </inheritance>
+      </inheritors>
       <AssociationTargets>
         <Association Id="4cf5dd98-fa65-4af5-b35e-452c900c4c39" SourceMultiplicity="ZeroOne" name="TicketHasPolicy">
           <DomainClassMoniker name="/AriClinicContext/Policy" />
