@@ -207,6 +207,12 @@
   <data name="InvoiceSerialNeeded" xml:space="preserve">
     <value>Se necesita una serie de facturación</value>
   </data>
+  <data name="LBTA" xml:space="preserve">
+    <value>Alfanumérico</value>
+  </data>
+  <data name="LBTN" xml:space="preserve">
+    <value>Numérico</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Mensaje</value>
   </data>

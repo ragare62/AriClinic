@@ -264,6 +264,10 @@ height: 30px;
               var w1 = window.open("RptProfessionalInvoicesForm.aspx", "PROFINVS", "width=440, height=300,resizable=1")
               w1.focus();
           }
+          function LaunchLabTest() {
+              var w1 = window.open("labTestGrid.aspx", "LABTEST", "width=800, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -433,6 +437,9 @@ height: 30px;
                                 <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
+                                    Value="labtest">
                                 </telerik:RadMenuItem>
                             </Items>
                         </telerik:RadMenuItem>

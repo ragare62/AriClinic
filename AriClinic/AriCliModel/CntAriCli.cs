@@ -1408,5 +1408,16 @@ namespace AriCliModel
 
             return invoice;
         }
+        public static IList<LabTest> GetLabTests(AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    select l).ToList<LabTest>();
+        }
+        public static LabTest GetLabTest(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    where l.LabTestId == id
+                    select l).FirstOrDefault<LabTest>();
+        }
     }
 }

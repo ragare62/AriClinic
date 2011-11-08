@@ -73,6 +73,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string generalType;
+		public virtual string GeneralType 
+		{ 
+		    get
+		    {
+		        return this.generalType;
+		    }
+		    set
+		    {
+		        this.generalType = value;
+		    }
+		}
+		
 		private UnitType unitType;
 		public virtual UnitType UnitType 
 		{ 

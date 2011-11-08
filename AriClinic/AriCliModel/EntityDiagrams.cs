@@ -18,7 +18,7 @@ using Telerik.OpenAccess.Metadata;
 
 
 namespace AriCliModel	
-{
+{	
 	public partial class AriClinicContext : OpenAccessContext
 	{
 		private static string connectionStringName = @"AriClinicContext";

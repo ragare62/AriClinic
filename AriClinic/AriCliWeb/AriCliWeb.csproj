@@ -158,6 +158,20 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LabTestForm.aspx.cs">
+      <DependentUpon>LabTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LabTestForm.aspx.designer.cs">
+      <DependentUpon>LabTestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LabTestGrid.aspx.cs">
+      <DependentUpon>LabTestGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LabTestGrid.aspx.designer.cs">
+      <DependentUpon>LabTestGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RptProfessionalInvoicesForm.aspx.cs">
       <DependentUpon>RptProfessionalInvoicesForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -867,6 +881,12 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="images\error_16.png" />
+    <Content Include="images\error_32.png" />
+    <Content Include="images\warning_16.png" />
+    <Content Include="images\warning_32.png" />
+    <Content Include="LabTestForm.aspx" />
+    <Content Include="LabTestGrid.aspx" />
     <Content Include="RptProfessionalInvoicesForm.aspx" />
     <Content Include="RptSurgeonSrvForm.aspx" />
     <Content Include="ProfessionalInvoiceForm.aspx" />
@@ -1107,7 +1127,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
