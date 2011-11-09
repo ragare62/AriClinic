@@ -64,14 +64,14 @@
               <td>
                 <div id="Name" class="normalText">
                   <asp:Label ID="lblName" runat="server" Text="Nombre del tipo de unidad:" 
-                             ToolTip="Nombre del tipo de unidad"></asp:Label>
+                             ToolTip="Nombre del tipo de prueba"></asp:Label>
                   <br />
                   <telerik:RadTextBox ID="txtName" runat="server" Width="100%" TabIndex="2">
                   </telerik:RadTextBox>
                   <br />
                   <asp:RequiredFieldValidator ID="valName" runat="server" Display="Dynamic" 
                                               ControlToValidate="txtName" CssClass="normalTextRed"
-                                              ErrorMessage="Se necesita un nombre para el modelo">
+                                              ErrorMessage="Se necesita un nombre el tipo de prueba">
                   </asp:RequiredFieldValidator>
                 </div>
               </td>

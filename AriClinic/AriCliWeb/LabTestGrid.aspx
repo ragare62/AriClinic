@@ -154,7 +154,7 @@
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="GeneralType" UniqueName="GeneralType">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="UnitType"
+                <telerik:GridBoundColumn DataField="UnitType.Name"
                                          FilterControlToolTip="Filtrar por unidad" FilterImageToolTip="Filtro"
                                          HeaderText="Tipo Unidad" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 

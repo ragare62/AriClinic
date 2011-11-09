@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se necesita un valor numérico.
+        /// </summary>
+        internal static string AlfaNumericNeeded {
+            get {
+                return ResourceManager.GetString("AlfaNumericNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Todo.
         /// </summary>
         internal static string All {
@@ -331,6 +340,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se necesita una prueba de laboratorio.
+        /// </summary>
+        internal static string LabTestNeeded {
+            get {
+                return ResourceManager.GetString("LabTestNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alfanumérico.
         /// </summary>
         internal static string LBTA {
@@ -390,6 +408,15 @@ namespace Resources {
         internal static string NoPrimaryPolicy {
             get {
                 return ResourceManager.GetString("NoPrimaryPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se necesita un valor numérico.
+        /// </summary>
+        internal static string NumericNeeded {
+            get {
+                return ResourceManager.GetString("NumericNeeded", resourceCulture);
             }
         }
         
@@ -651,6 +678,15 @@ namespace Resources {
         internal static string UserNeedsPassword {
             get {
                 return ResourceManager.GetString("UserNeedsPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se necesita un valor.
+        /// </summary>
+        internal static string ValueNeeded {
+            get {
+                return ResourceManager.GetString("ValueNeeded", resourceCulture);
             }
         }
         

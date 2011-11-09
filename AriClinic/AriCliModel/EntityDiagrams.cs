@@ -480,6 +480,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<LabTestAssigned> LabTestAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LabTestAssigned>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

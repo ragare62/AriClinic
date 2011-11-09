@@ -103,12 +103,17 @@ function searchExamination(arg)
     var w1;
     if (!arg)
     {
-        w1 = window.open("ExaminationGrid.aspx?Type=S", "EXAMINATIONS", "width=500,height=400,resizable=1");
+        w1 = window.open("ExaminationGrid.aspx?Type=S", "EXAMINATIONS", "width=800,height=400,resizable=1");
     }
     else
     {
         w1 = window.open("ExaminationGrid.aspx?Type=S&GT=" + arg, "EXAMBYTYPE", "width=500,height=400,resizable=1");
     }
+    w1.focus;
+}
+function searchLabTest()
+{
+    var w1 = window.open("LabTestGrid.aspx?Type=S", "LABTESTS", "width=800,height=500,resizable=1");
     w1.focus;
 }
 

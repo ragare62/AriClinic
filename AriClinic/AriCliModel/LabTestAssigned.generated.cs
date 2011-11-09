@@ -19,92 +19,96 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class LabTest
+	public partial class LabTestAssigned
 	{
-		private int labTestId;
-		public virtual int LabTestId 
+		private int labTestAssignedId;
+		public virtual int LabTestAssignedId 
 		{ 
 		    get
 		    {
-		        return this.labTestId;
+		        return this.labTestAssignedId;
 		    }
 		    set
 		    {
-		        this.labTestId = value;
+		        this.labTestAssignedId = value;
 		    }
 		}
 		
-		private string name;
-		public virtual string Name 
+		private DateTime labTestDate;
+		public virtual DateTime LabTestDate 
 		{ 
 		    get
 		    {
-		        return this.name;
+		        return this.labTestDate;
 		    }
 		    set
 		    {
-		        this.name = value;
+		        this.labTestDate = value;
 		    }
 		}
 		
-		private decimal minValue;
-		public virtual decimal MinValue 
+		private string comments;
+		public virtual string Comments 
 		{ 
 		    get
 		    {
-		        return this.minValue;
+		        return this.comments;
 		    }
 		    set
 		    {
-		        this.minValue = value;
+		        this.comments = value;
 		    }
 		}
 		
-		private decimal maxValue;
-		public virtual decimal MaxValue 
+		private decimal numValue;
+		public virtual decimal NumValue 
 		{ 
 		    get
 		    {
-		        return this.maxValue;
+		        return this.numValue;
 		    }
 		    set
 		    {
-		        this.maxValue = value;
+		        this.numValue = value;
 		    }
 		}
 		
-		private string generalType;
-		public virtual string GeneralType 
+		private string stringValue;
+		public virtual string StringValue 
 		{ 
 		    get
 		    {
-		        return this.generalType;
+		        return this.stringValue;
 		    }
 		    set
 		    {
-		        this.generalType = value;
+		        this.stringValue = value;
 		    }
 		}
 		
-		private UnitType unitType;
-		public virtual UnitType UnitType 
+		private LabTest labTest;
+		public virtual LabTest LabTest 
 		{ 
 		    get
 		    {
-		        return this.unitType;
+		        return this.labTest;
 		    }
 		    set
 		    {
-		        this.unitType = value;
+		        this.labTest = value;
 		    }
 		}
 		
-		private IList<LabTestAssigned> labTestAssigneds = new List<LabTestAssigned>();
-		public virtual IList<LabTestAssigned> LabTestAssigneds 
+		private Patient patient1;
+		public virtual Patient Patient 
 		{ 
 		    get
 		    {
-		        return this.labTestAssigneds;
+		        return this.patient1;
+		    }
+		    set
+		    {
+		        this.patient1 = value;
 		    }
 		}
 		

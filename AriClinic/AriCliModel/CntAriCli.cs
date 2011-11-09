@@ -1419,5 +1419,16 @@ namespace AriCliModel
                     where l.LabTestId == id
                     select l).FirstOrDefault<LabTest>();
         }
+        public static IList<LabTestAssigned> GetLabTestAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    select la).ToList<LabTestAssigned>();
+        }
+        public static LabTestAssigned GetLabTestAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    where la.LabTestAssignedId == id
+                    select la).FirstOrDefault<LabTestAssigned>();
+        }
     }
 }

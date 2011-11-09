@@ -50,11 +50,11 @@
               switch (examType)
               {
                   case "general":
-                      w1 = window.open("ExaminationAssignedForm.aspx", null, "width=600, height=500,resizable=1");
+                      w1 = window.open("ExaminationAssignedForm.aspx", "EAGRD", "width=600, height=500,resizable=1");
                       w1.focus();
                       break;
                   case "refractometry":
-                      w1 = window.open("RefractometryForm.aspx", null, "width=800, height=700,resizable=1");
+                      w1 = window.open("RefractometryForm.aspx", "EAGRD", "width=800, height=700,resizable=1");
                       w1.focus();
                       break;
                   default:
@@ -67,12 +67,12 @@
               switch (examType)
               {
                   case "general":
-                      w2 = window.open("ExaminationAssignedForm.aspx?ExaminationAssignedId=" + id, null,
+                      w2 = window.open("ExaminationAssignedForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
                                        "width=600, height=500,resizable=1");
                       w2.focus();
                       break;
                   case "refractometry":
-                      w2 = window.open("RefractometryForm.aspx?ExaminationAssignedId=" + id, null,
+                      w2 = window.open("RefractometryForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
                                        "width=800, height=700,resizable=1");
                       w2.focus();
                       break;
@@ -89,12 +89,12 @@
               switch (examType)
               {
                   case "general":
-                      w1 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId'), null,
+                      w1 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId'), "EAGRD",
                                        "width=600, height=500,resizable=1");
                       w1.focus();
                       break;
                   case "refractometry":
-                      w1 = window.open("RefractometryForm.aspx?PatientId=" + gup('PatientId'), null,
+                      w1 = window.open("RefractometryForm.aspx?PatientId=" + gup('PatientId'), "EAGRD",
                                        "width=800, height=700,resizable=1");
                       w1.focus();
                       break;
@@ -110,12 +110,12 @@
               {
                   case "general":
                       w2 = window.open("ExaminationAssignedForm.aspx?PatientId=" + gup('PatientId') +
-                                       "&ExaminationAssignedId=" + id, null, "width=600, height=500,resizable=1");
+                                       "&ExaminationAssignedId=" + id, "EAGRD", "width=600, height=500,resizable=1");
                       w2.focus();
                       break;
                   case "refractometry":
                       w2 = window.open("RefractomeryForm.aspx?PatientId=" + gup('PatientId') +
-                                       "&ExaminationAssignedId=" + id, null, "width=800, height=700,resizable=1");
+                                       "&ExaminationAssignedId=" + id, "EAGRD", "width=800, height=700,resizable=1");
                       w2.focus();
                       break;
                        default:

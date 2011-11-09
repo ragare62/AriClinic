@@ -264,6 +264,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "labtest":
                 RadAjaxManager1.ResponseScripts.Add("LaunchLabTest();");
                 break;
+            case "labtestassigned":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLabTestAssigned();");
+                break;
             default:
                 break;
         }

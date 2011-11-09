@@ -551,6 +551,9 @@
         <orm:field name="examinationAssigneds" property="ExaminationAssigneds" uniqueId="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" type="AriCliModel.ExaminationAssigned">
           <orm:collection element-class="AriCliModel.ExaminationAssigned" inverse-field="patient" order-by="" uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
+        <orm:field name="labTestAssigneds1" property="LabTestAssigneds" uniqueId="dd8c22be-6828-4ed1-95d5-b735c32f868d" type="AriCliModel.LabTestAssigned">
+          <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="patient1" order-by="" uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
+        </orm:field>
       </orm:class>
       <orm:class name="Customer" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
@@ -2277,6 +2280,9 @@
             <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
           </orm:reference>
         </orm:field>
+        <orm:field name="labTestAssigneds" property="LabTestAssigneds" uniqueId="7196f467-1d08-4b1f-9e17-1639caddf087" type="AriCliModel.LabTestAssigned">
+          <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="labTest" order-by="" uniqueId="f5f20753-2320-4753-b8d6-90718eb00755" />
+        </orm:field>
         <orm:index name="idx_lab_test_unit_type_id">
           <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
         </orm:index>
@@ -2393,6 +2399,33 @@
         <orm:field name="group" property="Group" uniqueId="4df7a8c9-e3ef-404d-b333-7e3f400d14d3" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="group" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+      </orm:class>
+      <orm:class name="LabTestAssigned" update-schema="true" uniqueId="ac85c815-912f-40be-a293-0e380a2f7fa7">
+        <orm:table name="lab_test_assigned" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="labTestAssignedId" />
+        </orm:identity>
+        <orm:field name="labTestAssignedId" property="LabTestAssignedId" uniqueId="acd3fe95-1215-458d-98b4-f69dfd8bc783" type="System.Int32">
+          <orm:column name="lab_test_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="labTestDate" property="LabTestDate" uniqueId="f72a5b5f-204e-4292-ae54-a80f4f6478f1" type="System.DateTime">
+          <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="numValue" property="NumValue" uniqueId="72617e7a-5647-4335-ae43-132113f68fc8" type="System.Decimal" />
+        <orm:field name="stringValue" property="StringValue" uniqueId="3998acaa-2355-4978-856a-852bfb54e488" type="System.String" />
+        <orm:field name="comments" property="Comments" uniqueId="efd3295c-90dc-49f4-875b-b91a29f0e181" type="System.String">
+          <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="labTest" property="LabTest" uniqueId="0bd242a3-0540-475b-89c6-38455a000d86" type="AriCliModel.LabTest">
+          <orm:reference uniqueId="f5f20753-2320-4753-b8d6-90718eb00755" />
+        </orm:field>
+        <orm:field name="patient1" property="Patient" uniqueId="0a0e9763-823b-4d6a-8006-1a89d096c32a" type="AriCliModel.Patient">
+          <orm:reference uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
+        </orm:field>
+        <orm:index name="idx_lab_test_assigned_lab_test_id">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+        </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="Decimal" />
@@ -3293,6 +3326,15 @@
           <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:table>
+      <orm:table name="lab_test_assigned">
+        <orm:column name="lab_test_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+        <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
+        <orm:index name="idx_lab_test_assigned_lab_test_id">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+        </orm:index>
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
@@ -3907,6 +3949,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ec2557ba-ed0f-4f77-80f9-42d6ae8871a9">
           <NavigationalProperty Id="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" name="ExaminationAssigneds" type="IList&lt;ExaminationAssigned&gt;" label="ExaminationAssigneds : IList&lt;ExaminationAssigned&gt;" nullable="true" kind="Persistent" fieldName="examinationAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e84b86b0-6166-4a5e-be37-41dbf33f790c">
+          <NavigationalProperty Id="dd8c22be-6828-4ed1-95d5-b735c32f868d" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5501,6 +5546,9 @@
         <classHasNavigationalProperties Id="704c6764-ce30-4762-a45e-5f54a5d90e90">
           <NavigationalProperty Id="c6062d87-c465-4c5f-b04c-0247ad90010f" name="UnitType" type="UnitType" label="UnitType : UnitType" nullable="true" kind="Persistent" fieldName="unitType" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="20c2026d-29d3-4a82-be0e-d097b093646e">
+          <NavigationalProperty Id="7196f467-1d08-4b1f-9e17-1639caddf087" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="969aeafa-657a-43a8-881f-18286159b9ff" name="ProfessionalInvoice" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -5608,6 +5656,49 @@
       <Property Id="4df7a8c9-e3ef-404d-b333-7e3f400d14d3" name="Group" type="Int32" label="Group : Int32" nullable="true" kind="Persistent" fieldName="group" />
       <Property Id="d85cc53e-d627-4a90-a24d-a779074ea246" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
     </DomainClass>
+    <DomainClass Id="ac85c815-912f-40be-a293-0e380a2f7fa7" name="LabTestAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="acd3fe95-1215-458d-98b4-f69dfd8bc783" name="LabTestAssignedId" type="System.Int32" label="LabTestAssignedId : System.Int32" identity="true" />
+      <Property Id="f72a5b5f-204e-4292-ae54-a80f4f6478f1" name="LabTestDate" type="DateTime" label="LabTestDate : DateTime" />
+      <Property Id="72617e7a-5647-4335-ae43-132113f68fc8" name="NumValue" type="Decimal" label="NumValue : Decimal" />
+      <Property Id="3998acaa-2355-4978-856a-852bfb54e488" name="StringValue" label="StringValue : String" />
+      <Property Id="efd3295c-90dc-49f4-875b-b91a29f0e181" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="f5f20753-2320-4753-b8d6-90718eb00755" SourceMultiplicity="ZeroOne" name="LabTestAssignedHasLabTest">
+          <DomainClassMoniker name="/AriClinicContext/LabTest" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="2227e2a1-5508-4900-b98b-db18b216a9c2">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTest/LabTestAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b7cfe4f5-1adf-4d85-b062-f97d3d730547">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTestAssigned/LabTest" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" SourceMultiplicity="ZeroOne" name="LabTestAssignedHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="728c5039-a0d6-4df6-b86d-a08dcabb5215">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/LabTestAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="82161b77-e715-4773-a07d-ade69f1d416b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTestAssigned/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="bbd88a8f-4657-461e-9ec8-88699697800d">
+          <NavigationalProperty Id="0bd242a3-0540-475b-89c6-38455a000d86" name="LabTest" type="LabTest" label="LabTest : LabTest" nullable="true" kind="Persistent" fieldName="labTest" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d1ef1eb7-167e-4121-94de-fe430abd56de">
+          <NavigationalProperty Id="0a0e9763-823b-4d6a-8006-1a89d096c32a" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -5666,6 +5757,7 @@
         <entitySetProperty name="ProfessionalInvoiceLines" type="ProfessionalInvoiceLine" label="ProfessionalInvoiceLines : IQueryable&lt;ProfessionalInvoiceLine&gt;" />
         <entitySetProperty name="ExaminationTypes" type="ExaminationType" label="ExaminationTypes : IQueryable&lt;ExaminationType&gt;" />
         <entitySetProperty name="Nomenclators" namespace="AriCliModel" type="Nomenclator" label="Nomenclators : IQueryable&lt;AriCliModel.Nomenclator&gt;" />
+        <entitySetProperty name="LabTestAssigneds" type="LabTestAssigned" label="LabTestAssigneds : IQueryable&lt;LabTestAssigned&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

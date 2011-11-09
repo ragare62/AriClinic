@@ -1,11 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DiagnosticAssignedGrid.aspx.cs" Inherits="DiagnosticAssignedGrid" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LabTestAssignedGrid.aspx.cs" Inherits="LabTestAssignedGrid" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Diagnósticos asignados
+      Pruebas de laboratorio asignadas
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -42,25 +42,25 @@
                   $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("new");
               }
           }
-          function NewDiagnosticAssignedRecord()
+          function NewLabTestAssignedRecord()
           {
-              var w1 = window.open("DiagnosticAssignedForm.aspx", "DAGRD", "width=600, height=500,resizable=1");
+              var w1 = window.open("LabTestAssignedForm.aspx", "LBTAR", "width=600, height=500,resizable=1");
               w1.focus();
           }
-          function EditDiagnosticAssignedRecord(id)
+          function EditLabTestAssignedRecord(id)
           {
-              var w2 = window.open("DiagnosticAssignedForm.aspx?DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
+              var w2 = window.open("LabTestAssignedForm.aspx?LabTestAssignedId=" + id, "LBTAR", "width=600, height=500,resizable=1");
               w2.focus();
           }
-          function NewDiagnosticAssignedRecordInTab()
+          function NewLabTestAssignedRecordInTab()
           {
-              var w1 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'), "DAGRD", "width=600, height=500,resizable=1");
+              var w1 = window.open("LabTestAssignedForm.aspx?PatientId=" + gup('PatientId'), "LBTAR", "width=600, height=500,resizable=1");
               w1.focus();
           }
-          function EditDiagnosticAssignedRecordInTab(id)
+          function EditLabTestAssignedRecordInTab(id)
           {
-              var w2 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId') +
-                                   "&DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
+              var w2 = window.open("LabTestAssignedForm.aspx?PatientId=" + gup('PatientId') + 
+                                   "&LabTestAssignedId=" + id, "LBTAR", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -142,18 +142,18 @@
             <ClientSettings AllowDragToGroup="True">
             </ClientSettings>
             <MasterTableView AutoGenerateColumns="False" CommandItemDisplay="Top" 
-                             DataKeyNames="DiagnosticAssignedId">
+                             DataKeyNames="LabTestAssignedId">
               <CommandItemSettings ExportToPdfText="Export to Pdf" />
               <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
               </RowIndicatorColumn>
               <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
               </ExpandCollapseColumn>
               <Columns>
-                <telerik:GridBoundColumn DataField="DiagnosticAssignedId" DataType="System.Int32" 
+                <telerik:GridBoundColumn DataField="LabTestAssignedId" DataType="System.Int32" 
                                          FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
                                          HeaderText="ID" 
                                          meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
-                                         SortExpression="DiagnosticAssignedId" UniqueName="DiagnosticAssignedId">
+                                         SortExpression="LabTestAssignedId" UniqueName="LabTestAssignedId">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Patient.FullName" 
                                          FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
@@ -161,24 +161,30 @@
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="Patient.FullName" UniqueName="Patient.FullName">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="DiagnosticDate" DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy}" 
+                <telerik:GridBoundColumn DataField="LabTestDate" DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy}" 
                                          FilterControlToolTip="Filtrar por fecha de diagnóstico" FilterImageToolTip="Filtro"
                                          HeaderText="Fecha" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="DiagnosticDate" UniqueName="DiagnosticDate">
+                                         SortExpression="LabTestDate" UniqueName="LabTestDate">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Diagnostic.Name" 
+                <telerik:GridBoundColumn DataField="LabTest.Name" 
                                          FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
-                                         HeaderText="Diagnóstico" 
+                                         HeaderText="Prueba" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Diagnostic.Name" UniqueName="Diagnostic.Name">
+                                         SortExpression="LabTest.Name" UniqueName="LabTest.Name">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Comments" 
+                <telerik:GridBoundColumn DataField="LabTest.UnitType.Name" 
                                          FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
-                                         HeaderText="Observaciones" 
+                                         HeaderText="Unidades" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Comments" UniqueName="Comments">
+                                         SortExpression="LabTest.UnitType" UniqueName="LabTest.UnitType">
                 </telerik:GridBoundColumn>
+                <telerik:GridTemplateColumn UniqueName="Value" HeaderText="Valor">
+                    <ItemTemplate>
+                     <asp:Label ID="lblValue" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </telerik:GridTemplateColumn>
+
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                                             meta:resourceKey="GridTemplateColumnResource1" UniqueName="Template">
@@ -202,7 +208,7 @@
               <CommandItemTemplate>
                 <div ID="ButtonAdd" style="padding:2px;">
                   <asp:ImageButton ID="New" runat="server" ImageUrl="~/images/document_add.png" 
-                                   meta:resourceKey="NewResource1" OnClientClick="NewDiagnosticAssignedRecord();" 
+                                   meta:resourceKey="NewResource1" OnClientClick="NewLabTestAssignedRecord();" 
                                    ToolTip="Añadir un nuevo registro" />
                   <asp:ImageButton ID="Exit" runat="server" ImageUrl="~/images/document_out.png" 
                                    meta:resourceKey="ExitResource1" OnClientClick="CloseWindow();" 

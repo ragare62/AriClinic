@@ -44,23 +44,23 @@
           }
           function NewTreatmentRecord()
           {
-              var w1 = window.open("TreatmentForm.aspx", null, "width=600, height=500,resizable=1");
+              var w1 = window.open("TreatmentForm.aspx", "TRATGRD", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditTreatmentRecord(id)
           {
-              var w2 = window.open("TreatmentForm.aspx?TreatmentId=" + id, null, "width=600, height=500,resizable=1");
+              var w2 = window.open("TreatmentForm.aspx?TreatmentId=" + id, "TRATGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function NewTreatmentRecordInTab()
           {
-              var w1 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
+              var w1 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId'), "TRATGRD", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditTreatmentRecordInTab(id)
           {
-              var w2 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId') + 
-                                   "&TreatmentId=" + id, null, "width=600, height=500,resizable=1");
+              var w2 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId') +
+                                   "&TreatmentId=" + id, "TRATGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
