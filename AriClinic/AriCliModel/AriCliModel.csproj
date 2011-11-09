@@ -173,6 +173,9 @@
     <Compile Include="Procedure.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="ProcedureAssigned.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Process.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>

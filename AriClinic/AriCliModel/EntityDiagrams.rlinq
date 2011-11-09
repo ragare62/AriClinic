@@ -554,6 +554,9 @@
         <orm:field name="labTestAssigneds1" property="LabTestAssigneds" uniqueId="dd8c22be-6828-4ed1-95d5-b735c32f868d" type="AriCliModel.LabTestAssigned">
           <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="patient1" order-by="" uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
         </orm:field>
+        <orm:field name="procedureAssigneds" property="ProcedureAssigneds" uniqueId="b4aef2b7-c213-44c8-a405-07505b68ee03" type="AriCliModel.ProcedureAssigned">
+          <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="patient" order-by="" uniqueId="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" />
+        </orm:field>
       </orm:class>
       <orm:class name="Customer" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
@@ -964,6 +967,9 @@
         </orm:field>
         <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" uniqueId="257eaa1c-ce0f-4541-8efb-3db4bac2c350" type="AriCliModel.AnestheticServiceNote">
           <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="procedures" order-by="" uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" />
+        </orm:field>
+        <orm:field name="procedureAssigneds" property="ProcedureAssigneds" uniqueId="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" type="AriCliModel.ProcedureAssigned">
+          <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="procedure" order-by="" uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
         </orm:field>
       </orm:class>
       <orm:class name="AnestheticTicket" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
@@ -2412,11 +2418,11 @@
         <orm:field name="labTestDate" property="LabTestDate" uniqueId="f72a5b5f-204e-4292-ae54-a80f4f6478f1" type="System.DateTime">
           <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         </orm:field>
-        <orm:field name="numValue" property="NumValue" uniqueId="72617e7a-5647-4335-ae43-132113f68fc8" type="System.Decimal" />
-        <orm:field name="stringValue" property="StringValue" uniqueId="3998acaa-2355-4978-856a-852bfb54e488" type="System.String" />
         <orm:field name="comments" property="Comments" uniqueId="efd3295c-90dc-49f4-875b-b91a29f0e181" type="System.String">
           <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="numValue" property="NumValue" uniqueId="72617e7a-5647-4335-ae43-132113f68fc8" type="System.Decimal" />
+        <orm:field name="stringValue" property="StringValue" uniqueId="3998acaa-2355-4978-856a-852bfb54e488" type="System.String" />
         <orm:field name="labTest" property="LabTest" uniqueId="0bd242a3-0540-475b-89c6-38455a000d86" type="AriCliModel.LabTest">
           <orm:reference uniqueId="f5f20753-2320-4753-b8d6-90718eb00755" />
         </orm:field>
@@ -2424,7 +2430,29 @@
           <orm:reference uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
         </orm:field>
         <orm:index name="idx_lab_test_assigned_lab_test_id">
-          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="ProcedureAssigned" update-schema="true" uniqueId="669ff2b1-3770-4746-99e6-88c50a28071b">
+        <orm:table name="procedure_assigned" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="procedureAssignedId" />
+        </orm:identity>
+        <orm:field name="procedureAssignedId" property="ProcedureAssignedId" uniqueId="01d847e3-389d-44b9-892d-192d1c010815" type="System.Int32" />
+        <orm:field name="procedureDate" property="ProcedureDate" uniqueId="06870633-3e8e-49f7-8edd-09a5dd27c3ba" type="System.DateTime" />
+        <orm:field name="comments" property="Comments" uniqueId="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" type="System.String" />
+        <orm:field name="procedure" property="Procedure" uniqueId="2cdf74f6-c184-4a89-8891-782b648bf15d" type="AriCliModel.Procedure">
+          <orm:reference uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" uniqueId="874d604f-7325-48cd-aa53-147918c1e60c" type="AriCliModel.Patient">
+          <orm:reference uniqueId="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" />
+        </orm:field>
+        <orm:index name="idx_procedure_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_procedure_assigned_procedure_id">
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
         </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -3329,10 +3357,23 @@
       <orm:table name="lab_test_assigned">
         <orm:column name="lab_test_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
-        <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+        <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
         <orm:index name="idx_lab_test_assigned_lab_test_id">
-          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.LabTest" target-field="labTestId" />
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="procedure_assigned">
+        <orm:column name="procedure_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="procedure_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_procedure_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_procedure_assigned_procedure_id">
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
         </orm:index>
       </orm:table>
     </orm:schema>
@@ -3953,6 +3994,9 @@
         <classHasNavigationalProperties Id="e84b86b0-6166-4a5e-be37-41dbf33f790c">
           <NavigationalProperty Id="dd8c22be-6828-4ed1-95d5-b735c32f868d" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0d519151-0574-4812-92e5-90ed71b69ea5">
+          <NavigationalProperty Id="b4aef2b7-c213-44c8-a405-07505b68ee03" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="228b0d09-c944-4c32-9ad0-8622e9062742" name="Customer" namespace="AriCliModel" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4445,6 +4489,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="858fe612-e321-45d3-889d-e59a97d3dbc4">
           <NavigationalProperty Id="257eaa1c-ce0f-4541-8efb-3db4bac2c350" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0abfb080-ebaa-4e6a-9330-a4a4be5c0909">
+          <NavigationalProperty Id="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5699,6 +5746,47 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="669ff2b1-3770-4746-99e6-88c50a28071b" name="ProcedureAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="01d847e3-389d-44b9-892d-192d1c010815" name="ProcedureAssignedId" type="System.Int32" label="ProcedureAssignedId : System.Int32" identity="true" />
+      <Property Id="06870633-3e8e-49f7-8edd-09a5dd27c3ba" name="ProcedureDate" type="DateTime" label="ProcedureDate : DateTime" />
+      <Property Id="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="4951c4db-281a-4887-8890-e19bbd5c9b84" SourceMultiplicity="ZeroOne" name="ProcedureAssignedHasProcedure">
+          <DomainClassMoniker name="/AriClinicContext/Procedure" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="dbbe9d40-3aa1-4e58-ba69-cdc3fcb3fe78">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Procedure/ProcedureAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="9586e145-936b-4ec1-9db9-03205a777bd6">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProcedureAssigned/Procedure" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" SourceMultiplicity="ZeroOne" name="ProcedureAssignedHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="60aad7af-d24a-4eb8-a203-2feede71427a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/ProcedureAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="1b46f02c-6959-4bff-9627-1ceecd8c9315">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProcedureAssigned/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="781e8300-0ac7-4f56-9466-d497269bb166">
+          <NavigationalProperty Id="2cdf74f6-c184-4a89-8891-782b648bf15d" name="Procedure" type="Procedure" label="Procedure : Procedure" nullable="true" kind="Persistent" fieldName="procedure" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3bc07df0-0fba-4bab-add7-234148ddfffd">
+          <NavigationalProperty Id="874d604f-7325-48cd-aa53-147918c1e60c" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -5758,6 +5846,7 @@
         <entitySetProperty name="ExaminationTypes" type="ExaminationType" label="ExaminationTypes : IQueryable&lt;ExaminationType&gt;" />
         <entitySetProperty name="Nomenclators" namespace="AriCliModel" type="Nomenclator" label="Nomenclators : IQueryable&lt;AriCliModel.Nomenclator&gt;" />
         <entitySetProperty name="LabTestAssigneds" type="LabTestAssigned" label="LabTestAssigneds : IQueryable&lt;LabTestAssigned&gt;" />
+        <entitySetProperty name="ProcedureAssigneds" type="ProcedureAssigned" label="ProcedureAssigneds : IQueryable&lt;ProcedureAssigned&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

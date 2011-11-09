@@ -488,6 +488,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<ProcedureAssigned> ProcedureAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ProcedureAssigned>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
