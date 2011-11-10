@@ -2439,9 +2439,16 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="procedureAssignedId" />
         </orm:identity>
-        <orm:field name="procedureAssignedId" property="ProcedureAssignedId" uniqueId="01d847e3-389d-44b9-892d-192d1c010815" type="System.Int32" />
-        <orm:field name="procedureDate" property="ProcedureDate" uniqueId="06870633-3e8e-49f7-8edd-09a5dd27c3ba" type="System.DateTime" />
-        <orm:field name="comments" property="Comments" uniqueId="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" type="System.String" />
+        <orm:discriminator discriminator-value="AriCliModel.ProcedureAssigned" />
+        <orm:field name="procedureAssignedId" property="ProcedureAssignedId" uniqueId="01d847e3-389d-44b9-892d-192d1c010815" type="System.Int32">
+          <orm:column name="procedure_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="procedureDate" property="ProcedureDate" uniqueId="06870633-3e8e-49f7-8edd-09a5dd27c3ba" type="System.DateTime">
+          <orm:column name="procedure_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" type="System.String">
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
         <orm:field name="procedure" property="Procedure" uniqueId="2cdf74f6-c184-4a89-8891-782b648bf15d" type="AriCliModel.Procedure">
           <orm:reference uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
         </orm:field>
@@ -2452,8 +2459,45 @@
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_procedure_assigned_procedure_id">
-          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
+      </orm:class>
+      <orm:class name="Biometry" update-schema="true" uniqueId="6c106c04-8b76-4549-a765-e030095e6bc7" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:table name="biometry" />
+        <orm:identity />
+        <orm:discriminator discriminator-value="AriCliModel.Biometry" />
+        <orm:field name="formula" property="Formula" uniqueId="02f5612d-a3b1-4674-990d-72e47a53b90e" type="System.String" />
+        <orm:field name="lioLeftEye" property="LioLeftEye" uniqueId="e9ade122-9369-4f51-a561-c4332cf4981d" type="System.Decimal" />
+        <orm:field name="lioRightEye" property="LioRightEye" uniqueId="45bffae1-91a9-4574-8208-0b664286c5e4" type="System.Decimal" />
+        <orm:field name="alxLeftEye" property="AlxLeftEye" uniqueId="f145ff3b-2fec-405f-9151-3c288bcf0d62" type="System.Decimal" />
+        <orm:field name="alxRightEye" property="AlxRightEye" uniqueId="35e00f18-de58-4003-a315-3e0c3246c1f8" type="System.Decimal" />
+      </orm:class>
+      <orm:class name="Paquimetry" update-schema="true" uniqueId="6570c076-f0fb-4256-95fa-901c680a157a" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:table name="paquimetry" />
+        <orm:identity />
+        <orm:discriminator discriminator-value="AriCliModel.Paquimetry" />
+        <orm:field name="rightEyeCentralC0" property="RightEyeCentralC0" uniqueId="e90232ca-a26b-4850-8385-b1368b3eef57" type="System.Decimal" />
+        <orm:field name="rightEyeC1" property="RightEyeC1" uniqueId="3173f4d7-eb96-42fa-b5b2-2e2701553c5c" type="System.Decimal" />
+        <orm:field name="rightEyeC3" property="RightEyeC3" uniqueId="b8f6c365-d831-42ae-af36-579c29d3d53c" type="System.Decimal" />
+        <orm:field name="rightEyeC5" property="RightEyeC5" uniqueId="d2c78a32-e9a6-46f9-bef1-d3727891fe9e" type="System.Decimal" />
+        <orm:field name="rightEyeC7" property="RightEyeC7" uniqueId="9ebe79c8-e44d-40c2-a52f-f8af15f8d2a7" type="System.Decimal" />
+        <orm:field name="leftEyeCentralC0" property="LeftEyeCentralC0" uniqueId="5cebc0b6-6f29-4e26-8f99-afd29ec34301" type="System.Decimal" />
+        <orm:field name="leftEyeC1" property="LeftEyeC1" uniqueId="1ed3584e-42ef-4c05-a7a0-7c0acd28ac33" type="System.Decimal" />
+        <orm:field name="leftEyeC3" property="LeftEyeC3" uniqueId="d90a5519-9a9c-435c-bd37-3af827408ee5" type="System.Decimal" />
+        <orm:field name="leftEyeC5" property="LeftEyeC5" uniqueId="57868baa-d8a9-4a4f-a393-137e6a3c7bd6" type="System.Decimal" />
+        <orm:field name="leftEyeC7" property="LeftEyeC7" uniqueId="d0116777-ca74-4c49-ba2d-c13e2a4c1711" type="System.Decimal" />
+      </orm:class>
+      <orm:class name="Topography" update-schema="true" uniqueId="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:identity />
+        <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
+        <orm:field name="rightEyeK1" property="RightEyeK1" uniqueId="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" type="System.Decimal" />
+        <orm:field name="rightEyeKL" property="RightEyeKL" uniqueId="2b06b38c-b191-42e2-8171-f1f86f1b111c" type="System.Decimal" />
+        <orm:field name="rightEyeAstig" property="RightEyeAstig" uniqueId="723a00d8-6aa5-4910-b1c2-52ed150cbc19" type="System.Decimal" />
+        <orm:field name="rightEyeAxis" property="RightEyeAxis" uniqueId="a4c5291d-ef65-4787-b890-f0af98cf81fd" type="System.Decimal" />
+        <orm:field name="leftEyeK1" property="LeftEyeK1" uniqueId="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" type="System.Decimal" />
+        <orm:field name="leftEyeKL" property="LeftEyeKL" uniqueId="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" type="System.Decimal" />
+        <orm:field name="leftEyeAstig" property="LeftEyeAstig" uniqueId="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" type="System.Decimal" />
+        <orm:field name="leftEyeAxis" property="LeftEyeAxis" uniqueId="919bda7b-26da-413f-8a15-f42e6bb705a2" type="System.Decimal" />
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="Decimal" />
@@ -3367,14 +3411,41 @@
         <orm:column name="procedure_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="procedure_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
-        <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
+        <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:index name="idx_procedure_assigned_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_procedure_assigned_procedure_id">
-          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" target-class="AriCliModel.Procedure" target-field="procedureId" />
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
+      </orm:table>
+      <orm:table name="biometry">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="formula" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="lio_left_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="lio_right_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="alx_left_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="alx_right_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:constraint name="ref_biometry_examination_assigned" destination-table="examination_assigned">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="paquimetry">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="right_eye_central_c0" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c1" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c3" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c5" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c7" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_central_c0" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c1" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c3" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c5" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c7" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:constraint name="ref_paquimetry_examination_assigned" destination-table="examination_assigned">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -5089,6 +5160,15 @@
         <inheritance Id="807f1f44-44d0-4cdd-8243-dbd4f6011845">
           <DomainClassMoniker name="/AriClinicContext/Refractometry" />
         </inheritance>
+        <inheritance Id="39fb8909-e8cc-4f53-b9ca-2a9211e6a5d2">
+          <DomainClassMoniker name="/AriClinicContext/Biometry" />
+        </inheritance>
+        <inheritance Id="422a3621-2b81-43e6-b404-c51c656000b4">
+          <DomainClassMoniker name="/AriClinicContext/Paquimetry" />
+        </inheritance>
+        <inheritance Id="345bee5a-0e3c-4c9b-b41f-5ccc3fdd1e4d">
+          <DomainClassMoniker name="/AriClinicContext/Topography" />
+        </inheritance>
       </inheritors>
       <AssociationTargets>
         <Association Id="67479349-596c-45e3-99a2-55ac07e739b6" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasExamination">
@@ -5787,6 +5867,35 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="6c106c04-8b76-4549-a765-e030095e6bc7" name="Biometry" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="02f5612d-a3b1-4674-990d-72e47a53b90e" name="Formula" label="Formula : String" />
+      <Property Id="e9ade122-9369-4f51-a561-c4332cf4981d" name="LioLeftEye" type="Decimal" label="LioLeftEye : Decimal" />
+      <Property Id="45bffae1-91a9-4574-8208-0b664286c5e4" name="LioRightEye" type="Decimal" label="LioRightEye : Decimal" />
+      <Property Id="f145ff3b-2fec-405f-9151-3c288bcf0d62" name="AlxLeftEye" type="Decimal" label="AlxLeftEye : Decimal" />
+      <Property Id="35e00f18-de58-4003-a315-3e0c3246c1f8" name="AlxRightEye" type="Decimal" label="AlxRightEye : Decimal" />
+    </DomainClass>
+    <DomainClass Id="6570c076-f0fb-4256-95fa-901c680a157a" name="Paquimetry" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="e90232ca-a26b-4850-8385-b1368b3eef57" name="RightEyeCentralC0" type="Decimal" label="RightEyeCentralC0 : Decimal" />
+      <Property Id="3173f4d7-eb96-42fa-b5b2-2e2701553c5c" name="RightEyeC1" type="Decimal" label="RightEyeC1 : Decimal" />
+      <Property Id="b8f6c365-d831-42ae-af36-579c29d3d53c" name="RightEyeC3" type="Decimal" label="RightEyeC3 : Decimal" />
+      <Property Id="d2c78a32-e9a6-46f9-bef1-d3727891fe9e" name="RightEyeC5" type="Decimal" label="RightEyeC5 : Decimal" />
+      <Property Id="9ebe79c8-e44d-40c2-a52f-f8af15f8d2a7" name="RightEyeC7" type="Decimal" label="RightEyeC7 : Decimal" />
+      <Property Id="5cebc0b6-6f29-4e26-8f99-afd29ec34301" name="LeftEyeCentralC0" type="Decimal" label="LeftEyeCentralC0 : Decimal" />
+      <Property Id="1ed3584e-42ef-4c05-a7a0-7c0acd28ac33" name="LeftEyeC1" type="Decimal" label="LeftEyeC1 : Decimal" />
+      <Property Id="d90a5519-9a9c-435c-bd37-3af827408ee5" name="LeftEyeC3" type="Decimal" label="LeftEyeC3 : Decimal" />
+      <Property Id="57868baa-d8a9-4a4f-a393-137e6a3c7bd6" name="LeftEyeC5" type="Decimal" label="LeftEyeC5 : Decimal" />
+      <Property Id="d0116777-ca74-4c49-ba2d-c13e2a4c1711" name="LeftEyeC7" type="Decimal" label="LeftEyeC7 : Decimal" />
+    </DomainClass>
+    <DomainClass Id="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" name="Topography" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" name="RightEyeK1" type="Decimal" label="RightEyeK1 : Decimal" />
+      <Property Id="2b06b38c-b191-42e2-8171-f1f86f1b111c" name="RightEyeKL" type="Decimal" label="RightEyeKL : Decimal" />
+      <Property Id="723a00d8-6aa5-4910-b1c2-52ed150cbc19" name="RightEyeAstig" type="Decimal" label="RightEyeAstig : Decimal" />
+      <Property Id="a4c5291d-ef65-4787-b890-f0af98cf81fd" name="RightEyeAxis" type="Decimal" label="RightEyeAxis : Decimal" />
+      <Property Id="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" name="LeftEyeK1" type="Decimal" label="LeftEyeK1 : Decimal" />
+      <Property Id="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" name="LeftEyeKL" type="Decimal" label="LeftEyeKL : Decimal" />
+      <Property Id="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" name="LeftEyeAstig" type="Decimal" label="LeftEyeAstig : Decimal" />
+      <Property Id="919bda7b-26da-413f-8a15-f42e6bb705a2" name="LeftEyeAxis" type="Decimal" label="LeftEyeAxis : Decimal" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -5847,6 +5956,9 @@
         <entitySetProperty name="Nomenclators" namespace="AriCliModel" type="Nomenclator" label="Nomenclators : IQueryable&lt;AriCliModel.Nomenclator&gt;" />
         <entitySetProperty name="LabTestAssigneds" type="LabTestAssigned" label="LabTestAssigneds : IQueryable&lt;LabTestAssigned&gt;" />
         <entitySetProperty name="ProcedureAssigneds" type="ProcedureAssigned" label="ProcedureAssigneds : IQueryable&lt;ProcedureAssigned&gt;" />
+        <entitySetProperty name="Biometries" type="Biometry" label="Biometries : IQueryable&lt;Biometry&gt;" />
+        <entitySetProperty name="Paquimetries" type="Paquimetry" label="Paquimetries : IQueryable&lt;Paquimetry&gt;" />
+        <entitySetProperty name="Topographies" type="Topography" label="Topographies : IQueryable&lt;Topography&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

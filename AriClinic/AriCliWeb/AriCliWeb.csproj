@@ -158,6 +158,20 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProcedureAssignedForm.aspx.cs">
+      <DependentUpon>ProcedureAssignedForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcedureAssignedForm.aspx.designer.cs">
+      <DependentUpon>ProcedureAssignedForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureAssignedGrid.aspx.cs">
+      <DependentUpon>ProcedureAssignedGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcedureAssignedGrid.aspx.designer.cs">
+      <DependentUpon>ProcedureAssignedGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LabTestAssignedForm.aspx.cs">
       <DependentUpon>LabTestAssignedForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -895,6 +909,8 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="ProcedureAssignedForm.aspx" />
+    <Content Include="ProcedureAssignedGrid.aspx" />
     <Content Include="LabTestAssignedForm.aspx" />
     <Content Include="LabTestAssignedGrid.aspx" />
     <Content Include="images\error_16.png" />
@@ -1143,7 +1159,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

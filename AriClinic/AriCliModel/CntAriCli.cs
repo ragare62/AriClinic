@@ -1430,5 +1430,16 @@ namespace AriCliModel
                     where la.LabTestAssignedId == id
                     select la).FirstOrDefault<LabTestAssigned>();
         }
+        public static IList<ProcedureAssigned> GetProcedureAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    select la).ToList<ProcedureAssigned>();
+        }
+        public static ProcedureAssigned GetProcedureAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    where la.ProcedureAssignedId == id
+                    select la).FirstOrDefault<ProcedureAssigned>();
+        }
     }
 }

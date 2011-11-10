@@ -496,6 +496,30 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Biometry> Biometries 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Biometry>();
+	    	}
+		}
+		
+		public IQueryable<Paquimetry> Paquimetries 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Paquimetry>();
+	    	}
+		}
+		
+		public IQueryable<Topography> Topographies 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Topography>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
