@@ -272,6 +272,10 @@ height: 30px;
               var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=900, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchProcedureAssigned() {
+              var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -459,6 +463,9 @@ height: 30px;
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Pruebas laboratorio asignadas" 
                             Value="labtestassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
+                            Value="procedureassigned">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

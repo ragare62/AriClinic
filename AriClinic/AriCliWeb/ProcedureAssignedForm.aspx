@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Prueba de laboratorio
+      Procedimiento
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -87,7 +87,7 @@
               <td colspan="2">
                 <div id="TitleArea" class="titleBar2">
                   <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-                  <asp:Label ID="lblTitle" runat="server" Text="Prueba de laboratorio"></asp:Label>
+                  <asp:Label ID="lblTitle" runat="server" Text="Procedimiento"></asp:Label>
                 </div>
               </td>
             </tr>
@@ -138,12 +138,7 @@
                 </div>
               </td>
               <td>
-                <div id="Value" class="normalText" style="padding:5px">
-                    <asp:Label ID="lblValue" runat="server" Text="Resultado:"></asp:Label>
-                    <br />
-                    <telerik:RadTextBox ID="txtValue" runat="server" Width="100%">
-                    </telerik:RadTextBox>
-                </div>
+
               </td>
             </tr>
             <tr>

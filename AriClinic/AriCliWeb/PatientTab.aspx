@@ -89,6 +89,8 @@
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Analíticas" Value="labtestassigned">
                             </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Procedimientos" Value="procedureassigned">
+                            </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Citas" Value="appointment">

@@ -111,8 +111,8 @@
               </td>
               <td>
                 <div id="LabTestDate" class="normalText" style="padding:5px">
-                  <asp:Label ID="lblLabTestDate" runat="server" Text="Fecha del diagnóstico:" 
-                             ToolTip="Fecha en la que se diagnosticó"></asp:Label>
+                  <asp:Label ID="lblLabTestDate" runat="server" Text="Fecha de la prueba" 
+                             ToolTip="Fecha en la que se realizó la prueba."></asp:Label>
                   <br />
                   <telerik:RadDatePicker ID="rdpLabTestDate" runat="server" Width="100%">
                   </telerik:RadDatePicker>

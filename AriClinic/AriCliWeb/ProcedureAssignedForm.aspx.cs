@@ -19,8 +19,8 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
     Procedure procedure = null;
     ProcedureAssigned procedureAssigned = null;
     Patient patient = null;
-    int labTestId = 0;
-    int labTestcAssignedId = 0;
+    int procedureId = 0;
+    int procedureAssignedId = 0;
     int patientId = 0;
 
     Permission per = null;
@@ -38,7 +38,7 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
             user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "labtestassigned"
+                            where p.Code == "procedureassigned"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
@@ -47,8 +47,8 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
         // 
         if (Request.QueryString["ProcedureAssignedId"] != null)
         {
-            labTestcAssignedId = Int32.Parse(Request.QueryString["ProcedureAssignedId"]);
-            procedureAssigned = CntAriCli.GetProcedureAssigned(labTestcAssignedId, ctx);
+            procedureAssignedId = Int32.Parse(Request.QueryString["ProcedureAssignedId"]);
+            procedureAssigned = CntAriCli.GetProcedureAssigned(procedureAssignedId, ctx);
             LoadData(procedureAssigned);
         }
         else
@@ -130,14 +130,6 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
-        if (txtValue.Text == "")
-        {
-            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.ValueNeeded);
-            RadAjaxManager1.ResponseScripts.Add(command);
-            return false;
-        }
         // 
         procedure = CntAriCli.GetProcedure(int.Parse(rdcProcedure.SelectedValue), ctx);
 
@@ -156,35 +148,35 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
         }
         else
         {
-            procedure = CntAriCli.GetProcedure(labTestId, ctx);
+            procedure = CntAriCli.GetProcedure(procedureId, ctx);
             UnloadData(procedureAssigned);
         }
         ctx.SaveChanges();
         return true;
     }
 
-    protected void LoadData(ProcedureAssigned lta)
+    protected void LoadData(ProcedureAssigned pra)
     {
         // Load patient data
         rdcPatient.Items.Clear();
-        rdcPatient.Items.Add(new RadComboBoxItem(lta.Patient.FullName, lta.Patient.PersonId.ToString()));
-        rdcPatient.SelectedValue = lta.Patient.PersonId.ToString();
+        rdcPatient.Items.Add(new RadComboBoxItem(pra.Patient.FullName, pra.Patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = pra.Patient.PersonId.ToString();
 
-        // Load diagnostic data
+        // Load procedure data
         rdcProcedure.Items.Clear();
-        rdcProcedure.Items.Add(new RadComboBoxItem(lta.Procedure.Name, lta.Procedure.ProcedureId.ToString()));
-        rdcProcedure.SelectedValue = lta.Procedure.ProcedureId.ToString();
+        rdcProcedure.Items.Add(new RadComboBoxItem(pra.Procedure.Name, pra.Procedure.ProcedureId.ToString()));
+        rdcProcedure.SelectedValue = pra.Procedure.ProcedureId.ToString();
 
-        rdpProcedureDate.SelectedDate = lta.ProcedureDate;
-        txtComments.Text = lta.Comments;
+        rdpProcedureDate.SelectedDate = pra.ProcedureDate;
+        txtComments.Text = pra.Comments;
     }
 
-    protected void UnloadData(ProcedureAssigned lta)
+    protected void UnloadData(ProcedureAssigned pra)
     {
-        lta.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
-        lta.ProcedureDate = (DateTime)rdpProcedureDate.SelectedDate;
-        lta.Procedure = CntAriCli.GetProcedure(int.Parse(rdcProcedure.SelectedValue), ctx);
-        lta.Comments = txtComments.Text;
+        pra.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        pra.ProcedureDate = (DateTime)rdpProcedureDate.SelectedDate;
+        pra.Procedure = CntAriCli.GetProcedure(int.Parse(rdcProcedure.SelectedValue), ctx);
+        pra.Comments = txtComments.Text;
     }
 
     #endregion Auxiliary functions

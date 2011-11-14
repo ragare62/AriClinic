@@ -30,7 +30,7 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
             user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "diagnosticassigned"
+                            where p.Code == "procedureassigned"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
@@ -121,9 +121,6 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
             command = String.Format("ariDialog('Procedureos asignados','{0}','prompt',null,0,0)", message);
             imgb.Visible = per.Create;
 
-            // showing the value
-            ProcedureAssigned lt = CntAriCli.GetProcedureAssigned(id, ctx);
-            Label lb = (Label)e.Item.FindControl("lblValue");
 
         }
     }

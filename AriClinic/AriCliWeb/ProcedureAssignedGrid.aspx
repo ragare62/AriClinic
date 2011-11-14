@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Pruebas de laboratorio asignadas
+      Procedimientos asignados
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -44,23 +44,23 @@
           }
           function NewProcedureAssignedRecord()
           {
-              var w1 = window.open("ProcedureAssignedForm.aspx", "LBTAR", "width=600, height=500,resizable=1");
+              var w1 = window.open("ProcedureAssignedForm.aspx", "PROASS", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditProcedureAssignedRecord(id)
           {
-              var w2 = window.open("ProcedureAssignedForm.aspx?ProcedureAssignedId=" + id, "LBTAR", "width=600, height=500,resizable=1");
+              var w2 = window.open("ProcedureAssignedForm.aspx?ProcedureAssignedId=" + id, "PROASS", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function NewProcedureAssignedRecordInTab()
           {
-              var w1 = window.open("ProcedureAssignedForm.aspx?PatientId=" + gup('PatientId'), "LBTAR", "width=600, height=500,resizable=1");
+              var w1 = window.open("ProcedureAssignedForm.aspx?PatientId=" + gup('PatientId'), "PROASS", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditProcedureAssignedRecordInTab(id)
           {
               var w2 = window.open("ProcedureAssignedForm.aspx?PatientId=" + gup('PatientId') + 
-                                   "&ProcedureAssignedId=" + id, "LBTAR", "width=600, height=500,resizable=1");
+                                   "&ProcedureAssignedId=" + id, "PROASS", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -127,7 +127,7 @@
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
         <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          <asp:Label ID="lblTitle" runat="server" Text="Diagnósticos asignados" 
+          <asp:Label ID="lblTitle" runat="server" Text="Procedimientos asignados" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
 
@@ -168,23 +168,17 @@
                                          SortExpression="ProcedureDate" UniqueName="ProcedureDate">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Procedure.Name" 
-                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
-                                         HeaderText="Prueba" 
+                                         FilterControlToolTip="Filtrar por procedimento" FilterImageToolTip="Filtro"
+                                         HeaderText="Procedimiento" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="Procedure.Name" UniqueName="Procedure.Name">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Procedure.UnitType.Name" 
-                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
-                                         HeaderText="Unidades" 
+                <telerik:GridBoundColumn DataField="Comments" 
+                                         FilterControlToolTip="Filtrar por comentarios" FilterImageToolTip="Filtro"
+                                         HeaderText="Comentarios" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Procedure.UnitType" UniqueName="Procedure.UnitType">
+                                         SortExpression="Comments" UniqueName="Comments">
                 </telerik:GridBoundColumn>
-                <telerik:GridTemplateColumn UniqueName="Value" HeaderText="Valor">
-                    <ItemTemplate>
-                     <asp:Label ID="lblValue" runat="server"></asp:Label>
-                    </ItemTemplate>
-                </telerik:GridTemplateColumn>
-
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                                             meta:resourceKey="GridTemplateColumnResource1" UniqueName="Template">

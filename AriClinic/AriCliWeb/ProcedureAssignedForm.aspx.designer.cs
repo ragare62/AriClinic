@@ -174,24 +174,6 @@ public partial class ProcedureAssignedForm {
     protected global::Telerik.Web.UI.RadComboBox rdcProcedure;
     
     /// <summary>
-    /// lblValue control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblValue;
-    
-    /// <summary>
-    /// txtValue control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadTextBox txtValue;
-    
-    /// <summary>
     /// lblComments control.
     /// </summary>
     /// <remarks>
