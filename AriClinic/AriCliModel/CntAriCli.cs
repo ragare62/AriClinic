@@ -1452,5 +1452,18 @@ namespace AriCliModel
                     where l.VisitReasonId == id
                     select l).FirstOrDefault<VisitReason>();
         }
+        public static IList<Visit> GetVisits(AriClinicContext ctx)
+        {
+            return (from l in ctx.Visits
+                    select l).ToList<Visit>();
+        }
+        public static Visit GetVisit(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.Visits
+                    where l.VisitId == id
+                    select l).FirstOrDefault<Visit>();
+        }
+
+    
     }
 }
