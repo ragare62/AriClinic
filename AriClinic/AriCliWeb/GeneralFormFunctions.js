@@ -107,7 +107,7 @@ function searchExamination(arg)
     }
     else
     {
-        w1 = window.open("ExaminationGrid.aspx?Type=S&GT=" + arg, "EXAMBYTYPE", "width=500,height=400,resizable=1");
+        w1 = window.open("ExaminationGrid.aspx?Type=S&ET=" + arg, "EXAMBYTYPE", "width=500,height=400,resizable=1");
     }
     w1.focus;
 }

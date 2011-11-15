@@ -1,17 +1,18 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AppointmentGrid.aspx.cs" Inherits="AppointmentGrid" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VisitReasonGrid.aspx.cs" Inherits="VisitReasonGrid" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Citas
+      Motivos de visita
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
+    <link href="dialog_box.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   </head>
-  <body>
+  <body id="content">
     <form id="form1" runat="server">
       <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
         <Scripts>
@@ -26,9 +27,7 @@
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
-        <script type="text/javascript" src="GeneralFormFunctions.js"></script>
         <script type="text/javascript">
-          //Put your JavaScript code here.
           // In order to show item changes in the grid
           function refreshGrid(arg)
           {
@@ -42,24 +41,14 @@
                   $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("new");
               }
           }
-          function NewAppointmentRecord()
+          function NewVisitReasonRecord()
           {
-              var w1 = window.open("AppointmentForm.aspx", null, "width=600, height=500,resizable=1");
+              var w1 = window.open("VisitReasonForm.aspx", null, "width=450, height=320,resizable=1");
               w1.focus();
           }
-          function EditAppointmentRecord(id)
+          function EditVisitReasonRecord(id)
           {
-              var w2 = window.open("AppointmentForm.aspx?AppointmentId=" + id, null, "width=600, height=500,resizable=1");
-              w2.focus();
-          }
-          function NewAppointmentRecordInTab() {
-              var w1 = window.open("AppointmentForm.aspx?CustomerId=" + gup('CustomerId') + "&PatientId=" + gup('PatientId')
-                                   , "apptb_nr", "width=600, height=500,resizable=1");
-              w1.focus();
-          }
-          function EditAppointmentRecordInTab(id) {
-              var w2 = window.open("AppointmentForm.aspx?CustomerId=" + gup('CustomerId') + +"&PatientId=" + gup('PatientId')
-                                   + "&AppointmentId=" + id, "apptb_er", "width=600, height=500,resizable=1");
+              var w2 = window.open("VisitReasonForm.aspx?VisitReasonId=" + id, null, "width=450, height=320,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -74,14 +63,36 @@
               return false;
           }
         </script>
+                <script type="text/javascript" src="dialog_box.js">
+        </script>
+        <script type="text/javascript">
+            function ariDialog(title, message, type, modal, width, height) {
+                showDialog(title, message, type, modal, width, height);
+                setTimeout("ObtainSelected()", 100);
+            }
+
+            function ObtainSelected(tag) {
+                if (DLGRESULT == 0)
+                    setTimeout("ObtainSelected()", 100); // continue asking
+                else if (DLGRESULT == 1) // accept
+                {
+                    //process value
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("yes");
+                }
+                else //cancel;
+                {
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("no");
+                }
+                return;
+            }
+        </script>
       </telerik:RadScriptBlock>
       <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                  AutoTooltipify="True" RelativeTo="Element" 
                                  Position="TopCenter" meta:resourcekey="RadToolTipManager1Resource1" >
       </telerik:RadToolTipManager>
       <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Runat="server" 
-                                   Skin="Office2007" 
-                                   meta:resourcekey="RadAjaxLoadingPanel1Resource1">
+                                   Skin="Office2007">
       </telerik:RadAjaxLoadingPanel>
       <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
                               onajaxrequest="RadAjaxManager1_AjaxRequest" 
@@ -96,18 +107,19 @@
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
       </telerik:RadSkinManager>
-
+        <div ></div>
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" 
                             HorizontalAlign="NotSet" 
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
-        <div id="TitleArea" runat="server" class="titleBar2">
+        <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           
-          <asp:Label ID="lblTitle" runat="server" Text="Citas" 
+          <asp:Label ID="lblTitle" runat="server" Text="Motivos de visita" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+
         <div id="GridArea" class="normalText" style="width:100%">
-          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" PageSize="6" 
+          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" 
                            AllowPaging="True" AllowFilteringByColumn="True" 
                            AllowSorting="True" ShowGroupPanel="True"
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
@@ -117,65 +129,24 @@
             <ClientSettings AllowDragToGroup="True">
             </ClientSettings>
             <MasterTableView AutoGenerateColumns="False" CommandItemDisplay="Top" 
-                             DataKeyNames="AppointmentId">
+                             DataKeyNames="VisitReasonId">
               <CommandItemSettings ExportToPdfText="Export to Pdf" />
               <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
               </RowIndicatorColumn>
               <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
               </ExpandCollapseColumn>
-              <Columns> 
-                <telerik:GridBoundColumn DataField="AppointmentId" DataType="System.Int32" 
+              <Columns>
+                <telerik:GridBoundColumn DataField="VisitReasonId" DataType="System.Int32" 
                                          FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
                                          HeaderText="ID" 
                                          meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
-                                         SortExpression="AppointmentId" UniqueName="AppointmentId" 
-                                         FilterControlAltText="Filter AppointmentId column">
+                                         SortExpression="VisitReasonId" UniqueName="VisitReasonId">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Diary.Name" 
+                <telerik:GridBoundColumn DataField="Name" 
                                          FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
-                                         HeaderText="Agenda" 
+                                         HeaderText="Motivo" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Diary" UniqueName="Diary" 
-                                         FilterControlAltText="Filter Name column">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Patient.FullName" 
-                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
-                                         HeaderText="Paciente" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Patient" UniqueName="Patient" 
-                                         FilterControlAltText="Filter Name column">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="AppointmentType.Name" 
-                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
-                                         HeaderText="Tipo de cita" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="AppointmentType" UniqueName="AppointmentType" 
-                                         FilterControlAltText="Filter Name column">
-                </telerik:GridBoundColumn>
-
-
-                <telerik:GridBoundColumn DataField="BeginDateTime" 
-                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro" 
-                                         DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy hh:mm}"
-                                         HeaderText="Inicio" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="BeginDateTime" UniqueName="BeginDateTime" 
-                                         FilterControlAltText="Filter Name column">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="EndDateTime" 
-                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro" 
-                                         DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy hh:mm}"
-                                         HeaderText="Final" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="EndDateTime" UniqueName="EndDateTime" 
-                                         FilterControlAltText="Filter Name column">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Duration" 
-                                         FilterControlToolTip="Filtrar por duración" FilterImageToolTip="Filtro"
-                                         HeaderText="Duración" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="Duration" UniqueName="Duration" 
-                                         FilterControlAltText="Filter Name column">
+                                         SortExpression="Name" UniqueName="Name">
                 </telerik:GridBoundColumn>
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
@@ -184,7 +155,6 @@
                     <asp:ImageButton ID="Select" runat="server" 
                                      ImageUrl="~/images/document_gear_16.png" meta:resourceKey="SelectResource1" 
                                      ToolTip="Seleccionar este registro y volver con su información" />
-
                     <asp:ImageButton ID="Edit" runat="server" 
                                      ImageUrl="~/images/document_edit_16.png" meta:resourceKey="EditResource1" 
                                      ToolTip="Editar este registro" />
@@ -201,7 +171,7 @@
               <CommandItemTemplate>
                 <div ID="ButtonAdd" style="padding:2px;">
                   <asp:ImageButton ID="New" runat="server" ImageUrl="~/images/document_add.png" 
-                                   meta:resourceKey="NewResource1" OnClientClick="NewAppointmentRecord();" 
+                                   meta:resourceKey="NewResource1" OnClientClick="NewVisitReasonRecord();" 
                                    ToolTip="Añadir un nuevo registro" />
                   <asp:ImageButton ID="Exit" runat="server" ImageUrl="~/images/document_out.png" 
                                    meta:resourceKey="ExitResource1" OnClientClick="CloseWindow();" 
@@ -215,6 +185,7 @@
             </HeaderContextMenu>
           </telerik:RadGrid>
         </div>
+
         <div id="Separator">
           &nbsp;
         </div>

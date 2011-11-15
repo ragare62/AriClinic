@@ -22,7 +22,7 @@ namespace AriCliModel
 	public partial class AppointmentInfo
 	{
 		private int appointmentId;
-		public virtual int Appointment_id 
+		public virtual int AppointmentId 
 		{ 
 		    get
 		    {
@@ -222,6 +222,15 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.childrenAppointments;
+		    }
+		}
+		
+		private IList<Visit> visits = new List<Visit>();
+		public virtual IList<Visit> Visits 
+		{ 
+		    get
+		    {
+		        return this.visits;
 		    }
 		}
 		

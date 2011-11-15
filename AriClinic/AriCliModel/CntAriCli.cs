@@ -1068,7 +1068,7 @@ namespace AriCliModel
         public static AppointmentInfo GetAppointment(int id, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.Appointment_id == id
+                    where a.AppointmentId == id
                     select a).FirstOrDefault<AppointmentInfo>();
         }
 
@@ -1440,6 +1440,17 @@ namespace AriCliModel
             return (from la in ctx.ProcedureAssigneds
                     where la.ProcedureAssignedId == id
                     select la).FirstOrDefault<ProcedureAssigned>();
+        }
+        public static IList<VisitReason> GetVisitReasons(AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    select l).ToList<VisitReason>();
+        }
+        public static VisitReason GetVisitReason(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    where l.VisitReasonId == id
+                    select l).FirstOrDefault<VisitReason>();
         }
     }
 }

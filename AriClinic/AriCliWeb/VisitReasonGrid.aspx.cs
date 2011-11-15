@@ -5,15 +5,14 @@ using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
 
-public partial class ExaminationGrid : System.Web.UI.Page 
+public partial class VisitReasonGrid : System.Web.UI.Page 
 {
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
     string type = "";
-    string gt = ""; // internal type 
     Permission per = null;
-    int examinationId = 0;
+    int visiReasonId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -27,15 +26,13 @@ public partial class ExaminationGrid : System.Web.UI.Page
             user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "examination"
+                            where p.Code == "visitreason"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
-        if (Request.QueryString["ET"] != null)
-            gt = Request.QueryString["ET"];
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -56,7 +53,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RefreshGrid(false);
+        RadGrid1.DataSource = CntAriCli.GetVisitReasons(ctx);
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -85,20 +82,20 @@ public partial class ExaminationGrid : System.Web.UI.Page
                                     , null
                                     , name
                                     , null
-                                    , "Examination");
+                                    , "VisitReason");
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditExaminationRecord({0});", id);
+            command = String.Format("return EditVisitReasonRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
             string message = Resources.GeneralResource.DeleteRecordQuestion;
             message = String.Format("{0}<br/>{1}", message, name);
-            command = String.Format("ariDialog('Examinations','{0}','prompt',null,0,0)", message);
+            command = String.Format("ariDialog('VisitReasons','{0}','prompt',null,0,0)", message);
             imgb.Visible = per.Create;
         }
     }
@@ -137,7 +134,7 @@ public partial class ExaminationGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-            RefreshGrid(true);
+            RefreshGrid();
             if (e.Argument == "new")
             {
                 RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
@@ -149,13 +146,13 @@ public partial class ExaminationGrid : System.Web.UI.Page
                 {
                     try
                     {
-                        examinationId = (int)Session["DeleteId"];
-                        Examination ser = (from s in ctx.Examinations
-                                       where s.ExaminationId == examinationId
-                                       select s).FirstOrDefault<Examination>();
+                        visiReasonId = (int)Session["DeleteId"];
+                        VisitReason ser = (from s in ctx.VisitReasons
+                                       where s.VisitReasonId == visiReasonId
+                                       select s).FirstOrDefault<VisitReason>();
                         ctx.Delete(ser);
                         ctx.SaveChanges();
-                        RefreshGrid(true);
+                        RefreshGrid();
                         Session["DeleteId"] = null;
                     }
                     catch (Exception ex)
@@ -171,13 +168,9 @@ public partial class ExaminationGrid : System.Web.UI.Page
 
     }
 
-    protected void RefreshGrid(bool rebind)
+    protected void RefreshGrid()
     {
-        if (gt == "")
-            RadGrid1.DataSource = CntAriCli.GetExaminations(ctx);
-        else
-            RadGrid1.DataSource = CntAriCli.GetExaminations(gt, ctx);
-        if (rebind)
-            RadGrid1.Rebind();
+        RadGrid1.DataSource = CntAriCli.GetVisitReasons(ctx);
+        RadGrid1.Rebind();
     }
 }

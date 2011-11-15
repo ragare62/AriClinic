@@ -19,105 +19,96 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class Patient : Person
+	public partial class Visit
 	{
-		private string name;
-		public virtual string Name 
+		private int visitId;
+		public virtual int VisitId 
 		{ 
 		    get
 		    {
-		        return this.name;
+		        return this.visitId;
 		    }
 		    set
 		    {
-		        this.name = value;
+		        this.visitId = value;
 		    }
 		}
 		
-		private string surname1;
-		public virtual string Surname1 
+		private DateTime visitDate;
+		public virtual DateTime VisitDate 
 		{ 
 		    get
 		    {
-		        return this.surname1;
+		        return this.visitDate;
 		    }
 		    set
 		    {
-		        this.surname1 = value;
+		        this.visitDate = value;
 		    }
 		}
 		
-		private string surname2;
-		public virtual string Surname2 
+		private string comments;
+		public virtual string Comments 
 		{ 
 		    get
 		    {
-		        return this.surname2;
+		        return this.comments;
 		    }
 		    set
 		    {
-		        this.surname2 = value;
+		        this.comments = value;
 		    }
 		}
 		
-		private DateTime bornDate;
-		public virtual DateTime BornDate 
+		private VisitReason visitReason;
+		public virtual VisitReason VisitReason 
 		{ 
 		    get
 		    {
-		        return this.bornDate;
+		        return this.visitReason;
 		    }
 		    set
 		    {
-		        this.bornDate = value;
+		        this.visitReason = value;
 		    }
 		}
 		
-		private string sex;
-		public virtual string Sex 
+		private Patient patient;
+		public virtual Patient Patient 
 		{ 
 		    get
 		    {
-		        return this.sex;
+		        return this.patient;
 		    }
 		    set
 		    {
-		        this.sex = value;
+		        this.patient = value;
 		    }
 		}
 		
-		private int oftId;
-		public virtual int OftId 
+		private AppointmentInfo appointmentInfo;
+		public virtual AppointmentInfo AppointmentInfo 
 		{ 
 		    get
 		    {
-		        return this.oftId;
+		        return this.appointmentInfo;
 		    }
 		    set
 		    {
-		        this.oftId = value;
+		        this.appointmentInfo = value;
 		    }
 		}
 		
-		private Customer customer;
-		public virtual Customer Customer 
+		private Professional professional;
+		public virtual Professional Professional 
 		{ 
 		    get
 		    {
-		        return this.customer;
+		        return this.professional;
 		    }
 		    set
 		    {
-		        this.customer = value;
-		    }
-		}
-		
-		private IList<AppointmentInfo> appointments = new List<AppointmentInfo>();
-		public virtual IList<AppointmentInfo> Appointments 
-		{ 
-		    get
-		    {
-		        return this.appointments;
+		        this.professional = value;
 		    }
 		}
 		
@@ -139,6 +130,15 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<LabTestAssigned> labTestAssigneds = new List<LabTestAssigned>();
+		public virtual IList<LabTestAssigned> LabTestAssigneds 
+		{ 
+		    get
+		    {
+		        return this.labTestAssigneds;
+		    }
+		}
+		
 		private IList<ExaminationAssigned> examinationAssigneds = new List<ExaminationAssigned>();
 		public virtual IList<ExaminationAssigned> ExaminationAssigneds 
 		{ 
@@ -148,30 +148,12 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<LabTestAssigned> labTestAssigneds1 = new List<LabTestAssigned>();
-		public virtual IList<LabTestAssigned> LabTestAssigneds 
-		{ 
-		    get
-		    {
-		        return this.labTestAssigneds1;
-		    }
-		}
-		
 		private IList<ProcedureAssigned> procedureAssigneds = new List<ProcedureAssigned>();
 		public virtual IList<ProcedureAssigned> ProcedureAssigneds 
 		{ 
 		    get
 		    {
 		        return this.procedureAssigneds;
-		    }
-		}
-		
-		private IList<Visit> visits = new List<Visit>();
-		public virtual IList<Visit> Visits 
-		{ 
-		    get
-		    {
-		        return this.visits;
 		    }
 		}
 		

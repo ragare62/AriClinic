@@ -169,10 +169,12 @@ public partial class RefractometryForm : System.Web.UI.Page
         // Load patient data
         rdcPatient.Items.Clear();
         rdcPatient.Items.Add(new RadComboBoxItem(rf.Patient.FullName, rf.Patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = rf.Patient.PersonId.ToString();
 
         // Load Examination data
         rdcExamination.Items.Clear();
         rdcExamination.Items.Add(new RadComboBoxItem(rf.Examination.Name, rf.Examination.ExaminationId.ToString()));
+        rdcExamination.SelectedValue = rf.Examination.ExaminationId.ToString();
 
         // Now we must load tabstrip
         frame = (HtmlControl)this.FindControl("FrmArea");
@@ -227,6 +229,7 @@ public partial class RefractometryForm : System.Web.UI.Page
 
     protected void RadTabStrip1_TabClick(object sender, RadTabStripEventArgs e)
     {
+        if (refractometry == null) return;
         frame = (HtmlControl)this.FindControl("FrmArea");
         switch (e.Tab.Value)
         {

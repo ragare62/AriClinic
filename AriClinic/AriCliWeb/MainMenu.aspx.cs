@@ -270,6 +270,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "procedureassigned":
                 RadAjaxManager1.ResponseScripts.Add("LaunchProcedureAssigned();");
                 break;
+            case "visitreason":
+                RadAjaxManager1.ResponseScripts.Add("LaunchVisitReason();");
+                break;
             default:
                 break;
         }

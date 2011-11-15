@@ -112,5 +112,18 @@ namespace AriCliModel
 		    }
 		}
 		
+		private Visit visit;
+		public virtual Visit Visit 
+		{ 
+		    get
+		    {
+		        return this.visit;
+		    }
+		    set
+		    {
+		        this.visit = value;
+		    }
+		}
+		
 	}
 }

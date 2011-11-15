@@ -158,6 +158,20 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VisitReasonForm.aspx.cs">
+      <DependentUpon>VisitReasonForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisitReasonForm.aspx.designer.cs">
+      <DependentUpon>VisitReasonForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VisitReasonGrid.aspx.cs">
+      <DependentUpon>VisitReasonGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisitReasonGrid.aspx.designer.cs">
+      <DependentUpon>VisitReasonGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProcedureAssignedForm.aspx.cs">
       <DependentUpon>ProcedureAssignedForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -909,6 +923,8 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="VisitReasonForm.aspx" />
+    <Content Include="VisitReasonGrid.aspx" />
     <Content Include="ProcedureAssignedForm.aspx" />
     <Content Include="ProcedureAssignedGrid.aspx" />
     <Content Include="LabTestAssignedForm.aspx" />
@@ -1159,7 +1175,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

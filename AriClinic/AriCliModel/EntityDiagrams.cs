@@ -520,6 +520,22 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<VisitReason> VisitReasons 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<VisitReason>();
+	    	}
+		}
+		
+		public IQueryable<Visit> Visits 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Visit>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
