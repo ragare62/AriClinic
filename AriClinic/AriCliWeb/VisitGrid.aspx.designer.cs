@@ -9,7 +9,7 @@
 
 
 
-public partial class LabTestAssignedGrid {
+public partial class VisitGrid {
     
     /// <summary>
     /// RadStyleSheetManager1 control.

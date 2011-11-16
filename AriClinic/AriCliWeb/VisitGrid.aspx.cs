@@ -6,14 +6,14 @@ using Telerik.Web.UI;
 using AriCliWeb;
 using System.Web.UI.HtmlControls;
 
-public partial class LabTestAssignedGrid : System.Web.UI.Page 
+public partial class VisitGrid : System.Web.UI.Page 
 {
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
-    LabTestAssigned labTestAssigned = null;
+    Visit labTestAssigned = null;
     int labTestAssignedId = 0;
     Patient patient = null;
     int patientId = 0;
@@ -81,7 +81,7 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             ImageButton imgb = (ImageButton)e.Item.FindControl("New");
             imgb.Visible = per.Create;
             if (patient != null)
-                imgb.OnClientClick = "NewLabTestAssignedRecordInTab();";
+                imgb.OnClientClick = "NewVisitRecordInTab();";
         }
         if (e.Item is GridDataItem)
         {
@@ -109,9 +109,9 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             if (patient != null)
-                command = String.Format("return EditLabTestAssignedRecordInTab({0});", id);
+                command = String.Format("return EditVisitRecordInTab({0});", id);
             else
-                command = String.Format("return EditLabTestAssignedRecord({0});", id);
+                command = String.Format("return EditVisitRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -122,16 +122,6 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             imgb.Visible = per.Create;
 
             // showing the value
-            LabTestAssigned lt = CntAriCli.GetLabTestAssigned(id, ctx);
-            Label lb = (Label)e.Item.FindControl("lblValue");
-            if (lt.LabTest.GeneralType == "LBTN")
-            {
-                lb.Text = lt.NumValue.ToString();
-            }
-            else
-            {
-                lb.Text = lt.StringValue;
-            }
 
         }
     }
@@ -184,9 +174,9 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
                 try
                 {
                     labTestAssignedId = (int)Session["DeleteId"];
-                    labTestAssigned = (from da in ctx.LabTestAssigneds
-                                          where da.LabTestAssignedId == labTestAssignedId
-                                          select da).FirstOrDefault<LabTestAssigned>();
+                    labTestAssigned = (from da in ctx.Visits
+                                          where da.VisitId == labTestAssignedId
+                                          select da).FirstOrDefault<Visit>();
                     ctx.Delete(labTestAssigned);
                     ctx.SaveChanges();
                     RefreshGrid(true);
@@ -206,9 +196,9 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
     protected void RefreshGrid(bool rebind)
     {
         if (patient == null)
-            RadGrid1.DataSource = CntAriCli.GetLabTestAssigneds(ctx);
+            RadGrid1.DataSource = CntAriCli.GetVisits(ctx);
         else
-            RadGrid1.DataSource = patient.LabTestAssigneds;
+            RadGrid1.DataSource = patient.Visits;
         if (rebind)
             RadGrid1.Rebind();
     }

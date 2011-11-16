@@ -208,12 +208,12 @@ public partial class VisitForm : System.Web.UI.Page
         if (e.Text == "") return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
-        var rs = from d in ctx.Professionals
-                 where d.Name.StartsWith(e.Text)
-                 select d;
-        foreach (Professional dia in rs)
+        var rs = from p in ctx.Professionals
+                 where p.ComercialName.StartsWith(e.Text)
+                 select p;
+        foreach (Professional professional in rs)
         {
-            combo.Items.Add(new RadComboBoxItem(dia.Name, dia.ProfessionalId.ToString()));
+            combo.Items.Add(new RadComboBoxItem(professional.ComercialName, professional.PersonId.ToString()));
         }
     }
     protected void rdcVisitReason_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
