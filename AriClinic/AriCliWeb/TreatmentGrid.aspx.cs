@@ -17,6 +17,8 @@ public partial class TreatmentGrid : System.Web.UI.Page
     int treatmentId = 0;
     Patient patient = null;
     int patientId = 0;
+    BaseVisit visit = null;
+    int visitId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -50,6 +52,11 @@ public partial class TreatmentGrid : System.Web.UI.Page
             patientId = int.Parse(Request.QueryString["PatientId"]);
             patient = CntAriCli.GetPatient(patientId, ctx);
         }
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -81,6 +88,8 @@ public partial class TreatmentGrid : System.Web.UI.Page
             imgb.Visible = per.Create;
             if (patient != null)
                 imgb.OnClientClick = "NewTreatmentRecordInTab();";
+            if (visit != null)
+                imgb.OnClientClick = "NewTreatmentRecordInVisit();";
         }
         if (e.Item is GridDataItem)
         {
@@ -96,21 +105,18 @@ public partial class TreatmentGrid : System.Web.UI.Page
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
             name = gdi["Patient.FullName"].Text + ": " + gdi["Drug.Name"].Text;
-            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
-                                    , id.ToString()
-                                    , null
-                                    , name
-                                    , null
-                                    , "Treatment");
+            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');", id.ToString(), null, name, null, "Treatment");
             imgb.OnClientClick = command;
-            if (type != "S") imgb.Visible = false; // not called from another form
+            if (type != "S")
+                imgb.Visible = false; // not called from another form
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
+            command = String.Format("return EditTreatmentRecord({0});", id);
             if (patient != null)
                 command = String.Format("return EditTreatmentRecordInTab({0});", id);
-            else
-                command = String.Format("return EditTreatmentRecord({0});", id);
+            if (visit != null)
+                command = String.Format("return EditTreatmentRecordInVisit({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -170,8 +176,8 @@ public partial class TreatmentGrid : System.Web.UI.Page
                 {
                     treatmentId = (int)Session["DeleteId"];
                     treatment = (from da in ctx.Treatments
-                                          where da.TreatmentId == treatmentId
-                                          select da).FirstOrDefault<Treatment>();
+                                 where da.TreatmentId == treatmentId
+                                 select da).FirstOrDefault<Treatment>();
                     ctx.Delete(treatment);
                     ctx.SaveChanges();
                     RefreshGrid(true);
@@ -180,8 +186,7 @@ public partial class TreatmentGrid : System.Web.UI.Page
                 catch (Exception ex)
                 {
                     Session["Exception"] = ex;
-                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
-                                                   , Resources.GeneralResource.DeleteRecordFail);
+                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)", Resources.GeneralResource.DeleteRecordFail);
                     RadAjaxManager1.ResponseScripts.Add(command);
                 }
             }
@@ -190,10 +195,15 @@ public partial class TreatmentGrid : System.Web.UI.Page
 
     protected void RefreshGrid(bool rebind)
     {
-        if (patient == null)
-        RadGrid1.DataSource = CntAriCli.GetTreatments(ctx);
+        if (patient == null && visit == null)
+            RadGrid1.DataSource = CntAriCli.GetTreatments(ctx);
         else
-            RadGrid1.DataSource = patient.Treatments;
+        {
+            if (patient != null)
+                RadGrid1.DataSource = patient.Treatments;
+            if (visit != null)
+                RadGrid1.DataSource = visit.Treatments;
+        }
         if (rebind)
             RadGrid1.Rebind();
     }

@@ -93,6 +93,15 @@ public partial class VisitForm {
     protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
     
     /// <summary>
+    /// TitleArea control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl TitleArea;
+    
+    /// <summary>
     /// lblTitle control.
     /// </summary>
     /// <remarks>
@@ -172,6 +181,33 @@ public partial class VisitForm {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::Telerik.Web.UI.RadComboBox rdcProfessional;
+    
+    /// <summary>
+    /// lblAppointmentType control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblAppointmentType;
+    
+    /// <summary>
+    /// ImageButton1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+    
+    /// <summary>
+    /// rdcAppointmentType control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcAppointmentType;
     
     /// <summary>
     /// lblVisitReason control.

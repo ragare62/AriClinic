@@ -47,6 +47,10 @@
                           combo = $find("<%= rdcVisitReason.ClientID %>");
                           loadCombo(combo, v1, v3);
                           break;
+                      case "AppointmentType":
+                          combo = $find("<%= rdcAppointmentType.ClientID %>");
+                          loadCombo(combo, v1, v3);
+                          break;
                   }
               }
           }
@@ -90,7 +94,7 @@
           <table width="100%">
             <tr>
               <td colspan="2">
-                <div id="TitleArea" class="titleBar2">
+                <div id="TitleArea" runat="server" class="titleBar2">
                   <img alt="minilogo" src="images/mini_logo.png" align="middle" />
                   <asp:Label ID="lblTitle" runat="server" Text="Visita médica"></asp:Label>
                 </div>
@@ -143,6 +147,26 @@
                   </telerik:RadComboBox>
                 </div>
               </td>
+
+              <td class="normalText" style="padding:5px" width="50%">
+                <div ID="AppointmentType">
+                  <asp:Label ID="lblAppointmentType" runat="server" Text="Tipo de cita:" 
+                             ToolTip="Tipo de cita"></asp:Label>
+                  <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" 
+                                   ImageUrl="~/images/search_mini.png" OnClientClick="searchAppointmentType();" 
+                                   ToolTip="Haga clic aquí para buscar un tipo de cita" />
+                  <br />
+                  <telerik:RadComboBox ID="rdcAppointmentType" runat="server" 
+                                       EmptyMessage="Escriba aquí ..." EnableLoadOnDemand="true" 
+                                       EnableVirtualScrolling="true" Height="100px" ItemsPerRequest="10" 
+                                       onitemsrequested="rdcAppointmentType_ItemsRequested" ShowMoreResultsBox="true" 
+                                       Width="100%">
+                  </telerik:RadComboBox>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%"></td>
               <td class="normalText" style="padding:5px" width="50%">
                 <div ID="VisitReason">
                   <asp:Label ID="lblVisitReason" runat="server" Text="Motivo visita:" 

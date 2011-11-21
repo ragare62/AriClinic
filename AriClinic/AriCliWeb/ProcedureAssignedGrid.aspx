@@ -63,6 +63,16 @@
                                    "&ProcedureAssignedId=" + id, "PROASS", "width=600, height=500,resizable=1");
               w2.focus();
           }
+
+          function NewProcedureAssignedRecordInVisit() {
+              var w1 = window.open("ProcedureAssignedForm.aspx?VisitId=" + gup('VisitId'), "PROVISIT", "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditProcedureAssignedRecordInVisit(id) {
+              var w2 = window.open("ProcedureAssignedForm.aspx?VisitId=" + gup('VisitId') +
+                                   "&ProcedureAssignedId=" + id, "PROVISIT", "width=600, height=500,resizable=1");
+              w2.focus();
+          }
           function CloseWindow()
           {
               window.close();

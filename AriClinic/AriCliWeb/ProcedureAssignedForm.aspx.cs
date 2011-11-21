@@ -19,9 +19,11 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
     Procedure procedure = null;
     ProcedureAssigned procedureAssigned = null;
     Patient patient = null;
+    BaseVisit visit = null;
     int procedureId = 0;
     int procedureAssignedId = 0;
     int patientId = 0;
+    int visitId = 0;
 
     Permission per = null;
 
@@ -66,6 +68,22 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             rdcPatient.Enabled = false;
         }
+        //
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+            patientId = visit.Patient.PersonId;
+            patient = CntAriCli.GetPatient(patientId, ctx);
+            // fix rdc with patient
+            rdcPatient.Items.Clear();
+            rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
+            rdcPatient.SelectedValue = patient.PersonId.ToString();
+            rdcPatient.Enabled = false;
+            //
+            rdpProcedureDate.SelectedDate = visit.VisitDate;
+        }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -176,6 +194,8 @@ public partial class ProcedureAssignedForm : System.Web.UI.Page
         pra.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         pra.ProcedureDate = (DateTime)rdpProcedureDate.SelectedDate;
         pra.Procedure = CntAriCli.GetProcedure(int.Parse(rdcProcedure.SelectedValue), ctx);
+        if (visit != null)
+            pra.BaseVisit = visit;
         pra.Comments = txtComments.Text;
     }
 

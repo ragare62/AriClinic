@@ -17,7 +17,7 @@ public partial class VisitForm : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     Professional professional = null;
-    Visit visit = null;
+    BaseVisit visit = null;
     Patient patient = null;
     VisitReason visitReason = null;
     int professionalId = 0;
@@ -26,6 +26,7 @@ public partial class VisitForm : System.Web.UI.Page
     int visitReasonId = 0;
 
     Permission per = null;
+    string type = "";
 
     #endregion Variables declarations
     #region Init Load Unload events
@@ -68,6 +69,16 @@ public partial class VisitForm : System.Web.UI.Page
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             rdcPatient.Enabled = false;
         }
+        //
+        if (Request.QueryString["Type"] != null)
+        {
+            type = Request.QueryString["Type"];
+            if (type == "InTab")
+            {
+                HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
+                tt.Attributes["class"] = "ghost";
+            }
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -93,7 +104,14 @@ public partial class VisitForm : System.Web.UI.Page
             command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
-        RadAjaxManager1.ResponseScripts.Add(command);
+        if (type == "InTab" && command == "CloseAndRebind('new')")
+        {
+            Response.Redirect(String.Format("VisitTab.aspx?VisitId={0}", visit.VisitId));
+        }
+        else
+        {
+            RadAjaxManager1.ResponseScripts.Add(command);
+        }
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -110,25 +128,19 @@ public partial class VisitForm : System.Web.UI.Page
         string command = "";
         if (rdpVisitDate.SelectedDate == null)
         {
-            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.DateNeeded);
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)", Resources.GeneralResource.Warning, Resources.GeneralResource.DateNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         if (rdcProfessional.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.ProfessionalNeeded);
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)", Resources.GeneralResource.Warning, Resources.GeneralResource.ProfessionalNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         if (rdcPatient.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.PatientNeeded);
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)", Resources.GeneralResource.Warning, Resources.GeneralResource.PatientNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
@@ -141,7 +153,7 @@ public partial class VisitForm : System.Web.UI.Page
             return false;
         if (visit == null)
         {
-            visit = new Visit();
+            visit = new BaseVisit();
             UnloadData(visit);
             ctx.Add(visit);
         }
@@ -154,7 +166,7 @@ public partial class VisitForm : System.Web.UI.Page
         return true;
     }
 
-    protected void LoadData(Visit visit)
+    protected void LoadData(BaseVisit visit)
     {
         // Load patient data
         rdcPatient.Items.Clear();
@@ -168,22 +180,34 @@ public partial class VisitForm : System.Web.UI.Page
 
         rdpVisitDate.SelectedDate = visit.VisitDate;
 
-
         // Load visit reason
-        rdcVisitReason.Items.Clear();
-        rdcVisitReason.Items.Add(new RadComboBoxItem(visit.VisitReason.Name, visit.VisitReason.VisitReasonId.ToString()));
-        rdcVisitReason.SelectedValue = visit.VisitReason.VisitReasonId.ToString();
+        if (visit.VisitReason != null)
+        {
+            rdcVisitReason.Items.Clear();
+            rdcVisitReason.Items.Add(new RadComboBoxItem(visit.VisitReason.Name, visit.VisitReason.VisitReasonId.ToString()));
+            rdcVisitReason.SelectedValue = visit.VisitReason.VisitReasonId.ToString();
+        }
 
-        
+        // Load appointment type
+        if (visit.AppointmentType != null)
+        {
+            rdcAppointmentType.Items.Clear();
+            rdcAppointmentType.Items.Add(new RadComboBoxItem(visit.AppointmentType.Name, visit.AppointmentType.AppointmentTypeId.ToString()));
+            rdcAppointmentType.SelectedValue = visit.AppointmentType.AppointmentTypeId.ToString();
+        }
         
         txtComments.Text = visit.Comments;
     }
 
-    protected void UnloadData(Visit visit)
+    protected void UnloadData(BaseVisit visit)
     {
         visit.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         visit.VisitDate = (DateTime)rdpVisitDate.SelectedDate;
         visit.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
+        if (rdcVisitReason.SelectedValue != "")
+            visit.VisitReason = CntAriCli.GetVisitReason(int.Parse(rdcVisitReason.SelectedValue), ctx);
+        if (rdcAppointmentType.SelectedValue != "")
+            visit.AppointmentType = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
         visit.Comments = txtComments.Text;
     }
 
@@ -191,7 +215,8 @@ public partial class VisitForm : System.Web.UI.Page
 
     protected void rdcPatient_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from p in ctx.Patients
@@ -205,7 +230,8 @@ public partial class VisitForm : System.Web.UI.Page
 
     protected void rdcProfessional_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from p in ctx.Professionals
@@ -216,9 +242,11 @@ public partial class VisitForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(professional.ComercialName, professional.PersonId.ToString()));
         }
     }
+
     protected void rdcVisitReason_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from d in ctx.VisitReasons
@@ -227,6 +255,21 @@ public partial class VisitForm : System.Web.UI.Page
         foreach (VisitReason dia in rs)
         {
             combo.Items.Add(new RadComboBoxItem(dia.Name, dia.VisitReasonId.ToString()));
+        }
+    }
+
+    protected void rdcAppointmentType_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "")
+            return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from apt in ctx.AppointmentTypes
+                 where apt.Name.StartsWith(e.Text)
+                 select apt;
+        foreach (AppointmentType apt in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(apt.Name, apt.AppointmentTypeId.ToString()));
         }
     }
 }

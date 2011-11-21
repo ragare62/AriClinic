@@ -19,9 +19,11 @@ public partial class ExaminationAssignedForm : System.Web.UI.Page
     Examination examination = null;
     ExaminationAssigned examinationAssigned = null;
     Patient patient = null;
+    BaseVisit visit = null;
     int examinationId = 0;
     int examinationAssignedId = 0;
     int patientId = 0;
+    int visitId = 0;
 
     Permission per = null;
 
@@ -65,6 +67,21 @@ public partial class ExaminationAssignedForm : System.Web.UI.Page
             rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             rdcPatient.Enabled = false;
+        }
+        //
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+            patientId = visit.Patient.PersonId;
+            patient = CntAriCli.GetPatient(patientId, ctx);
+            // fix rdc with patient
+            rdcPatient.Items.Clear();
+            rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
+            rdcPatient.SelectedValue = patient.PersonId.ToString();
+            rdcPatient.Enabled = false;
+            //
+            rdpExaminationDate.SelectedDate = visit.VisitDate;
         }
     }
 
@@ -172,6 +189,8 @@ public partial class ExaminationAssignedForm : System.Web.UI.Page
         da.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         da.ExaminationDate = (DateTime)rdpExaminationDate.SelectedDate;
         da.Examination = CntAriCli.GetExamination(int.Parse(rdcExamination.SelectedValue), ctx);
+        if (visit != null)
+            da.BaseVisit = visit;
         da.Comments = txtComments.Text;
     }
 

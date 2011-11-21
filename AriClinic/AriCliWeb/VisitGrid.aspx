@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Pruebas de laboratorio asignadas
+      Visitas
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -44,23 +44,23 @@
           }
           function NewVisitRecord()
           {
-              var w1 = window.open("VisitForm.aspx", "VISIT", "width=600, height=500,resizable=1");
+              var w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=500,resizable=1");
               w1.focus();
           }
           function EditVisitRecord(id)
           {
-              var w2 = window.open("VisitForm.aspx?VisitId=" + id, "VISIT", "width=600, height=500,resizable=1");
+              var w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
               w2.focus();
           }
           function NewVisitRecordInTab()
           {
-              var w1 = window.open("VisitForm.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=600, height=500,resizable=1");
+              var w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
               w1.focus();
           }
           function EditVisitRecordInTab(id)
           {
-              var w2 = window.open("VisitForm.aspx?PatientId=" + gup('PatientId') + 
-                                   "&VisitId=" + id, "VISIT", "width=600, height=500,resizable=1");
+              var w2 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId') + 
+                                   "&VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -127,7 +127,7 @@
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
         <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          <asp:Label ID="lblTitle" runat="server" Text="Diagnósticos asignados" 
+          <asp:Label ID="lblTitle" runat="server" Text="Visitas médicas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
 
@@ -167,17 +167,19 @@
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="VisitDate" UniqueName="VisitDate">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="VistReason.Name" 
-                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
-                                         HeaderText="Prueba" 
+                <telerik:GridBoundColumn DataField="AppointmentType.Name" 
+                                         FilterControlToolTip="Filtrar por tipo de cita" FilterImageToolTip="Filtro"
+                                         HeaderText="Tipo de cita" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="VistReason.Name" UniqueName="VistReason.Name">
+                                         SortExpression="AppointmentType.Name" UniqueName="AppointmentType.Name">
                 </telerik:GridBoundColumn>
-                <telerik:GridTemplateColumn UniqueName="Value" HeaderText="Valor">
-                    <ItemTemplate>
-                     <asp:Label ID="lblValue" runat="server"></asp:Label>
-                    </ItemTemplate>
-                </telerik:GridTemplateColumn>
+                <telerik:GridBoundColumn DataField="VisitReason.Name" 
+                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
+                                         HeaderText="Motivo consulta" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="VisitReason.Name" UniqueName="VisitReason.Name">
+                </telerik:GridBoundColumn>
+
 
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 

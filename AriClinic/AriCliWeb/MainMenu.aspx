@@ -280,6 +280,10 @@ height: 30px;
               var w1 = window.open("VisitReasonGrid.aspx", "VISITREASON", "width=500, height=500,resizable=1")
               w1.focus();
           }
+          function LaunchVisit() {
+              var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=800, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -453,6 +457,8 @@ height: 30px;
                                 <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
                                     Value="labtest">
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
+                                </telerik:RadMenuItem>
                                 <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
                                     Value="visitreason">
                                 </telerik:RadMenuItem>
@@ -473,6 +479,8 @@ height: 30px;
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
                             Value="procedureassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Visitas" Value="visit">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

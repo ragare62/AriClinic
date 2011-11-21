@@ -122,6 +122,47 @@
                       alert("Type " + examType + " not defined");
               }
           }
+
+          function NewExaminationAssignedRecordInVisit() {
+              var combo = $find("<%= rdcExaminationType.ClientID %>");
+              var examType = combo.get_value();
+              var w1;
+              switch (examType) {
+                  case "general":
+                      w1 = window.open("ExaminationAssignedForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "refractometry":
+                      w1 = window.open("RefractometryForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
+                                       "width=800, height=700,resizable=1");
+                      w1.focus();
+                      break;
+                  default:
+                      alert("Type " + examType + " not defined");
+              }
+
+          }
+          function EditExaminationAssignedRecordInVisit(id, examType) {
+              var w2;
+              switch (examType) {
+                  case "general":
+                      w2 = window.open("ExaminationAssignedForm.aspx?VisitId=" + gup('VisitId') +
+                                       "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "refractometry":
+                      w2 = window.open("RefractometryForm.aspx?VisitId=" + gup('VisitId') +
+                                       "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=800, height=700,resizable=1");
+                      w2.focus();
+                      break;
+                  default:
+                      alert("Type " + examType + " not defined");
+              }
+          }
+
+
+
           function CloseWindow()
           {
               window.close();

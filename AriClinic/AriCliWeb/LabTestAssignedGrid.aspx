@@ -63,6 +63,16 @@
                                    "&LabTestAssignedId=" + id, "LBTAR", "width=600, height=500,resizable=1");
               w2.focus();
           }
+
+          function NewLabTestAssignedRecordInVisit() {
+              var w1 = window.open("LabTestAssignedForm.aspx?VisitId=" + gup('VisitId'), "LBTVISIT", "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditLabTestAssignedRecordInVisit(id) {
+              var w2 = window.open("LabTestAssignedForm.aspx?VisitId=" + gup('VisitId') +
+                                   "&LabTestAssignedId=" + id, "LBTVISIT", "width=600, height=500,resizable=1");
+              w2.focus();
+          }
           function CloseWindow()
           {
               window.close();

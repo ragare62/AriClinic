@@ -19,9 +19,11 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
     Diagnostic diagnostic = null;
     DiagnosticAssigned diagnosticAssigned = null;
     Patient patient = null;
+    BaseVisit visit = null;
     int diagnosticId = 0;
     int diagnosticAssignedId = 0;
     int patientId = 0;
+    int visitId = 0;
 
     Permission per = null;
 
@@ -66,6 +68,21 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             rdcPatient.Enabled = false;
         }
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+            patientId = visit.Patient.PersonId;
+            patient = CntAriCli.GetPatient(patientId, ctx);
+            // fix rdc with patient
+            rdcPatient.Items.Clear();
+            rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
+            rdcPatient.SelectedValue = patient.PersonId.ToString();
+            rdcPatient.Enabled = false;
+            // by default disgnostic assigned date is the visit date
+            rdpDiagnosticDate.SelectedDate = visit.VisitDate;
+        }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -172,6 +189,8 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
         da.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         da.DiagnosticDate = (DateTime)rdpDiagnosticDate.SelectedDate;
         da.Diagnostic = CntAriCli.GetDiagnostic(int.Parse(rdcDiagnostic.SelectedValue), ctx);
+        if (visit != null)
+            da.BaseVisit = visit;
         da.Comments = txtComments.Text;
     }
 

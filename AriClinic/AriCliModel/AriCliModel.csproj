@@ -61,6 +61,9 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="AriCliException.cs" />
+    <Compile Include="BaseVisit.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="BasicOpticalTest.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -238,9 +241,6 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="VATControl.cs" />
-    <Compile Include="Visit.generated.cs">
-      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
-    </Compile>
     <Compile Include="VisitReason.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>

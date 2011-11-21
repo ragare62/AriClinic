@@ -528,11 +528,11 @@ namespace AriCliModel
 	    	}
 		}
 		
-		public IQueryable<Visit> Visits 
+		public IQueryable<BaseVisit> BaseVisits 
 		{
 	    	get
 	    	{
-	        	return this.GetAll<Visit>();
+	        	return this.GetAll<BaseVisit>();
 	    	}
 		}
 		

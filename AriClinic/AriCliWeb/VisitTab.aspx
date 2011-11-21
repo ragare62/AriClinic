@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PatientTab.aspx.cs" Inherits="PatientTab" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VisitTab.aspx.cs" Inherits="VisitTab" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -60,46 +60,17 @@
             <telerik:RadTabStrip ID="RadTabStrip1" runat="server" 
                 ontabclick="RadTabStrip1_TabClick" SelectedIndex="0">
                 <Tabs>
-                    <telerik:RadTab runat="server" Text="Filiación" Value="patient" Selected="True">
+                    <telerik:RadTab runat="server" Text="General" Value="general" Selected="True">
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="His. Administrativo" Value="policy" 
-                        SelectedIndex="0">
-                        <Tabs>
-                            <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
-                                Selected="True">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Tickets" Value="ticket">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Nota de servicio" Value="servnote">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Nota de anestésico" Value="anesnote">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Cobros" Value="payment" 
-                                Selected="True">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Owner="" Text="Facturas" Value="invoice">
-                            </telerik:RadTab>
-                        </Tabs>
+                    <telerik:RadTab runat="server" Text="Exploraciones" Value="examination" Selected="True">
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="visit">
-                        <Tabs>
-                            <telerik:RadTab runat="server" Text="Visitas" Value="visit">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Citas" Value="appointment">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Exploraciones" Value="examination">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Analíticas" Value="labtestassigned">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Procedimientos" Value="procedureassigned">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Documentos" Value="docs">
-                            </telerik:RadTab>
-                        </Tabs>
+                    <telerik:RadTab runat="server" Text="Analíticas" Value="labtestassigned" Selected="True">
+                    </telerik:RadTab>
+                    <telerik:RadTab runat="server" Text="Procedimientos" Value="procedureassigned" Selected="True">
+                    </telerik:RadTab>
+                    <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned" Selected="True">
+                    </telerik:RadTab>
+                    <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment" Selected="True">
                     </telerik:RadTab>
                 </Tabs>
             </telerik:RadTabStrip>

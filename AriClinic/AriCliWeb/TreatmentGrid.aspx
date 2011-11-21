@@ -63,6 +63,16 @@
                                    "&TreatmentId=" + id, "TRATGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
+
+          function NewTreatmentRecordInVisit() {
+              var w1 = window.open("TreatmentForm.aspx?VisitId=" + gup('VisitId'), "TRATVISIT", "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditTreatmentRecordInVisit(id) {
+              var w2 = window.open("TreatmentForm.aspx?VisitId=" + gup('VisitId') +
+                                   "&TreatmentId=" + id, "TRATVISIT", "width=600, height=500,resizable=1");
+              w2.focus();
+          }
           function CloseWindow()
           {
               window.close();

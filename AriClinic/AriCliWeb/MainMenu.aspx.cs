@@ -273,6 +273,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "visitreason":
                 RadAjaxManager1.ResponseScripts.Add("LaunchVisitReason();");
                 break;
+            case "visit":
+                RadAjaxManager1.ResponseScripts.Add("LaunchVisit();");
+                break;
             default:
                 break;
         }

@@ -19,9 +19,11 @@ public partial class LabTestAssignedForm : System.Web.UI.Page
     LabTest labTest = null;
     LabTestAssigned labTestAssigned = null;
     Patient patient = null;
+    BaseVisit visit = null;
     int labTestId = 0;
     int labTestcAssignedId = 0;
     int patientId = 0;
+    int visitId = 0;
 
     Permission per = null;
 
@@ -63,6 +65,19 @@ public partial class LabTestAssignedForm : System.Web.UI.Page
             // fix rdc with patient
             rdcPatient.Items.Clear();
             rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName,patient.PersonId.ToString()));
+            rdcPatient.SelectedValue = patient.PersonId.ToString();
+            rdcPatient.Enabled = false;
+        }
+        //
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+            patientId = visit.Patient.PersonId;
+            patient = CntAriCli.GetPatient(patientId, ctx);
+            // fix rdc with patient
+            rdcPatient.Items.Clear();
+            rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             rdcPatient.Enabled = false;
         }
@@ -211,6 +226,8 @@ public partial class LabTestAssignedForm : System.Web.UI.Page
         {
             lta.StringValue = txtValue.Text;
         }
+        if (visit != null)
+            lta.BaseVisit = visit; 
         lta.Comments = txtComments.Text;
     }
 

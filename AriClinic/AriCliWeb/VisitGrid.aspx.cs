@@ -13,8 +13,8 @@ public partial class VisitGrid : System.Web.UI.Page
     HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
-    Visit labTestAssigned = null;
-    int labTestAssignedId = 0;
+    BaseVisit visit = null;
+    int visitId = 0;
     Patient patient = null;
     int patientId = 0;
 
@@ -96,7 +96,7 @@ public partial class VisitGrid : System.Web.UI.Page
             // assign javascript function to select button
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
-            name = gdi["Patient.FullName"].Text + ": " + gdi["LabTest.Name"].Text;
+            name = gdi["Patient.FullName"].Text + ": " + gdi["VisitReason.Name"].Text;
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
                                     , null
@@ -173,11 +173,11 @@ public partial class VisitGrid : System.Web.UI.Page
             {
                 try
                 {
-                    labTestAssignedId = (int)Session["DeleteId"];
-                    labTestAssigned = (from da in ctx.Visits
-                                          where da.VisitId == labTestAssignedId
-                                          select da).FirstOrDefault<Visit>();
-                    ctx.Delete(labTestAssigned);
+                    visitId = (int)Session["DeleteId"];
+                    visit = (from da in ctx.BaseVisits
+                                          where da.VisitId == visitId
+                                          select da).FirstOrDefault<BaseVisit>();
+                    ctx.Delete(visit);
                     ctx.SaveChanges();
                     RefreshGrid(true);
                     Session["DeleteId"] = null;
@@ -198,7 +198,7 @@ public partial class VisitGrid : System.Web.UI.Page
         if (patient == null)
             RadGrid1.DataSource = CntAriCli.GetVisits(ctx);
         else
-            RadGrid1.DataSource = patient.Visits;
+            RadGrid1.DataSource = patient.BaseVisits;
         if (rebind)
             RadGrid1.Rebind();
     }

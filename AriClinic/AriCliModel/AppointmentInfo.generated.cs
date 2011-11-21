@@ -225,14 +225,5 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Visit> visits = new List<Visit>();
-		public virtual IList<Visit> Visits 
-		{ 
-		    get
-		    {
-		        return this.visits;
-		    }
-		}
-		
 	}
 }

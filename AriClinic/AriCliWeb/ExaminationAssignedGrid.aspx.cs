@@ -17,6 +17,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
     int ExaminationAssignedId = 0;
     Patient patient = null;
     int patientId = 0;
+    BaseVisit visit = null;
+    int visitId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -50,6 +52,11 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             patientId = int.Parse(Request.QueryString["PatientId"]);
             patient = CntAriCli.GetPatient(patientId, ctx);
         }
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
         // load types
@@ -82,6 +89,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             ImageButton imgb = (ImageButton)e.Item.FindControl("New");
             if (patient != null)
                 imgb.OnClientClick = "NewExaminationAssignedRecordInTab();";
+            if (visit != null)
+                imgb.OnClientClick = "NewExaminationAssignedRecordInVisit();";
             imgb.Visible = per.Create;
         }
         if (e.Item is GridDataItem)
@@ -100,21 +109,18 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
             gdi = (GridDataItem)e.Item;
             name = gdi["Patient.FullName"].Text + ": " + gdi["Examination.Name"].Text;
             type = gdi["Examination.ExaminationType.Code"].Text;
-            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
-                                    , id.ToString()
-                                    , null
-                                    , name
-                                    , null
-                                    , "Examination");
+            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');", id.ToString(), null, name, null, "Examination");
             imgb.OnClientClick = command;
-            if (type != "S") imgb.Visible = false; // not called from another form
+            if (type != "S")
+                imgb.Visible = false; // not called from another form
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
+            command = String.Format("return EditExaminationAssignedRecord({0},'{1}');", id, type);
             if (patient != null)
                 command = String.Format("return EditExaminationAssignedRecordInTab({0},'{1}');", id, type);
-            else
-                command = String.Format("return EditExaminationAssignedRecord({0},'{1}');", id, type);
+            if (visit != null)
+                command = String.Format("return EditExaminationAssignedRecordInVisit({0},'{1}');", id, type);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -174,8 +180,8 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
                 {
                     ExaminationAssignedId = (int)Session["DeleteId"];
                     ExaminationAssigned = (from da in ctx.ExaminationAssigneds
-                                          where da.ExaminationAssignedId == ExaminationAssignedId
-                                          select da).FirstOrDefault<ExaminationAssigned>();
+                                           where da.ExaminationAssignedId == ExaminationAssignedId
+                                           select da).FirstOrDefault<ExaminationAssigned>();
                     ctx.Delete(ExaminationAssigned);
                     ctx.SaveChanges();
                     RefreshGrid(true);
@@ -184,8 +190,7 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
                 catch (Exception ex)
                 {
                     Session["Exception"] = ex;
-                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
-                                                   , Resources.GeneralResource.DeleteRecordFail);
+                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)", Resources.GeneralResource.DeleteRecordFail);
                     RadAjaxManager1.ResponseScripts.Add(command);
                 }
             }
@@ -194,10 +199,15 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
 
     protected void RefreshGrid(bool rebind)
     {
-        if (patient == null)
+        if (patient == null && visit == null)
             RadGrid1.DataSource = CntAriCli.GetExaminationsAssigned(ctx);
         else
-            RadGrid1.DataSource = patient.ExaminationAssigneds;
+        {
+            if (patient != null)
+                RadGrid1.DataSource = patient.ExaminationAssigneds;
+            if (visit != null)
+                RadGrid1.DataSource = visit.ExaminationAssigneds;
+        }
         if (rebind)
             RadGrid1.Rebind();
     }
@@ -215,5 +225,4 @@ public partial class ExaminationAssignedGrid : System.Web.UI.Page
         // we asume that there's a general type always
         rdcExaminationType.SelectedValue = "general";
     }
-
 }

@@ -17,6 +17,8 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
     int labTestAssignedId = 0;
     Patient patient = null;
     int patientId = 0;
+    BaseVisit visit = null;
+    int visitId = 0;
 
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -50,7 +52,11 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             patientId = int.Parse(Request.QueryString["PatientId"]);
             patient = CntAriCli.GetPatient(patientId, ctx);
         }
-        
+        if (Request.QueryString["VisitId"] != null)
+        {
+            visitId = int.Parse(Request.QueryString["VisitId"]);
+            visit = CntAriCli.GetVisit(visitId, ctx);
+        }        
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -82,6 +88,8 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             imgb.Visible = per.Create;
             if (patient != null)
                 imgb.OnClientClick = "NewLabTestAssignedRecordInTab();";
+            if (visit != null)
+                imgb.OnClientClick = "NewLabTestAssignedRecordInVisit()";
         }
         if (e.Item is GridDataItem)
         {
@@ -108,10 +116,11 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
+            command = String.Format("return EditLabTestAssignedRecord({0});", id);
             if (patient != null)
                 command = String.Format("return EditLabTestAssignedRecordInTab({0});", id);
-            else
-                command = String.Format("return EditLabTestAssignedRecord({0});", id);
+            if (visit != null)
+                command = String.Format("return EditLabTestAssignedRecordInVisit({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -205,10 +214,15 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
 
     protected void RefreshGrid(bool rebind)
     {
-        if (patient == null)
+        if (patient == null && visit == null)
             RadGrid1.DataSource = CntAriCli.GetLabTestAssigneds(ctx);
         else
-            RadGrid1.DataSource = patient.LabTestAssigneds;
+        {
+            if (patient != null)
+                RadGrid1.DataSource = patient.LabTestAssigneds;
+            if (visit != null)
+                RadGrid1.DataSource = visit.LabTestAssigneds;
+        }
         if (rebind)
             RadGrid1.Rebind();
     }

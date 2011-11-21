@@ -19,7 +19,7 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class Visit
+	public partial class BaseVisit
 	{
 		private int visitId;
 		public virtual int VisitId 
@@ -73,32 +73,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Patient patient;
-		public virtual Patient Patient 
-		{ 
-		    get
-		    {
-		        return this.patient;
-		    }
-		    set
-		    {
-		        this.patient = value;
-		    }
-		}
-		
-		private AppointmentInfo appointmentInfo;
-		public virtual AppointmentInfo AppointmentInfo 
-		{ 
-		    get
-		    {
-		        return this.appointmentInfo;
-		    }
-		    set
-		    {
-		        this.appointmentInfo = value;
-		    }
-		}
-		
 		private Professional professional;
 		public virtual Professional Professional 
 		{ 
@@ -112,30 +86,29 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<DiagnosticAssigned> diagnosticAssigneds = new List<DiagnosticAssigned>();
-		public virtual IList<DiagnosticAssigned> DiagnosticAssigneds 
+		private Patient patient;
+		public virtual Patient Patient 
 		{ 
 		    get
 		    {
-		        return this.diagnosticAssigneds;
+		        return this.patient;
+		    }
+		    set
+		    {
+		        this.patient = value;
 		    }
 		}
 		
-		private IList<Treatment> treatments = new List<Treatment>();
-		public virtual IList<Treatment> Treatments 
+		private AppointmentType appointmentType;
+		public virtual AppointmentType AppointmentType 
 		{ 
 		    get
 		    {
-		        return this.treatments;
+		        return this.appointmentType;
 		    }
-		}
-		
-		private IList<LabTestAssigned> labTestAssigneds = new List<LabTestAssigned>();
-		public virtual IList<LabTestAssigned> LabTestAssigneds 
-		{ 
-		    get
+		    set
 		    {
-		        return this.labTestAssigneds;
+		        this.appointmentType = value;
 		    }
 		}
 		
@@ -148,12 +121,39 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Treatment> treatments = new List<Treatment>();
+		public virtual IList<Treatment> Treatments 
+		{ 
+		    get
+		    {
+		        return this.treatments;
+		    }
+		}
+		
 		private IList<ProcedureAssigned> procedureAssigneds = new List<ProcedureAssigned>();
 		public virtual IList<ProcedureAssigned> ProcedureAssigneds 
 		{ 
 		    get
 		    {
 		        return this.procedureAssigneds;
+		    }
+		}
+		
+		private IList<LabTestAssigned> labTestAssigneds = new List<LabTestAssigned>();
+		public virtual IList<LabTestAssigned> LabTestAssigneds 
+		{ 
+		    get
+		    {
+		        return this.labTestAssigneds;
+		    }
+		}
+		
+		private IList<DiagnosticAssigned> diagnosticAssigneds = new List<DiagnosticAssigned>();
+		public virtual IList<DiagnosticAssigned> DiagnosticAssigneds 
+		{ 
+		    get
+		    {
+		        return this.diagnosticAssigneds;
 		    }
 		}
 		

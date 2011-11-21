@@ -63,6 +63,16 @@
                                    "&DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
+          function NewDiagnosticAssignedRecordInVisit() {
+              var w1 = window.open("DiagnosticAssignedForm.aspx?VisitId=" + gup('VisitId'), "DAGRD", "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditDiagnosticAssignedRecordInVisit(id) {
+              var w2 = window.open("DiagnosticAssignedForm.aspx?VisitId=" + gup('VisitId') +
+                                   "&DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
+              w2.focus();
+          }
+
           function CloseWindow()
           {
               window.close();

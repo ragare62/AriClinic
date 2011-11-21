@@ -86,16 +86,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Visit visit;
-		public virtual Visit Visit 
+		private BaseVisit baseVisit;
+		public virtual BaseVisit BaseVisit 
 		{ 
 		    get
 		    {
-		        return this.visit;
+		        return this.baseVisit;
 		    }
 		    set
 		    {
-		        this.visit = value;
+		        this.baseVisit = value;
 		    }
 		}
 		
