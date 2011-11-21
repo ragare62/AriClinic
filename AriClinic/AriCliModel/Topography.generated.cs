@@ -34,16 +34,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal rightEyeKL;
-		public virtual decimal RightEyeKL 
+		private decimal rightEyeK2;
+		public virtual decimal RightEyeK2 
 		{ 
 		    get
 		    {
-		        return this.rightEyeKL;
+		        return this.rightEyeK2;
 		    }
 		    set
 		    {
-		        this.rightEyeKL = value;
+		        this.rightEyeK2 = value;
 		    }
 		}
 		
@@ -86,16 +86,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal leftEyeKL;
-		public virtual decimal LeftEyeKL 
+		private decimal leftEyeK2;
+		public virtual decimal LeftEyeK2 
 		{ 
 		    get
 		    {
-		        return this.leftEyeKL;
+		        return this.leftEyeK2;
 		    }
 		    set
 		    {
-		        this.leftEyeKL = value;
+		        this.leftEyeK2 = value;
 		    }
 		}
 		

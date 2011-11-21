@@ -57,6 +57,18 @@
                       w1 = window.open("RefractometryForm.aspx", "EAGRD", "width=800, height=700,resizable=1");
                       w1.focus();
                       break;
+                  case "biometry":
+                      w1 = window.open("BiometryForm.aspx", "EAGRD", "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "paquimetry":
+                      w1 = window.open("PaquimetryForm.aspx", "EAGRD", "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "topography":
+                      w1 = window.open("TopographyForm.aspx", "EAGRD", "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
                   default:
                       alert("Type " + examType + " not defined");
               }
@@ -74,6 +86,21 @@
                   case "refractometry":
                       w2 = window.open("RefractometryForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
                                        "width=800, height=700,resizable=1");
+                      w2.focus();
+                      break;
+                  case "biometry":
+                      w2 = window.open("BiometryForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
+                                       "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "paquimetry":
+                      w2 = window.open("PaquimetryForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
+                                       "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "topography":
+                      w2 = window.open("TopographyForm.aspx?ExaminationAssignedId=" + id, "EAGRD",
+                                       "width=600, height=500,resizable=1");
                       w2.focus();
                       break;
                   default:
@@ -98,6 +125,21 @@
                                        "width=800, height=700,resizable=1");
                       w1.focus();
                       break;
+                  case "biometry":
+                      w1 = window.open("BiometryForm.aspx?PatientId=" + gup('PatientId'), "EAGRD",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "paquimetry":
+                      w1 = window.open("PaquimetryForm.aspx?PatientId=" + gup('PatientId'), "EAGRD",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "topography":
+                      w1 = window.open("TopographyForm.aspx?PatientId=" + gup('PatientId'), "EAGRD",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
                   default:
                       alert("Type " + examType + " not defined");
               }
@@ -118,16 +160,33 @@
                                        "&ExaminationAssignedId=" + id, "EAGRD", "width=800, height=700,resizable=1");
                       w2.focus();
                       break;
-                       default:
+                  case "biometry":
+                      w2 = window.open("BiometryForm.aspx?PatientId=" + gup('PatientId') +
+                                       "&ExaminationAssignedId=" + id, "EAGRD", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "paquimetry":
+                      w2 = window.open("PaquimetryForm.aspx?PatientId=" + gup('PatientId') +
+                                       "&ExaminationAssignedId=" + id, "EAGRD", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "topography":
+                      w2 = window.open("TopographyForm.aspx?PatientId=" + gup('PatientId') +
+                                       "&ExaminationAssignedId=" + id, "EAGRD", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  default:
                       alert("Type " + examType + " not defined");
               }
           }
 
-          function NewExaminationAssignedRecordInVisit() {
+          function NewExaminationAssignedRecordInVisit()
+          {
               var combo = $find("<%= rdcExaminationType.ClientID %>");
               var examType = combo.get_value();
               var w1;
-              switch (examType) {
+              switch (examType)
+              {
                   case "general":
                       w1 = window.open("ExaminationAssignedForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
                                        "width=600, height=500,resizable=1");
@@ -138,14 +197,31 @@
                                        "width=800, height=700,resizable=1");
                       w1.focus();
                       break;
+                  case "biometry":
+                      w1 = window.open("BiometryForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "paquimetry":
+                      w1 = window.open("PaquimetryForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "topography":
+                      w1 = window.open("TopographyForm.aspx?VisitId=" + gup('VisitId'), "EXAMVISIT",
+                                       "width=600, height=500,resizable=1");
+                      w1.focus();
+                      break;
                   default:
                       alert("Type " + examType + " not defined");
               }
 
           }
-          function EditExaminationAssignedRecordInVisit(id, examType) {
+          function EditExaminationAssignedRecordInVisit(id, examType)
+          {
               var w2;
-              switch (examType) {
+              switch (examType)
+              {
                   case "general":
                       w2 = window.open("ExaminationAssignedForm.aspx?VisitId=" + gup('VisitId') +
                                        "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=600, height=500,resizable=1");
@@ -156,12 +232,25 @@
                                        "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=800, height=700,resizable=1");
                       w2.focus();
                       break;
+                  case "biometry":
+                      w2 = window.open("BiometryForm.aspx?VisitId=" + gup('VisitId') +
+                                       "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "paquimetry":
+                      w2 = window.open("PaquimetryForm.aspx?VisitId=" + gup('VisitId') +
+                                       "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "topography":
+                      w2 = window.open("TopographyForm.aspx?VisitId=" + gup('VisitId') +
+                                       "&ExaminationAssignedId=" + id, "EXAMVISIT", "width=600, height=500,resizable=1");
+                      w2.focus();
+                      break;
                   default:
                       alert("Type " + examType + " not defined");
               }
           }
-
-
 
           function CloseWindow()
           {
@@ -227,7 +316,7 @@
                             meta:resourcekey="RadAjaxPanel1Resource1" LoadingPanelID="RadAjaxLoadingPanel1">
         <div id="TitleArea" class="titleBar2" runat="server">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          
+
           <asp:Label ID="lblTitle" runat="server" Text="Exploraciones asignadas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>

@@ -56,7 +56,7 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
         {
             visitId = int.Parse(Request.QueryString["VisitId"]);
             visit = CntAriCli.GetVisit(visitId, ctx);
-        }        
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -105,14 +105,10 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
             name = gdi["Patient.FullName"].Text + ": " + gdi["Procedure.Name"].Text;
-            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
-                                    , id.ToString()
-                                    , null
-                                    , name
-                                    , null
-                                    , "Procedure");
+            command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');", id.ToString(), null, name, null, "Procedure");
             imgb.OnClientClick = command;
-            if (type != "S") imgb.Visible = false; // not called from another form
+            if (type != "S")
+                imgb.Visible = false; // not called from another form
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
@@ -129,8 +125,6 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
             message = String.Format("{0}<br/>{1}", message, name);
             command = String.Format("ariDialog('Procedureos asignados','{0}','prompt',null,0,0)", message);
             imgb.Visible = per.Create;
-
-
         }
     }
 
@@ -183,8 +177,8 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
                 {
                     labTestAssignedId = (int)Session["DeleteId"];
                     labTestAssigned = (from da in ctx.ProcedureAssigneds
-                                          where da.ProcedureAssignedId == labTestAssignedId
-                                          select da).FirstOrDefault<ProcedureAssigned>();
+                                       where da.ProcedureAssignedId == labTestAssignedId
+                                       select da).FirstOrDefault<ProcedureAssigned>();
                     ctx.Delete(labTestAssigned);
                     ctx.SaveChanges();
                     RefreshGrid(true);
@@ -193,8 +187,7 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
                 catch (Exception ex)
                 {
                     Session["Exception"] = ex;
-                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)"
-                                                   , Resources.GeneralResource.DeleteRecordFail);
+                    string command = String.Format("showDialog('Error','{0}','error',null, 0, 0)", Resources.GeneralResource.DeleteRecordFail);
                     RadAjaxManager1.ResponseScripts.Add(command);
                 }
             }
@@ -203,10 +196,15 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
 
     protected void RefreshGrid(bool rebind)
     {
-        if (patient == null)
+        if (patient == null && visit == null)
             RadGrid1.DataSource = CntAriCli.GetProcedureAssigneds(ctx);
         else
-            RadGrid1.DataSource = patient.ProcedureAssigneds;
+        {
+            if (patient != null)
+                RadGrid1.DataSource = patient.ProcedureAssigneds;
+            if (visit != null)
+                RadGrid1.DataSource = visit.ProcedureAssigneds;
+        }
         if (rebind)
             RadGrid1.Rebind();
     }

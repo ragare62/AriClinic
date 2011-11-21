@@ -158,6 +158,27 @@
     <Compile Include="ContactLensesTestForm.aspx.designer.cs">
       <DependentUpon>ContactLensesTestForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BiometryForm.aspx.cs">
+      <DependentUpon>BiometryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BiometryForm.aspx.designer.cs">
+      <DependentUpon>BiometryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TopographyForm.aspx.cs">
+      <DependentUpon>TopographyForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TopographyForm.aspx.designer.cs">
+      <DependentUpon>TopographyForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaquimetryForm.aspx.cs">
+      <DependentUpon>PaquimetryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaquimetryForm.aspx.designer.cs">
+      <DependentUpon>PaquimetryForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VisitTab.aspx.cs">
       <DependentUpon>VisitTab.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -944,6 +965,9 @@
     <Content Include="AppointmentForm.aspx" />
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
+    <Content Include="BiometryForm.aspx" />
+    <Content Include="TopographyForm.aspx" />
+    <Content Include="PaquimetryForm.aspx" />
     <Content Include="VisitTab.aspx" />
     <Content Include="VisitForm.aspx" />
     <Content Include="VisitGrid.aspx" />

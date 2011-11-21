@@ -2511,11 +2511,11 @@
       <orm:class name="Topography" update-schema="true" uniqueId="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
         <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
         <orm:field name="rightEyeK1" property="RightEyeK1" uniqueId="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" type="System.Decimal" />
-        <orm:field name="rightEyeKL" property="RightEyeKL" uniqueId="2b06b38c-b191-42e2-8171-f1f86f1b111c" type="System.Decimal" />
+        <orm:field name="rightEyeK2" property="RightEyeK2" uniqueId="2b06b38c-b191-42e2-8171-f1f86f1b111c" type="System.Decimal" />
         <orm:field name="rightEyeAstig" property="RightEyeAstig" uniqueId="723a00d8-6aa5-4910-b1c2-52ed150cbc19" type="System.Decimal" />
         <orm:field name="rightEyeAxis" property="RightEyeAxis" uniqueId="a4c5291d-ef65-4787-b890-f0af98cf81fd" type="System.Decimal" />
         <orm:field name="leftEyeK1" property="LeftEyeK1" uniqueId="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" type="System.Decimal" />
-        <orm:field name="leftEyeKL" property="LeftEyeKL" uniqueId="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" type="System.Decimal" />
+        <orm:field name="leftEyeK2" property="LeftEyeK2" uniqueId="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" type="System.Decimal" />
         <orm:field name="leftEyeAstig" property="LeftEyeAstig" uniqueId="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" type="System.Decimal" />
         <orm:field name="leftEyeAxis" property="LeftEyeAxis" uniqueId="919bda7b-26da-413f-8a15-f42e6bb705a2" type="System.Decimal" />
       </orm:class>
@@ -6127,11 +6127,11 @@
     </DomainClass>
     <DomainClass Id="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" name="Topography" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" name="RightEyeK1" type="Decimal" label="RightEyeK1 : Decimal" />
-      <Property Id="2b06b38c-b191-42e2-8171-f1f86f1b111c" name="RightEyeKL" type="Decimal" label="RightEyeKL : Decimal" />
+      <Property Id="2b06b38c-b191-42e2-8171-f1f86f1b111c" name="RightEyeK2" type="Decimal" label="RightEyeK2 : Decimal" />
       <Property Id="723a00d8-6aa5-4910-b1c2-52ed150cbc19" name="RightEyeAstig" type="Decimal" label="RightEyeAstig : Decimal" />
       <Property Id="a4c5291d-ef65-4787-b890-f0af98cf81fd" name="RightEyeAxis" type="Decimal" label="RightEyeAxis : Decimal" />
       <Property Id="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" name="LeftEyeK1" type="Decimal" label="LeftEyeK1 : Decimal" />
-      <Property Id="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" name="LeftEyeKL" type="Decimal" label="LeftEyeKL : Decimal" />
+      <Property Id="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" name="LeftEyeK2" type="Decimal" label="LeftEyeK2 : Decimal" />
       <Property Id="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" name="LeftEyeAstig" type="Decimal" label="LeftEyeAstig : Decimal" />
       <Property Id="919bda7b-26da-413f-8a15-f42e6bb705a2" name="LeftEyeAxis" type="Decimal" label="LeftEyeAxis : Decimal" />
     </DomainClass>
