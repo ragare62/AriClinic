@@ -9,7 +9,7 @@
 
 
 
-public partial class VisitGrid {
+public partial class FundusForm {
     
     /// <summary>
     /// RadStyleSheetManager1 control.
@@ -39,42 +39,6 @@ public partial class VisitGrid {
     protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
     
     /// <summary>
-    /// RadWindowManager1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
-    
-    /// <summary>
-    /// RadScriptBlock1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadScriptBlock RadScriptBlock1;
-    
-    /// <summary>
-    /// RadToolTipManager1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
-    
-    /// <summary>
-    /// RadAjaxLoadingPanel1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
-    
-    /// <summary>
     /// RadAjaxManager1 control.
     /// </summary>
     /// <remarks>
@@ -93,6 +57,24 @@ public partial class VisitGrid {
     protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
     
     /// <summary>
+    /// RadInputManager1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadInputManager RadInputManager1;
+    
+    /// <summary>
+    /// RadToolTipManager1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
+    
+    /// <summary>
     /// RadAjaxPanel1 control.
     /// </summary>
     /// <remarks>
@@ -102,56 +84,101 @@ public partial class VisitGrid {
     protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
     
     /// <summary>
-    /// TitleArea control.
+    /// lblOpticalNerve control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl TitleArea;
+    protected global::System.Web.UI.WebControls.Label lblOpticalNerve;
     
     /// <summary>
-    /// lblTitle control.
+    /// txtOpticalNerve control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTitle;
+    protected global::Telerik.Web.UI.RadTextBox txtOpticalNerve;
     
     /// <summary>
-    /// lblVisitType control.
+    /// lblVessels control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblVisitType;
+    protected global::System.Web.UI.WebControls.Label lblVessels;
     
     /// <summary>
-    /// rdcVisitType control.
+    /// txtVessels control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcVisitType;
+    protected global::Telerik.Web.UI.RadTextBox txtVessels;
     
     /// <summary>
-    /// RadGrid1 control.
+    /// lblMacula control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadGrid RadGrid1;
+    protected global::System.Web.UI.WebControls.Label lblMacula;
     
     /// <summary>
-    /// lblMessage control.
+    /// txtMacula control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblMessage;
+    protected global::Telerik.Web.UI.RadTextBox txtMacula;
+    
+    /// <summary>
+    /// lblVitreous control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblVitreous;
+    
+    /// <summary>
+    /// txtVitreous control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox txtVitreous;
+    
+    /// <summary>
+    /// lblPeriphery control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblPeriphery;
+    
+    /// <summary>
+    /// txtPeriphery control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTextBox txtPeriphery;
+    
+    /// <summary>
+    /// btnAccept control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnAccept;
 }

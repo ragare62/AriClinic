@@ -90,6 +90,8 @@ public partial class VisitGrid : System.Web.UI.Page
             string command = "";
             GridDataItem gdi;
             int id = 0;
+            string vtype = "";
+
             
             id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
 
@@ -105,13 +107,14 @@ public partial class VisitGrid : System.Web.UI.Page
                                     , "LabTest");
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
-
+            vtype = gdi["VType"].Text;
+            if (vtype =="") vtype="general";
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             if (patient != null)
-                command = String.Format("return EditVisitRecordInTab({0});", id);
+                command = String.Format("return EditVisitRecordInTab({0},'{1}');", id, vtype);
             else
-                command = String.Format("return EditVisitRecord({0});", id);
+                command = String.Format("return EditVisitRecord({0},'{1}');", id, vtype);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -149,7 +152,7 @@ public partial class VisitGrid : System.Web.UI.Page
                     Session["DeleteId"] = id;
                     string message = Resources.GeneralResource.DeleteRecordQuestion;
                     GridDataItem gdi = (GridDataItem)e.Item;
-                    message = String.Format("{0}<br/>{1}: {2}", message, gdi["Patient.FullName"].Text, gdi["LabTest.Name"].Text);
+                    message = String.Format("{0}<br/>{1}: {2}", message, gdi["Patient.FullName"].Text, gdi["VisitReason.Name"].Text);
                     command = String.Format("ariDialog('Servicios','{0}','prompt',null,0,0)", message);
                     RadAjaxManager1.ResponseScripts.Add(command);
                     break;

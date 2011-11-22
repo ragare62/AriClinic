@@ -60,6 +60,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntSegmentForm.aspx.cs">
+      <DependentUpon>AntSegmentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AntSegmentForm.aspx.designer.cs">
+      <DependentUpon>AntSegmentForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\ConstantsResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,6 +171,34 @@
     </Compile>
     <Compile Include="BiometryForm.aspx.designer.cs">
       <DependentUpon>BiometryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FundusForm.aspx.cs">
+      <DependentUpon>FundusForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FundusForm.aspx.designer.cs">
+      <DependentUpon>FundusForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MotAppendForm.aspx.cs">
+      <DependentUpon>MotAppendForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MotAppendForm.aspx.designer.cs">
+      <DependentUpon>MotAppendForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OphVisitTab.aspx.cs">
+      <DependentUpon>OphVisitTab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OphVisitTab.aspx.designer.cs">
+      <DependentUpon>OphVisitTab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OphVisitForm.aspx.cs">
+      <DependentUpon>OphVisitForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OphVisitForm.aspx.designer.cs">
+      <DependentUpon>OphVisitForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="TopographyForm.aspx.cs">
       <DependentUpon>TopographyForm.aspx</DependentUpon>
@@ -917,6 +952,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AntSegmentForm.aspx" />
     <Content Include="App_Data\RadCaptcha\0.wav" />
     <Content Include="App_Data\RadCaptcha\1.wav" />
     <Content Include="App_Data\RadCaptcha\2.wav" />
@@ -966,6 +1002,10 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="FundusForm.aspx" />
+    <Content Include="MotAppendForm.aspx" />
+    <Content Include="OphVisitTab.aspx" />
+    <Content Include="OphVisitForm.aspx" />
     <Content Include="TopographyForm.aspx" />
     <Content Include="PaquimetryForm.aspx" />
     <Content Include="VisitTab.aspx" />

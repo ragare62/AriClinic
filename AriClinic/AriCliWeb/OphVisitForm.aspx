@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VisitForm.aspx.cs" Inherits="VisitForm" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OphVisitForm.aspx.cs" Inherits="OphVisitForm" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -66,7 +66,7 @@
               comboItem.select();
           }
           function parentReload(url) {
-              parent.open(url,"VISIT", "width=800, height=500,resizable=1");
+              parent.open(url, "OPHVISIT", "width=800, height=500,resizable=1");
           }
         </script>
       </telerik:RadCodeBlock>
@@ -184,6 +184,17 @@
                                        onitemsrequested="rdcVisitReason_ItemsRequested" ShowMoreResultsBox="true" 
                                        Width="100%">
                   </telerik:RadComboBox>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div id="DiagnosticDetails" class="normalText" style="padding:5px">
+                  <asp:Label ID="lblDiagnisticDetails" runat="server" Text="Juicio clínico:" 
+                             ToolTip="Comentarios al diagnóstico"></asp:Label>
+                  <br />
+                  <asp:TextBox ID="txtDiagnosticDetails" runat="server" TextMode="MultiLine" Height="155px" 
+                               Width="100%"></asp:TextBox>
                 </div>
               </td>
             </tr>

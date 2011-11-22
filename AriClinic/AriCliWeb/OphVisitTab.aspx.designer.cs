@@ -9,7 +9,7 @@
 
 
 
-public partial class VisitGrid {
+public partial class OphVisitTab {
     
     /// <summary>
     /// RadStyleSheetManager1 control.
@@ -102,15 +102,6 @@ public partial class VisitGrid {
     protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
     
     /// <summary>
-    /// TitleArea control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl TitleArea;
-    
-    /// <summary>
     /// lblTitle control.
     /// </summary>
     /// <remarks>
@@ -120,31 +111,22 @@ public partial class VisitGrid {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// lblVisitType control.
+    /// RadTabStrip1 control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblVisitType;
+    protected global::Telerik.Web.UI.RadTabStrip RadTabStrip1;
     
     /// <summary>
-    /// rdcVisitType control.
+    /// FrmArea control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcVisitType;
-    
-    /// <summary>
-    /// RadGrid1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadGrid RadGrid1;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl FrmArea;
     
     /// <summary>
     /// lblMessage control.

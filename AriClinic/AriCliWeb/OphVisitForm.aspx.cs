@@ -11,13 +11,14 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
 
-public partial class VisitForm : System.Web.UI.Page 
+public partial class OphVisitForm : System.Web.UI.Page 
 {
     #region Variables declarations
     AriClinicContext ctx = null;
     User user = null;
     Professional professional = null;
     BaseVisit visit = null;
+    OphthalmologicVisit oVisit = null;
     Patient patient = null;
     VisitReason visitReason = null;
     int professionalId = 0;
@@ -52,7 +53,8 @@ public partial class VisitForm : System.Web.UI.Page
         {
             visitId = Int32.Parse(Request.QueryString["VisitId"]);
             visit = CntAriCli.GetVisit(visitId, ctx);
-            LoadData(visit);
+            oVisit = (OphthalmologicVisit)visit;
+            LoadData(oVisit);
         }
         else
         {
@@ -105,7 +107,7 @@ public partial class VisitForm : System.Web.UI.Page
         if (!CreateChange())
             return;
         if (type == "InTab" && command == "CloseAndRebind('new')")
-            command = String.Format("parentReload('VisitTab.aspx?VisitId={0}');", visit.VisitId);
+            command = String.Format("parentReload('OphVisitTab.aspx?VisitId={0}');", oVisit.VisitId);
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -146,65 +148,67 @@ public partial class VisitForm : System.Web.UI.Page
     {
         if (!DataOk())
             return false;
-        if (visit == null)
+        if (oVisit == null)
         {
-            visit = new BaseVisit();
-            UnloadData(visit);
-            ctx.Add(visit);
+            oVisit = new OphthalmologicVisit();
+            UnloadData(oVisit);
+            ctx.Add(oVisit);
         }
         else
         {
-            visit = CntAriCli.GetVisit(visitId, ctx);
-            UnloadData(visit);
+            oVisit = (OphthalmologicVisit)CntAriCli.GetVisit(visitId, ctx);
+            UnloadData(oVisit);
         }
         ctx.SaveChanges();
         return true;
     }
 
-    protected void LoadData(BaseVisit visit)
+    protected void LoadData(OphthalmologicVisit oVisit)
     {
         // Load patient data
         rdcPatient.Items.Clear();
-        rdcPatient.Items.Add(new RadComboBoxItem(visit.Patient.FullName, visit.Patient.PersonId.ToString()));
-        rdcPatient.SelectedValue = visit.Patient.PersonId.ToString();
+        rdcPatient.Items.Add(new RadComboBoxItem(oVisit.Patient.FullName, oVisit.Patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = oVisit.Patient.PersonId.ToString();
 
         // Load professional data
         rdcProfessional.Items.Clear();
-        rdcProfessional.Items.Add(new RadComboBoxItem(visit.Professional.FullName, visit.Professional.PersonId.ToString()));
-        rdcProfessional.SelectedValue = visit.Professional.PersonId.ToString();
+        rdcProfessional.Items.Add(new RadComboBoxItem(oVisit.Professional.FullName, oVisit.Professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = oVisit.Professional.PersonId.ToString();
 
-        rdpVisitDate.SelectedDate = visit.VisitDate;
+        rdpVisitDate.SelectedDate = oVisit.VisitDate;
 
         // Load visit reason
-        if (visit.VisitReason != null)
+        if (oVisit.VisitReason != null)
         {
             rdcVisitReason.Items.Clear();
-            rdcVisitReason.Items.Add(new RadComboBoxItem(visit.VisitReason.Name, visit.VisitReason.VisitReasonId.ToString()));
-            rdcVisitReason.SelectedValue = visit.VisitReason.VisitReasonId.ToString();
+            rdcVisitReason.Items.Add(new RadComboBoxItem(oVisit.VisitReason.Name, oVisit.VisitReason.VisitReasonId.ToString()));
+            rdcVisitReason.SelectedValue = oVisit.VisitReason.VisitReasonId.ToString();
         }
 
         // Load appointment type
-        if (visit.AppointmentType != null)
+        if (oVisit.AppointmentType != null)
         {
             rdcAppointmentType.Items.Clear();
-            rdcAppointmentType.Items.Add(new RadComboBoxItem(visit.AppointmentType.Name, visit.AppointmentType.AppointmentTypeId.ToString()));
-            rdcAppointmentType.SelectedValue = visit.AppointmentType.AppointmentTypeId.ToString();
+            rdcAppointmentType.Items.Add(new RadComboBoxItem(oVisit.AppointmentType.Name, oVisit.AppointmentType.AppointmentTypeId.ToString()));
+            rdcAppointmentType.SelectedValue = oVisit.AppointmentType.AppointmentTypeId.ToString();
         }
-        
-        txtComments.Text = visit.Comments;
+
+        txtDiagnosticDetails.Text = oVisit.DiagnosticDetails;
+        txtComments.Text = oVisit.Comments;
     }
 
-    protected void UnloadData(BaseVisit visit)
+    protected void UnloadData(OphthalmologicVisit oVisit)
     {
-        visit.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
-        visit.VisitDate = (DateTime)rdpVisitDate.SelectedDate;
-        visit.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
+        oVisit.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        oVisit.VisitDate = (DateTime)rdpVisitDate.SelectedDate;
+        oVisit.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
         if (rdcVisitReason.SelectedValue != "")
-            visit.VisitReason = CntAriCli.GetVisitReason(int.Parse(rdcVisitReason.SelectedValue), ctx);
+            oVisit.VisitReason = CntAriCli.GetVisitReason(int.Parse(rdcVisitReason.SelectedValue), ctx);
         if (rdcAppointmentType.SelectedValue != "")
-            visit.AppointmentType = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
-        visit.Comments = txtComments.Text;
-        visit.VType = "general";
+            oVisit.AppointmentType = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
+        oVisit.DiagnosticDetails = txtDiagnosticDetails.Text;
+        oVisit.Comments = txtComments.Text;
+        oVisit.VType = "ophvisit";
     }
 
     #endregion Auxiliary functions

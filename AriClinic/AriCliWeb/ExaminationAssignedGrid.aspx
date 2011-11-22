@@ -320,9 +320,10 @@
           <asp:Label ID="lblTitle" runat="server" Text="Exploraciones asignadas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
-        <div id="ExaminationType" class="normalText">
+        <div id="ExaminationType" class="optionsText">
           <asp:Label ID="lblExaminationType" runat="server" Text="Elija tipo para nuevos registros: "></asp:Label>
-          <telerik:RadComboBox ID="rdcExaminationType" runat="server" Width="400px" 
+          <br />
+          <telerik:RadComboBox ID="rdcExaminationType" runat="server" Width="100%" 
                                EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                ItemsPerRequest="10" Height="100px">
           </telerik:RadComboBox>

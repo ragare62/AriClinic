@@ -19,96 +19,96 @@ using Telerik.OpenAccess.Metadata;
 
 namespace AriCliModel	
 {
-	public partial class Treatment
+	public partial class Fundus
 	{
-		private int treatmentId;
-		public virtual int TreatmentId 
+		private int id;
+		public virtual int Id 
 		{ 
 		    get
 		    {
-		        return this.treatmentId;
+		        return this.id;
 		    }
 		    set
 		    {
-		        this.treatmentId = value;
+		        this.id = value;
 		    }
 		}
 		
-		private DateTime treatmentDate;
-		public virtual DateTime TreatmentDate 
+		private string opticNerve;
+		public virtual string OpticNerve 
 		{ 
 		    get
 		    {
-		        return this.treatmentDate;
+		        return this.opticNerve;
 		    }
 		    set
 		    {
-		        this.treatmentDate = value;
+		        this.opticNerve = value;
 		    }
 		}
 		
-		private string recommend;
-		public virtual string Recommend 
+		private string vessels;
+		public virtual string Vessels 
 		{ 
 		    get
 		    {
-		        return this.recommend;
+		        return this.vessels;
 		    }
 		    set
 		    {
-		        this.recommend = value;
+		        this.vessels = value;
 		    }
 		}
 		
-		private int quantity;
-		public virtual int Quantity 
+		private string macula;
+		public virtual string Macula 
 		{ 
 		    get
 		    {
-		        return this.quantity;
+		        return this.macula;
 		    }
 		    set
 		    {
-		        this.quantity = value;
+		        this.macula = value;
 		    }
 		}
 		
-		private Drug drug;
-		public virtual Drug Drug 
+		private string vitreous;
+		public virtual string Vitreous 
 		{ 
 		    get
 		    {
-		        return this.drug;
+		        return this.vitreous;
 		    }
 		    set
 		    {
-		        this.drug = value;
+		        this.vitreous = value;
 		    }
 		}
 		
-		private Patient patient1;
-		public virtual Patient Patient 
+		private string periphery;
+		public virtual string Periphery 
 		{ 
 		    get
 		    {
-		        return this.patient1;
+		        return this.periphery;
 		    }
 		    set
 		    {
-		        this.patient1 = value;
+		        this.periphery = value;
 		    }
 		}
 		
-		private BaseVisit baseVisit;
-		public virtual BaseVisit BaseVisit 
+		private OphthalmologicVisit ophthalmologicVisit;
+		public virtual OphthalmologicVisit OphthalmologicVisit 
 		{ 
 		    get
 		    {
-		        return this.baseVisit;
+		        return this.ophthalmologicVisit;
 		    }
 		    set
 		    {
-		        this.baseVisit = value;
+		        this.ophthalmologicVisit = value;
 		    }
 		}
 		

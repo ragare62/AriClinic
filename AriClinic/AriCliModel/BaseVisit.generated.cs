@@ -60,6 +60,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string vType;
+		public virtual string VType 
+		{ 
+		    get
+		    {
+		        return this.vType;
+		    }
+		    set
+		    {
+		        this.vType = value;
+		    }
+		}
+		
 		private VisitReason visitReason;
 		public virtual VisitReason VisitReason 
 		{ 

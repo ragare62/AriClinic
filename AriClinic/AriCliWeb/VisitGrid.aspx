@@ -42,27 +42,73 @@
                   $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("new");
               }
           }
+          
           function NewVisitRecord()
           {
-              var w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=500,resizable=1");
-              w1.focus();
+              var combo = $find("<%= rdcVisitType.ClientID %>");
+              var examType = combo.get_value();
+              var w1;
+              switch (examType)
+              {
+                  case "general":
+                      w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "ophvisit":
+                      w1 = window.open("OphVisitTab.aspx", "VISIT", "width=900, height=700,resizable=1");
+                      w1.focus();
+                      break;
+              }
           }
-          function EditVisitRecord(id)
+
+          function EditVisitRecord(id, visitType)
           {
-              var w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
-              w2.focus();
+              var w2;
+              switch (visitType)
+              {
+                  case "general":
+                      w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
+                      w2.focus();
+                      break;
+                  case "ophvisit":
+                      w2 = window.open("OphVisitTab.aspx?VisitId=" + id, "VISIT", "width=900, height=700,resizable=1");
+                      w2.focus();
+                      break;
+              }
           }
-          function NewVisitRecordInTab()
-          {
-              var w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
-              w1.focus();
+
+          function NewVisitRecordInTab() {
+              var combo = $find("<%= rdcVisitType.ClientID %>");
+              var examType = combo.get_value();
+              var w1;
+              switch (examType) {
+                  case "general":
+                      window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
+                      w1.focus();
+                      break;
+                  case "ophvisit":
+                      window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1");
+                      w1.focus();
+                      break;
+              }
           }
-          function EditVisitRecordInTab(id)
-          {
-              var w2 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId') + 
+
+          function EditVisitRecordInTab(id, visitType) {
+              var w2;
+              switch (visitType) {
+                  case "general":
+                      w2 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId') +
                                    "&VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
-              w2.focus();
+                      w2.focus();
+                      break;
+                  case "ophvisit":
+                      w2 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId') +
+                                   "&VisitId=" + id, "VISIT", "width=900, height=700,resizable=1");
+                      w2.focus();
+                      break;
+              }
           }
+
           function CloseWindow()
           {
               window.close();
@@ -130,7 +176,19 @@
           <asp:Label ID="lblTitle" runat="server" Text="Visitas médicas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
-
+        <div id="VisitType" class="optionsText">
+          <asp:Label ID="lblVisitType" runat="server" Text="Elija tipo para nuevos registros: "></asp:Label>
+          <br />
+          <telerik:RadComboBox ID="rdcVisitType" runat="server" Width="100%" 
+                               EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
+                               ItemsPerRequest="10" Height="100px">
+            <Items>
+              <telerik:RadComboBoxItem runat="server" Text="General" Value="general" Selected="true" />
+              <telerik:RadComboBoxItem runat="server" Text="Visita oftalmológica" 
+                                       Value="ophvisit" />
+            </Items>
+          </telerik:RadComboBox>
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" 
                            AllowPaging="True" AllowFilteringByColumn="True" 
@@ -179,7 +237,12 @@
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="VisitReason.Name" UniqueName="VisitReason.Name">
                 </telerik:GridBoundColumn>
-
+                <telerik:GridBoundColumn DataField="VType" Visible="false" 
+                                         FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
+                                         HeaderText="Tipo" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="VType" UniqueName="VType">
+                </telerik:GridBoundColumn>
 
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 

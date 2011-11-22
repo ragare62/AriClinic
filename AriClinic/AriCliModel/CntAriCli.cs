@@ -1463,6 +1463,26 @@ namespace AriCliModel
                     where l.VisitId == id
                     select l).FirstOrDefault<BaseVisit>();
         }
+        public static MotAppend GetMotAppend(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.MotAppends
+                    where m.Id == id
+                    select m).FirstOrDefault<MotAppend>();
+        }
+        public static AntSegment GetAntSegment(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.AntSegments
+                    where m.Id == id
+                    select m).FirstOrDefault<AntSegment>();
+        }
+        public static Fundus GetFundus(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.Fundus
+                    where m.Id == id
+                    select m).FirstOrDefault<Fundus>();
+        }
+
+
 
     
     }
