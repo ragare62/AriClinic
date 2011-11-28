@@ -7,22 +7,22 @@
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-#AuxControls
-{
-z-index: 1;
-left: 10px;
-top: 700px;
-position: absolute;
-height: 44px;
-width: 1007px;
-}
-.style1
-{
-width: 94px;
-height: 30px;
-}
-</style>
+    <style type="text/css">
+      #AuxControls
+      {
+      z-index: 1;
+      left: 10px;
+      top: 700px;
+      position: absolute;
+      height: 44px;
+      width: 1007px;
+      }
+      .style1
+      {
+      width: 94px;
+      height: 30px;
+      }
+    </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   </head>
   <body>
@@ -124,7 +124,8 @@ height: 30px;
               var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "fullscreen=yes,resizable=1")
               w1.focus();
           }
-          function LaunchChecks() {
+          function LaunchChecks()
+          {
               var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "fullscreen=yes,resizable=1")
               w1.focus();
           }
@@ -173,7 +174,8 @@ height: 30px;
               var w1 = window.open("RptProfessionalSrvForm.aspx", "RPROFESSONALSRV", "width=440, height=300,resizable=1")
               w1.focus();
           }
-          function LaunchRSurgeonSrv() {
+          function LaunchRSurgeonSrv()
+          {
               var w1 = window.open("RptSurgeonSrvForm.aspx", "RSURGEONSRV", "width=440, height=300,resizable=1")
               w1.focus();
           }
@@ -222,65 +224,80 @@ height: 30px;
               var w1 = window.open("AppointmentGrid.aspx", "APPOINTMENT", "fullscreen=yes,resizable=1")
               w1.focus();
           }
-          function LaunchDocuments() {
+          function LaunchDocuments()
+          {
               var w1 = window.open("DocumentsPatient.aspx", "DOCS", "width=800, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchDiagnostic() {
+          function LaunchDiagnostic()
+          {
               var w1 = window.open("DiagnosticGrid.aspx", "DIAGNOSTIC", "width=500, height=500,resizable=1")
               w1.focus();
           }
-          function LaunchDiagnosticAssigned() {
+          function LaunchDiagnosticAssigned()
+          {
               var w1 = window.open("DiagnosticAssignedGrid.aspx", "DIAGNOSTICASSIGNED", "width=800, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchDrug() {
+          function LaunchDrug()
+          {
               var w1 = window.open("DrugGrid.aspx", "DRUG", "width=500, height=500,resizable=1")
               w1.focus();
           }
-          function LaunchTreatment() {
+          function LaunchTreatment()
+          {
               var w1 = window.open("TreatmentGrid.aspx", "TREATMENTS", "width=800, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchExamination() {
+          function LaunchExamination()
+          {
               var w1 = window.open("ExaminationGrid.aspx", "EXAMINATIONS", "width=500, height=500,resizable=1")
               w1.focus();
           }
-          function LaunchExaminationAssigned() {
+          function LaunchExaminationAssigned()
+          {
               var w1 = window.open("ExaminationAssignedGrid.aspx", "EXAMINATIONASSIGNED", "width=800, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchUnitType() {
+          function LaunchUnitType()
+          {
               var w1 = window.open("UnitTypeGrid.aspx", "UNITTYPE", "width=500, height=500,resizable=1")
               w1.focus();
           }
 
-          function LaunchProfiIvoice() {
-              var w1 = window.open("ProfessionalInvoiceGrid.aspx","PROFINV", "fullscreen=yes,resizable=1")
+          function LaunchProfiIvoice()
+          {
+              var w1 = window.open("ProfessionalInvoiceGrid.aspx", "PROFINV", "fullscreen=yes,resizable=1")
               w1.focus();
           }
 
-          function LaunchProfInvoices() {
+          function LaunchProfInvoices()
+          {
               var w1 = window.open("RptProfessionalInvoicesForm.aspx", "PROFINVS", "width=440, height=300,resizable=1")
               w1.focus();
           }
-          function LaunchLabTest() {
+          function LaunchLabTest()
+          {
               var w1 = window.open("labTestGrid.aspx", "LABTEST", "width=800, height=500,resizable=1")
               w1.focus();
           }
-          function LaunchLabTestAssigned() {
+          function LaunchLabTestAssigned()
+          {
               var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=900, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchProcedureAssigned() {
+          function LaunchProcedureAssigned()
+          {
               var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=900, height=600,resizable=1")
               w1.focus();
           }
-          function LaunchVisitReason() {
+          function LaunchVisitReason()
+          {
               var w1 = window.open("VisitReasonGrid.aspx", "VISITREASON", "width=500, height=500,resizable=1")
               w1.focus();
           }
-          function LaunchVisit() {
+          function LaunchVisit()
+          {
               var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=800, height=500,resizable=1")
               w1.focus();
           }
@@ -319,7 +336,7 @@ height: 30px;
         <div id="MenuArea">
           <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%"
                            onitemclick="RadMenu1_ItemClick" 
-                style="top: 0px; left: 0px; height: 34px">
+                           style="top: 0px; left: 0px; height: 34px">
             <Items>
               <telerik:RadMenuItem runat="server" Text="Administración" Value="admin">
                 <Items>
@@ -359,9 +376,9 @@ height: 30px;
                       <telerik:RadMenuItem runat="server" Owner="" Text="Tipos de retención" 
                                            Value="taxwt">
                       </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Owner="" Text="Formas de pago" 
-                            Value="paymentmethod">
-                        </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Formas de pago" 
+                                           Value="paymentmethod">
+                      </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" 
                                            Text="Categorias de servicios médicos" Value="scat">
                       </telerik:RadMenuItem>
@@ -388,8 +405,8 @@ height: 30px;
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Comprobantes" Value="checks">
                   </telerik:RadMenuItem >
-                    <telerik:RadMenuItem runat="server" Text="Profesionales" Value="profInvoice">
-                    </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Profesionales" Value="profInvoice">
+                  </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Citación" Value="citation">
@@ -434,7 +451,7 @@ height: 30px;
                     <Items>
                       <telerik:RadMenuItem runat="server" Text="por profesional" Value="rprofessionalsrv">
                       </telerik:RadMenuItem>
-                       <telerik:RadMenuItem runat="server" Text="por cirujano" Value="rsurgeonsrv">
+                      <telerik:RadMenuItem runat="server" Text="por cirujano" Value="rsurgeonsrv">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Text="por categoria" Value="rcategorysrv">
                       </telerik:RadMenuItem>
@@ -444,51 +461,55 @@ height: 30px;
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Nomenclator" Value="rnomenclator">
                   </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" 
+                                       Value="rbombasPCEA">
+                  </telerik:RadMenuItem>
+
                 </Items>
               </telerik:RadMenuItem>
-                <telerik:RadMenuItem runat="server" Text="Historia Clinica" 
-                    Value="clinicalrecord">
+              <telerik:RadMenuItem runat="server" Text="Historia Clinica" 
+                                   Value="clinicalrecord">
+                <Items>
+                  <telerik:RadMenuItem runat="server" Text="Datos básicos" Value="basedata">
                     <Items>
-                        <telerik:RadMenuItem runat="server" Text="Datos básicos" Value="basedata">
-                            <Items>
-                                <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
-                                    Value="labtest">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
-                                    Value="visitreason">
-                                </telerik:RadMenuItem>
-                            </Items>
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Diagnósticos asignados" 
-                            Value="diagnosticassigned">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Tratamientos" Value="treatment">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Exploraciones asignadas" 
-                            Value="examinationassigned">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Pruebas laboratorio asignadas" 
-                            Value="labtestassigned">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
-                            Value="procedureassigned">
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Visitas" Value="visit">
-                        </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
+                                           Value="labtest">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
+                      </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
+                                           Value="visitreason">
+                      </telerik:RadMenuItem>
                     </Items>
-                </telerik:RadMenuItem>
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Diagnósticos asignados" 
+                                       Value="diagnosticassigned">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Tratamientos" Value="treatment">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Exploraciones asignadas" 
+                                       Value="examinationassigned">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Pruebas laboratorio asignadas" 
+                                       Value="labtestassigned">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
+                                       Value="procedureassigned">
+                  </telerik:RadMenuItem>
+                  <telerik:RadMenuItem runat="server" Text="Visitas" Value="visit">
+                  </telerik:RadMenuItem>
+                </Items>
+              </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Salir" Value="exit">
               </telerik:RadMenuItem>
             </Items>
@@ -528,15 +549,15 @@ height: 30px;
                   </telerik:RadToolBarButton>
                 </Buttons>
               </telerik:RadToolBarSplitButton>
-                <telerik:RadToolBarButton runat="server" 
-                    ImageUrl="~/images/toolbar/creditcards.png" Text="Cobros" Value="payment">
-                </telerik:RadToolBarButton>
-                <telerik:RadToolBarButton runat="server" 
-                    ImageUrl="~/images/toolbar/cabinet.png" Text="Documentos" Value="docs">
-                </telerik:RadToolBarButton>
-                <telerik:RadToolBarButton runat="server" ImageUrl="~/images/toolbar/exit.png" 
-                    Text="Salir" Value="exit">
-                </telerik:RadToolBarButton>
+              <telerik:RadToolBarButton runat="server" 
+                                        ImageUrl="~/images/toolbar/creditcards.png" Text="Cobros" Value="payment">
+              </telerik:RadToolBarButton>
+              <telerik:RadToolBarButton runat="server" 
+                                        ImageUrl="~/images/toolbar/cabinet.png" Text="Documentos" Value="docs">
+              </telerik:RadToolBarButton>
+              <telerik:RadToolBarButton runat="server" ImageUrl="~/images/toolbar/exit.png" 
+                                        Text="Salir" Value="exit">
+              </telerik:RadToolBarButton>
             </Items>
           </telerik:RadToolBar>
         </div>
@@ -551,7 +572,7 @@ height: 30px;
                 <div id="lgAriclinic">
                   <asp:Image ID="imgAriClinic" runat="server" 
                              ImageUrl="~/images/logo_blanco_horizontal_w200.png" />
-              
+
                 </div>
                 <br />
                 <div id="labelW" class="wellcomeLabel">
@@ -559,17 +580,17 @@ height: 30px;
                 </div>
                 <br />
                 <div id="textW">
-                <p class="wellcomeText">
+                  <p class="wellcomeText">
                     Le recordamos que como usuario de la aplicación AriClinic, usted está sujeto a 
                     las obligaciones que impone la Ley Orgánica de Protección de Datos de carácter 
                     personal (LOPD) y el reglamento de aplicación propio de su empresa. En especial, 
                     la obligación de respetar la confidencialidad de los datos de sus pacientes.
-                </p>
-                <br />
-                <p class="wellcomeText">
-                Si no es usuario autorizado de la aplicación, o tiene dudas, debe salir ahora y dirigirse al Responsable del Fichero en su organización.
-                </p>
-                  
+                  </p>
+                  <br />
+                  <p class="wellcomeText">
+                    Si no es usuario autorizado de la aplicación, o tiene dudas, debe salir ahora y dirigirse al Responsable del Fichero en su organización.
+                  </p>
+
 
                 </div>
               </td>
