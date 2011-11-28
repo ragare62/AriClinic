@@ -78,5 +78,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<ProcedureAssigned> procedureAssigneds = new List<ProcedureAssigned>();
+		public virtual IList<ProcedureAssigned> ProcedureAssigneds 
+		{ 
+		    get
+		    {
+		        return this.procedureAssigneds;
+		    }
+		}
+		
 	}
 }

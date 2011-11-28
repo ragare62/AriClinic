@@ -148,5 +148,32 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<LabTestAssigned> labTestAssigneds1 = new List<LabTestAssigned>();
+		public virtual IList<LabTestAssigned> LabTestAssigneds 
+		{ 
+		    get
+		    {
+		        return this.labTestAssigneds1;
+		    }
+		}
+		
+		private IList<ProcedureAssigned> procedureAssigneds = new List<ProcedureAssigned>();
+		public virtual IList<ProcedureAssigned> ProcedureAssigneds 
+		{ 
+		    get
+		    {
+		        return this.procedureAssigneds;
+		    }
+		}
+		
+		private IList<BaseVisit> baseVisits = new List<BaseVisit>();
+		public virtual IList<BaseVisit> BaseVisits 
+		{ 
+		    get
+		    {
+		        return this.baseVisits;
+		    }
+		}
+		
 	}
 }

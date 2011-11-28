@@ -123,7 +123,7 @@
               </RowIndicatorColumn>
               <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
               </ExpandCollapseColumn>
-              <Columns>
+              <Columns> 
                 <telerik:GridBoundColumn DataField="AppointmentId" DataType="System.Int32" 
                                          FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
                                          HeaderText="ID" 

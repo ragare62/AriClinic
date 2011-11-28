@@ -60,6 +60,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int quantity;
+		public virtual int Quantity 
+		{ 
+		    get
+		    {
+		        return this.quantity;
+		    }
+		    set
+		    {
+		        this.quantity = value;
+		    }
+		}
+		
 		private Drug drug;
 		public virtual Drug Drug 
 		{ 
@@ -83,6 +96,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.patient1 = value;
+		    }
+		}
+		
+		private BaseVisit baseVisit;
+		public virtual BaseVisit BaseVisit 
+		{ 
+		    get
+		    {
+		        return this.baseVisit;
+		    }
+		    set
+		    {
+		        this.baseVisit = value;
 		    }
 		}
 		

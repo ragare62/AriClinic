@@ -22,7 +22,7 @@ namespace AriCliModel
 	public partial class AppointmentInfo
 	{
 		private int appointmentId;
-		public virtual int Appointment_id 
+		public virtual int AppointmentId 
 		{ 
 		    get
 		    {

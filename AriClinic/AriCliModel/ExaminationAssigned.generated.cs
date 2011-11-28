@@ -86,5 +86,18 @@ namespace AriCliModel
 		    }
 		}
 		
+		private BaseVisit baseVisit;
+		public virtual BaseVisit BaseVisit 
+		{ 
+		    get
+		    {
+		        return this.baseVisit;
+		    }
+		    set
+		    {
+		        this.baseVisit = value;
+		    }
+		}
+		
 	}
 }

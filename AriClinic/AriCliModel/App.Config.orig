@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <connectionStrings>
+<<<<<<< HEAD
+    <add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />
+    <!--<add name="AriClinicContext" connectionString="server=anes.ariclinic.com;user id=anes;password=Aritel2011;persist security info=True;database=ariclinic_anes" providerName="MySql.Data.MySqlClient" />-->
+    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane" providerName="MySql.Data.MySqlClient" />-->
+    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_vig" providerName="MySql.Data.MySqlClient" />-->
+=======
+    <!--<add name="AriClinicContext" connectionString="server=anes.ariclinic.com;user id=anes;password=Aritel2011;persist security info=True;database=ariclinic_anes" providerName="MySql.Data.MySqlClient" />-->
+    <add name="AriClinicContext" connectionString="server=miestetic.ariclinic.com;user id=miestetic;password=Aritel2011;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />
+    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane2" providerName="MySql.Data.MySqlClient" />-->
+>>>>>>> e877d727105aeb215010a63c0812098d99de0648
+  </connectionStrings>
+</configuration>

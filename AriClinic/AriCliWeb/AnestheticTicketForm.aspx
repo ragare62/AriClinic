@@ -288,12 +288,7 @@ width: 674px;
                                        DecimalSeparator="." GroupSeparator="." GroupSizes="3" MaxValue="999999999" 
                                        MinValue="0" NegativePattern="-n" PositivePattern="n">
           <TargetControls>
-            <telerik:TargetInput ControlID="txtTicketId" />
-            <telerik:TargetInput ControlID="txtCustomerId" />
-            <telerik:TargetInput ControlID="txtInsuranceServiceId" />
-            <telerik:TargetInput ControlID="txtProfessionalId" />
-            <telerik:TargetInput ControlID="txtSurgeonId" />
-            <telerik:TargetInput ControlID="txtProcedureId" />
+
           </TargetControls>
         </telerik:NumericTextBoxSetting>
         <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="2" 

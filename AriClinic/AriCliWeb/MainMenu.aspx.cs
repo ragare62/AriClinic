@@ -261,8 +261,23 @@ public partial class MainMenu : System.Web.UI.Page
             case "profInvoices":
                 RadAjaxManager1.ResponseScripts.Add("LaunchProfInvoices();");
                 break;
-            case "rbombasPCEA":
+                 case "rbombasPCEA":
                 RadAjaxManager1.ResponseScripts.Add("LaunchbombasPCEA();");
+                break;
+            case "labtest":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLabTest();");
+                break;
+            case "labtestassigned":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLabTestAssigned();");
+                break;
+            case "procedureassigned":
+                RadAjaxManager1.ResponseScripts.Add("LaunchProcedureAssigned();");
+                break;
+            case "visitreason":
+                RadAjaxManager1.ResponseScripts.Add("LaunchVisitReason();");
+                break;
+            case "visit":
+                RadAjaxManager1.ResponseScripts.Add("LaunchVisit();");
                 break;
             default:
                 break;

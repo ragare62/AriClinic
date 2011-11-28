@@ -44,25 +44,35 @@
           }
           function NewDiagnosticAssignedRecord()
           {
-              var w1 = window.open("DiagnosticAssignedForm.aspx", null, "width=600, height=500,resizable=1");
+              var w1 = window.open("DiagnosticAssignedForm.aspx", "DAGRD", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditDiagnosticAssignedRecord(id)
           {
-              var w2 = window.open("DiagnosticAssignedForm.aspx?DiagnosticAssignedId=" + id, null, "width=600, height=500,resizable=1");
+              var w2 = window.open("DiagnosticAssignedForm.aspx?DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
           function NewDiagnosticAssignedRecordInTab()
           {
-              var w1 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'), null, "width=600, height=500,resizable=1");
+              var w1 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId'), "DAGRD", "width=600, height=500,resizable=1");
               w1.focus();
           }
           function EditDiagnosticAssignedRecordInTab(id)
           {
-              var w2 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId') + 
-                                   "&DiagnosticAssignedId=" + id, null, "width=600, height=500,resizable=1");
+              var w2 = window.open("DiagnosticAssignedForm.aspx?PatientId=" + gup('PatientId') +
+                                   "&DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
               w2.focus();
           }
+          function NewDiagnosticAssignedRecordInVisit() {
+              var w1 = window.open("DiagnosticAssignedForm.aspx?VisitId=" + gup('VisitId'), "DAGRD", "width=600, height=500,resizable=1");
+              w1.focus();
+          }
+          function EditDiagnosticAssignedRecordInVisit(id) {
+              var w2 = window.open("DiagnosticAssignedForm.aspx?VisitId=" + gup('VisitId') +
+                                   "&DiagnosticAssignedId=" + id, "DAGRD", "width=600, height=500,resizable=1");
+              w2.focus();
+          }
+
           function CloseWindow()
           {
               window.close();

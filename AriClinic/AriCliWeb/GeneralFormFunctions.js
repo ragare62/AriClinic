@@ -1,14 +1,29 @@
 ﻿// Refresh the grid in caller
 function CloseAndRebind(arg)
 {
-    window.opener.refreshGrid(arg);
-    window.close();
+    if (gup("Type") == "InTab")
+    {
+        parent.opener.refreshGrid(arg);
+        parent.close();
+    }
+    else
+    {
+        window.opener.refreshGrid(arg);
+        window.close();
+    }
     return false;
 }
 // Close current window and nothing more
 function CancelEdit()
 {
-    window.close();
+    if (gup("Type") == "InTab")
+    {
+        parent.close();
+    }
+    else
+    {
+        window.close();
+    }
 }
 // gup stands from Get Url Parameters
 function gup(name)
@@ -103,12 +118,21 @@ function searchExamination(arg)
     var w1;
     if (!arg)
     {
-        w1 = window.open("ExaminationGrid.aspx?Type=S", "EXAMINATIONS", "width=500,height=400,resizable=1");
+        w1 = window.open("ExaminationGrid.aspx?Type=S", "EXAMINATIONS", "width=800,height=400,resizable=1");
     }
     else
     {
-        w1 = window.open("ExaminationGrid.aspx?Type=S&GT=" + arg, "EXAMBYTYPE", "width=500,height=400,resizable=1");
+        w1 = window.open("ExaminationGrid.aspx?Type=S&ET=" + arg, "EXAMBYTYPE", "width=500,height=400,resizable=1");
     }
     w1.focus;
 }
-
+function searchLabTest()
+{
+    var w1 = window.open("LabTestGrid.aspx?Type=S", "LABTESTS", "width=800,height=500,resizable=1");
+    w1.focus;
+}
+function searchVisitReason()
+{
+    var w1 = window.open("VisitReasonGrid.aspx?Type=S", "VISITREASON", "width=800,height=500,resizable=1");
+    w1.focus;
+}

@@ -81,15 +81,21 @@
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="diagnosticassigned">
+                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="visit">
                         <Tabs>
-                            <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
+                            <telerik:RadTab runat="server" Text="Visitas" Value="visit">
                             </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
+                            <telerik:RadTab runat="server" Text="Citas" Value="appointment">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Exploraciones" Value="examination">
                             </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Citas" Value="appointment">
+                            <telerik:RadTab runat="server" Text="Analíticas" Value="labtestassigned">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Procedimientos" Value="procedureassigned">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Documentos" Value="docs">
                             </telerik:RadTab>

@@ -34,8 +34,8 @@ public partial class ExaminationGrid : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
-        if (Request.QueryString["GT"] != null)
-            gt = Request.QueryString["GT"];
+        if (Request.QueryString["ET"] != null)
+            gt = Request.QueryString["ET"];
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }

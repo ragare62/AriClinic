@@ -480,6 +480,94 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<LabTestAssigned> LabTestAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LabTestAssigned>();
+	    	}
+		}
+		
+		public IQueryable<ProcedureAssigned> ProcedureAssigneds 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<ProcedureAssigned>();
+	    	}
+		}
+		
+		public IQueryable<Biometry> Biometries 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Biometry>();
+	    	}
+		}
+		
+		public IQueryable<Paquimetry> Paquimetries 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Paquimetry>();
+	    	}
+		}
+		
+		public IQueryable<Topography> Topographies 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Topography>();
+	    	}
+		}
+		
+		public IQueryable<VisitReason> VisitReasons 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<VisitReason>();
+	    	}
+		}
+		
+		public IQueryable<BaseVisit> BaseVisits 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<BaseVisit>();
+	    	}
+		}
+		
+		public IQueryable<OphthalmologicVisit> OphthalmologicVisits 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<OphthalmologicVisit>();
+	    	}
+		}
+		
+		public IQueryable<AntSegment> AntSegments 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<AntSegment>();
+	    	}
+		}
+		
+		public IQueryable<MotAppend> MotAppends 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<MotAppend>();
+	    	}
+		}
+		
+		public IQueryable<Fundus> Fundus 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Fundus>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();

@@ -1068,7 +1068,7 @@ namespace AriCliModel
         public static AppointmentInfo GetAppointment(int id, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.Appointment_id == id
+                    where a.AppointmentId == id
                     select a).FirstOrDefault<AppointmentInfo>();
         }
 
@@ -1408,8 +1408,80 @@ namespace AriCliModel
 
             return invoice;
         }
-
-        public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
+        public static IList<LabTest> GetLabTests(AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    select l).ToList<LabTest>();
+        }
+        public static LabTest GetLabTest(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    where l.LabTestId == id
+                    select l).FirstOrDefault<LabTest>();
+        }
+        public static IList<LabTestAssigned> GetLabTestAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    select la).ToList<LabTestAssigned>();
+        }
+        public static LabTestAssigned GetLabTestAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    where la.LabTestAssignedId == id
+                    select la).FirstOrDefault<LabTestAssigned>();
+        }
+        public static IList<ProcedureAssigned> GetProcedureAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    select la).ToList<ProcedureAssigned>();
+        }
+        public static ProcedureAssigned GetProcedureAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    where la.ProcedureAssignedId == id
+                    select la).FirstOrDefault<ProcedureAssigned>();
+        }
+        public static IList<VisitReason> GetVisitReasons(AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    select l).ToList<VisitReason>();
+        }
+        public static VisitReason GetVisitReason(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    where l.VisitReasonId == id
+                    select l).FirstOrDefault<VisitReason>();
+        }
+        public static IList<BaseVisit> GetVisits(AriClinicContext ctx)
+        {
+            return (from l in ctx.BaseVisits
+                    select l).ToList<BaseVisit>();
+        }
+        public static BaseVisit GetVisit(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.BaseVisits
+                    where l.VisitId == id
+                    select l).FirstOrDefault<BaseVisit>();
+        }
+        public static MotAppend GetMotAppend(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.MotAppends
+                    where m.Id == id
+                    select m).FirstOrDefault<MotAppend>();
+        }
+        public static AntSegment GetAntSegment(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.AntSegments
+                    where m.Id == id
+                    select m).FirstOrDefault<AntSegment>();
+        }
+        public static Fundus GetFundus(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.Fundus
+                    where m.Id == id
+                    select m).FirstOrDefault<Fundus>();
+        }
+ public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         {
             var anesNote = (from a in ctx1.AnestheticServiceNotes
                     where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1==true && a.AnestheticTickets.Count>0
@@ -1420,5 +1492,9 @@ namespace AriCliModel
 
             return res.ToList<AnestheticTicket>();
         }
+
+
+
+    
     }
 }

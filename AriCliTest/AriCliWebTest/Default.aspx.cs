@@ -37,110 +37,110 @@ public partial class Default : System.Web.UI.Page
 
         #region Importaciones probadas
         //// (0) Borrar todo
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Borrando registros existentes... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.BigDelete(ctx);
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Borrando registros existentes... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.BigDelete(ctx);
 
         //// (1) Patients
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando pacientes... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportPatientCustomer(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando pacientes... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportPatientCustomer(con, ctx);
 
         //// (2) Tax types
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando tipos de IVA... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportTaxTypes(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando tipos de IVA... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportTaxTypes(con, ctx);
 
         //// (3) Services 
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando servicios... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportCategories(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando servicios... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportCategories(con, ctx);
 
         //// (4) Porfesionales
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando médicos... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportProfessionals(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando médicos... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportProfessionals(con, ctx);
 
         //// (5) Aseguradoras y pólizas
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando aseguradoras y pólizas... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportAssurancePolicies(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando aseguradoras y pólizas... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportAssurancePolicies(con, ctx);
 
         //// (6) Notas de servicio
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando notas de servicio... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportServiceNote(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando notas de servicio... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportServiceNote(con, ctx);
 
         //// (7) Formas de pago
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando formas de pago... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportPaymentTypes(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando formas de pago... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportPaymentTypes(con, ctx);
         
         ////(8) Pagos
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Importando pagos... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportPayments(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Importando pagos... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportPayments(con, ctx);
 
         //// (9) Tipos de cita
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Tipos de cita... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportAppointmentType(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Tipos de cita... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportAppointmentType(con, ctx);
 
         //// (10) Tipos de cita
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Tipos de cita... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportDiary(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Tipos de cita... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportDiary(con, ctx);
 
         //// (11) Tipos de cita
-        //System.Threading.Thread.Sleep(100);
-        //i++;
-        //context.SecondaryValue = i.ToString();
-        //context.CurrentOperationText = i.ToString() + " Citas... ";
-        //i3 = (i / i2) * 100;
-        //context.SecondaryPercent = i3.ToString();
-        //CntOft.ImportAppointmentInfo(con, ctx);
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Citas... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportAppointmentInfo(con, ctx);
         #endregion
 
 

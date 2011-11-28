@@ -551,6 +551,15 @@
         <orm:field name="examinationAssigneds" property="ExaminationAssigneds" uniqueId="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" type="AriCliModel.ExaminationAssigned">
           <orm:collection element-class="AriCliModel.ExaminationAssigned" inverse-field="patient" order-by="" uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72" />
         </orm:field>
+        <orm:field name="labTestAssigneds1" property="LabTestAssigneds" uniqueId="dd8c22be-6828-4ed1-95d5-b735c32f868d" type="AriCliModel.LabTestAssigned">
+          <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="patient1" order-by="" uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
+        </orm:field>
+        <orm:field name="procedureAssigneds" property="ProcedureAssigneds" uniqueId="b4aef2b7-c213-44c8-a405-07505b68ee03" type="AriCliModel.ProcedureAssigned">
+          <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="patient" order-by="" uniqueId="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" />
+        </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" uniqueId="be5cbe57-fa67-4fa1-a5ca-8c5db9f09a66" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="patient" order-by="" uniqueId="45ffd84d-89a0-4bbd-90a2-2c5cf338be9f" />
+        </orm:field>
       </orm:class>
       <orm:class name="Customer" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
@@ -931,6 +940,9 @@
         <orm:field name="tickets1" property="Tickets" uniqueId="f2cea502-1063-4ad3-bcd1-8715b2277252" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="professional1" order-by="" uniqueId="eea3a819-b088-4050-b1a1-b096d09489f8" />
         </orm:field>
+        <orm:field name="baseVisits" property="Base_visits" uniqueId="6e051794-7316-4db3-88b5-7d25d6cf823c" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="professional" order-by="" uniqueId="dc665119-feab-495d-acf6-fea9312427ea" />
+        </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.TaxWithholdingType" target-field="taxWithholdingTypeId" />
         </orm:index>
@@ -961,6 +973,9 @@
         </orm:field>
         <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" uniqueId="257eaa1c-ce0f-4541-8efb-3db4bac2c350" type="AriCliModel.AnestheticServiceNote">
           <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="procedures" order-by="" uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" />
+        </orm:field>
+        <orm:field name="procedureAssigneds" property="ProcedureAssigneds" uniqueId="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" type="AriCliModel.ProcedureAssigned">
+          <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="procedure" order-by="" uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
         </orm:field>
       </orm:class>
       <orm:class name="AnestheticTicket" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
@@ -1222,6 +1237,9 @@
         <orm:field name="appointmentsRelated" property="AppointmentsRelated" uniqueId="5229afd4-1db2-41a3-81c5-5d209ac6946d" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="appointmentType" order-by="" uniqueId="ca9145d4-4355-4e75-a009-6dfd48ea83b1" />
         </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" uniqueId="4ffe6882-97d4-42a3-887b-6797ac8e6402" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="appointmentType" order-by="" uniqueId="8c12e5b7-2abb-48fb-b042-4907a92c4540" />
+        </orm:field>
       </orm:class>
       <orm:class name="AppointmentInfo" update-schema="true" uniqueId="01665655-e572-4141-b0ca-d18992d6a74e">
         <orm:table name="appointment" />
@@ -1229,7 +1247,8 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="appointmentId" />
         </orm:identity>
-        <orm:field name="appointmentId" property="Appointment_id" uniqueId="1f77549e-31bc-4d1a-81b4-bea9ebfd6026" type="System.Int32">
+        <orm:discriminator discriminator-value="AriCliModel.AppointmentInfo" />
+        <orm:field name="appointmentId" property="AppointmentId" uniqueId="1f77549e-31bc-4d1a-81b4-bea9ebfd6026" type="System.Int32">
           <orm:column name="appointment_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="beginDateTime" property="BeginDateTime" uniqueId="f957b5ca-8e14-45ac-82e8-f6aa716fba37" type="System.DateTime">
@@ -1280,9 +1299,7 @@
           </orm:reference>
         </orm:field>
         <orm:field name="professional1" property="Professional" uniqueId="e9971de3-8669-45a7-a313-f5eb5e01e50f" type="AriCliModel.Professional">
-          <orm:reference uniqueId="c34baf57-2048-4142-af3a-60f0a539fa48">
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-          </orm:reference>
+          <orm:reference uniqueId="c34baf57-2048-4142-af3a-60f0a539fa48" />
         </orm:field>
         <orm:field name="fatherAppointment" property="FatherAppointment" uniqueId="1b5410a6-e4c7-47d9-884a-86e79cc20e30" type="AriCliModel.AppointmentInfo">
           <orm:reference uniqueId="c01fa72e-e718-4781-9e3c-a14422ad78d4">
@@ -1342,6 +1359,9 @@
             </orm:constraint>
           </orm:reference>
         </orm:field>
+        <orm:field name="baseVisit" property="BaseVisit" uniqueId="eda1e24c-c3b5-4b21-bd92-e417da16a2ff" type="AriCliModel.BaseVisit">
+          <orm:reference uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
+        </orm:field>
         <orm:index name="idx_diagnostic_assigned_person_id">
           <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
@@ -1387,7 +1407,7 @@
         </orm:identity>
         <orm:discriminator discriminator-value="AriCliModel.Treatment" />
         <orm:field name="treatmentId" property="TreatmentId" uniqueId="2a60076b-3999-4f17-9f4b-a48bb3f1c449" type="System.Int32">
-          <orm:column name="treatment_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="treatmentDate" property="TreatmentDate" uniqueId="0a043529-20e4-4021-8052-bb77c2a15c6d" type="System.DateTime">
           <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
@@ -1395,18 +1415,24 @@
         <orm:field name="recommend" property="Recommend" uniqueId="bccab8ee-7582-4457-9be9-8b31bacb5f64" type="System.String">
           <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="quantity" property="Quantity" uniqueId="b25226c8-728a-45e0-97ad-e33a86b16e03" type="System.Int32">
+          <orm:column name="quantity" sql-type="integer" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
         <orm:field name="drug" property="Drug" uniqueId="09987183-29ff-4a93-a247-8e1290d707e7" type="AriCliModel.Drug">
           <orm:reference uniqueId="50c135e7-730d-46f8-8f9e-757c13048502">
-            <orm:column name="drug_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="drug_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
         <orm:field name="patient1" property="Patient" uniqueId="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" type="AriCliModel.Patient">
           <orm:reference uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f">
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
+        <orm:field name="baseVisit" property="BaseVisit" uniqueId="3efce21e-33ad-418e-a860-65125728e9a8" type="AriCliModel.BaseVisit">
+          <orm:reference uniqueId="af5967b0-47d7-4772-a893-6d710dda981c" />
+        </orm:field>
         <orm:index name="idx_treatment_person_id">
-          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:class>
       <orm:class name="UnitType" update-schema="true" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
@@ -1470,6 +1496,9 @@
             <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
+        <orm:field name="baseVisit" property="BaseVisit" uniqueId="240c759d-6eb4-44c2-ab99-f854e7119285" type="AriCliModel.BaseVisit">
+          <orm:reference uniqueId="c35f4435-128e-4215-8cfe-77aafe4bebd3" />
+        </orm:field>
         <orm:index name="idx_examination_assigned_person_id">
           <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
@@ -1505,6 +1534,7 @@
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="id" />
         </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.WithoutGlassesTest" />
         <orm:field name="id" property="Id" uniqueId="36351fe8-d26d-49c4-8f67-09bb8c5d3377" type="System.Int32">
           <orm:column name="id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
@@ -2269,10 +2299,16 @@
         <orm:field name="maxValue" property="MaxValue" uniqueId="c692eee6-317b-4950-983d-c98847c1b1d5" type="System.Decimal">
           <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         </orm:field>
+        <orm:field name="generalType" property="GeneralType" uniqueId="b7e33449-c6eb-43c5-bd9e-75bf43ebe793" type="System.String">
+          <orm:column name="general_type" sql-type="varchar" length="10" scale="0" ado-type="Varchar" />
+        </orm:field>
         <orm:field name="unitType" property="UnitType" uniqueId="c6062d87-c465-4c5f-b04c-0247ad90010f" type="AriCliModel.UnitType">
           <orm:reference uniqueId="afe631f1-6cbc-464e-bdf2-01c5fb7e7fdf">
             <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="labTestAssigneds" property="LabTestAssigneds" uniqueId="7196f467-1d08-4b1f-9e17-1639caddf087" type="AriCliModel.LabTestAssigned">
+          <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="labTest" order-by="" uniqueId="f5f20753-2320-4753-b8d6-90718eb00755" />
         </orm:field>
         <orm:index name="idx_lab_test_unit_type_id">
           <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
@@ -2390,6 +2426,288 @@
         <orm:field name="group" property="Group" uniqueId="4df7a8c9-e3ef-404d-b333-7e3f400d14d3" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="group" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+      </orm:class>
+      <orm:class name="LabTestAssigned" update-schema="true" uniqueId="ac85c815-912f-40be-a293-0e380a2f7fa7">
+        <orm:table name="lab_test_assigned" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="labTestAssignedId" />
+        </orm:identity>
+        <orm:field name="labTestAssignedId" property="LabTestAssignedId" uniqueId="acd3fe95-1215-458d-98b4-f69dfd8bc783" type="System.Int32">
+          <orm:column name="lab_test_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="labTestDate" property="LabTestDate" uniqueId="f72a5b5f-204e-4292-ae54-a80f4f6478f1" type="System.DateTime">
+          <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="efd3295c-90dc-49f4-875b-b91a29f0e181" type="System.String">
+          <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="numValue" property="NumValue" uniqueId="72617e7a-5647-4335-ae43-132113f68fc8" type="System.Decimal" />
+        <orm:field name="stringValue" property="StringValue" uniqueId="3998acaa-2355-4978-856a-852bfb54e488" type="System.String" />
+        <orm:field name="labTest" property="LabTest" uniqueId="0bd242a3-0540-475b-89c6-38455a000d86" type="AriCliModel.LabTest">
+          <orm:reference uniqueId="f5f20753-2320-4753-b8d6-90718eb00755" />
+        </orm:field>
+        <orm:field name="patient1" property="Patient" uniqueId="0a0e9763-823b-4d6a-8006-1a89d096c32a" type="AriCliModel.Patient">
+          <orm:reference uniqueId="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" />
+        </orm:field>
+        <orm:field name="baseVisit" property="BaseVisit" uniqueId="3dee08eb-86fb-4494-8e81-8f5a2d3be5bb" type="AriCliModel.BaseVisit">
+          <orm:reference uniqueId="14db6bc9-8c81-4909-a039-27a1fcc9203a" />
+        </orm:field>
+        <orm:index name="idx_lab_test_assigned_lab_test_id">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="ProcedureAssigned" update-schema="true" uniqueId="669ff2b1-3770-4746-99e6-88c50a28071b">
+        <orm:table name="procedure_assigned" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="procedureAssignedId" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.ProcedureAssigned" />
+        <orm:field name="procedureAssignedId" property="ProcedureAssignedId" uniqueId="01d847e3-389d-44b9-892d-192d1c010815" type="System.Int32">
+          <orm:column name="procedure_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="procedureDate" property="ProcedureDate" uniqueId="06870633-3e8e-49f7-8edd-09a5dd27c3ba" type="System.DateTime">
+          <orm:column name="procedure_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" type="System.String">
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="procedure" property="Procedure" uniqueId="2cdf74f6-c184-4a89-8891-782b648bf15d" type="AriCliModel.Procedure">
+          <orm:reference uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" uniqueId="874d604f-7325-48cd-aa53-147918c1e60c" type="AriCliModel.Patient">
+          <orm:reference uniqueId="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" />
+        </orm:field>
+        <orm:field name="baseVisit" property="BaseVisit" uniqueId="9f73718d-317a-4780-a0fa-730a95137217" type="AriCliModel.BaseVisit">
+          <orm:reference uniqueId="13be6b44-23c0-4135-8435-6abca4d75d21" />
+        </orm:field>
+        <orm:index name="idx_procedure_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_procedure_assigned_procedure_id">
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="Biometry" update-schema="true" uniqueId="6c106c04-8b76-4549-a765-e030095e6bc7" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:table name="biometry" />
+        <orm:discriminator discriminator-value="AriCliModel.Biometry" />
+        <orm:field name="formula" property="Formula" uniqueId="02f5612d-a3b1-4674-990d-72e47a53b90e" type="System.String" />
+        <orm:field name="lioLeftEye" property="LioLeftEye" uniqueId="e9ade122-9369-4f51-a561-c4332cf4981d" type="System.Decimal" />
+        <orm:field name="lioRightEye" property="LioRightEye" uniqueId="45bffae1-91a9-4574-8208-0b664286c5e4" type="System.Decimal" />
+        <orm:field name="alxLeftEye" property="AlxLeftEye" uniqueId="f145ff3b-2fec-405f-9151-3c288bcf0d62" type="System.Decimal" />
+        <orm:field name="alxRightEye" property="AlxRightEye" uniqueId="35e00f18-de58-4003-a315-3e0c3246c1f8" type="System.Decimal" />
+      </orm:class>
+      <orm:class name="Paquimetry" update-schema="true" uniqueId="6570c076-f0fb-4256-95fa-901c680a157a" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:table name="paquimetry" />
+        <orm:discriminator discriminator-value="AriCliModel.Paquimetry" />
+        <orm:field name="rightEyeCentralC0" property="RightEyeCentralC0" uniqueId="e90232ca-a26b-4850-8385-b1368b3eef57" type="System.Decimal" />
+        <orm:field name="rightEyeC1" property="RightEyeC1" uniqueId="3173f4d7-eb96-42fa-b5b2-2e2701553c5c" type="System.Decimal" />
+        <orm:field name="rightEyeC3" property="RightEyeC3" uniqueId="b8f6c365-d831-42ae-af36-579c29d3d53c" type="System.Decimal" />
+        <orm:field name="rightEyeC5" property="RightEyeC5" uniqueId="d2c78a32-e9a6-46f9-bef1-d3727891fe9e" type="System.Decimal" />
+        <orm:field name="rightEyeC7" property="RightEyeC7" uniqueId="9ebe79c8-e44d-40c2-a52f-f8af15f8d2a7" type="System.Decimal" />
+        <orm:field name="leftEyeCentralC0" property="LeftEyeCentralC0" uniqueId="5cebc0b6-6f29-4e26-8f99-afd29ec34301" type="System.Decimal" />
+        <orm:field name="leftEyeC1" property="LeftEyeC1" uniqueId="1ed3584e-42ef-4c05-a7a0-7c0acd28ac33" type="System.Decimal" />
+        <orm:field name="leftEyeC3" property="LeftEyeC3" uniqueId="d90a5519-9a9c-435c-bd37-3af827408ee5" type="System.Decimal" />
+        <orm:field name="leftEyeC5" property="LeftEyeC5" uniqueId="57868baa-d8a9-4a4f-a393-137e6a3c7bd6" type="System.Decimal" />
+        <orm:field name="leftEyeC7" property="LeftEyeC7" uniqueId="d0116777-ca74-4c49-ba2d-c13e2a4c1711" type="System.Decimal" />
+      </orm:class>
+      <orm:class name="Topography" update-schema="true" uniqueId="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+        <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
+        <orm:field name="rightEyeK1" property="RightEyeK1" uniqueId="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" type="System.Decimal" />
+        <orm:field name="rightEyeK2" property="RightEyeK2" uniqueId="2b06b38c-b191-42e2-8171-f1f86f1b111c" type="System.Decimal" />
+        <orm:field name="rightEyeAstig" property="RightEyeAstig" uniqueId="723a00d8-6aa5-4910-b1c2-52ed150cbc19" type="System.Decimal" />
+        <orm:field name="rightEyeAxis" property="RightEyeAxis" uniqueId="a4c5291d-ef65-4787-b890-f0af98cf81fd" type="System.Decimal" />
+        <orm:field name="leftEyeK1" property="LeftEyeK1" uniqueId="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" type="System.Decimal" />
+        <orm:field name="leftEyeK2" property="LeftEyeK2" uniqueId="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" type="System.Decimal" />
+        <orm:field name="leftEyeAstig" property="LeftEyeAstig" uniqueId="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" type="System.Decimal" />
+        <orm:field name="leftEyeAxis" property="LeftEyeAxis" uniqueId="919bda7b-26da-413f-8a15-f42e6bb705a2" type="System.Decimal" />
+      </orm:class>
+      <orm:class name="VisitReason" update-schema="true" uniqueId="e36ea4c8-bb15-412d-884e-8d192c01a24d">
+        <orm:table name="visit_reason" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="visitReasonId" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.VisitReason" />
+        <orm:field name="visitReasonId" property="VisitReasonId" uniqueId="ca9d7c46-0908-40ad-ba84-06f1daca9824" type="System.Int32" />
+        <orm:field name="name" property="Name" uniqueId="acfbac86-aeb5-48a9-ac9f-45e876bd1aa1" type="System.String" />
+        <orm:field name="oftId" property="OftId" uniqueId="64b0db4c-3238-4879-8b6b-149c28a3798d" type="System.Int32" />
+        <orm:field name="baseVisits" property="Base_visits" uniqueId="86a818af-3e8e-481d-b48b-07e06ac1a1f4" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="visitReason" order-by="" uniqueId="d599392e-6fa5-4753-a5ae-fc0b016b9d0b" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="BaseVisit" uniqueId="86c81f85-f044-4973-acc9-abd7f769e8b3">
+        <orm:table name="base_visit" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="visitId" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.Base_visit" />
+        <orm:field name="visitId" property="VisitId" uniqueId="eb83c90b-2bcc-433f-8a98-44844291a09c" type="System.Int32">
+          <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="visitDate" property="VisitDate" uniqueId="13c9961c-dbf0-4a4f-9b97-5a27d3112e0f" type="System.DateTime">
+          <orm:column name="visit_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="6de33a04-2c93-4b5c-8f9e-01e00f8e2e21" type="System.String">
+          <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="vType" property="VType" uniqueId="ea2c718f-1ee0-4b1c-afdf-2233efdf263e" type="System.String">
+          <orm:column name="vtype" sql-type="varchar" length="255" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="visitReason" property="VisitReason" uniqueId="4fd0b8ce-c0f5-47eb-8c23-c9ec30b58384" type="AriCliModel.VisitReason">
+          <orm:reference uniqueId="d599392e-6fa5-4753-a5ae-fc0b016b9d0b">
+            <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+            <orm:constraint name="ref_base_visit_visit_reason" destination-table="visit_reason">
+              <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+            </orm:constraint>
+          </orm:reference>
+        </orm:field>
+        <orm:field name="professional" property="Professional" uniqueId="96a34c4f-e31f-497c-b3dc-911bdee3eb40" type="AriCliModel.Professional">
+          <orm:reference uniqueId="dc665119-feab-495d-acf6-fea9312427ea">
+            <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:constraint name="ref_base_visit_professional" destination-table="professional">
+              <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+            </orm:constraint>
+          </orm:reference>
+        </orm:field>
+        <orm:field name="patient" property="Patient" uniqueId="fddd5e98-72cf-4a7d-8d9c-eb3c55395833" type="AriCliModel.Patient">
+          <orm:reference uniqueId="45ffd84d-89a0-4bbd-90a2-2c5cf338be9f">
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:constraint name="ref_base_visit_patient" destination-table="patient">
+              <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+            </orm:constraint>
+          </orm:reference>
+        </orm:field>
+        <orm:field name="appointmentType" property="AppointmentType" uniqueId="ffc6cdf4-7c6f-4226-9544-b171752b2159" type="AriCliModel.AppointmentType">
+          <orm:reference uniqueId="8c12e5b7-2abb-48fb-b042-4907a92c4540" />
+        </orm:field>
+        <orm:field name="examinationAssigneds" property="ExaminationAssigneds" uniqueId="70ce88e5-e079-49df-b097-9954717e8384" type="AriCliModel.ExaminationAssigned">
+          <orm:collection element-class="AriCliModel.ExaminationAssigned" inverse-field="baseVisit" order-by="" uniqueId="c35f4435-128e-4215-8cfe-77aafe4bebd3" />
+        </orm:field>
+        <orm:field name="treatments" property="Treatments" uniqueId="79386153-18da-4966-8c7a-9e845b29d398" type="AriCliModel.Treatment">
+          <orm:collection element-class="AriCliModel.Treatment" inverse-field="baseVisit" order-by="" uniqueId="af5967b0-47d7-4772-a893-6d710dda981c" />
+        </orm:field>
+        <orm:field name="procedureAssigneds" property="ProcedureAssigneds" uniqueId="59ce914d-0c24-43d4-8c93-4a083a21dc6c" type="AriCliModel.ProcedureAssigned">
+          <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="baseVisit" order-by="" uniqueId="13be6b44-23c0-4135-8435-6abca4d75d21" />
+        </orm:field>
+        <orm:field name="labTestAssigneds" property="LabTestAssigneds" uniqueId="19a223b0-fcd9-4040-986f-2746fa1fa9c6" type="AriCliModel.LabTestAssigned">
+          <orm:collection element-class="AriCliModel.LabTestAssigned" inverse-field="baseVisit" order-by="" uniqueId="14db6bc9-8c81-4909-a039-27a1fcc9203a" />
+        </orm:field>
+        <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" uniqueId="bc6d354b-a1db-4104-aea1-47f811503a52" type="AriCliModel.DiagnosticAssigned">
+          <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="baseVisit" order-by="" uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
+        </orm:field>
+        <orm:index name="idx_base_visit_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_base_visit_visit_reason_id">
+          <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+        </orm:index>
+        <orm:index name="idx_base_visit_person_id2">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="OphthalmologicVisit" update-schema="true" uniqueId="af0eac44-1b2b-4193-a568-27fe0e3a0385" persistent-baseclass="AriCliModel.BaseVisit" inheritance="new-table">
+        <orm:table name="ophthalmologic_visit" />
+        <orm:discriminator discriminator-value="AriCliModel.OphthalmologicVisit" />
+        <orm:field name="diagnosticDetails" property="DiagnosticDetails" uniqueId="3b8b2e31-d848-4ab3-923c-9255f70939c0" type="System.String" />
+        <orm:field name="antSegments" property="AntSegments" uniqueId="06c43585-d076-40ec-869b-547c962a2c2c" type="AriCliModel.AntSegment">
+          <orm:collection element-class="AriCliModel.AntSegment" inverse-field="ophthalmologicVisit" order-by="" uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
+        </orm:field>
+        <orm:field name="motAppends" property="MotAppends" uniqueId="4e4a62ce-bf10-425f-960d-13955a9ed1f5" type="AriCliModel.MotAppend">
+          <orm:collection element-class="AriCliModel.MotAppend" inverse-field="ophthalmologicVisit" order-by="" uniqueId="fa38495b-de35-4c8b-afb1-fb15ad397a8e" />
+        </orm:field>
+        <orm:field name="fundus" property="Fundus" uniqueId="685fed74-9247-4cf0-9f6e-635b9c0bd678" type="AriCliModel.Fundus">
+          <orm:collection element-class="AriCliModel.Fundus" inverse-field="ophthalmologicVisit" order-by="" uniqueId="8a076dc0-be2b-43f2-a0d1-bcb6d75dbac0" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="AntSegment" update-schema="true" uniqueId="40574235-c24e-4a25-89ae-7c44c13ff78d">
+        <orm:table name="ant_segment" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
+        <orm:field name="id" property="Id" uniqueId="5ca77cd7-3b20-4060-9959-821c282c4166" type="System.Int32" />
+        <orm:field name="conjunctiva" property="Conjunctiva" uniqueId="b5e79951-622d-44e8-b33c-b6403e926854" type="System.String" />
+        <orm:field name="cornea" property="Cornea" uniqueId="ce581bfe-1b5c-4a22-95e5-58f4ede5d844" type="System.String" />
+        <orm:field name="chamber" property="Chamber" uniqueId="e118943c-3e2e-439b-9759-b124d834a0ed" type="System.String" />
+        <orm:field name="tyndall" property="Tyndall" uniqueId="3dab7a71-de1d-4beb-a05d-c219eed880a2" type="System.String" />
+        <orm:field name="iris" property="Iris" uniqueId="50712913-f77b-4265-86ee-c3906bcbd1d5" type="System.String" />
+        <orm:field name="pupil" property="Pupil" uniqueId="8f2c2c25-fbfc-4289-8c3f-950d3ab1b413" type="System.String" />
+        <orm:field name="crystalline" property="Crystalline" uniqueId="e240cc8f-28b4-450b-9db9-086bbbe88f4c" type="System.String" />
+        <orm:field name="eyestrainRE" property="EyestrainRE" uniqueId="58a71478-2f57-4209-83df-dd80b77f262f" type="System.Decimal" />
+        <orm:field name="eyestrainLE" property="EyestrainLE" uniqueId="c8373871-2964-466b-b7c3-0b540c2063a6" type="System.Decimal" />
+        <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" uniqueId="d6034dce-61aa-406e-b58a-4b7455e058bf" type="AriCliModel.OphthalmologicVisit">
+          <orm:reference uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
+        </orm:field>
+        <orm:index name="idx_ant_segment_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="MotAppend" update-schema="true" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
+        <orm:table name="mot_append" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
+        <orm:field name="id" property="Id" uniqueId="8fb622c4-6315-41bf-a033-9532de76eea2" type="System.Int32" />
+        <orm:field name="eyeMotility" property="EyeMotility" uniqueId="097a999a-4ec0-44e1-bcb3-b0a43625a7ac" type="System.String" />
+        <orm:field name="eyebrows" property="Eyebrows" uniqueId="0ca1805e-3f68-4a77-83de-c0b3af805f12" type="System.String" />
+        <orm:field name="periocularArea" property="PeriocularArea" uniqueId="23bfd63a-0461-4e8f-8c48-fca3180ae92e" type="System.String" />
+        <orm:field name="c1LE" property="C1LE" uniqueId="3c81960b-0a6c-47de-8eb5-81c4b07d409e" type="System.Decimal" />
+        <orm:field name="c1RE" property="C1RE" uniqueId="b2f18633-ee53-45d8-b029-5e2779a43c91" type="System.Decimal" />
+        <orm:field name="c2LE" property="C2LE" uniqueId="466a72cb-926c-4c1f-8a5b-0fccfb7207c8" type="System.Decimal" />
+        <orm:field name="c2RE" property="C2RE" uniqueId="24d7ccb3-3160-4fa1-8cd6-fbbd0a2acc1b" type="System.Decimal" />
+        <orm:field name="c3LE" property="C3LE" uniqueId="20a408ee-a154-4b6c-833e-823032cf8457" type="System.Decimal" />
+        <orm:field name="c3RE" property="C3RE" uniqueId="08d4b694-6aac-4f0b-9ad1-3395bf70bd3f" type="System.Decimal" />
+        <orm:field name="c4LE" property="C4LE" uniqueId="19484bec-ac73-40be-bb4b-65387c033bd2" type="System.Decimal" />
+        <orm:field name="c4RE" property="C4RE" uniqueId="7b476668-23f2-4305-be7b-60c828d5a1e5" type="System.Decimal" />
+        <orm:field name="c5LE" property="C5LE" uniqueId="36077a52-6fd6-4f4e-9ffb-2b5ae745e36f" type="System.Decimal" />
+        <orm:field name="c5RE" property="C5RE" uniqueId="4cef93b6-35a8-4aba-bcce-029e6aa2756a" type="System.Decimal" />
+        <orm:field name="c6LE" property="C6LE" uniqueId="d1b57606-b9a9-4690-9aed-229a200231ea" type="System.Decimal" />
+        <orm:field name="c6RE" property="C6RE" uniqueId="7b90c8d9-3244-4f38-8a8e-99b7f2a15c15" type="System.Decimal" />
+        <orm:field name="c7LE" property="C7LE" uniqueId="82b7f453-077c-47a8-ae4d-8ed818fe2266" type="System.Decimal" />
+        <orm:field name="c7RE" property="C7RE" uniqueId="61e15b7d-d277-47f7-83da-a184d8baf012" type="System.Decimal" />
+        <orm:field name="c8LE" property="C8LE" uniqueId="a851db24-d332-4d52-babc-c24a7c4a4c6b" type="System.Decimal" />
+        <orm:field name="c8RE" property="C8RE" uniqueId="860f2049-f966-49ce-a932-23241cda8f3d" type="System.Decimal" />
+        <orm:field name="c9LE" property="C9LE" uniqueId="c0250fb5-9af6-411d-a7b1-563e61d64c74" type="System.Decimal" />
+        <orm:field name="c9RE" property="C9RE" uniqueId="dbe9fe72-a1bb-4936-a00c-3d60941034ed" type="System.Decimal" />
+        <orm:field name="c10LE" property="C10LE" uniqueId="1bd04086-0840-47a6-846a-c86a64136252" type="System.Decimal" />
+        <orm:field name="c10RE" property="C10RE" uniqueId="ca49d670-dc6f-4792-bf5b-c392ba8a0942" type="System.Decimal" />
+        <orm:field name="c11LE" property="C11LE" uniqueId="86272110-312f-467e-a6b1-3260b86cb73e" type="System.Decimal" />
+        <orm:field name="c11RE" property="C11RE" uniqueId="0370ff0e-7d24-466d-968e-e892abb42375" type="System.Decimal" />
+        <orm:field name="c12LE" property="C12LE" uniqueId="1912be2b-b732-403d-b4a6-6ba60e59f361" type="System.Decimal" />
+        <orm:field name="c12RE" property="C12RE" uniqueId="8053be34-2aa2-464a-ae12-d004c26b0884" type="System.Decimal" />
+        <orm:field name="comments" property="Comments" uniqueId="35887aeb-241f-421a-8eda-9b8953c45662" type="System.String" />
+        <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" uniqueId="fc10ba77-8996-473f-83bb-fac7d023dd6b" type="AriCliModel.OphthalmologicVisit">
+          <orm:reference uniqueId="fa38495b-de35-4c8b-afb1-fb15ad397a8e" />
+        </orm:field>
+        <orm:index name="idx_mot_append_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:class>
+      <orm:class name="Fundus" update-schema="true" uniqueId="1057988c-c334-4765-8f1f-3b04e6d59413">
+        <orm:table name="fundus" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="id" />
+        </orm:identity>
+        <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
+        <orm:field name="id" property="Id" uniqueId="6a7914d1-2dff-4602-af1a-9a5075313e52" type="System.Int32" />
+        <orm:field name="opticNerve" property="OpticNerve" uniqueId="b7bb9ef3-29b5-40dc-84ed-319f8c3fa7ed" type="System.String" />
+        <orm:field name="vessels" property="Vessels" uniqueId="722137fc-4b11-4c9f-a127-4df92d6cd79b" type="System.String" />
+        <orm:field name="macula" property="Macula" uniqueId="a2075cf1-23a3-42c7-88b5-b708cdef8e97" type="System.String" />
+        <orm:field name="vitreous" property="Vitreous" uniqueId="0b77df19-aad4-4e63-a180-7385a5d813ce" type="System.String" />
+        <orm:field name="periphery" property="Periphery" uniqueId="6be47a1e-7c89-45e0-8a80-324e5748d5c5" type="System.String" />
+        <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" uniqueId="5e2ee1a4-e464-4e8e-bb02-5a9f69856481" type="AriCliModel.OphthalmologicVisit">
+          <orm:reference uniqueId="8a076dc0-be2b-43f2-a0d1-bcb6d75dbac0" />
+        </orm:field>
+        <orm:index name="idx_fundus_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="Decimal" />
@@ -2976,6 +3294,7 @@
         <orm:column name="min_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="max_value" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="lab_test_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="general_type" sql-type="varchar" length="10" scale="0" ado-type="Varchar" />
         <orm:index name="idx_lab_test_unit_type_id">
           <orm:column name="unit_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.UnitType" target-field="unitTypeId" />
         </orm:index>
@@ -3223,13 +3542,14 @@
         </orm:constraint>
       </orm:table>
       <orm:table name="treatment">
-        <orm:column name="treatment_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
-        <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="drug_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="drug_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="quantity" sql-type="integer" length="0" scale="0" ado-type="Int32" />
         <orm:index name="idx_treatment_person_id">
-          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:table>
       <orm:table name="payment_method">
@@ -3289,11 +3609,179 @@
           <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:table>
+      <orm:table name="lab_test_assigned">
+        <orm:column name="lab_test_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="lab_test_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="comments" sql-type="text" length="0" scale="0" ado-type="Varchar" />
+        <orm:index name="idx_lab_test_assigned_lab_test_id">
+          <orm:column name="lab_test_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="procedure_assigned">
+        <orm:column name="procedure_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="procedure_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_procedure_assigned_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_procedure_assigned_procedure_id">
+          <orm:column name="procedure_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="biometry">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="formula" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="lio_left_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="lio_right_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="alx_left_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="alx_right_eye" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:constraint name="ref_biometry_examination_assigned" destination-table="examination_assigned">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="paquimetry">
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="right_eye_central_c0" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c1" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c3" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c5" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="right_eye_c7" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_central_c0" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c1" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c3" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c5" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="left_eye_c7" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:constraint name="ref_paquimetry_examination_assigned" destination-table="examination_assigned">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="visit_reason">
+        <orm:column name="visit_reason_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nme" sql-type="varchar" nullable="true" length="50" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="general_visit">
+        <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="visit_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_general_visit_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_general_visit_person_id2">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_general_visit_visit_reason_id">
+          <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="base_visit">
+        <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="visit_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+        <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="vtype" sql-type="varchar" length="255" scale="0" ado-type="Varchar" />
+        <orm:index name="idx_base_visit_person_id">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_base_visit_visit_reason_id">
+          <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+        </orm:index>
+        <orm:index name="idx_base_visit_person_id2">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:index>
+        <orm:constraint name="ref_base_visit_visit_reason" destination-table="visit_reason">
+          <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.VisitReason" target-field="visitReasonId" />
+        </orm:constraint>
+        <orm:constraint name="ref_base_visit_professional" destination-table="professional">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="ref_base_visit_patient" destination-table="patient">
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="ophthalmologic_visit">
+        <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="diagnostic_details" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:constraint name="ref_ophthalmologic_visit_base_visit" destination-table="base_visit">
+          <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="ant_segment">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="conjunctiva" sql-type="text" nullable="true" length="1" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="cornea" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="chamber" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="tyndall" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="iris" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="pupil" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="crystalline" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="eyestrain_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="eyestrain_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_ant_segment_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="mot_append">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="eye_motility" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="eyebrows" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="periocular_area" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="c1_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c1_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c2_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c2_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c3_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c3_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c4_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c4_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c5_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c5_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c6_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c6_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c7_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c7_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c8_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c8_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c9_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c9_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c10_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c10_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c11_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c11_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c12_l_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="c12_r_e" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_mot_append_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
+      <orm:table name="fundus">
+        <orm:column name="id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="optic_nerve" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="vessels" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="macula" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="vitreous" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="periphery" sql-type="text" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_fundus_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane2</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic</AppConfigConnectionString>
     <InitialCatalog>ariclinic_dev</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -3313,6 +3801,7 @@
     <SchemaUpdateSettings>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>AriCliModel</DeploymentDirectory>
+      <SchemaUpdateStrategy>GenerateAndExecuteSchemaDML</SchemaUpdateStrategy>
     </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
@@ -3903,6 +4392,15 @@
         <classHasNavigationalProperties Id="ec2557ba-ed0f-4f77-80f9-42d6ae8871a9">
           <NavigationalProperty Id="baa5dfcd-7525-4c53-98ae-d6d16b6f6598" name="ExaminationAssigneds" type="IList&lt;ExaminationAssigned&gt;" label="ExaminationAssigneds : IList&lt;ExaminationAssigned&gt;" nullable="true" kind="Persistent" fieldName="examinationAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e84b86b0-6166-4a5e-be37-41dbf33f790c">
+          <NavigationalProperty Id="dd8c22be-6828-4ed1-95d5-b735c32f868d" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0d519151-0574-4812-92e5-90ed71b69ea5">
+          <NavigationalProperty Id="b4aef2b7-c213-44c8-a405-07505b68ee03" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="bfcbb6b6-7d57-4b30-801f-5829bc5b26ea">
+          <NavigationalProperty Id="be5cbe57-fa67-4fa1-a5ca-8c5db9f09a66" name="BaseVisits" type="IList&lt;Base_visit&gt;" label="BaseVisits : IList&lt;Base_visit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="228b0d09-c944-4c32-9ad0-8622e9062742" name="Customer" namespace="AriCliModel" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4366,6 +4864,9 @@
         <classHasNavigationalProperties Id="e7975269-c755-4e6a-a655-885d5c32e536">
           <NavigationalProperty Id="58d3fe3e-8291-49a6-9d82-c2fe87d87373" name="AnestheticServiceNotes1" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes1 : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes11" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="be5222aa-97b8-4d77-94b0-71f6e3272140">
+          <NavigationalProperty Id="6e051794-7316-4db3-88b5-7d25d6cf823c" name="Base_visits" type="IList&lt;Base_visit&gt;" label="Base_visits : IList&lt;Base_visit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e6ce65e6-2ed0-405c-8c36-5189a2dde9aa" name="Procedure" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4395,6 +4896,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="858fe612-e321-45d3-889d-e59a97d3dbc4">
           <NavigationalProperty Id="257eaa1c-ce0f-4541-8efb-3db4bac2c350" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0abfb080-ebaa-4e6a-9330-a4a4be5c0909">
+          <NavigationalProperty Id="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4750,6 +5254,9 @@
         <classHasNavigationalProperties Id="756c5d16-cb4c-47e0-96fc-07ff701682dd">
           <NavigationalProperty Id="5229afd4-1db2-41a3-81c5-5d209ac6946d" name="AppointmentsRelated" type="IList&lt;AppointmentInfo&gt;" label="AppointmentsRelated : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointmentsRelated" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="dac3cec1-8c2d-4bdd-97e7-7e9f613804e4">
+          <NavigationalProperty Id="4ffe6882-97d4-42a3-887b-6797ac8e6402" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="01665655-e572-4141-b0ca-d18992d6a74e" name="AppointmentInfo" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4897,6 +5404,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="79558074-1ba0-475f-96fd-a75cee27ee3b" SourceMultiplicity="ZeroOne" name="DiagnosticAssignedHasBaseVisit">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="1f872f21-d7cb-49f6-9cc1-6d82070bd722">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/DiagnosticAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bb199193-d473-4021-a6c6-64ad1c9d8061">
+              <NavigationalPropertyMoniker name="/AriClinicContext/DiagnosticAssigned/BaseVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="e017f612-a03e-436a-b6e1-e131aa841c0a">
@@ -4904,6 +5424,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b04aa101-3810-42db-bacf-885620471e59">
           <NavigationalProperty Id="924cb1c5-626d-4bc8-af50-a6bad2a78ef0" name="Diagnostic" type="Diagnostic" label="Diagnostic : Diagnostic" nullable="true" kind="Persistent" fieldName="diagnostic" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f80d582b-ea83-4c34-94c1-9690643f06ac">
+          <NavigationalProperty Id="eda1e24c-c3b5-4b21-bd92-e417da16a2ff" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4924,6 +5447,7 @@
       <Property Id="2a60076b-3999-4f17-9f4b-a48bb3f1c449" name="TreatmentId" type="Int32" label="TreatmentId : Int32" identity="true" />
       <Property Id="0a043529-20e4-4021-8052-bb77c2a15c6d" name="TreatmentDate" type="DateTime" label="TreatmentDate : DateTime" />
       <Property Id="bccab8ee-7582-4457-9be9-8b31bacb5f64" name="Recommend" label="Recommend : String" />
+      <Property Id="b25226c8-728a-45e0-97ad-e33a86b16e03" name="Quantity" type="Int32" label="Quantity : Int32" />
       <AssociationTargets>
         <Association Id="50c135e7-730d-46f8-8f9e-757c13048502" SourceMultiplicity="ZeroOne" name="TreatmentHasDrug">
           <DomainClassMoniker name="/AriClinicContext/Drug" />
@@ -4946,6 +5470,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="af5967b0-47d7-4772-a893-6d710dda981c" SourceMultiplicity="ZeroOne" name="TreatmentHasBaseVisit">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d216c61e-2de4-4b43-99ef-aa3dce3b523e">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Treatments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="6da09da3-b043-4436-9d75-741320ae5220">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Treatment/BaseVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="7603cf5e-ed23-4d14-b2bd-79a03358f8d4">
@@ -4953,6 +5490,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="1a272bbf-5c3e-4633-a685-88ce04904c23">
           <NavigationalProperty Id="8fbe453b-58b6-4d40-baa3-e9e4b09511d6" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="aed440e8-2f90-4b1d-ad2a-c7ea9a24d2e5">
+          <NavigationalProperty Id="3efce21e-33ad-418e-a860-65125728e9a8" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4992,6 +5532,15 @@
         <inheritance Id="807f1f44-44d0-4cdd-8243-dbd4f6011845">
           <DomainClassMoniker name="/AriClinicContext/Refractometry" />
         </inheritance>
+        <inheritance Id="39fb8909-e8cc-4f53-b9ca-2a9211e6a5d2">
+          <DomainClassMoniker name="/AriClinicContext/Biometry" />
+        </inheritance>
+        <inheritance Id="422a3621-2b81-43e6-b404-c51c656000b4">
+          <DomainClassMoniker name="/AriClinicContext/Paquimetry" />
+        </inheritance>
+        <inheritance Id="345bee5a-0e3c-4c9b-b41f-5ccc3fdd1e4d">
+          <DomainClassMoniker name="/AriClinicContext/Topography" />
+        </inheritance>
       </inheritors>
       <AssociationTargets>
         <Association Id="67479349-596c-45e3-99a2-55ac07e739b6" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasExamination">
@@ -5015,6 +5564,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="c35f4435-128e-4215-8cfe-77aafe4bebd3" SourceMultiplicity="ZeroOne" name="ExaminationAssignedHasBaseVisit">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="f31663b4-ebf3-46d5-a2c2-738ba0b10dd7">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/ExaminationAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="070eed24-f81c-46fe-8bbb-16eb96062fa4">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ExaminationAssigned/BaseVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="f7de5e31-4117-4814-acfa-f369b0991515">
@@ -5022,6 +5584,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="682a1ef2-36a3-47cb-bfdd-1089da11ad12">
           <NavigationalProperty Id="96cef444-12db-4a98-80fb-6d78ecf88187" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f16c1adf-a6f0-45cd-9198-6fb2cca24f7f">
+          <NavigationalProperty Id="240c759d-6eb4-44c2-ab99-f854e7119285" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5476,6 +6041,7 @@
       <Property Id="ed90a2ee-d676-42b6-9fcd-2d19161454ef" name="Name" label="Name : String" />
       <Property Id="680856ea-26bd-4638-89e4-22970d81b95d" name="MinValue" type="Decimal" label="MinValue : Decimal" />
       <Property Id="c692eee6-317b-4950-983d-c98847c1b1d5" name="MaxValue" type="Decimal" label="MaxValue : Decimal" />
+      <Property Id="b7e33449-c6eb-43c5-bd9e-75bf43ebe793" name="GeneralType" label="GeneralType : String" />
       <AssociationTargets>
         <Association Id="afe631f1-6cbc-464e-bdf2-01c5fb7e7fdf" SourceMultiplicity="ZeroOne" name="LabTestHasUnitType">
           <DomainClassMoniker name="/AriClinicContext/UnitType" />
@@ -5494,6 +6060,9 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="704c6764-ce30-4762-a45e-5f54a5d90e90">
           <NavigationalProperty Id="c6062d87-c465-4c5f-b04c-0247ad90010f" name="UnitType" type="UnitType" label="UnitType : UnitType" nullable="true" kind="Persistent" fieldName="unitType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="20c2026d-29d3-4a82-be0e-d097b093646e">
+          <NavigationalProperty Id="7196f467-1d08-4b1f-9e17-1639caddf087" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5602,6 +6171,380 @@
       <Property Id="4df7a8c9-e3ef-404d-b333-7e3f400d14d3" name="Group" type="Int32" label="Group : Int32" nullable="true" kind="Persistent" fieldName="group" />
       <Property Id="d85cc53e-d627-4a90-a24d-a779074ea246" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
     </DomainClass>
+    <DomainClass Id="ac85c815-912f-40be-a293-0e380a2f7fa7" name="LabTestAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="acd3fe95-1215-458d-98b4-f69dfd8bc783" name="LabTestAssignedId" type="System.Int32" label="LabTestAssignedId : System.Int32" identity="true" />
+      <Property Id="f72a5b5f-204e-4292-ae54-a80f4f6478f1" name="LabTestDate" type="DateTime" label="LabTestDate : DateTime" />
+      <Property Id="72617e7a-5647-4335-ae43-132113f68fc8" name="NumValue" type="Decimal" label="NumValue : Decimal" />
+      <Property Id="3998acaa-2355-4978-856a-852bfb54e488" name="StringValue" label="StringValue : String" />
+      <Property Id="efd3295c-90dc-49f4-875b-b91a29f0e181" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="f5f20753-2320-4753-b8d6-90718eb00755" SourceMultiplicity="ZeroOne" name="LabTestAssignedHasLabTest">
+          <DomainClassMoniker name="/AriClinicContext/LabTest" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="2227e2a1-5508-4900-b98b-db18b216a9c2">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTest/LabTestAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b7cfe4f5-1adf-4d85-b062-f97d3d730547">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTestAssigned/LabTest" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="daaa7eeb-02ec-48cb-9a7b-a43a610b43f6" SourceMultiplicity="ZeroOne" name="LabTestAssignedHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="728c5039-a0d6-4df6-b86d-a08dcabb5215">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/LabTestAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="82161b77-e715-4773-a07d-ade69f1d416b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTestAssigned/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="14db6bc9-8c81-4909-a039-27a1fcc9203a" SourceMultiplicity="ZeroOne" name="LabTestAssignedHasBaseVisit">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d53954bd-b078-4c5a-b11e-1a1efe478524">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/LabTestAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="643af9f9-5cf8-4cc8-9ae7-e4a34bcc35ed">
+              <NavigationalPropertyMoniker name="/AriClinicContext/LabTestAssigned/BaseVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="bbd88a8f-4657-461e-9ec8-88699697800d">
+          <NavigationalProperty Id="0bd242a3-0540-475b-89c6-38455a000d86" name="LabTest" type="LabTest" label="LabTest : LabTest" nullable="true" kind="Persistent" fieldName="labTest" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d1ef1eb7-167e-4121-94de-fe430abd56de">
+          <NavigationalProperty Id="0a0e9763-823b-4d6a-8006-1a89d096c32a" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="da3cbe56-d614-455d-a9c0-4b133ec608aa">
+          <NavigationalProperty Id="3dee08eb-86fb-4494-8e81-8f5a2d3be5bb" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="669ff2b1-3770-4746-99e6-88c50a28071b" name="ProcedureAssigned" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="01d847e3-389d-44b9-892d-192d1c010815" name="ProcedureAssignedId" type="System.Int32" label="ProcedureAssignedId : System.Int32" identity="true" />
+      <Property Id="06870633-3e8e-49f7-8edd-09a5dd27c3ba" name="ProcedureDate" type="DateTime" label="ProcedureDate : DateTime" />
+      <Property Id="ac4aae7c-aa10-4a62-bc28-ea97e74f22ce" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="4951c4db-281a-4887-8890-e19bbd5c9b84" SourceMultiplicity="ZeroOne" name="ProcedureAssignedHasProcedure">
+          <DomainClassMoniker name="/AriClinicContext/Procedure" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="dbbe9d40-3aa1-4e58-ba69-cdc3fcb3fe78">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Procedure/ProcedureAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="9586e145-936b-4ec1-9db9-03205a777bd6">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProcedureAssigned/Procedure" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" SourceMultiplicity="ZeroOne" name="ProcedureAssignedHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="60aad7af-d24a-4eb8-a203-2feede71427a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/ProcedureAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="1b46f02c-6959-4bff-9627-1ceecd8c9315">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProcedureAssigned/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="13be6b44-23c0-4135-8435-6abca4d75d21" SourceMultiplicity="ZeroOne" name="ProcedureAssignedHasBaseVisit">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7d2a2721-d1c8-41f5-8386-b11e52672099">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/ProcedureAssigneds" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="0fa9a9bb-cf45-445f-ae86-cc239e3aba8e">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ProcedureAssigned/BaseVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="781e8300-0ac7-4f56-9466-d497269bb166">
+          <NavigationalProperty Id="2cdf74f6-c184-4a89-8891-782b648bf15d" name="Procedure" type="Procedure" label="Procedure : Procedure" nullable="true" kind="Persistent" fieldName="procedure" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3bc07df0-0fba-4bab-add7-234148ddfffd">
+          <NavigationalProperty Id="874d604f-7325-48cd-aa53-147918c1e60c" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5f37b1e2-6808-4b18-aeda-c29c735b7a5e">
+          <NavigationalProperty Id="9f73718d-317a-4780-a0fa-730a95137217" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="6c106c04-8b76-4549-a765-e030095e6bc7" name="Biometry" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="02f5612d-a3b1-4674-990d-72e47a53b90e" name="Formula" label="Formula : String" />
+      <Property Id="e9ade122-9369-4f51-a561-c4332cf4981d" name="LioLeftEye" type="Decimal" label="LioLeftEye : Decimal" />
+      <Property Id="45bffae1-91a9-4574-8208-0b664286c5e4" name="LioRightEye" type="Decimal" label="LioRightEye : Decimal" />
+      <Property Id="f145ff3b-2fec-405f-9151-3c288bcf0d62" name="AlxLeftEye" type="Decimal" label="AlxLeftEye : Decimal" />
+      <Property Id="35e00f18-de58-4003-a315-3e0c3246c1f8" name="AlxRightEye" type="Decimal" label="AlxRightEye : Decimal" />
+    </DomainClass>
+    <DomainClass Id="6570c076-f0fb-4256-95fa-901c680a157a" name="Paquimetry" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="e90232ca-a26b-4850-8385-b1368b3eef57" name="RightEyeCentralC0" type="Decimal" label="RightEyeCentralC0 : Decimal" />
+      <Property Id="3173f4d7-eb96-42fa-b5b2-2e2701553c5c" name="RightEyeC1" type="Decimal" label="RightEyeC1 : Decimal" />
+      <Property Id="b8f6c365-d831-42ae-af36-579c29d3d53c" name="RightEyeC3" type="Decimal" label="RightEyeC3 : Decimal" />
+      <Property Id="d2c78a32-e9a6-46f9-bef1-d3727891fe9e" name="RightEyeC5" type="Decimal" label="RightEyeC5 : Decimal" />
+      <Property Id="9ebe79c8-e44d-40c2-a52f-f8af15f8d2a7" name="RightEyeC7" type="Decimal" label="RightEyeC7 : Decimal" />
+      <Property Id="5cebc0b6-6f29-4e26-8f99-afd29ec34301" name="LeftEyeCentralC0" type="Decimal" label="LeftEyeCentralC0 : Decimal" />
+      <Property Id="1ed3584e-42ef-4c05-a7a0-7c0acd28ac33" name="LeftEyeC1" type="Decimal" label="LeftEyeC1 : Decimal" />
+      <Property Id="d90a5519-9a9c-435c-bd37-3af827408ee5" name="LeftEyeC3" type="Decimal" label="LeftEyeC3 : Decimal" />
+      <Property Id="57868baa-d8a9-4a4f-a393-137e6a3c7bd6" name="LeftEyeC5" type="Decimal" label="LeftEyeC5 : Decimal" />
+      <Property Id="d0116777-ca74-4c49-ba2d-c13e2a4c1711" name="LeftEyeC7" type="Decimal" label="LeftEyeC7 : Decimal" />
+    </DomainClass>
+    <DomainClass Id="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" name="Topography" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" name="RightEyeK1" type="Decimal" label="RightEyeK1 : Decimal" />
+      <Property Id="2b06b38c-b191-42e2-8171-f1f86f1b111c" name="RightEyeK2" type="Decimal" label="RightEyeK2 : Decimal" />
+      <Property Id="723a00d8-6aa5-4910-b1c2-52ed150cbc19" name="RightEyeAstig" type="Decimal" label="RightEyeAstig : Decimal" />
+      <Property Id="a4c5291d-ef65-4787-b890-f0af98cf81fd" name="RightEyeAxis" type="Decimal" label="RightEyeAxis : Decimal" />
+      <Property Id="2fab1e39-2b28-40bf-a2d3-1daadfe3ae28" name="LeftEyeK1" type="Decimal" label="LeftEyeK1 : Decimal" />
+      <Property Id="0d6edc94-7dc5-4f68-b6e6-c5ab21a18e07" name="LeftEyeK2" type="Decimal" label="LeftEyeK2 : Decimal" />
+      <Property Id="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" name="LeftEyeAstig" type="Decimal" label="LeftEyeAstig : Decimal" />
+      <Property Id="919bda7b-26da-413f-8a15-f42e6bb705a2" name="LeftEyeAxis" type="Decimal" label="LeftEyeAxis : Decimal" />
+    </DomainClass>
+    <DomainClass Id="e36ea4c8-bb15-412d-884e-8d192c01a24d" name="VisitReason" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="ca9d7c46-0908-40ad-ba84-06f1daca9824" name="VisitReasonId" type="System.Int32" label="VisitReasonId : System.Int32" identity="true" />
+      <Property Id="acfbac86-aeb5-48a9-ac9f-45e876bd1aa1" name="Name" label="Name : String" />
+      <Property Id="64b0db4c-3238-4879-8b6b-149c28a3798d" name="OftId" type="System.Int32" label="OftId : System.Int32" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c47413ef-0685-4bca-ae7d-45be7022df5f">
+          <NavigationalProperty Id="86a818af-3e8e-481d-b48b-07e06ac1a1f4" name="Base_visits" type="IList&lt;Base_visit&gt;" label="Base_visits : IList&lt;Base_visit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="86c81f85-f044-4973-acc9-abd7f769e8b3" name="BaseVisit" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="eb83c90b-2bcc-433f-8a98-44844291a09c" name="VisitId" type="Int32" label="VisitId : Int32" kind="Persistent" identity="true" fieldName="visitId" />
+      <Property Id="6de33a04-2c93-4b5c-8f9e-01e00f8e2e21" name="Comments" label="Comments : String" kind="Persistent" fieldName="comments" />
+      <Property Id="13c9961c-dbf0-4a4f-9b97-5a27d3112e0f" name="VisitDate" type="DateTime" label="VisitDate : DateTime" kind="Persistent" fieldName="visitDate" />
+      <Property Id="ea2c718f-1ee0-4b1c-afdf-2233efdf263e" name="VType" label="VType : String" />
+      <inheritors>
+        <inheritance Id="118a26c6-d660-41d0-8bd2-9f81ecc3e746">
+          <DomainClassMoniker name="/AriClinicContext/OphthalmologicVisit" />
+        </inheritance>
+      </inheritors>
+      <AssociationTargets>
+        <Association Id="d599392e-6fa5-4753-a5ae-fc0b016b9d0b" SourceMultiplicity="ZeroOne" name="Base_visitHasVisitReason1">
+          <DomainClassMoniker name="/AriClinicContext/VisitReason" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="98e80be4-83d3-4290-bfda-cd676dc613f1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/VisitReason/Base_visits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4c2c9689-7bad-4caf-aed5-15d733548db7">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/VisitReason" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="dc665119-feab-495d-acf6-fea9312427ea" SourceMultiplicity="ZeroOne" name="Base_visitHasProfessional1">
+          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="dec438eb-5e94-42e9-9b23-62d44f680da7">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/Base_visits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f022517e-f322-4854-b059-850d43216afe">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Professional" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="45ffd84d-89a0-4bbd-90a2-2c5cf338be9f" SourceMultiplicity="ZeroOne" name="Base_visitHasPatient1">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b16c5a28-ba98-46e0-914f-9a240601b934">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f3e85524-fdd9-487d-847f-b6c88d515e95">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="8c12e5b7-2abb-48fb-b042-4907a92c4540" SourceMultiplicity="ZeroOne" name="BaseVisitHasAppointmentType">
+          <DomainClassMoniker name="/AriClinicContext/AppointmentType" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="72337721-566a-44f8-8c56-e7a97103d317">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AppointmentType/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="259e3908-9a01-49f4-a33c-ad21e01076c5">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/AppointmentType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="13e4bf84-af9f-4f4e-b128-3c675c1220c7">
+          <NavigationalProperty Id="4fd0b8ce-c0f5-47eb-8c23-c9ec30b58384" name="VisitReason" type="VisitReason" label="VisitReason : VisitReason" nullable="true" kind="Persistent" fieldName="visitReason" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="27b96a24-dc19-453e-bcb4-18b0a7d6b787">
+          <NavigationalProperty Id="96a34c4f-e31f-497c-b3dc-911bdee3eb40" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ab79b11f-9511-497f-9b16-bae63afe02b5">
+          <NavigationalProperty Id="fddd5e98-72cf-4a7d-8d9c-eb3c55395833" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0e653a1f-0456-49fb-ac03-f84686e0f4de">
+          <NavigationalProperty Id="ffc6cdf4-7c6f-4226-9544-b171752b2159" name="AppointmentType" type="AppointmentType" label="AppointmentType : AppointmentType" nullable="true" kind="Persistent" fieldName="appointmentType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1d70b417-3bce-411e-9e46-17f5dd89c345">
+          <NavigationalProperty Id="70ce88e5-e079-49df-b097-9954717e8384" name="ExaminationAssigneds" type="IList&lt;ExaminationAssigned&gt;" label="ExaminationAssigneds : IList&lt;ExaminationAssigned&gt;" nullable="true" kind="Persistent" fieldName="examinationAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="289fc4c2-1da8-4d59-a0ef-cff89ae15539">
+          <NavigationalProperty Id="79386153-18da-4966-8c7a-9e845b29d398" name="Treatments" type="IList&lt;Treatment&gt;" label="Treatments : IList&lt;Treatment&gt;" nullable="true" kind="Persistent" fieldName="treatments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="8af24e15-b283-466c-b9c4-2805ac917b44">
+          <NavigationalProperty Id="59ce914d-0c24-43d4-8c93-4a083a21dc6c" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="beab8cea-7dbd-4b34-969f-2a92a595a003">
+          <NavigationalProperty Id="19a223b0-fcd9-4040-986f-2746fa1fa9c6" name="LabTestAssigneds" type="IList&lt;LabTestAssigned&gt;" label="LabTestAssigneds : IList&lt;LabTestAssigned&gt;" nullable="true" kind="Persistent" fieldName="labTestAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="55e9c845-23b7-4079-8905-1c97e2621aa7">
+          <NavigationalProperty Id="bc6d354b-a1db-4104-aea1-47f811503a52" name="DiagnosticAssigneds" type="IList&lt;DiagnosticAssigned&gt;" label="DiagnosticAssigneds : IList&lt;DiagnosticAssigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="af0eac44-1b2b-4193-a568-27fe0e3a0385" name="OphthalmologicVisit" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="3b8b2e31-d848-4ab3-923c-9255f70939c0" name="DiagnosticDetails" label="DiagnosticDetails : String" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="d2b1982c-6bb8-44e0-b38d-ab766dece6b3">
+          <NavigationalProperty Id="06c43585-d076-40ec-869b-547c962a2c2c" name="AntSegments" type="IList&lt;AntSegment&gt;" label="AntSegments : IList&lt;AntSegment&gt;" nullable="true" kind="Persistent" fieldName="antSegments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="4ef0ac33-744b-498e-9af5-3c969fba2bc4">
+          <NavigationalProperty Id="4e4a62ce-bf10-425f-960d-13955a9ed1f5" name="MotAppends" type="IList&lt;MotAppend&gt;" label="MotAppends : IList&lt;MotAppend&gt;" nullable="true" kind="Persistent" fieldName="motAppends" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e3aa3de9-7421-4344-a7d4-6d238c633e21">
+          <NavigationalProperty Id="685fed74-9247-4cf0-9f6e-635b9c0bd678" name="Fundus" type="IList&lt;Fundus&gt;" label="Fundus : IList&lt;Fundus&gt;" nullable="true" kind="Persistent" fieldName="fundus" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="40574235-c24e-4a25-89ae-7c44c13ff78d" name="AntSegment" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="5ca77cd7-3b20-4060-9959-821c282c4166" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="b5e79951-622d-44e8-b33c-b6403e926854" name="Conjunctiva" label="Conjunctiva : String" />
+      <Property Id="ce581bfe-1b5c-4a22-95e5-58f4ede5d844" name="Cornea" label="Cornea : String" />
+      <Property Id="e118943c-3e2e-439b-9759-b124d834a0ed" name="Chamber" label="Chamber : String" />
+      <Property Id="3dab7a71-de1d-4beb-a05d-c219eed880a2" name="Tyndall" label="Tyndall : String" />
+      <Property Id="50712913-f77b-4265-86ee-c3906bcbd1d5" name="Iris" label="Iris : String" />
+      <Property Id="8f2c2c25-fbfc-4289-8c3f-950d3ab1b413" name="Pupil" label="Pupil : String" />
+      <Property Id="e240cc8f-28b4-450b-9db9-086bbbe88f4c" name="Crystalline" label="Crystalline : String" />
+      <Property Id="58a71478-2f57-4209-83df-dd80b77f262f" name="EyestrainRE" type="Decimal" label="EyestrainRE : Decimal" />
+      <Property Id="c8373871-2964-466b-b7c3-0b540c2063a6" name="EyestrainLE" type="Decimal" label="EyestrainLE : Decimal" />
+      <AssociationTargets>
+        <Association Id="f46be196-0271-4e4e-9dab-dad884d0f1db" SourceMultiplicity="ZeroOne" name="AntSegmentHasOphthalmologicVisit">
+          <DomainClassMoniker name="/AriClinicContext/OphthalmologicVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7f23aa82-2a92-40af-a9f7-01e58f0f6080">
+              <NavigationalPropertyMoniker name="/AriClinicContext/OphthalmologicVisit/AntSegments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="7c2e129f-142b-4d65-a5c6-2a24c927f348">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AntSegment/OphthalmologicVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="9bcbc193-3cb2-4687-b917-7f9ed3d6ed7d">
+          <NavigationalProperty Id="d6034dce-61aa-406e-b58a-4b7455e058bf" name="OphthalmologicVisit" type="OphthalmologicVisit" label="OphthalmologicVisit : OphthalmologicVisit" nullable="true" kind="Persistent" fieldName="ophthalmologicVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="3b42178f-cf6c-48ae-931e-d758403647cd" name="MotAppend" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="8fb622c4-6315-41bf-a033-9532de76eea2" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="097a999a-4ec0-44e1-bcb3-b0a43625a7ac" name="EyeMotility" label="EyeMotility : String" />
+      <Property Id="0ca1805e-3f68-4a77-83de-c0b3af805f12" name="Eyebrows" label="Eyebrows : String" />
+      <Property Id="23bfd63a-0461-4e8f-8c48-fca3180ae92e" name="PeriocularArea" label="PeriocularArea : String" />
+      <Property Id="3c81960b-0a6c-47de-8eb5-81c4b07d409e" name="C1LE" type="Decimal" label="C1LE : Decimal" />
+      <Property Id="b2f18633-ee53-45d8-b029-5e2779a43c91" name="C1RE" type="Decimal" label="C1RE : Decimal" />
+      <Property Id="466a72cb-926c-4c1f-8a5b-0fccfb7207c8" name="C2LE" type="Decimal" label="C2LE : Decimal" />
+      <Property Id="24d7ccb3-3160-4fa1-8cd6-fbbd0a2acc1b" name="C2RE" type="Decimal" label="C2RE : Decimal" />
+      <Property Id="20a408ee-a154-4b6c-833e-823032cf8457" name="C3LE" type="Decimal" label="C3LE : Decimal" />
+      <Property Id="08d4b694-6aac-4f0b-9ad1-3395bf70bd3f" name="C3RE" type="Decimal" label="C3RE : Decimal" />
+      <Property Id="19484bec-ac73-40be-bb4b-65387c033bd2" name="C4LE" type="Decimal" label="C4LE : Decimal" />
+      <Property Id="7b476668-23f2-4305-be7b-60c828d5a1e5" name="C4RE" type="Decimal" label="C4RE : Decimal" />
+      <Property Id="36077a52-6fd6-4f4e-9ffb-2b5ae745e36f" name="C5LE" type="Decimal" label="C5LE : Decimal" />
+      <Property Id="4cef93b6-35a8-4aba-bcce-029e6aa2756a" name="C5RE" type="Decimal" label="C5RE : Decimal" />
+      <Property Id="d1b57606-b9a9-4690-9aed-229a200231ea" name="C6LE" type="Decimal" label="C6LE : Decimal" />
+      <Property Id="7b90c8d9-3244-4f38-8a8e-99b7f2a15c15" name="C6RE" type="Decimal" label="C6RE : Decimal" />
+      <Property Id="82b7f453-077c-47a8-ae4d-8ed818fe2266" name="C7LE" type="Decimal" label="C7LE : Decimal" />
+      <Property Id="61e15b7d-d277-47f7-83da-a184d8baf012" name="C7RE" type="Decimal" label="C7RE : Decimal" />
+      <Property Id="a851db24-d332-4d52-babc-c24a7c4a4c6b" name="C8LE" type="Decimal" label="C8LE : Decimal" />
+      <Property Id="860f2049-f966-49ce-a932-23241cda8f3d" name="C8RE" type="Decimal" label="C8RE : Decimal" />
+      <Property Id="c0250fb5-9af6-411d-a7b1-563e61d64c74" name="C9LE" type="Decimal" label="C9LE : Decimal" />
+      <Property Id="dbe9fe72-a1bb-4936-a00c-3d60941034ed" name="C9RE" type="Decimal" label="C9RE : Decimal" />
+      <Property Id="1bd04086-0840-47a6-846a-c86a64136252" name="C10LE" type="Decimal" label="C10LE : Decimal" />
+      <Property Id="ca49d670-dc6f-4792-bf5b-c392ba8a0942" name="C10RE" type="Decimal" label="C10RE : Decimal" />
+      <Property Id="86272110-312f-467e-a6b1-3260b86cb73e" name="C11LE" type="Decimal" label="C11LE : Decimal" />
+      <Property Id="0370ff0e-7d24-466d-968e-e892abb42375" name="C11RE" type="Decimal" label="C11RE : Decimal" />
+      <Property Id="1912be2b-b732-403d-b4a6-6ba60e59f361" name="C12LE" type="Decimal" label="C12LE : Decimal" />
+      <Property Id="8053be34-2aa2-464a-ae12-d004c26b0884" name="C12RE" type="Decimal" label="C12RE : Decimal" />
+      <Property Id="35887aeb-241f-421a-8eda-9b8953c45662" name="Comments" label="Comments : String" />
+      <AssociationTargets>
+        <Association Id="fa38495b-de35-4c8b-afb1-fb15ad397a8e" SourceMultiplicity="ZeroOne" name="MotAppendHasOphthalmologicVisit">
+          <DomainClassMoniker name="/AriClinicContext/OphthalmologicVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="1b6fce80-0b51-41a0-9b0b-ea25f94fd54b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/OphthalmologicVisit/MotAppends" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e5e1d285-7443-402c-83bd-b37c1a680106">
+              <NavigationalPropertyMoniker name="/AriClinicContext/MotAppend/OphthalmologicVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="7005667e-1999-4368-bb60-d72506655c20">
+          <NavigationalProperty Id="fc10ba77-8996-473f-83bb-fac7d023dd6b" name="OphthalmologicVisit" type="OphthalmologicVisit" label="OphthalmologicVisit : OphthalmologicVisit" nullable="true" kind="Persistent" fieldName="ophthalmologicVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="1057988c-c334-4765-8f1f-3b04e6d59413" name="Fundus" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="6a7914d1-2dff-4602-af1a-9a5075313e52" name="Id" type="System.Int32" label="Id : System.Int32" identity="true" />
+      <Property Id="b7bb9ef3-29b5-40dc-84ed-319f8c3fa7ed" name="OpticNerve" label="OpticNerve : String" />
+      <Property Id="722137fc-4b11-4c9f-a127-4df92d6cd79b" name="Vessels" label="Vessels : String" />
+      <Property Id="a2075cf1-23a3-42c7-88b5-b708cdef8e97" name="Macula" label="Macula : String" />
+      <Property Id="0b77df19-aad4-4e63-a180-7385a5d813ce" name="Vitreous" label="Vitreous : String" />
+      <Property Id="6be47a1e-7c89-45e0-8a80-324e5748d5c5" name="Periphery" label="Periphery : String" />
+      <AssociationTargets>
+        <Association Id="8a076dc0-be2b-43f2-a0d1-bcb6d75dbac0" SourceMultiplicity="ZeroOne" name="FundusHasOphthalmologicVisit">
+          <DomainClassMoniker name="/AriClinicContext/OphthalmologicVisit" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5816490c-0ba5-4e41-a21f-aacb62beb330">
+              <NavigationalPropertyMoniker name="/AriClinicContext/OphthalmologicVisit/Fundus" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="3aa26419-48ec-426c-a5e1-9db339b7fceb">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Fundus/OphthalmologicVisit" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="3c76a925-a0f9-4788-89b4-a00049bce267">
+          <NavigationalProperty Id="5e2ee1a4-e464-4e8e-bb02-5a9f69856481" name="OphthalmologicVisit" type="OphthalmologicVisit" label="OphthalmologicVisit : OphthalmologicVisit" nullable="true" kind="Persistent" fieldName="ophthalmologicVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -5660,6 +6603,17 @@
         <entitySetProperty name="ProfessionalInvoiceLines" type="ProfessionalInvoiceLine" label="ProfessionalInvoiceLines : IQueryable&lt;ProfessionalInvoiceLine&gt;" />
         <entitySetProperty name="ExaminationTypes" type="ExaminationType" label="ExaminationTypes : IQueryable&lt;ExaminationType&gt;" />
         <entitySetProperty name="Nomenclators" namespace="AriCliModel" type="Nomenclator" label="Nomenclators : IQueryable&lt;AriCliModel.Nomenclator&gt;" />
+        <entitySetProperty name="LabTestAssigneds" type="LabTestAssigned" label="LabTestAssigneds : IQueryable&lt;LabTestAssigned&gt;" />
+        <entitySetProperty name="ProcedureAssigneds" type="ProcedureAssigned" label="ProcedureAssigneds : IQueryable&lt;ProcedureAssigned&gt;" />
+        <entitySetProperty name="Biometries" type="Biometry" label="Biometries : IQueryable&lt;Biometry&gt;" />
+        <entitySetProperty name="Paquimetries" type="Paquimetry" label="Paquimetries : IQueryable&lt;Paquimetry&gt;" />
+        <entitySetProperty name="Topographies" type="Topography" label="Topographies : IQueryable&lt;Topography&gt;" />
+        <entitySetProperty name="VisitReasons" type="VisitReason" label="VisitReasons : IQueryable&lt;VisitReason&gt;" />
+        <entitySetProperty name="BaseVisits" namespace="AriCliModel" type="BaseVisit" label="BaseVisits : IQueryable&lt;AriCliModel.BaseVisit&gt;" />
+        <entitySetProperty name="OphthalmologicVisits" type="OphthalmologicVisit" label="OphthalmologicVisits : IQueryable&lt;OphthalmologicVisit&gt;" />
+        <entitySetProperty name="AntSegments" type="AntSegment" label="AntSegments : IQueryable&lt;AntSegment&gt;" />
+        <entitySetProperty name="MotAppends" type="MotAppend" label="MotAppends : IQueryable&lt;MotAppend&gt;" />
+        <entitySetProperty name="Fundus" type="Fundus" label="Fundus : IQueryable&lt;Fundus&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

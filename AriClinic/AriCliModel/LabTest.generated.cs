@@ -73,6 +73,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string generalType;
+		public virtual string GeneralType 
+		{ 
+		    get
+		    {
+		        return this.generalType;
+		    }
+		    set
+		    {
+		        this.generalType = value;
+		    }
+		}
+		
 		private UnitType unitType;
 		public virtual UnitType UnitType 
 		{ 
@@ -83,6 +96,15 @@ namespace AriCliModel
 		    set
 		    {
 		        this.unitType = value;
+		    }
+		}
+		
+		private IList<LabTestAssigned> labTestAssigneds = new List<LabTestAssigned>();
+		public virtual IList<LabTestAssigned> LabTestAssigneds 
+		{ 
+		    get
+		    {
+		        return this.labTestAssigneds;
 		    }
 		}
 		

@@ -201,5 +201,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<BaseVisit> baseVisits = new List<BaseVisit>();
+		public virtual IList<BaseVisit> Base_visits 
+		{ 
+		    get
+		    {
+		        return this.baseVisits;
+		    }
+		}
+		
 	}
 }
