@@ -276,34 +276,31 @@
               var w1 = window.open("RptProfessionalInvoicesForm.aspx", "PROFINVS", "width=440, height=300,resizable=1")
               w1.focus();
           }
-          function LaunchLabTest()
-          {
-              var w1 = window.open("labTestGrid.aspx", "LABTEST", "width=800, height=500,resizable=1")
-              w1.focus();
-          }
-          function LaunchLabTestAssigned()
-          {
-              var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=900, height=600,resizable=1")
-              w1.focus();
-          }
-          function LaunchProcedureAssigned()
-          {
-              var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=900, height=600,resizable=1")
-              w1.focus();
-          }
-          function LaunchVisitReason()
-          {
-              var w1 = window.open("VisitReasonGrid.aspx", "VISITREASON", "width=500, height=500,resizable=1")
-              w1.focus();
-          }
-          function LaunchVisit()
-          {
-              var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=800, height=500,resizable=1")
-              w1.focus();
-          }
+<<<<<<< HEAD
+
           function LaunchbombasPCEA()
           {
               var w1 = window.open("RptPCEAForm.aspx", "RPCEAF", "width=450, height=300,resizable=1")
+=======
+          function LaunchLabTest() {
+              var w1 = window.open("labTestGrid.aspx", "LABTEST", "width=800, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchLabTestAssigned() {
+              var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
+          function LaunchProcedureAssigned() {
+              var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
+          function LaunchVisitReason() {
+              var w1 = window.open("VisitReasonGrid.aspx", "VISITREASON", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchVisit() {
+              var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=800, height=500,resizable=1")
+>>>>>>> cf8f95d0376a8002963b20b16721cd6c1a5e7221
               w1.focus();
           }
         </script>
@@ -464,7 +461,6 @@
                   <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" 
                                        Value="rbombasPCEA">
                   </telerik:RadMenuItem>
-
                 </Items>
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Historia Clinica" 
@@ -472,6 +468,7 @@
                 <Items>
                   <telerik:RadMenuItem runat="server" Text="Datos básicos" Value="basedata">
                     <Items>
+<<<<<<< HEAD
                       <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
@@ -480,14 +477,46 @@
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
                       </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
-                                           Value="labtest">
-                      </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
-                      </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
-                                           Value="visitreason">
-                      </telerik:RadMenuItem>
+=======
+                        <telerik:RadMenuItem runat="server" Text="Datos básicos" Value="basedata">
+                            <Items>
+                                <telerik:RadMenuItem runat="server" Text="Diagnósticos" Value="diagnostic">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Fármacos" Value="drug">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Exploración" Value="examination">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Unidades de medida" Value="unittype">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Tipo pruebas laboratorio" 
+                                    Value="labtest">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
+                                    Value="visitreason">
+                                </telerik:RadMenuItem>
+                            </Items>
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Diagnósticos asignados" 
+                            Value="diagnosticassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tratamientos" Value="treatment">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Exploraciones asignadas" 
+                            Value="examinationassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Pruebas laboratorio asignadas" 
+                            Value="labtestassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
+                            Value="procedureassigned">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Visitas" Value="visit">
+                        </telerik:RadMenuItem>
+>>>>>>> cf8f95d0376a8002963b20b16721cd6c1a5e7221
                     </Items>
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
@@ -499,14 +528,6 @@
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Exploraciones asignadas" 
                                        Value="examinationassigned">
-                  </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Text="Pruebas laboratorio asignadas" 
-                                       Value="labtestassigned">
-                  </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Text="Procedimientos asignados" 
-                                       Value="procedureassigned">
-                  </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Text="Visitas" Value="visit">
                   </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>

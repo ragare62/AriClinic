@@ -102,6 +102,10 @@ public partial class RptView : System.Web.UI.Page
                     case "professionalinvoices":
                         LoadProfessionalInvoices();
                         break;
+                    case "bombasPCEA":
+                        LoadRptBombasPCEA();
+                        break;
+                        
                 }
             }
             catch (Exception ex)
@@ -349,6 +353,21 @@ public partial class RptView : System.Web.UI.Page
 
         //RptParamInvoices rtsc = new RptParamInvoices(fromDate, toDate, ctx);
         RptParamTickets rtsc = new RptParamTickets(fromDate, toDate, ctx);
+        ReportViewer1.Report = rtsc;
+    }
+
+    private void LoadRptBombasPCEA()
+    {
+        if (Request.QueryString["FromDate"] == null
+           || Request.QueryString["ToDate"] == null)
+        {
+            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            return;
+        }
+        DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
+        DateTime toDate = DateTime.Parse(Request.QueryString["ToDate"]);
+
+        RptBombaDolor rtsc = new RptBombaDolor(fromDate, toDate, ctx);
         ReportViewer1.Report = rtsc;
     }
     #endregion

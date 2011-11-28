@@ -5,7 +5,7 @@ using System.Text;
 using AriCliModel;
 using Telerik.OpenAccess;
 using System.Security.Cryptography;
-using System.Linq;
+
 
 namespace AriCliModel
 {
@@ -323,7 +323,7 @@ namespace AriCliModel
         {
             if (insuranceId != 0)
             {
-                if (type == "P")
+                if (type.Equals("P"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -334,7 +334,7 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
-                else
+                else if(type.Equals("NP"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -345,6 +345,29 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
+                else if (type.Equals("C"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && t.Policy.Insurance.InsuranceId == insuranceId
+                                   && (t.Checked==true)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("SC"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && t.Policy.Insurance.InsuranceId == insuranceId
+                                   && (t.Checked == false)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else { return new List<Ticket>(); }
             }
             else
             {
@@ -358,7 +381,7 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
-                else
+                else if (type.Equals("NP"))
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
@@ -368,6 +391,27 @@ namespace AriCliModel
                              select t;
                     return rs.ToList<Ticket>();
                 }
+                else if (type.Equals("C"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && (t.Checked==true)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("SC"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate
+                                   && t.TicketDate <= toDate
+                                   && (t.Checked == false)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else { return new List<Ticket>(); }
             }
         }
 
@@ -385,11 +429,25 @@ namespace AriCliModel
                     select inv).FirstOrDefault<Invoice>();
         }
 
+        public static ProfessionalInvoice GetProfessionalInvoice(int invoiceId, AriClinicContext ctx)
+        {
+            return (from inv in ctx.ProfessionalInvoices
+                    where inv.InvoiceId == invoiceId
+                    select inv).FirstOrDefault<ProfessionalInvoice>();
+        }
+
         public static InvoiceLine GetInvoiceLine(int invoiceLineId, AriClinicContext ctx)
         {
             return (from il in ctx.InvoiceLines
                     where il.InvoiceLineId == invoiceLineId
                     select il).FirstOrDefault<InvoiceLine>();
+        }
+
+        public static ProfessionalInvoiceLine GetProfessionalInvoiceLine(int invoiceLineId, AriClinicContext ctx)
+        {
+            return (from il in ctx.ProfessionalInvoiceLines
+                    where il.InvoiceLineId == invoiceLineId
+                    select il).FirstOrDefault<ProfessionalInvoiceLine>();
         }
 
         public static IList<Ticket> GetTicketsNotInvoiced(AriClinicContext ctx)
@@ -465,6 +523,16 @@ namespace AriCliModel
             return total;
         }
 
+        public static Decimal GetProfessionalInvoiceTotal(ProfessionalInvoice inv)
+        {
+            Decimal total = 0;
+            foreach (ProfessionalInvoiceLine invl in inv.ProfessionalInvoiceLines)
+            {
+                total += invl.Amount;
+            }
+            return total;
+        }
+
         public static int GetNextInvoiceNumber(string serial, int year, AriClinicContext ctx)
         {
             int v = (from inv in ctx.Invoices
@@ -472,6 +540,19 @@ namespace AriCliModel
                            && inv.Year == year
                      select inv.InvoiceNumber).Max();
             return ++v;
+        }
+
+        public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
+        {
+            if (prof.ProfessionalInvoices.Count > 0)
+            {
+                int v = (from inv in prof.ProfessionalInvoices
+                         where inv.Year == year
+                         select inv.InvoiceNumber).Max();
+
+                return ++v;
+            }
+            else return 1;
         }
 
         public static bool DeleteInvoice(Invoice inv, AriClinicContext ctx)
@@ -485,16 +566,16 @@ namespace AriCliModel
             // erase possible service note relation
             if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.ServiceNotes.Count; i++)
+                for (int i = 0; i < inv.ServiceNotes.Count; i++)
                 {
                      inv.ServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
             {
-                for (int i = 1; i <= inv.AnestheticServiceNotes.Count; i++)
+                for (int i = 0; i < inv.AnestheticServiceNotes.Count; i++)
                 {
-                    inv.ServiceNotes.ElementAt(i).Invoice = null;
+                    inv.AnestheticServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             // delete lines
@@ -506,9 +587,37 @@ namespace AriCliModel
             return true;
         }
 
+        public static bool DeleteProfessionalInvoice(ProfessionalInvoice inv, AriClinicContext ctx)
+        {
+            // Last invoice number?
+            int n = GetNextProfessionalInvoiceNumber(inv.Professional, inv.Year, ctx) - 1;
+            // only the last invoice can be deleted
+            if (inv.InvoiceNumber != n)
+                return false;
+
+            // delete lines
+            ctx.Delete(inv.ProfessionalInvoiceLines);
+
+            // delete invoice
+            ctx.Delete(inv);
+
+            return true;
+        }
+
         public static bool CorrectInvoiceDate(DateTime date, AriClinicContext ctx)
         {
             var rs = from i in ctx.Invoices
+                     where i.InvoiceDate > date
+                     select i;
+            if (rs.Count() > 0)
+                return false;
+            else
+                return true;
+        }
+
+        public static bool CorrectProfessionalInvoiceDate(DateTime date, Professional prof)
+        {
+            var rs = from i in prof.ProfessionalInvoices
                      where i.InvoiceDate > date
                      select i;
             if (rs.Count() > 0)
@@ -841,6 +950,23 @@ namespace AriCliModel
             return tickets;
         }
 
+        public static IList<AnestheticTicket> GetTicketsByCirujano(DateTime fromDate, DateTime toDate, string ProfessionalId, AriClinicContext ctx)
+        {
+            int idProf = int.Parse(ProfessionalId);
+            return (from t in ctx.AnestheticTickets
+                    where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon.PersonId == idProf
+                    select t).Distinct().ToList<AnestheticTicket>();
+        }
+
+        public static IList<AnestheticTicket> GetTicketsAnestesicos(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<AnestheticTicket> tickets = (from t in ctx.AnestheticTickets
+                                    where t.TicketDate >= fromDate && t.TicketDate <= toDate
+                                    select t).ToList<AnestheticTicket>();
+
+            return tickets;
+        }
+
         public static void DeleteAnestheticServiceNote(AnestheticServiceNote ansn, AriClinicContext ctx)
         {
             foreach (AnestheticTicket at in ansn.AnestheticTickets)
@@ -855,6 +981,24 @@ namespace AriCliModel
             List<Professional> professional = (from t in ctx.Tickets
                                                where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                                select t.Professional).Distinct<Professional>().ToList<Professional>();
+
+            return professional;
+        }
+
+        public static IList<Professional> GetSurgeonTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<Professional> professional = (from t in ctx.AnestheticTickets
+                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon!=null
+                                               select t.Surgeon).Distinct<Professional>().ToList<Professional>();
+
+            return professional;
+        }
+
+        public static IList<Professional> GetSurgeonTickets(AriClinicContext ctx)
+        {
+            List<Professional> professional = (from t in ctx.AnestheticTickets
+                                               where t.Surgeon !=null
+                                               select t.Surgeon).Distinct<Professional>().ToList<Professional>();
 
             return professional;
         }
@@ -1182,13 +1326,6 @@ namespace AriCliModel
                     where gt.Id == id
                     select gt).FirstOrDefault<GlassesTest>();
         }
-<<<<<<< HEAD
-        public static ContactLensesTest GetContactLensesTest(int id, AriClinicContext ctx)
-        {
-            return (from cl in ctx.ContactLensesTests
-                    where cl.Id == id
-                    select cl).FirstOrDefault<ContactLensesTest>();
-=======
         public static int InvoiceAnesthesicServiceNote(AnestheticServiceNote asn, AriClinicContext ctx)
         {
             // it there's an invoice related to this service 
@@ -1235,7 +1372,133 @@ namespace AriCliModel
                     return true;
             }
             return false;
->>>>>>> origin/master
         }
+        public static ContactLensesTest GetContactLensesTest(int id, AriClinicContext ctx)
+        {
+            return (from cl in ctx.ContactLensesTests
+                    where cl.Id == id
+                    select cl).FirstOrDefault<ContactLensesTest>();
+        }
+        public static IList<UnitType> GetUnitTypes(AriClinicContext ctx)
+        {
+            return (from ut in ctx.UnitTypes
+                    select ut).ToList<UnitType>();
+        }
+        public static UnitType GetUnitType(int id, AriClinicContext ctx)
+        {
+            return (from ut in ctx.UnitTypes
+                    where ut.UnitTypeId == id
+                    select ut).FirstOrDefault<UnitType>();
+        }
+
+        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
+        {
+            List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
+                                    where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate
+                                                 select i).ToList<ProfessionalInvoice>();
+
+            return invoice;
+        }
+
+        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate,string idProfessional, AriClinicContext ctx)
+        {
+            List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
+                                                 where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate && i.Professional.PersonId.ToString()==idProfessional
+                                                 select i).ToList<ProfessionalInvoice>();
+
+            return invoice;
+        }
+<<<<<<< HEAD
+
+        public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
+        {
+            var anesNote = (from a in ctx1.AnestheticServiceNotes
+                    where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1==true && a.AnestheticTickets.Count>0
+                    select a).ToList<AnestheticServiceNote>();
+
+            var res = (from a in anesNote
+                       select a.AnestheticTickets.First<AnestheticTicket>());
+
+            return res.ToList<AnestheticTicket>();
+        }
+=======
+        public static IList<LabTest> GetLabTests(AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    select l).ToList<LabTest>();
+        }
+        public static LabTest GetLabTest(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.LabTests
+                    where l.LabTestId == id
+                    select l).FirstOrDefault<LabTest>();
+        }
+        public static IList<LabTestAssigned> GetLabTestAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    select la).ToList<LabTestAssigned>();
+        }
+        public static LabTestAssigned GetLabTestAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.LabTestAssigneds
+                    where la.LabTestAssignedId == id
+                    select la).FirstOrDefault<LabTestAssigned>();
+        }
+        public static IList<ProcedureAssigned> GetProcedureAssigneds(AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    select la).ToList<ProcedureAssigned>();
+        }
+        public static ProcedureAssigned GetProcedureAssigned(int id, AriClinicContext ctx)
+        {
+            return (from la in ctx.ProcedureAssigneds
+                    where la.ProcedureAssignedId == id
+                    select la).FirstOrDefault<ProcedureAssigned>();
+        }
+        public static IList<VisitReason> GetVisitReasons(AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    select l).ToList<VisitReason>();
+        }
+        public static VisitReason GetVisitReason(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.VisitReasons
+                    where l.VisitReasonId == id
+                    select l).FirstOrDefault<VisitReason>();
+        }
+        public static IList<BaseVisit> GetVisits(AriClinicContext ctx)
+        {
+            return (from l in ctx.BaseVisits
+                    select l).ToList<BaseVisit>();
+        }
+        public static BaseVisit GetVisit(int id, AriClinicContext ctx)
+        {
+            return (from l in ctx.BaseVisits
+                    where l.VisitId == id
+                    select l).FirstOrDefault<BaseVisit>();
+        }
+        public static MotAppend GetMotAppend(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.MotAppends
+                    where m.Id == id
+                    select m).FirstOrDefault<MotAppend>();
+        }
+        public static AntSegment GetAntSegment(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.AntSegments
+                    where m.Id == id
+                    select m).FirstOrDefault<AntSegment>();
+        }
+        public static Fundus GetFundus(int id, AriClinicContext ctx)
+        {
+            return (from m in ctx.Fundus
+                    where m.Id == id
+                    select m).FirstOrDefault<Fundus>();
+        }
+
+
+
+    
+>>>>>>> cf8f95d0376a8002963b20b16721cd6c1a5e7221
     }
 }

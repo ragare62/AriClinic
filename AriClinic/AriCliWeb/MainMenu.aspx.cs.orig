@@ -261,9 +261,10 @@ public partial class MainMenu : System.Web.UI.Page
             case "profInvoices":
                 RadAjaxManager1.ResponseScripts.Add("LaunchProfInvoices();");
                 break;
-                 case "rbombasPCEA":
+<<<<<<< HEAD
+            case "rbombasPCEA":
                 RadAjaxManager1.ResponseScripts.Add("LaunchbombasPCEA();");
-                break;
+=======
             case "labtest":
                 RadAjaxManager1.ResponseScripts.Add("LaunchLabTest();");
                 break;
@@ -278,6 +279,7 @@ public partial class MainMenu : System.Web.UI.Page
                 break;
             case "visit":
                 RadAjaxManager1.ResponseScripts.Add("LaunchVisit();");
+>>>>>>> cf8f95d0376a8002963b20b16721cd6c1a5e7221
                 break;
             default:
                 break;

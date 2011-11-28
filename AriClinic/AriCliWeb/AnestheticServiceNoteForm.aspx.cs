@@ -190,8 +190,15 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             UnloadData(asn);
         }
         //ctx.SaveChanges();
-        
-        return UpdateRelatedTickets(asn);
+
+        //try
+        //{
+            return UpdateRelatedTickets(asn);
+        //}
+        //catch (Exception e)
+        //{ 
+            
+        //}
     }
 
     protected bool UpdateRelatedTickets(AnestheticServiceNote asn)

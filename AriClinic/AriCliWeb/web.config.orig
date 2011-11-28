@@ -5,14 +5,12 @@
   <connectionStrings>
     <!--<add name="AriClinicContext" connectionString="server=anes.ariclinic.com;user id=anes;password=Aritel2011;persist security info=True;database=ariclinic_anes" providerName="MySql.Data.MySqlClient" />-->
 <<<<<<< HEAD
+    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=miestetic;password=Aritel2011;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />-->
+    <add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane" providerName="MySql.Data.MySqlClient" />
+=======
     <!--<add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_ane" providerName="MySql.Data.MySqlClient" />-->
     <add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />
-    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_vig" providerName="MySql.Data.MySqlClient" />-->
-
-=======
-    <!--<add name="AriClinicContext" connectionString="server=localhost;user id=miestetic;password=Aritel2011;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />-->
-    <add name="AriClinicContext" connectionString="server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic" providerName="MySql.Data.MySqlClient" />
->>>>>>> e877d727105aeb215010a63c0812098d99de0648
+>>>>>>> cf8f95d0376a8002963b20b16721cd6c1a5e7221
   </connectionStrings>
   <system.web>
     <compilation debug="true" targetFramework="4.0">
