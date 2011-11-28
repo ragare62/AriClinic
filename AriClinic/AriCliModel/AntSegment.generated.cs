@@ -151,6 +151,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string eyebrowsComments;
+		public virtual string EyebrowsComments 
+		{ 
+		    get
+		    {
+		        return this.eyebrowsComments;
+		    }
+		    set
+		    {
+		        this.eyebrowsComments = value;
+		    }
+		}
+		
 		private OphthalmologicVisit ophthalmologicVisit;
 		public virtual OphthalmologicVisit OphthalmologicVisit 
 		{ 

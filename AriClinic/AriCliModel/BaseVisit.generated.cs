@@ -73,6 +73,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftRefVisita;
+		public virtual int OftRefVisita 
+		{ 
+		    get
+		    {
+		        return this.oftRefVisita;
+		    }
+		    set
+		    {
+		        this.oftRefVisita = value;
+		    }
+		}
+		
 		private VisitReason visitReason;
 		public virtual VisitReason VisitReason 
 		{ 

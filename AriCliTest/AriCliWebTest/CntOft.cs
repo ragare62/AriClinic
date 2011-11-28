@@ -26,16 +26,20 @@ namespace AriCliWebTest
         {
             ctx.Delete(ctx.InvoiceLines);
             ctx.Delete(ctx.Invoices);
+            ctx.SaveChanges();
             ctx.Delete(ctx.AppointmentInfos);
             ctx.Delete(ctx.AppointmentTypes);
             ctx.Delete(ctx.Diaries);
+            ctx.SaveChanges();
+
             ctx.Delete(ctx.Payments);
             ctx.Delete(ctx.Tickets);
             ctx.Delete(ctx.ServiceNotes);
             ctx.Delete(ctx.Policies);
             ctx.Delete(ctx.Insurances);
             ctx.Delete(ctx.InsuranceServices);
-            ctx.Delete(ctx.Professionals);
+            ctx.SaveChanges();
+
             ctx.Delete(ctx.Services);
             ctx.Delete(ctx.ServiceCategories);
             ctx.Delete(ctx.TaxTypes);
@@ -44,12 +48,70 @@ namespace AriCliWebTest
             ctx.Delete(ctx.Telephones); // eliminar teléfonos.
             ctx.Delete(ctx.Policies); // eliminar las pólizas.
             ctx.Delete(ctx.PaymentMethods);
+            ctx.SaveChanges();
+        }
 
+        public static void DeleteDiagnostics(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.DiagnosticAssigneds);
+            ctx.Delete(ctx.Diagnostics);
+            ctx.SaveChanges();
+        }
+
+        public static void DeleteProcedures(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.ProcedureAssigneds);
+            ctx.Delete(ctx.Procedures);
+            ctx.SaveChanges();
+        }
+
+        public static void DeleteVisit(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.OphthalmologicVisits);
+            ctx.Delete(ctx.BaseVisits);
+            ctx.Delete(ctx.VisitReasons);
+            ctx.SaveChanges();
+        }
+
+        public static void DeleteLabTest(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.LabTestAssigneds);
+            ctx.Delete(ctx.LabTests);
+            ctx.SaveChanges();
+        }
+
+        public static  void DeleteExaminations(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.WithoutGlassesTests);
+            ctx.Delete(ctx.GlassesTests);
+            ctx.Delete(ctx.ContactLensesTests);
+            ctx.Delete(ctx.OpticalObjectiveExaminations);
+            ctx.Delete(ctx.PrescriptionGlasses);
+            ctx.Delete(ctx.Cycloplegias);
+            //
+            ctx.Delete(ctx.Biometries);
+            ctx.Delete(ctx.Topographies);
+            ctx.Delete(ctx.Paquimetries);
+            //
+            ctx.Delete(ctx.ExaminationAssigneds);
+            ctx.Delete(ctx.Examinations);
+            //
+            ctx.SaveChanges();
+        }
+
+        public static void DeleteDrugTreatments(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.Treatments);
+            ctx.Delete(ctx.Drugs);
+            ctx.SaveChanges();
+        }
+
+        public static void DeletePrimaryClasses(AriClinicContext ctx){
+            ctx.Delete(ctx.Professionals);
             ctx.Delete(ctx.Clinics); // clínicas.
             ctx.Delete(ctx.Customers); // eliminar los clientes.
             ctx.Delete(ctx.Patients); // por último, los pacientes.
             ctx.SaveChanges();
-
         }
 
 
@@ -661,6 +723,227 @@ namespace AriCliWebTest
             }
             ctx.SaveChanges();
         }
+
+        public static void ImportVisitReasons(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.VisitReasons);
+
+            // (1) Dar de alta los tipos de IVA importados.
+            string sql = "SELECT * FROM Motivos";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConMotivos");
+            int nreg = ds.Tables["ConMotivos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConMotivos"].Rows)
+            {
+                reg++;
+
+                VisitReason vr = new VisitReason();
+                vr.Name = (string)dr["NomMot"];
+                vr.OftId = (int)dr["IdMot"];
+                ctx.Add(vr);
+            }
+            ctx.SaveChanges();
+        }
+
+        public static void ImportVisits(OleDbConnection con, AriClinicContext ctx)
+        {
+            int id = 0;
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.MotAppends);
+            ctx.Delete(ctx.AntSegments);
+            ctx.Delete(ctx.Fundus);
+            ctx.Delete(ctx.OphthalmologicVisits);
+            ctx.Delete(ctx.BaseVisits);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta las visitas importadas
+            string sql = "SELECT * FROM HistVisitas";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConVisitas");
+            int nreg = ds.Tables["ConVisitas"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConVisitas"].Rows)
+            {
+                reg++;
+                BaseVisit visit = new BaseVisit();
+                visit.OftRefVisita = (int)dr["RefVisita"];
+                visit.VisitDate = (DateTime)dr["Fecha"];
+                id = (int)dr["IdTipCit"];
+                visit.AppointmentType = (from apt in ctx.AppointmentTypes
+                                         where apt.OftId == id
+                                         select apt).FirstOrDefault<AppointmentType>();
+                id = (int)dr["IdMed"];
+                visit.Professional = (from p in ctx.Professionals
+                                      where p.OftId == id
+                                      select p).FirstOrDefault<Professional>();
+                id = (int)dr["NumHis"];
+                visit.Patient = (from p in ctx.Patients
+                                 where p.OftId == id
+                                 select p).FirstOrDefault<Patient>();
+                if (dr["Observaciones"] != DBNull.Value)
+                    visit.Comments = (string)dr["Observaciones"];
+                if ((decimal)(float)dr["TOOD"] != 0 || (decimal)(float)dr["TOOI"] != 0)
+                {
+                    OphthalmologicVisit ophVisit = new OphthalmologicVisit();
+                    ophVisit.OftRefVisita = visit.OftRefVisita;
+                    ophVisit.VisitDate = visit.VisitDate;
+                    ophVisit.Patient = visit.Patient;
+                    ophVisit.Professional = visit.Professional;
+                    ophVisit.Comments = visit.Comments;
+                    ophVisit.VType = "ophvisit";
+                    ctx.Add(ophVisit);
+                    ctx.SaveChanges();
+
+                    // Motilidad y anejos
+                    MotAppend mot = new MotAppend();
+                    if (dr["MotOcular"] != DBNull.Value)
+                        mot.EyeMotility = (string)dr["MotOcular"];
+                    if (dr["cejas"] != DBNull.Value)
+                        mot.Eyebrows = (string)dr["Cejas"];
+                    if (dr["AreaPeriocular"] != DBNull.Value)
+                        mot.PeriocularArea = (string)dr["AreaPeriocular"];
+                    mot.C1RE = (decimal)(float)dr["C1OD"];
+                    mot.C1LE = (decimal)(float)dr["C1OI"];
+                    mot.C2RE = (decimal)(float)dr["C2OD"];
+                    mot.C2LE = (decimal)(float)dr["C2OI"];
+                    mot.C3RE = (decimal)(float)dr["C3OD"];
+                    mot.C3LE = (decimal)(float)dr["C3OI"];
+                    mot.C4RE = (decimal)(float)dr["C4OD"];
+                    mot.C4LE = (decimal)(float)dr["C4OI"];
+                    mot.C5RE = (decimal)(float)dr["C5OD"];
+                    mot.C5LE = (decimal)(float)dr["C5OI"];
+                    mot.C6RE = (decimal)(float)dr["C6OD"];
+                    mot.C6LE = (decimal)(float)dr["C6OI"];
+                    mot.C7RE = (decimal)(float)dr["C7OD"];
+                    mot.C7LE = (decimal)(float)dr["C7OI"];
+                    mot.C8RE = (decimal)(float)dr["C8OD"];
+                    mot.C8LE = (decimal)(float)dr["C8OI"];
+                    mot.C9RE = (decimal)(float)dr["C9OD"];
+                    mot.C9LE = (decimal)(float)dr["C9OI"];
+                    mot.C10RE = (decimal)(float)dr["C10OD"];
+                    mot.C10LE = (decimal)(float)dr["C10OI"];
+                    mot.C11RE = (decimal)(float)dr["C11OD"];
+                    mot.C11LE = (decimal)(float)dr["C11OI"];
+                    mot.C12RE = (decimal)(float)dr["C12OD"];
+                    mot.C12LE = (decimal)(float)dr["C12OI"];
+                    mot.OphthalmologicVisit = ophVisit;
+                    ctx.Add(mot);
+                    ctx.SaveChanges();
+
+                    // Segmento anterior
+                    AntSegment ant = new AntSegment();
+                    if (dr["ObsParpados"] != DBNull.Value)
+                        ant.EyebrowsComments = (string)dr["ObsParpados"];
+                    if (dr["Conjuntiva"].GetType() == typeof(DBNull))
+                    {
+                    }
+                    if (dr["Conjuntiva"] != DBNull.Value)
+                        ant.Conjunctiva = (string)dr["Conjuntiva"];
+                    if (dr["Cornea"] != DBNull.Value)
+                        ant.Cornea = (string)dr["Cornea"];
+                    if (dr["Camara"] != DBNull.Value)
+                        ant.Chamber = (string)dr["Camara"];
+                    if (dr["Tyndall"] != DBNull.Value)
+                        ant.Tyndall = (string)dr["Tyndall"];
+                    if (dr["Pupila"] != DBNull.Value)
+                        ant.Pupil = (string)dr["Pupila"];
+                    if (dr["Cristalino"] != DBNull.Value)
+                        ant.Crystalline = (string)dr["Cristalino"];
+                    ant.EyestrainLE = (decimal)(float)dr["TOOI"];
+                    ant.EyestrainRE = (decimal)(float)dr["TOOD"];
+                    ant.OphthalmologicVisit = ophVisit;
+                    ctx.Add(ant);
+                    ctx.SaveChanges();
+
+                    // Fondo de ojo
+                    Fundus fundus = new Fundus();
+                    if (dr["NervioOptico"] != DBNull.Value)
+                        fundus.OpticNerve = (string)dr["NervioOptico"];
+                    if (dr["Vasos"] != DBNull.Value)
+                        fundus.Vessels = (string)dr["Vasos"];
+                    if (dr["Macula"] != DBNull.Value)
+                        fundus.Macula = (string)dr["Macula"];
+                    if (dr["Vitreo"] != DBNull.Value)
+                        fundus.Vitreous = (string)dr["Vitreo"];
+                    if (dr["Periferia"] != DBNull.Value)
+                        fundus.Periphery = (string)dr["Periferia"];
+                    fundus.OphthalmologicVisit = ophVisit;
+                    ctx.Add(fundus);
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    visit.VType = "general";
+                    ctx.Add(visit);
+                    ctx.SaveChanges();
+                }
+            }
+        }
+
+        public static void ImportDiagnostics(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.DiagnosticAssigneds);
+            ctx.Delete(ctx.Diagnostics);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM Diagnosticos";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConDiagnosticos");
+            int nreg = ds.Tables["ConDiagnosticos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConDiagnosticos"].Rows)
+            {
+                reg++;
+
+                Diagnostic diag = new Diagnostic();
+                diag.OftId = (int)dr["IdDiag"];
+                diag.Name = (string)dr["NomDiag"];
+                ctx.Add(diag);
+                ctx.SaveChanges();
+            }
+        }
+        public static void ImportDiagnosticsAssigned(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.DiagnosticAssigneds);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM HistDiag";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConDiagnosticos");
+            int nreg = ds.Tables["ConDiagnosticos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConDiagnosticos"].Rows)
+            {
+                reg++;
+                DiagnosticAssigned da = new DiagnosticAssigned();
+                int id = (int)dr["IdDiag"];
+                Diagnostic diag = (from d in ctx.Diagnostics
+                                   where d.OftId == id
+                                   select d).FirstOrDefault<Diagnostic>();
+                id = (int)dr["NumHis"];
+                Patient patient = (from p in ctx.Patients
+                                   where patient.OftId == id
+                                   select p).FirstOrDefault<Patient>();
+                da.Patient
+                ctx.Add(da);
+                ctx.SaveChanges();
+            }
+        }
+
 
         #region Auxiliary functions
         #region GetConnectionstring
