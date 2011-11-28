@@ -1408,5 +1408,17 @@ namespace AriCliModel
 
             return invoice;
         }
+
+        public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
+        {
+            var anesNote = (from a in ctx1.AnestheticServiceNotes
+                    where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1==true && a.AnestheticTickets.Count>0
+                    select a).ToList<AnestheticServiceNote>();
+
+            var res = (from a in anesNote
+                       select a.AnestheticTickets.First<AnestheticTicket>());
+
+            return res.ToList<AnestheticTicket>();
+        }
     }
 }

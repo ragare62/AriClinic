@@ -117,3 +117,10 @@ function reportprofessionalinvoices(fromDate, toDate, prof) {
                          , "RINVOICE", "width=800, height=600,resizable=1");
     w1.focus();
 }
+function RptPCEAForm(fromDate, toDate) {
+    var w1 = window.open("RptView.aspx?Report=bombasPCEA"
+                         + "&FromDate=" + fromDate
+                         + "&ToDate=" + toDate
+                         , "RPCEA", "width=800, height=600,resizable=1");
+    w1.focus();
+}
