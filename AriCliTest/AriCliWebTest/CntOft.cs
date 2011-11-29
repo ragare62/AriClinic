@@ -21,7 +21,6 @@ namespace AriCliWebTest
         //
         private static decimal per = 0;
 
-
         public static void BigDelete(AriClinicContext ctx)
         {
             ctx.Delete(ctx.InvoiceLines);
@@ -80,7 +79,7 @@ namespace AriCliWebTest
             ctx.SaveChanges();
         }
 
-        public static  void DeleteExaminations(AriClinicContext ctx)
+        public static void DeleteExaminations(AriClinicContext ctx)
         {
             ctx.Delete(ctx.WithoutGlassesTests);
             ctx.Delete(ctx.GlassesTests);
@@ -106,14 +105,14 @@ namespace AriCliWebTest
             ctx.SaveChanges();
         }
 
-        public static void DeletePrimaryClasses(AriClinicContext ctx){
+        public static void DeletePrimaryClasses(AriClinicContext ctx)
+        {
             ctx.Delete(ctx.Professionals);
             ctx.Delete(ctx.Clinics); // clínicas.
             ctx.Delete(ctx.Customers); // eliminar los clientes.
             ctx.Delete(ctx.Patients); // por último, los pacientes.
             ctx.SaveChanges();
         }
-
 
         /// <summary>
         /// Obtiene un connector para acceder a la base de datos OFT
@@ -179,7 +178,8 @@ namespace AriCliWebTest
                     patient.BornDate = (DateTime)dr["FechaNac"];
                 patient.Sex = "M";
                 if (dr["Sexo"] != DBNull.Value)
-                    if ((byte)dr["Sexo"] == 2) patient.Sex = "W";
+                    if ((byte)dr["Sexo"] == 2)
+                        patient.Sex = "W";
                 patient.Customer = customer;
                 patient.OftId = (int)dr["NumHis"];
                 ctx.Add(patient);
@@ -236,6 +236,7 @@ namespace AriCliWebTest
             }
             ctx.SaveChanges();
         }
+
         /// <summary>
         /// Importa los tipos de IVA
         /// </summary>
@@ -275,7 +276,6 @@ namespace AriCliWebTest
         /// <param name="ctx">Contexto de AriClinc</param>
         public static void ImportCategories(OleDbConnection con, AriClinicContext ctx)
         {
-
             int id = 0;
             
             // (0) Borrar los datos previos.
@@ -593,7 +593,6 @@ namespace AriCliWebTest
 
         public static void ImportAppointmentInfo(OleDbConnection con, AriClinicContext ctx)
         {
-            
             //(1) Borramos las citas anteriores.
             ctx.Delete(ctx.AppointmentInfos);
 
@@ -662,7 +661,6 @@ namespace AriCliWebTest
 
             //
             
-
             //(1) Read OFT invoices and import to Ariclinic
             string sql = "SELECT * FROM Factura";
             cmd = new OleDbCommand(sql, con);
@@ -711,8 +709,7 @@ namespace AriCliWebTest
                               select s).FirstOrDefault<Service>();
                 sv.TaxType = tx;
                 Invoice inv = (from iv in ctx.Invoices
-                               where iv.Year == Ano
-                               && iv.InvoiceNumber == NumFac
+                               where iv.Year == Ano && iv.InvoiceNumber == NumFac
                                select iv).FirstOrDefault<Invoice>();
                 il.Invoice = inv;
                 il.TaxType = tx;
@@ -778,6 +775,10 @@ namespace AriCliWebTest
                 visit.AppointmentType = (from apt in ctx.AppointmentTypes
                                          where apt.OftId == id
                                          select apt).FirstOrDefault<AppointmentType>();
+                id = (int)dr["IdMot"];
+                visit.VisitReason = (from vr in ctx.VisitReasons
+                                     where vr.OftId == id
+                                     select vr).FirstOrDefault<VisitReason>();
                 id = (int)dr["IdMed"];
                 visit.Professional = (from p in ctx.Professionals
                                       where p.OftId == id
@@ -792,6 +793,8 @@ namespace AriCliWebTest
                 {
                     OphthalmologicVisit ophVisit = new OphthalmologicVisit();
                     ophVisit.OftRefVisita = visit.OftRefVisita;
+                    ophVisit.AppointmentType = visit.AppointmentType;
+                    ophVisit.VisitReason = visit.VisitReason;
                     ophVisit.VisitDate = visit.VisitDate;
                     ophVisit.Patient = visit.Patient;
                     ophVisit.Professional = visit.Professional;
@@ -912,6 +915,7 @@ namespace AriCliWebTest
                 ctx.SaveChanges();
             }
         }
+
         public static void ImportDiagnosticsAssigned(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
@@ -929,21 +933,720 @@ namespace AriCliWebTest
             foreach (DataRow dr in ds.Tables["ConDiagnosticos"].Rows)
             {
                 reg++;
-                DiagnosticAssigned da = new DiagnosticAssigned();
+                DiagnosticAssigned das = new DiagnosticAssigned();
                 int id = (int)dr["IdDiag"];
                 Diagnostic diag = (from d in ctx.Diagnostics
                                    where d.OftId == id
                                    select d).FirstOrDefault<Diagnostic>();
                 id = (int)dr["NumHis"];
                 Patient patient = (from p in ctx.Patients
-                                   where patient.OftId == id
+                                   where p.OftId == id
                                    select p).FirstOrDefault<Patient>();
-                da.Patient
-                ctx.Add(da);
+                das.Patient = patient;
+                das.Diagnostic = diag;
+                if ((int)dr["TipoProc"] == 1)
+                {
+                    id = (int)dr["ExtProc"];
+                    das.BaseVisit = (from v in ctx.BaseVisits
+                                     where v.OftRefVisita == id
+                                     select v).FirstOrDefault<BaseVisit>();
+                }
+                das.DiagnosticDate = (DateTime)dr["Fecha"];
+                das.Comments = (string)dr["Observa"];
+                ctx.Add(das);
                 ctx.SaveChanges();
             }
         }
 
+        public static void ImportExaminations(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.WithoutGlassesTests);
+            ctx.Delete(ctx.GlassesTests);
+            ctx.Delete(ctx.ContactLensesTests);
+            ctx.Delete(ctx.OpticalObjectiveExaminations);
+            ctx.Delete(ctx.SubjectiveOpticalExaminations);
+            ctx.Delete(ctx.Cycloplegias);
+            ctx.Delete(ctx.PrescriptionGlasses);
+
+            ctx.Delete(ctx.Refractometries);
+            ctx.Delete(ctx.Biometries);
+            ctx.Delete(ctx.Paquimetries);
+            ctx.Delete(ctx.Topographies);
+
+            ctx.Delete(ctx.ExaminationAssigneds);
+            ctx.Delete(ctx.Examinations);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM Exploraciones";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConExploraciones");
+            int nreg = ds.Tables["ConExploraciones"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConExploraciones"].Rows)
+            {
+                reg++;
+                Examination exam = new Examination();
+                exam.OftId = (int)dr["IdExEs"];
+                exam.Name = (string)dr["NomExEs"];
+                int tp = (int)dr["Tipo"];
+                exam.ExaminationType = CntAriCli.GetExaminationType("general", ctx);
+                switch (tp)
+                {
+                    case 1:
+                        exam.ExaminationType = CntAriCli.GetExaminationType("refractometry", ctx);
+                        break;
+                    case 2:
+                        exam.ExaminationType = CntAriCli.GetExaminationType("biometry", ctx);
+                        break;
+                    case 3:
+                        exam.ExaminationType = CntAriCli.GetExaminationType("paquimetry", ctx);
+                        break;
+                    case 4:
+                        exam.ExaminationType = CntAriCli.GetExaminationType("topography", ctx);
+                        break;
+                }
+                ctx.Add(exam);
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void ImportExaminationsAssigned(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.WithoutGlassesTests);
+            ctx.Delete(ctx.GlassesTests);
+            ctx.Delete(ctx.ContactLensesTests);
+            ctx.Delete(ctx.OpticalObjectiveExaminations);
+            ctx.Delete(ctx.SubjectiveOpticalExaminations);
+            ctx.Delete(ctx.Cycloplegias);
+            ctx.Delete(ctx.PrescriptionGlasses);
+
+            ctx.Delete(ctx.Refractometries);
+            ctx.Delete(ctx.Biometries);
+            ctx.Delete(ctx.Paquimetries);
+            ctx.Delete(ctx.Topographies);
+
+            ctx.Delete(ctx.ExaminationAssigneds);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM HistExplor";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConExploraciones");
+            int nreg = ds.Tables["ConExploraciones"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConExploraciones"].Rows)
+            {
+                reg++;
+                ExaminationAssigned examas = new ExaminationAssigned();
+                int id = (int)dr["NumHis"];
+                examas.Patient = (from p in ctx.Patients
+                                  where p.OftId == id
+                                  select p).FirstOrDefault<Patient>();
+                id = (int)dr["IdExEs"];
+                examas.Examination = (from ex in ctx.Examinations
+                                      where ex.OftId == id
+                                      select ex).FirstOrDefault<Examination>();
+                examas.ExaminationDate = (DateTime)dr["Fecha"];
+                examas.Comments = (string)dr["Hallazgos"];
+                if ((int)dr["TipoProc"] == 1)
+                {
+                    id = (int)dr["ExtProc"];
+                    examas.BaseVisit = (from bs in ctx.BaseVisits
+                                        where bs.OftRefVisita == id
+                                        select bs).FirstOrDefault<BaseVisit>();
+                }
+                switch (examas.Examination.ExaminationType.Code)
+                {
+                    case "general":
+                        ctx.Add(examas);
+                        ctx.SaveChanges();
+                        break;
+                    case "refractometry":
+                        Refractometry refra = new Refractometry();
+                        refra.Patient = examas.Patient;
+                        refra.Examination = examas.Examination;
+                        refra.ExaminationDate = examas.ExaminationDate;
+                        refra.BaseVisit = examas.BaseVisit;
+                        refra.Comments = examas.Comments;
+                        id = (int)dr["ExtExEs"];
+                        ProcessRefractometry(id, refra, con, ctx);
+                        ctx.Add(refra);
+                        ctx.SaveChanges();
+                        break;
+                    case "paquimetry":
+                        Paquimetry paq = new Paquimetry();
+                        paq.Patient = examas.Patient;
+                        paq.Examination = examas.Examination;
+                        paq.ExaminationDate = examas.ExaminationDate;
+                        paq.BaseVisit = examas.BaseVisit;
+                        paq.Comments = examas.Comments;
+                        id = (int)dr["ExtExEs"];
+                        ProcessPaquimetry(id, paq, con, ctx);
+                        ctx.Add(paq);
+                        ctx.SaveChanges();
+                        break;
+                    case "biometry":
+                        Biometry bio = new Biometry();
+                        bio.Patient = examas.Patient;
+                        bio.Examination = examas.Examination;
+                        bio.ExaminationDate = examas.ExaminationDate;
+                        bio.BaseVisit = examas.BaseVisit;
+                        bio.Comments = examas.Comments;
+                        ctx.Add(bio);
+                        ctx.SaveChanges();
+                        break;
+                    case "topography":
+                        Topography top = new Topography();
+                        top.Patient = examas.Patient;
+                        top.Examination = examas.Examination;
+                        top.ExaminationDate = examas.ExaminationDate;
+                        top.BaseVisit = examas.BaseVisit;
+                        top.Comments = examas.Comments;
+                        ctx.Add(top);
+                        ctx.SaveChanges();
+                        break;
+                }
+            }
+        }
+
+        public static void ProcessRefractometry(int id, Refractometry rf, OleDbConnection con, AriClinicContext ctx)
+        {
+            // WithoutGlasses
+            string sql = String.Format("SELECT * FROM SNGRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConSNGRefracto");
+            if (ds.Tables["ConSNGRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConSNGRefracto"].Rows[0];
+                WithoutGlassesTest wt = new WithoutGlassesTest();
+                wt.Refractometry = rf;
+                if (dr["SNGLejAVisOD"] != DBNull.Value) wt.FarVisualAcuityRightEye = (string)dr["SNGLejAVisOD"];
+                if (dr["SNGLejAVisOI"] != DBNull.Value) wt.FarVisualAcuityLeftEye = (string)dr["SNGLejAVisOI"];
+                if (dr["SNGLejAVisAO"] != DBNull.Value) wt.FarVisualAcuityBothEyes = (string)dr["SNGLejAVisAO"];
+                if (dr["SNGCerAVisOD"] != DBNull.Value) wt.CloseVisualAcuityRightEye = (string)dr["SNGCerAVisOD"];
+                if (dr["SNGCerAVisOI"] != DBNull.Value) wt.CloseVisualAcuityLeftEye = (string)dr["SNGCerAVisOI"];
+                if (dr["SNGCerAVisAO"] != DBNull.Value) wt.CloseVisualAcuityBothEyes = (string)dr["SNGCerAVisAO"];
+                if (dr["SNGObs"] != DBNull.Value)
+                    wt.Comments = (string)dr["SNGObs"];
+                ctx.Add(wt);
+                ctx.SaveChanges();
+            }
+
+            //Glasses Test
+            sql = String.Format("SELECT * FROM SGRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConSGRefracto");
+            if (ds.Tables["ConSGRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConSGRefracto"].Rows[0];
+                GlassesTest gt = new GlassesTest();
+                gt.Refractometry = rf;
+                if (dr["SGLejAVisOD"] != DBNull.Value) gt.FarVisualAcuityRightEye = (string)dr["SGLejAVisOD"];
+                if (dr["SGTuAVisOD"] != DBNull.Value) gt.BothAcuityRightEye = (string)dr["SGTuAVisOD"];
+                if (dr["SGCerAVisOD"] != DBNull.Value) gt.CloseAcuityRightEye = (string)dr["SGCerAVisOD"];
+
+                if (dr["SGLejAVisOI"] != DBNull.Value) gt.FarVisualAcuityLeftEye = (string)dr["SGLejAVisOI"];
+                if (dr["SGTuAVisOI"] != DBNull.Value) gt.BothAcuityLeftEye = (string)dr["SGTuAVisOI"];
+                if (dr["SGCerAVisOI"] != DBNull.Value) gt.CloseAcuityLeftEye = (string)dr["SGCerAVisOI"];
+
+                if (dr["SGObs"] != DBNull.Value) gt.Comments = (string)dr["SGObs"];
+
+                if (dr["SGLeEsfOD"] != DBNull.Value) gt.FarSphericityRightEye = (string)dr["SGLeEsfOD"];
+                if (dr["SGLeCilOD"] != DBNull.Value) gt.FarCylinderRightEye = (string)dr["SGLeCilOD"];
+                if (dr["SGLeEjeOD"] != DBNull.Value) gt.FarAxisRightEye = (string)dr["SGLeEjeOD"];
+                if (dr["SGLePrisOD"] != DBNull.Value) gt.FarPrimsRightEye = (string)dr["SGLePrisOD"];
+
+                if (dr["SGLeEsfOI"] != DBNull.Value) gt.FarSphericityLeftEye = (string)dr["SGLeEsfOI"];
+                if (dr["SGLeCilOI"] != DBNull.Value) gt.FarCylinderLeftEye = (string)dr["SGLeCilOI"];
+                if (dr["SGLeEjeOI"] != DBNull.Value) gt.FarAxisLeftEye = (string)dr["SGLeEjeOI"];
+                if (dr["SGLePrisOI"] != DBNull.Value) gt.FarPrismLeftEye = (string)dr["SGLePrisOI"];
+
+                if (dr["SGLeCent"] != DBNull.Value) gt.FarCenters = (string)dr["SGLeCent"];
+                if (dr["SGLeAVis"] != DBNull.Value) gt.FarAcuity = (string)dr["SGLeAVis"];
+
+                if (dr["SGTuEsfOD"] != DBNull.Value) gt.BothSphericityRightEye = (string)dr["SGTuEsfOD"];
+                if (dr["SGTuCilOD"] != DBNull.Value) gt.BothCylinderRightEye = (string)dr["SGTuCilOD"];
+                if (dr["SGTuEjeOD"] != DBNull.Value) gt.BothAxisRightEye = (string)dr["SGTuEjeOD"];
+                if (dr["SGTuPrisOD"] != DBNull.Value) gt.BothPrismRightEye = (string)dr["SGTuPrisOD"];
+                //
+                if (dr["SGTuEsfOI"] != DBNull.Value) gt.BothSphericityLeftEye = (string)dr["SGTuEsfOI"];
+                if (dr["SGTuCilOI"] != DBNull.Value) gt.BothCylinderLeftEye = (string)dr["SGTuCilOI"];
+                if (dr["SGTuEjeOI"] != DBNull.Value) gt.BothAxisLeftEye = (string)dr["SGTuEjeOI"];
+                if (dr["SGTuPrisOI"] != DBNull.Value) gt.BothPrismLeftEye = (string)dr["SGTuPrisOI"];
+
+                if (dr["SGTuCent"] != DBNull.Value) gt.BothCenters = (string)dr["SGTuCent"];
+                if (dr["SGTuAVis"] != DBNull.Value) gt.BothAcuity = (string)dr["SGTuAVis"];
+
+                if (dr["SGCerEsfOD"] != DBNull.Value) gt.CloseSphericityRightEye = (string)dr["SGCerEsfOD"];
+                if (dr["SGCerCilOD"] != DBNull.Value) gt.CloseCylinderRightEye = (string)dr["SGCerCilOD"];
+                if (dr["SGCerEjeOD"] != DBNull.Value) gt.CloseAxisRightEye = (string)dr["SGCerEjeOD"];
+                if (dr["SGCerPrisOD"] != DBNull.Value) gt.ClosePrismRightEye = (string)dr["SGCerEjeOD"];
+
+                if (dr["SGCerEsfOI"] != DBNull.Value) gt.CloseSphericityLeftEye = (string)dr["SGCerEsfOI"];
+                if (dr["SGCerCilOI"] != DBNull.Value) gt.CloseCylinderLeftEye = (string)dr["SGCerCilOI"];
+                if (dr["SGCerEjeOI"] != DBNull.Value) gt.CloseAxisLeftEye = (string)dr["SGCerEjeOI"];
+                if (dr["SGCerPrisOI"] != DBNull.Value) gt.ClosePrismLeftEye = (string)dr["SGCerEjeOI"];
+
+                if (dr["SGCerCent"] != DBNull.Value) gt.CloseCenters = (string)dr["SGCerCent"];
+                if (dr["SGCerAVis"] != DBNull.Value) gt.CloseAcuity = (string)dr["SGCerAVis"];
+
+                ctx.Add(gt);
+                ctx.SaveChanges();
+            }
+
+            // Contact Lenses test
+            sql = String.Format("SELECT * FROM LCRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConSNGRefracto");
+            if (ds.Tables["ConSNGRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConSNGRefracto"].Rows[0];
+                ContactLensesTest lt = new ContactLensesTest();
+                lt.Refractometry = rf;
+                if (dr["LCLejAVisOD"] != DBNull.Value) lt.FarVisualAcuityRightEye = (string)dr["LCLejAVisOD"];
+                if (dr["LCLejAVisOI"] != DBNull.Value) lt.FarVisualAcuityLeftEye = (string)dr["LCLejAVisOI"];
+                if (dr["LCLejAVisAO"] != DBNull.Value) lt.FarVisualAcuityBothEyes = (string)dr["LCLejAVisAO"];
+                if (dr["LCCerAVisOD"] != DBNull.Value) lt.CloseVisualAcuityRightEye = (string)dr["LCCerAVisOD"];
+                if (dr["LCCerAVisOI"] != DBNull.Value) lt.CloseVisualAcuityLeftEye = (string)dr["LCCerAVisOI"];
+                if (dr["LCCerAVisAO"] != DBNull.Value) lt.CloseVisualAcuityBothEyes = (string)dr["LCCerAVisAO"];
+                if (dr["LCObs"] != DBNull.Value)
+                    lt.Comments = (string)dr["LCObs"];
+                ctx.Add(lt);
+                ctx.SaveChanges();
+            }
+
+            //Objective optical examination
+            sql = String.Format("SELECT * FROM OBJRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConOBJRefracto");
+            if (ds.Tables["ConOBJRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConOBJRefracto"].Rows[0];
+                OpticalObjectiveExamination ot = new OpticalObjectiveExamination();
+                ot.Refractometry = rf;
+                if (dr["OBJLejAVisOD"] != DBNull.Value) ot.FarVisualAcuityRightEye = (string)dr["OBJLejAVisOD"];
+                if (dr["OBJTuAVisOD"] != DBNull.Value) ot.BothAcuityRightEye = (string)dr["OBJTuAVisOD"];
+                if (dr["OBJCerAVisOD"] != DBNull.Value) ot.CloseAcuityRightEye = (string)dr["OBJCerAVisOD"];
+
+                if (dr["OBJLejAVisOI"] != DBNull.Value) ot.FarVisualAcuityLeftEye = (string)dr["OBJLejAVisOI"];
+                if (dr["OBJTuAVisOI"] != DBNull.Value) ot.BothAcuityLeftEye = (string)dr["OBJTuAVisOI"];
+                if (dr["OBJCerAVisOI"] != DBNull.Value) ot.CloseAcuityLeftEye = (string)dr["OBJCerAVisOI"];
+
+                if (dr["OBJObs"] != DBNull.Value) ot.Comments = (string)dr["OBJObs"];
+
+                if (dr["OBJLeEsfOD"] != DBNull.Value) ot.FarSphericityRightEye = (string)dr["OBJLeEsfOD"];
+                if (dr["OBJLeCilOD"] != DBNull.Value) ot.FarCylinderRightEye = (string)dr["OBJLeCilOD"];
+                if (dr["OBJLeEjeOD"] != DBNull.Value) ot.FarAxisRightEye = (string)dr["OBJLeEjeOD"];
+                if (dr["OBJLePrisOD"] != DBNull.Value) ot.FarPrimsRightEye = (string)dr["OBJLePrisOD"];
+
+                if (dr["OBJLeEsfOI"] != DBNull.Value) ot.FarSphericityLeftEye = (string)dr["OBJLeEsfOI"];
+                if (dr["OBJLeCilOI"] != DBNull.Value) ot.FarCylinderLeftEye = (string)dr["OBJLeCilOI"];
+                if (dr["OBJLeEjeOI"] != DBNull.Value) ot.FarAxisLeftEye = (string)dr["OBJLeEjeOI"];
+                if (dr["OBJLePrisOI"] != DBNull.Value) ot.FarPrismLeftEye = (string)dr["OBJLePrisOI"];
+
+                if (dr["OBJLeCent"] != DBNull.Value) ot.FarCenters = (string)dr["OBJLeCent"];
+                if (dr["OBJLeAVis"] != DBNull.Value) ot.FarAcuity = (string)dr["OBJLeAVis"];
+
+                if (dr["OBJTuEsfOD"] != DBNull.Value) ot.BothSphericityRightEye = (string)dr["OBJTuEsfOD"];
+                if (dr["OBJTuCilOD"] != DBNull.Value) ot.BothCylinderRightEye = (string)dr["OBJTuCilOD"];
+                if (dr["OBJTuEjeOD"] != DBNull.Value) ot.BothAxisRightEye = (string)dr["OBJTuEjeOD"];
+                if (dr["OBJTuPrisOD"] != DBNull.Value) ot.BothPrismRightEye = (string)dr["OBJTuPrisOD"];
+                //
+                if (dr["OBJTuEsfOI"] != DBNull.Value) ot.BothSphericityLeftEye = (string)dr["OBJTuEsfOI"];
+                if (dr["OBJTuCilOI"] != DBNull.Value) ot.BothCylinderLeftEye = (string)dr["OBJTuCilOI"];
+                if (dr["OBJTuEjeOI"] != DBNull.Value) ot.BothAxisLeftEye = (string)dr["OBJTuEjeOI"];
+                if (dr["OBJTuPrisOI"] != DBNull.Value) ot.BothPrismLeftEye = (string)dr["OBJTuPrisOI"];
+
+                if (dr["OBJTuCent"] != DBNull.Value) ot.BothCenters = (string)dr["OBJTuCent"];
+                if (dr["OBJTuAVis"] != DBNull.Value) ot.BothAcuity = (string)dr["OBJTuAVis"];
+
+                if (dr["OBJCerEsfOD"] != DBNull.Value) ot.CloseSphericityRightEye = (string)dr["OBJCerEsfOD"];
+                if (dr["OBJCerCilOD"] != DBNull.Value) ot.CloseCylinderRightEye = (string)dr["OBJCerCilOD"];
+                if (dr["OBJCerEjeOD"] != DBNull.Value) ot.CloseAxisRightEye = (string)dr["OBJCerEjeOD"];
+                if (dr["OBJCerPrisOD"] != DBNull.Value) ot.ClosePrismRightEye = (string)dr["OBJCerEjeOD"];
+
+                if (dr["OBJCerEsfOI"] != DBNull.Value) ot.CloseSphericityLeftEye = (string)dr["OBJCerEsfOI"];
+                if (dr["OBJCerCilOI"] != DBNull.Value) ot.CloseCylinderLeftEye = (string)dr["OBJCerCilOI"];
+                if (dr["OBJCerEjeOI"] != DBNull.Value) ot.CloseAxisLeftEye = (string)dr["OBJCerEjeOI"];
+                if (dr["OBJCerPrisOI"] != DBNull.Value) ot.ClosePrismLeftEye = (string)dr["OBJCerEjeOI"];
+
+                if (dr["OBJCerCent"] != DBNull.Value) ot.CloseCenters = (string)dr["OBJCerCent"];
+                if (dr["OBJCerAVis"] != DBNull.Value) ot.CloseAcuity = (string)dr["OBJCerAVis"];
+
+                if (dr["K1D"] != DBNull.Value) ot.K1RightEye = (string)dr["K1D"];
+                if (dr["K1I"] != DBNull.Value) ot.K1LeftEye = (string)dr["K1I"];
+                if (dr["K2D"] != DBNull.Value) ot.K2RightEye = (string)dr["K2D"];
+                if (dr["K2I"] != DBNull.Value) ot.K2LeftEye = (string)dr["K2I"];
+
+                ctx.Add(ot);
+                ctx.SaveChanges();
+            }
+
+
+            //Subjective optical examination
+            sql = String.Format("SELECT * FROM SUBRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConSUBRefracto");
+            if (ds.Tables["ConSUBRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConSUBRefracto"].Rows[0];
+                SubjectiveOpticalExamination sub = new SubjectiveOpticalExamination();
+                sub.Refractometry = rf;
+                if (dr["SUBLejAVisOD"] != DBNull.Value) sub.FarVisualAcuityRightEye = (string)dr["SUBLejAVisOD"];
+                if (dr["SUBTuAVisOD"] != DBNull.Value) sub.BothAcuityRightEye = (string)dr["SUBTuAVisOD"];
+                if (dr["SUBCerAVisOD"] != DBNull.Value) sub.CloseAcuityRightEye = (string)dr["SUBCerAVisOD"];
+
+                if (dr["SUBLejAVisOI"] != DBNull.Value) sub.FarVisualAcuityLeftEye = (string)dr["SUBLejAVisOI"];
+                if (dr["SUBTuAVisOI"] != DBNull.Value) sub.BothAcuityLeftEye = (string)dr["SUBTuAVisOI"];
+                if (dr["SUBCerAVisOI"] != DBNull.Value) sub.CloseAcuityLeftEye = (string)dr["SUBCerAVisOI"];
+
+                if (dr["SUBObs"] != DBNull.Value) sub.Comments = (string)dr["SUBObs"];
+
+                if (dr["SUBLeEsfOD"] != DBNull.Value) sub.FarSphericityRightEye = (string)dr["SUBLeEsfOD"];
+                if (dr["SUBLeCilOD"] != DBNull.Value) sub.FarCylinderRightEye = (string)dr["SUBLeCilOD"];
+                if (dr["SUBLeEjeOD"] != DBNull.Value) sub.FarAxisRightEye = (string)dr["SUBLeEjeOD"];
+                if (dr["SUBLePrisOD"] != DBNull.Value) sub.FarPrimsRightEye = (string)dr["SUBLePrisOD"];
+
+                if (dr["SUBLeEsfOI"] != DBNull.Value) sub.FarSphericityLeftEye = (string)dr["SUBLeEsfOI"];
+                if (dr["SUBLeCilOI"] != DBNull.Value) sub.FarCylinderLeftEye = (string)dr["SUBLeCilOI"];
+                if (dr["SUBLeEjeOI"] != DBNull.Value) sub.FarAxisLeftEye = (string)dr["SUBLeEjeOI"];
+                if (dr["SUBLePrisOI"] != DBNull.Value) sub.FarPrismLeftEye = (string)dr["SUBLePrisOI"];
+
+                if (dr["SUBLeCent"] != DBNull.Value) sub.FarCenters = (string)dr["SUBLeCent"];
+                if (dr["SUBLeAVis"] != DBNull.Value) sub.FarAcuity = (string)dr["SUBLeAVis"];
+
+                if (dr["SUBTuEsfOD"] != DBNull.Value) sub.BothSphericityRightEye = (string)dr["SUBTuEsfOD"];
+                if (dr["SUBTuCilOD"] != DBNull.Value) sub.BothCylinderRightEye = (string)dr["SUBTuCilOD"];
+                if (dr["SUBTuEjeOD"] != DBNull.Value) sub.BothAxisRightEye = (string)dr["SUBTuEjeOD"];
+                if (dr["SUBTuPrisOD"] != DBNull.Value) sub.BothPrismRightEye = (string)dr["SUBTuPrisOD"];
+                //
+                if (dr["SUBTuEsfOI"] != DBNull.Value) sub.BothSphericityLeftEye = (string)dr["SUBTuEsfOI"];
+                if (dr["SUBTuCilOI"] != DBNull.Value) sub.BothCylinderLeftEye = (string)dr["SUBTuCilOI"];
+                if (dr["SUBTuEjeOI"] != DBNull.Value) sub.BothAxisLeftEye = (string)dr["SUBTuEjeOI"];
+                if (dr["SUBTuPrisOI"] != DBNull.Value) sub.BothPrismLeftEye = (string)dr["SUBTuPrisOI"];
+
+                if (dr["SUBTuCent"] != DBNull.Value) sub.BothCenters = (string)dr["SUBTuCent"];
+                if (dr["SUBTuAVis"] != DBNull.Value) sub.BothAcuity = (string)dr["SUBTuAVis"];
+
+                if (dr["SUBCerEsfOD"] != DBNull.Value) sub.CloseSphericityRightEye = (string)dr["SUBCerEsfOD"];
+                if (dr["SUBCerCilOD"] != DBNull.Value) sub.CloseCylinderRightEye = (string)dr["SUBCerCilOD"];
+                if (dr["SUBCerEjeOD"] != DBNull.Value) sub.CloseAxisRightEye = (string)dr["SUBCerEjeOD"];
+                if (dr["SUBCerPrisOD"] != DBNull.Value) sub.ClosePrismRightEye = (string)dr["SUBCerEjeOD"];
+
+                if (dr["SUBCerEsfOI"] != DBNull.Value) sub.CloseSphericityLeftEye = (string)dr["SUBCerEsfOI"];
+                if (dr["SUBCerCilOI"] != DBNull.Value) sub.CloseCylinderLeftEye = (string)dr["SUBCerCilOI"];
+                if (dr["SUBCerEjeOI"] != DBNull.Value) sub.CloseAxisLeftEye = (string)dr["SUBCerEjeOI"];
+                if (dr["SUBCerPrisOI"] != DBNull.Value) sub.ClosePrismLeftEye = (string)dr["SUBCerEjeOI"];
+
+                if (dr["SUBCerCent"] != DBNull.Value) sub.CloseCenters = (string)dr["SUBCerCent"];
+                if (dr["SUBCerAVis"] != DBNull.Value) sub.CloseAcuity = (string)dr["SUBCerAVis"];
+
+                ctx.Add(sub);
+                ctx.SaveChanges();
+            }
+
+            //Cicloplegia
+            sql = String.Format("SELECT * FROM CPLRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConCPLRefracto");
+            if (ds.Tables["ConCPLRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConCPLRefracto"].Rows[0];
+                Cycloplegia cpl = new Cycloplegia();
+                cpl.Refractometry = rf;
+                if (dr["CPLLejAVisOD"] != DBNull.Value) cpl.FarVisualAcuityRightEye = (string)dr["CPLLejAVisOD"];
+                if (dr["CPLTuAVisOD"] != DBNull.Value) cpl.BothAcuityRightEye = (string)dr["CPLTuAVisOD"];
+                if (dr["CPLCerAVisOD"] != DBNull.Value) cpl.CloseAcuityRightEye = (string)dr["CPLCerAVisOD"];
+
+                if (dr["CPLLejAVisOI"] != DBNull.Value) cpl.FarVisualAcuityLeftEye = (string)dr["CPLLejAVisOI"];
+                if (dr["CPLTuAVisOI"] != DBNull.Value) cpl.BothAcuityLeftEye = (string)dr["CPLTuAVisOI"];
+                if (dr["CPLCerAVisOI"] != DBNull.Value) cpl.CloseAcuityLeftEye = (string)dr["CPLCerAVisOI"];
+
+                if (dr["CPLObs"] != DBNull.Value) cpl.Comments = (string)dr["CPLObs"];
+
+                if (dr["CPLLeEsfOD"] != DBNull.Value) cpl.FarSphericityRightEye = (string)dr["CPLLeEsfOD"];
+                if (dr["CPLLeCilOD"] != DBNull.Value) cpl.FarCylinderRightEye = (string)dr["CPLLeCilOD"];
+                if (dr["CPLLeEjeOD"] != DBNull.Value) cpl.FarAxisRightEye = (string)dr["CPLLeEjeOD"];
+                if (dr["CPLLePrisOD"] != DBNull.Value) cpl.FarPrimsRightEye = (string)dr["CPLLePrisOD"];
+
+                if (dr["CPLLeEsfOI"] != DBNull.Value) cpl.FarSphericityLeftEye = (string)dr["CPLLeEsfOI"];
+                if (dr["CPLLeCilOI"] != DBNull.Value) cpl.FarCylinderLeftEye = (string)dr["CPLLeCilOI"];
+                if (dr["CPLLeEjeOI"] != DBNull.Value) cpl.FarAxisLeftEye = (string)dr["CPLLeEjeOI"];
+                if (dr["CPLLePrisOI"] != DBNull.Value) cpl.FarPrismLeftEye = (string)dr["CPLLePrisOI"];
+
+                if (dr["CPLLeCent"] != DBNull.Value) cpl.FarCenters = (string)dr["CPLLeCent"];
+                if (dr["CPLLeAVis"] != DBNull.Value) cpl.FarAcuity = (string)dr["CPLLeAVis"];
+
+                if (dr["CPLTuEsfOD"] != DBNull.Value) cpl.BothSphericityRightEye = (string)dr["CPLTuEsfOD"];
+                if (dr["CPLTuCilOD"] != DBNull.Value) cpl.BothCylinderRightEye = (string)dr["CPLTuCilOD"];
+                if (dr["CPLTuEjeOD"] != DBNull.Value) cpl.BothAxisRightEye = (string)dr["CPLTuEjeOD"];
+                if (dr["CPLTuPrisOD"] != DBNull.Value) cpl.BothPrismRightEye = (string)dr["CPLTuPrisOD"];
+                //
+                if (dr["CPLTuEsfOI"] != DBNull.Value) cpl.BothSphericityLeftEye = (string)dr["CPLTuEsfOI"];
+                if (dr["CPLTuCilOI"] != DBNull.Value) cpl.BothCylinderLeftEye = (string)dr["CPLTuCilOI"];
+                if (dr["CPLTuEjeOI"] != DBNull.Value) cpl.BothAxisLeftEye = (string)dr["CPLTuEjeOI"];
+                if (dr["CPLTuPrisOI"] != DBNull.Value) cpl.BothPrismLeftEye = (string)dr["CPLTuPrisOI"];
+
+                if (dr["CPLTuCent"] != DBNull.Value) cpl.BothCenters = (string)dr["CPLTuCent"];
+                if (dr["CPLTuAVis"] != DBNull.Value) cpl.BothAcuity = (string)dr["CPLTuAVis"];
+
+                if (dr["CPLCerEsfOD"] != DBNull.Value) cpl.CloseSphericityRightEye = (string)dr["CPLCerEsfOD"];
+                if (dr["CPLCerCilOD"] != DBNull.Value) cpl.CloseCylinderRightEye = (string)dr["CPLCerCilOD"];
+                if (dr["CPLCerEjeOD"] != DBNull.Value) cpl.CloseAxisRightEye = (string)dr["CPLCerEjeOD"];
+                if (dr["CPLCerPrisOD"] != DBNull.Value) cpl.ClosePrismRightEye = (string)dr["CPLCerEjeOD"];
+
+                if (dr["CPLCerEsfOI"] != DBNull.Value) cpl.CloseSphericityLeftEye = (string)dr["CPLCerEsfOI"];
+                if (dr["CPLCerCilOI"] != DBNull.Value) cpl.CloseCylinderLeftEye = (string)dr["CPLCerCilOI"];
+                if (dr["CPLCerEjeOI"] != DBNull.Value) cpl.CloseAxisLeftEye = (string)dr["CPLCerEjeOI"];
+                if (dr["CPLCerPrisOI"] != DBNull.Value) cpl.ClosePrismLeftEye = (string)dr["CPLCerEjeOI"];
+
+                if (dr["CPLCerCent"] != DBNull.Value) cpl.CloseCenters = (string)dr["CPLCerCent"];
+                if (dr["CPLCerAVis"] != DBNull.Value) cpl.CloseAcuity = (string)dr["CPLCerAVis"];
+
+                ctx.Add(cpl);
+                ctx.SaveChanges();
+            }
+
+            //Glasses Test
+            sql = String.Format("SELECT * FROM RECRefracto WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "ConRECRefracto");
+            if (ds.Tables["ConRECRefracto"].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables["ConRECRefracto"].Rows[0];
+                PrescriptionGlasses recp = new PrescriptionGlasses();
+                recp.Refractometry = rf;
+                //if (dr["RECLejAVisOD"] != DBNull.Value) recp.FarVisualAcuityRightEye = (string)dr["RECLejAVisOD"];
+                //if (dr["RECTuAVisOD"] != DBNull.Value) recp.BothAcuityRightEye = (string)dr["RECTuAVisOD"];
+                //if (dr["RECCerAVisOD"] != DBNull.Value) recp.CloseAcuityRightEye = (string)dr["RECCerAVisOD"];
+
+                //if (dr["RECLejAVisOI"] != DBNull.Value) recp.FarVisualAcuityLeftEye = (string)dr["RECLejAVisOI"];
+                //if (dr["RECTuAVisOI"] != DBNull.Value) recp.BothAcuityLeftEye = (string)dr["RECTuAVisOI"];
+                //if (dr["RECCerAVisOI"] != DBNull.Value) recp.CloseAcuityLeftEye = (string)dr["RECCerAVisOI"];
+
+                if (dr["Observaciones"] != DBNull.Value) recp.Comments = (string)dr["Observaciones"];
+
+                if (dr["RECLeEsfOD"] != DBNull.Value) recp.FarSphericityRightEye = (string)dr["RECLeEsfOD"];
+                if (dr["RECLeCilOD"] != DBNull.Value) recp.FarCylinderRightEye = (string)dr["RECLeCilOD"];
+                if (dr["RECLeEjeOD"] != DBNull.Value) recp.FarAxisRightEye = (string)dr["RECLeEjeOD"];
+                if (dr["RECLePrisOD"] != DBNull.Value) recp.FarPrimsRightEye = (string)dr["RECLePrisOD"];
+
+                if (dr["RECLeEsfOI"] != DBNull.Value) recp.FarSphericityLeftEye = (string)dr["RECLeEsfOI"];
+                if (dr["RECLeCilOI"] != DBNull.Value) recp.FarCylinderLeftEye = (string)dr["RECLeCilOI"];
+                if (dr["RECLeEjeOI"] != DBNull.Value) recp.FarAxisLeftEye = (string)dr["RECLeEjeOI"];
+                if (dr["RECLePrisOI"] != DBNull.Value) recp.FarPrismLeftEye = (string)dr["RECLePrisOI"];
+
+                if (dr["RECLeCent"] != DBNull.Value) recp.FarCenters = (string)dr["RECLeCent"];
+                //if (dr["RECLeAVis"] != DBNull.Value) recp.FarAcuity = (string)dr["RECLeAVis"];
+
+                if (dr["RECTuEsfOD"] != DBNull.Value) recp.BothSphericityRightEye = (string)dr["RECTuEsfOD"];
+                if (dr["RECTuCilOD"] != DBNull.Value) recp.BothCylinderRightEye = (string)dr["RECTuCilOD"];
+                if (dr["RECTuEjeOD"] != DBNull.Value) recp.BothAxisRightEye = (string)dr["RECTuEjeOD"];
+                if (dr["RECTuPrisOD"] != DBNull.Value) recp.BothPrismRightEye = (string)dr["RECTuPrisOD"];
+                //
+                if (dr["RECTuEsfOI"] != DBNull.Value) recp.BothSphericityLeftEye = (string)dr["RECTuEsfOI"];
+                if (dr["RECTuCilOI"] != DBNull.Value) recp.BothCylinderLeftEye = (string)dr["RECTuCilOI"];
+                if (dr["RECTuEjeOI"] != DBNull.Value) recp.BothAxisLeftEye = (string)dr["RECTuEjeOI"];
+                if (dr["RECTuPrisOI"] != DBNull.Value) recp.BothPrismLeftEye = (string)dr["RECTuPrisOI"];
+
+                if (dr["RECTuCent"] != DBNull.Value) recp.BothCenters = (string)dr["RECTuCent"];
+                //if (dr["RECTuAVis"] != DBNull.Value) recp.BothAcuity = (string)dr["RECTuAVis"];
+
+                if (dr["RECCerEsfOD"] != DBNull.Value) recp.CloseSphericityRightEye = (string)dr["RECCerEsfOD"];
+                if (dr["RECCerCilOD"] != DBNull.Value) recp.CloseCylinderRightEye = (string)dr["RECCerCilOD"];
+                if (dr["RECCerEjeOD"] != DBNull.Value) recp.CloseAxisRightEye = (string)dr["RECCerEjeOD"];
+                if (dr["RECCerPrisOD"] != DBNull.Value) recp.ClosePrismRightEye = (string)dr["RECCerEjeOD"];
+
+                if (dr["RECCerEsfOI"] != DBNull.Value) recp.CloseSphericityLeftEye = (string)dr["RECCerEsfOI"];
+                if (dr["RECCerCilOI"] != DBNull.Value) recp.CloseCylinderLeftEye = (string)dr["RECCerCilOI"];
+                if (dr["RECCerEjeOI"] != DBNull.Value) recp.CloseAxisLeftEye = (string)dr["RECCerEjeOI"];
+                if (dr["RECCerPrisOI"] != DBNull.Value) recp.ClosePrismLeftEye = (string)dr["RECCerEjeOI"];
+
+                if (dr["RECCerCent"] != DBNull.Value) recp.CloseCenters = (string)dr["RECCerCent"];
+                //if (dr["RECCerAVis"] != DBNull.Value) recp.CloseAcuity = (string)dr["RECCerAVis"];
+
+                ctx.Add(recp);
+                ctx.SaveChanges();
+            }
+
+
+        }
+
+        public static void ProcessPaquimetry(int id, Paquimetry pq, OleDbConnection con, AriClinicContext ctx)
+        {
+            // WithoutGlasses
+            string sql = String.Format("SELECT * FROM Paquimetria WHERE IdRef={0}", id);
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConSNGRefracto");
+            DataRow dr = ds.Tables["ConSNGRefracto"].Rows[0];
+            pq.RightEyeCentralC0 = (decimal)dr["CentralC0D"];
+            pq.RightEyeC1 = (decimal)dr["C1D"];
+            pq.RightEyeC3 = (decimal)dr["C3D"];
+            pq.RightEyeC5 = (decimal)dr["C5D"];
+            pq.RightEyeC7 = (decimal)dr["C7D"];
+            pq.LeftEyeCentralC0 = (decimal)dr["CentralC0I"];
+            pq.LeftEyeC1 = (decimal)dr["C1I"];
+            pq.LeftEyeC3 = (decimal)dr["C3I"];
+            pq.LeftEyeC5 = (decimal)dr["C5I"];
+            pq.LeftEyeC7 = (decimal)dr["C7I"];
+        }
+
+        public static void ImportProcedures(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.ProcedureAssigneds);
+            ctx.Delete(ctx.Procedures);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM Procedimientos";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConProcedimientos");
+            int nreg = ds.Tables["ConProcedimientos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConProcedimientos"].Rows)
+            {
+                reg++;
+
+                Procedure proc = new Procedure();
+                proc.OftId = (int)dr["IdProEs"];
+                proc.Name = (string)dr["NomProEs"];
+                ctx.Add(proc);
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void ImportProceduresAssigned(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.ProcedureAssigneds);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM HistProc";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConProcedimientos");
+            int nreg = ds.Tables["ConProcedimientos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConProcedimientos"].Rows)
+            {
+                reg++;
+                ProcedureAssigned pa = new ProcedureAssigned();
+                int id = (int)dr["IdProEs"];
+                Procedure pro = (from p in ctx.Procedures
+                                   where p.OftId == id
+                                   select p).FirstOrDefault<Procedure>();
+                id = (int)dr["NumHis"];
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == id
+                                   select p).FirstOrDefault<Patient>();
+                pa.Patient = patient;
+                pa.Procedure = pro;
+                pa.ProcedureDate = (DateTime)dr["Fecha"];
+                pa.Comments = (string)dr["Observa"];
+                ctx.Add(pa);
+                ctx.SaveChanges();
+            }
+        }
+
+
+        public static void ImportDrugs(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.Treatments);
+            ctx.SaveChanges();
+            ctx.Delete(ctx.Drugs);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM Farmacos";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConFarmacos");
+            int nreg = ds.Tables["ConFarmacos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConFarmacos"].Rows)
+            {
+                reg++;
+
+                Drug d = new Drug();
+                d.OftId = (int)dr["IdFarm"];
+                d.Name = (string)dr["NomFarm"];
+                ctx.Add(d);
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void ImportTreatment(OleDbConnection con, AriClinicContext ctx)
+        {
+            // (0) Borra tipos previos
+            ctx.Delete(ctx.Treatments);
+            ctx.SaveChanges();
+
+            // (1) Dar de alta los diferentes diagnósticos
+            string sql = "SELECT * FROM HistFarm";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConFarmacos");
+            int nreg = ds.Tables["ConFarmacos"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConFarmacos"].Rows)
+            {
+                reg++;
+                Treatment t = new Treatment();
+                int id = (int)dr["IdFarm"];
+                Drug dia = (from d in ctx.Drugs
+                                   where d.OftId == id
+                                   select d).FirstOrDefault<Drug>();
+                id = (int)dr["NumHis"];
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == id
+                                   select p).FirstOrDefault<Patient>();
+                t.Patient = patient;
+                t.Drug = dia;
+                if ((int)dr["TipoProc"] == 1)
+                {
+                    id = (int)dr["ExtProc"];
+                    t.BaseVisit = (from v in ctx.BaseVisits
+                                     where v.OftRefVisita == id
+                                     select v).FirstOrDefault<BaseVisit>();
+                }
+                t.TreatmentDate = (DateTime)dr["Fecha"];
+                t.Recommend = (string)dr["Posologia"];
+                t.Quantity = (int)(float)dr["Cantidad"];
+                ctx.Add(t);
+                ctx.SaveChanges();
+            }
+        }
 
         #region Auxiliary functions
         #region GetConnectionstring

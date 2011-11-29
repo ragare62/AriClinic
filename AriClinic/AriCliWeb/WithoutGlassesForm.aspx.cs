@@ -130,26 +130,26 @@ public partial class WithoutGlassesForm : System.Web.UI.Page
 
     protected void LoadData(WithoutGlassesTest wtg)
     {
-        txtCloseAcuityBothEyes.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityBothEyes);
-        txtCloseAcuityLeftEye.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityLeftEye);
-        txtCloseAcuityRightEye.Text = CntWeb.GetPossibleNull(wtg.CloseVisualAcuityRightEye);
+        txtCloseAcuityBothEyes.Text = wtg.CloseVisualAcuityBothEyes;
+        txtCloseAcuityLeftEye.Text = wtg.CloseVisualAcuityLeftEye;
+        txtCloseAcuityRightEye.Text = wtg.CloseVisualAcuityRightEye;
 
-        txtFarAcuityBothEyes.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityBothEyes);
-        txtFarAcuityLeftEye.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityLeftEye);
-        txtFarAcuityRightEye.Text = CntWeb.GetPossibleNull(wtg.FarVisualAcuityRightEye);
+        txtFarAcuityBothEyes.Text = wtg.FarVisualAcuityBothEyes;
+        txtFarAcuityLeftEye.Text = wtg.FarVisualAcuityLeftEye;
+        txtFarAcuityRightEye.Text = wtg.FarVisualAcuityRightEye;
 
         txtComments.Text = wtg.Comments;
     }
 
     protected void UnloadData(WithoutGlassesTest wtg)
     {
-        wtg.CloseVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtCloseAcuityBothEyes.Text);
-        wtg.CloseVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtCloseAcuityLeftEye.Text);
-        wtg.CloseVisualAcuityRightEye = CntWeb.SetPossibleNull(txtCloseAcuityRightEye.Text);
+        wtg.CloseVisualAcuityBothEyes = txtCloseAcuityBothEyes.Text;
+        wtg.CloseVisualAcuityLeftEye = txtCloseAcuityLeftEye.Text;
+        wtg.CloseVisualAcuityRightEye = txtCloseAcuityRightEye.Text;
 
-        wtg.FarVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtFarAcuityBothEyes.Text);
-        wtg.FarVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtFarAcuityLeftEye.Text);
-        wtg.FarVisualAcuityRightEye = CntWeb.SetPossibleNull(txtFarAcuityRightEye.Text);
+        wtg.FarVisualAcuityBothEyes = txtFarAcuityBothEyes.Text;
+        wtg.FarVisualAcuityLeftEye = txtFarAcuityLeftEye.Text;
+        wtg.FarVisualAcuityRightEye = txtFarAcuityRightEye.Text;
 
         wtg.Comments = txtComments.Text;
     }

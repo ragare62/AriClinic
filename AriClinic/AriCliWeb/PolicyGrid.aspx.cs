@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web.Query.Dynamic;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.Expressions;
-using Telerik.Web.Data.Extensions;
 using Telerik.Web.UI;
 
 public partial class PolicyGrid : System.Web.UI.Page 

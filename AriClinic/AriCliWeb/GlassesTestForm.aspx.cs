@@ -130,44 +130,44 @@ public partial class GlassesTestForm : System.Web.UI.Page
 
     protected void LoadData(GlassesTest gt)
     {
-        txtFarAcuity.Text = CntWeb.GetPossibleNull(gt.FarAcuity);
-        txtFarAxisLeftEye.Text = CntWeb.GetPossibleNull(gt.FarAxisLeftEye);
-        txtFarAxisRightEye.Text = CntWeb.GetPossibleNull(gt.FarAxisRightEye);
-        txtFarCenter.Text = CntWeb.GetPossibleNull(gt.FarCenters);
-        txtFarCylinderLeftEye.Text = CntWeb.GetPossibleNull(gt.FarCylinderLeftEye);
-        txtFarCylinderRightEye.Text = CntWeb.GetPossibleNull(gt.FarCylinderRightEye);
-        txtFarPrismLeftEye.Text = CntWeb.GetPossibleNull(gt.FarPrismLeftEye);
-        txtFarPrismRightEye.Text = CntWeb.GetPossibleNull(gt.FarPrimsRightEye);
-        txtFarSphericityLefttEye.Text = CntWeb.GetPossibleNull(gt.FarSphericityLeftEye);
-        txtFarSphericityRightEye.Text = CntWeb.GetPossibleNull(gt.FarSphericityRightEye);
-        txtFarVisualAcuityLeftEye.Text = CntWeb.GetPossibleNull(gt.FarVisualAcuityLeftEye);
-        txtFarVisualAcuityRightEye.Text = CntWeb.GetPossibleNull(gt.FarVisualAcuityRightEye);
+        txtFarAcuity.Text =  gt.FarAcuity;
+        txtFarAxisLeftEye.Text =  gt.FarAxisLeftEye;
+        txtFarAxisRightEye.Text =  gt.FarAxisRightEye;
+        txtFarCenter.Text =  gt.FarCenters;
+        txtFarCylinderLeftEye.Text =  gt.FarCylinderLeftEye;
+        txtFarCylinderRightEye.Text =  gt.FarCylinderRightEye;
+        txtFarPrismLeftEye.Text =  gt.FarPrismLeftEye;
+        txtFarPrismRightEye.Text =  gt.FarPrimsRightEye;
+        txtFarSphericityLefttEye.Text =  gt.FarSphericityLeftEye;
+        txtFarSphericityRightEye.Text =  gt.FarSphericityRightEye;
+        txtFarVisualAcuityLeftEye.Text =  gt.FarVisualAcuityLeftEye;
+        txtFarVisualAcuityRightEye.Text =  gt.FarVisualAcuityRightEye;
 
-        txtCloseAcuity.Text = CntWeb.GetPossibleNull(gt.CloseAcuity);
-        txtCloseAxisLeftEye.Text = CntWeb.GetPossibleNull(gt.CloseAxisLeftEye);
-        txtCloseAxisRightEye.Text = CntWeb.GetPossibleNull(gt.CloseAxisRightEye);
-        txtCloseCenter.Text = CntWeb.GetPossibleNull(gt.CloseCenters);
-        txtCloseCylinderLeftEye.Text = CntWeb.GetPossibleNull(gt.CloseCylinderLeftEye);
-        txtCloseCylinderRightEye.Text = CntWeb.GetPossibleNull(gt.CloseCylinderRightEye);
-        txtClosePrismLeftEye.Text = CntWeb.GetPossibleNull(gt.ClosePrismLeftEye);
-        txtClosePrismRightEye.Text = CntWeb.GetPossibleNull(gt.ClosePrismRightEye);
-        txtCloseSphericityLefttEye.Text = CntWeb.GetPossibleNull(gt.CloseSphericityLeftEye);
-        txtCloseSphericityRightEye.Text = CntWeb.GetPossibleNull(gt.CloseSphericityRightEye);
-        txtCloseVisualAcuityLeftEye.Text = CntWeb.GetPossibleNull(gt.CloseAcuityLeftEye);
-        txtCloseVisualAcuityRightEye.Text = CntWeb.GetPossibleNull(gt.CloseAcuityRightEye);
+        txtCloseAcuity.Text =  gt.CloseAcuity;
+        txtCloseAxisLeftEye.Text =  gt.CloseAxisLeftEye;
+        txtCloseAxisRightEye.Text =  gt.CloseAxisRightEye;
+        txtCloseCenter.Text =  gt.CloseCenters;
+        txtCloseCylinderLeftEye.Text =  gt.CloseCylinderLeftEye;
+        txtCloseCylinderRightEye.Text =  gt.CloseCylinderRightEye;
+        txtClosePrismLeftEye.Text =  gt.ClosePrismLeftEye;
+        txtClosePrismRightEye.Text =  gt.ClosePrismRightEye;
+        txtCloseSphericityLefttEye.Text =  gt.CloseSphericityLeftEye;
+        txtCloseSphericityRightEye.Text =  gt.CloseSphericityRightEye;
+        txtCloseVisualAcuityLeftEye.Text =  gt.CloseAcuityLeftEye;
+        txtCloseVisualAcuityRightEye.Text =  gt.CloseAcuityRightEye;
 
-        txtBothAcuity.Text = CntWeb.GetPossibleNull(gt.BothAcuity);
-        txtBothAxisLeftEye.Text = CntWeb.GetPossibleNull(gt.BothAxisLeftEye);
-        txtBothAxisRightEye.Text = CntWeb.GetPossibleNull(gt.BothAxisRightEye);
-        txtBothCenter.Text = CntWeb.GetPossibleNull(gt.BothCenters);
-        txtBothCylinderLeftEye.Text = CntWeb.GetPossibleNull(gt.BothCylinderLeftEye);
-        txtBothCylinderRightEye.Text = CntWeb.GetPossibleNull(gt.BothCylinderRightEye);
-        txtBothPrismLeftEye.Text = CntWeb.GetPossibleNull(gt.BothPrismLeftEye);
-        txtBothPrismRightEye.Text = CntWeb.GetPossibleNull(gt.BothPrismRightEye);
-        txtBothSphericityLefttEye.Text = CntWeb.GetPossibleNull(gt.BothSphericityLeftEye);
-        txtBothSphericityRightEye.Text = CntWeb.GetPossibleNull(gt.BothSphericityRightEye);
-        txtBothVisualAcuityLeftEye.Text = CntWeb.GetPossibleNull(gt.BothAcuityLeftEye);
-        txtBothVisualAcuityRightEye.Text = CntWeb.GetPossibleNull(gt.BothAcuityRightEye);
+        txtBothAcuity.Text =  gt.BothAcuity;
+        txtBothAxisLeftEye.Text =  gt.BothAxisLeftEye;
+        txtBothAxisRightEye.Text =  gt.BothAxisRightEye;
+        txtBothCenter.Text =  gt.BothCenters;
+        txtBothCylinderLeftEye.Text =  gt.BothCylinderLeftEye;
+        txtBothCylinderRightEye.Text =  gt.BothCylinderRightEye;
+        txtBothPrismLeftEye.Text =  gt.BothPrismLeftEye;
+        txtBothPrismRightEye.Text =  gt.BothPrismRightEye;
+        txtBothSphericityLefttEye.Text =  gt.BothSphericityLeftEye;
+        txtBothSphericityRightEye.Text =  gt.BothSphericityRightEye;
+        txtBothVisualAcuityLeftEye.Text =  gt.BothAcuityLeftEye;
+        txtBothVisualAcuityRightEye.Text =  gt.BothAcuityRightEye;
 
 
         txtComments.Text = gt.Comments;
@@ -175,44 +175,44 @@ public partial class GlassesTestForm : System.Web.UI.Page
 
     protected void UnloadData(GlassesTest gt)
     {
-        gt.FarAcuity = CntWeb.SetPossibleNull(txtFarAcuity.Text);
-        gt.FarAxisLeftEye = CntWeb.SetPossibleNull(txtFarAxisLeftEye.Text);
-        gt.FarAxisRightEye = CntWeb.SetPossibleNull(txtFarAxisRightEye.Text);
-        gt.FarCenters = CntWeb.SetPossibleNull(txtFarCenter.Text);
-        gt.FarCylinderLeftEye = CntWeb.SetPossibleNull(txtFarCylinderLeftEye.Text);
-        gt.FarCylinderRightEye = CntWeb.SetPossibleNull(txtFarCylinderRightEye.Text);
-        gt.FarPrismLeftEye = CntWeb.SetPossibleNull(txtFarPrismLeftEye.Text);
-        gt.FarPrimsRightEye = CntWeb.SetPossibleNull(txtFarPrismRightEye.Text);
-        gt.FarSphericityLeftEye = CntWeb.SetPossibleNull(txtFarSphericityLefttEye.Text);
-        gt.FarSphericityRightEye = CntWeb.SetPossibleNull(txtFarSphericityRightEye.Text);
-        gt.FarVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtFarVisualAcuityLeftEye.Text);
-        gt.FarVisualAcuityRightEye = CntWeb.SetPossibleNull(txtFarVisualAcuityRightEye.Text);
+        gt.FarAcuity =  txtFarAcuity.Text;
+        gt.FarAxisLeftEye =  txtFarAxisLeftEye.Text;
+        gt.FarAxisRightEye =  txtFarAxisRightEye.Text;
+        gt.FarCenters =  txtFarCenter.Text;
+        gt.FarCylinderLeftEye =  txtFarCylinderLeftEye.Text;
+        gt.FarCylinderRightEye =  txtFarCylinderRightEye.Text;
+        gt.FarPrismLeftEye =  txtFarPrismLeftEye.Text;
+        gt.FarPrimsRightEye =  txtFarPrismRightEye.Text;
+        gt.FarSphericityLeftEye =  txtFarSphericityLefttEye.Text;
+        gt.FarSphericityRightEye =  txtFarSphericityRightEye.Text;
+        gt.FarVisualAcuityLeftEye =  txtFarVisualAcuityLeftEye.Text;
+        gt.FarVisualAcuityRightEye =  txtFarVisualAcuityRightEye.Text;
 
-        gt.CloseAcuity = CntWeb.SetPossibleNull(txtCloseAcuity.Text);
-        gt.CloseAxisLeftEye = CntWeb.SetPossibleNull(txtCloseAxisLeftEye.Text);
-        gt.CloseAxisRightEye = CntWeb.SetPossibleNull(txtCloseAxisRightEye.Text);
-        gt.CloseCenters = CntWeb.SetPossibleNull(txtCloseCenter.Text);
-        gt.CloseCylinderLeftEye = CntWeb.SetPossibleNull(txtCloseCylinderLeftEye.Text);
-        gt.CloseCylinderRightEye = CntWeb.SetPossibleNull(txtCloseCylinderRightEye.Text);
-        gt.ClosePrismLeftEye = CntWeb.SetPossibleNull(txtClosePrismLeftEye.Text);
-        gt.ClosePrismRightEye = CntWeb.SetPossibleNull(txtClosePrismRightEye.Text);
-        gt.CloseSphericityLeftEye = CntWeb.SetPossibleNull(txtCloseSphericityLefttEye.Text);
-        gt.CloseSphericityRightEye = CntWeb.SetPossibleNull(txtCloseSphericityRightEye.Text);
-        gt.CloseAcuityLeftEye = CntWeb.SetPossibleNull(txtCloseVisualAcuityLeftEye.Text);
-        gt.CloseAcuityRightEye = CntWeb.SetPossibleNull(txtCloseVisualAcuityRightEye.Text);
+        gt.CloseAcuity =  txtCloseAcuity.Text;
+        gt.CloseAxisLeftEye =  txtCloseAxisLeftEye.Text;
+        gt.CloseAxisRightEye =  txtCloseAxisRightEye.Text;
+        gt.CloseCenters =  txtCloseCenter.Text;
+        gt.CloseCylinderLeftEye =  txtCloseCylinderLeftEye.Text;
+        gt.CloseCylinderRightEye =  txtCloseCylinderRightEye.Text;
+        gt.ClosePrismLeftEye =  txtClosePrismLeftEye.Text;
+        gt.ClosePrismRightEye =  txtClosePrismRightEye.Text;
+        gt.CloseSphericityLeftEye =  txtCloseSphericityLefttEye.Text;
+        gt.CloseSphericityRightEye =  txtCloseSphericityRightEye.Text;
+        gt.CloseAcuityLeftEye =  txtCloseVisualAcuityLeftEye.Text;
+        gt.CloseAcuityRightEye =  txtCloseVisualAcuityRightEye.Text;
 
-        gt.BothAcuity = CntWeb.SetPossibleNull(txtBothAcuity.Text);
-        gt.BothAxisLeftEye = CntWeb.SetPossibleNull(txtBothAxisLeftEye.Text);
-        gt.BothAxisRightEye = CntWeb.SetPossibleNull(txtBothAxisRightEye.Text);
-        gt.BothCenters = CntWeb.SetPossibleNull(txtBothCenter.Text);
-        gt.BothCylinderLeftEye = CntWeb.SetPossibleNull(txtBothCylinderLeftEye.Text);
-        gt.BothCylinderRightEye = CntWeb.SetPossibleNull(txtBothCylinderRightEye.Text);
-        gt.BothPrismLeftEye = CntWeb.SetPossibleNull(txtBothPrismLeftEye.Text);
-        gt.BothPrismRightEye = CntWeb.SetPossibleNull(txtBothPrismRightEye.Text);
-        gt.BothSphericityLeftEye = CntWeb.SetPossibleNull(txtBothSphericityLefttEye.Text);
-        gt.BothSphericityRightEye = CntWeb.SetPossibleNull(txtBothSphericityRightEye.Text);
-        gt.BothAcuityLeftEye = CntWeb.SetPossibleNull(txtBothVisualAcuityLeftEye.Text);
-        gt.BothAcuityRightEye = CntWeb.SetPossibleNull(txtBothVisualAcuityRightEye.Text);
+        gt.BothAcuity =  txtBothAcuity.Text;
+        gt.BothAxisLeftEye =  txtBothAxisLeftEye.Text;
+        gt.BothAxisRightEye =  txtBothAxisRightEye.Text;
+        gt.BothCenters =  txtBothCenter.Text;
+        gt.BothCylinderLeftEye =  txtBothCylinderLeftEye.Text;
+        gt.BothCylinderRightEye =  txtBothCylinderRightEye.Text;
+        gt.BothPrismLeftEye =  txtBothPrismLeftEye.Text;
+        gt.BothPrismRightEye =  txtBothPrismRightEye.Text;
+        gt.BothSphericityLeftEye =  txtBothSphericityLefttEye.Text;
+        gt.BothSphericityRightEye =  txtBothSphericityRightEye.Text;
+        gt.BothAcuityLeftEye =  txtBothVisualAcuityLeftEye.Text;
+        gt.BothAcuityRightEye =  txtBothVisualAcuityRightEye.Text;
 
 
         gt.Comments = txtComments.Text;

@@ -47,8 +47,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal? k1RightEye;
-		public virtual decimal? K1RightEye 
+		private string k1RightEye;
+		public virtual string K1RightEye 
 		{ 
 		    get
 		    {
@@ -60,8 +60,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal? k1LeftEye;
-		public virtual decimal? K1LeftEye 
+		private string k1LeftEye;
+		public virtual string K1LeftEye 
 		{ 
 		    get
 		    {
@@ -73,8 +73,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal? k2RightEye;
-		public virtual decimal? K2RightEye 
+		private string k2RightEye;
+		public virtual string K2RightEye 
 		{ 
 		    get
 		    {
@@ -86,8 +86,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal? k2LeftEye;
-		public virtual decimal? K2LeftEye 
+		private string k2LeftEye;
+		public virtual string K2LeftEye 
 		{ 
 		    get
 		    {
@@ -99,8 +99,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farSphericityRightEye;
-		public virtual decimal FarSphericityRightEye 
+		private string farSphericityRightEye;
+		public virtual string FarSphericityRightEye 
 		{ 
 		    get
 		    {
@@ -112,8 +112,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farCylinderRightEye;
-		public virtual decimal FarCylinderRightEye 
+		private string farCylinderRightEye;
+		public virtual string FarCylinderRightEye 
 		{ 
 		    get
 		    {
@@ -125,8 +125,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farAxisRightEye;
-		public virtual decimal FarAxisRightEye 
+		private string farAxisRightEye;
+		public virtual string FarAxisRightEye 
 		{ 
 		    get
 		    {
@@ -138,8 +138,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farPrimsRightEye;
-		public virtual decimal FarPrimsRightEye 
+		private string farPrimsRightEye;
+		public virtual string FarPrimsRightEye 
 		{ 
 		    get
 		    {
@@ -151,8 +151,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farVisualAcuityRightEye;
-		public virtual decimal FarVisualAcuityRightEye 
+		private string farVisualAcuityRightEye;
+		public virtual string FarVisualAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -164,8 +164,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farSphericityLeftEye;
-		public virtual decimal FarSphericityLeftEye 
+		private string farSphericityLeftEye;
+		public virtual string FarSphericityLeftEye 
 		{ 
 		    get
 		    {
@@ -177,8 +177,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farCylinderLeftEye;
-		public virtual decimal FarCylinderLeftEye 
+		private string farCylinderLeftEye;
+		public virtual string FarCylinderLeftEye 
 		{ 
 		    get
 		    {
@@ -190,8 +190,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farAxisLeftEye;
-		public virtual decimal FarAxisLeftEye 
+		private string farAxisLeftEye;
+		public virtual string FarAxisLeftEye 
 		{ 
 		    get
 		    {
@@ -203,8 +203,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farPrismLeftEye;
-		public virtual decimal FarPrismLeftEye 
+		private string farPrismLeftEye;
+		public virtual string FarPrismLeftEye 
 		{ 
 		    get
 		    {
@@ -216,8 +216,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farVisualAcuityLeftEye;
-		public virtual decimal FarVisualAcuityLeftEye 
+		private string farVisualAcuityLeftEye;
+		public virtual string FarVisualAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -229,8 +229,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeSphericityRightEye;
-		public virtual decimal CloseSphericityRightEye 
+		private string closeSphericityRightEye;
+		public virtual string CloseSphericityRightEye 
 		{ 
 		    get
 		    {
@@ -242,8 +242,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeSphericityLeftEye;
-		public virtual decimal CloseSphericityLeftEye 
+		private string closeSphericityLeftEye;
+		public virtual string CloseSphericityLeftEye 
 		{ 
 		    get
 		    {
@@ -255,8 +255,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeCylinderRightEye;
-		public virtual decimal CloseCylinderRightEye 
+		private string closeCylinderRightEye;
+		public virtual string CloseCylinderRightEye 
 		{ 
 		    get
 		    {
@@ -268,8 +268,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeCylinderLeftEye;
-		public virtual decimal CloseCylinderLeftEye 
+		private string closeCylinderLeftEye;
+		public virtual string CloseCylinderLeftEye 
 		{ 
 		    get
 		    {
@@ -281,8 +281,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeAxisRightEye;
-		public virtual decimal CloseAxisRightEye 
+		private string closeAxisRightEye;
+		public virtual string CloseAxisRightEye 
 		{ 
 		    get
 		    {
@@ -294,8 +294,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeAxisLeftEye;
-		public virtual decimal CloseAxisLeftEye 
+		private string closeAxisLeftEye;
+		public virtual string CloseAxisLeftEye 
 		{ 
 		    get
 		    {
@@ -307,8 +307,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closePrismRightEye;
-		public virtual decimal ClosePrismRightEye 
+		private string closePrismRightEye;
+		public virtual string ClosePrismRightEye 
 		{ 
 		    get
 		    {
@@ -320,8 +320,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closePrismLeftEye;
-		public virtual decimal ClosePrismLeftEye 
+		private string closePrismLeftEye;
+		public virtual string ClosePrismLeftEye 
 		{ 
 		    get
 		    {
@@ -333,8 +333,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeAcuityRightEye;
-		public virtual decimal CloseAcuityRightEye 
+		private string closeAcuityRightEye;
+		public virtual string CloseAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -346,8 +346,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeAcuityLeftEye;
-		public virtual decimal CloseAcuityLeftEye 
+		private string closeAcuityLeftEye;
+		public virtual string CloseAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -359,8 +359,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothSphericityRightEye;
-		public virtual decimal BothSphericityRightEye 
+		private string bothSphericityRightEye;
+		public virtual string BothSphericityRightEye 
 		{ 
 		    get
 		    {
@@ -372,8 +372,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothSphericityLeftEye;
-		public virtual decimal BothSphericityLeftEye 
+		private string bothSphericityLeftEye;
+		public virtual string BothSphericityLeftEye 
 		{ 
 		    get
 		    {
@@ -385,8 +385,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothCylinderRightEye;
-		public virtual decimal BothCylinderRightEye 
+		private string bothCylinderRightEye;
+		public virtual string BothCylinderRightEye 
 		{ 
 		    get
 		    {
@@ -398,8 +398,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothCylinderLeftEye;
-		public virtual decimal BothCylinderLeftEye 
+		private string bothCylinderLeftEye;
+		public virtual string BothCylinderLeftEye 
 		{ 
 		    get
 		    {
@@ -411,8 +411,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothAxisRightEye;
-		public virtual decimal BothAxisRightEye 
+		private string bothAxisRightEye;
+		public virtual string BothAxisRightEye 
 		{ 
 		    get
 		    {
@@ -424,8 +424,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothAxisLeftEye;
-		public virtual decimal BothAxisLeftEye 
+		private string bothAxisLeftEye;
+		public virtual string BothAxisLeftEye 
 		{ 
 		    get
 		    {
@@ -437,8 +437,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothPrismRightEye;
-		public virtual decimal BothPrismRightEye 
+		private string bothPrismRightEye;
+		public virtual string BothPrismRightEye 
 		{ 
 		    get
 		    {
@@ -450,8 +450,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothPrismLeftEye;
-		public virtual decimal BothPrismLeftEye 
+		private string bothPrismLeftEye;
+		public virtual string BothPrismLeftEye 
 		{ 
 		    get
 		    {
@@ -463,8 +463,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothAcuityRightEye;
-		public virtual decimal BothAcuityRightEye 
+		private string bothAcuityRightEye;
+		public virtual string BothAcuityRightEye 
 		{ 
 		    get
 		    {
@@ -476,8 +476,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothAcuityLeftEye;
-		public virtual decimal BothAcuityLeftEye 
+		private string bothAcuityLeftEye;
+		public virtual string BothAcuityLeftEye 
 		{ 
 		    get
 		    {
@@ -489,8 +489,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farCenters;
-		public virtual decimal FarCenters 
+		private string farCenters;
+		public virtual string FarCenters 
 		{ 
 		    get
 		    {
@@ -502,8 +502,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeCenters;
-		public virtual decimal CloseCenters 
+		private string closeCenters;
+		public virtual string CloseCenters 
 		{ 
 		    get
 		    {
@@ -515,8 +515,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothCenters;
-		public virtual decimal BothCenters 
+		private string bothCenters;
+		public virtual string BothCenters 
 		{ 
 		    get
 		    {
@@ -528,8 +528,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal farAcuity;
-		public virtual decimal FarAcuity 
+		private string farAcuity;
+		public virtual string FarAcuity 
 		{ 
 		    get
 		    {
@@ -541,8 +541,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal closeAcuity;
-		public virtual decimal CloseAcuity 
+		private string closeAcuity;
+		public virtual string CloseAcuity 
 		{ 
 		    get
 		    {
@@ -554,8 +554,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private decimal bothAcuity;
-		public virtual decimal BothAcuity 
+		private string bothAcuity;
+		public virtual string BothAcuity 
 		{ 
 		    get
 		    {

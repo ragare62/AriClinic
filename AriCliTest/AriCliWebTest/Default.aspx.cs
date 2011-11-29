@@ -168,22 +168,91 @@ public partial class Default : System.Web.UI.Page
         //i3 = (i / i2) * 100;
         //context.SecondaryPercent = i3.ToString();
         //CntOft.ImportInvoices(con, ctx);
-        //#endregion
+        //// (14) Visitas
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Visitas... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportVisits(con, ctx);
+        //// (15) Diagnósticos
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Diagnósticos... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportDiagnostics(con, ctx);
 
+        //// (16) Diagnósticos asignados
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Diagnósticos asignados... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportDiagnosticsAssigned(con, ctx);
+        //#endregion
+        //// (17) Exploraciones
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Exploraciones... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportExaminations(con, ctx);
+
+        //// (18) Exploraciones asignadas
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Exploraciones asignadas... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportExaminationsAssigned(con, ctx);
+        //// (19) Procedimientos
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Procedimientos... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportProcedures(con, ctx);
+
+        //// (20) Procedimientos asignados
+        //System.Threading.Thread.Sleep(100);
+        //i++;
+        //context.SecondaryValue = i.ToString();
+        //context.CurrentOperationText = i.ToString() + " Procedimientos asignados... ";
+        //i3 = (i / i2) * 100;
+        //context.SecondaryPercent = i3.ToString();
+        //CntOft.ImportProceduresAssigned(con, ctx);
         #endregion
 
 
         #region Importaciones por probar
-
-        // (14) Visitas
+        // (21) Farmacos
         System.Threading.Thread.Sleep(100);
         i++;
         context.SecondaryValue = i.ToString();
-        context.CurrentOperationText = i.ToString() + " Visitas... ";
+        context.CurrentOperationText = i.ToString() + " Farmacos... ";
         i3 = (i / i2) * 100;
         context.SecondaryPercent = i3.ToString();
-        CntOft.ImportVisits(con, ctx);
+        CntOft.ImportDrugs(con, ctx);
+
+        // (22) Procedimientos asignados
+        System.Threading.Thread.Sleep(100);
+        i++;
+        context.SecondaryValue = i.ToString();
+        context.CurrentOperationText = i.ToString() + " Tratamientos asignados... ";
+        i3 = (i / i2) * 100;
+        context.SecondaryPercent = i3.ToString();
+        CntOft.ImportTreatment(con, ctx);
+
+
         #endregion
+
 
 
         txtTest.Text = "Proceso finalizado";

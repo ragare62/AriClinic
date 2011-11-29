@@ -130,26 +130,26 @@ public partial class ContactLensesTestForm : System.Web.UI.Page
 
     protected void LoadData(ContactLensesTest clt)
     {
-        txtCloseAcuityBothEyes.Text = CntWeb.GetPossibleNull(clt.CloseVisualAcuityBothEyes);
-        txtCloseAcuityLeftEye.Text = CntWeb.GetPossibleNull(clt.CloseVisualAcuityLeftEye);
-        txtCloseAcuityRightEye.Text = CntWeb.GetPossibleNull(clt.CloseVisualAcuityRightEye);
+        txtCloseAcuityBothEyes.Text = clt.CloseVisualAcuityBothEyes;
+        txtCloseAcuityLeftEye.Text = clt.CloseVisualAcuityLeftEye;
+        txtCloseAcuityRightEye.Text = clt.CloseVisualAcuityRightEye;
 
-        txtFarAcuityBothEyes.Text = CntWeb.GetPossibleNull(clt.FarVisualAcuityBothEyes);
-        txtFarAcuityLeftEye.Text = CntWeb.GetPossibleNull(clt.FarVisualAcuityLeftEye);
-        txtFarAcuityRightEye.Text = CntWeb.GetPossibleNull(clt.FarVisualAcuityRightEye);
+        txtFarAcuityBothEyes.Text = clt.FarVisualAcuityBothEyes;
+        txtFarAcuityLeftEye.Text = clt.FarVisualAcuityLeftEye;
+        txtFarAcuityRightEye.Text = clt.FarVisualAcuityRightEye;
 
         txtComments.Text = clt.Comments;
     }
 
     protected void UnloadData(ContactLensesTest clt)
     {
-        clt.CloseVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtCloseAcuityBothEyes.Text);
-        clt.CloseVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtCloseAcuityLeftEye.Text);
-        clt.CloseVisualAcuityRightEye = CntWeb.SetPossibleNull(txtCloseAcuityRightEye.Text);
+        clt.CloseVisualAcuityBothEyes =  txtCloseAcuityBothEyes.Text;
+        clt.CloseVisualAcuityLeftEye =  txtCloseAcuityLeftEye.Text;
+        clt.CloseVisualAcuityRightEye =  txtCloseAcuityRightEye.Text;
 
-        clt.FarVisualAcuityBothEyes = CntWeb.SetPossibleNull(txtFarAcuityBothEyes.Text);
-        clt.FarVisualAcuityLeftEye = CntWeb.SetPossibleNull(txtFarAcuityLeftEye.Text);
-        clt.FarVisualAcuityRightEye = CntWeb.SetPossibleNull(txtFarAcuityRightEye.Text);
+        clt.FarVisualAcuityBothEyes =  txtFarAcuityBothEyes.Text;
+        clt.FarVisualAcuityLeftEye =  txtFarAcuityLeftEye.Text;
+        clt.FarVisualAcuityRightEye =  txtFarAcuityRightEye.Text;
 
         clt.Comments = txtComments.Text;
     }

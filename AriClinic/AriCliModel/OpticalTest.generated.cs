@@ -21,182 +21,182 @@ namespace AriCliModel
 {
 	public interface OpticalTest
 	{
-		decimal FarSphericityRightEye 
+		string FarSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarCylinderRightEye 
+		string FarCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarAxisRightEye 
+		string FarAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarPrimsRightEye 
+		string FarPrimsRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarVisualAcuityRightEye 
+		string FarVisualAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarSphericityLeftEye 
+		string FarSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarCylinderLeftEye 
+		string FarCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarAxisLeftEye 
+		string FarAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarPrismLeftEye 
+		string FarPrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarVisualAcuityLeftEye 
+		string FarVisualAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseSphericityRightEye 
+		string CloseSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseSphericityLeftEye 
+		string CloseSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseCylinderRightEye 
+		string CloseCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseCylinderLeftEye 
+		string CloseCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseAxisRightEye 
+		string CloseAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseAxisLeftEye 
+		string CloseAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal ClosePrismRightEye 
+		string ClosePrismRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal ClosePrismLeftEye 
+		string ClosePrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseAcuityRightEye 
+		string CloseAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseAcuityLeftEye 
+		string CloseAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothSphericityRightEye 
+		string BothSphericityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothSphericityLeftEye 
+		string BothSphericityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothCylinderRightEye 
+		string BothCylinderRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothCylinderLeftEye 
+		string BothCylinderLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothAxisRightEye 
+		string BothAxisRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothAxisLeftEye 
+		string BothAxisLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothPrismRightEye 
+		string BothPrismRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothPrismLeftEye 
+		string BothPrismLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothAcuityRightEye 
+		string BothAcuityRightEye 
 		{ 
 			get;
 			set;
 		}
-		decimal BothAcuityLeftEye 
+		string BothAcuityLeftEye 
 		{ 
 			get;
 			set;
 		}
-		decimal FarCenters 
+		string FarCenters 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseCenters 
+		string CloseCenters 
 		{ 
 			get;
 			set;
 		}
-		decimal BothCenters 
+		string BothCenters 
 		{ 
 			get;
 			set;
 		}
-		decimal FarAcuity 
+		string FarAcuity 
 		{ 
 			get;
 			set;
 		}
-		decimal CloseAcuity 
+		string CloseAcuity 
 		{ 
 			get;
 			set;
 		}
-		decimal BothAcuity 
+		string BothAcuity 
 		{ 
 			get;
 			set;
