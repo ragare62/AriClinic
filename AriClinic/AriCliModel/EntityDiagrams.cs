@@ -15,11 +15,12 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
-{	
-	public partial class AriClinicContext : OpenAccessContext
+{
+	public partial class AriClinicContext : OpenAccessContext, IAriClinicContextUnitOfWork
 	{
 		private static string connectionStringName = @"AriClinicContext";
 			
@@ -573,6 +574,270 @@ namespace AriCliModel
 			BackendConfiguration backend = new BackendConfiguration();
 			backend.Backend = "mysql";
 			return backend;
+		}
+	}
+
+	public interface IAriClinicContextUnitOfWork : IUnitOfWork
+	{
+		IQueryable<User> Users 
+		{ 
+			get;
+		}
+		IQueryable<UserGroup> UserGroups 
+		{ 
+			get;
+		}
+		IQueryable<HealthcareCompany> HealthcareCompanies 
+		{ 
+			get;
+		}
+		IQueryable<Telephone> Telephones 
+		{ 
+			get;
+		}
+		IQueryable<Email> Emails 
+		{ 
+			get;
+		}
+		IQueryable<Log> Logs 
+		{ 
+			get;
+		}
+		IQueryable<Process> Processes 
+		{ 
+			get;
+		}
+		IQueryable<Permission> Permissions 
+		{ 
+			get;
+		}
+		IQueryable<Address> Addresses 
+		{ 
+			get;
+		}
+		IQueryable<Clinic> Clinics 
+		{ 
+			get;
+		}
+		IQueryable<Person> People 
+		{ 
+			get;
+		}
+		IQueryable<ServiceCategory> ServiceCategories 
+		{ 
+			get;
+		}
+		IQueryable<TaxType> TaxTypes 
+		{ 
+			get;
+		}
+		IQueryable<Service> Services 
+		{ 
+			get;
+		}
+		IQueryable<Insurance> Insurances 
+		{ 
+			get;
+		}
+		IQueryable<InsuranceService> InsuranceServices 
+		{ 
+			get;
+		}
+		IQueryable<Patient> Patients 
+		{ 
+			get;
+		}
+		IQueryable<Customer> Customers 
+		{ 
+			get;
+		}
+		IQueryable<Policy> Policies 
+		{ 
+			get;
+		}
+		IQueryable<Ticket> Tickets 
+		{ 
+			get;
+		}
+		IQueryable<Invoice> Invoices 
+		{ 
+			get;
+		}
+		IQueryable<InvoiceLine> InvoiceLines 
+		{ 
+			get;
+		}
+		IQueryable<PaymentMethod> PaymentMethods 
+		{ 
+			get;
+		}
+		IQueryable<Payment> Payments 
+		{ 
+			get;
+		}
+		IQueryable<TaxWithholdingType> TaxWithholdingTypes 
+		{ 
+			get;
+		}
+		IQueryable<Professional> Professionals 
+		{ 
+			get;
+		}
+		IQueryable<Procedure> Procedures 
+		{ 
+			get;
+		}
+		IQueryable<AnestheticTicket> AnestheticTickets 
+		{ 
+			get;
+		}
+		IQueryable<AnestheticServiceNote> AnestheticServiceNotes 
+		{ 
+			get;
+		}
+		IQueryable<Parameter> Parameters 
+		{ 
+			get;
+		}
+		IQueryable<ServiceNote> ServiceNotes 
+		{ 
+			get;
+		}
+		IQueryable<Diary> Diaries 
+		{ 
+			get;
+		}
+		IQueryable<AppointmentType> AppointmentTypes 
+		{ 
+			get;
+		}
+		IQueryable<AppointmentInfo> AppointmentInfos 
+		{ 
+			get;
+		}
+		IQueryable<DiagnosticAssigned> DiagnosticAssigneds 
+		{ 
+			get;
+		}
+		IQueryable<Diagnostic> Diagnostics 
+		{ 
+			get;
+		}
+		IQueryable<Drug> Drugs 
+		{ 
+			get;
+		}
+		IQueryable<Treatment> Treatments 
+		{ 
+			get;
+		}
+		IQueryable<UnitType> UnitTypes 
+		{ 
+			get;
+		}
+		IQueryable<Examination> Examinations 
+		{ 
+			get;
+		}
+		IQueryable<ExaminationAssigned> ExaminationAssigneds 
+		{ 
+			get;
+		}
+		IQueryable<Refractometry> Refractometries 
+		{ 
+			get;
+		}
+		IQueryable<WithoutGlassesTest> WithoutGlassesTests 
+		{ 
+			get;
+		}
+		IQueryable<GlassesTest> GlassesTests 
+		{ 
+			get;
+		}
+		IQueryable<ContactLensesTest> ContactLensesTests 
+		{ 
+			get;
+		}
+		IQueryable<OpticalObjectiveExamination> OpticalObjectiveExaminations 
+		{ 
+			get;
+		}
+		IQueryable<SubjectiveOpticalExamination> SubjectiveOpticalExaminations 
+		{ 
+			get;
+		}
+		IQueryable<PrescriptionGlasses> PrescriptionGlasses 
+		{ 
+			get;
+		}
+		IQueryable<Cycloplegia> Cycloplegias 
+		{ 
+			get;
+		}
+		IQueryable<LabTest> LabTests 
+		{ 
+			get;
+		}
+		IQueryable<ProfessionalInvoice> ProfessionalInvoices 
+		{ 
+			get;
+		}
+		IQueryable<ProfessionalInvoiceLine> ProfessionalInvoiceLines 
+		{ 
+			get;
+		}
+		IQueryable<ExaminationType> ExaminationTypes 
+		{ 
+			get;
+		}
+		IQueryable<Nomenclator> Nomenclators 
+		{ 
+			get;
+		}
+		IQueryable<LabTestAssigned> LabTestAssigneds 
+		{ 
+			get;
+		}
+		IQueryable<ProcedureAssigned> ProcedureAssigneds 
+		{ 
+			get;
+		}
+		IQueryable<Biometry> Biometries 
+		{ 
+			get;
+		}
+		IQueryable<Paquimetry> Paquimetries 
+		{ 
+			get;
+		}
+		IQueryable<Topography> Topographies 
+		{ 
+			get;
+		}
+		IQueryable<VisitReason> VisitReasons 
+		{ 
+			get;
+		}
+		IQueryable<BaseVisit> BaseVisits 
+		{ 
+			get;
+		}
+		IQueryable<OphthalmologicVisit> OphthalmologicVisits 
+		{ 
+			get;
+		}
+		IQueryable<AntSegment> AntSegments 
+		{ 
+			get;
+		}
+		IQueryable<MotAppend> MotAppends 
+		{ 
+			get;
+		}
+		IQueryable<Fundus> Fundus 
+		{ 
+			get;
 		}
 	}
 }

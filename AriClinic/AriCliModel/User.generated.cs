@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -113,15 +114,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
-		public virtual IList<ServiceNote> Service_notes 
-		{ 
-		    get
-		    {
-		        return this.serviceNotes;
-		    }
-		}
-		
 		private IList<AppointmentInfo> appointments = new List<AppointmentInfo>();
 		public virtual IList<AppointmentInfo> Appointments 
 		{ 
@@ -155,6 +147,15 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.tickets1;
+		    }
+		}
+		
+		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
+		public virtual IList<ServiceNote> ServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.serviceNotes;
 		    }
 		}
 		

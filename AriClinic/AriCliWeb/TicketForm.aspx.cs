@@ -321,7 +321,8 @@ public partial class TicketForm : System.Web.UI.Page
             txtInsuranceServiceName.Text = insuranceService.Service.Name;
             txtDescription.Text = insuranceService.Service.Name;
             //txtAmount.Text = String.Format("{0:0.00}", insuranceService.Price);
-            txtAmount.Text = insuranceService.Price.ToString();
+            if (txtAmount.Text == "")
+                txtAmount.Text = insuranceService.Price.ToString();
         }
         else
         {

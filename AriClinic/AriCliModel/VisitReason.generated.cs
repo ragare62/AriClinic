@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -61,7 +62,7 @@ namespace AriCliModel
 		}
 		
 		private IList<BaseVisit> baseVisits = new List<BaseVisit>();
-		public virtual IList<BaseVisit> Base_visits 
+		public virtual IList<BaseVisit> BaseVisits 
 		{ 
 		    get
 		    {

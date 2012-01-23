@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -125,19 +126,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private HealthcareCompany healthcareCompany;
-		public virtual HealthcareCompany HealthcareCompany 
-		{ 
-		    get
-		    {
-		        return this.healthcareCompany;
-		    }
-		    set
-		    {
-		        this.healthcareCompany = value;
-		    }
-		}
-		
 		private Clinic clinic;
 		public virtual Clinic Clinic 
 		{ 
@@ -161,6 +149,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.person = value;
+		    }
+		}
+		
+		private HealthcareCompany healthcareCompany;
+		public virtual HealthcareCompany HealthcareCompany 
+		{ 
+		    get
+		    {
+		        return this.healthcareCompany;
+		    }
+		    set
+		    {
+		        this.healthcareCompany = value;
 		    }
 		}
 		

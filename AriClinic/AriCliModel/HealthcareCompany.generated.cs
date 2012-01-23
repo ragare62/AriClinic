@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -73,15 +74,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<Address> addresses = new List<Address>();
-		public virtual IList<Address> Addresses 
-		{ 
-		    get
-		    {
-		        return this.addresses;
-		    }
-		}
-		
 		private IList<Telephone> telephones1 = new List<Telephone>();
 		public virtual IList<Telephone> Telephones 
 		{ 
@@ -97,6 +89,15 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.emails;
+		    }
+		}
+		
+		private IList<Address> addresses = new List<Address>();
+		public virtual IList<Address> Addresses 
+		{ 
+		    get
+		    {
+		        return this.addresses;
 		    }
 		}
 		

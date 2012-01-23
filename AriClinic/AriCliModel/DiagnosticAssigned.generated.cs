@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -60,16 +61,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Patient patient;
-		public virtual Patient Patient 
+		private BaseVisit baseVisit;
+		public virtual BaseVisit BaseVisit 
 		{ 
 		    get
 		    {
-		        return this.patient;
+		        return this.baseVisit;
 		    }
 		    set
 		    {
-		        this.patient = value;
+		        this.baseVisit = value;
 		    }
 		}
 		
@@ -86,16 +87,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private BaseVisit baseVisit;
-		public virtual BaseVisit BaseVisit 
+		private Patient patient;
+		public virtual Patient Patient 
 		{ 
 		    get
 		    {
-		        return this.baseVisit;
+		        return this.patient;
 		    }
 		    set
 		    {
-		        this.baseVisit = value;
+		        this.patient = value;
 		    }
 		}
 		

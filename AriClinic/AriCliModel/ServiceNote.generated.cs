@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -86,58 +87,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private User user;
-		public virtual User User 
-		{ 
-		    get
-		    {
-		        return this.user;
-		    }
-		    set
-		    {
-		        this.user = value;
-		    }
-		}
-		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
-		    }
-		}
-		
-		private Customer customer;
-		public virtual Customer Customer 
-		{ 
-		    get
-		    {
-		        return this.customer;
-		    }
-		    set
-		    {
-		        this.customer = value;
-		    }
-		}
-		
-		private Clinic clinic;
-		public virtual Clinic Clinic 
-		{ 
-		    get
-		    {
-		        return this.clinic;
-		    }
-		    set
-		    {
-		        this.clinic = value;
-		    }
-		}
-		
 		private Invoice invoice;
 		public virtual Invoice Invoice 
 		{ 
@@ -161,6 +110,58 @@ namespace AriCliModel
 		    set
 		    {
 		        this.professionalInvoice = value;
+		    }
+		}
+		
+		private Clinic clinic;
+		public virtual Clinic Clinic 
+		{ 
+		    get
+		    {
+		        return this.clinic;
+		    }
+		    set
+		    {
+		        this.clinic = value;
+		    }
+		}
+		
+		private Customer customer;
+		public virtual Customer Customer 
+		{ 
+		    get
+		    {
+		        return this.customer;
+		    }
+		    set
+		    {
+		        this.customer = value;
+		    }
+		}
+		
+		private User user;
+		public virtual User User 
+		{ 
+		    get
+		    {
+		        return this.user;
+		    }
+		    set
+		    {
+		        this.user = value;
+		    }
+		}
+		
+		private Professional professional;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional;
+		    }
+		    set
+		    {
+		        this.professional = value;
 		    }
 		}
 		

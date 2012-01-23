@@ -1961,4 +1961,10 @@ Press "OK" to confirm deletion.</value>
   <data name="TrackChangesDialog_TrackChanges" xml:space="preserve">
     <value>Track Changes</value>
   </data>
+  <data name="ImageEditor_InsertImage_Title" xml:space="preserve">
+    <value>Insert Image</value>
+  </data>
+  <data name="Common_Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
 </root>

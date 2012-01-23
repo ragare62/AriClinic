@@ -15,6 +15,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
+using Telerik.OpenAccess.Data.Common;
 
 
 namespace AriCliModel	
@@ -86,29 +87,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private VisitReason visitReason;
-		public virtual VisitReason VisitReason 
+		private AppointmentType appointmentType;
+		public virtual AppointmentType AppointmentType 
 		{ 
 		    get
 		    {
-		        return this.visitReason;
+		        return this.appointmentType;
 		    }
 		    set
 		    {
-		        this.visitReason = value;
-		    }
-		}
-		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
+		        this.appointmentType = value;
 		    }
 		}
 		
@@ -125,16 +113,29 @@ namespace AriCliModel
 		    }
 		}
 		
-		private AppointmentType appointmentType;
-		public virtual AppointmentType AppointmentType 
+		private Professional professional;
+		public virtual Professional Professional 
 		{ 
 		    get
 		    {
-		        return this.appointmentType;
+		        return this.professional;
 		    }
 		    set
 		    {
-		        this.appointmentType = value;
+		        this.professional = value;
+		    }
+		}
+		
+		private VisitReason visitReason;
+		public virtual VisitReason VisitReason 
+		{ 
+		    get
+		    {
+		        return this.visitReason;
+		    }
+		    set
+		    {
+		        this.visitReason = value;
 		    }
 		}
 		

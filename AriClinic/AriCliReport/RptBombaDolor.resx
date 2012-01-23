@@ -191,7 +191,8 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=5.1.11.713, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+  <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
     <value>0.1in</value>
-  </metadata>
+  </data>
 </root>
