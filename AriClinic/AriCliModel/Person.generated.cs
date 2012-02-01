@@ -48,6 +48,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private Source source;
+		public virtual Source Source 
+		{ 
+		    get
+		    {
+		        return this.source;
+		    }
+		    set
+		    {
+		        this.source = value;
+		    }
+		}
+		
 		private IList<Address> addresses = new List<Address>();
 		public virtual IList<Address> Addresses 
 		{ 

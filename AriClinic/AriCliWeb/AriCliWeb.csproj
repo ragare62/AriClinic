@@ -180,6 +180,20 @@
     <Compile Include="BiometryForm.aspx.designer.cs">
       <DependentUpon>BiometryForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SourceForm.aspx.cs">
+      <DependentUpon>SourceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SourceForm.aspx.designer.cs">
+      <DependentUpon>SourceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SourceGrid.aspx.cs">
+      <DependentUpon>SourceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SourceGrid.aspx.designer.cs">
+      <DependentUpon>SourceGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FundusForm.aspx.cs">
       <DependentUpon>FundusForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1017,6 +1031,8 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="SourceForm.aspx" />
+    <Content Include="SourceGrid.aspx" />
     <Content Include="FundusForm.aspx" />
     <Content Include="MotAppendForm.aspx" />
     <Content Include="OphVisitTab.aspx" />
@@ -1279,7 +1295,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

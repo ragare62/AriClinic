@@ -170,6 +170,8 @@ public partial class PatientForm : System.Web.UI.Page
         pat.Surname2 = txtSurname2.Text;
         pat.FullName = String.Format("{0} {1}, {2}", pat.Surname1, pat.Surname2, pat.Name);
         pat.Sex = rdcbSex.SelectedValue;
+        if (rdcbProcedencia.SelectedValue != "")
+            pat.Source = CntAriCli.GetSource(int.Parse(rdcbProcedencia.SelectedValue), ctx);
         pat.BornDate = (DateTime)rddpBornDate.SelectedDate;
         pat.Customer.VATIN = txtVATIN.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);
@@ -191,6 +193,25 @@ public partial class PatientForm : System.Web.UI.Page
             rdcbSex.SelectedValue = pat.Sex;
         }
     }
+    protected void LoadSourceCom(Source sc) 
+    {
+        rdcbProcedencia.Items.Clear();
+        foreach (Source s in CntAriCli.GetSources(ctx))
+        {
+            rdcbProcedencia.Items.Add(new RadComboBoxItem(s.Name, s.SourceId.ToString()));
+        }
+        if (sc == null)
+        {
+            rdcbProcedencia.Items.Add(new RadComboBoxItem(" ", ""));
+            rdcbProcedencia.SelectedValue = "";
+        }
+        else
+        {
+            rdcbProcedencia.SelectedValue = sc.SourceId.ToString();
+        }
+
+    }
+
 
     #endregion Auxiliary functions
 

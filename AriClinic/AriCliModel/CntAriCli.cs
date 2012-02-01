@@ -1481,7 +1481,7 @@ namespace AriCliModel
                     where m.Id == id
                     select m).FirstOrDefault<Fundus>();
         }
- public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
+        public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         {
             var anesNote = (from a in ctx1.AnestheticServiceNotes
                     where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1==true && a.AnestheticTickets.Count>0
@@ -1492,7 +1492,16 @@ namespace AriCliModel
 
             return res.ToList<AnestheticTicket>();
         }
-
+        public static IList<Source> GetSources(AriClinicContext ctx)
+        {
+            return ctx.Sources.OrderBy(x => x.Name).ToList<Source>();
+        }
+        public static Source GetSource(int id, AriClinicContext ctx)
+        {
+            return (from s in ctx.Sources
+                    where s.SourceId == id
+                    select s).FirstOrDefault<Source>();
+        }
 
 
     

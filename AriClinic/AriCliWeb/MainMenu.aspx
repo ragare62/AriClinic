@@ -306,6 +306,10 @@
               var w1 = window.open("RptPCEAForm.aspx", "RPCEAF", "width=450, height=300,resizable=1")
               w1.focus();
           }
+          function LaunchSource() {
+              var w1 = window.open("SourceGrid.aspx", "SOURCE", "width=500, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -488,6 +492,8 @@
                       <telerik:RadMenuItem runat="server" Text="Motivos de consulta" 
                                            Value="visitreason">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Procedencias" Value="source">
+                        </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Documentos" Value="docs">
@@ -513,6 +519,10 @@
               <telerik:RadMenuItem runat="server" Text="Salir" Value="exit">
               </telerik:RadMenuItem>
             </Items>
+              <WebServiceSettings>
+                  <ODataSettings InitialContainerName="">
+                  </ODataSettings>
+              </WebServiceSettings>
           </telerik:RadMenu>
         </div>
         <div id="ToolArea">

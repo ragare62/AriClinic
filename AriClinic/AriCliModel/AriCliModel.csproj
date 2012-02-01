@@ -228,6 +228,9 @@
     <Compile Include="ServiceNote.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Source.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="SubjectiveOpticalExamination.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>

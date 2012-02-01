@@ -100,6 +100,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private DateTime lastUpdate;
+		public virtual DateTime LastUpdate 
+		{ 
+		    get
+		    {
+		        return this.lastUpdate;
+		    }
+		    set
+		    {
+		        this.lastUpdate = value;
+		    }
+		}
+		
 		private Customer customer;
 		public virtual Customer Customer 
 		{ 

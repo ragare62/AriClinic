@@ -71,7 +71,7 @@ z-index: 1;
 left: 6px;
 top: 548px;
 position: absolute;
-height: 44px;
+height: 27px;
 width: 708px;
 }
 #Buttons
@@ -88,7 +88,7 @@ width: 714px;
 {
 z-index: 1;
 left: 9px;
-top: 157px;
+top: 188px;
 position: absolute;
 height: 148px;
 width: 741px;
@@ -98,18 +98,18 @@ width: 741px;
 {
 z-index: 1;
 left: 11px;
-top: 360px;
+top: 371px;
 position: absolute;
 height: 122px;
 width: 304px;
-right: 413px;
+right: 445px;
 }
 
 #Emails
 {
 z-index: 1;
 left: 339px;
-top: 359px;
+top: 369px;
 position: absolute;
 height: 145px;
 width: 377px;
@@ -140,14 +140,24 @@ width: 154px;
 #Sex
 {
 z-index: 10000;
-left: 435px;
-top: 90px;
+left: 280px;
+top: 93px;
 position: absolute;
 height: 132px;
 width: 133px;
-right: 192px;
+right: 347px;
 }
 
+#Source
+{
+z-index: 10000;
+left: 437px;
+top: 93px;
+position: absolute;
+height: 132px;
+width: 192px;
+right: 131px;
+}
 
 #Age
 {
@@ -180,6 +190,18 @@ position: absolute;
 height: 44px;
 width: 143px;
 right: 610px;
+}
+
+
+#Sex0
+{
+z-index: 10000;
+left: 273px;
+top: 95px;
+position: absolute;
+height: 132px;
+width: 133px;
+right: 354px;
 }
 
 
@@ -427,6 +449,15 @@ right: 610px;
           <br />
           <telerik:RadComboBox ID="rdcbSex" runat="server" Width="126px" 
                 Skin="Office2007" TabIndex="5">
+          </telerik:RadComboBox>
+        </div>
+
+        <div ID="Source" class="normalText">
+          <asp:Label ID="lblSource" runat="server" Text="Procedencia:" 
+                     ToolTip="Procedencia"></asp:Label>
+          <br />
+          <telerik:RadComboBox ID="rdcbProcedencia" runat="server" Width="189px" 
+                Skin="Office2007" TabIndex="6" Height="22px">
           </telerik:RadComboBox>
         </div>
 

@@ -569,6 +569,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Source> Sources 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Source>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -836,6 +844,10 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<Fundus> Fundus 
+		{ 
+			get;
+		}
+		IQueryable<Source> Sources 
 		{ 
 			get;
 		}

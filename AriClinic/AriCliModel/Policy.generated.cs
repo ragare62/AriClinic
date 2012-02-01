@@ -87,6 +87,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int oftId;
+		public virtual int OftId 
+		{ 
+		    get
+		    {
+		        return this.oftId;
+		    }
+		    set
+		    {
+		        this.oftId = value;
+		    }
+		}
+		
 		private Insurance insurance1;
 		public virtual Insurance Insurance 
 		{ 

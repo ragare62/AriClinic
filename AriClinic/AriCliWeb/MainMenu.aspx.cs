@@ -25,7 +25,7 @@ public partial class MainMenu : System.Web.UI.Page
     {
         ctx = new AriClinicContext("AriClinicContext");
         String strVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        lblDeveloper.Text = String.Format("VRS {0}", strVersion);
+        lblDeveloper.Text = String.Format("VRS {0} TS {1}", strVersion,Session.Timeout);
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
         User u = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
@@ -78,7 +78,6 @@ public partial class MainMenu : System.Web.UI.Page
     protected void RadMenu1_ItemClick(object sender, RadMenuEventArgs e)
     {
         Launcher(e.Item.Value);
-
     }
     
     protected void ChekPermissions(UserGroup ug, RadMenuItemCollection col)
@@ -278,6 +277,9 @@ public partial class MainMenu : System.Web.UI.Page
                 break;
             case "visit":
                 RadAjaxManager1.ResponseScripts.Add("LaunchVisit();");
+                break;
+            case "source":
+                RadAjaxManager1.ResponseScripts.Add("LaunchSource();");
                 break;
             default:
                 break;
