@@ -52,6 +52,7 @@ public partial class PatientForm : System.Web.UI.Page
         else
         {
             LoadSexCombo(null);
+            LoadSourceCombo(null);
         }
         // 
         if (Request.QueryString["Type"] != null)
@@ -137,8 +138,6 @@ public partial class PatientForm : System.Web.UI.Page
         if (patientId == 0)
         {
             pat = new Patient();
-            cus = new Customer();
-            pat.Customer = cus;
             UnloadData(pat);
             ctx.Add(pat);
         }
@@ -159,8 +158,12 @@ public partial class PatientForm : System.Web.UI.Page
         txtSurname2.Text = pat.Surname2;
         rddpBornDate.SelectedDate = pat.BornDate;
         txtAge.Text = CntAriCli.CalulatedAge(pat.BornDate).ToString();
+        txtLastUpdate.Text = CntAriCli.DateNullFormat(pat.LastUpdate);
         LoadSexCombo(pat);
-        txtVATIN.Text = pat.Customer.VATIN;
+        LoadSourceCombo(pat);
+        txtComments.Text = pat.Comments;
+        if (pat.Customer != null)
+            txtVATIN.Text = pat.Customer.VATIN;
     }
 
     protected void UnloadData(Patient pat)
@@ -173,7 +176,12 @@ public partial class PatientForm : System.Web.UI.Page
         if (rdcbProcedencia.SelectedValue != "")
             pat.Source = CntAriCli.GetSource(int.Parse(rdcbProcedencia.SelectedValue), ctx);
         pat.BornDate = (DateTime)rddpBornDate.SelectedDate;
+        if (pat.Customer == null) 
+        {
+            CreateAssociatedCustomer(pat, ctx);
+        }
         pat.Customer.VATIN = txtVATIN.Text;
+        pat.Comments = txtComments.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);
     }
 
@@ -193,23 +201,32 @@ public partial class PatientForm : System.Web.UI.Page
             rdcbSex.SelectedValue = pat.Sex;
         }
     }
-    protected void LoadSourceCom(Source sc) 
+    protected void LoadSourceCombo(Patient pat) 
     {
         rdcbProcedencia.Items.Clear();
         foreach (Source s in CntAriCli.GetSources(ctx))
         {
             rdcbProcedencia.Items.Add(new RadComboBoxItem(s.Name, s.SourceId.ToString()));
         }
-        if (sc == null)
+        if (pat.Source == null)
         {
             rdcbProcedencia.Items.Add(new RadComboBoxItem(" ", ""));
             rdcbProcedencia.SelectedValue = "";
         }
         else
         {
-            rdcbProcedencia.SelectedValue = sc.SourceId.ToString();
+            rdcbProcedencia.SelectedValue = pat.Source.SourceId.ToString();
         }
 
+    }
+    protected void CreateAssociatedCustomer(Patient pat, AriClinicContext ctx)
+    {
+        Customer cus = new Customer()
+        {
+            FullName = pat.FullName,
+        };
+        ctx.Add(cus);
+        pat.Customer = cus;
     }
 
 

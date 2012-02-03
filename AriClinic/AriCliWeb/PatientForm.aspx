@@ -65,6 +65,18 @@ height: 44px;
 width: 143px;
 right: 339px;
 }
+
+#Comments
+{
+z-index: 1;
+left: 11px;
+top: 127px;
+position: absolute;
+height: 44px;
+width: 581px;
+right: 168px;
+}
+
 #Message
 {
 z-index: 1;
@@ -124,6 +136,15 @@ top: 90px;
 position: absolute;
 height: 44px;
 width: 154px;
+}
+#LastUpdate
+{
+z-index: 1;
+left: 604px;
+top: 132px;
+position: absolute;
+height: 44px;
+width: 142px;
 }
 
 #BornDate
@@ -390,6 +411,12 @@ right: 354px;
           <br />
           <asp:TextBox ID="txtSurname2" runat="server" Width="132px"></asp:TextBox>
         </div>
+        <div ID="Comments" class="normalText">
+          <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
+                     ToolTip="Observaciones" TabIndex="2"></asp:Label>
+          <br />
+          <asp:TextBox ID="txtComments" runat="server" Width="575px" TextMode="MultiLine"></asp:TextBox>
+        </div>
         <div ID="VATIN" class="normalText">
           <asp:Label ID="lblVATIN" runat="server" Text="NIF:" 
                      ToolTip="NIF del paciente" TabIndex="4"></asp:Label>
@@ -461,11 +488,17 @@ right: 354px;
           </telerik:RadComboBox>
         </div>
 
-        <div ID="Age" class="normalText">
+        <div ID="Age" class="normalText" style="text-align:right">
           <asp:Label ID="lblAge" runat="server" Text="Edad:" 
                      ToolTip="Edad calculada del paciente basándose en la fecha actual"></asp:Label>
           <br />
           <asp:TextBox ID="txtAge" runat="server" Width="76px" Enabled="false"></asp:TextBox>
+        </div>
+        <div ID="LastUpdate" class="normalText" style="text-align:right">
+          <asp:Label ID="lblLastUpdate" runat="server" Text="Última actualización:" 
+                     ToolTip="Fecha y hora de la última actulaización sobre esta historia"></asp:Label>
+          <br />
+          <asp:TextBox ID="txtLastUpdate" runat="server" Width="140px" Enabled="false"></asp:TextBox>
         </div>
 
         <div ID="Buttons0" class="buttonsFomat ghost" runat="server">

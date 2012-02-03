@@ -160,6 +160,8 @@ namespace RidocciConsole
                 BornDate = his.Fecha_nacimiento,
                 FullName = String.Format("{0}, {1}", his.Apellidos, his.Nombre),
                 Sex = his.Sexo,
+                Comments = his.Observaciones,
+                LastUpdate = his.Ultima_actualizacion
             };
             ctxAri.Add(patient);
             Customer customer = new Customer();

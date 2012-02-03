@@ -60,7 +60,7 @@
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
         <div id="Scheduler" class="messageText" style="width:100%; height:800px">
-          <telerik:RadScheduler ID="RadScheduler1" runat="server" Skin="Office2007" 
+          <telerik:RadScheduler ID="RadScheduler1" runat="server"
                                 Culture="es-ES" FirstDayOfWeek="Monday" 
                 LastDayOfWeek="Sunday"  MinutesPerRow="10"  
                                 Width="100%" Height="100%" 

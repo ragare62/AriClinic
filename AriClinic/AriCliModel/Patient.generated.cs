@@ -113,6 +113,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string comments;
+		public virtual string Comments 
+		{ 
+		    get
+		    {
+		        return this.comments;
+		    }
+		    set
+		    {
+		        this.comments = value;
+		    }
+		}
+		
 		private Customer customer;
 		public virtual Customer Customer 
 		{ 

@@ -192,6 +192,24 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtSurname2;
     
     /// <summary>
+    /// Control lblComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblComments;
+    
+    /// <summary>
+    /// Control txtComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtComments;
+    
+    /// <summary>
     /// Control lblVATIN.
     /// </summary>
     /// <remarks>
@@ -361,6 +379,24 @@ public partial class PatientForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtAge;
+    
+    /// <summary>
+    /// Control lblLastUpdate.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblLastUpdate;
+    
+    /// <summary>
+    /// Control txtLastUpdate.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtLastUpdate;
     
     /// <summary>
     /// Control Buttons0.

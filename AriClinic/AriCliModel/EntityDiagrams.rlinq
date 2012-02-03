@@ -363,6 +363,9 @@
         <orm:field name="fullName" property="FullName" behavior="readwrite" null-value="none" uniqueId="61c809a8-d7a7-4b7d-9061-328cb834f499" type="System.String">
           <orm:column name="full_name" sql-type="varchar" nullable="true" length="100" scale="0" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="source" property="Source" behavior="readwrite" uniqueId="cea0749d-94f1-4d49-8961-04d14db5ea23" type="AriCliModel.Source">
+          <orm:reference uniqueId="e421d878-fe7b-48d3-9075-2fa0973a085e" />
+        </orm:field>
         <orm:field name="addresses" property="Addresses" behavior="readwrite" null-value="none" uniqueId="8649d1e7-d0d3-4674-b1d2-24ded8d8eb17" type="AriCliModel.Address">
           <orm:collection element-class="AriCliModel.Address" inverse-field="person" managed="true" order-by="" uniqueId="30746c62-c691-49ee-8e02-a30a39769348" />
         </orm:field>
@@ -371,9 +374,6 @@
         </orm:field>
         <orm:field name="emails" property="Emails" behavior="readwrite" null-value="none" uniqueId="c575eb09-7aeb-498f-b032-3aa126f0b55a" type="AriCliModel.Email">
           <orm:collection element-class="AriCliModel.Email" inverse-field="person" managed="true" order-by="" uniqueId="2a2bb83e-3648-4d4c-9db2-a468abc95d91" />
-        </orm:field>
-        <orm:field name="source" property="Source" behavior="readwrite" uniqueId="cea0749d-94f1-4d49-8961-04d14db5ea23" type="AriCliModel.Source">
-          <orm:reference uniqueId="e421d878-fe7b-48d3-9075-2fa0973a085e" />
         </orm:field>
       </orm:class>
       <orm:class name="ServiceCategory" behavior="readwrite" uniqueId="07092112-ac62-4595-8704-177a517b9d21">
@@ -475,8 +475,8 @@
         <orm:field name="_internal" property="Internal" behavior="readwrite" null-value="none" uniqueId="4762ed2f-abbe-4f75-8809-a315cfac7d1c" type="System.Boolean">
           <orm:column name="internal" sql-type="bit" nullable="false" scale="0" ado-type="Bit" />
         </orm:field>
-        <orm:field name="oftId" property="OftId" uniqueId="9d3b6b02-12ea-4fd4-b0ec-d11fe75babd8" type="System.Int32">
-          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="9d3b6b02-12ea-4fd4-b0ec-d11fe75babd8" type="System.Int32">
+          <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="insuranceServices" property="InsuranceServices" behavior="readwrite" null-value="none" uniqueId="997a8526-8f65-49e8-ba8f-b4943950e235" type="AriCliModel.InsuranceService">
           <orm:collection element-class="AriCliModel.InsuranceService" inverse-field="insurance" managed="true" order-by="" uniqueId="e65372c7-0a89-435f-ac09-5434367da9f0" />
@@ -497,8 +497,8 @@
         <orm:field name="price" property="Price" behavior="readwrite" null-value="none" uniqueId="9cc9f127-3408-4f9f-bef3-6c97446210b5" type="System.Decimal">
           <orm:column name="price" sql-type="decimal" nullable="false" length="8" scale="2" ado-type="Numeric" />
         </orm:field>
-        <orm:field name="oftId" property="OftId" uniqueId="ae79aa2b-b13e-45c1-a23b-5328557ca7de" type="System.Int32">
-          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="ae79aa2b-b13e-45c1-a23b-5328557ca7de" type="System.Int32">
+          <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="insurance" property="Insurance" behavior="readwrite" null-value="none" uniqueId="fec97d20-2384-484e-93e0-b1be96bc1220" type="AriCliModel.Insurance">
           <orm:reference uniqueId="e65372c7-0a89-435f-ac09-5434367da9f0">
@@ -535,9 +535,10 @@
         <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="cbf2d6ec-b541-40e3-b423-735f4bd6b955" type="System.Int32">
           <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
-        <orm:field name="lastUpdate" property="LastUpdate" uniqueId="c9a9f7f6-a398-411b-b917-34b66eda83a4" type="System.DateTime">
-          <orm:column nullable="true" scale="0" length="0" sql-type="datetime" name="last_update" ado-type="" />
+        <orm:field name="lastUpdate" property="LastUpdate" behavior="readwrite" uniqueId="c9a9f7f6-a398-411b-b917-34b66eda83a4" type="System.DateTime">
+          <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
+        <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="9226a0d3-d41a-437c-b934-13aa48f09d03" type="System.String" />
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="3b29d975-8298-499c-911e-bb5fd0cb906b" type="AriCliModel.Customer">
           <orm:reference uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
         </orm:field>
@@ -612,8 +613,8 @@
         <orm:field name="type" property="Type" behavior="readwrite" null-value="none" uniqueId="f023833e-1100-45e6-adbe-a2c4eb209ce8" type="System.String">
           <orm:column name="type" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         </orm:field>
-        <orm:field name="oftId" property="OftId" uniqueId="80ef7a65-c0f1-40d2-a603-c4dbcee6979d" type="System.Int32">
-          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="80ef7a65-c0f1-40d2-a603-c4dbcee6979d" type="System.Int32">
+          <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="insurance1" property="Insurance" behavior="readwrite" uniqueId="4e338a87-9f9f-445c-82f9-9ba2d09bd8d1" type="AriCliModel.Insurance">
           <orm:reference uniqueId="a7de93fe-2075-44bf-8084-9c4cb5f74c1b">
@@ -1158,6 +1159,24 @@
         <orm:field name="tickets" property="Tickets" behavior="readwrite" null-value="none" uniqueId="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="serviceNote" managed="true" order-by="" uniqueId="bc69de17-36c7-4e70-a52a-4815ae50906b" />
         </orm:field>
+        <orm:index name="idx_service_note_clinic_id">
+          <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_invoice_id">
+          <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_invoice_id2">
+          <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_person_id">
+          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_person_id2">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_user_id">
+          <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="Diary" update-schema="true" behavior="readwrite" uniqueId="2ecba9b2-a961-4074-8730-3e8eaef39640">
         <orm:table name="diary" />
@@ -1634,6 +1653,9 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1668,6 +1690,9 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -1807,6 +1832,9 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -1934,6 +1962,9 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:identity>
@@ -2061,6 +2092,9 @@
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:identity>
@@ -2189,6 +2223,9 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -2567,6 +2604,9 @@
         <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" behavior="readwrite" uniqueId="d6034dce-61aa-406e-b58a-4b7455e058bf" type="AriCliModel.OphthalmologicVisit">
           <orm:reference uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
         </orm:field>
+        <orm:index name="idx_ant_segment_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="MotAppend" update-schema="true" behavior="readwrite" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
         <orm:table name="mot_append" />
@@ -2701,16 +2741,16 @@
           <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
-      <orm:class name="Source" use-default-mapping="true" uniqueId="17d1f601-2954-46ef-82a1-ee64ca65217f">
+      <orm:class name="Source" behavior="readwrite" use-default-mapping="true" uniqueId="17d1f601-2954-46ef-82a1-ee64ca65217f">
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="sourceId" />
         </orm:identity>
-        <orm:field name="sourceId" property="SourceId" uniqueId="c014063d-99d3-4449-a395-85e1078334f9" type="System.Int32">
-          <orm:column name="source_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:field name="sourceId" property="SourceId" behavior="readwrite" uniqueId="c014063d-99d3-4449-a395-85e1078334f9" type="System.Int32">
+          <orm:column name="source_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="name" property="Name" uniqueId="99aaa455-2d14-491e-a5e6-cc53526fa6c5" type="System.String">
-          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:field name="name" property="Name" behavior="readwrite" uniqueId="99aaa455-2d14-491e-a5e6-cc53526fa6c5" type="System.String">
+          <orm:column name="nme" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="people" property="People" behavior="readwrite" uniqueId="d30c229b-8ba4-478c-88d3-2f64c38b8f7e" type="AriCliModel.Person">
           <orm:collection element-class="AriCliModel.Person" inverse-field="source" order-by="" uniqueId="e421d878-fe7b-48d3-9075-2fa0973a085e" />
@@ -2903,14 +2943,14 @@
         <orm:column name="internal" sql-type="bit" nullable="false" scale="0" ado-type="Bit" />
         <orm:column name="insurance_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="insurance_service">
         <orm:column name="insurance_service_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="price" sql-type="decimal" nullable="false" length="8" scale="2" ado-type="Numeric" />
         <orm:column name="insurance_id" sql-type="integer" nullable="true" scale="0" ado-type="" />
         <orm:column name="service_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="patient">
         <orm:column name="surname2" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
@@ -2921,7 +2961,8 @@
         <orm:column name="person_id" sql-type="integer" nullable="false" scale="0" primary-key="true" ado-type="Int32" />
         <orm:column name="born_date" sql-type="datetime" nullable="true" scale="0" ado-type="DateTime" />
         <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column nullable="true" scale="0" length="0" sql-type="datetime" name="last_update" ado-type="" />
+        <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
+        <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
         <orm:constraint name="ref_patient_person" destination-table="person">
           <orm:column name="person_id" sql-type="integer" nullable="false" scale="0" primary-key="true" ado-type="Int32" />
         </orm:constraint>
@@ -2946,7 +2987,7 @@
         <orm:column name="type" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="person_id" sql-type="integer" nullable="true" scale="0" ado-type="" />
         <orm:column name="insurance_id" sql-type="integer" nullable="true" scale="0" ado-type="" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="oft_id" ado-type="" />
+        <orm:column name="oft_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="invoice">
         <orm:column name="serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
@@ -4082,6 +4123,7 @@
       <Property Id="5b078120-8dc3-4c16-8671-2c89c2c2bb3a" name="Sex" label="Sex : String" kind="Persistent" fieldName="sex" />
       <Property Id="cbf2d6ec-b541-40e3-b423-735f4bd6b955" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
       <Property Id="c9a9f7f6-a398-411b-b917-34b66eda83a4" name="LastUpdate" type="DateTime" label="LastUpdate : DateTime" />
+      <Property Id="9226a0d3-d41a-437c-b934-13aa48f09d03" name="Comments" label="Comments : String" />
       <AssociationTargets>
         <Association Id="cbc90740-994d-4433-a9d5-ac25f49d59cc" SourceMultiplicity="ZeroOne" name="PatientHasCustomer">
           <DomainClassMoniker name="/AriClinicContext/Customer" />

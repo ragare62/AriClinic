@@ -338,7 +338,7 @@
           </table>
         </div>
         <div id="MenuArea">
-          <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%"
+          <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%" Skin="Office2007"
                            onitemclick="RadMenu1_ItemClick" 
                            style="top: 0px; left: 0px; height: 34px">
             <Items>
