@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliModel", "..\AriClinic\AriCliModel\AriCliModel.csproj", "{B1CAF779-D00A-4A1B-9662-06B466832A3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliTestConsole", "AriCliTestConsole\AriCliTestConsole.csproj", "{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliWebTest", "AriCliWebTest\AriCliWebTest.csproj", "{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliModel", "..\AriClinic\AriCliModel\AriCliModel.csproj", "{B1CAF779-D00A-4A1B-9662-06B466832A3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Debug|x86.ActiveCfg = Debug|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Debug|x86.Build.0 = Debug|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Release|Any CPU.ActiveCfg = Release|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Release|x86.ActiveCfg = Release|x86
+		{5DC0F81F-23E1-4FEF-9EF3-3AD96F302791}.Release|x86.Build.0 = Release|x86
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -25,16 +35,6 @@ Global
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B1CAF779-D00A-4A1B-9662-06B466832A3C}.Release|x86.ActiveCfg = Release|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6F8583AC-020D-4FD7-B0BC-FD28C3459BD6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

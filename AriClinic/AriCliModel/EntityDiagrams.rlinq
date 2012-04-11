@@ -585,11 +585,11 @@
         <orm:field name="policies1" property="Policies" behavior="readwrite" uniqueId="557b8c14-0fb2-44c8-a417-8f396e93f3bb" type="AriCliModel.Policy">
           <orm:collection element-class="AriCliModel.Policy" inverse-field="customer1" order-by="" uniqueId="409344c7-ba66-4378-88dd-737c1b441bd7" />
         </orm:field>
-        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="d5591079-ce13-40ac-b534-e384ce7624bb" type="AriCliModel.ServiceNote">
-          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="customer" order-by="" uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
-        </orm:field>
         <orm:field name="patients" property="Patients" behavior="readwrite" uniqueId="4332f829-8225-4cda-9f94-e3a397fb49a3" type="AriCliModel.Patient">
           <orm:collection element-class="AriCliModel.Patient" inverse-field="customer" order-by="" uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
+        </orm:field>
+        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="d5591079-ce13-40ac-b534-e384ce7624bb" type="AriCliModel.ServiceNote">
+          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="customer" order-by="" uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
         </orm:field>
       </orm:class>
       <orm:class name="Policy" behavior="readwrite" uniqueId="e9822f71-dacb-4c06-be9e-c144574a5184">
@@ -1118,7 +1118,8 @@
           <orm:column name="service_id" sql-type="INTEGER" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:class>
-      <orm:class name="ServiceNote" behavior="readwrite" use-default-mapping="true" uniqueId="3cbfa36c-0e9a-40b6-9fed-fef9ccc77097">
+      <orm:class name="ServiceNote" behavior="readwrite" uniqueId="3cbfa36c-0e9a-40b6-9fed-fef9ccc77097">
+        <orm:table name="service_note" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="serviceNoteId" />
@@ -1147,9 +1148,6 @@
         <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="a115f0ab-9f48-4c61-92cb-5d13afdc12ad" type="AriCliModel.Clinic">
           <orm:reference uniqueId="bbb65c05-f93e-426e-8459-fd5c218b1835" />
         </orm:field>
-        <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="50306998-56de-4865-9062-aa65fcb5d561" type="AriCliModel.Customer">
-          <orm:reference uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
-        </orm:field>
         <orm:field name="user" property="User" behavior="readwrite" uniqueId="fe7cf7b2-0e92-4d8e-9388-242dc0e62c37" type="AriCliModel.User">
           <orm:reference uniqueId="5636ccb9-43f2-4074-a495-2469e4b5d5e3" />
         </orm:field>
@@ -1158,6 +1156,9 @@
         </orm:field>
         <orm:field name="tickets" property="Tickets" behavior="readwrite" null-value="none" uniqueId="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="serviceNote" managed="true" order-by="" uniqueId="bc69de17-36c7-4e70-a52a-4815ae50906b" />
+        </orm:field>
+        <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="50306998-56de-4865-9062-aa65fcb5d561" type="AriCliModel.Customer">
+          <orm:reference uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
         </orm:field>
         <orm:index name="idx_service_note_clinic_id">
           <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -3519,6 +3520,37 @@
           <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:table>
+      <orm:table name="service_note">
+        <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="ttal" sql-type="NUMERIC" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="service_note_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="service_note_date" sql-type="datetime" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="oft_num_nota" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="oft_ano" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_service_note_clinic_id">
+          <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_invoice_id">
+          <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_invoice_id2">
+          <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_person_id">
+          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_person_id2">
+          <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_service_note_user_id">
+          <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
@@ -3547,6 +3579,11 @@
     <BackendConfigurationSettings>
       <BackendConfiguration>
         <Backend>mysql</Backend>
+        <Logging>
+          <LogLevel>All</LogLevel>
+          <LogToConsole>True</LogToConsole>
+          <MetricStoreSnapshotInterval>0</MetricStoreSnapshotInterval>
+        </Logging>
       </BackendConfiguration>
     </BackendConfigurationSettings>
   </ModelSettings>

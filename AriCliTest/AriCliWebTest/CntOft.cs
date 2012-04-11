@@ -434,11 +434,14 @@ namespace AriCliWebTest
                 decimal total = (decimal)dr["Total"];
                 sn.Total = total;
                 sn.Clinic = cl;
+                Professional prf = CntAriCli.GetProfessional(29505, ctx);
+                sn.Professional = prf;
                 sn.Oft_Ano = (int)dr["Ano"];
                 sn.Oft_NumNota = (int)dr["NumNota"];
                 ctx.Add(sn);
+                ctx.SaveChanges();
             }
-            ctx.SaveChanges();
+
 
             //(2) Importar la líneas de las notas de servicio
             sql = "SELECT * FROM LinNotaServicio";
