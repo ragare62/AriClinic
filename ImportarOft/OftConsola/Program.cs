@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AriCliModel;
 
+
 namespace OftConsola
 {
     class Program

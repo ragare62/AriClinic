@@ -581,8 +581,7 @@ namespace AriCliModel
 		{
 			BackendConfiguration backend = new BackendConfiguration();
 			backend.Backend = "mysql";
-			backend.Logging.LogEvents = LoggingLevel.All;
-			backend.Logging.LogEventsToSysOut = true;
+			backend.Logging.LogEventsToTrace = false;
 			backend.Logging.MetricStoreSnapshotInterval = 0;
 			return backend;
 		}

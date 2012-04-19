@@ -139,19 +139,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Professional professional;
-		public virtual Professional Professional 
-		{ 
-		    get
-		    {
-		        return this.professional;
-		    }
-		    set
-		    {
-		        this.professional = value;
-		    }
-		}
-		
 		private Customer customer;
 		public virtual Customer Customer 
 		{ 
@@ -162,6 +149,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.customer = value;
+		    }
+		}
+		
+		private Professional professional;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional;
+		    }
+		    set
+		    {
+		        this.professional = value;
 		    }
 		}
 		

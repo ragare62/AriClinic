@@ -47,6 +47,7 @@
     <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2011.3.1129.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CntOft.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

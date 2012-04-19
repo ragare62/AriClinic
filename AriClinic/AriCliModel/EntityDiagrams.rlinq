@@ -588,8 +588,8 @@
         <orm:field name="patients" property="Patients" behavior="readwrite" uniqueId="4332f829-8225-4cda-9f94-e3a397fb49a3" type="AriCliModel.Patient">
           <orm:collection element-class="AriCliModel.Patient" inverse-field="customer" order-by="" uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
         </orm:field>
-        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="d5591079-ce13-40ac-b534-e384ce7624bb" type="AriCliModel.ServiceNote">
-          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="customer" order-by="" uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
+        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="d00695da-8821-4d18-b4c6-6d11541bb65d" type="AriCliModel.ServiceNote">
+          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="customer" order-by="" uniqueId="0feba4f9-4f6b-4f10-82ee-aa07ce7bbe04" />
         </orm:field>
       </orm:class>
       <orm:class name="Policy" behavior="readwrite" uniqueId="e9822f71-dacb-4c06-be9e-c144574a5184">
@@ -946,8 +946,8 @@
         <orm:field name="appointmentInfos" property="AppointmentInfos" behavior="readwrite" uniqueId="9c0ff28e-2656-4321-9ed0-6b7dd8fcc880" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="professional" order-by="" uniqueId="493f14c3-73d7-4a05-9f1e-1a624fb79ab2" />
         </orm:field>
-        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="fe3d382e-c39b-4379-90ae-731e9bea006e" type="AriCliModel.ServiceNote">
-          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professional" order-by="" uniqueId="ad45e376-d948-4dad-839d-2a160c663973" />
+        <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" type="AriCliModel.ServiceNote">
+          <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professional" order-by="" uniqueId="a3450b89-8e50-4d91-a845-99dc5e73841b" />
         </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -1118,8 +1118,7 @@
           <orm:column name="service_id" sql-type="INTEGER" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
       </orm:class>
-      <orm:class name="ServiceNote" behavior="readwrite" uniqueId="3cbfa36c-0e9a-40b6-9fed-fef9ccc77097">
-        <orm:table name="service_note" />
+      <orm:class name="ServiceNote" behavior="readwrite" use-default-mapping="true" uniqueId="3cbfa36c-0e9a-40b6-9fed-fef9ccc77097">
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="serviceNoteId" />
@@ -1151,14 +1150,14 @@
         <orm:field name="user" property="User" behavior="readwrite" uniqueId="fe7cf7b2-0e92-4d8e-9388-242dc0e62c37" type="AriCliModel.User">
           <orm:reference uniqueId="5636ccb9-43f2-4074-a495-2469e4b5d5e3" />
         </orm:field>
-        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="18322a81-62bb-4d26-8d0e-e1a287dd7446" type="AriCliModel.Professional">
-          <orm:reference uniqueId="ad45e376-d948-4dad-839d-2a160c663973" />
+        <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="11c95a7d-5216-4dc0-91d2-acfd0bda1a3e" type="AriCliModel.Customer">
+          <orm:reference uniqueId="0feba4f9-4f6b-4f10-82ee-aa07ce7bbe04" />
+        </orm:field>
+        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="ef71dbdf-3cb5-4178-8a24-646cb2d0c9c3" type="AriCliModel.Professional">
+          <orm:reference uniqueId="a3450b89-8e50-4d91-a845-99dc5e73841b" />
         </orm:field>
         <orm:field name="tickets" property="Tickets" behavior="readwrite" null-value="none" uniqueId="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="serviceNote" managed="true" order-by="" uniqueId="bc69de17-36c7-4e70-a52a-4815ae50906b" />
-        </orm:field>
-        <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="50306998-56de-4865-9062-aa65fcb5d561" type="AriCliModel.Customer">
-          <orm:reference uniqueId="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" />
         </orm:field>
         <orm:index name="idx_service_note_clinic_id">
           <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -2753,6 +2752,9 @@
         <orm:field name="name" property="Name" behavior="readwrite" uniqueId="99aaa455-2d14-491e-a5e6-cc53526fa6c5" type="System.String">
           <orm:column name="nme" sql-type="VARCHAR" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="19cdc85b-138a-4efe-b631-e6b1da0da886" type="System.Int32">
+          <orm:column name="oft_id" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
         <orm:field name="people" property="People" behavior="readwrite" uniqueId="d30c229b-8ba4-478c-88d3-2f64c38b8f7e" type="AriCliModel.Person">
           <orm:collection element-class="AriCliModel.Person" inverse-field="source" order-by="" uniqueId="e421d878-fe7b-48d3-9075-2fa0973a085e" />
         </orm:field>
@@ -3522,18 +3524,18 @@
       </orm:table>
       <orm:table name="service_note">
         <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="ttal" sql-type="NUMERIC" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
-        <orm:column name="service_note_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="ttal" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:column name="service_note_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="service_note_date" sql-type="datetime" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="oft_num_nota" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="oft_ano" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="oft_num_nota" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="oft_ano" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:index name="idx_service_note_clinic_id">
-          <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_invoice_id">
           <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -3542,7 +3544,7 @@
           <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_person_id">
-          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_person_id2">
           <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -3580,8 +3582,7 @@
       <BackendConfiguration>
         <Backend>mysql</Backend>
         <Logging>
-          <LogLevel>All</LogLevel>
-          <LogToConsole>True</LogToConsole>
+          <LogToTrace>False</LogToTrace>
           <MetricStoreSnapshotInterval>0</MetricStoreSnapshotInterval>
         </Logging>
       </BackendConfiguration>
@@ -4217,11 +4218,11 @@
         <classHasNavigationalProperties Id="3b38148f-3fd2-40e3-80f5-23e63e70683c">
           <NavigationalProperty Id="754981f8-a909-4877-a1d5-984120c4d056" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="49e10ebb-6414-421c-a0d0-006906d9d982">
-          <NavigationalProperty Id="d5591079-ce13-40ac-b534-e384ce7624bb" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="1c8e21e0-6e1d-4d2a-98aa-22971948df6c">
           <NavigationalProperty Id="4332f829-8225-4cda-9f94-e3a397fb49a3" name="Patients" type="IList&lt;Patient&gt;" label="Patients : IList&lt;Patient&gt;" nullable="true" kind="Persistent" fieldName="patients" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c3f74903-d0a8-4729-8a8b-903654764492">
+          <NavigationalProperty Id="d00695da-8821-4d18-b4c6-6d11541bb65d" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4665,8 +4666,8 @@
         <classHasNavigationalProperties Id="fd49ae33-f50e-40bf-8788-7e330b5e2e74">
           <NavigationalProperty Id="9c0ff28e-2656-4321-9ed0-6b7dd8fcc880" name="AppointmentInfos" type="IList&lt;AppointmentInfo&gt;" label="AppointmentInfos : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointmentInfos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="a74e1301-52f7-4626-938e-481cb59dcdbe">
-          <NavigationalProperty Id="fe3d382e-c39b-4379-90ae-731e9bea006e" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="f736a236-6f73-4060-b9a3-a2d7fa778f6c">
+          <NavigationalProperty Id="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4970,19 +4971,6 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="dcfcb012-e685-4d72-9cea-97b4a9efb6cb" SourceMultiplicity="ZeroOne" name="ServiceNoteHasCustomer">
-          <DomainClassMoniker name="/AriClinicContext/Customer" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="42c94cdd-0835-402c-b106-26353701b818">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Customer/ServiceNotes" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="7bf177ff-0277-4cee-9cc2-18a55f42774b">
-              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/Customer" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
         <Association Id="5636ccb9-43f2-4074-a495-2469e4b5d5e3" SourceMultiplicity="ZeroOne" name="ServiceNoteHasUser">
           <DomainClassMoniker name="/AriClinicContext/User" />
           <targetNavigationalProperty>
@@ -4996,15 +4984,28 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="ad45e376-d948-4dad-839d-2a160c663973" SourceMultiplicity="ZeroOne" name="ServiceNoteHasProfessional">
+        <Association Id="0feba4f9-4f6b-4f10-82ee-aa07ce7bbe04" SourceMultiplicity="ZeroOne" name="ServiceNoteHasCustomer">
+          <DomainClassMoniker name="/AriClinicContext/Customer" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="aad56023-3866-4e9d-a50f-5c9ec95ea392">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Customer/ServiceNotes" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="409d3034-8509-4fe3-aefa-6d4cdb8de1e1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/Customer" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="a3450b89-8e50-4d91-a845-99dc5e73841b" SourceMultiplicity="ZeroOne" name="ServiceNoteHasProfessional">
           <DomainClassMoniker name="/AriClinicContext/Professional" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="afd23f17-bc36-47be-a828-ef8d561101c5">
+            <associationDefinesTargetProperty Id="8de9c267-c4a1-4265-9404-c71a37d4c121">
               <NavigationalPropertyMoniker name="/AriClinicContext/Professional/ServiceNotes" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="79addb1a-436f-4e18-b14d-563e759e69f0">
+            <associationDefinesSourceProperty Id="6905a22a-0729-449c-815d-4d0a6e188b7f">
               <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/Professional" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
@@ -5023,14 +5024,14 @@
         <classHasNavigationalProperties Id="52a1d611-e6c5-45b7-9507-f1f1c3b9a2a4">
           <NavigationalProperty Id="a115f0ab-9f48-4c61-92cb-5d13afdc12ad" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="fd94ddc9-22c3-424b-93dc-3738d72a18a1">
-          <NavigationalProperty Id="50306998-56de-4865-9062-aa65fcb5d561" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="700d7cc6-48f0-4c73-8309-28a9267f52b1">
           <NavigationalProperty Id="fe7cf7b2-0e92-4d8e-9388-242dc0e62c37" name="User" type="User" label="User : User" nullable="true" kind="Persistent" fieldName="user" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="ee0d4eff-036f-472f-a56a-dd337dba728e">
-          <NavigationalProperty Id="18322a81-62bb-4d26-8d0e-e1a287dd7446" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="bcb1da43-724c-4ce3-8996-8d2e2a023ecc">
+          <NavigationalProperty Id="11c95a7d-5216-4dc0-91d2-acfd0bda1a3e" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="66a4837e-8c72-4d22-9fe2-8578c895a239">
+          <NavigationalProperty Id="ef71dbdf-3cb5-4178-8a24-646cb2d0c9c3" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -6355,6 +6356,7 @@
     <DomainClass Id="17d1f601-2954-46ef-82a1-ee64ca65217f" name="Source" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="c014063d-99d3-4449-a395-85e1078334f9" name="SourceId" type="System.Int32" label="SourceId : System.Int32" identity="true" />
       <Property Id="99aaa455-2d14-491e-a5e6-cc53526fa6c5" name="Name" label="Name : String" />
+      <Property Id="19cdc85b-138a-4efe-b631-e6b1da0da886" name="OftId" type="Int32" label="OftId : Int32" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="a1d060cb-f45b-446d-b0dd-eb74b7309cd8">
           <NavigationalProperty Id="d30c229b-8ba4-478c-88d3-2f64c38b8f7e" name="People" type="IList&lt;Person&gt;" label="People : IList&lt;Person&gt;" nullable="true" kind="Persistent" fieldName="people" isDependent="false" isManaged="false" />
