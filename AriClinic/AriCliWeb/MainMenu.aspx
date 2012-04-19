@@ -338,8 +338,8 @@
           </table>
         </div>
         <div id="MenuArea">
-          <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%" Skin="Office2007"
-                           onitemclick="RadMenu1_ItemClick" 
+          <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%" Skin="Office2007" 
+                           OnItemClick="RadMenu1_ItemClick" 
                            style="top: 0px; left: 0px; height: 34px">
             <Items>
               <telerik:RadMenuItem runat="server" Text="Administración" Value="admin">
@@ -519,10 +519,6 @@
               <telerik:RadMenuItem runat="server" Text="Salir" Value="exit">
               </telerik:RadMenuItem>
             </Items>
-              <WebServiceSettings>
-                  <ODataSettings InitialContainerName="">
-                  </ODataSettings>
-              </WebServiceSettings>
           </telerik:RadMenu>
         </div>
         <div id="ToolArea">

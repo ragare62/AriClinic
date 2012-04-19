@@ -29,7 +29,7 @@ public partial class MainMenu : System.Web.UI.Page
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
         User u = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
-        ChekPermissions(u.UserGroup, RadMenu1.Items);
+        //ChekPermissions(u.UserGroup, RadMenu1.Items);
         SetSessionValues();
     }
 
