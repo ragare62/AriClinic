@@ -484,7 +484,7 @@ right: 354px;
                      ToolTip="Procedencia"></asp:Label>
           <br />
           <telerik:RadComboBox ID="rdcbProcedencia" runat="server" Width="189px" 
-                Skin="Office2007" TabIndex="6" Height="22px">
+                Skin="Office2007" TabIndex="6" Height="100px">
           </telerik:RadComboBox>
         </div>
 

@@ -208,14 +208,17 @@ public partial class PatientForm : System.Web.UI.Page
         {
             rdcbProcedencia.Items.Add(new RadComboBoxItem(s.Name, s.SourceId.ToString()));
         }
-        if (pat.Source == null)
+        if (pat != null && pat.Source == null)
         {
             rdcbProcedencia.Items.Add(new RadComboBoxItem(" ", ""));
             rdcbProcedencia.SelectedValue = "";
         }
         else
         {
+            if (pat != null)
             rdcbProcedencia.SelectedValue = pat.Source.SourceId.ToString();
+            else
+                rdcbProcedencia.SelectedValue = "";
         }
 
     }
