@@ -349,6 +349,9 @@
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="817b25d0-f582-4531-b92e-0f4bff70e5fd" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="clinic" order-by="" uniqueId="bbb65c05-f93e-426e-8459-fd5c218b1835" />
         </orm:field>
+        <orm:field name="patients" property="Patients" behavior="readwrite" uniqueId="ec972f09-8c92-4b89-bbc9-58c54848c9a3" type="AriCliModel.Patient">
+          <orm:collection element-class="AriCliModel.Patient" inverse-field="clinic" order-by="" uniqueId="9d0a8849-9238-480d-9ab1-92479c029f39" />
+        </orm:field>
       </orm:class>
       <orm:class name="Person" behavior="readwrite" uniqueId="3c11c626-c882-4fff-b20b-04a6e1273531">
         <orm:table name="person" />
@@ -562,6 +565,9 @@
         </orm:field>
         <orm:field name="appointmentInfos" property="AppointmentInfos" behavior="readwrite" uniqueId="bca42d9f-8136-4517-9514-3c99419fc20f" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="patient" order-by="" uniqueId="a8a435fb-4244-4fb6-8157-7b78269c0248" />
+        </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="9d0a8849-9238-480d-9ab1-92479c029f39" />
         </orm:field>
       </orm:class>
       <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
@@ -3972,6 +3978,9 @@
         <classHasNavigationalProperties Id="88176c96-dd47-4759-b848-e523429b5128">
           <NavigationalProperty Id="817b25d0-f582-4531-b92e-0f4bff70e5fd" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="293eb243-9db0-4448-97b5-d25a38a4e9f9">
+          <NavigationalProperty Id="ec972f09-8c92-4b89-bbc9-58c54848c9a3" name="Patients" type="IList&lt;Patient&gt;" label="Patients : IList&lt;Patient&gt;" nullable="true" kind="Persistent" fieldName="patients" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="3c11c626-c882-4fff-b20b-04a6e1273531" name="Person" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4176,6 +4185,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="9d0a8849-9238-480d-9ab1-92479c029f39" SourceMultiplicity="ZeroOne" name="PatientHasClinic">
+          <DomainClassMoniker name="/AriClinicContext/Clinic" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b5e65779-30d6-46f8-8f9a-7283853e07b3">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Patients" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e82da21d-3b5c-46b7-b961-fe096e123f17">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/Clinic" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="b2479975-0865-4ce2-9124-3f7718f8af3d">
@@ -4201,6 +4223,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="3d3315fc-abb2-491f-bc35-85df1a684029">
           <NavigationalProperty Id="bca42d9f-8136-4517-9514-3c99419fc20f" name="AppointmentInfos" type="IList&lt;AppointmentInfo&gt;" label="AppointmentInfos : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointmentInfos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="73b01213-1960-41f2-8652-23306bfaf2b0">
+          <NavigationalProperty Id="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

@@ -330,4 +330,7 @@
   <data name="Warning" xml:space="preserve">
     <value>Advertencia</value>
   </data>
+  <data name="ClinicNeeded" xml:space="preserve">
+    <value>Se necesita una clínica</value>
+  </data>
 </root>

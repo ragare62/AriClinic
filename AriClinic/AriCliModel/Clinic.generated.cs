@@ -124,5 +124,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Patient> patients = new List<Patient>();
+		public virtual IList<Patient> Patients 
+		{ 
+		    get
+		    {
+		        return this.patients;
+		    }
+		}
+		
 	}
 }

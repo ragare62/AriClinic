@@ -327,6 +327,24 @@ public partial class PatientForm {
     protected global::Telerik.Web.UI.RadDatePicker rddpBornDate;
     
     /// <summary>
+    /// Control lblClinic.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblClinic;
+    
+    /// <summary>
+    /// Control rdcbClinic.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcbClinic;
+    
+    /// <summary>
     /// Control lblSex.
     /// </summary>
     /// <remarks>

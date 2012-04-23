@@ -168,7 +168,16 @@ height: 132px;
 width: 133px;
 right: 347px;
 }
-
+#Clinic
+{
+z-index: 10000;
+left: 150px;
+top: 93px;
+position: absolute;
+height: 132px;
+width: 133px;
+right: 347px;
+}
 #Source
 {
 z-index: 10000;
@@ -468,6 +477,14 @@ right: 354px;
               </DateInput>
               <DatePopupButton HoverImageUrl="" ImageUrl="" />
           </telerik:RadDatePicker>
+        </div>
+        <div ID="Clinic" class="normalText">
+          <asp:Label ID="lblClinic" runat="server" Text="Clínica:" 
+                     ToolTip="Clínica a la que pertenece el paciente"></asp:Label>
+          <br />
+          <telerik:RadComboBox ID="rdcbClinic" runat="server" Width="126px" 
+                Skin="Office2007" TabIndex="5">
+          </telerik:RadComboBox>
         </div>
 
         <div ID="Sex" class="normalText">

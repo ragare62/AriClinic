@@ -191,6 +191,13 @@ namespace AriCliModel
                     select c).FirstOrDefault<Clinic>();
         }
 
+        public static IList<Clinic> GetClinics(AriClinicContext ctx)
+        {
+            return (from c in ctx.Clinics
+                    select c).ToList<Clinic>();
+        }
+
+
         public static ServiceCategory GetServiceCategory(int id, AriClinicContext ctx)
         {
             return (from sc in ctx.ServiceCategories
