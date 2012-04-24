@@ -640,6 +640,13 @@ namespace AriCliModel
                     select pm).FirstOrDefault<PaymentMethod>();
         }
 
+        public static GeneralPayment GetGeneralPayment(int id, AriClinicContext ctx)
+        {
+            return (from gp in ctx.GeneralPayments
+                    where gp.GeneralPaymentId == id
+                    select gp).FirstOrDefault<GeneralPayment>();
+        }
+
         public static Payment GetPayment(int paymentId, AriClinicContext ctx)
         {
             return (from p in ctx.Payments
@@ -667,7 +674,16 @@ namespace AriCliModel
             else
                 return true;
         }
-
+        public static IList<GeneralPayment> GetGeneralPayments(AriClinicContext ctx)
+        {
+            return (from gp in ctx.GeneralPayments
+                    select gp).ToList<GeneralPayment>();
+        }
+        public static IList<GeneralPayment> GetGeneralPayments(Customer cus, AriClinicContext ctx)
+        {
+            return (from gp in ctx.GeneralPayments
+                    select gp).ToList<GeneralPayment>();
+        }
         public static IList<Payment> GetPayments(Customer cus, AriClinicContext ctx)
         {
             var rs = from p in ctx.Payments
@@ -1510,7 +1526,26 @@ namespace AriCliModel
                     select s).FirstOrDefault<Source>();
         }
 
-
-    
+        public static decimal GetServiceNoteAmount(ServiceNote snote)
+        {
+            decimal a = 0;
+            foreach (Ticket t in snote.Tickets)
+            {
+                a += t.Amount;
+            }
+            return a;
+        }
+        public static decimal GetServiceNoteAmountPay(ServiceNote snote)
+        {
+            decimal a = 0;
+            foreach (Ticket t in snote.Tickets)
+            {
+                foreach (Payment p in t.Payments)
+                {
+                    a += p.Amount;
+                }
+            }
+            return a;
+        }
     }
 }

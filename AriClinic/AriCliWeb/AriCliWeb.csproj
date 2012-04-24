@@ -180,6 +180,20 @@
     <Compile Include="BiometryForm.aspx.designer.cs">
       <DependentUpon>BiometryForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GeneralPaymentGrid.aspx.cs">
+      <DependentUpon>GeneralPaymentGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralPaymentGrid.aspx.designer.cs">
+      <DependentUpon>GeneralPaymentGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralPaymentForm.aspx.cs">
+      <DependentUpon>GeneralPaymentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralPaymentForm.aspx.designer.cs">
+      <DependentUpon>GeneralPaymentForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SourceForm.aspx.cs">
       <DependentUpon>SourceForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1031,6 +1045,8 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="GeneralPaymentGrid.aspx" />
+    <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
@@ -1296,7 +1312,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
