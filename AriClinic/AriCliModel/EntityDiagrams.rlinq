@@ -545,6 +545,9 @@
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="3b29d975-8298-499c-911e-bb5fd0cb906b" type="AriCliModel.Customer">
           <orm:reference uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
         </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="9d0a8849-9238-480d-9ab1-92479c029f39" />
+        </orm:field>
         <orm:field name="treatments" property="Treatments" behavior="readwrite" uniqueId="fbc3d972-6169-4f0f-a63a-5ec3e8b5b53a" type="AriCliModel.Treatment">
           <orm:collection element-class="AriCliModel.Treatment" inverse-field="patient1" order-by="" uniqueId="91de658c-e0a4-465d-b6df-ec82354bd30f" />
         </orm:field>
@@ -565,9 +568,6 @@
         </orm:field>
         <orm:field name="appointmentInfos" property="AppointmentInfos" behavior="readwrite" uniqueId="bca42d9f-8136-4517-9514-3c99419fc20f" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="patient" order-by="" uniqueId="a8a435fb-4244-4fb6-8157-7b78269c0248" />
-        </orm:field>
-        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" type="AriCliModel.Clinic">
-          <orm:reference uniqueId="9d0a8849-9238-480d-9ab1-92479c029f39" />
         </orm:field>
       </orm:class>
       <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
@@ -826,6 +826,9 @@
         <orm:field name="payments" property="Payments" behavior="readwrite" null-value="none" uniqueId="a8bbfd4f-bac8-44a4-b835-82eecb98f3cc" type="AriCliModel.Payment">
           <orm:collection element-class="AriCliModel.Payment" inverse-field="paymentMethod" managed="true" order-by="" uniqueId="bac0c093-a811-45b6-8e50-a2976764669d" />
         </orm:field>
+        <orm:field name="generalPayments" property="GeneralPayments" behavior="readwrite" uniqueId="91d9a841-5fc7-41ab-a234-42999ffa606e" type="AriCliModel.GeneralPayment">
+          <orm:collection element-class="AriCliModel.GeneralPayment" inverse-field="paymentMethod" order-by="" uniqueId="59cf410c-6881-470d-bb53-465ddde1c288" />
+        </orm:field>
       </orm:class>
       <orm:class name="Payment" behavior="readwrite" uniqueId="aab21169-4579-4824-80a8-2a3a543294dd">
         <orm:table name="payment" />
@@ -867,6 +870,9 @@
           <orm:reference uniqueId="87477bd5-957e-4240-b50c-ddc6188748a8">
             <orm:column name="clinic_id" sql-type="integer" nullable="true" scale="0" ado-type="" target-class="AriCliModel.Clinic" target-field="clinicId" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="generalPayment" property="GeneralPayment" behavior="readwrite" uniqueId="40831bc1-4379-446e-a473-b6487f62146b" type="AriCliModel.GeneralPayment">
+          <orm:reference uniqueId="2e5bd126-71a8-4f72-a17d-d4b5be842ca3" />
         </orm:field>
         <orm:index name="idx_payment_ticket_id">
           <orm:column name="ticket_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
@@ -1164,6 +1170,9 @@
         </orm:field>
         <orm:field name="tickets" property="Tickets" behavior="readwrite" null-value="none" uniqueId="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="serviceNote" managed="true" order-by="" uniqueId="bc69de17-36c7-4e70-a52a-4815ae50906b" />
+        </orm:field>
+        <orm:field name="generalPayments" property="GeneralPayments" behavior="readwrite" uniqueId="941b7983-22fa-4c41-a871-f54921d556e1" type="AriCliModel.GeneralPayment">
+          <orm:collection element-class="AriCliModel.GeneralPayment" inverse-field="serviceNote" order-by="" uniqueId="0cb92c52-7f79-4556-9a1b-9a29cac7a237" />
         </orm:field>
         <orm:index name="idx_service_note_clinic_id">
           <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -1659,9 +1668,6 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_glasses_test_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1696,9 +1702,6 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
-        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -1838,9 +1841,6 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -1968,9 +1968,6 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:identity>
@@ -2098,9 +2095,6 @@
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_prescription_glasses_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:identity>
@@ -2229,9 +2223,6 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_cycloplegia_examination_assigned_id">
-          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -2610,9 +2601,6 @@
         <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" behavior="readwrite" uniqueId="d6034dce-61aa-406e-b58a-4b7455e058bf" type="AriCliModel.OphthalmologicVisit">
           <orm:reference uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
         </orm:field>
-        <orm:index name="idx_ant_segment_visit_id">
-          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        </orm:index>
       </orm:class>
       <orm:class name="MotAppend" update-schema="true" behavior="readwrite" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
         <orm:table name="mot_append" />
@@ -2763,6 +2751,33 @@
         </orm:field>
         <orm:field name="people" property="People" behavior="readwrite" uniqueId="d30c229b-8ba4-478c-88d3-2f64c38b8f7e" type="AriCliModel.Person">
           <orm:collection element-class="AriCliModel.Person" inverse-field="source" order-by="" uniqueId="e421d878-fe7b-48d3-9075-2fa0973a085e" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="GeneralPayment" use-default-mapping="true" uniqueId="4a23f80e-4d25-4eef-97c0-f5638fa9d429">
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="generalPaymentId" />
+        </orm:identity>
+        <orm:field name="generalPaymentId" property="GeneralPaymentId" uniqueId="1b0236f7-014e-498b-89fa-f7e1331203a2" type="System.Int32">
+          <orm:column name="general_payment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="amount" property="Amount" uniqueId="c67e5bb1-7287-486d-ba87-1861835f043c" type="System.Decimal">
+          <orm:column name="amount" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="paymentDate" property="PaymentDate" uniqueId="2f4e0792-bf8c-4353-aa8d-f378366dc3e3" type="System.DateTime">
+          <orm:column name="payment_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="description" property="Description" uniqueId="6e56b026-520e-4678-85c9-f6af2ac548db" type="System.String">
+          <orm:column name="description" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="paymentMethod" property="PaymentMethod" behavior="readwrite" uniqueId="73063229-c6f2-4b25-8ed4-8fe169132a5d" type="AriCliModel.PaymentMethod">
+          <orm:reference uniqueId="59cf410c-6881-470d-bb53-465ddde1c288" />
+        </orm:field>
+        <orm:field name="payments" property="Payments" behavior="readwrite" uniqueId="01f372cc-2f13-4ae9-ad89-218e80aeddfb" type="AriCliModel.Payment">
+          <orm:collection element-class="AriCliModel.Payment" inverse-field="generalPayment" order-by="" uniqueId="2e5bd126-71a8-4f72-a17d-d4b5be842ca3" />
+        </orm:field>
+        <orm:field name="serviceNote" property="ServiceNote" behavior="readwrite" uniqueId="0ae8625d-326a-44b3-b687-0764d6bf85a2" type="AriCliModel.ServiceNote">
+          <orm:reference uniqueId="0cb92c52-7f79-4556-9a1b-9a29cac7a237" />
         </orm:field>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -4540,6 +4555,9 @@
         <classHasNavigationalProperties Id="422e67fb-6a53-4b4c-a3ac-7360a3a17846">
           <NavigationalProperty Id="a8bbfd4f-bac8-44a4-b835-82eecb98f3cc" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="cf15ee06-59a5-44a3-aca8-579efda7fde0">
+          <NavigationalProperty Id="91d9a841-5fc7-41ab-a234-42999ffa606e" name="GeneralPayments" type="IList&lt;GeneralPayment&gt;" label="GeneralPayments : IList&lt;GeneralPayment&gt;" nullable="true" kind="Persistent" fieldName="generalPayments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="aab21169-4579-4824-80a8-2a3a543294dd" name="Payment" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4601,6 +4619,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="2e5bd126-71a8-4f72-a17d-d4b5be842ca3" SourceMultiplicity="ZeroOne" name="PaymentHasGeneralPayment">
+          <DomainClassMoniker name="/AriClinicContext/GeneralPayment" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="0037eff4-1524-4893-ba6f-5fa91f87399d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/GeneralPayment/Payments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="0afaee8d-579d-4461-af5e-ec29f540b3e2">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Payment/GeneralPayment" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="a7ec5307-47f4-4b24-8397-1ccdcf145535">
@@ -4614,6 +4645,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="7995c135-e2fa-4b7a-86b9-a7234e0b9270">
           <NavigationalProperty Id="be6d47ac-64d1-494c-b0d6-3a1647417fa8" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="71135c77-4352-4e69-a9c8-667eca3f1c4a">
+          <NavigationalProperty Id="40831bc1-4379-446e-a473-b6487f62146b" name="GeneralPayment" type="GeneralPayment" label="GeneralPayment : GeneralPayment" nullable="true" kind="Persistent" fieldName="generalPayment" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5057,6 +5091,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="66a4837e-8c72-4d22-9fe2-8578c895a239">
           <NavigationalProperty Id="ef71dbdf-3cb5-4178-8a24-646cb2d0c9c3" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d7edb7c9-adbb-42a7-9b73-3aee2d401430">
+          <NavigationalProperty Id="941b7983-22fa-4c41-a871-f54921d556e1" name="GeneralPayments" type="IList&lt;GeneralPayment&gt;" label="GeneralPayments : IList&lt;GeneralPayment&gt;" nullable="true" kind="Persistent" fieldName="generalPayments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -6388,6 +6425,51 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="4a23f80e-4d25-4eef-97c0-f5638fa9d429" name="GeneralPayment" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="1b0236f7-014e-498b-89fa-f7e1331203a2" name="GeneralPaymentId" type="System.Int32" label="GeneralPaymentId : System.Int32" identity="true" />
+      <Property Id="c67e5bb1-7287-486d-ba87-1861835f043c" name="Amount" type="Decimal" label="Amount : Decimal" />
+      <Property Id="2f4e0792-bf8c-4353-aa8d-f378366dc3e3" name="PaymentDate" type="DateTime" label="PaymentDate : DateTime" />
+      <Property Id="6e56b026-520e-4678-85c9-f6af2ac548db" name="Description" label="Description : String" />
+      <AssociationTargets>
+        <Association Id="59cf410c-6881-470d-bb53-465ddde1c288" SourceMultiplicity="ZeroOne" name="GeneralPaymentHasPaymentMethod">
+          <DomainClassMoniker name="/AriClinicContext/PaymentMethod" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="e5cd398d-4fe5-4b1e-bfde-cbe0baac727d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/PaymentMethod/GeneralPayments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="6f751724-aae7-49b4-a65e-98de6af67e4f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/GeneralPayment/PaymentMethod" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="0cb92c52-7f79-4556-9a1b-9a29cac7a237" SourceMultiplicity="ZeroOne" name="GeneralPaymentHasServiceNote">
+          <DomainClassMoniker name="/AriClinicContext/ServiceNote" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="a759aff0-d089-4610-9241-602f477b2269">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceNote/GeneralPayments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5ac3e8c9-d539-4092-a1d0-f3b9c7207c70">
+              <NavigationalPropertyMoniker name="/AriClinicContext/GeneralPayment/ServiceNote" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="5e0f7a65-9d15-465c-9c1b-60fab11e5298">
+          <NavigationalProperty Id="73063229-c6f2-4b25-8ed4-8fe169132a5d" name="PaymentMethod" type="PaymentMethod" label="PaymentMethod : PaymentMethod" nullable="true" kind="Persistent" fieldName="paymentMethod" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="39d2c27e-9ee4-4361-a83b-237b1539a221">
+          <NavigationalProperty Id="01f372cc-2f13-4ae9-ad89-218e80aeddfb" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="33f5e229-8104-4df8-b35c-0aeaae52da64">
+          <NavigationalProperty Id="0ae8625d-326a-44b3-b687-0764d6bf85a2" name="ServiceNote" type="ServiceNote" label="ServiceNote : ServiceNote" nullable="true" kind="Persistent" fieldName="serviceNote" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -6458,6 +6540,7 @@
         <entitySetProperty name="MotAppends" type="MotAppend" label="MotAppends : IQueryable&lt;MotAppend&gt;" />
         <entitySetProperty name="Fundus" type="Fundus" label="Fundus : IQueryable&lt;Fundus&gt;" />
         <entitySetProperty name="Sources" type="Source" label="Sources : IQueryable&lt;Source&gt;" />
+        <entitySetProperty name="GeneralPayments" type="GeneralPayment" label="GeneralPayments : IQueryable&lt;GeneralPayment&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

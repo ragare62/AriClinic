@@ -577,6 +577,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<GeneralPayment> GeneralPayments 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<GeneralPayment>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -850,6 +858,10 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<Source> Sources 
+		{ 
+			get;
+		}
+		IQueryable<GeneralPayment> GeneralPayments 
 		{ 
 			get;
 		}

@@ -51,6 +51,10 @@
                   }
               }
           }
+          function ViewHisAdm(id) {
+              var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "fullscreen=yes,resizable=1");
+              w2.focus();
+          }
         </script>
       </telerik:RadScriptBlock>
       <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
@@ -305,6 +309,10 @@
             <tr>
               <td colspan="4">
                 <div ID="Buttons" class="buttonsFomat">
+                                  <asp:ImageButton ID="btnMedicalRecord" runat="server" TabIndex="12" 
+                                   ImageUrl="~/images/folder_cubes.png" onclick="btnMedicalRecord_Click" 
+                                   ToolTip="Abrir historial" Visible="False" /> 
+                  &nbsp;
                   <asp:ImageButton ID="btnAccept" runat="server" TabIndex="12" 
                                    ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" 
                                    ToolTip="Guardar y salir" />

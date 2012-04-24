@@ -1031,6 +1031,7 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="images\folder_cubes.png" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
     <Content Include="FundusForm.aspx" />
@@ -1295,7 +1296,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

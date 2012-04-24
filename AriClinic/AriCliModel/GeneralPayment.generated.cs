@@ -20,31 +20,18 @@ using Telerik.OpenAccess.Data.Common;
 
 namespace AriCliModel	
 {
-	public partial class Payment
+	public partial class GeneralPayment
 	{
-		private int paymentId;
-		public virtual int PaymentId 
+		private int generalPaymentId;
+		public virtual int GeneralPaymentId 
 		{ 
 		    get
 		    {
-		        return this.paymentId;
+		        return this.generalPaymentId;
 		    }
 		    set
 		    {
-		        this.paymentId = value;
-		    }
-		}
-		
-		private DateTime paymentDate;
-		public virtual DateTime PaymentDate 
-		{ 
-		    get
-		    {
-		        return this.paymentDate;
-		    }
-		    set
-		    {
-		        this.paymentDate = value;
+		        this.generalPaymentId = value;
 		    }
 		}
 		
@@ -61,16 +48,16 @@ namespace AriCliModel
 		    }
 		}
 		
-		private int oftId;
-		public virtual int OftId 
+		private DateTime paymentDate;
+		public virtual DateTime PaymentDate 
 		{ 
 		    get
 		    {
-		        return this.oftId;
+		        return this.paymentDate;
 		    }
 		    set
 		    {
-		        this.oftId = value;
+		        this.paymentDate = value;
 		    }
 		}
 		
@@ -100,55 +87,25 @@ namespace AriCliModel
 		    }
 		}
 		
-		private Ticket ticket;
-		public virtual Ticket Ticket 
+		private ServiceNote serviceNote;
+		public virtual ServiceNote ServiceNote 
 		{ 
 		    get
 		    {
-		        return this.ticket;
+		        return this.serviceNote;
 		    }
 		    set
 		    {
-		        this.ticket = value;
+		        this.serviceNote = value;
 		    }
 		}
 		
-		private User user;
-		public virtual User User 
+		private IList<Payment> payments = new List<Payment>();
+		public virtual IList<Payment> Payments 
 		{ 
 		    get
 		    {
-		        return this.user;
-		    }
-		    set
-		    {
-		        this.user = value;
-		    }
-		}
-		
-		private Clinic clinic;
-		public virtual Clinic Clinic 
-		{ 
-		    get
-		    {
-		        return this.clinic;
-		    }
-		    set
-		    {
-		        this.clinic = value;
-		    }
-		}
-		
-		private GeneralPayment generalPayment;
-		public virtual GeneralPayment GeneralPayment 
-		{ 
-		    get
-		    {
-		        return this.generalPayment;
-		    }
-		    set
-		    {
-		        this.generalPayment = value;
+		        return this.payments;
 		    }
 		}
 		
