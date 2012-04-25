@@ -96,7 +96,19 @@
                   <asp:Label ID="lblBeginHour" runat="server" Text="Hora comienzo:" 
                              ToolTip="Hora en la que por defecto comienza la agenda"></asp:Label>
                   <br />
-                  <telerik:RadTimePicker ID="rdtmBeginHour" runat="server" Skin="Office2007" TabIndex="3">
+                  <telerik:RadTimePicker ID="rdtmBeginHour" runat="server" Skin="Office2007" 
+                        TabIndex="3" MinDate="0001-01-01">
+                      <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                          ViewSelectorText="x">
+                      </Calendar>
+                      <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" TabIndex="3" 
+                          Visible="False" />
+                      <TimeView CellSpacing="-1">
+                      </TimeView>
+                      <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                      <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="" 
+                          TabIndex="3">
+                      </DateInput>
                 </telerik:RadTimePicker>
                 </div>
               </td>
@@ -106,7 +118,19 @@
                   <asp:Label ID="leblEndHour" runat="server" Text="Hora final:" 
                              ToolTip="Hora en la que por defecto finaliza la agenda"></asp:Label>
                   <br />
-                  <telerik:RadTimePicker ID="rdtmEndHour" runat="server" Skin="Office2007" TabIndex="4">
+                  <telerik:RadTimePicker ID="rdtmEndHour" runat="server" Skin="Office2007" TabIndex="4" 
+                                      MinDate="0001-01-01">
+                      <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                          ViewSelectorText="x">
+                      </Calendar>
+                      <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" TabIndex="4" 
+                          Visible="False" />
+                      <TimeView CellSpacing="-1">
+                      </TimeView>
+                      <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                      <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="" 
+                          TabIndex="4">
+                      </DateInput>
                 </telerik:RadTimePicker>
                 </div>
               </td>

@@ -84,15 +84,6 @@ public partial class PaymentForm {
     protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
     
     /// <summary>
-    /// Control RadAjaxPanel1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
-    
-    /// <summary>
     /// Control lblTitle.
     /// </summary>
     /// <remarks>

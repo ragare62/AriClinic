@@ -91,6 +91,8 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
         {
             ImageButton imgb = (ImageButton)e.Item.FindControl("New");
             imgb.Visible = per.Create;
+            if (pat != null)
+                imgb.OnClientClick = "NewServiceNoteRecordInTab();";
         }
         if (e.Item is GridDataItem)
         {
@@ -121,6 +123,8 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             command = String.Format("return EditServiceNoteRecord({0});", id);
+            if (pat != null)
+                command = String.Format("return EditServiceNoteRecordInTab({0});", id);
             imgb.OnClientClick = command;
             
             // print button
@@ -197,6 +201,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
                     {
                         serviceNoteId = (int)Session["DeleteId"];
                         ServiceNote sn = CntAriCli.GetServiceNote(serviceNoteId, ctx);
+                        ctx.Delete(sn.Tickets);
                         ctx.Delete(sn);
                         ctx.SaveChanges();
                         RadGrid1.Rebind();

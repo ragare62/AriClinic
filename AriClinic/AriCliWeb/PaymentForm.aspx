@@ -153,6 +153,7 @@ width: 401px;
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
       </telerik:RadSkinManager>
+
       <telerik:RadInputManager ID="RadInputManager1" runat="server">
         <telerik:TextBoxSetting Validation-IsRequired="true">
           <TargetControls>
@@ -183,12 +184,11 @@ width: 401px;
           <Validation IsRequired="True"></Validation>
         </telerik:NumericTextBoxSetting>
       </telerik:RadInputManager>
+
       <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                  AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
       </telerik:RadToolTipManager>
-      <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" 
-          
-                            style="z-index: 1; left: 0px; top:0px; position: absolute; height: 281px; width: 427px">
+
         <%--Line 1--%>
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
@@ -248,15 +248,14 @@ width: 401px;
         </div>
         <%--Line 6--%>
         <div ID="Buttons" class="buttonsFomat">
-          <asp:ImageButton ID="btnAccept" runat="server" TabIndex="6" 
-                           ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
+          <asp:ImageButton ID="btnAccept" runat="server" TabIndex="6"  
+                           ImageUrl="~/images/document_ok.png" OnClick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;
           <asp:ImageButton ID="btnCancel" runat="server" TabIndex="7" 
                            ImageUrl="~/images/document_out.png" CausesValidation="False" 
-                           onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
+                           OnClick="btnCancel_Click" ToolTip="Salir sin guardar" />
         </div>
 
-      </telerik:RadAjaxPanel>
     </form>
   </body>
 </html>

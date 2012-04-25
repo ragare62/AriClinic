@@ -89,16 +89,26 @@ public partial class PatientForm : System.Web.UI.Page
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "";
+        bool nuevo = false;
         if (pat == null)
-            command = "CloseAndRebind('new')"; 
+        {
+            command = "CloseAndRebind('new')";
+            nuevo = true;
+        }
         else
-            command = "CloseAndRebind('')"; 
+        {
+            command = "CloseAndRebind('')";
+        }
         if (!CreateChange())
             return;
         if (type == "InTab")
         {
             lblMessage.Text = Resources.GeneralResource.RecordRefreshed;
             return;
+        }
+        if (nuevo)
+        {
+            command = String.Format("PatientRecord({0});", pat.PersonId);
         }
         RadAjaxManager1.ResponseScripts.Add(command);
     }
@@ -124,11 +134,11 @@ public partial class PatientForm : System.Web.UI.Page
             lblMessage.Text = Resources.GeneralResource.ClinicNeeded;
             return false;
         }
-        if (rddpBornDate.SelectedDate == null) 
-        {
-            lblMessage.Text = Resources.GeneralResource.BornDateNeeded;
-            return false;
-        }
+        //if (rddpBornDate.SelectedDate == null) 
+        //{
+        //    lblMessage.Text = Resources.GeneralResource.BornDateNeeded;
+        //    return false;
+        //}
         return true;
     }
 
@@ -162,7 +172,8 @@ public partial class PatientForm : System.Web.UI.Page
         txtName.Text = pat.Name;
         txtSurname1.Text = pat.Surname1;
         txtSurname2.Text = pat.Surname2;
-        rddpBornDate.SelectedDate = pat.BornDate;
+        if (String.Format("{0:dd/MM/yy}",pat.BornDate) != "01/01/01")
+            rddpBornDate.SelectedDate = pat.BornDate;
         txtAge.Text = CntAriCli.CalulatedAge(pat.BornDate).ToString();
         txtLastUpdate.Text = CntAriCli.DateNullFormat(pat.LastUpdate);
         LoadSexCombo(pat);
@@ -183,8 +194,9 @@ public partial class PatientForm : System.Web.UI.Page
         if (rdcbProcedencia.SelectedValue != "")
             pat.Source = CntAriCli.GetSource(int.Parse(rdcbProcedencia.SelectedValue), ctx);
         if (rdcbClinic.SelectedValue != "")
-            pat.Source = CntAriCli.GetSource(int.Parse(rdcbClinic.SelectedValue), ctx);
-        pat.BornDate = (DateTime)rddpBornDate.SelectedDate;
+            pat.Clinic = CntAriCli.GetClinic(int.Parse(rdcbClinic.SelectedValue), ctx);
+        if (rddpBornDate.SelectedDate != null)
+            pat.BornDate = (DateTime)rddpBornDate.SelectedDate;
         if (pat.Customer == null) 
         {
             CreateAssociatedCustomer(pat, ctx);
@@ -236,7 +248,7 @@ public partial class PatientForm : System.Web.UI.Page
         rdcbClinic.SelectedValue = "";
         if (pat != null && pat.Clinic != null)
         {
-            rdcbClinic.SelectedValue = pat.Source.SourceId.ToString();
+            rdcbClinic.SelectedValue = pat.Clinic.ClinicId.ToString();
         }
     }
 

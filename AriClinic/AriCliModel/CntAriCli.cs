@@ -6,7 +6,6 @@ using AriCliModel;
 using Telerik.OpenAccess;
 using System.Security.Cryptography;
 
-
 namespace AriCliModel
 {
     public static class CntAriCli
@@ -56,7 +55,8 @@ namespace AriCliModel
             User user = (from u in ctx.Users
                          where u.Login == login
                          select u).FirstOrDefault<User>();
-            if (user == null) return null; // user doesn't exists
+            if (user == null)
+                return null; // user doesn't exists
             if (user.Password != GetHashCode(password))
                 return null; // incorrect password
             return user;
@@ -120,8 +120,8 @@ namespace AriCliModel
             foreach (Process pr in ctx.Processes)
             {
                 Permission per = (from p in ctx.Permissions
-                                  where p.UserGroup.UserGroupId == ug.UserGroupId
-                                        && p.Process.ProcessId == pr.ProcessId
+                                  where p.UserGroup.UserGroupId == ug.UserGroupId &&
+                                        p.Process.ProcessId == pr.ProcessId
                                   select p).FirstOrDefault<Permission>();
                 if (per == null)
                 {
@@ -178,8 +178,8 @@ namespace AriCliModel
         public static Permission GetPermission(UserGroup ug, Process pr, AriClinicContext ctx)
         {
             Permission per = (from p in ctx.Permissions
-                              where p.UserGroup.UserGroupId == ug.UserGroupId
-                                    && p.Process.ProcessId == pr.ProcessId
+                              where p.UserGroup.UserGroupId == ug.UserGroupId &&
+                                    p.Process.ProcessId == pr.ProcessId
                               select p).FirstOrDefault<Permission>();
             return per;
         }
@@ -196,7 +196,6 @@ namespace AriCliModel
             return (from c in ctx.Clinics
                     select c).ToList<Clinic>();
         }
-
 
         public static ServiceCategory GetServiceCategory(int id, AriClinicContext ctx)
         {
@@ -236,8 +235,8 @@ namespace AriCliModel
         public static InsuranceService GetInsuranceService(int id, Insurance insurance, AriClinicContext ctx)
         {
             return (from i in ctx.InsuranceServices
-                    where i.InsuranceServiceId == id
-                          && i.Insurance.InsuranceId == insurance.InsuranceId
+                    where i.InsuranceServiceId == id &&
+                          i.Insurance.InsuranceId == insurance.InsuranceId
                     select i).FirstOrDefault<InsuranceService>();
         }
 
@@ -258,12 +257,15 @@ namespace AriCliModel
         public static int CalulatedAge(DateTime BornDate)
         {
             int age = 0;
-            // Calculate age from born date
-            age = DateTime.Now.Year - BornDate.Year;
-            // Substract a year if date is before birthday
-            if (DateTime.Now.Month < BornDate.Month ||
-                (DateTime.Now.Month == BornDate.Month && DateTime.Now.Day < BornDate.Day))
-                age--;
+            if (String.Format("{0:dd/MM/yy}", BornDate) != "01/01/01")
+            {
+                // Calculate age from born date
+                age = DateTime.Now.Year - BornDate.Year;
+                // Substract a year if date is before birthday
+                if (DateTime.Now.Month < BornDate.Month ||
+                    (DateTime.Now.Month == BornDate.Month && DateTime.Now.Day < BornDate.Day))
+                    age--;
+            }
             return age;
         }
 
@@ -320,8 +322,8 @@ namespace AriCliModel
         {
             var rs2 = from t in ctx.Tickets
                       orderby t.TicketDate descending
-                      where t.Policy.Customer.PersonId == cus.PersonId
-                      && t.Amount > t.Paid
+                      where t.Policy.Customer.PersonId == cus.PersonId &&
+                            t.Amount > t.Paid
                       select t;
             return rs2.ToList<Ticket>();
         }
@@ -334,57 +336,10 @@ namespace AriCliModel
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && t.Policy.Insurance.InsuranceId == insuranceId
-                                   && (t.Amount == t.Paid)
-                             select t;
-                    return rs.ToList<Ticket>();
-                }
-                else if(type.Equals("NP"))
-                {
-                    var rs = from t in ctx.Tickets
-                             orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && t.Policy.Insurance.InsuranceId == insuranceId
-                                   && (t.Amount != t.Paid)
-                             select t;
-                    return rs.ToList<Ticket>();
-                }
-                else if (type.Equals("C"))
-                {
-                    var rs = from t in ctx.Tickets
-                             orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && t.Policy.Insurance.InsuranceId == insuranceId
-                                   && (t.Checked==true)
-                             select t;
-                    return rs.ToList<Ticket>();
-                }
-                else if (type.Equals("SC"))
-                {
-                    var rs = from t in ctx.Tickets
-                             orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && t.Policy.Insurance.InsuranceId == insuranceId
-                                   && (t.Checked == false)
-                             select t;
-                    return rs.ToList<Ticket>();
-                }
-                else { return new List<Ticket>(); }
-            }
-            else
-            {
-                if (type == "P")
-                {
-                    var rs = from t in ctx.Tickets
-                             orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && (t.Amount == t.Paid)
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   t.Policy.Insurance.InsuranceId == insuranceId &&
+                                   (t.Amount == t.Paid)
                              select t;
                     return rs.ToList<Ticket>();
                 }
@@ -392,9 +347,10 @@ namespace AriCliModel
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && (t.Amount != t.Paid)
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   t.Policy.Insurance.InsuranceId == insuranceId &&
+                                   (t.Amount != t.Paid)
                              select t;
                     return rs.ToList<Ticket>();
                 }
@@ -402,9 +358,10 @@ namespace AriCliModel
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && (t.Checked==true)
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   t.Policy.Insurance.InsuranceId == insuranceId &&
+                                   (t.Checked == true)
                              select t;
                     return rs.ToList<Ticket>();
                 }
@@ -412,13 +369,64 @@ namespace AriCliModel
                 {
                     var rs = from t in ctx.Tickets
                              orderby t.TicketDate descending
-                             where t.TicketDate >= fromDate
-                                   && t.TicketDate <= toDate
-                                   && (t.Checked == false)
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   t.Policy.Insurance.InsuranceId == insuranceId &&
+                                   (t.Checked == false)
                              select t;
                     return rs.ToList<Ticket>();
                 }
-                else { return new List<Ticket>(); }
+                else
+                {
+                    return new List<Ticket>();
+                }
+            }
+            else
+            {
+                if (type == "P")
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   (t.Amount == t.Paid)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("NP"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   (t.Amount != t.Paid)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("C"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   (t.Checked == true)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else if (type.Equals("SC"))
+                {
+                    var rs = from t in ctx.Tickets
+                             orderby t.TicketDate descending
+                             where t.TicketDate >= fromDate &&
+                                   t.TicketDate <= toDate &&
+                                   (t.Checked == false)
+                             select t;
+                    return rs.ToList<Ticket>();
+                }
+                else
+                {
+                    return new List<Ticket>();
+                }
             }
         }
 
@@ -468,8 +476,8 @@ namespace AriCliModel
         public static IList<Ticket> GetTicketsNotInvoiced(Customer cus, AriClinicContext ctx)
         {
             return (from t in ctx.Tickets
-                    where t.Policy.Customer.PersonId == cus.PersonId
-                          && t.InvoiceLines.Count == 0
+                    where t.Policy.Customer.PersonId == cus.PersonId &&
+                          t.InvoiceLines.Count == 0
                     select t).ToList<Ticket>();
         }
 
@@ -543,8 +551,8 @@ namespace AriCliModel
         public static int GetNextInvoiceNumber(string serial, int year, AriClinicContext ctx)
         {
             int v = (from inv in ctx.Invoices
-                     where inv.Serial == serial
-                           && inv.Year == year
+                     where inv.Serial == serial &&
+                           inv.Year == year
                      select inv.InvoiceNumber).Max();
             return ++v;
         }
@@ -559,7 +567,8 @@ namespace AriCliModel
 
                 return ++v;
             }
-            else return 1;
+            else
+                return 1;
         }
 
         public static bool DeleteInvoice(Invoice inv, AriClinicContext ctx)
@@ -571,11 +580,11 @@ namespace AriCliModel
                 return false;
 
             // erase possible service note relation
-            if (inv.ServiceNotes!=null && inv.ServiceNotes.Count > 0)
+            if (inv.ServiceNotes != null && inv.ServiceNotes.Count > 0)
             {
                 for (int i = 0; i < inv.ServiceNotes.Count; i++)
                 {
-                     inv.ServiceNotes.ElementAt(i).Invoice = null;
+                    inv.ServiceNotes.ElementAt(i).Invoice = null;
                 }
             }
             else if (inv.AnestheticServiceNotes != null && inv.AnestheticServiceNotes.Count > 0)
@@ -668,7 +677,8 @@ namespace AriCliModel
         public static bool PaymentControl(Ticket tck, Payment pay, decimal amount)
         {
             decimal thisAmount = 0;
-            if (pay != null) thisAmount = pay.Amount;
+            if (pay != null)
+                thisAmount = pay.Amount;
             if (((tck.Paid - thisAmount) + amount) > tck.Amount)
                 return false;
             else
@@ -697,17 +707,17 @@ namespace AriCliModel
             if (insuranceId == 0)
             {
                 var rs = from t in ctx.Tickets
-                         where t.TicketDate >= fromDate
-                               && t.TicketDate <= toDate
+                         where t.TicketDate >= fromDate &&
+                               t.TicketDate <= toDate
                          select t;
                 return rs.ToList<Ticket>();
             }
             else
             {
                 var rs = from t in ctx.Tickets
-                         where t.TicketDate >= fromDate
-                               && t.TicketDate <= toDate
-                               && t.Policy.Insurance.InsuranceId == insuranceId
+                         where t.TicketDate >= fromDate &&
+                               t.TicketDate <= toDate &&
+                               t.Policy.Insurance.InsuranceId == insuranceId
                          select t;
                 return rs.ToList<Ticket>();
             }
@@ -718,9 +728,7 @@ namespace AriCliModel
             IList<Ticket> mTickets = GetTickets(fromDate, toDate, insuranceId, ctx);
             if (noVoucher != 0)
             {
-                mTickets = (from t in mTickets
-                            where t.Checked == false
-                            select t).ToList<Ticket>();
+                mTickets = (from t in mTickets where t.Checked == false select t).ToList<Ticket>();
             }
             return mTickets;
         }
@@ -730,17 +738,17 @@ namespace AriCliModel
             if (clinicId == 0)
             {
                 var rs = from p in ctx.Payments
-                         where p.PaymentDate >= fromDate
-                               && p.PaymentDate <= toDate
+                         where p.PaymentDate >= fromDate &&
+                               p.PaymentDate <= toDate
                          select p;
                 return rs.ToList<Payment>();
             }
             else
             {
                 var rs = from p in ctx.Payments
-                         where p.PaymentDate >= fromDate
-                               && p.PaymentDate <= toDate
-                               && p.Ticket.Clinic.ClinicId == clinicId
+                         where p.PaymentDate >= fromDate &&
+                               p.PaymentDate <= toDate &&
+                               p.Ticket.Clinic.ClinicId == clinicId
                          select p;
                 return rs.ToList<Payment>();
             }
@@ -984,8 +992,8 @@ namespace AriCliModel
         public static IList<AnestheticTicket> GetTicketsAnestesicos(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<AnestheticTicket> tickets = (from t in ctx.AnestheticTickets
-                                    where t.TicketDate >= fromDate && t.TicketDate <= toDate
-                                    select t).ToList<AnestheticTicket>();
+                                              where t.TicketDate >= fromDate && t.TicketDate <= toDate
+                                              select t).ToList<AnestheticTicket>();
 
             return tickets;
         }
@@ -1011,7 +1019,7 @@ namespace AriCliModel
         public static IList<Professional> GetSurgeonTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.AnestheticTickets
-                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon!=null
+                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon != null
                                                select t.Surgeon).Distinct<Professional>().ToList<Professional>();
 
             return professional;
@@ -1020,7 +1028,7 @@ namespace AriCliModel
         public static IList<Professional> GetSurgeonTickets(AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.AnestheticTickets
-                                               where t.Surgeon !=null
+                                               where t.Surgeon != null
                                                select t.Surgeon).Distinct<Professional>().ToList<Professional>();
 
             return professional;
@@ -1112,8 +1120,8 @@ namespace AriCliModel
         public static IList<AppointmentInfo> GetAppointments(Diary diary, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.Diary.DiaryId == diary.DiaryId
-                          && a.BeginDateTime >= start && a.EndDateTime <= end
+                    where a.Diary.DiaryId == diary.DiaryId &&
+                          a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
 
@@ -1127,8 +1135,8 @@ namespace AriCliModel
         public static IList<AppointmentInfo> GetAppointments(Professional professional, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
-                    where a.Professional.PersonId == professional.PersonId
-                          && a.BeginDateTime >= start && a.EndDateTime <= end
+                    where a.Professional.PersonId == professional.PersonId &&
+                          a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
 
@@ -1160,13 +1168,11 @@ namespace AriCliModel
             decimal total_paid = 0;
             foreach (Ticket tk in note.Tickets)
                 total_paid += tk.Paid;
-            if ((note.Total - total_paid) < amount) return false; // amount bigger than debt.
-
+            if ((note.Total - total_paid) < amount)
+                return false; // amount bigger than debt.
 
             //(1) Look for a ticket (inside note) with the same amount
-            t = (from tk in note.Tickets
-                 where (tk.Amount - tk.Paid) == amount
-                 select tk).FirstOrDefault<Ticket>();
+            t = (from tk in note.Tickets where (tk.Amount - tk.Paid) == amount select tk).FirstOrDefault<Ticket>();
             if (t != null)
             {
                 // (1.1) It exists.
@@ -1417,16 +1423,16 @@ namespace AriCliModel
         public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
-                                    where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate
+                                                 where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate
                                                  select i).ToList<ProfessionalInvoice>();
 
             return invoice;
         }
 
-        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate,string idProfessional, AriClinicContext ctx)
+        public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, string idProfessional, AriClinicContext ctx)
         {
             List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
-                                                 where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate && i.Professional.PersonId.ToString()==idProfessional
+                                                 where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate && i.Professional.PersonId.ToString() == idProfessional
                                                  select i).ToList<ProfessionalInvoice>();
 
             return invoice;
@@ -1507,8 +1513,8 @@ namespace AriCliModel
         public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         {
             var anesNote = (from a in ctx1.AnestheticServiceNotes
-                    where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1==true && a.AnestheticTickets.Count>0
-                    select a).ToList<AnestheticServiceNote>();
+                            where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1 == true && a.AnestheticTickets.Count > 0
+                            select a).ToList<AnestheticServiceNote>();
 
             var res = (from a in anesNote
                        select a.AnestheticTickets.First<AnestheticTicket>());

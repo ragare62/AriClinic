@@ -301,6 +301,11 @@ right: 354px;
               }
               return false;
           }
+          function PatientRecord(id) {
+              var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=770, height=680,resizable=1");
+              w2.focus();
+              //window.close();
+          }
         </script>
         <script type="text/javascript">
           //Put your JavaScript code here.
@@ -404,33 +409,33 @@ right: 354px;
         </div>
         <div id="Name" class="normalText">
           <asp:Label ID="lblName" runat="server" Text="Nombre del paciente:" 
-                     ToolTip="Nombre a asignar a la Patienta" TabIndex="0"></asp:Label>
+                     ToolTip="Nombre a asignar a la Patienta" ></asp:Label>
           <br />
-          <asp:TextBox ID="txtName" runat="server" Width="151px"></asp:TextBox>
+          <asp:TextBox ID="txtName" runat="server" Width="151px" TabIndex="3"></asp:TextBox>
         </div>
         <div ID="Surname1" class="normalText">
           <asp:Label ID="lblSurname1" runat="server" Text="Primer apellido:" 
-                     ToolTip="Primer apellido del paciente" TabIndex="1"></asp:Label>
+                     ToolTip="Primer apellido del paciente"></asp:Label>
           <br />
-          <asp:TextBox ID="txtSurname1" runat="server" Width="132px"></asp:TextBox>
+          <asp:TextBox ID="txtSurname1" runat="server" Width="132px" TabIndex="1"></asp:TextBox>
         </div>
         <div ID="Surname2" class="normalText">
           <asp:Label ID="lblSurname2" runat="server" Text="Segundo apellido:" 
-                     ToolTip="Segundo apellido del paciente" TabIndex="2"></asp:Label>
+                     ToolTip="Segundo apellido del paciente" ></asp:Label>
           <br />
-          <asp:TextBox ID="txtSurname2" runat="server" Width="132px"></asp:TextBox>
+          <asp:TextBox ID="txtSurname2" runat="server" Width="132px" TabIndex="2"></asp:TextBox>
         </div>
         <div ID="Comments" class="normalText">
           <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
-                     ToolTip="Observaciones" TabIndex="2"></asp:Label>
+                     ToolTip="Observaciones" ></asp:Label>
           <br />
-          <asp:TextBox ID="txtComments" runat="server" Width="575px" TextMode="MultiLine"></asp:TextBox>
+          <asp:TextBox ID="txtComments" runat="server" Width="575px" TextMode="MultiLine" TabIndex="10"></asp:TextBox>
         </div>
         <div ID="VATIN" class="normalText">
           <asp:Label ID="lblVATIN" runat="server" Text="NIF:" 
-                     ToolTip="NIF del paciente" TabIndex="4"></asp:Label>
+                     ToolTip="NIF del paciente"></asp:Label>
           <br />
-          <asp:TextBox ID="txtVATIN" runat="server" Width="132px"></asp:TextBox>
+          <asp:TextBox ID="txtVATIN" runat="server" Width="132px"  TabIndex="5"></asp:TextBox>
         </div>
         <div ID="Message" class="messageText">
           <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
@@ -469,7 +474,7 @@ right: 354px;
                      ToolTip="Fecha de nacimiento"></asp:Label>
           <br />
           <telerik:RadDatePicker ID="rddpBornDate" runat="server" Culture="es-ES" 
-                MinDate="" TabIndex="3">
+                MinDate=""  TabIndex="4">
               <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                   ViewSelectorText="x">
               </Calendar>
@@ -483,7 +488,7 @@ right: 354px;
                      ToolTip="Clínica a la que pertenece el paciente"></asp:Label>
           <br />
           <telerik:RadComboBox ID="rdcbClinic" runat="server" Width="126px" 
-                Skin="Office2007" TabIndex="5">
+                Skin="Office2007" TabIndex="6">
           </telerik:RadComboBox>
         </div>
 
@@ -492,7 +497,7 @@ right: 354px;
                      ToolTip="Nombre a asignar a la Patienta"></asp:Label>
           <br />
           <telerik:RadComboBox ID="rdcbSex" runat="server" Width="126px" 
-                Skin="Office2007" TabIndex="5">
+                Skin="Office2007" TabIndex="7">
           </telerik:RadComboBox>
         </div>
 
@@ -501,7 +506,7 @@ right: 354px;
                      ToolTip="Procedencia"></asp:Label>
           <br />
           <telerik:RadComboBox ID="rdcbProcedencia" runat="server" Width="189px" 
-                Skin="Office2007" TabIndex="6" Height="100px">
+                Skin="Office2007" TabIndex="8" Height="100px">
           </telerik:RadComboBox>
         </div>
 

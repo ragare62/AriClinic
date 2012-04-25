@@ -203,7 +203,7 @@
                            ToolTip="Clínica a la que asigna el ticket"></asp:Label>
                 <br />
                 <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="3" 
-                                     Width="171px" Height="24px">
+                                     Width="171px" Height="100px">
                 </telerik:RadComboBox>
               </div>
             </td>

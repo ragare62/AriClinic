@@ -78,7 +78,8 @@ public partial class PaymentForm : System.Web.UI.Page
                 , tck.Policy.Customer.FullName
                 , tck.Description
                 , tck.Amount);
-            txtAmount.Text = tck.Amount.ToString();
+            decimal diff = tck.Amount - tck.Paid;
+            txtAmount.Text = diff.ToString();
             SetFocus(rdcbPaymentMethod);
         }
     }
@@ -106,6 +107,7 @@ public partial class PaymentForm : System.Web.UI.Page
             command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
+        lblMessage.Text = command;
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -151,22 +153,26 @@ public partial class PaymentForm : System.Web.UI.Page
 
     protected bool CreateChange()
     {
+        lblMessage.Text = "OK..";
         if (!DataOk())
             return false;
         if (pay == null)
         {
+            lblMessage.Text = "New..."; 
             pay = new Payment();
             UnloadData(pay);
             ctx.Add(pay);
         }
         else
         {
+            lblMessage.Text = "Edit...";
             pay = CntAriCli.GetPayment(paymentId, ctx);
             UnloadData(pay);
         }
         ctx.SaveChanges();
         // update payments in related ticket
         CntAriCli.UpdateTicketPayments(pay.Ticket, ctx);
+        lblMessage.Text = "Final create...";
         return true;
     }
 

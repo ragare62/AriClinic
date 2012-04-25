@@ -19,6 +19,7 @@ public partial class ServiceNoteForm : System.Web.UI.Page
     Clinic cl = null;
     Policy pol = null;
     Customer cus = null;
+    Patient pat = null;
     InsuranceService insuranceService = null;
     Insurance insurance = null;
     Professional prof = null;
@@ -32,6 +33,7 @@ public partial class ServiceNoteForm : System.Web.UI.Page
     int insuranceId = 0;
     int professionalId = 0;
     int serviceNoteId = 0;
+    int patientId = 0;
     Permission per = null;
     HtmlControl frame = null;
 
@@ -52,11 +54,20 @@ public partial class ServiceNoteForm : System.Web.UI.Page
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
         }
-        // 
-        if (Request.QueryString["CustomerId"] != null)
+        //
+        if (Request.QueryString["PatientId"] != null)
         {
-            customerId = Int32.Parse(Request.QueryString["CustomerId"]);
-            cus = CntAriCli.GetCustomer(customerId, ctx);
+            patientId = Int32.Parse(Request.QueryString["PatientId"]);
+            pat = CntAriCli.GetPatient(patientId, ctx);
+            cus = pat.Customer;
+        }
+        if (Request.QueryString["CustomerId"] != null || cus != null)
+        {
+            if (cus == null)
+            {
+                customerId = Int32.Parse(Request.QueryString["CustomerId"]);
+                cus = CntAriCli.GetCustomer(customerId, ctx);
+            }
             //txtCustomerId.Text = cus.PersonId.ToString();
 
             rdcComercialName.Items.Clear();
