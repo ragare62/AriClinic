@@ -98,6 +98,7 @@ public partial class TicketGrid : System.Web.UI.Page
             RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
             RadGrid1.Columns.FindByDataField("Checked").Visible = false;
             RadGrid1.Columns.FindByDataField("Clinic.Name").Visible = false;
+            RadGrid1.Columns.FindByDataField("Paid").Visible = false;
         }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
@@ -187,11 +188,13 @@ public partial class TicketGrid : System.Web.UI.Page
             imgb = (ImageButton)e.Item.FindControl("Pay");
             command = String.Format("OpenPaymentForm({0});", id);
             imgb.OnClientClick = command;
+            if (sn != null) imgb.Visible = false;
 
             // print button
             imgb = (ImageButton)e.Item.FindControl("Print");
             command = String.Format("reportTicket({0});", id);
             imgb.OnClientClick = command;
+            if (sn != null) imgb.Visible = false;
 
             imgb = (ImageButton)e.Item.FindControl("Delete");
             imgb.Visible = per.Create;

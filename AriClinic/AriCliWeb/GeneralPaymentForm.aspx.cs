@@ -59,6 +59,23 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
         if (Session["Clinic"] != null)
             cl = (Clinic)Session["Clinic"];
         // 
+
+        //
+        if (Request.QueryString["ServiceNoteId"] != null)
+        {
+            serviceNoteId = int.Parse(Request.QueryString["ServiceNoteId"]);
+            snote = CntAriCli.GetServiceNote(serviceNoteId, ctx);
+            // calcute total amount and total payments
+            //txtServiceNoteData.Text = String.Format("ID:{0} Fecha:{1:dd/MM/yy} Total:{2} Pagado:{3}", 
+            //    snote.ServiceNoteId, 
+            //    snote.ServiceNoteDate,
+            //    CntAriCli.GetServiceNoteAmount(snote), 
+            //    CntAriCli.GetServiceNoteAmountPay(snote));
+            txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", snote.Customer.ComercialName, snote.ServiceNoteDate);
+            txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
+            SetFocus(rdcbClinic);
+        }
+
         if (Request.QueryString["GeneralPaymentId"] != null)
         {
             paymentId = Int32.Parse(Request.QueryString["GeneralPaymentId"]);
@@ -69,19 +86,7 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
         {
             rddpGeneralPaymentDate.SelectedDate = DateTime.Now;
             LoadPaymentMethodCombo(null);
-        }
-        //
-        if (Request.QueryString["ServiceNoteId"] != null)
-        {
-            serviceNoteId = int.Parse(Request.QueryString["ServiceNoteId"]);
-            snote = CntAriCli.GetServiceNote(serviceNoteId, ctx);
-            // calcute total amount and total payments
-            txtServiceNoteData.Text = String.Format("ID:{0} Fecha:{1:dd/MM/yy} Total:{2} Pagado:{3}", 
-                snote.ServiceNoteId, 
-                snote.ServiceNoteDate,
-                CntAriCli.GetServiceNoteAmount(snote), 
-                CntAriCli.GetServiceNoteAmountPay(snote));
-            SetFocus(rdcbPaymentMethod);
+            LoadClinicCombo(null);
         }
     }
 
@@ -132,8 +137,17 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             lblMessage.Text = Resources.GeneralResource.PaymentMethodNeeded;
             return false;
         }
-
+        if (rdcbClinic.SelectedValue == "")
+        {
+            lblMessage.Text = Resources.GeneralResource.ClinicNeeded;
+            return false;
+        }
         // se necesita controlar los pagos
+        if (txtAmount.Text == "")
+        {
+            lblMessage.Text = Resources.GeneralResource.NumericNeeded;
+            return false;
+        }
 
         return true;
     }
@@ -144,16 +158,13 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             return false;
         if (gpay == null)
         {
-            gpay = new GeneralPayment();
             UnloadData(gpay);
-            ctx.Add(gpay);
         }
         else
         {
             gpay = CntAriCli.GetGeneralPayment(paymentId, ctx);
             UnloadData(gpay);
         }
-        ctx.SaveChanges();
         // update payments in related ticket
 
         return true;
@@ -161,18 +172,42 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
 
     protected void LoadData(GeneralPayment pay)
     {
-
-
+        LoadClinicCombo(pay);
+        LoadPaymentMethodCombo(pay);
+        if (pay != null)
+        {
+            txtGeneralPaymentId.Text = pay.GeneralPaymentId.ToString();
+            txtAmount.Text = String.Format("{0:#.#}", pay.Amount);
+            txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", pay.ServiceNote.Customer.ComercialName, pay.ServiceNote.ServiceNoteDate);
+        }
+        else
+        {
+            txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", snote.Customer.ComercialName, snote.ServiceNoteDate);
+            txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
+        }
     }
 
     protected void UnloadData(GeneralPayment pay)
     {
-
+        if (pay != null)
+        {
+            snote = pay.ServiceNote;
+            CntAriCli.GeneralPaymentDelete(pay, ctx);
+        }
+        Clinic clinic = CntAriCli.GetClinic(int.Parse(rdcbClinic.SelectedValue), ctx);
+        PaymentMethod payMethod = CntAriCli.GetPaymentMethod(int.Parse(rdcbPaymentMethod.SelectedValue), ctx);
+        DateTime payDate = (DateTime)rddpGeneralPaymentDate.SelectedDate;
+        Decimal amount = decimal.Parse(txtAmount.Text);
+        string description = txtComments.Text;
+        pay = CntAriCli.GeneralPaymentNew(clinic, snote, amount, payMethod, payDate, description, ctx);
     }
 
 
-    protected void LoadPaymentMethodCombo(PaymentMethod pm)
+    protected void LoadPaymentMethodCombo(GeneralPayment gp)
     {
+        PaymentMethod pm = null;
+        if (gp != null)
+            pm = gp.PaymentMethod;
         // clear previous items 
         rdcbPaymentMethod.Items.Clear();
         foreach (PaymentMethod pm2 in ctx.PaymentMethods)
@@ -187,6 +222,25 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
         {
             rdcbPaymentMethod.Items.Add(new RadComboBoxItem(" ", ""));
             rdcbPaymentMethod.SelectedValue = "";
+        }
+    }
+    protected void LoadClinicCombo(GeneralPayment gp)
+    {
+        Clinic clinic = null;
+        if (gp != null) clinic = gp.Clinic;
+        rdcbClinic.Items.Clear();
+        foreach(Clinic c in CntAriCli.GetClinics(ctx))
+        {
+            rdcbClinic.Items.Add(new RadComboBoxItem(c.Name, c.ClinicId.ToString()));
+        }
+        if (clinic != null)
+        {
+            rdcbClinic.SelectedValue = clinic.ClinicId.ToString();
+        }
+        else
+        {
+            rdcbClinic.Items.Add(new RadComboBoxItem(" ", ""));
+            rdcbClinic.SelectedValue = "";
         }
     }
     #endregion Auxiliary functions

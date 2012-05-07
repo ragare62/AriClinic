@@ -234,10 +234,23 @@
               </div>
             </td>
           </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <div ID="Paid" class="normalTextRight">
+                <asp:Label ID="lblPaid" runat="server" Text="Pagado:" 
+                           ToolTip="Total de los pagos de esta nota"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtPaid" runat="server"
+                             TabIndex="6" Width="98px" style="text-align:right" ></asp:TextBox>
+              </div>
+            </td>
+          </tr>
           <%-- Line 4 ---%>
           <tr >
             <td colspan="4">
-              <div ID="Tickets" class="embGrid" style="height:320px">
+              <div ID="Tickets" class="embGrid" style="height:250px">
                 <asp:Label ID="lblTicket" runat="server" Text="Tickets relacionados:"></asp:Label>
                 <br />
                 <iframe id="ifTickets" frameborder="0" runat="server" style="width:100%; height:100%">
@@ -245,7 +258,18 @@
               </div>
             </td>
           </tr>
-          <%--Line 5--%>
+          <%-- Line 5 ---%>
+          <tr >
+            <td colspan="4">
+              <div ID="GeneralPayments" class="embGrid" style="height:250px">
+                <asp:Label ID="lblGeneralPayments" runat="server" Text="Pagos relacionados:"></asp:Label>
+                <br />
+                <iframe id="ifGeneralPayments" frameborder="0" runat="server" style="width:100%; height:100%">
+                </iframe>
+              </div>
+            </td>
+          </tr>
+          <%--Line 6--%>
           <tr>
             <td colspan="4">
               &nbsp;

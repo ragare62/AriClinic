@@ -164,10 +164,9 @@ public partial class PaymentGrid : System.Web.UI.Page
                     pay = (from p in ctx.Payments
                            where p.PaymentId == id
                            select p).FirstOrDefault<Payment>();
-                    if (pay.Ticket.Paid > 0)
-                    {
-                        pay.Ticket.Paid = pay.Ticket.Paid - pay.Amount;
-                    }
+                    pay.Ticket.Paid = pay.Ticket.Paid - pay.Amount;
+                    if (pay.GeneralPayment != null)
+                        pay.GeneralPayment.Amount = pay.GeneralPayment.Amount - pay.Amount;
                     ctx.Delete(pay);
                     ctx.SaveChanges();
                     RefreshGrid(true);

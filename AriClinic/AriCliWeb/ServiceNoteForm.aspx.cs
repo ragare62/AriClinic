@@ -95,6 +95,8 @@ public partial class ServiceNoteForm : System.Web.UI.Page
             // Load internal frame
             HtmlControl frm = (HtmlControl)this.FindControl("ifTickets");
             frm.Attributes["src"] = String.Format("TicketGrid.aspx?ServiceNoteId={0}", serviceNoteId);
+            frm = (HtmlControl)this.FindControl("ifGeneralPayments");
+            frm.Attributes["src"] = String.Format("GeneralPaymentGrid.aspx?ServiceNoteId={0}", serviceNoteId);
         }
         else
         {
@@ -202,7 +204,8 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         //txtComercialName.Text = sn.Customer.FullName;
         rddpServiceNoteDate.SelectedDate = sn.ServiceNoteDate;
         LoadClinicCombo(sn);
-        txtTotal.Text = sn.Total.ToString();
+        txtTotal.Text = String.Format("{0:0.00}", sn.Total);
+        txtPaid.Text = String.Format("{0:0.00}", sn.Paid);
         if (sn.Professional != null)
         {
             //txtProfessionalId.Text = sn.Professional.PersonId.ToString();
@@ -220,9 +223,8 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         sn.Clinic = CntAriCli.GetClinic(clinicId, ctx);
         sn.User = CntAriCli.GetUser(user.UserId, ctx);
         //
-        decimal tt = 0;
-        decimal.TryParse(txtTotal.Text, out tt);
-        sn.Total = tt;
+        sn.Total = sn.Tickets.Sum(t => t.Amount);
+        sn.Paid = sn.GeneralPayments.Sum(gp => gp.Amount);
         //
         customerId = Int32.Parse(rdcComercialName.SelectedValue);
         sn.Customer = CntAriCli.GetCustomer(customerId, ctx);

@@ -228,6 +228,24 @@ public partial class ServiceNoteForm {
     protected global::System.Web.UI.WebControls.TextBox txtTotal;
     
     /// <summary>
+    /// Control lblPaid.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblPaid;
+    
+    /// <summary>
+    /// Control txtPaid.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtPaid;
+    
+    /// <summary>
     /// Control lblTicket.
     /// </summary>
     /// <remarks>
@@ -244,6 +262,24 @@ public partial class ServiceNoteForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl ifTickets;
+    
+    /// <summary>
+    /// Control lblGeneralPayments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblGeneralPayments;
+    
+    /// <summary>
+    /// Control ifGeneralPayments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl ifGeneralPayments;
     
     /// <summary>
     /// Control btnInvoice.

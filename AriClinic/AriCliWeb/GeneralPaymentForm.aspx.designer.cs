@@ -120,6 +120,24 @@ public partial class GeneralPaymentForm {
     protected global::System.Web.UI.WebControls.TextBox txtGeneralPaymentId;
     
     /// <summary>
+    /// Control lblClinic.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblClinic;
+    
+    /// <summary>
+    /// Control rdcbClinic.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcbClinic;
+    
+    /// <summary>
     /// Control lblGeneralPaymentDate.
     /// </summary>
     /// <remarks>
@@ -190,6 +208,24 @@ public partial class GeneralPaymentForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtAmount;
+    
+    /// <summary>
+    /// Control lblComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblComments;
+    
+    /// <summary>
+    /// Control txtComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtComments;
     
     /// <summary>
     /// Control lblMessage.

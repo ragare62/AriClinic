@@ -61,7 +61,16 @@
               var w2 = window.open("GeneralPaymentForm.aspx?NotPaid=yes&CustomerId=" + gup('CustomerId')
                                    + "&GeneralPaymentId=" + id, "paytb_er", "width=450, height=310,resizable=1");
               w2.focus();
-          } 
+          }
+          function NewGeneralPaymentRecordServiceNote(id) {
+              var w1 = window.open("GeneralPaymentForm.aspx?ServiceNoteId=" + id
+                                   , "genpay_nr", "width=500, height=520,resizable=1");
+              w1.focus();
+          }
+          function EditGeneralPaymentRecordServiceNote(id) {
+              var w2 = window.open("GeneralPaymentForm.aspx?GeneralPaymentId=" + id, "genpay_er", "width=500, height=520,resizable=1");
+              w2.focus();
+          }  
           function CloseWindow()
           {
               window.close();
@@ -130,17 +139,17 @@
                                          meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
                                          SortExpression="GeneralPaymentId" UniqueName="GeneralPaymentId">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="GeneralPaymentDate" DataType="System.DateTime"
+                <telerik:GridBoundColumn DataField="PaymentDate" DataType="System.DateTime"
                                          FilterControlToolTip="" FilterImageToolTip="Filtro"
                                          HeaderText="Fecha cobro" DataFormatString="{0:dd/MM/yyyy}" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="GeneralPaymentDate" UniqueName="GeneralPaymentDate">
+                                         SortExpression="PaymentDate" UniqueName="PaymentDate">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="GeneralPaymentMethod.Name" 
+                <telerik:GridBoundColumn DataField="PaymentMethod.Name" 
                                          FilterControlToolTip="Filtrar por paciente" FilterImageToolTip="Filtro"
                                          HeaderText="Forma de pago" 
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
-                                         SortExpression="GeneralPaymentMethod.Name" UniqueName="GeneralPaymentMethod.Name">
+                                         SortExpression="PaymentMethod.Name" UniqueName="PaymentMethod.Name">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Amount" DataType="System.Decimal" DataFormatString="{0:C}"
                                          FilterControlToolTip="Filtrar por importe" FilterImageToolTip="Filtro"

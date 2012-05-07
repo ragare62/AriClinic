@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace AriCliModel
 {
-    public static class CntAriCli
+    public static partial class CntAriCli
     {
         public static bool NullDateTime(DateTime dtt)
         {

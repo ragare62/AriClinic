@@ -133,5 +133,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<GeneralPayment> generalPayments = new List<GeneralPayment>();
+		public virtual IList<GeneralPayment> GeneralPayments 
+		{ 
+		    get
+		    {
+		        return this.generalPayments;
+		    }
+		}
+		
 	}
 }

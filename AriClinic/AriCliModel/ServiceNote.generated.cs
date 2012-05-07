@@ -87,6 +87,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private decimal paid;
+		public virtual decimal Paid 
+		{ 
+		    get
+		    {
+		        return this.paid;
+		    }
+		    set
+		    {
+		        this.paid = value;
+		    }
+		}
+		
 		private Invoice invoice;
 		public virtual Invoice Invoice 
 		{ 

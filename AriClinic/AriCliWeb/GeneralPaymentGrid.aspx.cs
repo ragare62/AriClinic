@@ -15,10 +15,12 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
     Ticket tck = null;
     Customer cus = null;
     GeneralPayment pay = null;
+    ServiceNote serviceNote = null;
     int ticketId = 0;
     int patientId = 0;
     int customerId = 0;
     int paymentId = 0;
+    int serviceNoteId = 0;
     string type = "";
     Permission per = null;
 
@@ -61,6 +63,23 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             // hide patient column
             RadGrid1.Columns.FindByDataField("Ticket.Policy.Customer.FullName").Visible = false;
         }
+        if (Request.QueryString["ServiceNoteId"] != null)
+        {
+            serviceNoteId = int.Parse(Request.QueryString["ServiceNoteId"]);
+            serviceNote = CntAriCli.GetServiceNote(serviceNoteId, ctx);
+            HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
+            tt.Attributes["class"] = "ghost";
+            RadGrid1.Columns.FindByDataField("Ticket.Policy.Customer.FullName").Visible = false;
+            // Ticket.Description
+            RadGrid1.Columns.FindByDataField("Ticket.Description").Visible = false;
+            // Ticket.Amount
+            RadGrid1.Columns.FindByDataField("Ticket.Amount").Visible = false;
+            //Ticket.Paid
+            RadGrid1.Columns.FindByDataField("Ticket.Paid").Visible = false;
+            // to fit in iframe space
+            RadGrid1.PageSize = 3;
+            RadGrid1.AllowFilteringByColumn = false;
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -92,6 +111,8 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             imgb.Visible = per.Create;
             if (pat != null)
                 imgb.OnClientClick = "NewGeneralPaymentRecordInTab();";
+            if (serviceNote != null)
+                imgb.OnClientClick = String.Format("NewGeneralPaymentRecordServiceNote({0})", serviceNote.ServiceNoteId);
         }
         if (e.Item is GridDataItem)
         {
@@ -115,7 +136,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             //gdi["Policy"].Text = command;
             name = String.Format("{0} ({1}: {2})"
                                  , gdi["Ticket.Policy.Customer.FullName"].Text
-                                 , gdi["paymentMethod.Name"].Text
+                                 , gdi["PaymentMethod.Name"].Text
                                  , gdi["Amount"].Text);
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
@@ -128,10 +149,11 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
 
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            if (pat == null)
-                command = String.Format("return EditGeneralPaymentRecord({0});", id);
-            else
-                command = String.Format("return EditGeneralPaymentRecordInTab({0});", id);
+            //if (pat == null)
+            //    command = String.Format("return EditGeneralPaymentRecord({0});", id);
+            //else
+            //    command = String.Format("return EditGeneralPaymentRecordInTab({0});", id);
+            command = String.Format("return EditGeneralPaymentRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
@@ -164,8 +186,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
                     pay = (from p in ctx.GeneralPayments
                            where p.GeneralPaymentId == id
                            select p).FirstOrDefault<GeneralPayment>();
-                    ctx.Delete(pay);
-                    ctx.SaveChanges();
+                    CntAriCli.GeneralPaymentDelete(pay, ctx);
                     RefreshGrid(true);
                     break;
             }
@@ -190,11 +211,14 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             RadGrid1.DataSource = ctx.GeneralPayments;
         else
         {
-            //if (pat != null)
-            //    RadGrid1.DataSource = cus;
-            ////if (cus != null)
-            ////    RadGrid1.DataSource = CntAriCli.GetTicketsNotInvoiced(cus, ctx);
-            RadGrid1.DataSource = CntAriCli.GetGeneralPayments(cus, ctx);
+            if (serviceNote != null)
+            {
+                RadGrid1.DataSource = serviceNote.GeneralPayments;
+            }
+            else
+            {
+                RadGrid1.DataSource = CntAriCli.GetGeneralPayments(cus, ctx);
+            }
         }
         if (rebind) RadGrid1.Rebind();
     }

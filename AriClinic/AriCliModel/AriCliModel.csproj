@@ -86,6 +86,7 @@
     <Compile Include="CntDocs.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CntPayments.cs" />
     <Compile Include="ContactLensesTest.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
