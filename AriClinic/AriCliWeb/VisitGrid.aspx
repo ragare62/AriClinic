@@ -83,11 +83,11 @@
               var w1;
               switch (examType) {
                   case "general":
-                      window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
+                      w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
                       w1.focus();
                       break;
                   case "ophvisit":
-                      window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1");
+                      w1 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1");
                       w1.focus();
                       break;
               }

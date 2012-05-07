@@ -135,7 +135,8 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
             Label lb = (Label)e.Item.FindControl("lblValue");
             if (lt.LabTest.GeneralType == "LBTN")
             {
-                lb.Text = lt.NumValue.ToString();
+                //lb.Text = lt.NumValue.ToString();
+                lb.Text = String.Format("{0:#.#}",lt.NumValue);
             }
             else
             {

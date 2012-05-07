@@ -173,10 +173,12 @@ public partial class TreatmentForm : System.Web.UI.Page
         // Load patient data
         rdcPatient.Items.Clear();
         rdcPatient.Items.Add(new RadComboBoxItem(tr.Patient.FullName, tr.Patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = tr.Patient.PersonId.ToString();
 
         // Load diagnostic data
         rdcDrug.Items.Clear();
         rdcDrug.Items.Add(new RadComboBoxItem(tr.Drug.Name, tr.Drug.DrugId.ToString()));
+        rdcDrug.SelectedValue = tr.Drug.DrugId.ToString();
 
         rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
         txtRecommend.Text = tr.Recommend;

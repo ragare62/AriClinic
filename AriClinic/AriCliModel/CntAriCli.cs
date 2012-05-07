@@ -697,6 +697,7 @@ namespace AriCliModel
         public static IList<Payment> GetPayments(Customer cus, AriClinicContext ctx)
         {
             var rs = from p in ctx.Payments
+                     orderby p.PaymentDate descending
                      where p.Ticket.Policy.Customer.PersonId == cus.PersonId
                      select p;
             return rs.ToList<Payment>();
@@ -738,6 +739,7 @@ namespace AriCliModel
             if (clinicId == 0)
             {
                 var rs = from p in ctx.Payments
+                         orderby p.PaymentDate descending
                          where p.PaymentDate >= fromDate &&
                                p.PaymentDate <= toDate
                          select p;
@@ -746,6 +748,7 @@ namespace AriCliModel
             else
             {
                 var rs = from p in ctx.Payments
+                         orderby p.PaymentDate descending
                          where p.PaymentDate >= fromDate &&
                                p.PaymentDate <= toDate &&
                                p.Ticket.Clinic.ClinicId == clinicId
@@ -1242,6 +1245,7 @@ namespace AriCliModel
                 cust = new Customer();
 
             return (from anes in ctx.ServiceNotes
+                    orderby anes.ServiceNoteDate descending
                     where anes.Customer == cust
                     select anes).ToList<ServiceNote>();
         }

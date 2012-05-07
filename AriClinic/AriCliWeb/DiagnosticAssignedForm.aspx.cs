@@ -175,10 +175,13 @@ public partial class DiagnosticAssignedForm : System.Web.UI.Page
         // Load patient data
         rdcPatient.Items.Clear();
         rdcPatient.Items.Add(new RadComboBoxItem(da.Patient.FullName, da.Patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = da.Patient.PersonId.ToString();
 
         // Load diagnostic data
         rdcDiagnostic.Items.Clear();
         rdcDiagnostic.Items.Add(new RadComboBoxItem(da.Diagnostic.Name, da.Diagnostic.DiagnosticId.ToString()));
+        rdcDiagnostic.SelectedValue = da.Diagnostic.DiagnosticId.ToString();
+
 
         rdpDiagnosticDate.SelectedDate = da.DiagnosticDate;
         txtComments.Text = da.Comments;

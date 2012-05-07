@@ -204,7 +204,8 @@ public partial class LabTestAssignedForm : System.Web.UI.Page
         rdpLabTestDate.SelectedDate = lta.LabTestDate;
         if (lta.LabTest.GeneralType == "LBTN")
         {
-            txtValue.Text = lta.NumValue.ToString();
+            //txtValue.Text = lta.NumValue.ToString();
+            txtValue.Text = String.Format("{0:#.#}", lta.NumValue);
         }
         else 
         {

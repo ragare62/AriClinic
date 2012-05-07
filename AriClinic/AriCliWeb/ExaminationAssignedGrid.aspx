@@ -156,7 +156,7 @@
                       w2.focus();
                       break;
                   case "refractometry":
-                      w2 = window.open("RefractomeryForm.aspx?PatientId=" + gup('PatientId') +
+                      w2 = window.open("RefractometryForm.aspx?PatientId=" + gup('PatientId') +
                                        "&ExaminationAssignedId=" + id, "EAGRD", "width=800, height=700,resizable=1");
                       w2.focus();
                       break;

@@ -130,6 +130,12 @@
                                          meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
                                          SortExpression="PaymentId" UniqueName="PaymentId">
                 </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Ticket.TicketId" DataType="System.Int32" 
+                                         FilterControlToolTip="Filtrar por ticke" FilterImageToolTip="Filtro"
+                                         HeaderText="TICKET" 
+                                         meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
+                                         SortExpression="Ticket.TicketId" UniqueName="Ticket.TicketId">
+                </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="PaymentDate" DataType="System.DateTime"
                                          FilterControlToolTip="" FilterImageToolTip="Filtro"
                                          HeaderText="Fecha cobro" DataFormatString="{0:dd/MM/yyyy}" 
