@@ -159,12 +159,12 @@
                                          <HeaderStyle HorizontalAlign="Right" />
                                          <ItemStyle HorizontalAlign="Right" />
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Ticket.Policy.Customer.FullName" 
+                <telerik:GridBoundColumn DataField="ServiceNote.Customer.FullName" 
                                          FilterControlToolTip="Filtrar por cliente" FilterImageToolTip="Filtro"
-                                         HeaderText="Paciente" 
+                                         HeaderText="Paciente / Cliente" 
                                          meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
-                                         SortExpression="Ticket.Policy.Customer.FullName"
-                                         UniqueName="Ticket.Policy.Customer.FullName">
+                                         SortExpression="ServiceNote.Customer.FullName"
+                                         UniqueName="ServiceNote.Customer.FullName">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Ticket.Description" 
                                          FilterControlToolTip="Filtrar por concepto ticket" FilterImageToolTip="Filtro"

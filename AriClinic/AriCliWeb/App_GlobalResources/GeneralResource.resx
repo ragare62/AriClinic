@@ -333,4 +333,7 @@
   <data name="ClinicNeeded" xml:space="preserve">
     <value>Se necesita una clínica</value>
   </data>
+  <data name="PayInNote" xml:space="preserve">
+    <value>El ticket pertenece a una nota y debe ser pagado en ella</value>
+  </data>
 </root>

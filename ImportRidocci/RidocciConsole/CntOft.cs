@@ -448,6 +448,8 @@ namespace RidocciConsole
         public static void ImportServiceNote(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Borrar las notas de servicio y tickets previos
+            ctx.Delete(ctx.Payments);
+            ctx.Delete(ctx.GeneralPayments);
             ctx.Delete(ctx.Tickets);
             ctx.Delete(ctx.ServiceNotes);
             ctx.SaveChanges();
@@ -518,6 +520,7 @@ namespace RidocciConsole
                 tk.Professional = (from p in ctx.Professionals
                                    where p.OftId == idProfessional
                                    select p).FirstOrDefault<Professional>();
+                tk.ServiceNote.Professional = tk.Professional;
                 if (tk.ServiceNote.Professional == null)
                     tk.ServiceNote.Professional = tk.Professional;
                 tk.Description = (string)dr["Descripcion"];
@@ -560,6 +563,7 @@ namespace RidocciConsole
         public static void ImportPayments(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borrar antiguos pagos
+            ctx.Delete(ctx.GeneralPayments);
             ctx.Delete(ctx.Payments);
             foreach (Ticket tt in ctx.Tickets)
             {
@@ -590,8 +594,18 @@ namespace RidocciConsole
                 ServiceNote note = (from n in ctx.ServiceNotes
                                     where n.Oft_Ano == idAno && n.Oft_NumNota == idNumNota
                                     select n).FirstOrDefault<ServiceNote>();
+                // we create a general payment too
+                GeneralPayment gp = new GeneralPayment();
+                gp.Amount = (decimal)dr["Importe"];
+                gp.ServiceNote = note;
+                gp.PaymentDate = (DateTime)dr["Fecha"];
+                gp.PaymentMethod = pm;
+                gp.Description = (string)dr["Descripcion"];
+                note.Paid = note.Paid + gp.Amount;
+                ctx.Add(gp);
 
-                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, cl, ctx);
+
+                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, cl, gp, ctx);
                 if (!res)
                 {
                 }

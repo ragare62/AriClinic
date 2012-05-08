@@ -71,7 +71,7 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             //    snote.ServiceNoteDate,
             //    CntAriCli.GetServiceNoteAmount(snote), 
             //    CntAriCli.GetServiceNoteAmountPay(snote));
-            txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", snote.Customer.ComercialName, snote.ServiceNoteDate);
+            txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy}) T:{2:0.00} P:{3:0.00}", snote.Customer.ComercialName, snote.ServiceNoteDate, snote.Total, snote.Paid);
             txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
             SetFocus(rdcbClinic);
         }
@@ -148,6 +148,13 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             lblMessage.Text = Resources.GeneralResource.NumericNeeded;
             return false;
         }
+        decimal amount = decimal.Parse(txtAmount.Text);
+        if (amount > CntAriCli.GetUnpaid(snote, ctx))
+        {
+            lblMessage.Text = Resources.GeneralResource.TicketAmountExceeded;
+            return false;
+        }
+
 
         return true;
     }

@@ -64,6 +64,8 @@ DELETE FROM payment;
 ALTER TABLE payment AUTO_INCREMENT=1;
 DELETE FROM ticket;
 ALTER TABLE ticket AUTO_INCREMENT=1;
+DELETE FROM `general_payment`;
+ALTER TABLE `general_payment` AUTO_INCREMENT=1;
 DELETE FROM service_note;
 ALTER TABLE service_note AUTO_INCREMENT=1;
 #

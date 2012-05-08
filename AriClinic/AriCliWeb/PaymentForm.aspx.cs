@@ -141,6 +141,11 @@ public partial class PaymentForm : System.Web.UI.Page
         {
             ticketId = Int32.Parse(txtTicketId.Text);
             tck = CntAriCli.GetTicket(ticketId, ctx);
+            if (tck.ServiceNote != null)
+            {
+                lblMessage.Text = Resources.GeneralResource.PayInNote;
+                return false;
+            }
             if (!CntAriCli.PaymentControl(tck, pay, Decimal.Parse(txtAmount.Text)))
             {
                 lblMessage.Text = Resources.GeneralResource.TicketAmountExceeded;

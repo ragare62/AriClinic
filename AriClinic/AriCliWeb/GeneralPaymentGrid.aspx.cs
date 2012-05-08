@@ -69,7 +69,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             serviceNote = CntAriCli.GetServiceNote(serviceNoteId, ctx);
             HtmlControl tt = (HtmlControl)this.FindControl("TitleArea");
             tt.Attributes["class"] = "ghost";
-            RadGrid1.Columns.FindByDataField("Ticket.Policy.Customer.FullName").Visible = false;
+            RadGrid1.Columns.FindByDataField("ServiceNote.Customer.FullName").Visible = false;
             // Ticket.Description
             RadGrid1.Columns.FindByDataField("Ticket.Description").Visible = false;
             // Ticket.Amount
@@ -135,7 +135,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             //command = String.Format("{0} [{1} - {2}]", gdi["Policy.Insurance.Name"].Text, bDate, eDate);
             //gdi["Policy"].Text = command;
             name = String.Format("{0} ({1}: {2})"
-                                 , gdi["Ticket.Policy.Customer.FullName"].Text
+                                 , gdi["ServiceNote.Customer.FullName"].Text
                                  , gdi["PaymentMethod.Name"].Text
                                  , gdi["Amount"].Text);
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
@@ -219,6 +219,10 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
             {
                 RadGrid1.DataSource = CntAriCli.GetGeneralPayments(cus, ctx);
             }
+        }
+        if (serviceNote != null)
+        {
+            RadGrid1.DataSource = serviceNote.GeneralPayments;
         }
         if (rebind) RadGrid1.Rebind();
     }

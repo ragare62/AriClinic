@@ -1163,7 +1163,7 @@ namespace AriCliModel
             return true;
         }
 
-        public static bool PayNote(PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, AriClinicContext ctx)
+        public static bool PayNote(PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, GeneralPayment gp, AriClinicContext ctx)
         {
             Payment p = null; // payment to be created
             Ticket t = null; // related ticket
@@ -1179,7 +1179,7 @@ namespace AriCliModel
             if (t != null)
             {
                 // (1.1) It exists.
-                CreatePayment(t, pm, amount, dt, des, note, cl, ctx);
+                CreatePayment(t, pm, amount, dt, des, note, cl, gp, ctx);
             }
             else
             {
@@ -1191,14 +1191,14 @@ namespace AriCliModel
                 {
                     if (tk.Amount - tk.Paid >= amount)
                     {
-                        CreatePayment(tk, pm, amount, dt, des, note, cl, ctx);
+                        CreatePayment(tk, pm, amount, dt, des, note, cl, gp, ctx);
                         break; // out
                     }
                     else
                     {
                         decimal paid = tk.Amount - tk.Paid;
                         amount = amount - paid;
-                        CreatePayment(tk, pm, paid, dt, des, note, cl, ctx);
+                        CreatePayment(tk, pm, paid, dt, des, note, cl, gp, ctx);
                     }
                 }
             }
@@ -1206,14 +1206,15 @@ namespace AriCliModel
             return true;
         }
 
-        public static void CreatePayment(Ticket t, PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, AriClinicContext ctx)
+        public static void CreatePayment(Ticket t, PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, GeneralPayment gp, AriClinicContext ctx)
         {
             Payment p = new Payment();
             p.Amount = amount;
             p.Clinic = cl;
             p.PaymentDate = dt;
             p.PaymentMethod = pm;
-
+            p.GeneralPayment = gp;
+            p.Description = des;
             p.Ticket = t;
             t.Paid = t.Paid + amount;
             ctx.Add(p);

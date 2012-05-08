@@ -466,6 +466,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El ticket pertenece a una nota y debe ser pagado en ella.
+        /// </summary>
+        internal static string PayInNote {
+            get {
+                return ResourceManager.GetString("PayInNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Se necesita una forma de pago.
         /// </summary>
         internal static string PaymentMethodNeeded {
