@@ -1053,6 +1053,7 @@
     <Content Include="GeneralPaymentGrid.aspx" />
     <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
+    <Content Include="images\gears_run.png" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
     <Content Include="FundusForm.aspx" />
@@ -1323,7 +1324,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

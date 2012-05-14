@@ -20,6 +20,7 @@ public partial class VisitForm : System.Web.UI.Page
     BaseVisit visit = null;
     Patient patient = null;
     VisitReason visitReason = null;
+    bool fromAppointment = false;
     int professionalId = 0;
     int visitId = 0;
     int patientId = 0;
@@ -57,6 +58,40 @@ public partial class VisitForm : System.Web.UI.Page
         else
         {
             rdpVisitDate.SelectedDate = DateTime.Now;
+            // load professional
+            if (user.Professionals.Count > 0)
+            {
+                Professional p = user.Professionals[0];
+                rdcProfessional.Items.Clear();
+                rdcProfessional.Items.Add(new RadComboBoxItem(p.FullName, p.PersonId.ToString()));
+                rdcProfessional.SelectedValue = p.PersonId.ToString();
+            }
+            // called from an appointment?
+            if (Request.QueryString["AppointmentId"] != null) 
+            {
+                AppointmentInfo app = CntAriCli.GetAppointment(int.Parse(Request.QueryString["AppointmentId"]), ctx);
+                if (app != null)
+                {
+                    Patient pat = app.Patient;
+                    rdcPatient.Items.Clear();
+                    rdcPatient.Items.Add(new RadComboBoxItem(pat.FullName, pat.PersonId.ToString()));
+                    rdcPatient.SelectedValue = pat.PersonId.ToString();
+                    //
+                    rdpVisitDate.SelectedDate = app.BeginDateTime;
+                    //
+                    Professional prof = app.Professional;
+                    rdcProfessional.Items.Clear();
+                    rdcProfessional.Items.Add(new RadComboBoxItem(prof.FullName, prof.PersonId.ToString()));
+                    rdcProfessional.SelectedValue = prof.PersonId.ToString();
+                    //
+                    AppointmentType appt = app.AppointmentType;
+                    rdcAppointmentType.Items.Clear();
+                    rdcAppointmentType.Items.Add(new RadComboBoxItem(appt.Name, appt.AppointmentTypeId.ToString()));
+                    rdcAppointmentType.SelectedValue = appt.AppointmentTypeId.ToString();
+                    //
+                    fromAppointment = true;
+                }
+            }
         }
         //
         if (Request.QueryString["PatientId"] != null)
@@ -105,7 +140,19 @@ public partial class VisitForm : System.Web.UI.Page
         if (!CreateChange())
             return;
         if (type == "InTab" && command == "CloseAndRebind('new')")
+        {
             command = String.Format("parentReload('VisitTab.aspx?VisitId={0}');", visit.VisitId);
+            Session["FromAppointment"] = true;
+        }
+        else
+        {
+            if (Session["FromAppointment"] != null)
+            {
+                command = "CancelEdit();";
+                Session["FromAppointment"] = null;
+            }
+        }
+
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 

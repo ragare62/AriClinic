@@ -58,12 +58,21 @@
           #Group
           {
               z-index: 1;
-              left: 115px;
-              top: 204px;
+              left: 9px;
+              top: 154px;
               position: absolute;
-              height: 44px;
-              width: 291px;
+              height: 33px;
+              width: 169px;
           }
+          #Professional
+          {
+              z-index: 1;
+              left: 10px;
+              top: 206px;
+              position: absolute;
+              height: 33px;
+              width: 391px;
+          }          
           #Login
           {
               z-index: 1;
@@ -162,9 +171,20 @@
           <asp:Label ID="lblGroup" runat="server" Text="Grupo:" 
                      ToolTip="Grupo al que pertenece"></asp:Label>
           <br />
-          <asp:DropDownList ID="ddlGroup" runat="server" Height="23px" Width="285px" TabIndex="5">
+          <asp:DropDownList ID="ddlGroup" runat="server" Height="22px" Width="164px" 
+                TabIndex="5">
           </asp:DropDownList>
         </div>
+
+       <div ID="Professional" class="normalText">
+          <asp:Label ID="lblProfessional" runat="server" Text="Profesional asociado:" 
+                     ToolTip="Profesional con el que se realaciona"></asp:Label>
+          <br />
+          <asp:DropDownList ID="ddlProfessional" runat="server" Height="22px" Width="386px" 
+                TabIndex="5">
+          </asp:DropDownList>
+       </div>
+
         <div ID="Message" class="messageText">
           <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
         </div>

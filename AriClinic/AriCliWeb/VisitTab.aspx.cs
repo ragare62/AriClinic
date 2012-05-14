@@ -15,6 +15,8 @@ public partial class VisitTab : System.Web.UI.Page
     int visitId = 0;
     Patient patient = null;
     int patientId = 0;
+    AppointmentInfo appinf = null;
+    int appinfId = 0;
     string type = "";
     Permission per = null;
     HtmlControl frame = null;
@@ -50,16 +52,31 @@ public partial class VisitTab : System.Web.UI.Page
             visit = CntAriCli.GetVisit(visitId, ctx);
             patient = visit.Patient;
             patientId = patient.PersonId;
-            string title = String.Format("{0} ({1:dd/MM/yyyy}) {2}",
-                visit.VisitReason.Name,
-                visit.VisitDate,
-                visit.Patient.FullName);
+            string title = "";
+            if (visit.VisitReason != null)
+            {
+                title = String.Format("{0} ({1:dd/MM/yyyy}) {2}",
+                    visit.VisitReason.Name,
+                    visit.VisitDate,
+                    visit.Patient.FullName);
+            }
+            else
+            {
+                title = String.Format("{0} ({1:dd/MM/yyyy})",
+                    visit.Patient.FullName,
+                    visit.VisitDate);
+            }
             lblTitle.Text = title;
             this.Title = title;
         }
         else
         {
             lblTitle.Text = "Nueva visita";
+        }
+        if (Request.QueryString["AppointmentId"] != null)
+        {
+            appinfId = int.Parse(Request.QueryString["AppointmentId"]);
+            appinf = CntAriCli.GetAppointment(appinfId, ctx);
         }
     }
 
@@ -72,7 +89,8 @@ public partial class VisitTab : System.Web.UI.Page
             if (visit == null)
             {
                 url = String.Format("VisitForm.aspx?Type=InTab");
-                if (patient != null) url = String.Format("VisitForm.aspx?Type=InTab&PatientId={0}",patientId);
+                if (patient != null) url = String.Format("{0}&PatientId={1}",url, patientId);
+                if (appinf != null) url = String.Format("{0}&AppointmentId={1}", url, appinfId);
                 // make invisible tabs that aren't the general one
                 for (int i = 1; i<=5;i++)
                 {

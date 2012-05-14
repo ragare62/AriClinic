@@ -131,6 +131,7 @@ public partial class UserForm : System.Web.UI.Page
         txtName.Text = u.Name;
         txtLogin.Text = u.Login;
         LoadGroupCombo(u);
+        LoadProfessional(u);
     }
 
     protected void UnloadData(User u)
@@ -143,6 +144,11 @@ public partial class UserForm : System.Web.UI.Page
         u.UserGroup = (from ug in ctx.UserGroups
                        where ug.UserGroupId == id
                        select ug).FirstOrDefault<UserGroup>();
+        if (ddlProfessional.SelectedValue != "") 
+        {
+            Professional p = CntAriCli.GetProfessional(int.Parse(ddlProfessional.SelectedValue), ctx);
+            if (p != null) p.User = u;
+        }
     }
     protected void LoadGroupCombo(User u)
     {
@@ -154,6 +160,23 @@ public partial class UserForm : System.Web.UI.Page
         if (u != null)
         {
             ddlGroup.SelectedValue = u.UserGroup.UserGroupId.ToString();
+        }
+    }
+    protected void LoadProfessional(User u)
+    {
+        ddlProfessional.Items.Clear(); // clear all previous options
+        foreach (Professional p in ctx.Professionals)
+        {
+            ddlProfessional.Items.Add(new ListItem(p.FullName, p.PersonId.ToString()));
+        }
+        if (u.Professionals.Count > 0)
+        {
+            ddlProfessional.SelectedValue = u.Professionals[0].PersonId.ToString();
+        }
+        else
+        {
+            ddlProfessional.Items.Add(new ListItem(" ", ""));
+            ddlProfessional.SelectedValue = "";
         }
     }
     #endregion Auxiliary functions

@@ -1139,22 +1139,22 @@
           <orm:single-field field-name="serviceNoteId" />
         </orm:identity>
         <orm:field name="total" property="Total" behavior="readwrite" null-value="none" uniqueId="85f62e79-148b-44ec-afac-cb99c9f49be0" type="System.Decimal">
-          <orm:column name="ttal" sql-type="numeric" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+          <orm:column name="ttal" sql-type="NUMERIC" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         </orm:field>
         <orm:field name="serviceNoteId" property="ServiceNoteId" behavior="readwrite" null-value="none" uniqueId="5dc1967e-38ec-4982-80b6-82616a971de6" type="System.Int32">
-          <orm:column name="service_note_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="service_note_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="serviceNoteDate" property="ServiceNoteDate" behavior="readwrite" null-value="none" uniqueId="5d7d1860-9ba7-473f-b1a9-1c2f1a464368" type="System.DateTime">
           <orm:column name="service_note_date" sql-type="datetime" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         </orm:field>
         <orm:field name="oftAno" property="Oft_Ano" behavior="readwrite" uniqueId="d0908863-c76b-47db-b8b9-e150c794e93d" type="System.Int32">
-          <orm:column name="oft_ano" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="oft_ano" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="oftNumNota" property="Oft_NumNota" behavior="readwrite" uniqueId="a610e973-d0d4-4546-a66b-5f623d2f22f9" type="System.Int32">
-          <orm:column name="oft_num_nota" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="oft_num_nota" sql-type="INTEGER" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
-        <orm:field name="paid" property="Paid" uniqueId="3e44cbf4-50fb-427f-98f3-35a694b3f1f2" type="System.Decimal">
-          <orm:column name="paid" sql-type="numeric" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
+        <orm:field name="paid" property="Paid" behavior="readwrite" uniqueId="3e44cbf4-50fb-427f-98f3-35a694b3f1f2" type="System.Decimal">
+          <orm:column name="paid" sql-type="NUMERIC" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         </orm:field>
         <orm:field name="invoice" property="Invoice" behavior="readwrite" null-value="none" uniqueId="be1fb3cc-6a4d-497f-9255-b272c79f5c48" type="AriCliModel.Invoice">
           <orm:reference uniqueId="763d4fa6-b6ea-4653-9351-28968a1e87c8" />
@@ -1181,7 +1181,7 @@
           <orm:collection element-class="AriCliModel.GeneralPayment" inverse-field="serviceNote" order-by="" uniqueId="0cb92c52-7f79-4556-9a1b-9a29cac7a237" />
         </orm:field>
         <orm:index name="idx_service_note_clinic_id">
-          <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_invoice_id">
           <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -1190,7 +1190,7 @@
           <orm:column name="invoice_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_person_id">
-          <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_service_note_person_id2">
           <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -1674,6 +1674,9 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1708,6 +1711,9 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -1847,6 +1853,9 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -1974,6 +1983,9 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:identity>
@@ -2101,6 +2113,9 @@
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_prescription_glasses_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:identity>
@@ -2229,6 +2244,9 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -2607,6 +2625,9 @@
         <orm:field name="ophthalmologicVisit" property="OphthalmologicVisit" behavior="readwrite" uniqueId="d6034dce-61aa-406e-b58a-4b7455e058bf" type="AriCliModel.OphthalmologicVisit">
           <orm:reference uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
         </orm:field>
+        <orm:index name="idx_ant_segment_visit_id">
+          <orm:column name="visit_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:class name="MotAppend" update-schema="true" behavior="readwrite" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
         <orm:table name="mot_append" />
@@ -2788,6 +2809,15 @@
         <orm:field name="payments" property="Payments" behavior="readwrite" uniqueId="01f372cc-2f13-4ae9-ad89-218e80aeddfb" type="AriCliModel.Payment">
           <orm:collection element-class="AriCliModel.Payment" inverse-field="generalPayment" order-by="" uniqueId="2e5bd126-71a8-4f72-a17d-d4b5be842ca3" />
         </orm:field>
+        <orm:index name="idx_general_payment_clinic_id">
+          <orm:column name="clinic_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_general_payment_payment_method_id">
+          <orm:column name="payment_method_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
+        <orm:index name="idx_general_payment_service_note_id">
+          <orm:column name="service_note_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:index>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />

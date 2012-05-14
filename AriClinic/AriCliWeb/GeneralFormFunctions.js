@@ -1,6 +1,6 @@
 ﻿// Refresh the grid in caller
-function CloseAndRebind(arg)
-{
+function CloseAndRebind(arg) {
+    alert("CLOSE&REBIND");
     if (gup("Type") == "InTab")
     {
         parent.opener.refreshGrid(arg);

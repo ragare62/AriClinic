@@ -132,6 +132,12 @@ public partial class AppointmentForm : System.Web.UI.Page
         string command = "CloseAndRebind();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
+    protected void btnVisit_Click(object sender, ImageClickEventArgs e)
+    {
+        string command = "CloseAndRebind();";
+        RadAjaxManager1.ResponseScripts.Add(command);
+    }
+
     protected void btnServiceId_Click(object sender, ImageClickEventArgs e)
     {
     }
@@ -232,9 +238,14 @@ public partial class AppointmentForm : System.Web.UI.Page
         txtDuration.Text = app.Duration.ToString();
         txtSubject.Text = app.Subject;
         txtComments.Text = app.Comments;
+        //
         string command = String.Format("return ViewHisAdm({0});", app.Patient.PersonId);
         btnMedicalRecord.OnClientClick = command;
         btnMedicalRecord.Visible = true;
+        //
+        command = String.Format("return CreateVisit({0});", app.AppointmentId);
+        btnVisit.OnClientClick = command;
+        btnVisit.Visible = true;
     }
 
     protected void UnloadData(AppointmentInfo app)
