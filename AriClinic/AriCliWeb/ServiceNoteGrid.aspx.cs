@@ -223,7 +223,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
     protected void RefreshGrid()
     {
         if (pat == null && cus == null)
-            RadGrid1.DataSource = ctx.ServiceNotes;
+            RadGrid1.DataSource = ctx.ServiceNotes.OrderByDescending(x => x.ServiceNoteDate);
         else
         {
             if (pat != null)

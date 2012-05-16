@@ -113,7 +113,9 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
+        lblMessage.Text = "[1]";
         RadAjaxManager1.ResponseScripts.Add(command);
+        lblMessage.Text = "[2]";
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)

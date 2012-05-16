@@ -1489,6 +1489,7 @@ namespace AriCliModel
         public static IList<BaseVisit> GetVisits(AriClinicContext ctx)
         {
             return (from l in ctx.BaseVisits
+                    orderby l.VisitDate descending
                     select l).ToList<BaseVisit>();
         }
         public static BaseVisit GetVisit(int id, AriClinicContext ctx)

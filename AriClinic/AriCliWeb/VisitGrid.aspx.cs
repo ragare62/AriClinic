@@ -201,7 +201,7 @@ public partial class VisitGrid : System.Web.UI.Page
         if (patient == null)
             RadGrid1.DataSource = CntAriCli.GetVisits(ctx);
         else
-            RadGrid1.DataSource = patient.BaseVisits;
+            RadGrid1.DataSource = patient.BaseVisits.OrderByDescending(v => v.VisitDate);
         if (rebind)
             RadGrid1.Rebind();
     }
