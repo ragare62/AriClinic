@@ -51,16 +51,14 @@ public partial class AppointmentForm : System.Web.UI.Page
             Diary dia = CntAriCli.GetDiary(int.Parse(Request.QueryString["DiaryId"]), ctx);
             if (dia != null)
             {
-                txtDiaryId.Text = dia.DiaryId.ToString();
-                txtDiaryName.Text = dia.Name;
+                LoadDiaryCombo(dia);
             }
         }
         if (Request.QueryString["PatientId"] != null)
         {
             // Patient passed
             Patient pat = CntAriCli.GetPatient(int.Parse(Request.QueryString["PatientId"]), ctx);
-            txtPatientId.Text = pat.PersonId.ToString();
-            txtPatientName.Text = pat.FullName;
+            LoadPatientCombo(pat);
         }
         if (Request.QueryString["AppointmentId"] != null)
         {
@@ -147,7 +145,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     {
         string command = "";
         // patient needed
-        if (txtPatientId.Text == "")
+        if (rdcPatient.SelectedValue == "")
         {
             command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
                                     , Resources.GeneralResource.Warning
@@ -156,7 +154,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             return false;
         }
         // diary needed
-        if (txtDiaryId.Text == "")
+        if (rdcDiary.SelectedValue == "")
         {
             command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
                                     , Resources.GeneralResource.Warning
@@ -165,7 +163,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             return false;
         }
         // professional needed
-        if (txtProfessionalId.Text == "")
+        if (rdcProfessional.SelectedValue == "")
         {
             command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
                                     , Resources.GeneralResource.Warning
@@ -174,7 +172,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             return false;
         }
         // appointment type needed
-        if (txtAppointmentType.Text == "")
+        if (rdcAppointmentType.SelectedValue == "")
         {
             command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
                                     , Resources.GeneralResource.Warning
@@ -222,14 +220,10 @@ public partial class AppointmentForm : System.Web.UI.Page
         LoadStatusCombo(app);
         if (app == null) return; // There isn't any agenda to show
         txtAppointmentId.Text = String.Format("{0:00000000}", app.AppointmentId);
-        txtPatientId.Text = app.Patient.PersonId.ToString();
-        txtPatientName.Text = app.Patient.FullName;
-        txtDiaryId.Text = app.Diary.DiaryId.ToString();
-        txtDiaryName.Text = app.Diary.Name;
-        txtAppointmentType.Text = app.AppointmentType.AppointmentTypeId.ToString();
-        txtAppointmentTypeName.Text = app.AppointmentType.Name;
-        txtProfessionalId.Text = app.Professional.PersonId.ToString();
-        txtProfessionalName.Text = app.Professional.FullName;
+        LoadPatientCombo(app.Patient);
+        LoadDiaryCombo(app.Diary);
+        LoadAppointmentTypeCombo(app.AppointmentType);
+        LoadProfessionalCombo(app.Professional);
         rddtBeginDateTime.SelectedDate = app.BeginDateTime;
         rddtEndDateTime.SelectedDate = app.EndDateTime;
         // arrival could be null in two different ways
@@ -250,10 +244,10 @@ public partial class AppointmentForm : System.Web.UI.Page
 
     protected void UnloadData(AppointmentInfo app)
     {
-        app.Patient = CntAriCli.GetPatient(int.Parse(txtPatientId.Text), ctx);
-        app.Diary = CntAriCli.GetDiary(int.Parse(txtDiaryId.Text), ctx);
-        app.Professional = CntAriCli.GetProfessional(int.Parse(txtProfessionalId.Text), ctx);
-        app.AppointmentType = CntAriCli.GetAppointmentType(int.Parse(txtAppointmentType.Text), ctx);
+        app.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        app.Diary = CntAriCli.GetDiary(int.Parse(rdcDiary.SelectedValue), ctx);
+        app.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
+        app.AppointmentType = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
         app.BeginDateTime = (DateTime)rddtBeginDateTime.SelectedDate;
         app.EndDateTime = (DateTime)rddtEndDateTime.SelectedDate;
         app.Duration = int.Parse(txtDuration.Text);
@@ -297,6 +291,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     }
     protected void TimeCalculation(AppointmentType apptype)
     {
+        if (apptype == null) return;
         txtDuration.Text = apptype.Duration.ToString();
         DateTime start = (DateTime)rddtBeginDateTime.SelectedDate;
         rddtEndDateTime.SelectedDate = start.AddMinutes(apptype.Duration);
@@ -305,73 +300,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     #endregion Auxiliary functions
 
     #region Searching outside
-    protected void txtDiaryId_TextChanged(object sender, EventArgs e)
-    {
-        Diary dia = CntAriCli.GetDiary(int.Parse(txtDiaryId.Text), ctx);
-        if (dia == null)
-        {
-            txtDiaryId.Text = "";
-            txtDiaryName.Text = Resources.GeneralResource.DiaryDoesNotExists;
-        }
-        else
-        {
-            txtDiaryId.Text = dia.DiaryId.ToString();
-            txtDiaryName.Text = dia.Name;
-        }
-    }
 
-    protected void txtPatientId_TextChanged(object sender, EventArgs e)
-    {
-        int id;
-        if (!int.TryParse(txtPatientId.Text, out id)) return;
-        Patient pat = CntAriCli.GetPatient(id, ctx);
-        if (pat == null)
-        {
-            txtPatientId.Text = "";
-            txtPatientName.Text = Resources.GeneralResource.PatientDoesNotExists;
-        }
-        else
-        {
-            txtPatientId.Text = pat.PersonId.ToString();
-            txtPatientName.Text = pat.FullName;
-        }
-    }
-
-    protected void txtAppointmentTypeId_TextChanged(object sender, EventArgs e)
-    {
-        int id;
-        if (!int.TryParse(txtAppointmentType.Text, out id)) return; 
-        AppointmentType apptype = CntAriCli.GetAppointmentType(id, ctx);
-        if (apptype == null)
-        {
-            txtAppointmentType.Text = "";
-            txtAppointmentTypeName.Text = Resources.GeneralResource.AppointmentTypeDoesNotExists;
-        }
-        else
-        {
-            txtAppointmentType.Text = apptype.AppointmentTypeId.ToString();
-            txtAppointmentTypeName.Text = apptype.Name;
-            if (rddtBeginDateTime.SelectedDate != null)
-                TimeCalculation(apptype);
-        }
-    }
-
-    protected void txtProfessionalId_TextChanged(object sender, EventArgs e)
-    {
-        int id;
-        if (!int.TryParse(txtProfessionalId.Text, out id)) return;
-        Professional prof = CntAriCli.GetProfessional(id, ctx);
-        if (prof == null)
-        {
-            txtProfessionalId.Text = "";
-            txtProfessionalName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
-        }
-        else
-        {
-            txtProfessionalId.Text = prof.PersonId.ToString();
-            txtProfessionalName.Text = prof.FullName;
-        }
-    }
 
     protected void txtDuration_TextChanged(object sender, EventArgs e)
     {
@@ -379,7 +308,9 @@ public partial class AppointmentForm : System.Web.UI.Page
         if (rddtBeginDateTime.SelectedDate != null)
         {
             DateTime start = (DateTime)rddtBeginDateTime.SelectedDate;
-            rddtEndDateTime.SelectedDate = start.AddMinutes(int.Parse(txtDuration.Text));
+            int dur = 0;
+            if (txtDuration.Text != "") dur = int.Parse(txtDuration.Text);
+            rddtEndDateTime.SelectedDate = start.AddMinutes(dur);
         }
     }
     #endregion
@@ -387,11 +318,110 @@ public partial class AppointmentForm : System.Web.UI.Page
     protected void rddtBeginDateTime_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
     {
         // We check if an appointment type is selected
-        if (txtAppointmentType.Text != "")
+        if (rdcAppointmentType.SelectedValue != "")
         {
-            AppointmentType apptype = CntAriCli.GetAppointmentType(int.Parse(txtAppointmentType.Text), ctx);
+            AppointmentType apptype = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
             if (apptype != null)
                 TimeCalculation(apptype);
         }
     }
+    
+    // Combo controls
+    protected void LoadPatientCombo(Patient patient)
+    {
+        rdcPatient.Items.Clear();
+        rdcPatient.Items.Add(new RadComboBoxItem( patient.FullName, patient.PersonId.ToString()));
+        rdcPatient.SelectedValue = patient.PersonId.ToString();
+    }
+    protected void LoadDiaryCombo(Diary diary)
+    {
+        rdcDiary.Items.Clear();
+        rdcDiary.Items.Add(new RadComboBoxItem(diary.Name, diary.DiaryId.ToString()));
+        rdcDiary.SelectedValue = diary.DiaryId.ToString();
+    }
+    protected void LoadProfessionalCombo(Professional professional)
+    {
+        rdcProfessional.Items.Clear();
+        rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = professional.PersonId.ToString();
+    }
+    protected void LoadAppointmentTypeCombo(AppointmentType apptype)
+    {
+        rdcAppointmentType.Items.Clear();
+        rdcAppointmentType.Items.Add(new RadComboBoxItem(apptype.Name, apptype.AppointmentTypeId.ToString()));
+        rdcAppointmentType.SelectedValue = apptype.AppointmentTypeId.ToString();
+    }
+
+    protected void rdcPatient_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.Patients
+                 where c.FullName.StartsWith(e.Text)
+                 select c;
+        foreach (Patient pat in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(pat.FullName, pat.PersonId.ToString()));
+        }
+    }
+
+    protected void rdcDiary_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.Diaries
+                 where c.Name.StartsWith(e.Text)
+                 select c;
+        foreach (Diary dia in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(dia.Name, dia.DiaryId.ToString()));
+        }
+    }
+
+    protected void rdcAppointmentType_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.AppointmentTypes
+                 where c.Name.StartsWith(e.Text)
+                 select c;
+        foreach (AppointmentType apptype in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(apptype.Name, apptype.AppointmentTypeId.ToString()));
+        }
+    }
+
+    protected void rdcProfessional_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from c in ctx.Professionals
+                 where c.FullName.StartsWith(e.Text)
+                 select c;
+        foreach (Professional prf in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(prf.FullName, prf.PersonId.ToString()));
+        }
+    }
+
+    protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+    {
+
+    }
+
+    protected void rdcAppointmentType_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        if (rdcAppointmentType.SelectedValue != "")
+        {
+            AppointmentType apptype = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
+            TimeCalculation(apptype);
+        }
+        
+    }
+
+
 }

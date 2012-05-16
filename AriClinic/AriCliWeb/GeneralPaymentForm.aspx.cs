@@ -111,6 +111,7 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             command = "CloseAndRebind('new')";
         else
             command = "CloseAndRebind('')";
+        lblMessage.Text = "[0]";
         if (!CreateChange())
             return;
         lblMessage.Text = "[1]";

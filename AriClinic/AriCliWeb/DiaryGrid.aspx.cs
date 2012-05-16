@@ -84,7 +84,7 @@ public partial class DiaryGrid : System.Web.UI.Page
                                     , null
                                     , name
                                     , null
-                                    , "Drug");
+                                    , "Diary");
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 

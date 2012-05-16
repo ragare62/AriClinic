@@ -26,28 +26,46 @@
                 <script type="text/javascript" src="GeneralFormFunctions.js"></script>
                 <script type="text/javascript" src="dialog_box.js"></script>
                 <script type="text/javascript">
-                    function refreshField(v1, v2, v3, v4, type){
-                        if (type){
-                            switch (type){
+                    function refreshField(v1, v2, v3, v4, type) {
+                        if (type) {
+                            switch (type) {
                                 case "Patient":
-                                    document.getElementById('<%= txtPatientId.ClientID %>').value = v1;
-                                    document.getElementById('<%= txtPatientName.ClientID %>').value = v3;
-                                    break;
-                                case "Diary":
-                                    document.getElementById('<%= txtDiaryId.ClientID %>').value = v1;
-                                    document.getElementById('<%= txtDiaryName.ClientID %>').value = v3;
+                                    combo = $find("<%= rdcPatient.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                                     break;
                                 case "Professional":
-                                    document.getElementById('<%= txtProfessionalId.ClientID %>').value = v1;
-                                    document.getElementById('<%= txtProfessionalName.ClientID %>').value = v3;
+                                    combo = $find("<%= rdcProfessional.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
+                                    break;
+                                case "Diary":
+                                    combo = $find("<%= rdcDiary.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
                                     break;
                                 case "AppointmentType":
-                                    document.getElementById('<%= txtAppointmentType.ClientID %>').value = v1;
-                                    document.getElementById('<%= txtAppointmentTypeName.ClientID %>').value = v3;
+                                    combo = $find("<%= rdcAppointmentType.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
+                                    break;
+                                default:
                                     break;
                             }
                         }
                     }
+                    function loadCombo(combo, v1, v3) {
+                        var items = combo.get_items();
+                        items.clear();
+                        var comboItem = new Telerik.Web.UI.RadComboBoxItem();
+                        comboItem.set_text(v3);
+                        comboItem.set_value(v1);
+                        items.add(comboItem);
+                        combo.commitChanges();
+                        comboItem.select();
+                    }
+
+
                     function ViewHisAdm(id) {
                         var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "fullscreen=yes,resizable=1");
                         w2.focus();
@@ -58,9 +76,15 @@
                     }
                 </script>
             </telerik:RadScriptBlock>
-            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
+                                    onajaxrequest="RadAjaxManager1_AjaxRequest">
                 <AjaxSettings>
-                    <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                    <telerik:AjaxSetting AjaxControlID="rdcAppointmentType">
+                        <UpdatedControls>
+                            <telerik:AjaxUpdatedControl ControlID="rdcAppointmentType" />
+                            <telerik:AjaxUpdatedControl ControlID="rddtEndDateTime" />
+                            <telerik:AjaxUpdatedControl ControlID="txtDuration" />
+                        </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
@@ -97,82 +121,73 @@
                                                ToolTip="Identificador del tipo de cita, lo usa interPatientNamente el sistema"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtAppointmentId" runat="server" AutoPostBack="True" 
-                                                 TabIndex="1" Width="75px" ></asp:TextBox>
+                                                 Width="75px" ></asp:TextBox>
                                 </div>
                             </td>
-                            <td>
+                            <td colspan="3">
                                 <div ID="PatientId" class="normalText">
-                                    <asp:Label ID="lblPatientId" runat="server" Text="PAT ID:" 
-                                               ToolTip="Identificador del paciente asociado, lo usa interPatientNamente el sistema"></asp:Label>
+                                    <asp:Label ID="lblPatientId" runat="server" Text="Paciente" 
+                                               ToolTip="Paciente citado"></asp:Label>
                                     <asp:ImageButton ID="btnPatientId" runat="server" 
                                                      ImageUrl="~/images/search_mini.png" CausesValidation="false"
                                                      ToolTip="Haga clic aquí para buscar un paciente" 
-                                                     OnClientClick="searchPatient();" />
+                                                     OnClientClick="searchPatient();" TabIndex="100" />
                                     <br />
-                                    <asp:TextBox ID="txtPatientId" runat="server" TabIndex="2" 
-                                                 Width="89px" AutoPostBack="True" 
-                                                 ontextchanged="txtPatientId_TextChanged"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td colspan="2">
-                                <div ID="PatientName" class="normalText">
-                                    <asp:Label ID="lblPatientName" runat="server" Text="Nombre:" 
-                                               ToolTip="Nombre del tipo de cita"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtPatientName" runat="server" 
-                                                 TabIndex="21" Width="247px" Enabled="False"></asp:TextBox>
+                                    <telerik:RadComboBox runat="server" ID="rdcPatient" Height="100px" 
+                                        Width="350px" ItemsPerRequest="10" 
+                                                         EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="1" AutoPostBack="True"
+                                                         onitemsrequested="rdcPatient_ItemsRequested" 
+                                        CausesValidation="False">
+                                    </telerik:RadComboBox>
+
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
+                            <td colspan="3">
                                 <div ID="DiaryId" class="normalText">
-                                    <asp:Label ID="lblDiaryId" runat="server" Text="AGEN ID:" 
-                                               ToolTip="Identificador del la agenda a la que pertenece, lo usa internamente el sistema"></asp:Label>
+                                    <asp:Label ID="lblDiaryId" runat="server" Text="Agenda:" 
+                                               ToolTip="Agenda para que se cita"></asp:Label>
                                     <asp:ImageButton ID="btnDiaryId" runat="server" 
                                                      CausesValidation="false" ImageUrl="~/images/search_mini.png" 
                                                      OnClientClick="searchDiary();" 
-                                                     ToolTip="Haga clic aquí para buscar una agenda" />
+                                                     ToolTip="Haga clic aquí para buscar una agenda" 
+                                        TabIndex="100" />
                                     <br />
-                                    <asp:TextBox ID="txtDiaryId" runat="server" AutoPostBack="True" 
-                                                 ontextchanged="txtDiaryId_TextChanged" TabIndex="3" Width="89px"></asp:TextBox>
+                                    <telerik:RadComboBox runat="server" ID="rdcDiary" Height="100px" Width="350px" ItemsPerRequest="10" 
+                                                         EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="2" AutoPostBack="True"
+                                                         onitemsrequested="rdcDiary_ItemsRequested" 
+                                        CausesValidation="False">
+                                    </telerik:RadComboBox>
                                 </div>
                             </td>
-                            <td colspan="2">
-                                <div ID="DiaryName" class="normalText">
-                                    <asp:Label ID="lblDiaryName" runat="server" Text="Agenda:" 
-                                               ToolTip="Nombre de la agenda"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtDiaryName" runat="server" TabIndex="22" 
-                                                 Width="247px" Enabled="False"></asp:TextBox>
-                                </div>
-                            </td>
+
                         </tr>
                         <tr>
                             <td>
                             </td>
-                            <td>
+                            <td colspan="3">
                                 <div ID="AppointmentTypeId" class="normalText">
-                                    <asp:Label ID="lblAppointmentTypeId" runat="server" Text="TCIT ID:" 
-                                               ToolTip="Identificador del tipo de cita asociado, lo usa interPatientNamente el sistema"></asp:Label>
+                                    <asp:Label ID="lblAppointmentTypeId" runat="server" Text="Tipo cita:" 
+                                               ToolTip="Tipo de cita de la que se trata"></asp:Label>
                                     <asp:ImageButton ID="ibtnAppointmentTypeId" runat="server" 
                                                      CausesValidation="false" ImageUrl="~/images/search_mini.png" 
                                                      OnClientClick="searchAppointmentType();"
-                                                     ToolTip="Haga clic aquí para buscar un paciente" />
+                                                     ToolTip="Haga clic aquí para buscar un paciente" 
+                                        TabIndex="100" />
                                     <br />
-                                    <asp:TextBox ID="txtAppointmentType" runat="server" AutoPostBack="True" 
-                                                 ontextchanged="txtAppointmentTypeId_TextChanged" TabIndex="4" 
-                                                 Width="89px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td colspan="2">
-                                <div ID="AppointmentTypeName" class="normalText">
-                                    <asp:Label ID="lblAppointmentTypeName" runat="server" Text="Tipo de cita:" 
-                                               ToolTip="Nombre del tipo de cita"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtAppointmentTypeName" runat="server" TabIndex="23" 
-                                                 Width="247px" Enabled="False"></asp:TextBox>
+                                    <telerik:RadComboBox runat="server" ID="rdcAppointmentType" AutoPostBack="true" 
+                                                         Height="100px" Width="350px" ItemsPerRequest="10" 
+                                                         EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="3"
+                                                         onitemsrequested="rdcAppointmentType_ItemsRequested" 
+                                                         
+                                        onselectedindexchanged="rdcAppointmentType_SelectedIndexChanged" 
+                                        CausesValidation="False">
+                                    </telerik:RadComboBox>                                
                                 </div>
                             </td>
                         </tr>
@@ -180,29 +195,25 @@
                             <td>
 
                             </td>
-                            <td>
+                            <td colspan="3">
                                 <div ID="ProfessionalId" class="normalText">
-                                    <asp:Label ID="lblProfessionalId" runat="server" Text="PROF ID:" 
-                                               ToolTip="Identificador del paciente, lo usa internamente el sistema"></asp:Label>
+                                    <asp:Label ID="lblProfessionalId" runat="server" Text="Profesional:" 
+                                               ToolTip="Profesional para el que se cita."></asp:Label>
                                     <asp:ImageButton ID="btnProfessionalId" runat="server" 
                                                      ImageUrl="~/images/search_mini.png" CausesValidation="false"
                                                      ToolTip="Haga clic aquí para buscar un professional" 
-                                                     OnClientClick="searchProfessional();" />
+                                                     OnClientClick="searchProfessional();" TabIndex="100" />
                                     <br />
-                                    <asp:TextBox ID="txtProfessionalId" runat="server" TabIndex="5" 
-                                                 Width="89px" AutoPostBack="True" 
-                                                 ontextchanged="txtProfessionalId_TextChanged"></asp:TextBox>
+                                    <telerik:RadComboBox runat="server" ID="rdcProfessional" Height="100px" 
+                                        Width="350px" ItemsPerRequest="10" 
+                                                         EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="4" AutoPostBack="True"
+                                                         onitemsrequested="rdcProfessional_ItemsRequested" 
+                                        CausesValidation="False">
+                                    </telerik:RadComboBox>
                                 </div>
                             </td>
-                            <td colspan="2">
-                                <div ID="ProfessionalName" class="normalText">
-                                    <asp:Label ID="lblProfessionalName" runat="server" Text="Professional sanitario:" 
-                                               ToolTip="Nombre del profesinalsanitario"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtProfessionalName" runat="server" 
-                                                 TabIndex="24" Width="247px" Enabled="False"></asp:TextBox>
-                                </div>
-                            </td>
+
                         </tr>
                         <tr>
                             <td>
@@ -224,7 +235,7 @@
                                         <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="6" 
                                                    AutoPostBack="True">
                                         </DateInput>
-                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="6" />
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="5" />
                                     </telerik:RadDateTimePicker>
                                 </div>
                             </td>
@@ -241,7 +252,7 @@
                                         </Calendar>
                                         <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="7">
                                         </DateInput>
-                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="7" />
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="6" />
                                     </telerik:RadDateTimePicker>
                                 </div>
                             </td>
@@ -249,7 +260,7 @@
                                 <div id="Duration" class="normalText">
                                     <asp:Label ID="lblDuration" runat="server" Text="Duración:"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtDuration" runat="server" Width="58px" TabIndex="8" 
+                                    <asp:TextBox ID="txtDuration" runat="server" Width="58px" TabIndex="7" 
                                                  ontextchanged="txtDuration_TextChanged" AutoPostBack="True"></asp:TextBox>
                                 </div>
                             </td>
@@ -261,7 +272,7 @@
                                 <div id="Arrival" class="normalText">
                                     <asp:Label ID="lblArrival" runat="server" Text="Llegada:"></asp:Label>
                                     <br />
-                                    <telerik:RadTimePicker ID="rddtArrival" runat="server" TabIndex="9">
+                                    <telerik:RadTimePicker ID="rddtArrival" runat="server" TabIndex="8">
                                         <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                                                   ViewSelectorText="x">
                                         </Calendar>
@@ -270,7 +281,7 @@
                                         <TimeView CellSpacing="-1" Culture="es-ES">
                                         </TimeView>
                                         <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
-                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="9" 
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="10" 
                                                    Width="">
                                         </DateInput>
                                     </telerik:RadTimePicker>
@@ -280,7 +291,7 @@
                                 <div id="Status" class="normalText">
                                     <asp:Label ID="lblStatus" runat="server" Text="Estado:"></asp:Label>
                                     <br />
-                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="10">
+                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="11">
                                     </asp:DropDownList>
                                 </div>
 
@@ -293,7 +304,7 @@
                                                ToolTip="Este es el texto que aparecerá en el calendario"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtSubject" runat="server" Enabled="false" 
-                                                 TabIndex="11" Width="507px" Height="23px"></asp:TextBox>
+                                                 TabIndex="12" Width="507px" Height="23px"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -304,26 +315,26 @@
                                                ToolTip="Observaciones"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtComments" runat="server" 
-                                                 TabIndex="11" Width="507px" Height="116px" TextMode="MultiLine"></asp:TextBox>
+                                                 TabIndex="13" Width="507px" Height="116px" TextMode="MultiLine"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4">
                                 <div ID="Buttons" class="buttonsFomat">
-                                    <asp:ImageButton ID="btnVisit" runat="server" TabIndex="12" 
+                                    <asp:ImageButton ID="btnVisit" runat="server" TabIndex="16" 
                                                      ImageUrl="~/images/gears_run.png" onclick="btnVisit_Click" 
                                                      ToolTip="Generar visita" Visible="False" /> 
                                     &nbsp;
-                                    <asp:ImageButton ID="btnMedicalRecord" runat="server" TabIndex="12" 
+                                    <asp:ImageButton ID="btnMedicalRecord" runat="server" TabIndex="17" 
                                                      ImageUrl="~/images/folder_cubes.png" onclick="btnMedicalRecord_Click" 
                                                      ToolTip="Abrir historial" Visible="False" /> 
                                     &nbsp;
-                                    <asp:ImageButton ID="btnAccept" runat="server" TabIndex="12" 
+                                    <asp:ImageButton ID="btnAccept" runat="server" TabIndex="14" 
                                                      ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" 
                                                      ToolTip="Guardar y salir" />
                                     &nbsp;
-                                    <asp:ImageButton ID="btnCancel" runat="server" TabIndex="13" 
+                                    <asp:ImageButton ID="btnCancel" runat="server" TabIndex="15" 
                                                      ImageUrl="~/images/document_out.png" CausesValidation="False" 
                                                      onclick="btnCancel_Click" ToolTip="Salir sin guardar" />
                                 </div>

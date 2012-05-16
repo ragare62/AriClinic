@@ -129,31 +129,13 @@ public partial class AppointmentForm {
     protected global::System.Web.UI.WebControls.ImageButton btnPatientId;
     
     /// <summary>
-    /// Control txtPatientId.
+    /// Control rdcPatient.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtPatientId;
-    
-    /// <summary>
-    /// Control lblPatientName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblPatientName;
-    
-    /// <summary>
-    /// Control txtPatientName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtPatientName;
+    protected global::Telerik.Web.UI.RadComboBox rdcPatient;
     
     /// <summary>
     /// Control lblDiaryId.
@@ -174,31 +156,13 @@ public partial class AppointmentForm {
     protected global::System.Web.UI.WebControls.ImageButton btnDiaryId;
     
     /// <summary>
-    /// Control txtDiaryId.
+    /// Control rdcDiary.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtDiaryId;
-    
-    /// <summary>
-    /// Control lblDiaryName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblDiaryName;
-    
-    /// <summary>
-    /// Control txtDiaryName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtDiaryName;
+    protected global::Telerik.Web.UI.RadComboBox rdcDiary;
     
     /// <summary>
     /// Control lblAppointmentTypeId.
@@ -219,31 +183,13 @@ public partial class AppointmentForm {
     protected global::System.Web.UI.WebControls.ImageButton ibtnAppointmentTypeId;
     
     /// <summary>
-    /// Control txtAppointmentType.
+    /// Control rdcAppointmentType.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtAppointmentType;
-    
-    /// <summary>
-    /// Control lblAppointmentTypeName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblAppointmentTypeName;
-    
-    /// <summary>
-    /// Control txtAppointmentTypeName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtAppointmentTypeName;
+    protected global::Telerik.Web.UI.RadComboBox rdcAppointmentType;
     
     /// <summary>
     /// Control lblProfessionalId.
@@ -264,31 +210,13 @@ public partial class AppointmentForm {
     protected global::System.Web.UI.WebControls.ImageButton btnProfessionalId;
     
     /// <summary>
-    /// Control txtProfessionalId.
+    /// Control rdcProfessional.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalId;
-    
-    /// <summary>
-    /// Control lblProfessionalName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblProfessionalName;
-    
-    /// <summary>
-    /// Control txtProfessionalName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtProfessionalName;
+    protected global::Telerik.Web.UI.RadComboBox rdcProfessional;
     
     /// <summary>
     /// Control lblBeginDateTime.
