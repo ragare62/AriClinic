@@ -105,6 +105,10 @@ public partial class RptView : System.Web.UI.Page
                     case "bombasPCEA":
                         LoadRptBombasPCEA();
                         break;
+                    case "rticketprofessional":
+                        RptTicketsByProfessional rtprf = new RptTicketsByProfessional();
+                        ReportViewer1.Report = rtprf;
+                        break;
                         
                 }
             }

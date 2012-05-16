@@ -70,6 +70,12 @@
     <Compile Include="RptServSurgeon.Designer.cs">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptTicketsByProfessional.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicketsByProfessional.Designer.cs">
+      <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptServSurgeon.resx">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicketsByProfessional.resx">
+      <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>

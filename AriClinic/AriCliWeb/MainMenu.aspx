@@ -149,6 +149,10 @@
               var w1 = window.open("RptPaymentsForm.aspx", "RPAYMENTS", "width=440, height=230,resizable=1")
               w1.focus();
           }
+          function LaunchRTicketProfessional() {
+              var w1 = window.open("RptView.aspx?Report=rticketprofessional", "RTCKPROF", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
           function LaunchProcedure()
           {
               var w1 = window.open("ProcedureGrid.aspx", "PROCEDURE", "width=580, height=380,resizable=1")
@@ -430,6 +434,9 @@
                       <telerik:RadMenuItem runat="server" Owner="" Text="Tickets emitidos" 
                                            Value="rtickets">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tickets por profesional" 
+                            Value="rticketprofessional">
+                        </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados" 
                                            Value="rpayments">
                       </telerik:RadMenuItem>
