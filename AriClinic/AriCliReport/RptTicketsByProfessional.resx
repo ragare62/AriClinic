@@ -117,6 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="sqlProfessionals.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
+        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
+        ZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlckNvbGxlY3Rpb24BAAAAEkNvbGxlY3Rp
+        b25gMStpdGVtcwOnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBv
+        cnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249NS4z
+        LjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        AgAAAAkDAAAABAMAAACnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5S
+        ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
+        NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
+        ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
+        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAAAQAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJl
+        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
+</value>
+  </metadata>
   <metadata name="sqlTicketsProfessionals.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
@@ -129,33 +145,33 @@
         ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
         NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
         ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
-        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAACAAAABwAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJl
-        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAANAgwHAAAATlN5c3RlbS5E
-        YXRhLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVj
-        NTYxOTM0ZTA4OQwIAAAASVN5c3RlbSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1
-        YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFBQAAAChUZWxlcmlrLlJlcG9ydGluZy5TcWxEYXRh
-        U291cmNlUGFyYW1ldGVyBAAAAAZkYlR5cGUYRGF0YVNvdXJjZVBhcmFtZXRlcituYW1lGURhdGFTb3Vy
-        Y2VQYXJhbWV0ZXIrdmFsdWUjRGF0YVNvdXJjZVBhcmFtZXRlcitQcm9wZXJ0eUNoYW5nZWQEAQIEElN5
-        c3RlbS5EYXRhLkRiVHlwZQcAAAAxU3lzdGVtLkNvbXBvbmVudE1vZGVsLlByb3BlcnR5Q2hhbmdlZEV2
-        ZW50SGFuZGxlcggAAAACAAAABff///8SU3lzdGVtLkRhdGEuRGJUeXBlAQAAAAd2YWx1ZV9fAAgHAAAA
-        BQAAAAYKAAAABkBGRGF0ZQoKAQYAAAAFAAAAAfX////3////BQAAAAYMAAAABkBURGF0ZQoKCw==
+        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAAEwAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJl
+        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAAJBwAAAAoMCAAAAE5TeXN0
+        ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+        N2E1YzU2MTkzNGUwODkMCQAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQUAAAAoVGVsZXJpay5SZXBvcnRpbmcuU3Fs
+        RGF0YVNvdXJjZVBhcmFtZXRlcgQAAAAGZGJUeXBlGERhdGFTb3VyY2VQYXJhbWV0ZXIrbmFtZRlEYXRh
+        U291cmNlUGFyYW1ldGVyK3ZhbHVlI0RhdGFTb3VyY2VQYXJhbWV0ZXIrUHJvcGVydHlDaGFuZ2VkBAEC
+        BBJTeXN0ZW0uRGF0YS5EYlR5cGUIAAAAMVN5c3RlbS5Db21wb25lbnRNb2RlbC5Qcm9wZXJ0eUNoYW5n
+        ZWRFdmVudEhhbmRsZXIJAAAAAgAAAAX2////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAI
+        CAAAAAUAAAAGCwAAAAZARkRhdGUKCgEGAAAABQAAAAH0////9v///wUAAAAGDQAAAAZAVERhdGUKCgEH
+        AAAABQAAAAHy////9v///wsAAAAGDwAAAAdAUGVyc0lkCgoL
 </value>
   </metadata>
   <data name="sqlTicketsProfessionals.SelectCommand" xml:space="preserve">
     <value>SELECT        professional.person_id, professional.comercial_name, ticket.ticket_id, ticket.ticket_date, ticket.service_note_id, ticket.description, ticket.amount, ticket.paid, 
-                         customer.comercial_name AS Expr1
+                         customer.comercial_name AS Expr1, healthcare_company.name
 FROM            ticket INNER JOIN
                          professional ON ticket.person_id = professional.person_id INNER JOIN
                          service_note ON ticket.service_note_id = service_note.service_note_id INNER JOIN
-                         customer ON service_note.person_id = customer.person_id
-WHERE ticket.ticket_date &gt;= @FDate
-AND ticket.ticket_date &lt;= @TDate</value>
+                         customer ON service_note.person_id = customer.person_id, healthcare_company
+WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @TDate) AND (professional.person_id IN (@PersId))</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAANQAAABQCAYAAABh/1vWAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsRAAALEQF/ZF+RAAAAFnRFWHRDcmVhdGlvbiBUaW1l
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsPAAALDwGS+QOlAAAAFnRFWHRDcmVhdGlvbiBUaW1l
         ADA0LzAxLzExPDKlwQAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNAay06AAAArWcHJW
         V3ic7VvdbyNXFb8OdmaTdb69a9JxJxnMCiRIcWznS+Jlm00/1N3til2WQmktx/YkodlkcT6WZRWQQOJD
         5Ymn5i9AfeCFB8QT79m6j1RdVaJPleCpQgippSjD75w7M54ZfyR27HGk9kxsz9y59557zvmdcz/z+Piv
@@ -1102,5 +1118,8 @@ AND ticket.ticket_date &lt;= @TDate</value>
   </data>
   <metadata name="$this.ShowSnapGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <value>0.1in</value>
   </metadata>
 </root>

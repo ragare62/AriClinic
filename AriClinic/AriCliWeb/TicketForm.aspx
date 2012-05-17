@@ -269,6 +269,7 @@ width: 672px;
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
       </telerik:RadSkinManager>
+
       <telerik:RadInputManager ID="RadInputManager1" runat="server">
         <telerik:TextBoxSetting Validation-IsRequired="true">
           <TargetControls>
@@ -295,6 +296,7 @@ width: 672px;
           <Validation IsRequired="True"></Validation>
         </telerik:NumericTextBoxSetting>
       </telerik:RadInputManager>
+
       <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                  AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
       </telerik:RadToolTipManager>

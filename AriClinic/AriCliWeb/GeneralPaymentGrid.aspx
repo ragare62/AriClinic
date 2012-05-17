@@ -195,7 +195,7 @@
                     <asp:ImageButton ID="Select" runat="server" 
                                      ImageUrl="~/images/document_gear_16.png" meta:resourceKey="SelectResource1" 
                                      ToolTip="Seleccionar este registro y volver con su información" />
-                    <asp:ImageButton ID="Edit" runat="server" 
+                    <asp:ImageButton ID="Edit" runat="server" Visible="false" 
                                      ImageUrl="~/images/document_edit_16.png" meta:resourceKey="EditResource1" 
                                      ToolTip="Editar este registro" />
                     <asp:ImageButton ID="Delete" runat="server" 

@@ -94,7 +94,7 @@
             width: 108px;
             }             
             /* Line 5 */
-                        #Comments
+            #Comments
             {
             z-index: 1;
             left: 12px;
@@ -158,39 +158,17 @@
             </telerik:RadScriptBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
                                     onajaxrequest="RadAjaxManager1_AjaxRequest">
-                <AjaxSettings>
-                    <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
-                        <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadAjaxPanel1" />
-                        </UpdatedControls>
-                    </telerik:AjaxSetting>
-                </AjaxSettings>
             </telerik:RadAjaxManager>
             <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
             </telerik:RadSkinManager>
+
             <telerik:RadInputManager ID="RadInputManager1" runat="server">
-                <telerik:TextBoxSetting Validation-IsRequired="true">
-                    <TargetControls>
-                        <telerik:TargetInput ControlID="txtDescription" />
-                    </TargetControls>
-                    <Validation IsRequired="True"></Validation>
-                </telerik:TextBoxSetting>
-                <telerik:TextBoxSetting>
-                    <TargetControls>
-                        <telerik:TargetInput ControlID="txtPatientName" />
-                        <telerik:TargetInput ControlID="txtInsuranceServiceName" />
-                    </TargetControls>
-                </telerik:TextBoxSetting>
-                <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="0" 
-                                               DecimalSeparator="." GroupSeparator="." GroupSizes="3" MaxValue="999999999" 
-                                               MinValue="0" NegativePattern="-n" PositivePattern="n">
-                    <TargetControls>
-                    </TargetControls>
-                </telerik:NumericTextBoxSetting>
+
                 <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="2" 
                                                DecimalSeparator="," GroupSeparator="." 
                                                GroupSizes="3" NegativePattern="-n" 
-                                               PositivePattern="n" Validation-IsRequired="true">
+                                               PositivePattern="n" Validation-IsRequired="true" 
+                                               MaxValue="999999" MinValue="-999999">
                     <TargetControls>
                         <telerik:TargetInput ControlID="txtAmount" />
                     </TargetControls>
@@ -198,6 +176,7 @@
                     <Validation IsRequired="True"></Validation>
                 </telerik:NumericTextBoxSetting>
             </telerik:RadInputManager>
+
             <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                        AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
             </telerik:RadToolTipManager>
@@ -222,7 +201,7 @@
                                ToolTip="Clinica en la que se realiza el cobro"></asp:Label>
                     <br />
                     <telerik:RadComboBox ID="rdcbClinic" runat="server" TabIndex="6" Width="165px" 
-                        Height="100px" >
+                                         Height="100px" >
                     </telerik:RadComboBox>
                 </div>
                 <div ID="GeneralPaymentDate" class="normalText">
@@ -260,7 +239,7 @@
                                ToolTip="Comentarios al pago"></asp:Label>
                     <br />
                     <asp:TextBox ID="txtComments" runat="server" TabIndex="10" Width="390px" 
-                        Enabled="true" Height="56px" TextMode="MultiLine"></asp:TextBox>
+                                 Enabled="true" Height="56px" TextMode="MultiLine"></asp:TextBox>
                 </div>
                 <%--Line 5--%>
                 <div ID="Message" class="messageText">
