@@ -19,6 +19,7 @@
             position: absolute;
             height: 19px;
             width: 410px;
+                bottom: 273px;
             }
             /* Line 2 */
             #GeneralPaymentId
@@ -141,42 +142,12 @@
             <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
                 <script type="text/javascript" src="GeneralFormFunctions.js">
                 </script>
-                <script type="text/javascript">
-        
-                    //Put your JavaScript code here.
-                    function refreshField(v1, v2, v3, v4, type){
-                        if (type){
-                            switch (type){
-                                case "Ticket":
-                                    document.getElementById('<%= txtAmount.ClientID %>').value = v2;
-                                    break;
-                            }
-                        }
-                    }
-                </script>
-
             </telerik:RadScriptBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
                                     onajaxrequest="RadAjaxManager1_AjaxRequest">
             </telerik:RadAjaxManager>
             <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
             </telerik:RadSkinManager>
-
-            <telerik:RadInputManager ID="RadInputManager1" runat="server">
-
-                <telerik:NumericTextBoxSetting Culture="es-ES" DecimalDigits="2" 
-                                               DecimalSeparator="," GroupSeparator="." 
-                                               GroupSizes="3" NegativePattern="-n" 
-                                               PositivePattern="n" Validation-IsRequired="true" 
-                                               MaxValue="999999" MinValue="-999999">
-                    <TargetControls>
-                        <telerik:TargetInput ControlID="txtAmount" />
-                    </TargetControls>
-
-                    <Validation IsRequired="True"></Validation>
-                </telerik:NumericTextBoxSetting>
-            </telerik:RadInputManager>
-
             <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                        AutoTooltipify="true" RelativeTo="Element" Position="TopCenter">
             </telerik:RadToolTipManager>
@@ -230,8 +201,11 @@
                     <asp:Label ID="lblAmount" runat="server" Text="Importe:" 
                                ToolTip="Importe del ticket"></asp:Label>
                     <br />
-                    <asp:TextBox ID="txtAmount" runat="server"
-                                 TabIndex="11" Width="98px" style="text-align:right" ></asp:TextBox>
+                    <telerik:RadNumericTextBox ID="txtAmount" runat="server"  TabIndex="11" Width="98px">
+                    </telerik:RadNumericTextBox>
+                    <br />
+                    <asp:RequiredFieldValidator ID="valAmount" ControlToValidate="txtAmount"
+                        runat="server" ErrorMessage="Se necesita importe" CssClass="normalTextRed"></asp:RequiredFieldValidator>
                 </div>
                 <%--Line 5--%>
                 <div id="Comments" class="normalText">

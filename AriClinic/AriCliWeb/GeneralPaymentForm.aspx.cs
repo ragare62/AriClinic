@@ -72,7 +72,8 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             //    CntAriCli.GetServiceNoteAmount(snote), 
             //    CntAriCli.GetServiceNoteAmountPay(snote));
             txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy}) T:{2:0.00} P:{3:0.00}", snote.Customer.ComercialName, snote.ServiceNoteDate, snote.Total, snote.Paid);
-            txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
+            txtAmount.Value = (double)CntAriCli.GetUnpaid(snote, ctx);
+            //txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
             SetFocus(rdcbClinic);
         }
 
@@ -113,13 +114,15 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             command = "CloseAndRebind('');";
         if (!CreateChange())
             return;
-        RadAjaxManager1.ResponseScripts.Add(command);
+        //RadAjaxManager1.ResponseScripts.Add(command);
+        Page.ClientScript.RegisterStartupScript(this.GetType(),"CMDJ",command,true);
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
-        RadAjaxManager1.ResponseScripts.Add(command);
+        //RadAjaxManager1.ResponseScripts.Add(command);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "CMDJ", command,true);
     }
 
     #endregion Page events (clics)
@@ -143,12 +146,12 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
             return false;
         }
         // se necesita controlar los pagos
-        if (txtAmount.Text == "")
+        if (txtAmount.Value == 0)
         {
             lblMessage.Text = Resources.GeneralResource.NumericNeeded;
             return false;
         }
-        decimal amount = decimal.Parse(txtAmount.Text);
+        decimal amount = (decimal)txtAmount.Value;
         if (amount > CntAriCli.GetUnpaid(snote, ctx))
         {
             lblMessage.Text = Resources.GeneralResource.TicketAmountExceeded;
@@ -184,13 +187,15 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
         if (pay != null)
         {
             txtGeneralPaymentId.Text = pay.GeneralPaymentId.ToString();
-            txtAmount.Text = String.Format("{0:#.#}", pay.Amount);
+            txtAmount.Value = (double)pay.Amount;
+            //txtAmount.Text = String.Format("{0:#.#}", pay.Amount);
             txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", pay.ServiceNote.Customer.ComercialName, pay.ServiceNote.ServiceNoteDate);
         }
         else
         {
             txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", snote.Customer.ComercialName, snote.ServiceNoteDate);
-            txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
+            txtAmount.Value = (double)CntAriCli.GetUnpaid(snote, ctx);
+            //txtAmount.Text = string.Format("{0:#.#}", CntAriCli.GetUnpaid(snote, ctx));
         }
     }
 
@@ -204,7 +209,7 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
         Clinic clinic = CntAriCli.GetClinic(int.Parse(rdcbClinic.SelectedValue), ctx);
         PaymentMethod payMethod = CntAriCli.GetPaymentMethod(int.Parse(rdcbPaymentMethod.SelectedValue), ctx);
         DateTime payDate = (DateTime)rddpGeneralPaymentDate.SelectedDate;
-        Decimal amount = decimal.Parse(txtAmount.Text);
+        Decimal amount = (decimal)txtAmount.Value;
         string description = txtComments.Text;
         pay = CntAriCli.GeneralPaymentNew(clinic, snote, amount, payMethod, payDate, description, ctx);
     }
@@ -254,14 +259,6 @@ public partial class GeneralPaymentForm : System.Web.UI.Page
 
 
     #region Searching outside
-
-    protected void btnTicketId_Click(object sender, ImageClickEventArgs e)
-    {
-        // We search only tickets that belongs to that customer 
-        // and are not invoiced
-        string command = "searchTicketAll();";
-        RadAjaxManager1.ResponseScripts.Add(command);
-    }
 
 
     #endregion

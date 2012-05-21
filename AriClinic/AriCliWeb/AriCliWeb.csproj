@@ -185,6 +185,13 @@
     <Compile Include="BiometryForm.aspx.designer.cs">
       <DependentUpon>BiometryForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GeneralPaymentForm2.aspx.cs">
+      <DependentUpon>GeneralPaymentForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralPaymentForm2.aspx.designer.cs">
+      <DependentUpon>GeneralPaymentForm2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GeneralPaymentGrid.aspx.cs">
       <DependentUpon>GeneralPaymentGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1050,6 +1057,7 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="GeneralPaymentForm2.aspx" />
     <Content Include="GeneralPaymentGrid.aspx" />
     <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
@@ -1324,7 +1332,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

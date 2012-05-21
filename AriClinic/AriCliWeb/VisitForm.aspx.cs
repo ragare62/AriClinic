@@ -202,7 +202,11 @@ public partial class VisitForm : System.Web.UI.Page
         if (visit == null)
         {
             visit = new BaseVisit();
-            if (app != null) visit.AppointmentInfo = app;
+            if (app != null)
+            {
+                
+                visit.AppointmentInfo = app;
+            }
             UnloadData(visit);
             ctx.Add(visit);
         }

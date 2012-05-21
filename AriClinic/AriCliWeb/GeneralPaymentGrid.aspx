@@ -44,31 +44,31 @@
           }
           function NewGeneralPaymentRecord() {
               
-              var w1 = window.open("GeneralPaymentForm.aspx", "pay_nr1", "width=450, height=310,resizable=1");
+              var w1 = window.open("GeneralPaymentForm2.aspx", "pay_nr1", "width=450, height=310,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecord(id)
           {
-              var w2 = window.open("GeneralPaymentForm.aspx?paymentId=" + id, "pay_er1", "width=450, height=310,resizable=1");
+              var w2 = window.open("GeneralPaymentForm2.aspx?paymentId=" + id, "pay_er1", "width=450, height=310,resizable=1");
               w2.focus();
           }
           function NewGeneralPaymentRecordInTab() {
-              var w1 = window.open("GeneralPaymentForm.aspx?CustomerId=" + gup('CustomerId')
+              var w1 = window.open("GeneralPaymentForm2.aspx?CustomerId=" + gup('CustomerId')
               , "paytb_nr", "width=450, height=310,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecordInTab(id) {
-              var w2 = window.open("GeneralPaymentForm.aspx?NotPaid=yes&CustomerId=" + gup('CustomerId')
+              var w2 = window.open("GeneralPaymentForm2.aspx?NotPaid=yes&CustomerId=" + gup('CustomerId')
                                    + "&GeneralPaymentId=" + id, "paytb_er", "width=450, height=310,resizable=1");
               w2.focus();
           }
           function NewGeneralPaymentRecordServiceNote(id) {
-              var w1 = window.open("GeneralPaymentForm.aspx?ServiceNoteId=" + id
+              var w1 = window.open("GeneralPaymentForm2.aspx?ServiceNoteId=" + id
                                    , "genpay_nr", "width=500, height=520,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecordServiceNote(id) {
-              var w2 = window.open("GeneralPaymentForm.aspx?GeneralPaymentId=" + id, "genpay_er", "width=500, height=520,resizable=1");
+              var w2 = window.open("GeneralPaymentForm2.aspx?GeneralPaymentId=" + id, "genpay_er", "width=500, height=520,resizable=1");
               w2.focus();
           }  
           function CloseWindow()

@@ -66,15 +66,6 @@ public partial class GeneralPaymentForm {
     protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
     
     /// <summary>
-    /// Control RadInputManager1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadInputManager RadInputManager1;
-    
-    /// <summary>
     /// Control RadToolTipManager1.
     /// </summary>
     /// <remarks>
@@ -207,7 +198,16 @@ public partial class GeneralPaymentForm {
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtAmount;
+    protected global::Telerik.Web.UI.RadNumericTextBox txtAmount;
+    
+    /// <summary>
+    /// Control valAmount.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator valAmount;
     
     /// <summary>
     /// Control lblComments.
