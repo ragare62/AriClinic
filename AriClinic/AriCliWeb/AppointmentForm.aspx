@@ -71,7 +71,11 @@
                         w2.focus();
                     }
                     function CreateVisit(id) {
-                        var w2 = window.open("VisitTab.aspx?AppointmentId= " + id, "VISIT", "width=800, height=500,resizable=1");
+                        var w2 = window.open("VisitTab.aspx?AppointmentId= " + id , "VISIT", "width=800, height=500,resizable=1");
+                        w2.focus;
+                    }
+                    function EditVisit(id) {
+                        var w2 = window.open("VisitTab.aspx?VisitId= " + id + "&Caller=Appointment", "VISIT", "width=800, height=500,resizable=1");
                         w2.focus;
                     }
                 </script>

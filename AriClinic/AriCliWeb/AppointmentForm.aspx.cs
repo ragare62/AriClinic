@@ -237,7 +237,14 @@ public partial class AppointmentForm : System.Web.UI.Page
         btnMedicalRecord.OnClientClick = command;
         btnMedicalRecord.Visible = true;
         //
-        command = String.Format("return CreateVisit({0});", app.AppointmentId);
+        if (app != null && app.BaseVisits.Count > 0)
+        {
+            command = String.Format("return EditVisit({0});", app.BaseVisits[0].VisitId);
+        }
+        else
+        {
+            command = String.Format("return CreateVisit({0});", app.AppointmentId);
+        }
         btnVisit.OnClientClick = command;
         btnVisit.Visible = true;
     }

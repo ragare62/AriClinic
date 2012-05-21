@@ -1307,6 +1307,9 @@
         <orm:field name="childrenAppointments" property="ChildrenAppointments" behavior="readwrite" uniqueId="024e55c9-1eae-4dad-9c92-4cee1564a633" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="fatherAppointment" order-by="" uniqueId="c01fa72e-e718-4781-9e3c-a14422ad78d4" />
         </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="0a17e60b-fab1-463c-9589-7a4b594f2c46" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="appointmentInfo" order-by="" uniqueId="994b5f05-e5dc-446d-bfb9-aa925507034a" />
+        </orm:field>
         <orm:index name="idx_appointment_info_appointment_type_id">
           <orm:column name="appointment_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
@@ -2558,6 +2561,9 @@
         </orm:field>
         <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" behavior="readwrite" uniqueId="bc6d354b-a1db-4104-aea1-47f811503a52" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="baseVisit" order-by="" uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
+        </orm:field>
+        <orm:field name="appointmentInfo" property="AppointmentInfo" behavior="readwrite" uniqueId="d99428bc-bb89-4159-8d6a-1ef5c5cee4b7" type="AriCliModel.AppointmentInfo">
+          <orm:reference uniqueId="994b5f05-e5dc-446d-bfb9-aa925507034a" />
         </orm:field>
         <orm:index name="idx_base_visit_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -5279,6 +5285,9 @@
         <classHasNavigationalProperties Id="3cbf0372-9d25-46b7-9a04-44c86e9f880f">
           <NavigationalProperty Id="a57f5354-8c04-4085-9162-04de9e6a7671" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7a64e79e-1d11-438d-b111-21eaeba4e140">
+          <NavigationalProperty Id="0a17e60b-fab1-463c-9589-7a4b594f2c46" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="eba768cb-99d9-4bc7-84a6-7312220f591f" name="DiagnosticAssigned" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -6301,6 +6310,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="994b5f05-e5dc-446d-bfb9-aa925507034a" SourceMultiplicity="ZeroOne" name="BaseVisitHasAppointmentInfo">
+          <DomainClassMoniker name="/AriClinicContext/AppointmentInfo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="485b2415-3ad8-4f5c-824c-eb3929622b55">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AppointmentInfo/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="21bc79cf-e41d-4907-93d3-8c1003026d1f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/AppointmentInfo" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="0e653a1f-0456-49fb-ac03-f84686e0f4de">
@@ -6329,6 +6351,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ee3d7324-0781-496b-882e-622350f949c4">
           <NavigationalProperty Id="7bce37fc-2580-4fb3-94be-6ec89fc00f2a" name="VisitReason" type="VisitReason" label="VisitReason : VisitReason" nullable="true" kind="Persistent" fieldName="visitReason" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="45388c04-cbce-43e1-a0d2-608b070df14f">
+          <NavigationalProperty Id="d99428bc-bb89-4159-8d6a-1ef5c5cee4b7" name="AppointmentInfo" type="AppointmentInfo" label="AppointmentInfo : AppointmentInfo" nullable="true" kind="Persistent" fieldName="appointmentInfo" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

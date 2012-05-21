@@ -139,6 +139,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private AppointmentInfo appointmentInfo;
+		public virtual AppointmentInfo AppointmentInfo 
+		{ 
+		    get
+		    {
+		        return this.appointmentInfo;
+		    }
+		    set
+		    {
+		        this.appointmentInfo = value;
+		    }
+		}
+		
 		private IList<ExaminationAssigned> examinationAssigneds = new List<ExaminationAssigned>();
 		public virtual IList<ExaminationAssigned> ExaminationAssigneds 
 		{ 

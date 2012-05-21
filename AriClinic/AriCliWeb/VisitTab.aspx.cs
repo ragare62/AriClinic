@@ -20,6 +20,7 @@ public partial class VisitTab : System.Web.UI.Page
     string type = "";
     Permission per = null;
     HtmlControl frame = null;
+    string caller = null;
     
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -78,6 +79,10 @@ public partial class VisitTab : System.Web.UI.Page
             appinfId = int.Parse(Request.QueryString["AppointmentId"]);
             appinf = CntAriCli.GetAppointment(appinfId, ctx);
         }
+        if (Request.QueryString["Caller"] != null)
+        {
+            caller = Request.QueryString["Caller"];
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -100,7 +105,7 @@ public partial class VisitTab : System.Web.UI.Page
             }
             else
             {
-                url = String.Format("VisitForm.aspx?VisitId={0}&Type=InTab", visit.VisitId);
+                url = String.Format("VisitForm.aspx?VisitId={0}&Type=InTab&Caller={1}", visit.VisitId, caller);
             }
             frame.Attributes["src"] = url;
         }

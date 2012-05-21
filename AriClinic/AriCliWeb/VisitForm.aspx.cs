@@ -20,6 +20,8 @@ public partial class VisitForm : System.Web.UI.Page
     BaseVisit visit = null;
     Patient patient = null;
     VisitReason visitReason = null;
+    AppointmentInfo app = null;
+    string caller = "";
     bool fromAppointment = false;
     int professionalId = 0;
     int visitId = 0;
@@ -69,7 +71,7 @@ public partial class VisitForm : System.Web.UI.Page
             // called from an appointment?
             if (Request.QueryString["AppointmentId"] != null) 
             {
-                AppointmentInfo app = CntAriCli.GetAppointment(int.Parse(Request.QueryString["AppointmentId"]), ctx);
+                app = CntAriCli.GetAppointment(int.Parse(Request.QueryString["AppointmentId"]), ctx);
                 if (app != null)
                 {
                     Patient pat = app.Patient;
@@ -114,6 +116,10 @@ public partial class VisitForm : System.Web.UI.Page
                 tt.Attributes["class"] = "ghost";
             }
         }
+        if (Request.QueryString["Caller"] != null)
+        {
+            caller = Request.QueryString["Caller"];
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -152,7 +158,7 @@ public partial class VisitForm : System.Web.UI.Page
                 Session["FromAppointment"] = null;
             }
         }
-
+        if (caller == "Appointment") command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -196,6 +202,7 @@ public partial class VisitForm : System.Web.UI.Page
         if (visit == null)
         {
             visit = new BaseVisit();
+            if (app != null) visit.AppointmentInfo = app;
             UnloadData(visit);
             ctx.Add(visit);
         }
