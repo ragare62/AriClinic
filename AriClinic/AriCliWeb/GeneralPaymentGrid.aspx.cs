@@ -213,6 +213,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
         {
             if (serviceNote != null)
             {
+                RadAjaxManager1.ResponseScripts.Add("parent.updateTotal()");
                 RadGrid1.DataSource = serviceNote.GeneralPayments;
             }
             else
@@ -222,6 +223,7 @@ public partial class GeneralPaymentGrid : System.Web.UI.Page
         }
         if (serviceNote != null)
         {
+            RadAjaxManager1.ResponseScripts.Add("parent.updateTotal()");
             RadGrid1.DataSource = serviceNote.GeneralPayments;
         }
         if (rebind) RadGrid1.Rebind();

@@ -32,7 +32,6 @@
           // In order to show item changes in the grid
           function refreshGrid(arg)
           {
-              //alert("Hello from refreshGrid");
               if (!arg)
               {
                   $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("");
@@ -44,31 +43,31 @@
           }
           function NewGeneralPaymentRecord() {
               
-              var w1 = window.open("GeneralPaymentForm2.aspx", "pay_nr1", "width=450, height=310,resizable=1");
+              var w1 = window.open("GeneralPaymentForm2.aspx", "pay_nr1", "width=650, height=450,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecord(id)
           {
-              var w2 = window.open("GeneralPaymentForm2.aspx?paymentId=" + id, "pay_er1", "width=450, height=310,resizable=1");
+              var w2 = window.open("GeneralPaymentForm2.aspx?GeneralPaymentId=" + id, "pay_er1", "width=650, height=450,resizable=1");
               w2.focus();
           }
           function NewGeneralPaymentRecordInTab() {
               var w1 = window.open("GeneralPaymentForm2.aspx?CustomerId=" + gup('CustomerId')
-              , "paytb_nr", "width=450, height=310,resizable=1");
+              , "paytb_nr", "width=650, height=450,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecordInTab(id) {
               var w2 = window.open("GeneralPaymentForm2.aspx?NotPaid=yes&CustomerId=" + gup('CustomerId')
-                                   + "&GeneralPaymentId=" + id, "paytb_er", "width=450, height=310,resizable=1");
+                                   + "&GeneralPaymentId=" + id, "paytb_er", "width=650, height=450,resizable=1");
               w2.focus();
           }
           function NewGeneralPaymentRecordServiceNote(id) {
               var w1 = window.open("GeneralPaymentForm2.aspx?ServiceNoteId=" + id
-                                   , "genpay_nr", "width=500, height=520,resizable=1");
+                                   , "genpay_nr", "width=650, height=450,resizable=1");
               w1.focus();
           }
           function EditGeneralPaymentRecordServiceNote(id) {
-              var w2 = window.open("GeneralPaymentForm2.aspx?GeneralPaymentId=" + id, "genpay_er", "width=500, height=520,resizable=1");
+              var w2 = window.open("GeneralPaymentForm2.aspx?GeneralPaymentId=" + id, "genpay_er", "width=650, height=450,resizable=1");
               w2.focus();
           }  
           function CloseWindow()
@@ -195,7 +194,7 @@
                     <asp:ImageButton ID="Select" runat="server" 
                                      ImageUrl="~/images/document_gear_16.png" meta:resourceKey="SelectResource1" 
                                      ToolTip="Seleccionar este registro y volver con su información" />
-                    <asp:ImageButton ID="Edit" runat="server" Visible="false" 
+                    <asp:ImageButton ID="Edit" runat="server" 
                                      ImageUrl="~/images/document_edit_16.png" meta:resourceKey="EditResource1" 
                                      ToolTip="Editar este registro" />
                     <asp:ImageButton ID="Delete" runat="server" 

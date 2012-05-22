@@ -76,7 +76,8 @@
                         <td id="ServiceNoteData" colspan="3" style="padding:5px">
                             <asp:Label ID="lblServiceNoteData" runat="server" Text="Información de la nota de servicio"></asp:Label>
                             <br />
-                            <telerik:RadTextBox ID="txtServiceNoteData" runat="server" Enabled="false" TabIndex="4" Width="100%">
+                            <telerik:RadTextBox ID="txtServiceNoteData" runat="server" Enabled="false" 
+                                TabIndex="4" Width="100%">
                             </telerik:RadTextBox>
                         </td>
                     </tr>
@@ -106,7 +107,8 @@
                         <td id="Comments" colspan="3" style="padding:5px">
                             <asp:Label ID = "lblComments" runat="server" Text="Comentarios:"></asp:Label>
                             <br />
-                            <telerik:RadTextBox ID="txtComments" runat="server" Enabled="false" TabIndex="7" Width="100%" Height="100px" TextMode="MultiLine">
+                            <telerik:RadTextBox ID="txtComments" runat="server" Enabled="true" TabIndex="7" 
+                                Width="100%" Height="100px" TextMode="MultiLine">
                             </telerik:RadTextBox>
                         </td>
                     </tr>

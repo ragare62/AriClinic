@@ -59,6 +59,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
         {
             generalPaymentId = Int32.Parse(Request.QueryString["GeneralPaymentId"]);
             generalPayment = CntAriCli.GetGeneralPayment(generalPaymentId, ctx);
+            serviceNote = generalPayment.ServiceNote;
             LoadData(generalPayment);
         }
         else
@@ -103,13 +104,14 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
     #endregion Page events (clics)
 
     #region Auxiliary functions
-    protected bool DataOk()
+    protected bool DataOk(GeneralPayment gpy)
     {
-        if (rdcbPaymentMethod.SelectedValue == "") return false;
-        decimal amount = (decimal)txtAmount.Value;
-        if (amount > CntAriCli.GetUnpaid(serviceNote, ctx))
+        decimal actValue = 0;
+        decimal oldValue = 0;
+        actValue = (decimal)txtAmount.Value;
+        if (gpy != null) oldValue = gpy.Amount;
+        if (actValue > CntAriCli.GetUnpaid(serviceNote, ctx) + oldValue)
         {
-            //lblMessage.Text = Resources.GeneralResource.TicketAmountExceeded;
             return false;
         }
         return true;
@@ -117,7 +119,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
 
     protected bool CreateChange()
     {
-        if (!DataOk())
+        if (!DataOk(generalPayment))
             return false;
         if (generalPayment == null)
         {
@@ -137,6 +139,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
     {
         LoadClinicCombo(pay.Clinic);
         LoadPaymentMethodCombo(pay.PaymentMethod);
+        rddpGeneralPaymentDate.SelectedDate = pay.PaymentDate;
         if (pay != null)
         {
             txtGeneralPaymentId.Text = pay.GeneralPaymentId.ToString();
@@ -184,7 +187,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
             rdcbPaymentMethod.SelectedValue = "";
         }
     }
-    protected void LoadClinicCombo(Clinic  clinic)
+    protected void LoadClinicCombo(Clinic clinic)
     {
         rdcbClinic.Items.Clear();
         foreach (Clinic c in CntAriCli.GetClinics(ctx))

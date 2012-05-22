@@ -101,6 +101,7 @@
           <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
             <UpdatedControls>
               <telerik:AjaxUpdatedControl ControlID="txtTotal" />
+                <telerik:AjaxUpdatedControl ControlID="txtPaid" />
             </UpdatedControls>
           </telerik:AjaxSetting>
         </AjaxSettings>

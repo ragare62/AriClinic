@@ -273,14 +273,23 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         {
             case "updateTotal":
                 decimal tot = 0;
+                decimal cob = 0;
                 if (sn != null)
                 {
                     foreach (Ticket t in sn.Tickets)
                     {
                         tot += t.Amount;
                     }
+                    foreach (GeneralPayment gpy in sn.GeneralPayments)
+                    {
+                        cob += gpy.Amount;
+                    }
                 }
                 txtTotal.Text = String.Format("{0:0.00}", tot);
+                txtPaid.Text = String.Format("{0:0.00}", cob);
+                sn.Total = tot;
+                sn.Paid = cob;
+                ctx.SaveChanges();
                 break;
             case "yes":
                 break;
