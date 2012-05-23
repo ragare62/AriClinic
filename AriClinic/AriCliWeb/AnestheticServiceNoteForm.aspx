@@ -140,7 +140,7 @@
       {
       z-index: 1;
       left: 14px;
-      top: 239px;
+      top: 218px;
       position: absolute;
       height: 68px;
       width: 259px;
@@ -418,6 +418,10 @@
           <asp:CheckBox ID="chkCkecked2" runat="server" 
                         Text="Todos con comprobante" TabIndex="11" AutoPostBack="True" 
                 oncheckedchanged="chkCkecked2_CheckedChanged" />
+                <br />
+                <asp:CheckBox ID="chkChecked3" runat="server" 
+                        Text="Intervención de alto riesgo" TabIndex="12" AutoPostBack="True" 
+                oncheckedchanged="chkCkecked3_CheckedChanged" />
         </div>
         <%--Line 4.1--%>
         <%--Line 4.2--%>

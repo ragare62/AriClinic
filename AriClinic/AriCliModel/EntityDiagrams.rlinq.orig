@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="AriClinicContext" namespace="AriCliModel" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
   <orm:orm name="AriClinicContext" backend="mysql" xmlns:orm="http://tempuri.org/ORM">
     <orm:namespace name="AriCliModel" default="true">

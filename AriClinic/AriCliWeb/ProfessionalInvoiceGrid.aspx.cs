@@ -179,12 +179,12 @@ namespace AriCliWeb
         protected void RefreshGrid(bool rebind)
         {
             if (prof == null)
-                RadGrid1.DataSource = ctx.ProfessionalInvoices;
+                RadGrid1.DataSource = ctx.ProfessionalInvoices.OrderByDescending(x => x.InvoiceDate);
             else
             {
                 //if (pat != null)
                 //    RadGrid1.DataSource = pat.Customer.Invoices;
-                RadGrid1.DataSource = prof.ProfessionalInvoices;
+                RadGrid1.DataSource = prof.ProfessionalInvoices.OrderByDescending(x=>x.InvoiceDate);
             }
             if (rebind) RadGrid1.Rebind();
         }

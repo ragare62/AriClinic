@@ -1048,9 +1048,12 @@
         <orm:field name="total" property="Total" behavior="readwrite" uniqueId="60b6464b-cc06-410f-a783-0d20726eee4b" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
         </orm:field>
+        <orm:field name="chk3" property="Chk3" uniqueId="8f864812-b08d-4198-9ecc-d71ab71142d0" type="System.Boolean">
+          <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="chk3" ado-type="" />
+        </orm:field>
         <orm:field name="professionalInvoice" property="ProfessionalInvoice" behavior="readwrite" uniqueId="6e4637e9-f81a-4e76-81cd-e0ebc40c145e" type="AriCliModel.ProfessionalInvoice">
           <orm:reference uniqueId="367aa4dc-cd27-4873-87d6-251c6117a067">
-            <orm:column name="invoice_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.ProfessionalInvoice" target-field="invoiceId" />
+            <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.ProfessionalInvoice" target-field="invoiceId" />
           </orm:reference>
         </orm:field>
         <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="8d8e13f0-db1a-431a-8b60-3fe665785673" type="AriCliModel.Clinic">
@@ -1065,7 +1068,7 @@
         </orm:field>
         <orm:field name="invoice" property="Invoice" behavior="readwrite" uniqueId="e8527e2d-0b2a-4cdb-9fc2-d3413e59c05a" type="AriCliModel.Invoice">
           <orm:reference uniqueId="2f2e4833-0ff8-4a43-a42b-0cc1351d09d6">
-            <orm:column name="invoice_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="0a3151c4-d483-4564-8b17-b24e6541a630" type="AriCliModel.Customer">
@@ -1075,7 +1078,7 @@
         </orm:field>
         <orm:field name="professional2" property="Surgeon" behavior="readwrite" uniqueId="7fbb057f-596b-4010-a150-23a14d279dbb" type="AriCliModel.Professional">
           <orm:reference uniqueId="25f47b31-3637-4677-aeaa-d2f073c78878">
-            <orm:column name="surgeon_person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="surgeon_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
         <orm:field name="professional1" property="Professional" behavior="readwrite" uniqueId="9cf9d3dd-2540-4879-b16a-6a49119388b9" type="AriCliModel.Professional">
@@ -1101,7 +1104,7 @@
           <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_anesthetic_service_note_surgeon_person_id">
-          <orm:column name="surgeon_person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="surgeon_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_anesthetic_service_note_professional_person_id">
           <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -2547,6 +2550,9 @@
         <orm:field name="visitReason" property="VisitReason" behavior="readwrite" uniqueId="7bce37fc-2580-4fb3-94be-6ec89fc00f2a" type="AriCliModel.VisitReason">
           <orm:reference uniqueId="f9287a00-9b5b-49e2-88c8-75351248c7fa" />
         </orm:field>
+        <orm:field name="appointmentInfo" property="AppointmentInfo" behavior="readwrite" uniqueId="d99428bc-bb89-4159-8d6a-1ef5c5cee4b7" type="AriCliModel.AppointmentInfo">
+          <orm:reference uniqueId="994b5f05-e5dc-446d-bfb9-aa925507034a" />
+        </orm:field>
         <orm:field name="examinationAssigneds" property="ExaminationAssigneds" behavior="readwrite" uniqueId="70ce88e5-e079-49df-b097-9954717e8384" type="AriCliModel.ExaminationAssigned">
           <orm:collection element-class="AriCliModel.ExaminationAssigned" inverse-field="baseVisit" order-by="" uniqueId="c35f4435-128e-4215-8cfe-77aafe4bebd3" />
         </orm:field>
@@ -2561,9 +2567,6 @@
         </orm:field>
         <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" behavior="readwrite" uniqueId="bc6d354b-a1db-4104-aea1-47f811503a52" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="baseVisit" order-by="" uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
-        </orm:field>
-        <orm:field name="appointmentInfo" property="AppointmentInfo" behavior="readwrite" uniqueId="d99428bc-bb89-4159-8d6a-1ef5c5cee4b7" type="AriCliModel.AppointmentInfo">
-          <orm:reference uniqueId="994b5f05-e5dc-446d-bfb9-aa925507034a" />
         </orm:field>
         <orm:index name="idx_base_visit_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -3240,9 +3243,9 @@
       </orm:table>
       <orm:table name="anesthetic_service_note">
         <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="surgeon_person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="surgeon_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="service_note_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
-        <orm:column name="invoice_id" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="chk2" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
@@ -3250,11 +3253,12 @@
         <orm:column name="anesthetic_service_note_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
         <orm:column name="customer_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="chk3" ado-type="" />
         <orm:index name="idx_anesthetic_service_note_clinic_id">
           <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_anesthetic_service_note_surgeon_person_id">
-          <orm:column name="surgeon_person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="surgeon_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
         <orm:index name="idx_anesthetic_service_note_professional_person_id">
           <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -3269,7 +3273,7 @@
           <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
         <orm:constraint name="ref_anesthetic_service_note_professional2" destination-table="professional">
-          <orm:column name="surgeon_person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="surgeon_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
         <orm:constraint name="ref_anesthetic_service_note_professional" destination-table="professional">
           <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -4872,6 +4876,7 @@
       <Property Id="6fe7454f-bd65-41c2-929c-10dd96d7efc0" name="Chk1" type="Boolean" label="Chk1 : Boolean" kind="Persistent" fieldName="chk1" />
       <Property Id="55f84777-d68e-4566-89a8-0a59fdbadc23" name="Chk2" type="Boolean" label="Chk2 : Boolean" kind="Persistent" fieldName="chk2" />
       <Property Id="60b6464b-cc06-410f-a783-0d20726eee4b" name="Total" type="Decimal" label="Total : Decimal" kind="Persistent" fieldName="total" />
+      <Property Id="8f864812-b08d-4198-9ecc-d71ab71142d0" name="Chk3" type="Boolean" label="Chk3 : Boolean" />
       <AssociationTargets>
         <Association Id="40c831af-60c3-4c74-b5fa-2d1a73193592" name="ProceduresReferenceAnestheticServiceNotes">
           <DomainClassMoniker name="/AriClinicContext/Procedure" />

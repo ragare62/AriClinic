@@ -253,6 +253,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //
         chkChecked.Checked = asn.Chk1;
         chkCkecked2.Checked = asn.Chk2;
+        chkChecked3.Checked = asn.Chk3;
         if (asn.Professional != null)
         {
             //txtProfessionalId.Text = asn.Professional.PersonId.ToString();
@@ -313,6 +314,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //
         asn.Chk1 = chkChecked.Checked;
         asn.Chk2 = chkCkecked2.Checked;
+        asn.Chk3 = chkChecked3.Checked;
         //customerId = Int32.Parse(txtCustomerId.Text);
         asn.Customer = CntAriCli.GetCustomer(int.Parse(rdcComercialName.SelectedValue), ctx);
         if (rdcProfessionalName.SelectedValue != "")
@@ -505,17 +507,20 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     
     protected void rdcProcedureName_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
+        if (!DataOk()) return;
         Session.Add("procedurechanged", true);
         Session.Add("procedurechangedId", (sender as RadComboBox).UniqueID);
         CreateChange();       
     }
     protected void rdcProcedureName2_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
+        if (!DataOk()) return;
         Session.Add("procedurechanged", true);
         CreateChange();
     }
     protected void rdcProcedureName3_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
+        if (!DataOk()) return;
         Session.Add("procedurechanged", true);
         CreateChange();
     }
@@ -552,9 +557,13 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
 
     protected void chkCkecked2_CheckedChanged(object sender, EventArgs e)
     {
+        if (!DataOk()) return;
         Session.Add("procedurechanged", true);
         CreateChange();       
     }
 
-   
+    protected void chkCkecked3_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }

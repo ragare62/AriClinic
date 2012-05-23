@@ -93,7 +93,15 @@ namespace AriCliWeb
             if (!CreateChange())
                 return;
             if (caller == "sn") command = "CancelEdit();";
-            RadAjaxManager1.ResponseScripts.Add(command);
+            if (command == "CloseAndRebind('new')")
+            {
+                command = String.Format("ProfessionalInvoiceForm.aspx?InvoiceId={0}",inv.InvoiceId);
+                Response.Redirect(command);
+            }
+            else
+            {
+                RadAjaxManager1.ResponseScripts.Add(command);
+            }
         }
 
         protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -165,7 +173,14 @@ namespace AriCliWeb
             inv.Professional = CntAriCli.GetProfessional(ProfessionalId, ctx);
             inv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
             inv.Amount = CntAriCli.GetProfessionalInvoiceTotal(inv);
-            inv.TaxWithHoldingPercentage = inv.Professional.TaxWithholdingType.Percentage / 100;
+            if (inv.Professional.TaxWithholdingType == null)
+            {
+                inv.TaxWithHoldingPercentage = 0;
+            }
+            else
+            {
+                inv.TaxWithHoldingPercentage = inv.Professional.TaxWithholdingType.Percentage / 100;
+            }
             if (txtInvoiceNumber.Text == "")
             {
                 try

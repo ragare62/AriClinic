@@ -255,6 +255,15 @@ public partial class AnestheticServiceNoteForm {
     protected global::System.Web.UI.WebControls.CheckBox chkCkecked2;
     
     /// <summary>
+    /// Control chkChecked3.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.CheckBox chkChecked3;
+    
+    /// <summary>
     /// Control lblSurgeonName.
     /// </summary>
     /// <remarks>

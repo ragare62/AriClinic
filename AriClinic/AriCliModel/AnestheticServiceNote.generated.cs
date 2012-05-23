@@ -87,6 +87,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private bool chk3;
+		public virtual bool Chk3 
+		{ 
+		    get
+		    {
+		        return this.chk3;
+		    }
+		    set
+		    {
+		        this.chk3 = value;
+		    }
+		}
+		
 		private ProfessionalInvoice professionalInvoice;
 		public virtual ProfessionalInvoice ProfessionalInvoice 
 		{ 

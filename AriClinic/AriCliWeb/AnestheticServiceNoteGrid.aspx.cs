@@ -223,13 +223,13 @@ public partial class AnestheticServiceNoteGrid : System.Web.UI.Page
     {
 
         if (pat == null && cus == null)
-            RadGrid1.DataSource = ctx.AnestheticServiceNotes;
+            RadGrid1.DataSource = ctx.AnestheticServiceNotes.OrderByDescending(x => x.ServiceNoteDate);
         else
         {
             if (pat != null)
-                RadGrid1.DataSource = CntAriCli.GetAnestheticServiceNotesByPerson(pat, ctx);
+                RadGrid1.DataSource = CntAriCli.GetAnestheticServiceNotesByPerson(pat, ctx).OrderByDescending(x=> x.ServiceNoteDate);
             if (cus != null)
-                RadGrid1.DataSource = CntAriCli.GetAnestheticServiceNotesByPerson(cus, ctx);
+                RadGrid1.DataSource = CntAriCli.GetAnestheticServiceNotesByPerson(cus, ctx).OrderByDescending(x => x.ServiceNoteDate);
         }
 
         //RadGrid1.Rebind();

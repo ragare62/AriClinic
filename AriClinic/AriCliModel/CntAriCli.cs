@@ -803,6 +803,7 @@ namespace AriCliModel
             // Read parameters
             AriCliModel.Parameter parameter = GetParameter(ctx);
             Service painPump = parameter.PainPump;
+            bool hRisk = ansn.Chk3;
             //
             AnestheticTicket anstk = null;
             // Do we need check pain pump?
@@ -842,6 +843,7 @@ namespace AriCliModel
                         Procedure = ansn.Procedures[0],
                         AnestheticServiceNote = ansn
                     };
+                    if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // increase 50%
                     ctx.Add(anstk);
 
                     ctx.SaveChanges();
@@ -932,6 +934,7 @@ namespace AriCliModel
         {
             // Does this customer have a primary policy with that service?
             Policy pol = PrimaryPolicy(ansn.Customer);
+            bool hRisk = ansn.Chk3;
             if (pol == null)
             {
                 throw new AriCliException(1, "There isn't a primary policy for this customer");
@@ -963,6 +966,7 @@ namespace AriCliModel
                 anstk.Amount = anstk.Amount / 2;
                 anstk.Comments = "-50%";
             }
+            if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // high risk increase 50%
             ctx.Add(anstk);
             ctx.SaveChanges();
         }
