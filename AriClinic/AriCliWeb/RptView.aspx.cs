@@ -106,10 +106,15 @@ public partial class RptView : System.Web.UI.Page
                         LoadRptBombasPCEA();
                         break;
                     case "rticketprofessional":
+                        this.Title = "Tiques generales por profesional";
                         RptTicketsByProfessional rtprf = new RptTicketsByProfessional();
                         ReportViewer1.Report = rtprf;
                         break;
-                        
+                    case "ranestckprof":
+                        this.Title = "Tiques anestésicos por profesional";
+                        RptAnestheticTicketByProfessional rtanesprf = new RptAnestheticTicketByProfessional();
+                        ReportViewer1.Report = rtanesprf;
+                        break;                        
                 }
             }
             catch (Exception ex)

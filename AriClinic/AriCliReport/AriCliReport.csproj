@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RptAnestheticTicketByProfessional.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAnestheticTicketByProfessional.Designer.cs">
+      <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptBombaDolor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RptAnestheticTicketByProfessional.resx">
+      <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptBombaDolor.resx">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
     </EmbeddedResource>

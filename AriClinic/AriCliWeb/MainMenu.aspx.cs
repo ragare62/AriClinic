@@ -284,6 +284,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rticketprofessional":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRTicketProfessional();");
                 break;
+            case "ranestckprof":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRAnesTckProf();");
+                break;
             default:
                 break;
         }
