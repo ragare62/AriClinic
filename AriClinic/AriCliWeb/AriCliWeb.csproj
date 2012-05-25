@@ -102,6 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RadEditor.Dialogs.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\RadFilter.Main.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadFilter.Main.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\RadGrid.Main1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1293,15 +1298,21 @@
     <Content Include="App_LocalResources\SchedulerGeneral.aspx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\RadEditor.Dialogs.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>RadEditor.Dialogs.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="App_GlobalResources\RadGrid.Main.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>RadGrid.Main1.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\RadFilter.Main.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadFilter.Main.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\RadEditor.Dialogs.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadEditor.Dialogs.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -1332,7 +1343,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

@@ -44,21 +44,21 @@
           }
           function NewServiceNoteRecord()
           {
-              var w1 = window.open("ServiceNoteForm.aspx", "ServiceNoteForm", "width=720, height=750,resizable=1");
+              var w1 = window.open("ServiceNoteForm.aspx", "ServiceNoteForm", "width=720, height=750,resizable=1,scrollbars=1");
               w1.focus();
           }
           function EditServiceNoteRecord(id)
           {
-              var w2 = window.open("ServiceNoteForm.aspx?ServiceNoteId=" + id, "ServiceNoteForm", "width=720, height=750,resizable=1");
+              var w2 = window.open("ServiceNoteForm.aspx?ServiceNoteId=" + id, "ServiceNoteForm", "width=720, height=750,resizable=1,scrollbars=1");
               w2.focus();
           }
           function NewServiceNoteRecordInTab() {
-              var w1 = window.open("ServiceNoteForm.aspx?PatientId=" + gup('PatientId'), "SENOTEGRD", "width=720, height=750,resizable=1");
+              var w1 = window.open("ServiceNoteForm.aspx?PatientId=" + gup('PatientId'), "SENOTEGRD", "width=720, height=750,resizable=1,scrollbars=1");
               w1.focus();
           }
           function EditServiceNoteRecordInTab(id) {
               var w2 = window.open("ServiceNoteForm.aspx?PatientId=" + gup('PatientId') +
-                                   "&ServiceNoteId=" + id, "SENOTEGRD", "width=720, height=750,resizable=1");
+                                   "&ServiceNoteId=" + id, "SENOTEGRD", "width=720, height=750,resizable=1,scrollbars=1");
               w2.focus();
           }
 

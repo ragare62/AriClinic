@@ -22,7 +22,18 @@
         </Scripts>
       </telerik:RadScriptManager>
       <script type="text/javascript">
-        //Put your JavaScript code here.
+          function OnExplorerFileOpen(oExplorer, args) {
+              if (!args.get_item().isDirectory()) {
+                  setTimeout(function () {
+                      var oWindowManager = oExplorer.get_windowManager();
+                      var previewWinow = oWindowManager.getActiveWindow(); // Gets the current active widow.
+                      previewWinow.setSize(500, 500); // resize the window
+                      previewWinow.set_behaviors(Telerik.Web.UI.WindowBehaviors.Move + Telerik.Web.UI.WindowBehaviors.Close + Telerik.Web.UI.WindowBehaviors.Resize
+                      + Telerik.Web.UI.WindowBehaviors.Maximize + Telerik.Web.UI.WindowBehaviors.Minimize)
+                      //previewWinow.maximize(); //alternatively, maximize it. You can use its entire API
+                  }, 100);   // Some timeout is required in order to allow the window to become active
+              }
+          }
       </script>
       <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
           onajaxrequest="RadAjaxManager1_AjaxRequest">
@@ -38,7 +49,7 @@
       </div>
       <div id="FileExplorerContainer">
 
-        <telerik:RadFileExplorer ID="RadFileExplorer1" Runat="server" Width="100%"
+        <telerik:RadFileExplorer ID="RadFileExplorer1" Runat="server" Width="100%" OnClientFileOpen="OnExplorerFileOpen"
                                  EnableCopy="True" style="margin-top: 0px">
           <Configuration ViewPaths="/docs" UploadPaths="/docs"
                          DeletePaths="docs" />

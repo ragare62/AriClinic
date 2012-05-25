@@ -64,6 +64,12 @@
     <Compile Include="RptBombaDolor.Designer.cs">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptPCA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPCA.Designer.cs">
+      <DependentUpon>RptPCA.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptProfessionalInvoices.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptBombaDolor.resx">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPCA.resx">
+      <DependentUpon>RptPCA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptProfessionalInvoices.resx">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>

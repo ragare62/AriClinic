@@ -1048,8 +1048,8 @@
         <orm:field name="total" property="Total" behavior="readwrite" uniqueId="60b6464b-cc06-410f-a783-0d20726eee4b" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
         </orm:field>
-        <orm:field name="chk3" property="Chk3" uniqueId="8f864812-b08d-4198-9ecc-d71ab71142d0" type="System.Boolean">
-          <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="chk3" ado-type="" />
+        <orm:field name="chk3" property="Chk3" behavior="readwrite" uniqueId="8f864812-b08d-4198-9ecc-d71ab71142d0" type="System.Boolean">
+          <orm:column name="chk3" sql-type="bit" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="professionalInvoice" property="ProfessionalInvoice" behavior="readwrite" uniqueId="6e4637e9-f81a-4e76-81cd-e0ebc40c145e" type="AriCliModel.ProfessionalInvoice">
           <orm:reference uniqueId="367aa4dc-cd27-4873-87d6-251c6117a067">
@@ -3253,7 +3253,7 @@
         <orm:column name="anesthetic_service_note_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
         <orm:column name="customer_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="chk3" ado-type="" />
+        <orm:column name="chk3" sql-type="bit" nullable="false" length="0" scale="0" ado-type="" />
         <orm:index name="idx_anesthetic_service_note_clinic_id">
           <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>

@@ -52,6 +52,10 @@ public partial class DocumentsPatient : System.Web.UI.Page
         RadFileExplorer1.Configuration.ViewPaths = paths;
         RadFileExplorer1.Configuration.DeletePaths = paths;
         RadFileExplorer1.Configuration.UploadPaths = paths;
+        //
+        string maxFileSize = ConfigurationManager.AppSettings["MaxFileSize"];
+        if (maxFileSize != null)
+            RadFileExplorer1.Configuration.MaxUploadFileSize = int.Parse(maxFileSize);
         // cheks if he's called from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
