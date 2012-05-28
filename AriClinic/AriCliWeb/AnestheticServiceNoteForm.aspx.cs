@@ -189,25 +189,22 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             }
             UnloadData(asn);
         }
-        //ctx.SaveChanges();
-
-        //try
-        //{
-            return UpdateRelatedTickets(asn);
-        //}
-        //catch (Exception e)
-        //{ 
-            
-        //}
+        bool res = UpdateRelatedTickets(asn);
+        // Update anesthetic service note total
+        asn.Total = asn.AnestheticTickets.Sum(x => x.Amount);
+        ctx.SaveChanges();
+        return res;
     }
 
     protected bool UpdateRelatedTickets(AnestheticServiceNote asn)
     {
         try
         {
+            ctx.Delete(asn.AnestheticTickets);
+            asn.AnestheticTickets.Clear();
+            CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
             if (firstTime)
             {
-                CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
                 firstTime = false;
                 Response.Redirect(String.Format("AnestheticServiceNoteForm.aspx?AnestheticServiceNoteId={0}", asn.AnestheticServiceNoteId));
             }

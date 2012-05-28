@@ -14,7 +14,12 @@ namespace RidocciConsole
     {
         static void Main(string[] args)
         {
-            CargaOFT();
+            Console.WriteLine("-- begin --");
+            AriClinicContext ctx = new AriClinicContext("ANES");
+            FixAnestheticNotes(ctx);
+            Console.WriteLine(" -- Press <ENTER> --");
+            Console.ReadLine();
+            //CargaOFT();
         }
         #region Funciones individuales (RIDOCCI)
         public static void CargaRidocci()
@@ -439,6 +444,29 @@ namespace RidocciConsole
 
 
             #endregion
+        }
+
+        public static void FixAnestheticNotes(AriClinicContext ctx)
+        {
+            int i = 0;
+            IList<AnestheticServiceNote> lasn = ctx.AnestheticServiceNotes.ToList<AnestheticServiceNote>();
+            foreach (AnestheticServiceNote asn in lasn)
+            {
+                try
+                {
+                    i++;
+                    Console.WriteLine("ASN: {0} N:{1}", asn.AnestheticServiceNoteId, i);
+                    if (asn.Chk1)
+                    {
+                        Console.WriteLine("ASNPCA: {0}", asn.AnestheticServiceNoteId);
+                        CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception es)
+                {
+                }
+            }
         }
         #endregion
     }
