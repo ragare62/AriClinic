@@ -33,6 +33,7 @@ namespace AriCliModel
                 pay.PaymentDate = payDate;
                 pay.Ticket = t;
                 pay.GeneralPayment = gp;
+                pay.Description = description;
                 pay.Clinic = clinic;
                 decimal dif = t.Amount - t.Paid;
                 if (dif <= amount)

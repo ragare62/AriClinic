@@ -151,6 +151,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
             txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy})", serviceNote.Customer.ComercialName, serviceNote.ServiceNoteDate);
             txtAmount.Value = (double)CntAriCli.GetUnpaid(serviceNote, ctx);
         }
+        txtComments.Text = pay.Description;
     }
 
     protected void UnloadData(GeneralPayment pay)
