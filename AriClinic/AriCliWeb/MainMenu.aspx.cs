@@ -287,6 +287,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "ranestckprof":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRAnesTckProf();");
                 break;
+            case "rpca":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRPCA();");
+                break;
             default:
                 break;
         }

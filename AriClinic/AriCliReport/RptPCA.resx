@@ -129,37 +129,7 @@
         ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
         NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
         ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
-        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAAAgAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJl
-        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
-</value>
-  </metadata>
-  <data name="sqlInsurance.SelectCommand" xml:space="preserve">
-    <value>SELECT        ticket.ticket_id, ticket.ticket_date, ticket.description, ticket.amount, professional_1.comercial_name AS surgeon_name, professional.comercial_name AS prof_name, 
-                         customer.comercial_name AS cus_name, policy.policy_number, insurance.name AS ins_name, healthcare_company.name AS company_name
-FROM            ticket INNER JOIN
-                         anesthetic_ticket ON ticket.ticket_id = anesthetic_ticket.ticket_id INNER JOIN
-                         anesthetic_service_note ON anesthetic_ticket.anesthetic_service_note_id = anesthetic_service_note.anesthetic_service_note_id INNER JOIN
-                         insurance_service ON ticket.insurance_service_id = insurance_service.insurance_service_id INNER JOIN
-                         parameter ON insurance_service.service_id = parameter.service_id INNER JOIN
-                         customer ON anesthetic_service_note.customer_person_id = customer.person_id INNER JOIN
-                         policy ON ticket.policy_id = policy.policy_id AND customer.person_id = policy.person_id INNER JOIN
-                         insurance ON insurance_service.insurance_id = insurance.insurance_id AND policy.insurance_id = insurance.insurance_id LEFT OUTER JOIN
-                         professional ON anesthetic_service_note.professional_person_id = professional.person_id LEFT OUTER JOIN
-                         professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id, healthcare_company</value>
-  </data>
-  <metadata name="sqlPCA.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
-        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
-        ZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlckNvbGxlY3Rpb24BAAAAEkNvbGxlY3Rp
-        b25gMStpdGVtcwOnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBv
-        cnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249NS4z
-        LjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
-        AgAAAAkDAAAABAMAAACnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5S
-        ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
-        NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
-        ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
-        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAACgAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJl
+        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAAEgAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJl
         cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAAJBwAAAAoMCAAAAE5TeXN0
         ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
         N2E1YzU2MTkzNGUwODkMCQAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
@@ -168,26 +138,10 @@ FROM            ticket INNER JOIN
         U291cmNlUGFyYW1ldGVyK3ZhbHVlI0RhdGFTb3VyY2VQYXJhbWV0ZXIrUHJvcGVydHlDaGFuZ2VkBAEC
         BBJTeXN0ZW0uRGF0YS5EYlR5cGUIAAAAMVN5c3RlbS5Db21wb25lbnRNb2RlbC5Qcm9wZXJ0eUNoYW5n
         ZWRFdmVudEhhbmRsZXIJAAAAAgAAAAX2////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAI
-        CAAAABAAAAAGCwAAAAZARkRhdGUKCgEGAAAABQAAAAH0////9v///xAAAAAGDQAAAAZAVERhdGUKCgEH
-        AAAABQAAAAHy////9v///xAAAAAGDwAAAApASW5zdXJhbmNlCgoL
+        CAAAAAUAAAAGCwAAAAZARkRhdGUKCgEGAAAABQAAAAH0////9v///wUAAAAGDQAAAAZAVERhdGUKCgEH
+        AAAABQAAAAHy////9v///wsAAAAGDwAAAApASW5zdXJhbmNlCgoL
 </value>
   </metadata>
-  <data name="sqlPCA.SelectCommand" xml:space="preserve">
-    <value>SELECT        service.service_id, service.name, insurance.name AS ins_name, ticket.ticket_id, ticket.ticket_date, ticket.description, ticket.amount, ticket.checked, 
-                         professional.comercial_name AS prof_name, policy.policy_number, professional_1.comercial_name, insurance.insurance_id, 
-                         healthcare_company.name AS company_name
-FROM            service INNER JOIN
-                         parameter ON service.service_id = parameter.service_id INNER JOIN
-                         insurance_service ON service.service_id = insurance_service.service_id INNER JOIN
-                         insurance ON insurance_service.insurance_id = insurance.insurance_id INNER JOIN
-                         ticket ON insurance_service.insurance_service_id = ticket.insurance_service_id INNER JOIN
-                         anesthetic_ticket ON ticket.ticket_id = anesthetic_ticket.ticket_id INNER JOIN
-                         anesthetic_service_note ON anesthetic_ticket.anesthetic_service_note_id = anesthetic_service_note.anesthetic_service_note_id INNER JOIN
-                         professional ON anesthetic_service_note.professional_person_id = professional.person_id INNER JOIN
-                         policy ON insurance.insurance_id = policy.insurance_id INNER JOIN
-                         professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id, healthcare_company
-WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @TDate) AND (insurance.insurance_id IN (@Insurance))</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1136,6 +1090,47 @@ WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @TD
         0RKwgEq0RO18rVoCFlCt+vHbm0+0BCygEi1RO1+rloAFVKt+/PbmEy0BC6hES9TO16ol8P8RPVdC/KGl
         sQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <metadata name="sqlPCA.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
+        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
+        ZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlckNvbGxlY3Rpb24BAAAAEkNvbGxlY3Rp
+        b25gMStpdGVtcwOnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBv
+        cnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249NS4z
+        LjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        AgAAAAkDAAAABAMAAACnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5S
+        ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
+        NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
+        ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
+        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAAGgAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJl
+        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAAJBwAAAAoMCAAAAE5TeXN0
+        ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+        N2E1YzU2MTkzNGUwODkMCQAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQUAAAAoVGVsZXJpay5SZXBvcnRpbmcuU3Fs
+        RGF0YVNvdXJjZVBhcmFtZXRlcgQAAAAGZGJUeXBlGERhdGFTb3VyY2VQYXJhbWV0ZXIrbmFtZRlEYXRh
+        U291cmNlUGFyYW1ldGVyK3ZhbHVlI0RhdGFTb3VyY2VQYXJhbWV0ZXIrUHJvcGVydHlDaGFuZ2VkBAEC
+        BBJTeXN0ZW0uRGF0YS5EYlR5cGUIAAAAMVN5c3RlbS5Db21wb25lbnRNb2RlbC5Qcm9wZXJ0eUNoYW5n
+        ZWRFdmVudEhhbmRsZXIJAAAAAgAAAAX2////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAI
+        CAAAABAAAAAGCwAAAAZARkRhdGUKCgEGAAAABQAAAAH0////9v///wUAAAAGDQAAAAZASERhdGUKCgEH
+        AAAABQAAAAHy////9v///xAAAAAGDwAAAApASW5zdXJhbmNlCgoL
+</value>
+  </metadata>
+  <data name="sqlPCA.SelectCommand" xml:space="preserve">
+    <value>SELECT        ticket.ticket_id, ticket.description, ticket.amount, insurance.name AS ins_name, professional_1.comercial_name AS srg_name, 
+                         professional.comercial_name AS prof_name, customer.comercial_name AS cus_name, insurance.insurance_id, ticket.ticket_date, policy.policy_number, 
+                         healthcare_company.name AS company_name
+FROM            ticket INNER JOIN
+                         anesthetic_ticket ON ticket.ticket_id = anesthetic_ticket.ticket_id INNER JOIN
+                         anesthetic_service_note ON anesthetic_ticket.anesthetic_service_note_id = anesthetic_service_note.anesthetic_service_note_id INNER JOIN
+                         insurance_service ON ticket.insurance_service_id = insurance_service.insurance_service_id INNER JOIN
+                         parameter ON insurance_service.service_id = parameter.service_id INNER JOIN
+                         insurance ON insurance_service.insurance_id = insurance.insurance_id INNER JOIN
+                         professional ON anesthetic_service_note.professional_person_id = professional.person_id INNER JOIN
+                         customer ON anesthetic_service_note.customer_person_id = customer.person_id INNER JOIN
+                         policy ON ticket.policy_id = policy.policy_id LEFT OUTER JOIN
+                         professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id, healthcare_company
+WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @HDate) AND (insurance.insurance_id IN (@Insurance))</value>
   </data>
   <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
     <value>0.1in</value>

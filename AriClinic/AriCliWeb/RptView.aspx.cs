@@ -114,7 +114,12 @@ public partial class RptView : System.Web.UI.Page
                         this.Title = "Tiques anestésicos por profesional";
                         RptAnestheticTicketByProfessional rtanesprf = new RptAnestheticTicketByProfessional();
                         ReportViewer1.Report = rtanesprf;
-                        break;                        
+                        break;
+                    case "rpca":
+                        this.Title = "Informe de bombas PCEA";
+                        RptPCA rpca = new RptPCA();
+                        ReportViewer1.Report = rpca;
+                        break;            
                 }
             }
             catch (Exception ex)

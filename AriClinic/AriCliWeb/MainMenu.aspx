@@ -157,6 +157,11 @@
               var w1 = window.open("RptView.aspx?Report=ranestckprof", "ANESTCKPROF", "width=900, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchRPCA() {
+              var w1 = window.open("RptView.aspx?Report=rpca", "RPCAF", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
+
           function LaunchProcedure()
           {
               var w1 = window.open("ProcedureGrid.aspx", "PROCEDURE", "width=580, height=380,resizable=1")
@@ -480,7 +485,7 @@
                   <telerik:RadMenuItem runat="server" Text="Nomenclator" Value="rnomenclator">
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" 
-                                       Value="rbombasPCEA">
+                                       Value="rpca">
                   </telerik:RadMenuItem>
 
                 </Items>
