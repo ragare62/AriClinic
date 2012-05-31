@@ -161,7 +161,10 @@
               var w1 = window.open("RptView.aspx?Report=rpca", "RPCAF", "width=900, height=600,resizable=1")
               w1.focus();
           }
-
+          function LaunchRTckSrg() {
+              var w1 = window.open("RptView.aspx?Report=rtcksrg", "RTCKSRG", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
           function LaunchProcedure()
           {
               var w1 = window.open("ProcedureGrid.aspx", "PROCEDURE", "width=580, height=380,resizable=1")
@@ -448,6 +451,9 @@
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Tickets por profesional (Anestesia)" 
                             Value="ranestckprof">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tickets por cirujano (Anestesia)" 
+                            Value="rtcksrg">
                         </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados" 
                                            Value="rpayments">

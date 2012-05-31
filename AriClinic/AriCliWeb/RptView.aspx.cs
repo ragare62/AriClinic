@@ -112,19 +112,24 @@ public partial class RptView : System.Web.UI.Page
                         break;
                     case "ranestckprof":
                         this.Title = "Tiques anestésicos por profesional";
-                        RptAnestheticTicketByProfessional rtanesprf = new RptAnestheticTicketByProfessional();
+                        ReptAnesTicketProfessional rtanesprf = new ReptAnesTicketProfessional();
                         ReportViewer1.Report = rtanesprf;
                         break;
                     case "rpca":
                         this.Title = "Informe de bombas PCEA";
                         RptPCA rpca = new RptPCA();
                         ReportViewer1.Report = rpca;
-                        break;            
+                        break;
+                    case "rtcksrg":
+                        this.Title = "Tiques anestésicos por cirujano";
+                        RptTicketsSurgeon rtcksrg = new RptTicketsSurgeon();
+                        ReportViewer1.Report = rtcksrg;
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = ex.Message;
+                //lblMessage.Text = ex.Message;
             }
         }
     }
@@ -150,7 +155,7 @@ public partial class RptView : System.Web.UI.Page
             || Request.QueryString["ToDate"] == null 
             || Request.QueryString["InsuranceId"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -180,7 +185,7 @@ public partial class RptView : System.Web.UI.Page
             || Request.QueryString["ToDate"] == null
             || Request.QueryString["ClinicId"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -196,7 +201,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -213,7 +218,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -230,7 +235,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -290,7 +295,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -319,7 +324,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -333,7 +338,7 @@ public partial class RptView : System.Web.UI.Page
     {
         if (Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime toDate = DateTime.Parse(Request.QueryString["ToDate"]);
@@ -359,7 +364,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -375,7 +380,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);

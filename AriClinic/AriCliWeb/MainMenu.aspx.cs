@@ -290,6 +290,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rpca":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRPCA();");
                 break;
+            case "rtcksrg":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRTckSrg();");
+                break;
             default:
                 break;
         }

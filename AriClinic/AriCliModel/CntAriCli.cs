@@ -798,7 +798,7 @@ namespace AriCliModel
             return par;
         }
 
-        public static void CheckAnestheticServiceNoteTickets(AnestheticServiceNote ansn, AriClinicContext ctx)
+        public static void CheckAnestheticServiceNoteTickets(AnestheticServiceNote ansn, AriClinicContext ctx, IList<SaveCheck> lschk)
         {
             // Read parameters
             AriCliModel.Parameter parameter = GetParameter(ctx);
@@ -837,12 +837,19 @@ namespace AriCliModel
                         InsuranceService = ins,
                         User = ansn.User,
                         Clinic = ansn.Clinic,
-                        Checked = ansn.Chk2,
                         Professional = ansn.Professional,
                         Surgeon = ansn.Surgeon,
                         Procedure = ansn.Procedures[0],
                         AnestheticServiceNote = ansn
                     };
+                    if (ansn.Chk2)
+                    {
+                        anstk.Checked = true;
+                    }
+                    else
+                    {
+                        anstk.Checked = CntAriCli.IsItInChecks(anstk, lschk);
+                    }
                     if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // increase 50%
                     ctx.Add(anstk);
 
@@ -855,7 +862,7 @@ namespace AriCliModel
                 bool multi = false;
                 foreach (Procedure p in ansn.Procedures)
                 {
-                    AddAutomaticTicket(ansn, p, ctx, multi);
+                    AddAutomaticTicket(ansn, p, ctx, multi, lschk);
                     multi = true;
                 }
             }
@@ -930,7 +937,7 @@ namespace AriCliModel
             return false;
         }
 
-        public static void AddAutomaticTicket(AnestheticServiceNote ansn, Procedure proc, AriClinicContext ctx, bool multi)
+        public static void AddAutomaticTicket(AnestheticServiceNote ansn, Procedure proc, AriClinicContext ctx, bool multi, IList<SaveCheck> lschk)
         {
             // Does this customer have a primary policy with that service?
             Policy pol = PrimaryPolicy(ansn.Customer);
@@ -954,13 +961,20 @@ namespace AriCliModel
                 Policy = pol,
                 InsuranceService = ins,
                 User = ansn.User,
-                Checked = ansn.Chk2,
                 Clinic = ansn.Clinic,
                 Professional = ansn.Professional,
                 Surgeon = ansn.Surgeon,
                 Procedure = proc,
                 AnestheticServiceNote = ansn
             };
+            if (ansn.Chk2)
+            {
+                anstk.Checked = true;
+            }
+            else
+            {
+                anstk.Checked = CntAriCli.IsItInChecks(anstk, lschk);
+            }
             if (multi)
             {
                 anstk.Amount = anstk.Amount / 2;
@@ -1562,6 +1576,30 @@ namespace AriCliModel
                 }
             }
             return a;
+        }
+        public static IList<SaveCheck> SaveChecks(AnestheticServiceNote asn)
+        {
+            IList<SaveCheck> lsc = new List<SaveCheck>();
+            foreach (AnestheticTicket atck in asn.AnestheticTickets)
+            {
+                if (atck.Checked)
+                {
+                    SaveCheck  schk = new SaveCheck();
+                    schk.ProcedureId = atck.Procedure.ProcedureId;
+                    schk.Chk = true;
+                    lsc.Add(schk);
+                }
+            }
+            return lsc;
+        }
+        public static bool IsItInChecks(AnestheticTicket atck, IList<SaveCheck> lsck)
+        {
+            bool res = false;
+            SaveCheck sc = (from sck in lsck
+                            where sck.ProcedureId == atck.Procedure.ProcedureId
+                            select sck).FirstOrDefault<SaveCheck>();
+            if (sc != null) res = true;
+            return res;
         }
     }
 }

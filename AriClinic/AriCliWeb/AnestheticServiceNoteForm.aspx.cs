@@ -20,6 +20,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     Clinic cl = null;
     Customer cus = null;
     AnestheticServiceNote asn = null;
+    IList<SaveCheck> lschk = new List<SaveCheck>();
     bool firstTime;
     int customerId = 0;
     int clinicId = 0;
@@ -168,6 +169,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         else
         { 
             asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+            lschk = CntAriCli.SaveChecks(asn);
             bool procedurechanged = false;
             if(Session["procedurechanged"]!=null)
                 procedurechanged = (bool)Session["procedurechanged"];
@@ -189,20 +191,20 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             }
             UnloadData(asn);
         }
-        bool res = UpdateRelatedTickets(asn);
+        bool res = UpdateRelatedTickets(asn, lschk);
         // Update anesthetic service note total
         asn.Total = asn.AnestheticTickets.Sum(x => x.Amount);
         ctx.SaveChanges();
         return res;
     }
 
-    protected bool UpdateRelatedTickets(AnestheticServiceNote asn)
+    protected bool UpdateRelatedTickets(AnestheticServiceNote asn, IList<SaveCheck> lschk)
     {
         try
         {
             ctx.Delete(asn.AnestheticTickets);
             asn.AnestheticTickets.Clear();
-            CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
+            CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx, lschk);
             if (firstTime)
             {
                 firstTime = false;
@@ -250,6 +252,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //
         chkChecked.Checked = asn.Chk1;
         chkCkecked2.Checked = asn.Chk2;
+        //chkCkecked2.Checked = AreThereTicketsChecked(asn);
         chkChecked3.Checked = asn.Chk3;
         if (asn.Professional != null)
         {
@@ -562,5 +565,14 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void chkCkecked3_CheckedChanged(object sender, EventArgs e)
     {
 
+    }
+    protected bool AreThereTicketsChecked(AnestheticServiceNote asn)
+    {
+        bool res = false;
+        var rs = from t in asn.AnestheticTickets
+                 where t.Checked == true
+                 select t;
+        if (rs.Count() > 0) res = true;
+        return res;
     }
 }

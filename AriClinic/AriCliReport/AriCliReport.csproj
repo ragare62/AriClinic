@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReptAnesTicketProfessional.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReptAnesTicketProfessional.Designer.cs">
+      <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptAnestheticTicketByProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="RptTicketsByProfessional.Designer.cs">
       <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicketsSurgeon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicketsSurgeon.Designer.cs">
+      <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
     </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
@@ -257,6 +269,9 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReptAnesTicketProfessional.resx">
+      <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptAnestheticTicketByProfessional.resx">
       <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptTicketsByProfessional.resx">
       <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicketsSurgeon.resx">
+      <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>
