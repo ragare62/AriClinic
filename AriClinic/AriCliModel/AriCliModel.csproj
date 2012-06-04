@@ -82,6 +82,7 @@
     <Compile Include="Clinic.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="CntAnestheticTickets.cs" />
     <Compile Include="CntAriCli.cs" />
     <Compile Include="CntDocs.cs">
       <SubType>Code</SubType>

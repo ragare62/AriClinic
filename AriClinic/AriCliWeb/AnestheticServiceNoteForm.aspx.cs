@@ -20,7 +20,8 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     Clinic cl = null;
     Customer cus = null;
     AnestheticServiceNote asn = null;
-    IList<SaveCheck> lschk = new List<SaveCheck>();
+    //IList<SaveCheck> lschk = new List<SaveCheck>();
+    bool[] lschk;
     bool firstTime;
     int customerId = 0;
     int clinicId = 0;
@@ -165,11 +166,13 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             asn = new AnestheticServiceNote();
             UnloadData(asn);
             ctx.Add(asn);
+            lschk = CntAriCli.SaveTckChecks(asn);
         }
         else
         { 
             asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
-            lschk = CntAriCli.SaveChecks(asn);
+            //lschk = CntAriCli.SaveChecks(asn);
+            lschk = CntAriCli.SaveTckChecks(asn);
             bool procedurechanged = false;
             if(Session["procedurechanged"]!=null)
                 procedurechanged = (bool)Session["procedurechanged"];
@@ -191,7 +194,9 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             }
             UnloadData(asn);
         }
-        bool res = UpdateRelatedTickets(asn, lschk);
+        //bool res = UpdateRelatedTickets(asn, lschk);
+        // ---
+        bool res = CntAriCli.UpdateRelatedTckV2(asn, lschk, ctx);
         // Update anesthetic service note total
         asn.Total = asn.AnestheticTickets.Sum(x => x.Amount);
         ctx.SaveChanges();
