@@ -293,6 +293,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rtcksrg":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRTckSrg();");
                 break;
+            case "rrisk":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRrisk();");
+                break;
             default:
                 break;
         }

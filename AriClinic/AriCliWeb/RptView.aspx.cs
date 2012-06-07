@@ -125,6 +125,11 @@ public partial class RptView : System.Web.UI.Page
                         RptTicketsSurgeon rtcksrg = new RptTicketsSurgeon();
                         ReportViewer1.Report = rtcksrg;
                         break;
+                    case "rrisk":
+                        this.Title = "Tiques con alto riesgo";
+                        RptRisk rrisk = new RptRisk();
+                        ReportViewer1.Report = rrisk;
+                        break;
                 }
             }
             catch (Exception ex)

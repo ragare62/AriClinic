@@ -82,6 +82,12 @@
     <Compile Include="RptProfessionalInvoices.Designer.cs">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptRisk.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptRisk.Designer.cs">
+      <DependentUpon>RptRisk.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptServSurgeon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptProfessionalInvoices.resx">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptRisk.resx">
+      <DependentUpon>RptRisk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptServSurgeon.resx">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>

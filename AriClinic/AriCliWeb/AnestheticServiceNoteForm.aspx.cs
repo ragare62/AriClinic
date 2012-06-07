@@ -200,6 +200,11 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         // Update anesthetic service note total
         asn.Total = asn.AnestheticTickets.Sum(x => x.Amount);
         ctx.SaveChanges();
+        if (firstTime)
+        {
+            firstTime = false;
+            Response.Redirect(String.Format("AnestheticServiceNoteForm.aspx?AnestheticServiceNoteId={0}", asn.AnestheticServiceNoteId));
+        }
         return res;
     }
 
@@ -342,6 +347,8 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
 
         asn.Procedures.Clear();
+        ctx.SaveChanges();
+        //ctx.Delete(asn.Procedures);
 
         if (rdcProcedureName1.SelectedValue != "")
         {
