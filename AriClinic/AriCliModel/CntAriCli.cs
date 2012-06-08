@@ -1601,5 +1601,22 @@ namespace AriCliModel
             if (sc != null) res = true;
             return res;
         }
+
+        public static void CheckPolicy(Patient patient, AriClinicContext ctx)
+        {
+
+            // Does this customer have a policiy yet?
+            if (patient.Customer.Policies.Count > 0) return;
+            
+            // He hasn't. Is there only one insurance company in db?.
+            if (ctx.Insurances.Count() != 1) return;
+            Insurance insurance = ctx.Insurances.First<Insurance>();
+            
+            // There's only one insurance company and we create a policy related to it.
+            Policy policy = new Policy();
+            policy.Insurance = insurance;
+            policy.Customer = patient.Customer;
+            ctx.Add(policy);
+        }
     }
 }

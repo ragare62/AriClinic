@@ -126,7 +126,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" class="normalText">
+              <td class="normalText">
                 <div id="Drug">
                   <asp:Label ID="lblDrug" runat="server" Text="Fármaco:" 
                              ToolTip="Fármaco a asignar"></asp:Label>
@@ -142,6 +142,16 @@
                                        Width="446px" TabIndex="3" >
                   </telerik:RadComboBox>
                 </div>
+              </td>
+              <td>
+                <div id="Quantity" class="normalText">
+                    <asp:Label ID = "lblQuantity" runat="server" Text="Cantidad"></asp:Label>
+                    <br />
+
+                </div>
+                  <telerik:RadNumericTextBox ID="txtQuantity" runat="server" MinValue="0">
+                      <NumberFormat DecimalDigits="0" ZeroPattern="n" />
+                  </telerik:RadNumericTextBox>
               </td>
             </tr>
             <tr>

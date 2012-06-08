@@ -182,16 +182,19 @@ public partial class TreatmentForm : System.Web.UI.Page
 
         rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
         txtRecommend.Text = tr.Recommend;
+        if (tr.Quantity != 0)
+            txtQuantity.Value = tr.Quantity;
     }
 
-    protected void UnloadData(Treatment da)
+    protected void UnloadData(Treatment tr)
     {
-        da.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
-        da.TreatmentDate = (DateTime)rdpTreatmentDate.SelectedDate;
-        da.Drug = CntAriCli.GetDrug(int.Parse(rdcDrug.SelectedValue), ctx);
+        tr.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        tr.TreatmentDate = (DateTime)rdpTreatmentDate.SelectedDate;
+        tr.Drug = CntAriCli.GetDrug(int.Parse(rdcDrug.SelectedValue), ctx);
         if (visit != null)
-            da.BaseVisit = visit;
-        da.Recommend = txtRecommend.Text;
+            tr.BaseVisit = visit;
+        tr.Recommend = txtRecommend.Text;
+        if (txtQuantity.Text != "") tr.Quantity = (int)txtQuantity.Value;
     }
 
     #endregion Auxiliary functions

@@ -260,6 +260,7 @@ public partial class PatientForm : System.Web.UI.Page
         };
         ctx.Add(cus);
         pat.Customer = cus;
+        CntAriCli.CheckPolicy(pat, ctx);
     }
 
 

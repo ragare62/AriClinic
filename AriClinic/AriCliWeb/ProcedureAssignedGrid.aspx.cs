@@ -166,7 +166,7 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
         RefreshGrid(true);
         if (e.Argument == "new")
         {
-            RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
+            //RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
             RadGrid1.Rebind();
         }
         if (e.Argument == "yes")
@@ -197,13 +197,13 @@ public partial class ProcedureAssignedGrid : System.Web.UI.Page
     protected void RefreshGrid(bool rebind)
     {
         if (patient == null && visit == null)
-            RadGrid1.DataSource = CntAriCli.GetProcedureAssigneds(ctx);
+            RadGrid1.DataSource = CntAriCli.GetProcedureAssigneds(ctx).OrderByDescending(x => x.ProcedureDate);
         else
         {
             if (patient != null)
-                RadGrid1.DataSource = patient.ProcedureAssigneds;
+                RadGrid1.DataSource = patient.ProcedureAssigneds.OrderByDescending(x => x.ProcedureDate);
             if (visit != null)
-                RadGrid1.DataSource = visit.ProcedureAssigneds;
+                RadGrid1.DataSource = visit.ProcedureAssigneds.OrderByDescending(x => x.ProcedureDate);
         }
         if (rebind)
             RadGrid1.Rebind();

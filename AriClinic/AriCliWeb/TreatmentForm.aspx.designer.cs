@@ -174,6 +174,24 @@ public partial class TreatmentForm {
     protected global::Telerik.Web.UI.RadComboBox rdcDrug;
     
     /// <summary>
+    /// Control lblQuantity.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblQuantity;
+    
+    /// <summary>
+    /// Control txtQuantity.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadNumericTextBox txtQuantity;
+    
+    /// <summary>
     /// Control lblRecommend.
     /// </summary>
     /// <remarks>
