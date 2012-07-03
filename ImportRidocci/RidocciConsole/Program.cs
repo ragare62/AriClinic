@@ -15,11 +15,9 @@ namespace RidocciConsole
         static void Main(string[] args)
         {
             Console.WriteLine("-- begin --");
-            AriClinicContext ctx = new AriClinicContext("ANES");
-            FixAnestheticNotes(ctx);
+            CargaRidocci();
             Console.WriteLine(" -- Press <ENTER> --");
             Console.ReadLine();
-            //CargaOFT();
         }
         #region Funciones individuales (RIDOCCI)
         public static void CargaRidocci()
@@ -52,6 +50,14 @@ namespace RidocciConsole
             };
             ctxAri.Add(sc);
             ctxAri.SaveChanges();
+
+            // procedencias
+            numr = ctxRid.Procedencia.Count(); r = 0;
+            foreach (Procedencium procedencia in ctxRid.Procedencia)
+            {
+                Console.WriteLine("Procedencia -> {0} ({1}/{2})", procedencia.Nom_procedencia, ++r, numr);
+                LoadProcedencia(procedencia, ctxRid, ctxAri);
+            }
 
             // acto medico - service
             numr = ctxRid.Acto_medicos.Count(); r = 0;
@@ -139,6 +145,14 @@ namespace RidocciConsole
                 Name = amed.Nom_acto_medico,
                 ServiceCategory = sc
             };
+            ctxAri.Add(s);
+            ctxAri.SaveChanges();
+        }
+        public static void LoadProcedencia(Procedencium procedencia, RdcModel ctxRid, AriClinicContext ctxAri)
+        {
+            Source s = new Source();
+            s.OftId = procedencia.Id_procedencia;
+            s.Name = procedencia.Nom_procedencia;
             ctxAri.Add(s);
             ctxAri.SaveChanges();
         }
@@ -253,6 +267,14 @@ namespace RidocciConsole
                 };
                 ctxAri.Add(policy);
             }
+            if (his.Id_procedencia != null)
+            {
+                Source source = (from s in ctxAri.Sources
+                                 where s.OftId == his.Id_procedencia
+                                 select s).FirstOrDefault<Source>();
+                if (source != null) patient.Source = source;
+            }
+            patient.Clinic = ctxAri.Clinics.FirstOrDefault<Clinic>();
             ctxAri.SaveChanges();
         }
         public static string GetSurname1(string apellidos)
@@ -459,7 +481,7 @@ namespace RidocciConsole
                     if (asn.Chk1)
                     {
                         Console.WriteLine("ASNPCA: {0}", asn.AnestheticServiceNoteId);
-                        CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
+                        //CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
                         ctx.SaveChanges();
                     }
                 }

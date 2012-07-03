@@ -33,7 +33,7 @@ public partial class SourceForm : System.Web.UI.Page
             user = (User)Session["User"];
             user = CntAriCli.GetUser(user.UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "Source"
+                            where p.Code == "source"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
