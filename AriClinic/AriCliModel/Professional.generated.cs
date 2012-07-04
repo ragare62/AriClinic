@@ -211,5 +211,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Treatment> treatments = new List<Treatment>();
+		public virtual IList<Treatment> Treatments 
+		{ 
+		    get
+		    {
+		        return this.treatments;
+		    }
+		}
+		
 	}
 }

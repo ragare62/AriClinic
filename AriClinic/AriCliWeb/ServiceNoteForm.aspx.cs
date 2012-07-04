@@ -247,7 +247,7 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         {
             rdcbClinic.Items.Add(new RadComboBoxItem(c.Name, c.ClinicId.ToString()));
         }
-        if (sn != null)
+        if (sn != null && sn.Clinic != null)
         {
             rdcbClinic.SelectedValue = sn.Clinic.ClinicId.ToString();
         }

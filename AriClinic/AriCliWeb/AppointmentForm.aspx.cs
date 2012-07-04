@@ -275,6 +275,7 @@ public partial class AppointmentForm : System.Web.UI.Page
         ddlStatus.Items.Add(new ListItem("Sala de espera","2"));
         ddlStatus.Items.Add(new ListItem("Atendida", "3"));
         ddlStatus.Items.Add(new ListItem("No presentado","4"));
+        ddlStatus.Items.Add(new ListItem("Sin hora", "5"));
         if (app != null)
         {
             ddlStatus.SelectedValue = app.Status;

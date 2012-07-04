@@ -964,6 +964,9 @@
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professional" order-by="" uniqueId="a3450b89-8e50-4d91-a845-99dc5e73841b" />
         </orm:field>
+        <orm:field name="treatments" property="Treatments" behavior="readwrite" uniqueId="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" type="AriCliModel.Treatment">
+          <orm:collection element-class="AriCliModel.Treatment" inverse-field="professional" order-by="" uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
+        </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:index>
@@ -1430,6 +1433,9 @@
         </orm:field>
         <orm:field name="baseVisit" property="BaseVisit" behavior="readwrite" uniqueId="3efce21e-33ad-418e-a860-65125728e9a8" type="AriCliModel.BaseVisit">
           <orm:reference uniqueId="af5967b0-47d7-4772-a893-6d710dda981c" />
+        </orm:field>
+        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="7f37d445-efeb-4b2e-b819-6375c937429f" type="AriCliModel.Professional">
+          <orm:reference uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
         </orm:field>
         <orm:index name="idx_treatment_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -4780,6 +4786,9 @@
         <classHasNavigationalProperties Id="f736a236-6f73-4060-b9a3-a2d7fa778f6c">
           <NavigationalProperty Id="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a9803322-4681-470c-b00d-fb21516ec291">
+          <NavigationalProperty Id="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" name="Treatments" type="IList&lt;Treatment&gt;" label="Treatments : IList&lt;Treatment&gt;" nullable="true" kind="Persistent" fieldName="treatments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e6ce65e6-2ed0-405c-8c36-5189a2dde9aa" name="Procedure" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -5407,6 +5416,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" SourceMultiplicity="ZeroOne" name="TreatmentHasProfessional">
+          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="2bba97a9-2373-4dcc-8178-6714265ba5ee">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/Treatments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f08ed48b-d0e7-4b51-a529-bf5b58f07073">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Treatment/Professional" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="7603cf5e-ed23-4d14-b2bd-79a03358f8d4">
@@ -5417,6 +5439,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="aed440e8-2f90-4b1d-ad2a-c7ea9a24d2e5">
           <NavigationalProperty Id="3efce21e-33ad-418e-a860-65125728e9a8" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="df65a904-93de-4284-8449-949feaa03f95">
+          <NavigationalProperty Id="7f37d445-efeb-4b2e-b819-6375c937429f" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

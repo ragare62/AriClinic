@@ -147,6 +147,33 @@ public partial class TreatmentForm {
     protected global::Telerik.Web.UI.RadDatePicker rdpTreatmentDate;
     
     /// <summary>
+    /// Control lblProfessional.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblProfessional;
+    
+    /// <summary>
+    /// Control ImageButton1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+    
+    /// <summary>
+    /// Control rdcProfessional.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcProfessional;
+    
+    /// <summary>
     /// Control lblDrug.
     /// </summary>
     /// <remarks>

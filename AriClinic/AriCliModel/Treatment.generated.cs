@@ -113,5 +113,18 @@ namespace AriCliModel
 		    }
 		}
 		
+		private Professional professional;
+		public virtual Professional Professional 
+		{ 
+		    get
+		    {
+		        return this.professional;
+		    }
+		    set
+		    {
+		        this.professional = value;
+		    }
+		}
+		
 	}
 }

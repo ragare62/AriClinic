@@ -180,6 +180,14 @@ public partial class TreatmentForm : System.Web.UI.Page
         rdcDrug.Items.Add(new RadComboBoxItem(tr.Drug.Name, tr.Drug.DrugId.ToString()));
         rdcDrug.SelectedValue = tr.Drug.DrugId.ToString();
 
+        // Load professional
+        if (tr.Professional != null)
+        {
+            rdcProfessional.Items.Clear();
+            rdcProfessional.Items.Add(new RadComboBoxItem(tr.Professional.FullName, tr.Professional.PersonId.ToString()));
+            rdcProfessional.SelectedValue = tr.Professional.PersonId.ToString();
+        }
+
         rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
         txtRecommend.Text = tr.Recommend;
         if (tr.Quantity != 0)
@@ -195,6 +203,10 @@ public partial class TreatmentForm : System.Web.UI.Page
             tr.BaseVisit = visit;
         tr.Recommend = txtRecommend.Text;
         if (txtQuantity.Text != "") tr.Quantity = (int)txtQuantity.Value;
+        if (rdcProfessional.SelectedValue != "")
+        {
+            tr.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
+        }
     }
 
     #endregion Auxiliary functions
@@ -224,6 +236,19 @@ public partial class TreatmentForm : System.Web.UI.Page
         foreach (Drug dg in rs)
         {
             combo.Items.Add(new RadComboBoxItem(dg.Name, dg.DrugId.ToString()));
+        }
+    }
+    protected void rdcProfessional_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Professionals
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Professional professional in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
         }
     }
 }

@@ -29,57 +29,140 @@ namespace RidocciConsole
             // open connection
             RdcModel ctxRid = new RdcModel("Ariclinic_ridocciConnection");
             AriClinicContext ctxAri = new AriClinicContext("Ariclinic_importConnection");
-            // health care company - empresa sanitaria
-            foreach (Empresa_sanitarium empresa in ctxRid.Empresa_sanitaria)
-            {
-                LoadHealthCareCompany(empresa, ctxRid, ctxAri);
-            }
 
-            // aseguradora - insurance
-            numr = ctxRid.Aseguradoras.Count(); r = 0;
-            foreach (Aseguradora aseg in ctxRid.Aseguradoras)
-            {
-                Console.WriteLine("Insurance company -> {0} ({1}/{2})", aseg.Nom_aseguradora, ++r, numr);
-                LoadInsurance(aseg, ctxRid, ctxAri);
-            }
-            // default service category
-            ServiceCategory sc = new ServiceCategory()
-            {
-                ServiceCategoryId = 1,
-                Name = "GENERAL"
-            };
-            ctxAri.Add(sc);
-            ctxAri.SaveChanges();
+            //// health care company - empresa sanitaria
+            //foreach (Empresa_sanitarium empresa in ctxRid.Empresa_sanitaria)
+            //{
+            //    LoadHealthCareCompany(empresa, ctxRid, ctxAri);
+            //}
 
-            // procedencias
-            numr = ctxRid.Procedencia.Count(); r = 0;
-            foreach (Procedencium procedencia in ctxRid.Procedencia)
-            {
-                Console.WriteLine("Procedencia -> {0} ({1}/{2})", procedencia.Nom_procedencia, ++r, numr);
-                LoadProcedencia(procedencia, ctxRid, ctxAri);
-            }
+            //// aseguradora - insurance
+            //numr = ctxRid.Aseguradoras.Count(); r = 0;
+            //foreach (Aseguradora aseg in ctxRid.Aseguradoras)
+            //{
+            //    Console.WriteLine("Insurance company -> {0} ({1}/{2})", aseg.Nom_aseguradora, ++r, numr);
+            //    LoadInsurance(aseg, ctxRid, ctxAri);
+            //}
+            //// default service category
+            //ServiceCategory sc = new ServiceCategory()
+            //{
+            //    ServiceCategoryId = 1,
+            //    Name = "GENERAL"
+            //};
+            //ctxAri.Add(sc);
+            //ctxAri.SaveChanges();
 
-            // acto medico - service
-            numr = ctxRid.Acto_medicos.Count(); r = 0;
-            foreach (Acto_medico amed in ctxRid.Acto_medicos)
-            {
-                Console.WriteLine("Service -> {0} ({1}/{2})", amed.Nom_acto_medico, ++r, numr);
-                LoadService(amed, ctxRid, ctxAri, sc);
-            }
-            // acto medico asc - insurance services
-            numr = ctxRid.Acto_medico_ascs.Count(); r = 0;
-            foreach (Acto_medico_asc asc in ctxRid.Acto_medico_ascs)
-            {
-                Console.WriteLine("InsuranceService -> {0} ({1}/{2})", asc.Id_acto_medico_asc, ++r, numr);
-                LoadInsuranceServices(asc, ctxRid, ctxAri);
-            }
-            // historiales - patients and customers
-            numr = ctxRid.Historials.Count(); r = 0;
-            foreach (Historial his in ctxRid.Historials)
-            {
-                Console.WriteLine("Patient -> {0} ({1}/{2})", his.Nombre, ++r, numr);
-                LoadPatientCustomer(his, ctxRid, ctxAri);
-            }
+            //// procedencias
+            //numr = ctxRid.Procedencia.Count(); r = 0;
+            //foreach (Procedencium procedencia in ctxRid.Procedencia)
+            //{
+            //    Console.WriteLine("Procedencia -> {0} ({1}/{2})", procedencia.Nom_procedencia, ++r, numr);
+            //    LoadProcedencia(procedencia, ctxRid, ctxAri);
+            //}
+
+            //// acto medico - service
+            //numr = ctxRid.Acto_medicos.Count(); r = 0;
+            //foreach (Acto_medico amed in ctxRid.Acto_medicos)
+            //{
+            //    Console.WriteLine("Service -> {0} ({1}/{2})", amed.Nom_acto_medico, ++r, numr);
+            //    LoadService(amed, ctxRid, ctxAri, sc);
+            //}
+            //// acto medico asc - insurance services
+            //numr = ctxRid.Acto_medico_ascs.Count(); r = 0;
+            //foreach (Acto_medico_asc asc in ctxRid.Acto_medico_ascs)
+            //{
+            //    Console.WriteLine("InsuranceService -> {0} ({1}/{2})", asc.Id_acto_medico_asc, ++r, numr);
+            //    LoadInsuranceServices(asc, ctxRid, ctxAri);
+            //}
+            //// historiales - patients and customers
+            //numr = ctxRid.Historials.Count(); r = 0;
+            //foreach (Historial his in ctxRid.Historials)
+            //{
+            //    Console.WriteLine("Patient -> {0} ({1}/{2})", his.Nombre, ++r, numr);
+            //    LoadPatientCustomer(his, ctxRid, ctxAri);
+            //}
+
+            
+            //// Profesionales - professionals
+            //numr = ctxRid.Profesionals.Count(); r = 0;
+            //foreach (Profesional p in ctxRid.Profesionals)
+            //{
+            //    Console.WriteLine("Professional -> {0} ({1}/{2})", p.Nom_profesional, ++r, numr);
+            //    Professional professional = new Professional();
+            //    professional.OftId = p.Id_profesional;
+            //    professional.FullName = p.Nom_profesional;
+            //    professional.ComercialName = p.Nom_profesional;
+            //    professional.License = p.Num_colegiado;
+            //    ctxAri.Add(professional);
+            //    ctxAri.SaveChanges();
+            //}
+
+            //// Agendas --> Diary
+            //numr = ctxRid.Agendas.Count(); r = 0;
+            //foreach (Agenda a in ctxRid.Agendas)
+            //{
+            //    Console.WriteLine("Diary -> {1:000000}/{2:000000} {0}", a.Nom_agenda, ++r, numr);
+            //    Diary d = new Diary();
+            //    d.Name = a.Nom_agenda;
+            //    d.OftId = a.Id_agenda;
+            //    d.BeginHour = a.Hora_inicio;
+            //    d.EndHour = a.Hora_fin;
+            //    d.TimeStep = a.Tramo;
+            //    ctxAri.Add(d);
+            //    ctxAri.SaveChanges();
+            //}
+
+            //// Tipos de cita --> Appointment Type
+            //numr = ctxRid.Tipo_cita.Count(); r = 0;
+            //foreach (Tipo_citum tc in ctxRid.Tipo_cita)
+            //{
+            //    Console.WriteLine("Appointment type -> {1:000000}/{2:000000} {0}", tc.Nom_tipo_cita, ++r, numr);
+            //    AppointmentType ap = new AppointmentType();
+            //    ap.Name = tc.Nom_tipo_cita;
+            //    ap.OftId = tc.Id_tipo_cita;
+            //    ap.Duration = tc.Duracion;
+            //    ctxAri.Add(ap);
+            //    ctxAri.SaveChanges();
+            //}
+
+            //// Citas --> Appointments
+            //numr = ctxRid.Cita.Count(); r = 0;
+            //foreach (Citum c in ctxRid.Cita)
+            //{
+            //    Console.WriteLine("Cita -> {1:000000}/{2:000000} {0} ", c.Asunto, ++r, numr);
+            //    AppointmentInfo ap = new AppointmentInfo();
+            //    Professional prof = (from p in ctxAri.Professionals
+            //                         where p.OftId == c.Id_profesional
+            //                         select p).FirstOrDefault<Professional>();
+            //    Diary diary = (from d in ctxAri.Diaries
+            //                   where d.OftId == c.Id_agenda
+            //                   select d).FirstOrDefault<Diary>();
+            //    Patient patient = (from pat in ctxAri.Patients
+            //                       where pat.OftId == c.Id_historia
+            //                       select pat).FirstOrDefault<Patient>();
+            //    AppointmentType atyp = (from at in ctxAri.AppointmentTypes
+            //                            where at.OftId == c.Id_tipo_cita
+            //                            select at).FirstOrDefault<AppointmentType>();
+            //    ap.Patient = patient;
+            //    ap.Diary = diary;
+            //    ap.Professional = prof;
+            //    ap.AppointmentType = atyp;
+            //    ap.Status = (c.Estado + 1).ToString();
+            //    ap.BeginDateTime = c.Fecha_hora_inicio;
+            //    ap.EndDateTime = c.Fecha_hora_fin;
+            //    ap.Duration = c.Duracion;
+            //    ap.Arrival = c.Llegada;
+            //    ap.Subject = c.Asunto;
+            //    ap.Comments = c.Observaciones;
+            //    ctxAri.Add(ap);
+            //    ctxAri.SaveChanges();
+            //}
+
+            //LoadTicketsAndServiceNotes(ctxRid, ctxAri);
+
+            //LoadDiagnostics(ctxRid, ctxAri);
+
+            LoadTreatments(ctxRid, ctxAri);
 
             // close connections
             ctxAri.Dispose();
@@ -90,6 +173,11 @@ namespace RidocciConsole
             Console.ReadLine();
 
         }
+
+
+
+
+
         public static void LoadHealthCareCompany(Empresa_sanitarium empresa, RdcModel ctxRid, AriClinicContext ctxAri)
         {
             Console.WriteLine("Empresa - > {0}", empresa.Nom_empresa);
@@ -297,6 +385,129 @@ namespace RidocciConsole
             }
             return surname;
         }
+
+        public static void LoadTicketsAndServiceNotes(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            int numr = ctxRid.Acto_medico_asgs.Count(); int r = 0;
+            
+            DateTime fechaAnt = new DateTime(1, 1, 1);
+            int idHistoriaAnt = 0;
+
+            ServiceNote sn = null;
+
+            foreach (Acto_medico_asg asg in (from ams in ctxRid.Acto_medico_asgs
+                                             orderby ams.Fecha, ams.Id_historia
+                                             select ams))
+            {
+                Console.WriteLine("Tickest & Service notes -> {1:000000}/{2:000000} {0:dd/MM/yyyy} ", asg.Fecha, ++r, numr);
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == asg.Id_historia
+                                   select p).FirstOrDefault<Patient>();
+                if (asg.Fecha != fechaAnt || asg.Id_historia != idHistoriaAnt)
+                {
+                    // al cambiar la fecha o el paciente creamos una nueva nota de servicio
+                    sn = new ServiceNote();
+                    sn.Customer = patient.Customer;
+                    sn.ServiceNoteDate = asg.Fecha;
+                    ctx.Add(sn);
+                    ctx.SaveChanges();
+                    fechaAnt = asg.Fecha;
+                    idHistoriaAnt = (int)asg.Id_historia;
+                }
+                // montamos el ticket de hoy
+                Ticket tck = new Ticket();
+                tck.ServiceNote = sn;
+                InsuranceService isrv = (from ins in ctx.InsuranceServices
+                                         where ins.OftId == asg.Id_acto_medico_asc
+                                         select ins).FirstOrDefault<InsuranceService>();
+                tck.InsuranceService = isrv;
+                tck.TicketDate = asg.Fecha;
+                tck.Policy = patient.Customer.Policies.FirstOrDefault<Policy>();
+                tck.Amount = 0;
+                tck.Comments = asg.Observaciones;
+                tck.Description = isrv.Service.Name;
+                tck.Checked = asg.Comunicado;
+                ctx.Add(tck);
+                ctx.SaveChanges();
+            }
+        }
+        public static void LoadDiagnostics(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            // definiciones 
+            int nr = 0, r = 0; // numero de registros, registro actual
+            // primero hay que cargar los diagnosticos en general.
+            nr = ctxRid.Diagnosticos.Count(); r = 0;
+            foreach (Diagnostico d in ctxRid.Diagnosticos)
+            {
+                Console.WriteLine("Diagnostics -> {1:000000}/{2:000000} {0} ", d.Nom_diagnostico, ++r, nr);
+                Diagnostic dg = new Diagnostic();
+                dg.Name = d.Nom_diagnostico;
+                dg.OftId = d.Id_diagnostico;
+                ctx.Add(dg);
+                ctx.SaveChanges();
+            }
+            // y ahora los asignados
+            nr = ctxRid.Diagnostico_asignados.Count(); r = 0;
+            foreach (Diagnostico_asignado da in ctxRid.Diagnostico_asignados)
+            {
+                Console.WriteLine("Diagnostics ASSIGNED -> {1:000000}/{2:000000} {0} ", da.Fecha, ++r, nr);
+                DiagnosticAssigned das = new DiagnosticAssigned();
+                Diagnostic d = (from dg in ctx.Diagnostics
+                                where dg.OftId == da.Id_diagnostico
+                                select dg).FirstOrDefault<Diagnostic>();
+                das.Diagnostic = d;
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == da.Id_historia
+                                   select p).FirstOrDefault<Patient>();
+                das.Patient = patient;
+                das.DiagnosticDate = da.Fecha;
+                das.Comments = da.Observaciones;
+                ctx.Add(das);
+                ctx.SaveChanges();
+            }
+        }
+
+        public static void LoadTreatments(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            // definiciones 
+            int nr = 0, r = 0; // numero de registros, registro actual
+            // primero hay que cargar los fármacos
+            nr = ctxRid.Farmacos.Count(); r = 0;
+            foreach (Farmaco f in ctxRid.Farmacos)
+            {
+                Console.WriteLine("Drugs -> {1:000000}/{2:000000} {0} ", f.Nom_farmaco, ++r, nr);
+                Drug dg = new Drug();
+                dg.Name = f.Nom_farmaco;
+                dg.OftId = f.Id_farmaco;
+                ctx.Add(dg);
+                ctx.SaveChanges();
+            }
+            // y ahora los asignados
+            nr = ctxRid.Tratamientos.Count(); r = 0;
+            foreach (Tratamiento trat in ctxRid.Tratamientos)
+            {
+                Console.WriteLine("Treatments -> {1:000000}/{2:000000} {0} ", trat.Fecha, ++r, nr);
+                Treatment t = new Treatment();
+                Drug d = (from dg in ctx.Drugs
+                                where dg.OftId == trat.Id_farmaco
+                                select dg).FirstOrDefault<Drug>();
+                t.Drug = d;
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == trat.Id_historia
+                                   select p).FirstOrDefault<Patient>();
+                t.Patient = patient;
+                Professional prof = (from p in ctx.Professionals
+                                     where p.OftId == trat.Id_profesional
+                                     select p).FirstOrDefault<Professional>();
+                t.Professional = prof;
+                t.TreatmentDate = trat.Fecha;
+                t.Recommend = trat.Posologia;
+                ctx.Add(t);
+                ctx.SaveChanges();
+            }
+        }
+
+
         #endregion
         #region Funciones individuales (OFT)
         public static void CargaOFT()
