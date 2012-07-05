@@ -585,6 +585,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<PreviousMedicalRecord> PreviousMedicalRecords 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<PreviousMedicalRecord>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -862,6 +870,10 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<GeneralPayment> GeneralPayments 
+		{ 
+			get;
+		}
+		IQueryable<PreviousMedicalRecord> PreviousMedicalRecords 
 		{ 
 			get;
 		}

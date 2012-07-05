@@ -215,5 +215,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<PreviousMedicalRecord> previousMedicalRecords = new List<PreviousMedicalRecord>();
+		public virtual IList<PreviousMedicalRecord> PreviousMedicalRecords 
+		{ 
+		    get
+		    {
+		        return this.previousMedicalRecords;
+		    }
+		}
+		
 	}
 }

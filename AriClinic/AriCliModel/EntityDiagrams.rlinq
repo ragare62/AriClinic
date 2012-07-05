@@ -572,6 +572,9 @@
         <orm:field name="appointmentInfos" property="AppointmentInfos" behavior="readwrite" uniqueId="bca42d9f-8136-4517-9514-3c99419fc20f" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="patient" order-by="" uniqueId="a8a435fb-4244-4fb6-8157-7b78269c0248" />
         </orm:field>
+        <orm:field name="previousMedicalRecords" property="PreviousMedicalRecords" behavior="readwrite" uniqueId="0b3a2671-36ea-4746-91b1-671a1bec8bd7" type="AriCliModel.PreviousMedicalRecord">
+          <orm:collection element-class="AriCliModel.PreviousMedicalRecord" inverse-field="patient" order-by="" uniqueId="5fd6070d-eff5-46ea-8f79-32ce80418e04" />
+        </orm:field>
       </orm:class>
       <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
@@ -2834,6 +2837,22 @@
           <orm:column name="service_note_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
+      <orm:class name="PreviousMedicalRecord" behavior="readwrite" uniqueId="baaddc15-cb0a-494b-8a38-79ee26d3021c">
+        <orm:table name="previous_medical_record" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="previousMedicalRecordId" />
+        </orm:identity>
+        <orm:field name="previousMedicalRecordId" property="PreviousMedicalRecordId" behavior="readwrite" uniqueId="e22b8571-af1b-4cdb-960a-18d2d0999786" type="System.Int32">
+          <orm:column name="previous_medical_record_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="content" property="Content" behavior="readwrite" uniqueId="2fd8d110-bbe2-4011-961c-85a2e667c8e1" type="System.String">
+          <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="9dec102f-5693-457f-a811-8c395e618240" type="AriCliModel.Patient">
+          <orm:reference uniqueId="5fd6070d-eff5-46ea-8f79-32ce80418e04" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3629,6 +3648,10 @@
           <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:table>
+      <orm:table name="previous_medical_record">
+        <orm:column name="previous_medical_record_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
@@ -4299,6 +4322,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="73b01213-1960-41f2-8652-23306bfaf2b0">
           <NavigationalProperty Id="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f54a314a-01b0-436d-a482-a40f6cb98d2c">
+          <NavigationalProperty Id="0b3a2671-36ea-4746-91b1-671a1bec8bd7" name="PreviousMedicalRecords" type="IList&lt;PreviousMedicalRecord&gt;" label="PreviousMedicalRecords : IList&lt;PreviousMedicalRecord&gt;" nullable="true" kind="Persistent" fieldName="previousMedicalRecords" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -6584,6 +6610,30 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="baaddc15-cb0a-494b-8a38-79ee26d3021c" name="PreviousMedicalRecord" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="e22b8571-af1b-4cdb-960a-18d2d0999786" name="PreviousMedicalRecordId" type="System.Int32" label="PreviousMedicalRecordId : System.Int32" identity="true" />
+      <Property Id="2fd8d110-bbe2-4011-961c-85a2e667c8e1" name="Content" label="Content : String" />
+      <AssociationTargets>
+        <Association Id="5fd6070d-eff5-46ea-8f79-32ce80418e04" SourceMultiplicity="ZeroOne" name="PreviousMedicalRecordHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="11d632e2-db1e-4fb2-9bdc-66a53530407d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/PreviousMedicalRecords" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bdc3d631-a08e-4b57-bd15-f92f44d55921">
+              <NavigationalPropertyMoniker name="/AriClinicContext/PreviousMedicalRecord/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="bbb97c78-1bf5-45c8-81c9-19c0c706a2c7">
+          <NavigationalProperty Id="9dec102f-5693-457f-a811-8c395e618240" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -6655,6 +6705,7 @@
         <entitySetProperty name="Fundus" type="Fundus" label="Fundus : IQueryable&lt;Fundus&gt;" />
         <entitySetProperty name="Sources" type="Source" label="Sources : IQueryable&lt;Source&gt;" />
         <entitySetProperty name="GeneralPayments" type="GeneralPayment" label="GeneralPayments : IQueryable&lt;GeneralPayment&gt;" />
+        <entitySetProperty name="PreviousMedicalRecords" type="PreviousMedicalRecord" label="PreviousMedicalRecords : IQueryable&lt;PreviousMedicalRecord&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>
