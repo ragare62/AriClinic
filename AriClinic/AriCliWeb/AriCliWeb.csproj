@@ -211,6 +211,13 @@
     <Compile Include="GeneralPaymentForm.aspx.designer.cs">
       <DependentUpon>GeneralPaymentForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PreviousMedicalRecordForm.aspx.cs">
+      <DependentUpon>PreviousMedicalRecordForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreviousMedicalRecordForm.aspx.designer.cs">
+      <DependentUpon>PreviousMedicalRecordForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SourceForm.aspx.cs">
       <DependentUpon>SourceForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1067,6 +1074,7 @@
     <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
     <Content Include="images\gears_run.png" />
+    <Content Include="PreviousMedicalRecordForm.aspx" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
     <Content Include="FundusForm.aspx" />
@@ -1074,6 +1082,9 @@
     <Content Include="OphVisitTab.aspx" />
     <Content Include="OphVisitForm.aspx" />
     <Content Include="RptPCEAForm.aspx" />
+    <Content Include="Tools\FullSetOfTools.xml" />
+    <Content Include="Tools\tools.xml" />
+    <Content Include="Tools\ToolsFile.xml" />
     <Content Include="TopographyForm.aspx" />
     <Content Include="PaquimetryForm.aspx" />
     <Content Include="VisitTab.aspx" />
@@ -1343,7 +1354,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

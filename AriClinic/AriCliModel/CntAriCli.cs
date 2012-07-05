@@ -1618,5 +1618,11 @@ namespace AriCliModel
             policy.Customer = patient.Customer;
             ctx.Add(policy);
         }
+
+        public static PreviousMedicalRecord GetPreviousMedicalRecord(int patientId, AriClinicContext ctx)
+        {
+            PreviousMedicalRecord pmr = null;
+            return pmr;
+        }
     }
 }

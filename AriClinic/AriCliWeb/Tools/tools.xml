@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<modules>
+		<module name="RadEditorStatistics" dockingZone="Bottom"/>
+		<module name="RadEditorDomInspector" />
+		<module name="RadEditorNodeInspector" />
+		<module name="RadEditorHtmlInspector"  visible="false" />
+	</modules>
+	<tools name="Clipboard" tab="Home">
+		<tool name="PasteStrip" size="large"/>
+		<tool name="Cut" size="medium"/>
+		<tool name="Copy" size="medium" shortcut="CTRL+C"/>
+		<tool name="Print" size="medium" shortcut="CTRL+P"/>
+	</tools>
+	<tools name="Font" tab="Home">
+		<tool name="FontName" shortcut="CTRL+SHIFT+F"/>
+		<tool name="RealFontSize" shortcut="CTRL+SHIFT+P" width="80px"/>
+		<tool name="ConvertToLower" strip="FontDropDowns" />
+		<tool name="ConvertToUpper" strip="FontDropDowns" />
+		<tool name="Bold" strip="FontBasicTools" shortcut="CTRL+B"/>
+		<tool name="Italic" strip="FontBasicTools" shortcut="CTRL+I"/>
+		<tool name="Underline" strip="FontBasicTools" shortcut="CTRL+U"/>
+		<tool name="StrikeThrough" strip="FontBasicTools1"/>
+		<tool name="Superscript" strip="FontBasicTools1"/>
+		<tool name="Subscript" strip="FontBasicTools1"/>
+		<tool name="FormatStripper" strip="FontDropDowns" />
+		<tool name="ForeColor"/>
+		<tool name="BackColor"/>
+	</tools>
+	<tools name="Paragraph" tab="Home">
+		<tool name="InsertUnorderedList" strip="ListsAndIndention"/>
+		<tool name="InsertOrderedList" strip="ListsAndIndention"/>
+		<tool name="Indent" strip="ListsAndIndention"/>
+		<tool name="Outdent" strip="ListsAndIndention"/>
+		<tool name="InsertParagraph" strip="ListsAndIndention"/>
+		<tool name="JustifyLeft" strip="Align"/>
+		<tool name="JustifyCenter" strip="Align"/>
+		<tool name="JustifyRight" strip="Align"/>
+		<tool name="JustifyFull" strip="Align"/>
+		<tool name="JustifyNone" strip="Align"/>
+	</tools>
+	<tools name="Styles" tab="Home">
+		<tool name="ApplyClass" />
+		<tool name="FormatBlock" />
+	</tools>
+	<tools name="Editing" tab="Home">
+		<tool name="Undo" shortcut="CTRL+Z"/>
+		<tool name="FindAndReplace" shortcut="CTRL+F"/>
+		<tool name="SelectAll" shortcut="CTRL+A"/>
+		<tool name="Redo" shortcut="CTRL+Y"/>
+	</tools>
+	<tools name="Tables" tab="Insert">
+		<tool name="InsertTableLight" size="large"/>
+		<tool name="InsertTable" />
+	</tools>
+	<tools name="Media" tab="Insert">
+		<tool name="ImageManager" size="large" shortcut="CTRL+G"/>
+		<tool name="MediaManager" size="medium" />
+		<tool name="FlashManager" size="medium"/>
+		<tool name="SilverlightManager" size="medium"/>
+	</tools>
+	<tools name="Links" tab="Insert">
+		<tool name="LinkManager" size="large" shortcut="CTRL+K"/>
+		<tool name="Unlink" strip="LinksStrip" shortcut="CTRL+SHIFT+K"/>
+		<tool name="DocumentManager" strip="LinksStrip"/>
+		<tool name="ImageMapDialog" strip="LinksStrip"/>
+		<tool name="InsertCustomLink" shortcut="CTRL+ALT+K"/>
+	</tools>
+	<tools name="Content" tab="Insert">
+		<tool name="InsertSymbol"/>
+		<tool name="InsertFormElement" />
+		<tool name="InsertSnippet"/>
+		<tool name="TemplateManager" />
+		<tool name="FormatCodeBlock" />
+		<tool name="InsertGroupbox" />
+		<tool name="InsertHorizontalRule" />
+		<tool name="InsertDate" />
+		<tool name="InsertTime" />
+		<tool name="FindAndReplace" shortcut="CTRL+F"/>
+	</tools>
+	<tools name="Zoom" tab="View">
+		<tool name="Zoom"/>
+	</tools>
+	<tools name="Preferences" tab="View">
+		<tool name="ToggleTableBorder" size="medium"/>
+		<tool name="ToggleScreenMode" size="medium" shortcut="F11"/>
+		<tool name="ModuleManager"/>
+	</tools>
+	<tools name="Proofing" tab="Review">
+		<tool name="AjaxSpellCheck" size="large"/>
+		<tool name="XhtmlValidator" size="large"/>
+	</tools>
+	<tools name="Help" tab="Help">
+		<tool name="Help" size="medium"/>
+		<tool name="AboutDialog" size="medium"/>
+	</tools>
+</root>
