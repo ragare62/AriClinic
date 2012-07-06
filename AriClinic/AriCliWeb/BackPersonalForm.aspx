@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreviousMedicalRecordForm.aspx.cs" Inherits="PreviousMedicalRecordForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BackPersonalForm.aspx.cs" Inherits="BackPersonalForm" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -34,10 +34,6 @@
         </telerik:RadWindowManager>
             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%">
                 <div id="main-container" style="width:100%; height:500px">
-                    <div id="TitleArea" class="titleBar2">
-                        <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-                        <asp:Label ID="lblTitle" runat="server" Text="Historial anterior"></asp:Label>
-                    </div>
                     <div ID="ButtonsTop" class="buttonsFomat">
                         <asp:ImageButton ID="ImageButton1" runat="server" TabIndex="6"  
                                          ImageUrl="~/images/document_ok.png" OnClick="btnAccept_Click" ToolTip="Guardar" />

@@ -70,6 +70,15 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="AriCliException.cs" />
+    <Compile Include="BackFamily.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="BackGinecology.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="BackPersonal.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="BaseVisit.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>

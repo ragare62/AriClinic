@@ -83,6 +83,16 @@
                     </telerik:RadTab>
                     <telerik:RadTab runat="server" Text="Hist. Clínica" Value="visit">
                         <Tabs>
+                            <telerik:RadTab runat="server" Text="Antecedentes" Value="backgrounds">
+                                <Tabs>
+                                    <telerik:RadTab runat="server" Text="Personales" Value="backpersonal">
+                                    </telerik:RadTab>
+                                    <telerik:RadTab runat="server" Text="Familiares" Value="backfamily">
+                                    </telerik:RadTab>
+                                    <telerik:RadTab runat="server" Text="Ginecológicos" Value="backginecology">
+                                    </telerik:RadTab>
+                                </Tabs>
+                            </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Visitas" Value="visit">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Citas" Value="appointment">
@@ -98,6 +108,9 @@
                             <telerik:RadTab runat="server" Text="Tratamientos" Value="treatment">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Documentos" Value="docs">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Historial anterior" 
+                                Value="previousmedicalrecord">
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>

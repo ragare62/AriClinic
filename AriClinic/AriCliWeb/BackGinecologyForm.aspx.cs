@@ -1,11 +1,9 @@
 ﻿using System;
 using AriCliModel;
 using System.Linq;
-
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Configuration;
 using System.Web.Security;
@@ -13,12 +11,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
 
-public partial class PreviousMedicalRecordForm : System.Web.UI.Page
+public partial class BackGinecologyForm : System.Web.UI.Page
 {
     #region Variables declaration
     AriClinicContext ctx = null;
     Patient patient = null;
-    PreviousMedicalRecord pmr = null;
+    BackGinecology bckg = null;
     string js = "";
     #endregion
     #region Init Load Unload events
@@ -34,14 +32,13 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
         if (Request.QueryString["PatientId"] != null)
         {
             patient = CntAriCli.GetPatient(int.Parse(Request.QueryString["PatientId"]), ctx);
-            pmr = patient.PreviousMedicalRecords.FirstOrDefault<PreviousMedicalRecord>();
+            bckg = patient.BackGinecologies.FirstOrDefault<BackGinecology>();
             // we load RadEditor with content
-            lblTitle.Text = String.Format("{0} ({1})",Resources.GeneralResource.PreviousMedicalRecord, patient.FullName);
-            LoadData(pmr);
+            LoadData(bckg);
         }
         else
         {
-           // What will it happen here?
+            // What will it happen here?
         }
     }
 
@@ -63,30 +60,54 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
     #endregion Init Load Unload events
 
     #region Load / Unload data
-    protected void LoadData(PreviousMedicalRecord pmr)
+    protected void LoadData(BackGinecology bckg)
     {
-        if (pmr != null)
+        if (bckg != null)
         {
-            RadEditor1.Content = pmr.Content;
+            txtMenstrualFormula.Text = bckg.MenstrualFormula;
+            txtVaginalDeliveries.Value = bckg.VaginalDeliveries;
+            txtCesareanDeliveries.Value = bckg.CesareanDeliveries;
+            txtAbortions.Value = bckg.Abortions;
+
+            txtMenarche.Text = bckg.Menarche;
+            txtMenopause.Text = bckg.Menopause;
+
+            if (CntAriCli.IsDateNull(bckg.DateOfLastMestrual) != null)
+                rdcDateOfLastMenstrual.SelectedDate = bckg.DateOfLastMestrual;
+            txtContent.Content = bckg.Content;
         }
     }
-    protected void UnloadData(PreviousMedicalRecord pmr)
+
+    protected void UnloadData(BackGinecology bckg)
     {
-        if (pmr == null)
+        if (bckg == null)
         {
-            pmr = new PreviousMedicalRecord();
-            pmr.Patient = patient;
-            ctx.Add(pmr);
+            bckg = new BackGinecology();
+            bckg.Patient = patient;
+            ctx.Add(bckg);
             ctx.SaveChanges();
         }
-        pmr.Content = RadEditor1.Content;
+        
+        bckg.MenstrualFormula = txtMenstrualFormula.Text;
+        bckg.VaginalDeliveries = (int)txtVaginalDeliveries.Value;
+        bckg.CesareanDeliveries = (int)txtCesareanDeliveries.Value;
+        bckg.Abortions = (int)txtAbortions.Value;
+
+        bckg.Menarche = txtMenarche.Text;
+        bckg.Menopause = txtMenopause.Text;
+
+        if (rdcDateOfLastMenstrual.SelectedDate != null)
+            bckg.DateOfLastMestrual = (DateTime)rdcDateOfLastMenstrual.SelectedDate;
+        bckg.Content = txtContent.Content;
+
         ctx.SaveChanges();
         RadWindowManager1.RadConfirm(Resources.GeneralResource.DataStoredOk, "noHaceNada()", null, null, null, Resources.GeneralResource.Warning);
     }
+
     #endregion 
 
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
-        UnloadData(pmr);
+        UnloadData(bckg);
     }
 }

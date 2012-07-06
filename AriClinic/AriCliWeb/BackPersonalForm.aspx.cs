@@ -13,12 +13,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
 
-public partial class PreviousMedicalRecordForm : System.Web.UI.Page
+public partial class BackPersonalForm : System.Web.UI.Page
 {
     #region Variables declaration
     AriClinicContext ctx = null;
     Patient patient = null;
-    PreviousMedicalRecord pmr = null;
+    BackPersonal bckp = null;
     string js = "";
     #endregion
     #region Init Load Unload events
@@ -34,10 +34,9 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
         if (Request.QueryString["PatientId"] != null)
         {
             patient = CntAriCli.GetPatient(int.Parse(Request.QueryString["PatientId"]), ctx);
-            pmr = patient.PreviousMedicalRecords.FirstOrDefault<PreviousMedicalRecord>();
+            bckp = patient.BackPersonals.FirstOrDefault<BackPersonal>();
             // we load RadEditor with content
-            lblTitle.Text = String.Format("{0} ({1})",Resources.GeneralResource.PreviousMedicalRecord, patient.FullName);
-            LoadData(pmr);
+            LoadData(bckp);
         }
         else
         {
@@ -63,18 +62,18 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
     #endregion Init Load Unload events
 
     #region Load / Unload data
-    protected void LoadData(PreviousMedicalRecord pmr)
+    protected void LoadData(BackPersonal pmr)
     {
         if (pmr != null)
         {
             RadEditor1.Content = pmr.Content;
         }
     }
-    protected void UnloadData(PreviousMedicalRecord pmr)
+    protected void UnloadData(BackPersonal pmr)
     {
         if (pmr == null)
         {
-            pmr = new PreviousMedicalRecord();
+            pmr = new BackPersonal();
             pmr.Patient = patient;
             ctx.Add(pmr);
             ctx.SaveChanges();
@@ -87,6 +86,6 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
 
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
-        UnloadData(pmr);
+        UnloadData(bckp);
     }
 }

@@ -162,7 +162,13 @@ namespace RidocciConsole
 
             //LoadDiagnostics(ctxRid, ctxAri);
 
-            LoadTreatments(ctxRid, ctxAri);
+            //LoadTreatments(ctxRid, ctxAri);
+
+            //LoadPreviousMedicalRecords(ctxRid, ctxAri);
+
+            LoadBackPersonals(ctxRid, ctxAri);
+            LoadBackFamily(ctxRid, ctxAri);
+
 
             // close connections
             ctxAri.Dispose();
@@ -506,7 +512,74 @@ namespace RidocciConsole
                 ctx.SaveChanges();
             }
         }
+        public static void LoadPreviousMedicalRecords(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            // definiciones 
+            int nr = 0, r = 0; // numero de registros, registro actual
+            // primero hay que cargar los historiales anteriores
+            nr = ctxRid.Historials.Count(); r = 0;
+            foreach (Historial his in ctxRid.Historials)
+            {
+                Console.WriteLine("Previous MR -> {1:000000}/{2:000000} {0} ", his.Nombre, ++r, nr);
+                PreviousMedicalRecord pmr = new PreviousMedicalRecord();
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == his.Id_historia
+                                   select p).FirstOrDefault<Patient>();
+                if (patient != null)
+                {
+                    pmr.Patient = patient;
+                    pmr.Content = his.Historia_anterior;
+                    ctx.Add(pmr);
+                    ctx.SaveChanges();
+                }
+            }
+        }
 
+        public static void LoadBackPersonals(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            // definiciones 
+            int nr = 0, r = 0; // numero de registros, registro actual
+            // primero hay que cargar los historiales anteriores
+            nr = ctxRid.Antecedente_personals.Count(); r = 0;
+            foreach (Antecedente_personal antp in ctxRid.Antecedente_personals)
+            {
+                Console.WriteLine("Back Personal -> {1:000000}/{2:000000} {0} ", antp.Id_antecedente_personal, ++r, nr);
+                BackPersonal bckp = new BackPersonal();
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == antp.
+                                   select p).FirstOrDefault<Patient>();
+                if (patient != null)
+                {
+                    bckp.Patient = patient;
+                    bckp.Content = antp.Textos;
+                    ctx.Add(bckp);
+                    ctx.SaveChanges();
+                }
+            }
+        }
+
+        public static void LoadBackFamily(RdcModel ctxRid, AriClinicContext ctx)
+        {
+            // definiciones 
+            int nr = 0, r = 0; // numero de registros, registro actual
+            // primero hay que cargar los historiales anteriores
+            nr = ctxRid.Antecedente_familiars.Count(); r = 0;
+            foreach (Historial his in ctxRid.Antecedente_familiars)
+            {
+                Console.WriteLine("Back Family -> {1:000000}/{2:000000} {0} ", his.Nombre, ++r, nr);
+                BackFamily bckf = new BackFamily();
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == his.Id_historia
+                                   select p).FirstOrDefault<Patient>();
+                if (patient != null)
+                {
+                    bckf.Patient = patient;
+                    bckf.Content = his.Historia_anterior;
+                    ctx.Add(bckf);
+                    ctx.SaveChanges();
+                }
+            }
+        }
 
         #endregion
         #region Funciones individuales (OFT)
