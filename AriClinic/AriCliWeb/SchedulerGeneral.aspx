@@ -59,6 +59,19 @@
           <asp:Label ID="lblTitle" runat="server" Text="Agendas" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+        <div id="scheduler-buttons">
+            <telerik:RadToolBar ID="RadToolBar1" runat="server" Skin="Office2007" 
+                Width="100%" onbuttonclick="RadToolBar1_ButtonClick">
+                <Items>
+                    <telerik:RadToolBarButton runat="server" Text="Ver mañana" Value="morning">
+                    </telerik:RadToolBarButton>
+                    <telerik:RadToolBarButton runat="server" Text="Ver tarde" Value="evening">
+                    </telerik:RadToolBarButton>
+                    <telerik:RadToolBarButton runat="server" Text="Imprimir" Value="print">
+                    </telerik:RadToolBarButton>
+                </Items>
+            </telerik:RadToolBar>
+        </div>
         <div id="Scheduler" class="messageText" style="width:100%; height:800px">
           <telerik:RadScheduler ID="RadScheduler1" runat="server"
                                 Culture="es-ES" FirstDayOfWeek="Monday" 

@@ -2,6 +2,12 @@
 
 var w;
 
+function printDiary(dt, diary) {
+    var url = "RptView.aspx?Report=rappointmentday&TDate=" + dt + "&Diary=" + diary;
+    w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+    w.focus();
+}
+
 function openAppointment(url) {
     w = window.open(url, "scheduler", "width=600,height=550,resizable=1");
     w.focus();

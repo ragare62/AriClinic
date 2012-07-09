@@ -166,4 +166,25 @@ public partial class SchedulerGeneral : System.Web.UI.Page
             SchedulerLoad();
         }
     }
+
+    protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
+    {
+        switch (e.Item.Value)
+        {
+            case "morning":
+                RadScheduler1.DayStartTime = new TimeSpan(8, 0, 0);
+                RadScheduler1.DayEndTime = new TimeSpan(15, 59, 0);
+                RadScheduler1.Rebind();
+                break;
+            case "evening":
+                RadScheduler1.DayStartTime = new TimeSpan(16, 0, 0);
+                RadScheduler1.DayEndTime = new TimeSpan(23, 59, 0);
+                RadScheduler1.Rebind();
+                break;
+            case "print":
+                string js = String.Format("printDiary({0:yyyyMMdd}, {1});", RadScheduler1.SelectedDate, diary.DiaryId);
+                RadAjaxManager1.ResponseScripts.Add(js);
+                break;
+        }
+    }
 }

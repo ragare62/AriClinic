@@ -243,9 +243,9 @@ namespace AriCliReport
             this.textBox17.Format = "{0:dd/MM/yyyy}";
             this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0445048026740551D), Telerik.Reporting.Drawing.Unit.Inch(0.40015736222267151D));
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(6.4515585899353027D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
+            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.3963618278503418D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
             this.textBox17.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(20D);
+            this.textBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(18D);
             this.textBox17.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.textBox17.Value = "= Fields.company_name";
             // 
@@ -256,7 +256,7 @@ namespace AriCliReport
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.7638273239135742D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
             this.textBox16.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox16.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(20D);
+            this.textBox16.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(18D);
             this.textBox16.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox16.Value = "= Parameters.SDate.Value";
             // 

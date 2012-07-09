@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using AriCliModel;
 using AriCliReport;
+using AriCliWeb;
 using Telerik.Web.UI;
 using AriCliWeb;
 
@@ -11,6 +13,9 @@ public partial class RptView : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
+    DateTime fDate = DateTime.Now;
+    DateTime tDate = DateTime.Now;
+    Diary diary = null;
     string report = "";
     Permission per = null;
 
@@ -32,6 +37,12 @@ public partial class RptView : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Report"] != null)
             report = Request.QueryString["Report"];
+        if (Request.QueryString["FDate"] != null)
+            fDate = CntWeb.ParseUrlDate(Request.QueryString["FDate"]);
+        if (Request.QueryString["TDate"] != null)
+            tDate = CntWeb.ParseUrlDate(Request.QueryString["TDate"]);
+        if (Request.QueryString["Diary"] != null)
+            diary = CntAriCli.GetDiary(int.Parse(Request.QueryString["Diary"]),ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -133,6 +144,12 @@ public partial class RptView : System.Web.UI.Page
                     case "rappointmentday":
                         this.Title = "Citas diarias por agenda";
                         RptDayAppointment rdap = new RptDayAppointment();
+                        rdap.ReportParameters["SDate"].Value = fDate;
+                        if (diary != null)
+                        {
+                            rdap.ReportParameters["Diary"].MultiValue = false;
+                            rdap.ReportParameters["Diary"].Value = diary.DiaryId;
+                        }
                         ReportViewer1.Report = rdap;
                         break;
                 }
