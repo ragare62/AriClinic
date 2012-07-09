@@ -52,6 +52,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ReptAnesTicketProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -69,6 +74,12 @@
     </Compile>
     <Compile Include="RptBombaDolor.Designer.cs">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptDayAppointment.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptDayAppointment.Designer.cs">
+      <DependentUpon>RptDayAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="RptPCA.cs">
       <SubType>Component</SubType>
@@ -266,6 +277,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Logo_150.png" />
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptBombaDolor.resx">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptDayAppointment.resx">
+      <DependentUpon>RptDayAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPCA.resx">
       <DependentUpon>RptPCA.cs</DependentUpon>

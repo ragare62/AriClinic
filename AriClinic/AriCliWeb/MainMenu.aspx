@@ -330,6 +330,10 @@
               var w1 = window.open("SourceGrid.aspx", "SOURCE", "width=500, height=500,resizable=1")
               w1.focus();
           }
+          function LaunchRAppointmentDay() {
+              var w1 = window.open("RptView.aspx?Report=rappointmentday", "RAPTDAY", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -495,10 +499,22 @@
                       </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Text="Nomenclator" Value="rnomenclator">
+                  <telerik:RadMenuItem runat="server" Text="Anestesia" Value="anesthetics">
+                      <Items>
+                          <telerik:RadMenuItem runat="server" Owner="" Text="Nomenclator" 
+                              Value="rnomenclator">
+                          </telerik:RadMenuItem>
+                          <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" Value="rpca">
+                          </telerik:RadMenuItem>
+                      </Items>
                   </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" 
-                                       Value="rpca">
+                  <telerik:RadMenuItem runat="server" Text="Citas" 
+                                       Value="appointments">
+                      <Items>
+                          <telerik:RadMenuItem runat="server" Text="Citas diarias por agenda" 
+                              Value="rappointmentday">
+                          </telerik:RadMenuItem>
+                      </Items>
                   </telerik:RadMenuItem>
 
                 </Items>

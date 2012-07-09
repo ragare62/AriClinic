@@ -1202,10 +1202,14 @@ namespace AriCliModel
 
         public static string GetAppointmentSubject(AppointmentInfo app)
         {
+            string profesional = "";
+            if (app.Professional != null) profesional = app.Professional.FullName;
             if (app.Arrival == null || NullDateTime(app.Arrival))
-                return String.Format("{0} ({1})", app.Patient.FullName, app.AppointmentType.Name);
+                return String.Format("{0} ({1} | {2}) [{3}]", 
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments,profesional);
             else
-                return String.Format("{0} ({1}) [{2:HH:mm:ss}]", app.Patient.FullName, app.AppointmentType.Name, app.Arrival);
+                return String.Format("{0} ({1} | {2}) [{3}] [{4:HH:mm:ss}]",
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival);
         }
 
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)

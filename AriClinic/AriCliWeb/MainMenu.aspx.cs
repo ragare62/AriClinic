@@ -296,6 +296,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rrisk":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRrisk();");
                 break;
+            case "rappointmentday":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRAppointmentDay();");
+                break;
             default:
                 break;
         }

@@ -130,6 +130,11 @@ public partial class RptView : System.Web.UI.Page
                         RptRisk rrisk = new RptRisk();
                         ReportViewer1.Report = rrisk;
                         break;
+                    case "rappointmentday":
+                        this.Title = "Citas diarias por agenda";
+                        RptDayAppointment rdap = new RptDayAppointment();
+                        ReportViewer1.Report = rdap;
+                        break;
                 }
             }
             catch (Exception ex)
