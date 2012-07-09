@@ -75,7 +75,7 @@ namespace RidocciConsole
             numr = ctxRid.Historials.Count(); r = 0;
             foreach (Historial his in ctxRid.Historials)
             {
-                Console.WriteLine("Patient -> {0} ({1}/{2})", his.Nombre, ++r, numr);
+                Console.WriteLine("Patient -> ({1:0000000}/{2:00000000}) {0} ", his.Nombre, ++r, numr);
                 LoadPatientCustomer(his, ctxRid, ctxAri);
             }
 
