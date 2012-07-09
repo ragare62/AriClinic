@@ -101,7 +101,7 @@
           }
           function LaunchPatient()
           {
-              var w1 = window.open("PatientGrid.aspx", "PAT", "width=600, height=500,resizable=1")
+              var w1 = window.open("PatientGrid.aspx", "PAT", "width=700, height=550,resizable=1")
               w1.focus();
           }
           function LaunchProfessional()

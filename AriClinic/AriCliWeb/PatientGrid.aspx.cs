@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
@@ -38,6 +39,7 @@ public partial class PatientGrid : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //if (!IsPostBack) LoadInsuranceCombo();
     }
 
     protected void Page_Unload(object sender, EventArgs e)
@@ -71,11 +73,16 @@ public partial class PatientGrid : System.Web.UI.Page
             int id = 0;
             
             id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
+            Patient patient = CntAriCli.GetPatient(id, ctx);
+            gdi = (GridDataItem)e.Item;
+
+            // modifying column content.
+            System.Web.UI.Control control = gdi["INS"].FindControl("lblInsuranceData");
+            Label lb = (Label)control;
+            lb.Text = CntAriCli.GetInsuranceData(patient, ctx);
 
             // assign javascript function to select button
             imgb = (ImageButton)e.Item.FindControl("Select");
-            gdi = (GridDataItem)e.Item;
-
             name = gdi["FullName"].Text;
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
@@ -131,9 +138,14 @@ public partial class PatientGrid : System.Web.UI.Page
             }
         }
     }
-
+    protected void RefreshGrid()
+    {
+        RadGrid1.DataSource = CntAriCli.GetPatients(ctx);
+        RadGrid1.Rebind();
+    }
     #endregion Grid treatment
 
+    #region AJAX
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
         RefreshGrid();
@@ -143,10 +155,42 @@ public partial class PatientGrid : System.Web.UI.Page
             RadGrid1.Rebind();
         }
     }
+    #endregion 
 
-    protected void RefreshGrid()
+    #region Insurance filter
+    protected void LoadInsuranceCombo()
     {
-        RadGrid1.DataSource = CntAriCli.GetPatients(ctx);
+        rdcInsurance.Items.Clear();
+        rdcInsurance.Items.Add(new RadComboBoxItem("All", ""));
+        foreach (Insurance ins in ctx.Insurances.OrderBy(x => x.Name))
+        {
+            rdcInsurance.Items.Add(new RadComboBoxItem(ins.Name, ins.InsuranceId.ToString()));
+        }
+        rdcInsurance.SelectedValue = "";
+    }
+    #endregion 
+
+    protected void rdcInsurance_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        IList<Patient> lp = new List<Patient>();
+        lp = ctx.Patients.ToList<Patient>(); // provisional
+        //if (e.Value == "")
+        //{
+        //    lp = ctx.Patients.ToList<Patient>();
+        //}
+        //else
+        //{
+        //    int id = int.Parse(e.Value);
+        //    foreach (Patient patient in ctx.Patients)
+        //    {
+        //        Policy plcy = CntAriCli.GetPolicyInForce(patient, DateTime.Now, ctx);
+        //        if (plcy != null && plcy.Insurance.InsuranceId == id)
+        //            lp.Add(patient);
+        //    }
+        //}
+        RadGrid1.DataSource = lp;
         RadGrid1.Rebind();
     }
+
+
 }

@@ -86,6 +86,11 @@
               <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
             </UpdatedControls>
           </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="rdcInsurance">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
@@ -100,8 +105,16 @@
           <asp:Label ID="lblTitle" runat="server" Text="Pacientes" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+        <div id="Insurance" class="optionsText">
+          <asp:Label ID="lblInsurance" runat="server" Text="Filtrar por aseguradora:"></asp:Label>
+          <br />
+          <telerik:RadComboBox ID="rdcInsurance" runat="server" Width="100%" 
+                               EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
+                               ItemsPerRequest="10" Height="100px" AutoPostBack="false">
+          </telerik:RadComboBox>
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
-          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" PageSize="6" 
+          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" PageSize="10" EnableLinqExpressions="false" 
                            AllowPaging="True" AllowFilteringByColumn="True" 
                            AllowSorting="True" ShowGroupPanel="True"
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
@@ -132,6 +145,14 @@
                                          SortExpression="FullNAme" UniqueName="FullName" 
                                          FilterControlAltText="Filter Name column">
                 </telerik:GridBoundColumn>
+                <telerik:GridTemplateColumn UniqueName="INS" AllowFiltering="false" HeaderText="IG:Aseguradora / Grupo PN:Poliza">
+                    <ItemTemplate>
+                        <div id="insurance-data">
+                            <asp:Label ID="lblInsuranceData" runat="server" Text="INSURANCE"></asp:Label>
+                        </div>
+                    </ItemTemplate>
+                </telerik:GridTemplateColumn>
+
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                                             meta:resourceKey="GridTemplateColumnResource1" UniqueName="Template">
@@ -145,7 +166,7 @@
                     
                     <asp:ImageButton ID="HisAdm" runat="server" 
                     ImageUrl="~/images/folder_cubes_16.png" meta:resourceKey="HisAdmResource1" 
-                    ToolTip="Abrir historial administrativo" />
+                    ToolTip="Abrir historial" />
                     
                     <asp:ImageButton ID="Delete" runat="server" 
                                      ImageUrl="~/images/document_delete_16.png" meta:resourceKey="DeleteResource1" 

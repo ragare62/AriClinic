@@ -225,6 +225,31 @@ namespace AriCliModel
                     select i).FirstOrDefault<Insurance>();
         }
 
+        public static String GetInsuranceData(Patient patient, AriClinicContext ctx)
+        {
+            string insuranceData = "";
+            int policyInForceId = 0;
+            // policy in force
+            Policy policy = CntAriCli.GetPolicyInForce(patient, DateTime.Now, ctx);
+            if (policy == null)
+                insuranceData = "[*]";
+            else
+            {
+                insuranceData = string.Format("[ IG:{0} PN:{1} ]", policy.Insurance.Name, policy.PolicyNumber);
+                policyInForceId = policy.PolicyId;
+            }
+            // policies but in force
+            foreach (Policy plcy in CntAriCli.GetPolicies(patient, ctx))
+            {
+                if (plcy != null && (plcy.PolicyId != policyInForceId))
+                {
+                    insuranceData = string.Format("{0} / IG:{1} PN:{2} /", 
+                                        insuranceData, plcy.Insurance.Name, plcy.PolicyNumber);
+                }
+            }
+            return insuranceData;
+        }
+
         public static InsuranceService GetInsuranceService(int id, AriClinicContext ctx)
         {
             return (from inser in ctx.InsuranceServices
@@ -274,6 +299,20 @@ namespace AriCliModel
             return (from p in ctx.Policies
                     where p.PolicyId == id
                     select p).FirstOrDefault<Policy>();
+        }
+
+        public static Policy GetPolicyInForce(Patient patient, DateTime dt, AriClinicContext ctx)
+        {
+            Policy policy = null;
+            policy = (from p in patient.Customer.Policies
+                      where p.BeginDate <= dt && p.EndDate >= dt
+                      select p).FirstOrDefault();
+            return policy;
+        }
+
+        public static IList<Policy> GetPolicies(Patient patient, AriClinicContext ctx)
+        {
+            return patient.Customer.Policies.ToList<Policy>();
         }
 
         public static Ticket GetTicket(int id, AriClinicContext ctx)
