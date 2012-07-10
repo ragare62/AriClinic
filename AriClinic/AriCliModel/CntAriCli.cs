@@ -272,6 +272,24 @@ namespace AriCliModel
                     select p).ToList<Patient>();
         }
 
+        public static IList<Patient> GetPatients(Insurance insurance, AriClinicContext ctx)
+        {
+            var rs = from p in ctx.Policies
+                     where p.Insurance.InsuranceId == insurance.InsuranceId
+                     select p;
+            IList<Patient> lp = new List<Patient>();
+            foreach (Policy p in rs)
+            {
+                Patient pat = (from pt in ctx.Patients
+                               where pt.Customer.PersonId == p.Customer.PersonId
+                               select pt).FirstOrDefault<Patient>();
+                if (pat != null) lp.Add(pat);
+            }
+            return lp;
+        }
+            
+            
+
         public static Patient GetPatient(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Patients

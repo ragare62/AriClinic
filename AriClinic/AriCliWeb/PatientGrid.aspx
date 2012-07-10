@@ -110,7 +110,8 @@
           <br />
           <telerik:RadComboBox ID="rdcInsurance" runat="server" Width="100%" 
                                EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
-                               ItemsPerRequest="10" Height="100px" AutoPostBack="false">
+                               ItemsPerRequest="10" Height="100px" AutoPostBack="true" 
+                onselectedindexchanged="rdcInsurance_SelectedIndexChanged">
           </telerik:RadComboBox>
         </div>
         <div id="GridArea" class="normalText" style="width:100%">

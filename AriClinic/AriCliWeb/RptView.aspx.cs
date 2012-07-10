@@ -16,6 +16,8 @@ public partial class RptView : System.Web.UI.Page
     DateTime fDate = DateTime.Now;
     DateTime tDate = DateTime.Now;
     Diary diary = null;
+    BaseVisit visit = null;
+    Treatment treatment = null;
     string report = "";
     Permission per = null;
 
@@ -43,6 +45,10 @@ public partial class RptView : System.Web.UI.Page
             tDate = CntWeb.ParseUrlDate(Request.QueryString["TDate"]);
         if (Request.QueryString["Diary"] != null)
             diary = CntAriCli.GetDiary(int.Parse(Request.QueryString["Diary"]),ctx);
+        if (Request.QueryString["Visit"] != null)
+            visit = CntAriCli.GetVisit(int.Parse(Request.QueryString["Visit"]), ctx);
+        if (Request.QueryString["Treatment"] != null)
+            treatment = CntAriCli.GetTreatment(int.Parse(Request.QueryString["Treatment"]), ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -151,6 +157,25 @@ public partial class RptView : System.Web.UI.Page
                             rdap.ReportParameters["Diary"].Value = diary.DiaryId;
                         }
                         ReportViewer1.Report = rdap;
+                        break;
+                    case "prescription":
+                        this.Title = "Recetas";
+                        RptPrescription rpres = new RptPrescription();
+                        if (treatment != null)
+                        {
+                            rpres.ReportParameters["Treatment"].MultiValue = false;
+                            rpres.ReportParameters["Treatment"].Value = treatment.TreatmentId;
+                        }
+                        if (visit != null)
+                        {
+                            IList<int> ltrt = new List<int>();
+                            foreach (Treatment t in visit.Treatments)
+                            {
+                                ltrt.Add(t.TreatmentId);
+                            }
+                            rpres.ReportParameters["Treatment"].Value = ltrt;
+                        }
+                        ReportViewer1.Report = rpres;
                         break;
                 }
             }

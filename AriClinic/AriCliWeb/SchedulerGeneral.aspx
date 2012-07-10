@@ -63,11 +63,14 @@
             <telerik:RadToolBar ID="RadToolBar1" runat="server" Skin="Office2007" 
                 Width="100%" onbuttonclick="RadToolBar1_ButtonClick">
                 <Items>
-                    <telerik:RadToolBarButton runat="server" Text="Ver mañana" Value="morning">
+                    <telerik:RadToolBarButton runat="server" Text="Ver mañana" Value="morning" 
+                        ImageUrl="~/images/layout_north.png">
                     </telerik:RadToolBarButton>
-                    <telerik:RadToolBarButton runat="server" Text="Ver tarde" Value="evening">
+                    <telerik:RadToolBarButton runat="server" Text="Ver tarde" Value="evening" 
+                        ImageUrl="~/images/layout_south.png">
                     </telerik:RadToolBarButton>
-                    <telerik:RadToolBarButton runat="server" Text="Imprimir" Value="print">
+                    <telerik:RadToolBarButton runat="server" Text="Imprimir" Value="print" 
+                        ImageUrl="~/images/printer24.png">
                     </telerik:RadToolBarButton>
                 </Items>
             </telerik:RadToolBar>

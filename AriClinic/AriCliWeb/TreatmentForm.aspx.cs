@@ -17,7 +17,7 @@ public partial class TreatmentForm : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     Drug drug = null;
-    Treatment Treatment = null;
+    Treatment treatment = null;
     Patient patient = null;
     BaseVisit visit = null;
     int drugId = 0;
@@ -50,8 +50,8 @@ public partial class TreatmentForm : System.Web.UI.Page
         if (Request.QueryString["TreatmentId"] != null)
         {
             treatmentId = Int32.Parse(Request.QueryString["TreatmentId"]);
-            Treatment = CntAriCli.GetTreatment(treatmentId, ctx);
-            LoadData(Treatment);
+            treatment = CntAriCli.GetTreatment(treatmentId, ctx);
+            LoadData(treatment);
         }
         else
         {
@@ -153,16 +153,16 @@ public partial class TreatmentForm : System.Web.UI.Page
     {
         if (!DataOk())
             return false;
-        if (Treatment == null)
+        if (treatment == null)
         {
-            Treatment = new Treatment();
-            UnloadData(Treatment);
-            ctx.Add(Treatment);
+            treatment = new Treatment();
+            UnloadData(treatment);
+            ctx.Add(treatment);
         }
         else
         {
             drug = CntAriCli.GetDrug(drugId, ctx);
-            UnloadData(Treatment);
+            UnloadData(treatment);
         }
         ctx.SaveChanges();
         return true;
@@ -250,5 +250,13 @@ public partial class TreatmentForm : System.Web.UI.Page
         {
             combo.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
         }
+    }
+
+    protected void btnPrint_Click(object sender, ImageClickEventArgs e)
+    {
+        if (!CreateChange())
+            return;
+        string js = String.Format("printPrescription({0});", treatment.TreatmentId);
+        RadAjaxManager1.ResponseScripts.Add(js);
     }
 }

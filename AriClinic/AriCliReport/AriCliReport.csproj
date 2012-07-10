@@ -87,6 +87,12 @@
     <Compile Include="RptPCA.Designer.cs">
       <DependentUpon>RptPCA.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptPrescription.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPrescription.Designer.cs">
+      <DependentUpon>RptPrescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptProfessionalInvoices.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptPCA.resx">
       <DependentUpon>RptPCA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPrescription.resx">
+      <DependentUpon>RptPrescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptProfessionalInvoices.resx">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>

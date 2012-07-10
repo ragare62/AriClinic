@@ -39,7 +39,7 @@ public partial class PatientGrid : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack) LoadInsuranceCombo();
+        if (!IsPostBack) LoadInsuranceCombo();
     }
 
     protected void Page_Unload(object sender, EventArgs e)
@@ -172,25 +172,19 @@ public partial class PatientGrid : System.Web.UI.Page
 
     protected void rdcInsurance_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
-        IList<Patient> lp = new List<Patient>();
-        lp = ctx.Patients.ToList<Patient>(); // provisional
         //if (e.Value == "")
         //{
-        //    lp = ctx.Patients.ToList<Patient>();
+        //    RadGrid1.DataSource = CntAriCli.GetPatients(ctx);
         //}
         //else
         //{
-        //    int id = int.Parse(e.Value);
-        //    foreach (Patient patient in ctx.Patients)
+        //    Insurance insurance = CntAriCli.GetInsurance(int.Parse(e.Value), ctx);
+        //    if (insurance != null)
         //    {
-        //        Policy plcy = CntAriCli.GetPolicyInForce(patient, DateTime.Now, ctx);
-        //        if (plcy != null && plcy.Insurance.InsuranceId == id)
-        //            lp.Add(patient);
+        //        RadGrid1.DataSource = CntAriCli.GetPatients(insurance, ctx);
         //    }
         //}
-        RadGrid1.DataSource = lp;
-        RadGrid1.Rebind();
+        //RadGrid1.Rebind();
     }
-
 
 }

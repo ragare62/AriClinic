@@ -1100,6 +1100,11 @@
     <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
     <Content Include="images\gears_run.png" />
+    <Content Include="images\layout_north.png" />
+    <Content Include="images\layout_south.png" />
+    <Content Include="images\pill_blue.png" />
+    <Content Include="images\pill_green.png" />
+    <Content Include="images\printer24.png" />
     <Content Include="PreviousMedicalRecordForm.aspx" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
@@ -1381,7 +1386,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

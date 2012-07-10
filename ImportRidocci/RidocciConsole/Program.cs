@@ -160,11 +160,11 @@ namespace RidocciConsole
 
             LoadTicketsAndServiceNotes(ctxRid, ctxAri);
 
-            //LoadDiagnostics(ctxRid, ctxAri);
+            LoadDiagnostics(ctxRid, ctxAri);
 
-            //LoadTreatments(ctxRid, ctxAri);
+            LoadTreatments(ctxRid, ctxAri);
 
-            //LoadPreviousMedicalRecords(ctxRid, ctxAri);
+            LoadPreviousMedicalRecords(ctxRid, ctxAri);
 
 
 

@@ -57,6 +57,11 @@
                         combo.commitChanges();
                         comboItem.select();
                     }
+                    function printPrescription(treatment) {
+                        var url = "RptView.aspx?Report=prescription&Treatment=" + treatment;
+                        var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+                        w.focus();
+                    }
                 </script>
             </telerik:RadCodeBlock>
 
@@ -189,6 +194,11 @@
                         <tr>
                             <td colspan="2">
                                 <div ID="Buttons" class="buttonsFomat">
+                                    <asp:ImageButton ID="btnPrint" runat="server" 
+                                                     ImageUrl="~/images/pill_green.png"  
+                                                     ToolTip="Imprimir receta individual" TabIndex="5" 
+                                        onclick="btnPrint_Click" />
+                                    &nbsp;
                                     <asp:ImageButton ID="btnAccept" runat="server" 
                                                      ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" 
                                                      ToolTip="Guardar y salir" TabIndex="5" />

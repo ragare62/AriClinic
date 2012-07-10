@@ -149,4 +149,13 @@ public partial class VisitTab : System.Web.UI.Page
         }
     }
     #endregion
+
+    protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
+    {
+        if (visit != null && visit.Treatments.Count > 0)
+        {
+            string js = String.Format("printPrescription({0});", visit.VisitId);
+            RadAjaxManager1.ResponseScripts.Add(js);
+        }
+    }
 }

@@ -26,6 +26,13 @@
                                 meta:resourcekey="RadWindowManager1Resource1">
       </telerik:RadWindowManager>
       <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+        <script type="text/javascript">
+            function printPrescription(visit) {
+                var url = "RptView.aspx?Report=prescription&Visit=" + visit;
+                var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+                w.focus();
+            }
+        </script>
       </telerik:RadScriptBlock>
       <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server" 
                                  AutoTooltipify="True" RelativeTo="Element" 
@@ -56,6 +63,17 @@
           <asp:Label ID="lblTitle" runat="server" Text="Historial: Paciente" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+        <div id="visit-toolbar">
+            <telerik:RadToolBar ID="RadToolBar1" runat="server" Width="100%" 
+                onbuttonclick="RadToolBar1_ButtonClick">
+                <Items>
+                    <telerik:RadToolBarButton runat="server" ImageUrl="~/images/pill_blue.png" 
+                        Text="Imprimir recetas" Value="prescriptions">
+                    </telerik:RadToolBarButton>
+                </Items>
+          </telerik:RadToolBar>
+        </div>
+          
         <div id="TabArea" class="normalText" style="width:100%">
             <telerik:RadTabStrip ID="RadTabStrip1" runat="server" 
                 ontabclick="RadTabStrip1_TabClick" SelectedIndex="0">
