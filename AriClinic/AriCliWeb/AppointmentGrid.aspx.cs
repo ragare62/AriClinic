@@ -177,9 +177,9 @@ public partial class AppointmentGrid : System.Web.UI.Page
     protected void RefreshGrid()
     {
         if (pat == null)
-            RadGrid1.DataSource = CntAriCli.GetAppointments(ctx);
+            RadGrid1.DataSource = CntAriCli.GetAppointments(ctx).OrderByDescending(x => x.BeginDateTime);
         else
-            RadGrid1.DataSource = CntAriCli.GetPatientAppointments(patientId, ctx);
+            RadGrid1.DataSource = CntAriCli.GetPatientAppointments(patientId, ctx).OrderByDescending(x => x.BeginDateTime);
         RadGrid1.Rebind();
     }
 }

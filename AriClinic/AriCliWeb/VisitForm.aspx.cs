@@ -145,20 +145,17 @@ public partial class VisitForm : System.Web.UI.Page
             command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
+        if (Session["FromAppointment"] != null)
+        {
+            command = "CancelEdit();";
+            Session["FromAppointment"] = null;
+        }
         if (type == "InTab" && command == "CloseAndRebind('new')")
         {
             command = String.Format("parentReload('VisitTab.aspx?VisitId={0}');", visit.VisitId);
-            Session["FromAppointment"] = true;
         }
-        else
-        {
-            if (Session["FromAppointment"] != null)
-            {
-                command = "CancelEdit();";
-                Session["FromAppointment"] = null;
-            }
-        }
-        if (caller == "Appointment") command = "CancelEdit();";
+        if (caller == "Appointment")
+            command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -204,7 +201,6 @@ public partial class VisitForm : System.Web.UI.Page
             visit = new BaseVisit();
             if (app != null)
             {
-                
                 visit.AppointmentInfo = app;
             }
             UnloadData(visit);

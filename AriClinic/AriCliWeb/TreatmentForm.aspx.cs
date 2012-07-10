@@ -258,5 +258,6 @@ public partial class TreatmentForm : System.Web.UI.Page
             return;
         string js = String.Format("printPrescription({0});", treatment.TreatmentId);
         RadAjaxManager1.ResponseScripts.Add(js);
+        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
     }
 }

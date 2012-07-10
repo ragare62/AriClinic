@@ -68,6 +68,8 @@
                             <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
                                 Selected="True">
                             </telerik:RadTab>
+                            <telerik:RadTab runat="server" Owner="" Text="Citas" Value="appointment">
+                            </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Tickets" Value="ticket">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Nota de servicio" Value="servnote">
@@ -94,8 +96,6 @@
                                 </Tabs>
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Visitas" Value="visit">
-                            </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Citas" Value="appointment">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
                             </telerik:RadTab>

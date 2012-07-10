@@ -237,6 +237,12 @@
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="VisitReason.Name" UniqueName="VisitReason.Name">
                 </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Comments" 
+                                         FilterControlToolTip="Filtrar por rsumen" FilterImageToolTip="Filtro"
+                                         HeaderText="Resumen" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Comments" UniqueName="Comments">
+                </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="VType" Visible="false" 
                                          FilterControlToolTip="Filtrar por diagnóstico" FilterImageToolTip="Filtro"
                                          HeaderText="Tipo" 

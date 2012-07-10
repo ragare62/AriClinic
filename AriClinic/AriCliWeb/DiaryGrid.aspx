@@ -135,7 +135,7 @@
                                      ImageUrl="~/images/document_gear_16.png" meta:resourceKey="SelectResource1" 
                                      ToolTip="Seleccionar este registro y volver con su información" />
                     <asp:HyperLink ID="Open" runat="server" ImageUrl="~/images/book_open.png" 
-                                   BorderColor="White" Target="_blank" ToolTip="Abrir la agenda">
+                                    Target="_blank" ToolTip="Abrir la agenda">
                     </asp:HyperLink>
                     <asp:ImageButton ID="Edit" runat="server" 
                                      ImageUrl="~/images/document_edit_16.png" meta:resourceKey="EditResource1" 
