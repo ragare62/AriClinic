@@ -396,7 +396,8 @@ right: 354px;
           </AjaxSettings>
       </telerik:RadAjaxManager>
       <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"
-                            style="z-index: 1; left: 0px; top:0px; position: absolute; height: 678px; width: 764px">
+                            
+          style="z-index: 1; left: 0px; top:0px; position: absolute; height: 678px; width: 843px">
         <div id="TitleArea" runat="server" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           <asp:Label ID="lblTitle" runat="server" Text="Paciente"></asp:Label>

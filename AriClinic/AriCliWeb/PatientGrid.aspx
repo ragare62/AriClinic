@@ -139,7 +139,13 @@
                                          SortExpression="PersonId" UniqueName="PersonId" 
                                          FilterControlAltText="Filter PersonId column">
                 </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="FullName" 
+                <telerik:GridBoundColumn DataField="OftId" DataType="System.Int32" 
+                                         FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
+                                         HeaderText="Ant.N.Historia" 
+                                         meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
+                                         SortExpression="OftId" UniqueName="OftId" 
+                                         FilterControlAltText="Filter PersonId column">
+                </telerik:GridBoundColumn>                <telerik:GridBoundColumn DataField="FullName" 
                                          FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
                                          HeaderText="Nombre completo" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 

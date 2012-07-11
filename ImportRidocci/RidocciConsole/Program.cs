@@ -90,7 +90,6 @@ namespace RidocciConsole
                 professional.FullName = p.Nom_profesional;
                 professional.ComercialName = p.Nom_profesional;
                 professional.License = p.Num_colegiado;
-                professional.PersonId = professional.OftId;
                 ctxAri.Add(professional);
                 ctxAri.SaveChanges();
             }
@@ -106,7 +105,6 @@ namespace RidocciConsole
                 d.BeginHour = a.Hora_inicio;
                 d.EndHour = a.Hora_fin;
                 d.TimeStep = a.Tramo;
-                d.DiaryId = d.OftId;
                 ctxAri.Add(d);
                 ctxAri.SaveChanges();
             }
@@ -120,7 +118,6 @@ namespace RidocciConsole
                 ap.Name = tc.Nom_tipo_cita;
                 ap.OftId = tc.Id_tipo_cita;
                 ap.Duration = tc.Duracion;
-                ap.AppointmentTypeId = ap.OftId;
                 ctxAri.Add(ap);
                 ctxAri.SaveChanges();
             }
@@ -239,7 +236,6 @@ namespace RidocciConsole
                 Name = amed.Nom_acto_medico,
                 ServiceCategory = sc
             };
-            s.ServiceId = s.OftId;
             ctxAri.Add(s);
             ctxAri.SaveChanges();
         }
@@ -268,7 +264,6 @@ namespace RidocciConsole
                 Price = asc.Importe
             };
             ins.Price = 1;
-            ins.InsuranceServiceId = ins.OftId;
             ctxAri.Add(ins);
             ctxAri.SaveChanges();
         }
@@ -287,16 +282,14 @@ namespace RidocciConsole
                 Comments = his.Observaciones,
                 LastUpdate = his.Ultima_actualizacion
             };
-            patient.PersonId = patient.OftId;
             ctxAri.Add(patient);
             Customer customer = new Customer();
             customer.OftId = his.Id_historia;
-            customer.PersonId = customer.OftId;
             customer.ComercialName = patient.FullName;
             customer.FullName = patient.FullName;
             customer.VATIN = his.Nif;
-            patient.Customer = customer;
             ctxAri.Add(customer);
+            patient.Customer = customer;
             // direccion
             if (his.Direccion != "")
             {
@@ -365,7 +358,6 @@ namespace RidocciConsole
                     EndDate = his.Fecha_caducidad_poliza,
                     Customer = customer
                 };
-                policy.PolicyId = policy.OftId;
                 ctxAri.Add(policy);
             }
             if (his.Id_procedencia != null)
@@ -456,7 +448,6 @@ namespace RidocciConsole
                 Diagnostic dg = new Diagnostic();
                 dg.Name = d.Nom_diagnostico;
                 dg.OftId = d.Id_diagnostico;
-                dg.DiagnosticId = dg.OftId;
                 ctx.Add(dg);
                 ctx.SaveChanges();
             }
@@ -493,7 +484,6 @@ namespace RidocciConsole
                 Drug dg = new Drug();
                 dg.Name = f.Nom_farmaco;
                 dg.OftId = f.Id_farmaco;
-                dg.DrugId = dg.OftId;
                 ctx.Add(dg);
                 ctx.SaveChanges();
             }

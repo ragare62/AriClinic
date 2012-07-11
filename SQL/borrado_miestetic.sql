@@ -100,6 +100,8 @@ DELETE FROM back_personal;
 ALTER TABLE back_personal AUTO_INCREMENT=1;
 DELETE FROM back_ginecoloy;
 ALTER TABLE back_ginecoloy AUTO_INCREMENT=1;
+DELETE FROM previous_medical_record;
+ALTER TABLE previous_medical_record AUTO_INCREMENT=1;
 #
 DELETE FROM professional;
 ALTER TABLE professional AUTO_INCREMENT=1;
