@@ -118,7 +118,7 @@
             </telerik:RadTabStrip>
         </div>
         <div id="BodyArea" class="normalText" style="width:100%">
-           <iframe id="FrmArea" runat="server" width="100%" height="700px">
+           <iframe id="FrmArea" runat="server" width="100%" height="500px">
            </iframe>
         </div>
         <div id="Separator">

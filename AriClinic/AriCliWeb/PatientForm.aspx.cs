@@ -54,6 +54,7 @@ public partial class PatientForm : System.Web.UI.Page
             LoadSexCombo(null);
             LoadSourceCombo(null);
             LoadClinicCombo(null);
+            txtFrn.Text = String.Format("{0:0}", CntAriCli.NextFrn(ctx));
         }
         // 
         if (Request.QueryString["Type"] != null)
@@ -103,7 +104,7 @@ public partial class PatientForm : System.Web.UI.Page
             return;
         if (type == "InTab")
         {
-            lblMessage.Text = Resources.GeneralResource.RecordRefreshed;
+            RadAjaxManager1.Alert(Resources.GeneralResource.RecordRefreshed);
             return;
         }
         if (nuevo)
@@ -126,12 +127,12 @@ public partial class PatientForm : System.Web.UI.Page
     {
         if (rdcbSex.SelectedValue == "")
         {
-            lblMessage.Text = Resources.GeneralResource.SexValueNeeded;
+            RadAjaxManager1.Alert(Resources.GeneralResource.SexValueNeeded);
             return false;
         }
         if (rdcbClinic.SelectedValue == "")
         {
-            lblMessage.Text = Resources.GeneralResource.ClinicNeeded;
+            RadAjaxManager1.Alert(Resources.GeneralResource.ClinicNeeded);
             return false;
         }
         //if (rddpBornDate.SelectedDate == null) 
@@ -182,6 +183,7 @@ public partial class PatientForm : System.Web.UI.Page
         txtComments.Text = pat.Comments;
         if (pat.Customer != null)
             txtVATIN.Text = pat.Customer.VATIN;
+        txtFrn.Text = String.Format("{0:0}", pat.OftId);
     }
 
     protected void UnloadData(Patient pat)
@@ -204,6 +206,7 @@ public partial class PatientForm : System.Web.UI.Page
         pat.Customer.VATIN = txtVATIN.Text;
         pat.Comments = txtComments.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);
+        pat.OftId = int.Parse(txtFrn.Text);
     }
 
     protected void LoadSexCombo(Patient pat)

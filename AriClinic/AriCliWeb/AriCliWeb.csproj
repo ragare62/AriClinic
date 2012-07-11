@@ -1113,6 +1113,7 @@
     <Content Include="OphVisitTab.aspx" />
     <Content Include="OphVisitForm.aspx" />
     <Content Include="RptPCEAForm.aspx" />
+    <Content Include="StyleAdvanced.css" />
     <Content Include="StyleForms.css" />
     <Content Include="Tools\FullSetOfTools.xml" />
     <Content Include="Tools\tools.xml" />
@@ -1386,7 +1387,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

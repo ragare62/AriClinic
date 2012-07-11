@@ -1685,5 +1685,14 @@ namespace AriCliModel
             PreviousMedicalRecord pmr = null;
             return pmr;
         }
+
+        public static int NextFrn(AriClinicContext ctx)
+        {
+            int nxtfrn = 0;
+            int i = (from p in ctx.Patients
+                     select p.OftId).Max();
+            nxtfrn = ++i;
+            return nxtfrn;
+        }
     }
 }
