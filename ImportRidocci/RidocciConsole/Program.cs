@@ -278,7 +278,7 @@ namespace RidocciConsole
                 Surname2 = GetSurname2(his.Apellidos),
                 BornDate = his.Fecha_nacimiento,
                 FullName = String.Format("{0}, {1}", his.Apellidos, his.Nombre),
-                Sex = his.Sexo,
+                Sex = "W",
                 Comments = his.Observaciones,
                 LastUpdate = his.Ultima_actualizacion
             };
