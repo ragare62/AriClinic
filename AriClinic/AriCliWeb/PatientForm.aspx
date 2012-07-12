@@ -304,7 +304,7 @@
                                     <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
                                                ToolTip="Observaciones" ></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtComments" runat="server" Width="100%" TextMode="MultiLine" TabIndex="10"></asp:TextBox>
+                                    <asp:TextBox ID="txtComments" runat="server" Width="100%" Height="60px" TextMode="MultiLine" TabIndex="10"></asp:TextBox>
                                 </div>
                             </td>
                             <td>

@@ -61,13 +61,7 @@ public partial class VisitForm : System.Web.UI.Page
         {
             rdpVisitDate.SelectedDate = DateTime.Now;
             // load professional
-            if (user.Professionals.Count > 0)
-            {
-                Professional p = user.Professionals[0];
-                rdcProfessional.Items.Clear();
-                rdcProfessional.Items.Add(new RadComboBoxItem(p.FullName, p.PersonId.ToString()));
-                rdcProfessional.SelectedValue = p.PersonId.ToString();
-            }
+            if (Session["Professional"] != null) LoadComboProfesional((Professional)Session["Professional"]);
             // called from an appointment?
             if (Request.QueryString["AppointmentId"] != null) 
             {
@@ -81,10 +75,7 @@ public partial class VisitForm : System.Web.UI.Page
                     //
                     rdpVisitDate.SelectedDate = app.BeginDateTime;
                     //
-                    Professional prof = app.Professional;
-                    rdcProfessional.Items.Clear();
-                    rdcProfessional.Items.Add(new RadComboBoxItem(prof.FullName, prof.PersonId.ToString()));
-                    rdcProfessional.SelectedValue = prof.PersonId.ToString();
+                    LoadComboProfesional(app.Professional);
                     //
                     AppointmentType appt = app.AppointmentType;
                     rdcAppointmentType.Items.Clear();
@@ -153,6 +144,7 @@ public partial class VisitForm : System.Web.UI.Page
         if (type == "InTab" && command == "CloseAndRebind('new')")
         {
             command = String.Format("parentReload('VisitTab.aspx?VisitId={0}');", visit.VisitId);
+            //RadWindowManager1.RadConfirm(Resources.GeneralResource.VisitFirstAccept,"noHaceNada", null, null, null,Resources.GeneralResource.Warning);
         }
         if (caller == "Appointment")
             command = "CancelEdit();";
@@ -321,5 +313,12 @@ public partial class VisitForm : System.Web.UI.Page
         {
             combo.Items.Add(new RadComboBoxItem(apt.Name, apt.AppointmentTypeId.ToString()));
         }
+    }
+    protected void LoadComboProfesional(Professional professional)
+    {
+        if (professional == null) return; // do nothing
+        rdcProfessional.Items.Clear();
+        rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = professional.PersonId.ToString();
     }
 }

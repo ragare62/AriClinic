@@ -68,6 +68,7 @@
           function parentReload(url) {
               parent.open(url,"VISIT", "width=800, height=500,resizable=1");
           }
+          function noHaceNada() { }
         </script>
       </telerik:RadCodeBlock>
 
@@ -82,6 +83,8 @@
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
       </telerik:RadSkinManager>
+    <telerik:RadWindowManager ID="RadWindowManager1" runat="server" Top="50px">
+    </telerik:RadWindowManager>
       <telerik:RadInputManager ID="RadInputManager1" runat="server">
         <telerik:TextBoxSetting Validation-IsRequired="true">
           <TargetControls>

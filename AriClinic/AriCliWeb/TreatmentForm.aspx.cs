@@ -56,6 +56,7 @@ public partial class TreatmentForm : System.Web.UI.Page
         else
         {
             rdpTreatmentDate.SelectedDate = DateTime.Now;
+            if (Session["Professional"] != null) LoadProfessionalCombo((Professional)Session["Professional"]);
         }
         //
         if (Request.QueryString["PatientId"] != null)
@@ -80,7 +81,9 @@ public partial class TreatmentForm : System.Web.UI.Page
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             //
             rdpTreatmentDate.SelectedDate = visit.VisitDate;
+            LoadProfessionalCombo(visit.Professional);
         }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -259,5 +262,13 @@ public partial class TreatmentForm : System.Web.UI.Page
         string js = String.Format("printPrescription({0});", treatment.TreatmentId);
         RadAjaxManager1.ResponseScripts.Add(js);
         RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
+    }
+
+    protected void LoadProfessionalCombo(Professional professional)
+    {
+        if (professional == null) return;
+        rdcProfessional.Items.Clear();
+        rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = professional.PersonId.ToString();
     }
 }

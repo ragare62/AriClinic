@@ -354,4 +354,7 @@
   <data name="BackPersonal" xml:space="preserve">
     <value>Antecedente personal</value>
   </data>
+  <data name="VisitFirstAccept" xml:space="preserve">
+    <value>Se han guardado los datos básicos de la visita, ahora se han abierto las solapas por si desea introducir información detallada. Cuando termine de instroducir datos vuelva a darle a "Aceptar" para cerra esta ventana y actualizar la lista.</value>
+  </data>
 </root>

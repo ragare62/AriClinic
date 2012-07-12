@@ -51,11 +51,11 @@
               switch (examType)
               {
                   case "general":
-                      w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=500,resizable=1");
+                      w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
                   case "ophvisit":
-                      w1 = window.open("OphVisitTab.aspx", "VISIT", "width=900, height=700,resizable=1");
+                      w1 = window.open("OphVisitTab.aspx", "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
               }
@@ -67,11 +67,11 @@
               switch (visitType)
               {
                   case "general":
-                      w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
+                      w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
                   case "ophvisit":
-                      w2 = window.open("OphVisitTab.aspx?VisitId=" + id, "VISIT", "width=900, height=700,resizable=1");
+                      w2 = window.open("OphVisitTab.aspx?VisitId=" + id, "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
               }
@@ -83,11 +83,11 @@
               var w1;
               switch (examType) {
                   case "general":
-                      w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=500,resizable=1");
+                      w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
                   case "ophvisit":
-                      w1 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1");
+                      w1 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
               }
@@ -98,12 +98,12 @@
               switch (visitType) {
                   case "general":
                       w2 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId') +
-                                   "&VisitId=" + id, "VISIT", "width=800, height=500,resizable=1");
+                                   "&VisitId=" + id, "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
                   case "ophvisit":
                       w2 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId') +
-                                   "&VisitId=" + id, "VISIT", "width=900, height=700,resizable=1");
+                                   "&VisitId=" + id, "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
               }
