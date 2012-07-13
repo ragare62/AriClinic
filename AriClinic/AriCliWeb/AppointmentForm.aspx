@@ -295,7 +295,8 @@
                                 <div id="Status" class="normalText">
                                     <asp:Label ID="lblStatus" runat="server" Text="Estado:"></asp:Label>
                                     <br />
-                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="11">
+                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="11" 
+                                        AutoPostBack="True" onselectedindexchanged="ddlStatus_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
 

@@ -89,6 +89,9 @@
                                 onappointmentdatabound="RadScheduler1_AppointmentDataBound" 
                                 onnavigationcomplete="RadScheduler1_NavigationComplete"
                                 HoursPanelTimeFormat="HH:mm" WorkDayEndTime="22:00:00">
+                                <AppointmentTemplate>
+                                         <asp:Literal ID="AppointmentSubject" runat="server" Text='<%# Eval("Subject") %>'></asp:Literal>
+                                </AppointmentTemplate>
           </telerik:RadScheduler>
         </div>
         <div id="Separator">

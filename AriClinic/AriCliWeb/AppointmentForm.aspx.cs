@@ -431,5 +431,13 @@ public partial class AppointmentForm : System.Web.UI.Page
         
     }
 
+    protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlStatus.SelectedValue == "2")
+        {
+            rddtArrival.SelectedDate = DateTime.Now;
+        }
+    }
+
 
 }

@@ -1222,12 +1222,13 @@ namespace AriCliModel
         {
             string profesional = "";
             if (app.Professional != null) profesional = app.Professional.FullName;
+            string frn = app.Patient.OftId.ToString();
             if (app.Arrival == null || NullDateTime(app.Arrival))
-                return String.Format("{0} ({1} | {2}) [{3}]", 
-                    app.Patient.FullName, app.AppointmentType.Name, app.Comments,profesional);
+                return String.Format("{0} ({1} | {2}) [{3}] NH:{4}", 
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments,profesional,frn);
             else
-                return String.Format("{0} ({1} | {2}) [{3}] [{4:HH:mm:ss}]",
-                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival);
+                return String.Format("{0} ({1} | {2}) [{3}] NH:{5} [{4:HH:mm:ss}]",
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival,frn);
         }
 
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)
