@@ -131,6 +131,7 @@ public partial class DiaryForm : System.Web.UI.Page
     {
         if (agenda == null) return; // There isn't any agenda to show
         txtDiaryId.Text = String.Format("{0:00000}", agenda.DiaryId);
+        txtName.Text = agenda.Name;
         rdtmBeginHour.SelectedDate = agenda.BeginHour;
         rdtmEndHour.SelectedDate = agenda.EndHour;
         txtTimeStep.Text = agenda.TimeStep.ToString();

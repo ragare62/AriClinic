@@ -11,3 +11,13 @@
     vertical-align:middle;
     text-align:center;
 }
+#appointment-container
+{
+}
+#appointment-subject
+{
+}
+#appointment-description
+{
+    border-top:1px solid grey;
+}

@@ -1231,6 +1231,11 @@ namespace AriCliModel
                     app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival,frn);
         }
 
+        public static string GetAppointmentDescription(AppointmentInfo app, AriClinicContext ctx)
+        {
+            return String.Format("FRN:{0} - {1}",app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
+        }
+
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)
         {
             foreach (Policy item in cus.Policies)

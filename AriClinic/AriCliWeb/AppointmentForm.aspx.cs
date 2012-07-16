@@ -231,6 +231,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             rddtArrival.SelectedDate = app.Arrival;
         txtDuration.Text = app.Duration.ToString();
         txtSubject.Text = app.Subject;
+        txtDescription.Text = CntAriCli.GetAppointmentDescription(app, ctx);
         txtComments.Text = app.Comments;
         //
         string command = String.Format("return ViewHisAdm({0});", app.Patient.PersonId);
