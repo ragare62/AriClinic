@@ -81,6 +81,12 @@
     <Compile Include="RptDayAppointment.Designer.cs">
       <DependentUpon>RptDayAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptGPByClinic.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptGPByClinic.Designer.cs">
+      <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPCA.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptDayAppointment.resx">
       <DependentUpon>RptDayAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptGPByClinic.resx">
+      <DependentUpon>RptGPByClinic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPCA.resx">
       <DependentUpon>RptPCA.cs</DependentUpon>
