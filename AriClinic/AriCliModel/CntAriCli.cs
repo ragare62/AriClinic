@@ -616,7 +616,7 @@ namespace AriCliModel
 
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
-            if (prof.ProfessionalInvoices.Count > 0)
+            if (prof.ProfessionalInvoices.Where(x => x.Year == year).Count() > 0)
             {
                 int v = (from inv in prof.ProfessionalInvoices
                          where inv.Year == year
