@@ -69,11 +69,12 @@ public partial class TicketGrid : System.Web.UI.Page
             tt.Attributes["class"] = "ghost";
             // hide patient column
             RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
+            //
+            RadGrid1.PageSize = 6;
         }
         else
         {
-            //
-            RadGrid1.PageSize = 6;
+            
         }
         if (Request.QueryString["AnestheticServiceNoteId"] != null)
         {

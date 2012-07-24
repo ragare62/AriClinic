@@ -49,7 +49,9 @@ public partial class PreviousMedicalRecordForm : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (Session["Warned"] == null)
             RadWindowManager1.RadConfirm(Resources.GeneralResource.TwoButtonsWarning, "noHaceNada()", null, null, null, Resources.GeneralResource.Warning);
+            Session["Warned"] = true;
         }
     }
 

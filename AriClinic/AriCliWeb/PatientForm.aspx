@@ -180,8 +180,8 @@
                             <td colspan="6">
                                 <div ID="Buttons0" class="buttonsFomat ghost" runat="server">
                                     <asp:ImageButton ID="btnAccept0" runat="server" 
-                                                     ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" 
-                                                     ToolTip="Guardar registro" />
+                                                     ImageUrl="~/images/document_ok.png"
+                                                     onclick="btnAccept0_Click" />
                                     &nbsp;
                                     <asp:ImageButton ID="btnCancel0" runat="server" CausesValidation="False" 
                                                      ImageUrl="~/images/document_out.png" onclick="btnCancel_Click" 

@@ -230,7 +230,7 @@
                 <asp:Label ID="lblTotal" runat="server" Text="Total:" 
                            ToolTip="Total de los tickets de esta nota"></asp:Label>
                 <br />
-                <asp:TextBox ID="txtTotal" runat="server"
+                <asp:TextBox ID="txtTotal" runat="server" Enabled="false"
                              TabIndex="6" Width="98px" style="text-align:right" ></asp:TextBox>
               </div>
             </td>
@@ -243,8 +243,8 @@
                 <asp:Label ID="lblPaid" runat="server" Text="Pagado:" 
                            ToolTip="Total de los pagos de esta nota"></asp:Label>
                 <br />
-                <asp:TextBox ID="txtPaid" runat="server"
-                             TabIndex="6" Width="98px" style="text-align:right" ></asp:TextBox>
+                <asp:TextBox ID="txtPaid" runat="server" Enabled="false"
+                             TabIndex="6" Width="98px" style="text-align:right;" ></asp:TextBox>
               </div>
             </td>
           </tr>

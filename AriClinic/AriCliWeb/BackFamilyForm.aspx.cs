@@ -48,7 +48,9 @@ public partial class BackFamilyForm : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            RadWindowManager1.RadConfirm(Resources.GeneralResource.TwoButtonsWarning, "noHaceNada()", null, null, null, Resources.GeneralResource.Warning);
+            if (Session["Warned"] == null)
+                RadWindowManager1.RadConfirm(Resources.GeneralResource.TwoButtonsWarning, "noHaceNada()", null, null, null, Resources.GeneralResource.Warning);
+            Session["Warned"] = true;
         }
     }
 

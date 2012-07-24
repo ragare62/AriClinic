@@ -63,6 +63,12 @@
     <Compile Include="ReptAnesTicketProfessional.Designer.cs">
       <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReptInvoiceVAT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReptInvoiceVAT.Designer.cs">
+      <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptAnestheticTicketByProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,6 +92,18 @@
     </Compile>
     <Compile Include="RptGPByClinic.Designer.cs">
       <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoiceLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoiceLine.Designer.cs">
+      <DependentUpon>RptInvoiceLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoiceMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoiceMain.Designer.cs">
+      <DependentUpon>RptInvoiceMain.cs</DependentUpon>
     </Compile>
     <Compile Include="RptPCA.cs">
       <SubType>Component</SubType>
@@ -305,6 +323,9 @@
     <EmbeddedResource Include="ReptAnesTicketProfessional.resx">
       <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReptInvoiceVAT.resx">
+      <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptAnestheticTicketByProfessional.resx">
       <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptGPByClinic.resx">
       <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoiceLine.resx">
+      <DependentUpon>RptInvoiceLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoiceMain.resx">
+      <DependentUpon>RptInvoiceMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPCA.resx">
       <DependentUpon>RptPCA.cs</DependentUpon>

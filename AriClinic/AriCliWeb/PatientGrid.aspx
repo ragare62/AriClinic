@@ -146,7 +146,8 @@
                                          meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
                                          SortExpression="OftId" UniqueName="OftId" 
                                          FilterControlAltText="Filter PersonId column">
-                </telerik:GridBoundColumn>                <telerik:GridBoundColumn DataField="FullName" 
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="FullName" 
                                          FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
                                          HeaderText="Nombre completo" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
@@ -160,6 +161,29 @@
                         </div>
                     </ItemTemplate>
                 </telerik:GridTemplateColumn>
+
+                <telerik:GridBoundColumn DataField="Surname1" 
+                                         FilterControlToolTip="Filtrar por primer apellido" FilterImageToolTip="Filtro"
+                                         HeaderText="Primer apellido" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Surname1" UniqueName="Surname1" 
+                                         FilterControlAltText="Filter Surname column">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Surname2" 
+                                         FilterControlToolTip="Filtrar por segundo apellido" FilterImageToolTip="Filtro"
+                                         HeaderText="Segundo apellido" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Surname2" UniqueName="Surname2" 
+                                         FilterControlAltText="Filter Surname column">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Name" 
+                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
+                                         HeaderText="Nombre" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Name" UniqueName="Name" 
+                                         FilterControlAltText="Filter name column">
+                </telerik:GridBoundColumn>
+
 
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 

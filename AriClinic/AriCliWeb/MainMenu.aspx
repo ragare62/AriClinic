@@ -101,7 +101,7 @@
           }
           function LaunchPatient()
           {
-              var w1 = window.open("PatientGrid.aspx", "PAT", "width=700, height=550,resizable=1")
+              var w1 = window.open("PatientGrid.aspx", "PAT", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchProfessional()
@@ -116,7 +116,7 @@
           }
           function LaunchTicket()
           {
-              var w1 = window.open("TicketGrid.aspx", "TICKET", "fullscreen=yes,resizable=1")
+              var w1 = window.open("TicketGrid.aspx", "TICKET", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchSettlement()
@@ -181,7 +181,7 @@
           }
           function LaunchServiceNote()
           {
-              var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=850, height=500,resizable=1")
+              var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=900, height=600,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchParameter()

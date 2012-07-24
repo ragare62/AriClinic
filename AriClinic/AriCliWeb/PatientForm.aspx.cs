@@ -68,6 +68,7 @@ public partial class PatientForm : System.Web.UI.Page
                 tt.Attributes["class"] = "buttonsFomat0";
                 btnCancel.Visible = false;
                 btnCancel0.Visible = false;
+                btnAccept0.Visible = true; btnAccept0.Enabled = true;
             }
         }
 
@@ -283,6 +284,33 @@ public partial class PatientForm : System.Web.UI.Page
                 UscEmailGrid1.RefreshGrid(true);
                 break;
         }
+    }
+
+    protected void btnAccept0_Click(object sender, ImageClickEventArgs e)
+    {
+        string command = "";
+        bool nuevo = false;
+        if (pat == null)
+        {
+            command = "CloseAndRebind('new')";
+            nuevo = true;
+        }
+        else
+        {
+            command = "CloseAndRebind('')";
+        }
+        if (!CreateChange())
+            return;
+        if (type == "InTab")
+        {
+            RadAjaxManager1.Alert(Resources.GeneralResource.RecordRefreshed);
+            return;
+        }
+        if (nuevo)
+        {
+            command = String.Format("PatientRecord({0});", pat.PersonId);
+        }
+        RadAjaxManager1.ResponseScripts.Add(command);
     }
 
 

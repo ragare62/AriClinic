@@ -201,7 +201,7 @@
         </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="100%" 
-                           AllowPaging="True" Culture="es-ES" 
+                           AllowPaging="True" Culture="es-ES" AllowFilteringByColumn="true" PageSize="15" 
                            AllowSorting="True" ShowGroupPanel="True" AllowMultiRowSelection="true"
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
                            onneeddatasource="RadGrid1_NeedDataSource" GridLines="None"
