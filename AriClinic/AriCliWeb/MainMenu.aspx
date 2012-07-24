@@ -334,6 +334,10 @@
               var w1 = window.open("RptView.aspx?Report=rappointmentday", "RAPTDAY", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchRptGPByClinic() {
+              var w1 = window.open("RptView.aspx?Report=rptgpbyclinic", "RAPTGPCLINIC", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -466,9 +470,12 @@
                         <telerik:RadMenuItem runat="server" Text="Tickets alto riesgo (Anestesia)" 
                             Value="rrisk">
                         </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados" 
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados (Por tiquet)" 
                                            Value="rpayments">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" 
+                            Text="Cobros realizados (Por nota / clínica / f.pago)" Value="rptgpbyclinic">
+                        </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>

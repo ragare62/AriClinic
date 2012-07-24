@@ -177,6 +177,13 @@ public partial class RptView : System.Web.UI.Page
                         }
                         ReportViewer1.Report = rpres;
                         break;
+                    case "rptgpbyclinic":
+                        this.Title = "Cobros generales por clínica";
+                        RptGPByClinic rpt = new RptGPByClinic();
+                        rpt.ReportParameters["FDate"].Value = DateTime.Now;
+                        rpt.ReportParameters["TDate"].Value = DateTime.Now;
+                        ReportViewer1.Report = rpt;
+                        break;
                 }
             }
             catch (Exception ex)
