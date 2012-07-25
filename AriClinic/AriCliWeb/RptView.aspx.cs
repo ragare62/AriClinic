@@ -18,6 +18,7 @@ public partial class RptView : System.Web.UI.Page
     Diary diary = null;
     BaseVisit visit = null;
     Treatment treatment = null;
+    Invoice invoice = null;
     string report = "";
     Permission per = null;
 
@@ -49,6 +50,8 @@ public partial class RptView : System.Web.UI.Page
             visit = CntAriCli.GetVisit(int.Parse(Request.QueryString["Visit"]), ctx);
         if (Request.QueryString["Treatment"] != null)
             treatment = CntAriCli.GetTreatment(int.Parse(Request.QueryString["Treatment"]), ctx);
+        if (Request.QueryString["Invoice"] != null)
+            invoice = CntAriCli.GetInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -183,6 +186,16 @@ public partial class RptView : System.Web.UI.Page
                         rpt.ReportParameters["FDate"].Value = DateTime.Now;
                         rpt.ReportParameters["TDate"].Value = DateTime.Now;
                         ReportViewer1.Report = rpt;
+                        break;
+                    case "rptinvoicemain":
+                        this.Title = "Impresión de facturas de cliente";
+                        RptInvoiceMain rptimain = new RptInvoiceMain();
+                        if (invoice != null)
+                        {
+                            rptimain.ReportParameters["InvoiceKey"].MultiValue = false;
+                            rptimain.ReportParameters["InvoiceKey"].Value = invoice.InvoiceId;
+                        }
+                        ReportViewer1.Report = rptimain;
                         break;
                 }
             }

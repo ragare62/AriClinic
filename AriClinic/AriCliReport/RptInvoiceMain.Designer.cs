@@ -11,14 +11,14 @@ namespace AriCliReport
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptInvoiceMain));
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
+            this.sqlInvoiceFilter = new Telerik.Reporting.SqlDataSource();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.detail = new Telerik.Reporting.DetailSection();
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
             this.sqlInvoice = new Telerik.Reporting.SqlDataSource();
-            this.sqlInvoiceFilter = new Telerik.Reporting.SqlDataSource();
             this.invoiceId = new Telerik.Reporting.Group();
-            this.groupHeaderSection1 = new Telerik.Reporting.GroupHeaderSection();
             this.groupFooterSection1 = new Telerik.Reporting.GroupFooterSection();
+            this.groupHeaderSection1 = new Telerik.Reporting.GroupHeaderSection();
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.textBox17 = new Telerik.Reporting.TextBox();
             this.textBox2 = new Telerik.Reporting.TextBox();
@@ -38,13 +38,27 @@ namespace AriCliReport
             this.textBox16 = new Telerik.Reporting.TextBox();
             this.textBox18 = new Telerik.Reporting.TextBox();
             this.textBox19 = new Telerik.Reporting.TextBox();
+            this.textBox20 = new Telerik.Reporting.TextBox();
+            this.textBox21 = new Telerik.Reporting.TextBox();
+            this.textBox22 = new Telerik.Reporting.TextBox();
+            this.textBox23 = new Telerik.Reporting.TextBox();
+            this.textBox24 = new Telerik.Reporting.TextBox();
+            this.textBox25 = new Telerik.Reporting.TextBox();
+            this.textBox26 = new Telerik.Reporting.TextBox();
             this.subReport2 = new Telerik.Reporting.SubReport();
+            this.reptInvoiceVAT1 = new AriCliReport.ReptInvoiceVAT();
             this.subReport1 = new Telerik.Reporting.SubReport();
             this.rptInvoiceLine1 = new AriCliReport.RptInvoiceLine();
-            this.reptInvoiceVAT1 = new AriCliReport.ReptInvoiceVAT();
-            ((System.ComponentModel.ISupportInitialize)(this.rptInvoiceLine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reptInvoiceVAT1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptInvoiceLine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // sqlInvoiceFilter
+            // 
+            this.sqlInvoiceFilter.ConnectionString = "AriClinicContext";
+            this.sqlInvoiceFilter.Name = "sqlInvoiceFilter";
+            this.sqlInvoiceFilter.SelectCommand = "SELECT invoice_id, CONCAT(YEAR,\"-\",RIGHT(CONCAT(\"000000\",invoice_number),6),\"-\",S" +
+                "ERIAL) AS keyid \r\nFROM invoice ORDER BY 2 DESC;";
             // 
             // pageHeaderSection1
             // 
@@ -59,7 +73,7 @@ namespace AriCliReport
             // 
             // pageFooterSection1
             // 
-            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(2D);
+            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D);
             this.pageFooterSection1.Name = "pageFooterSection1";
             // 
             // sqlInvoice
@@ -70,13 +84,6 @@ namespace AriCliReport
             new Telerik.Reporting.SqlDataSourceParameter("@InvoiceKey", System.Data.DbType.Int32, "=Parameters.InvoiceKey.Value")});
             this.sqlInvoice.SelectCommand = resources.GetString("sqlInvoice.SelectCommand");
             // 
-            // sqlInvoiceFilter
-            // 
-            this.sqlInvoiceFilter.ConnectionString = "AriClinicContext";
-            this.sqlInvoiceFilter.Name = "sqlInvoiceFilter";
-            this.sqlInvoiceFilter.SelectCommand = "SELECT invoice_id, CONCAT(YEAR,\"-\",RIGHT(CONCAT(\"000000\",invoice_number),6),\"-\",S" +
-                "ERIAL) AS keyid \r\nFROM invoice ORDER BY 2 DESC;";
-            // 
             // invoiceId
             // 
             this.invoiceId.GroupFooter = this.groupFooterSection1;
@@ -85,9 +92,17 @@ namespace AriCliReport
             new Telerik.Reporting.Data.Grouping("=Fields.invoice_id")});
             this.invoiceId.Name = "invoiceId";
             // 
+            // groupFooterSection1
+            // 
+            this.groupFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(1.2031497955322266D);
+            this.groupFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
+            this.subReport2});
+            this.groupFooterSection1.Name = "groupFooterSection1";
+            this.groupFooterSection1.PageBreak = Telerik.Reporting.PageBreak.After;
+            // 
             // groupHeaderSection1
             // 
-            this.groupHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(3.0314962863922119D);
+            this.groupHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(3.5637795925140381D);
             this.groupHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox1,
             this.textBox17,
@@ -108,15 +123,15 @@ namespace AriCliReport
             this.textBox16,
             this.textBox18,
             this.textBox19,
-            this.subReport1});
+            this.subReport1,
+            this.textBox20,
+            this.textBox21,
+            this.textBox22,
+            this.textBox23,
+            this.textBox24,
+            this.textBox25,
+            this.textBox26});
             this.groupHeaderSection1.Name = "groupHeaderSection1";
-            // 
-            // groupFooterSection1
-            // 
-            this.groupFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(2D);
-            this.groupFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.subReport2});
-            this.groupFooterSection1.Name = "groupFooterSection1";
             // 
             // textBox1
             // 
@@ -331,6 +346,81 @@ namespace AriCliReport
             this.textBox19.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.textBox19.Value = "= Fields.country";
             // 
+            // textBox20
+            // 
+            this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(138D), Telerik.Reporting.Drawing.Unit.Mm(21.940000534057617D));
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(17.00001335144043D), Telerik.Reporting.Drawing.Unit.Mm(5.9225873947143555D));
+            this.textBox20.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox20.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(12D);
+            this.textBox20.Value = "Fecha:";
+            // 
+            // textBox21
+            // 
+            this.textBox21.Format = "{0:dd/MM/yyyy}";
+            this.textBox21.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.1024417877197266D), Telerik.Reporting.Drawing.Unit.Inch(0.86658173799514771D));
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.6534633636474609D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox21.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox21.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(12D);
+            this.textBox21.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox21.Value = "= Fields.invoice_date";
+            // 
+            // textBox22
+            // 
+            this.textBox22.Format = "{0:dd/MM/yyyy}";
+            this.textBox22.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.6929134130477905D), Telerik.Reporting.Drawing.Unit.Inch(2.0808432102203369D));
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(4.6456694602966309D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox22.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox22.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox22.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox22.Value = "= Fields.cus_address";
+            // 
+            // textBox23
+            // 
+            this.textBox23.Format = "{0:dd/MM/yyyy}";
+            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.6929134130477905D), Telerik.Reporting.Drawing.Unit.Inch(2.3112924098968506D));
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.6070867776870728D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox23.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox23.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox23.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox23.Value = "= Fields.cus_postcode";
+            // 
+            // textBox24
+            // 
+            this.textBox24.Format = "{0:dd/MM/yyyy}";
+            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.3000791072845459D), Telerik.Reporting.Drawing.Unit.Inch(2.3112924098968506D));
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.0385036468505859D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox24.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox24.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox24.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox24.Value = "= Fields.cus_city";
+            // 
+            // textBox25
+            // 
+            this.textBox25.Format = "{0:dd/MM/yyyy}";
+            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.6929134130477905D), Telerik.Reporting.Drawing.Unit.Inch(2.5417418479919434D));
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.5070867538452148D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox25.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox25.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox25.Value = "= Fields.cus_province";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Format = "{0:dd/MM/yyyy}";
+            this.textBox26.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.2000789642333984D), Telerik.Reporting.Drawing.Unit.Inch(2.5417418479919434D));
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.1385030746459961D), Telerik.Reporting.Drawing.Unit.Inch(0.23037052154541016D));
+            this.textBox26.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox26.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox26.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox26.Value = "= Fields.cus_country";
+            // 
             // subReport2
             // 
             this.subReport2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(40D), Telerik.Reporting.Drawing.Unit.Mm(3.9999980926513672D));
@@ -339,9 +429,13 @@ namespace AriCliReport
             this.subReport2.ReportSource = this.reptInvoiceVAT1;
             this.subReport2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(156.99998474121094D), Telerik.Reporting.Drawing.Unit.Mm(21.000001907348633D));
             // 
+            // reptInvoiceVAT1
+            // 
+            this.reptInvoiceVAT1.Name = "reptInvoiceVAT1";
+            // 
             // subReport1
             // 
-            this.subReport1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(9.9999990463256836D), Telerik.Reporting.Drawing.Unit.Mm(54.999996185302734D));
+            this.subReport1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(9.9999990463256836D), Telerik.Reporting.Drawing.Unit.Mm(72.740005493164062D));
             this.subReport1.Name = "subReport1";
             this.subReport1.Parameters.Add(new Telerik.Reporting.Parameter("InvoiceId", "=Fields.invoice_id"));
             this.subReport1.ReportSource = this.rptInvoiceLine1;
@@ -352,21 +446,17 @@ namespace AriCliReport
             // 
             this.rptInvoiceLine1.Name = "rptInvoiceLine1";
             // 
-            // reptInvoiceVAT1
-            // 
-            this.reptInvoiceVAT1.Name = "reptInvoiceVAT1";
-            // 
             // RptInvoiceMain
             // 
             this.DataSource = this.sqlInvoice;
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
             this.invoiceId});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
+            this.groupHeaderSection1,
+            this.groupFooterSection1,
             this.pageHeaderSection1,
             this.detail,
-            this.pageFooterSection1,
-            this.groupHeaderSection1,
-            this.groupFooterSection1});
+            this.pageFooterSection1});
             this.PageSettings.Landscape = false;
             this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
             this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
@@ -385,8 +475,8 @@ namespace AriCliReport
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.UnitOfMeasure = Telerik.Reporting.Drawing.UnitType.Mm;
             this.Width = Telerik.Reporting.Drawing.Unit.Inch(7.8739762306213379D);
-            ((System.ComponentModel.ISupportInitialize)(this.rptInvoiceLine1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reptInvoiceVAT1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptInvoiceLine1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -423,5 +513,12 @@ namespace AriCliReport
         private RptInvoiceLine rptInvoiceLine1;
         private Telerik.Reporting.SubReport subReport2;
         private ReptInvoiceVAT reptInvoiceVAT1;
+        private Telerik.Reporting.TextBox textBox20;
+        private Telerik.Reporting.TextBox textBox21;
+        private Telerik.Reporting.TextBox textBox22;
+        private Telerik.Reporting.TextBox textBox23;
+        private Telerik.Reporting.TextBox textBox24;
+        private Telerik.Reporting.TextBox textBox25;
+        private Telerik.Reporting.TextBox textBox26;
     }
 }

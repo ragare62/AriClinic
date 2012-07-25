@@ -302,6 +302,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptgpbyclinic":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptGPByClinic();");
                 break;
+            case "rptinvoicemain":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptInvoiceMain();");
+                break;
             default:
                 break;
         }
