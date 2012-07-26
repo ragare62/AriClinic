@@ -131,12 +131,12 @@
           }
           function LaunchInvoice()
           {
-              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1")
+              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchPayment()
           {
-              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "fullscreen=yes,resizable=1")
+              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchRTickets()
@@ -353,7 +353,7 @@
           <table class="titleBar">
             <tr>
               <td>
-                <asp:Label ID="lblHealthcareCompany" runat="server" Text="Empresa sanitaria"></asp:Label>
+                <asp:Label ID="lblHealthcareCompany" runat="server" Text="Empresa sanitaria"></asp:Label>*
               </td>
               <td>
                 <img align="right" alt="logo" class="style1" src="images/logo_web_30.png" />
@@ -480,7 +480,7 @@
                         <telerik:RadMenuItem runat="server" 
                             Text="Cobros realizados (Por nota / clínica / f.pago)" Value="rptgpbyclinic">
                         </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas" 
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (*)" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 

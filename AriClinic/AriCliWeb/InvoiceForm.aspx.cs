@@ -99,7 +99,14 @@ public partial class InvoiceForm : System.Web.UI.Page
         string command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    protected void btnPrint_Click(object sender, ImageClickEventArgs e)
+    {
+        if (!CreateChange())
+            return;
+        string js = String.Format("printInvoice({0});", inv.InvoiceId);
+        RadAjaxManager1.ResponseScripts.Add(js);
+        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
+    }
     #endregion Page events (clics)
 
     #region Auxiliary functions
@@ -164,6 +171,7 @@ public partial class InvoiceForm : System.Web.UI.Page
         customerId = Int32.Parse(txtCustomerId.Text);
         inv.Customer = CntAriCli.GetCustomer(customerId, ctx);
         inv.Total = CntAriCli.GetInvoiceTotal(inv);
+        inv.InvoiceKey = String.Format("{0}-{1:000000}-{2}", inv.Year, inv.InvoiceNumber, inv.Serial);
     }
 
     #endregion Auxiliary functions
@@ -201,4 +209,6 @@ public partial class InvoiceForm : System.Web.UI.Page
         UscInvoiceLineGrid1.RefreshGrid(true);
         txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", CntAriCli.GetInvoiceTotal(inv));
     }
+
+
 }

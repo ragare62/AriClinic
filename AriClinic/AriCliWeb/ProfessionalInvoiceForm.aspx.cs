@@ -192,7 +192,7 @@ namespace AriCliWeb
                     inv.InvoiceNumber = 1;
                 }
             }
-
+            inv.InvoiceKey = String.Format("{0}-{1:000000}-{2}", inv.Year, inv.InvoiceNumber, inv.Serial);
             
         }
 

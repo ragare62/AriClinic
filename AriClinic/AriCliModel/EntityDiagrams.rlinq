@@ -752,13 +752,16 @@
           <orm:column name="serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="year" property="Year" behavior="readwrite" null-value="none" uniqueId="a7d518a9-3ca3-45b4-8ff9-93ae6516d2f8" type="System.Int32">
-          <orm:column name="year" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
+          <orm:column name="year" sql-type="integer" nullable="false" scale="0" length="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="invoiceNumber" property="InvoiceNumber" behavior="readwrite" null-value="none" uniqueId="0f7aaaf6-e864-4c12-82f5-08ceddef5c61" type="System.Int32">
           <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="total" property="Total" behavior="readwrite" null-value="none" uniqueId="5312b213-c84a-44b1-8bd3-257320193377" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
+        </orm:field>
+        <orm:field name="invoiceKey" property="InvoiceKey" uniqueId="3939e6c2-e32f-492b-b7f9-3095751fbafa" type="System.String">
+          <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
         </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="a26c3897-6d49-4b82-9265-aa76ad1d55ce" type="AriCliModel.Customer">
           <orm:reference uniqueId="4ea97b1e-e654-4d44-9e0d-cbfd87e045f6">
@@ -2332,6 +2335,9 @@
         <orm:field name="taxWithHoldingPercentage" property="TaxWithHoldingPercentage" behavior="readwrite" uniqueId="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" type="System.Decimal">
           <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         </orm:field>
+        <orm:field name="invoiceKey" property="InvoiceKey" uniqueId="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" type="System.String">
+          <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
+        </orm:field>
         <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="af45273a-d3db-44a1-812b-50e86bedbecf" type="AriCliModel.Professional">
           <orm:reference uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74">
             <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -3164,9 +3170,10 @@
         <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
         <orm:column name="invoice_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="invoice_date" sql-type="datetime" nullable="false" scale="0" ado-type="DateTime" />
-        <orm:column name="year" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
+        <orm:column name="year" sql-type="integer" nullable="false" scale="0" length="0" ado-type="Int32" />
         <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
+        <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
         <orm:index name="idx_invoice_customer_id">
           <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
@@ -3320,6 +3327,7 @@
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
         <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
         <orm:index name="idx_professional_invoice_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
@@ -4624,6 +4632,7 @@
       <Property Id="a7d518a9-3ca3-45b4-8ff9-93ae6516d2f8" name="Year" type="Int32" label="Year : Int32" kind="Persistent" fieldName="year" />
       <Property Id="0f7aaaf6-e864-4c12-82f5-08ceddef5c61" name="InvoiceNumber" type="Int32" label="InvoiceNumber : Int32" kind="Persistent" fieldName="invoiceNumber" />
       <Property Id="5312b213-c84a-44b1-8bd3-257320193377" name="Total" type="Decimal" label="Total : Decimal" kind="Persistent" fieldName="total" />
+      <Property Id="3939e6c2-e32f-492b-b7f9-3095751fbafa" name="InvoiceKey" label="InvoiceKey : String" />
       <AssociationTargets>
         <Association Id="4ea97b1e-e654-4d44-9e0d-cbfd87e045f6" SourceMultiplicity="ZeroOne" name="InvoiceHasCustomer">
           <DomainClassMoniker name="/AriClinicContext/Customer" />
@@ -6147,6 +6156,7 @@
       <Property Id="2bee66a5-fbca-4cd2-bb35-e77d573718aa" name="Amount" type="Decimal" label="Amount : Decimal" />
       <Property Id="4c5c4b87-2991-4b15-a6db-b7535cf75b15" name="Serial" label="Serial : String" />
       <Property Id="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" name="TaxWithHoldingPercentage" type="Decimal" label="TaxWithHoldingPercentage : Decimal" />
+      <Property Id="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" name="InvoiceKey" label="InvoiceKey : String" />
       <AssociationTargets>
         <Association Id="27175d91-0156-49d7-b9ff-09ea0208af74" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceHasProfessional">
           <DomainClassMoniker name="/AriClinicContext/Professional" />

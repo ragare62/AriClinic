@@ -55,10 +55,9 @@
           }
           function reportInvoice(invoice)
           {
-              var w1 = window.open("RptView.aspx?Report=invoice"
-                                   + "&Invoice=" + invoice
-                                   , "RTICKETS2", "width=800, height=600,resizable=1");
-              w1.focus();
+              var url = "RptView.aspx?Report=rptinvoicemain&Invoice=" + invoice;
+              var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+              w.focus();
           }
           function NewInvoiceRecordInTab()
           {
