@@ -105,6 +105,8 @@ width: 339px;
 {
 z-index: 1;
 left: 490px;
+top: 105px;
+position: absolute;
 height: 44px;
 width: 159px;
 }
