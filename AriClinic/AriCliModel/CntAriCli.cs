@@ -946,6 +946,18 @@ namespace AriCliModel
                     select sn).FirstOrDefault<ServiceNote>();
         }
 
+        public static void DeleteServiceNote(ServiceNote sn, AriClinicContext ctx)
+        {
+            // First delete related records.
+            foreach (GeneralPayment gp in sn.GeneralPayments)
+            {
+                GeneralPaymentDelete(gp, ctx);
+            }
+            ctx.Delete(sn.Tickets);
+            ctx.Delete(sn);
+            ctx.SaveChanges();
+        }
+
         public static int InvoiceServiceNote(ServiceNote sn, AriClinicContext ctx)
         {
             // it there's an invoice related to this service 

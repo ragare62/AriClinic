@@ -201,9 +201,7 @@ public partial class ServiceNoteGrid : System.Web.UI.Page
                     {
                         serviceNoteId = (int)Session["DeleteId"];
                         ServiceNote sn = CntAriCli.GetServiceNote(serviceNoteId, ctx);
-                        ctx.Delete(sn.Tickets);
-                        ctx.Delete(sn);
-                        ctx.SaveChanges();
+                        CntAriCli.DeleteServiceNote(sn, ctx);
                         RadGrid1.Rebind();
                         Session["DeleteId"] = null;
                     }
