@@ -342,6 +342,10 @@
               var w1 = window.open("RptView.aspx?Report=rptinvoicemain", "RPTINVMAIN", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchRptVATResume() {
+              var w1 = window.open("RptView.aspx?Report=rptvatresume", "RPTVATRESUME", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -486,8 +490,8 @@
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 
                                            Value="profInvoices">
                       </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="Reimpresión de facturas a clientes" 
-                            Value="rptinvoicemain">
+                        <telerik:RadMenuItem runat="server" Text="Liquidación de IVA" 
+                            Value="rptvatresume">
                         </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>

@@ -102,5 +102,16 @@ namespace AriCliWeb
             return new DateTime(int.Parse(uDate.Substring(0,4)),int.Parse(uDate.Substring(4,2)),int.Parse(uDate.Substring(6,2)));
         }
 
+
+        public static DateTime FirstDayOfMonthFromDateTime(DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, dateTime.Month, 1);
+        }
+
+        public static DateTime LastDayOfMonthFromDateTime(DateTime dateTime)
+        {
+            DateTime firstDayOfTheMonth = new DateTime(dateTime.Year, dateTime.Month, 1);
+            return firstDayOfTheMonth.AddMonths(1).AddDays(-1);
+        }
     }
 }

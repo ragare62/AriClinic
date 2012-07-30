@@ -305,6 +305,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptinvoicemain":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptInvoiceMain();");
                 break;
+            case "rptvatresume":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptVATResume();");
+                break;
             default:
                 break;
         }

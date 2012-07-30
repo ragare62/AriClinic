@@ -197,6 +197,11 @@ public partial class RptView : System.Web.UI.Page
                         }
                         ReportViewer1.Report = rptimain;
                         break;
+                    case "rptvatresume":
+                        this.Title = "Liquidación de IVA por periodo";
+                        RptVATResume rptvr = new RptVATResume();
+                        ReportViewer1.Report = rptvr;
+                        break;
                 }
             }
             catch (Exception ex)

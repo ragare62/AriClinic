@@ -147,6 +147,12 @@
     <Compile Include="RptTicketsSurgeon.Designer.cs">
       <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptVATResume.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptVATResume.Designer.cs">
+      <DependentUpon>RptVATResume.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptTicketsSurgeon.resx">
       <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptVATResume.resx">
+      <DependentUpon>RptVATResume.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>
