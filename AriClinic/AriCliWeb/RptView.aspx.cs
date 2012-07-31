@@ -166,6 +166,7 @@ public partial class RptView : System.Web.UI.Page
                         RptPrescription rpres = new RptPrescription();
                         if (treatment != null)
                         {
+                            rpres.ReportParameters["Treatment"].Visible = false;
                             rpres.ReportParameters["Treatment"].MultiValue = false;
                             rpres.ReportParameters["Treatment"].Value = treatment.TreatmentId;
                         }
@@ -176,6 +177,8 @@ public partial class RptView : System.Web.UI.Page
                             {
                                 ltrt.Add(t.TreatmentId);
                             }
+                            rpres.ReportParameters["Treatment"].Visible = false;
+                            rpres.ReportParameters["Treatment"].MultiValue = true;
                             rpres.ReportParameters["Treatment"].Value = ltrt;
                         }
                         ReportViewer1.Report = rpres;

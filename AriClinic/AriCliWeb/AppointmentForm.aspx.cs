@@ -22,6 +22,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     int appId = 0;
     int patientId = 0;
     Permission per = null;
+    Professional professional = null;
     AppointmentInfo app = null;
     DateTime? beginDateTime= null; DateTime? endDateTime = null;
     string type = "";
@@ -44,6 +45,8 @@ public partial class AppointmentForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+                professional = user.Professionals[0];
         }
         if (Request.QueryString["DiaryId"] != null)
         {
@@ -218,6 +221,10 @@ public partial class AppointmentForm : System.Web.UI.Page
     protected void LoadData(AppointmentInfo app)
     {
         LoadStatusCombo(app);
+        if (professional != null)
+        {
+            LoadProfessionalCombo(professional);
+        }
         if (app == null) return; // There isn't any agenda to show
         txtAppointmentId.Text = String.Format("{0:00000000}", app.AppointmentId);
         LoadPatientCombo(app.Patient);

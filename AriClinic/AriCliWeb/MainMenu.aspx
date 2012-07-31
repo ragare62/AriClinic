@@ -357,7 +357,7 @@
           <table class="titleBar">
             <tr>
               <td>
-                <asp:Label ID="lblHealthcareCompany" runat="server" Text="Empresa sanitaria"></asp:Label>*
+                <asp:Label ID="lblHealthcareCompany" runat="server" Text="Empresa sanitaria"></asp:Label>
               </td>
               <td>
                 <img align="right" alt="logo" class="style1" src="images/logo_web_30.png" />

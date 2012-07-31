@@ -50,6 +50,12 @@ public partial class TicketForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                prof = user.Professionals[0];
+                txtProfessionalId.Text = prof.PersonId.ToString();
+                txtProfessionalName.Text = prof.FullName;
+            }
         }
         // 
         if (Request.QueryString["CustomerId"] != null)

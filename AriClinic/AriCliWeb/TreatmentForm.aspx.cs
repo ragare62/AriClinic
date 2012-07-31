@@ -20,6 +20,7 @@ public partial class TreatmentForm : System.Web.UI.Page
     Treatment treatment = null;
     Patient patient = null;
     BaseVisit visit = null;
+    Professional professional = null;
     int drugId = 0;
     int treatmentId = 0;
     int patientId = 0;
@@ -44,6 +45,13 @@ public partial class TreatmentForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                professional = user.Professionals[0];
+                rdcProfessional.Items.Clear();
+                rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+                rdcProfessional.SelectedValue = professional.PersonId.ToString();
+            }
         }
 
         // 

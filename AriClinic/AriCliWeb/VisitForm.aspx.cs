@@ -48,6 +48,11 @@ public partial class VisitForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                professional = user.Professionals[0];
+                LoadComboProfesional(professional);
+            }
         }
 
         // 
