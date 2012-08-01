@@ -1712,5 +1712,23 @@ namespace AriCliModel
             nxtfrn = ++i;
             return nxtfrn;
         }
+
+        public static string GetInsuranceInformation(Patient patient, AriClinicContext ctx)
+        {
+            string res = "";
+            Policy pol = GetPolicyInForce(patient, DateTime.Now, ctx);
+            if (pol == null)
+            {
+                // there's not policy in force
+                pol = (from p in patient.Customer.Policies
+                       orderby p.EndDate descending
+                       select p).FirstOrDefault<Policy>();
+            }
+            if (pol != null)
+            {
+                res = String.Format("{0} [{1}] {2:dd/MM/yyyy} - {3:dd/MM/yyyy}", pol.Insurance.Name, pol.PolicyNumber, pol.BeginDate, pol.EndDate);
+            }
+            return res;
+        }
     }
 }

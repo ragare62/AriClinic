@@ -204,6 +204,8 @@ public partial class PatientForm : System.Web.UI.Page
         {
             CreateAssociatedCustomer(pat, ctx);
         }
+        pat.InsuranceInformation = CntAriCli.GetInsuranceInformation(pat, ctx);
+        txtInsuranceInformation.Text = pat.InsuranceInformation;
         pat.Customer.VATIN = txtVATIN.Text;
         pat.Comments = txtComments.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);

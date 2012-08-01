@@ -300,6 +300,16 @@
                         </tr>
                         <tr>
                             <td colspan="5">
+                                <div id="InsuranceInformation" class="normalText">
+                                    <asp:Label ID="lblInsuranceInformation" runat="server" Text="Información de asegurado:" 
+                                               ToolTip="Información sobre el asegurado" ></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtInsuranceInformation" runat="server" Width="100%" TabIndex="3"></asp:TextBox>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
                                 <div ID="Comments" class="normalText">
                                     <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
                                                ToolTip="Observaciones" ></asp:Label>

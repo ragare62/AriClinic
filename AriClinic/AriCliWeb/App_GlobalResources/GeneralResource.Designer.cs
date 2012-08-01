@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a La fecha final no puede ser menor que la de inicio..
+        /// </summary>
+        internal static string BeginGreaterThanEndDates {
+            get {
+                return ResourceManager.GetString("BeginGreaterThanEndDates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Se necesita una hora de comienzo.
         /// </summary>
         internal static string BeginHourNeeded {

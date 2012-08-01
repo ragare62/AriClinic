@@ -345,6 +345,24 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtAge;
     
     /// <summary>
+    /// Control lblInsuranceInformation.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblInsuranceInformation;
+    
+    /// <summary>
+    /// Control txtInsuranceInformation.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtInsuranceInformation;
+    
+    /// <summary>
     /// Control lblComments.
     /// </summary>
     /// <remarks>

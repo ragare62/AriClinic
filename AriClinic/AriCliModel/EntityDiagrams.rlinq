@@ -545,6 +545,9 @@
           <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="9226a0d3-d41a-437c-b934-13aa48f09d03" type="System.String" />
+        <orm:field name="insuranceInformation" property="InsuranceInformation" uniqueId="29f1e3be-0cbb-41d2-8e73-cb851ac36646" type="System.String">
+          <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="insurance_information" ado-type="" />
+        </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="3b29d975-8298-499c-911e-bb5fd0cb906b" type="AriCliModel.Customer">
           <orm:reference uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
         </orm:field>
@@ -752,7 +755,7 @@
           <orm:column name="serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="year" property="Year" behavior="readwrite" null-value="none" uniqueId="a7d518a9-3ca3-45b4-8ff9-93ae6516d2f8" type="System.Int32">
-          <orm:column name="year" sql-type="integer" nullable="false" scale="0" length="0" ado-type="Int32" />
+          <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="invoiceNumber" property="InvoiceNumber" behavior="readwrite" null-value="none" uniqueId="0f7aaaf6-e864-4c12-82f5-08ceddef5c61" type="System.Int32">
           <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
@@ -760,8 +763,8 @@
         <orm:field name="total" property="Total" behavior="readwrite" null-value="none" uniqueId="5312b213-c84a-44b1-8bd3-257320193377" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
         </orm:field>
-        <orm:field name="invoiceKey" property="InvoiceKey" uniqueId="3939e6c2-e32f-492b-b7f9-3095751fbafa" type="System.String">
-          <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
+        <orm:field name="invoiceKey" property="InvoiceKey" behavior="readwrite" uniqueId="3939e6c2-e32f-492b-b7f9-3095751fbafa" type="System.String">
+          <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="a26c3897-6d49-4b82-9265-aa76ad1d55ce" type="AriCliModel.Customer">
           <orm:reference uniqueId="4ea97b1e-e654-4d44-9e0d-cbfd87e045f6">
@@ -2335,8 +2338,8 @@
         <orm:field name="taxWithHoldingPercentage" property="TaxWithHoldingPercentage" behavior="readwrite" uniqueId="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" type="System.Decimal">
           <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         </orm:field>
-        <orm:field name="invoiceKey" property="InvoiceKey" uniqueId="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" type="System.String">
-          <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
+        <orm:field name="invoiceKey" property="InvoiceKey" behavior="readwrite" uniqueId="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" type="System.String">
+          <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="af45273a-d3db-44a1-812b-50e86bedbecf" type="AriCliModel.Professional">
           <orm:reference uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74">
@@ -3138,7 +3141,8 @@
         <orm:column name="born_date" sql-type="datetime" nullable="true" scale="0" ado-type="DateTime" />
         <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
-        <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column name="comments" sql-type="longtext" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="insurance_information" ado-type="" />
         <orm:constraint name="ref_patient_person" destination-table="person">
           <orm:column name="person_id" sql-type="integer" nullable="false" scale="0" primary-key="true" ado-type="Int32" />
         </orm:constraint>
@@ -3170,10 +3174,10 @@
         <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
         <orm:column name="invoice_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="invoice_date" sql-type="datetime" nullable="false" scale="0" ado-type="DateTime" />
-        <orm:column name="year" sql-type="integer" nullable="false" scale="0" length="0" ado-type="Int32" />
+        <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
-        <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
+        <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_invoice_customer_id">
           <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
@@ -3327,7 +3331,7 @@
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
         <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
-        <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="invoice_key" ado-type="" />
+        <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_professional_invoice_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
@@ -4363,6 +4367,7 @@
       <Property Id="cbf2d6ec-b541-40e3-b423-735f4bd6b955" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
       <Property Id="c9a9f7f6-a398-411b-b917-34b66eda83a4" name="LastUpdate" type="DateTime" label="LastUpdate : DateTime" />
       <Property Id="9226a0d3-d41a-437c-b934-13aa48f09d03" name="Comments" label="Comments : String" />
+      <Property Id="29f1e3be-0cbb-41d2-8e73-cb851ac36646" name="InsuranceInformation" label="InsuranceInformation : String" />
       <AssociationTargets>
         <Association Id="cbc90740-994d-4433-a9d5-ac25f49d59cc" SourceMultiplicity="ZeroOne" name="PatientHasCustomer">
           <DomainClassMoniker name="/AriClinicContext/Customer" />

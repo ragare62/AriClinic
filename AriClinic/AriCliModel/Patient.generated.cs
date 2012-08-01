@@ -113,6 +113,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string insuranceInformation;
+		public virtual string InsuranceInformation 
+		{ 
+		    get
+		    {
+		        return this.insuranceInformation;
+		    }
+		    set
+		    {
+		        this.insuranceInformation = value;
+		    }
+		}
+		
 		private string comments;
 		public virtual string Comments 
 		{ 

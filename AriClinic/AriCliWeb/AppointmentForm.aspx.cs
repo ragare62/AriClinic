@@ -191,6 +191,14 @@ public partial class AppointmentForm : System.Web.UI.Page
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
+        if (rddtBeginDateTime.SelectedDate > rddtEndDateTime.SelectedDate)
+        {
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
+                                    , Resources.GeneralResource.Warning
+                                    , Resources.GeneralResource.BeginGreaterThanEndDates);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return false;
+        }
         return true;
     }
 
