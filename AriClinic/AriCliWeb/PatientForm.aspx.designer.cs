@@ -120,6 +120,33 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
+    /// Control Buttons0.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Buttons0;
+    
+    /// <summary>
+    /// Control btnAccept0.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnAccept0;
+    
+    /// <summary>
+    /// Control btnCancel0.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnCancel0;
+    
+    /// <summary>
     /// Control lblPatientId.
     /// </summary>
     /// <remarks>
@@ -138,22 +165,22 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtPatientId;
     
     /// <summary>
-    /// Control lblName.
+    /// Control lblFrn.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblName;
+    protected global::System.Web.UI.WebControls.Label lblFrn;
     
     /// <summary>
-    /// Control txtName.
+    /// Control txtFrn.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtName;
+    protected global::System.Web.UI.WebControls.TextBox txtFrn;
     
     /// <summary>
     /// Control lblSurname1.
@@ -192,121 +219,22 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtSurname2;
     
     /// <summary>
-    /// Control lblComments.
+    /// Control lblName.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblComments;
+    protected global::System.Web.UI.WebControls.Label lblName;
     
     /// <summary>
-    /// Control txtComments.
+    /// Control txtName.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtComments;
-    
-    /// <summary>
-    /// Control lblVATIN.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblVATIN;
-    
-    /// <summary>
-    /// Control txtVATIN.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtVATIN;
-    
-    /// <summary>
-    /// Control lblMessage.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblMessage;
-    
-    /// <summary>
-    /// Control btnAccept.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnAccept;
-    
-    /// <summary>
-    /// Control btnCancel.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnCancel;
-    
-    /// <summary>
-    /// Control lblAddress.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblAddress;
-    
-    /// <summary>
-    /// Control UscAddressGrid1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::AriCliWeb.UscAddressGrid UscAddressGrid1;
-    
-    /// <summary>
-    /// Control lblTelephones.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTelephones;
-    
-    /// <summary>
-    /// Control UscTelephoneGrid1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::AriCliWeb.UscTelephoneGrid UscTelephoneGrid1;
-    
-    /// <summary>
-    /// Control lblEmails.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblEmails;
-    
-    /// <summary>
-    /// Control UscEmailGrid1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::AriCliWeb.UscEmailGrid UscEmailGrid1;
+    protected global::System.Web.UI.WebControls.TextBox txtName;
     
     /// <summary>
     /// Control lblBornDate.
@@ -325,6 +253,24 @@ public partial class PatientForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::Telerik.Web.UI.RadDatePicker rddpBornDate;
+    
+    /// <summary>
+    /// Control lblVATIN.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblVATIN;
+    
+    /// <summary>
+    /// Control txtVATIN.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtVATIN;
     
     /// <summary>
     /// Control lblClinic.
@@ -399,6 +345,42 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtAge;
     
     /// <summary>
+    /// Control lblInsuranceInformation.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblInsuranceInformation;
+    
+    /// <summary>
+    /// Control txtInsuranceInformation.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtInsuranceInformation;
+    
+    /// <summary>
+    /// Control lblComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblComments;
+    
+    /// <summary>
+    /// Control txtComments.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtComments;
+    
+    /// <summary>
     /// Control lblLastUpdate.
     /// </summary>
     /// <remarks>
@@ -417,29 +399,74 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtLastUpdate;
     
     /// <summary>
-    /// Control Buttons0.
+    /// Control lblAddress.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Buttons0;
+    protected global::System.Web.UI.WebControls.Label lblAddress;
     
     /// <summary>
-    /// Control btnAccept0.
+    /// Control UscAddressGrid1.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnAccept0;
+    protected global::AriCliWeb.UscAddressGrid UscAddressGrid1;
     
     /// <summary>
-    /// Control btnCancel0.
+    /// Control lblTelephones.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton btnCancel0;
+    protected global::System.Web.UI.WebControls.Label lblTelephones;
+    
+    /// <summary>
+    /// Control UscTelephoneGrid1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::AriCliWeb.UscTelephoneGrid UscTelephoneGrid1;
+    
+    /// <summary>
+    /// Control lblEmails.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblEmails;
+    
+    /// <summary>
+    /// Control UscEmailGrid1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::AriCliWeb.UscEmailGrid UscEmailGrid1;
+    
+    /// <summary>
+    /// Control btnAccept.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnAccept;
+    
+    /// <summary>
+    /// Control btnCancel.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnCancel;
 }

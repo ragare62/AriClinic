@@ -17,9 +17,10 @@ public partial class TreatmentForm : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     Drug drug = null;
-    Treatment Treatment = null;
+    Treatment treatment = null;
     Patient patient = null;
     BaseVisit visit = null;
+    Professional professional = null;
     int drugId = 0;
     int treatmentId = 0;
     int patientId = 0;
@@ -44,18 +45,26 @@ public partial class TreatmentForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                professional = user.Professionals[0];
+                rdcProfessional.Items.Clear();
+                rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+                rdcProfessional.SelectedValue = professional.PersonId.ToString();
+            }
         }
 
         // 
         if (Request.QueryString["TreatmentId"] != null)
         {
             treatmentId = Int32.Parse(Request.QueryString["TreatmentId"]);
-            Treatment = CntAriCli.GetTreatment(treatmentId, ctx);
-            LoadData(Treatment);
+            treatment = CntAriCli.GetTreatment(treatmentId, ctx);
+            LoadData(treatment);
         }
         else
         {
             rdpTreatmentDate.SelectedDate = DateTime.Now;
+            if (Session["Professional"] != null) LoadProfessionalCombo((Professional)Session["Professional"]);
         }
         //
         if (Request.QueryString["PatientId"] != null)
@@ -80,7 +89,9 @@ public partial class TreatmentForm : System.Web.UI.Page
             rdcPatient.SelectedValue = patient.PersonId.ToString();
             //
             rdpTreatmentDate.SelectedDate = visit.VisitDate;
+            LoadProfessionalCombo(visit.Professional);
         }
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -153,16 +164,16 @@ public partial class TreatmentForm : System.Web.UI.Page
     {
         if (!DataOk())
             return false;
-        if (Treatment == null)
+        if (treatment == null)
         {
-            Treatment = new Treatment();
-            UnloadData(Treatment);
-            ctx.Add(Treatment);
+            treatment = new Treatment();
+            UnloadData(treatment);
+            ctx.Add(treatment);
         }
         else
         {
             drug = CntAriCli.GetDrug(drugId, ctx);
-            UnloadData(Treatment);
+            UnloadData(treatment);
         }
         ctx.SaveChanges();
         return true;
@@ -180,18 +191,33 @@ public partial class TreatmentForm : System.Web.UI.Page
         rdcDrug.Items.Add(new RadComboBoxItem(tr.Drug.Name, tr.Drug.DrugId.ToString()));
         rdcDrug.SelectedValue = tr.Drug.DrugId.ToString();
 
+        // Load professional
+        if (tr.Professional != null)
+        {
+            rdcProfessional.Items.Clear();
+            rdcProfessional.Items.Add(new RadComboBoxItem(tr.Professional.FullName, tr.Professional.PersonId.ToString()));
+            rdcProfessional.SelectedValue = tr.Professional.PersonId.ToString();
+        }
+
         rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
         txtRecommend.Text = tr.Recommend;
+        if (tr.Quantity != 0)
+            txtQuantity.Value = tr.Quantity;
     }
 
-    protected void UnloadData(Treatment da)
+    protected void UnloadData(Treatment tr)
     {
-        da.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
-        da.TreatmentDate = (DateTime)rdpTreatmentDate.SelectedDate;
-        da.Drug = CntAriCli.GetDrug(int.Parse(rdcDrug.SelectedValue), ctx);
+        tr.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        tr.TreatmentDate = (DateTime)rdpTreatmentDate.SelectedDate;
+        tr.Drug = CntAriCli.GetDrug(int.Parse(rdcDrug.SelectedValue), ctx);
         if (visit != null)
-            da.BaseVisit = visit;
-        da.Recommend = txtRecommend.Text;
+            tr.BaseVisit = visit;
+        tr.Recommend = txtRecommend.Text;
+        if (txtQuantity.Text != "") tr.Quantity = (int)txtQuantity.Value;
+        if (rdcProfessional.SelectedValue != "")
+        {
+            tr.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
+        }
     }
 
     #endregion Auxiliary functions
@@ -222,5 +248,35 @@ public partial class TreatmentForm : System.Web.UI.Page
         {
             combo.Items.Add(new RadComboBoxItem(dg.Name, dg.DrugId.ToString()));
         }
+    }
+    protected void rdcProfessional_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "") return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from p in ctx.Professionals
+                 where p.FullName.StartsWith(e.Text)
+                 select p;
+        foreach (Professional professional in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        }
+    }
+
+    protected void btnPrint_Click(object sender, ImageClickEventArgs e)
+    {
+        if (!CreateChange())
+            return;
+        string js = String.Format("printPrescription({0});", treatment.TreatmentId);
+        RadAjaxManager1.ResponseScripts.Add(js);
+        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
+    }
+
+    protected void LoadProfessionalCombo(Professional professional)
+    {
+        if (professional == null) return;
+        rdcProfessional.Items.Clear();
+        rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = professional.PersonId.ToString();
     }
 }

@@ -225,6 +225,31 @@ namespace AriCliModel
                     select i).FirstOrDefault<Insurance>();
         }
 
+        public static String GetInsuranceData(Patient patient, AriClinicContext ctx)
+        {
+            string insuranceData = "";
+            int policyInForceId = 0;
+            // policy in force
+            Policy policy = CntAriCli.GetPolicyInForce(patient, DateTime.Now, ctx);
+            if (policy == null)
+                insuranceData = "[*]";
+            else
+            {
+                insuranceData = string.Format("[ IG:{0} PN:{1} ]", policy.Insurance.Name, policy.PolicyNumber);
+                policyInForceId = policy.PolicyId;
+            }
+            // policies but in force
+            foreach (Policy plcy in CntAriCli.GetPolicies(patient, ctx))
+            {
+                if (plcy != null && (plcy.PolicyId != policyInForceId))
+                {
+                    insuranceData = string.Format("{0} / IG:{1} PN:{2} /", 
+                                        insuranceData, plcy.Insurance.Name, plcy.PolicyNumber);
+                }
+            }
+            return insuranceData;
+        }
+
         public static InsuranceService GetInsuranceService(int id, AriClinicContext ctx)
         {
             return (from inser in ctx.InsuranceServices
@@ -246,6 +271,24 @@ namespace AriCliModel
                     orderby p.FullName
                     select p).ToList<Patient>();
         }
+
+        public static IList<Patient> GetPatients(Insurance insurance, AriClinicContext ctx)
+        {
+            var rs = from p in ctx.Policies
+                     where p.Insurance.InsuranceId == insurance.InsuranceId
+                     select p;
+            IList<Patient> lp = new List<Patient>();
+            foreach (Policy p in rs)
+            {
+                Patient pat = (from pt in ctx.Patients
+                               where pt.Customer.PersonId == p.Customer.PersonId
+                               select pt).FirstOrDefault<Patient>();
+                if (pat != null) lp.Add(pat);
+            }
+            return lp;
+        }
+            
+            
 
         public static Patient GetPatient(int id, AriClinicContext ctx)
         {
@@ -274,6 +317,20 @@ namespace AriCliModel
             return (from p in ctx.Policies
                     where p.PolicyId == id
                     select p).FirstOrDefault<Policy>();
+        }
+
+        public static Policy GetPolicyInForce(Patient patient, DateTime dt, AriClinicContext ctx)
+        {
+            Policy policy = null;
+            policy = (from p in patient.Customer.Policies
+                      where p.BeginDate <= dt && p.EndDate >= dt
+                      select p).FirstOrDefault();
+            return policy;
+        }
+
+        public static IList<Policy> GetPolicies(Patient patient, AriClinicContext ctx)
+        {
+            return patient.Customer.Policies.ToList<Policy>();
         }
 
         public static Ticket GetTicket(int id, AriClinicContext ctx)
@@ -559,7 +616,7 @@ namespace AriCliModel
 
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
-            if (prof.ProfessionalInvoices.Count > 0)
+            if (prof.ProfessionalInvoices.Where(x => x.Year == year).Count() > 0)
             {
                 int v = (from inv in prof.ProfessionalInvoices
                          where inv.Year == year
@@ -798,7 +855,7 @@ namespace AriCliModel
             return par;
         }
 
-        public static void CheckAnestheticServiceNoteTickets(AnestheticServiceNote ansn, AriClinicContext ctx)
+        public static void CheckAnestheticServiceNoteTickets(AnestheticServiceNote ansn, AriClinicContext ctx, IList<SaveCheck> lschk)
         {
             // Read parameters
             AriCliModel.Parameter parameter = GetParameter(ctx);
@@ -837,12 +894,19 @@ namespace AriCliModel
                         InsuranceService = ins,
                         User = ansn.User,
                         Clinic = ansn.Clinic,
-                        Checked = ansn.Chk2,
                         Professional = ansn.Professional,
                         Surgeon = ansn.Surgeon,
                         Procedure = ansn.Procedures[0],
                         AnestheticServiceNote = ansn
                     };
+                    if (ansn.Chk2)
+                    {
+                        anstk.Checked = true;
+                    }
+                    else
+                    {
+                        anstk.Checked = CntAriCli.IsItInChecks(anstk, lschk);
+                    }
                     if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // increase 50%
                     ctx.Add(anstk);
 
@@ -855,7 +919,7 @@ namespace AriCliModel
                 bool multi = false;
                 foreach (Procedure p in ansn.Procedures)
                 {
-                    AddAutomaticTicket(ansn, p, ctx, multi);
+                    AddAutomaticTicket(ansn, p, ctx, multi, lschk);
                     multi = true;
                 }
             }
@@ -880,6 +944,18 @@ namespace AriCliModel
             return (from sn in ctx.ServiceNotes
                     where sn.ServiceNoteId == id
                     select sn).FirstOrDefault<ServiceNote>();
+        }
+
+        public static void DeleteServiceNote(ServiceNote sn, AriClinicContext ctx)
+        {
+            // First delete related records.
+            foreach (GeneralPayment gp in sn.GeneralPayments)
+            {
+                GeneralPaymentDelete(gp, ctx);
+            }
+            ctx.Delete(sn.Tickets);
+            ctx.Delete(sn);
+            ctx.SaveChanges();
         }
 
         public static int InvoiceServiceNote(ServiceNote sn, AriClinicContext ctx)
@@ -930,7 +1006,7 @@ namespace AriCliModel
             return false;
         }
 
-        public static void AddAutomaticTicket(AnestheticServiceNote ansn, Procedure proc, AriClinicContext ctx, bool multi)
+        public static void AddAutomaticTicket(AnestheticServiceNote ansn, Procedure proc, AriClinicContext ctx, bool multi, IList<SaveCheck> lschk)
         {
             // Does this customer have a primary policy with that service?
             Policy pol = PrimaryPolicy(ansn.Customer);
@@ -954,13 +1030,20 @@ namespace AriCliModel
                 Policy = pol,
                 InsuranceService = ins,
                 User = ansn.User,
-                Checked = ansn.Chk2,
                 Clinic = ansn.Clinic,
                 Professional = ansn.Professional,
                 Surgeon = ansn.Surgeon,
                 Procedure = proc,
                 AnestheticServiceNote = ansn
             };
+            if (ansn.Chk2)
+            {
+                anstk.Checked = true;
+            }
+            else
+            {
+                anstk.Checked = CntAriCli.IsItInChecks(anstk, lschk);
+            }
             if (multi)
             {
                 anstk.Amount = anstk.Amount / 2;
@@ -1149,10 +1232,20 @@ namespace AriCliModel
 
         public static string GetAppointmentSubject(AppointmentInfo app)
         {
+            string profesional = "";
+            if (app.Professional != null) profesional = app.Professional.FullName;
+            string frn = app.Patient.OftId.ToString();
             if (app.Arrival == null || NullDateTime(app.Arrival))
-                return String.Format("{0} ({1})", app.Patient.FullName, app.AppointmentType.Name);
+                return String.Format("{0} ({1} | {2}) [{3}] NH:{4}", 
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments,profesional,frn);
             else
-                return String.Format("{0} ({1}) [{2:HH:mm:ss}]", app.Patient.FullName, app.AppointmentType.Name, app.Arrival);
+                return String.Format("{0} ({1} | {2}) [{3}] NH:{5} [{4:HH:mm:ss}]",
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival,frn);
+        }
+
+        public static string GetAppointmentDescription(AppointmentInfo app, AriClinicContext ctx)
+        {
+            return String.Format("FRN:{0} - {1}",app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
         }
 
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)
@@ -1562,6 +1655,80 @@ namespace AriCliModel
                 }
             }
             return a;
+        }
+        public static IList<SaveCheck> SaveChecks(AnestheticServiceNote asn)
+        {
+            IList<SaveCheck> lsc = new List<SaveCheck>();
+            foreach (AnestheticTicket atck in asn.AnestheticTickets)
+            {
+                if (atck.Checked)
+                {
+                    SaveCheck  schk = new SaveCheck();
+                    schk.ProcedureId = atck.Procedure.ProcedureId;
+                    schk.Chk = true;
+                    lsc.Add(schk);
+                }
+            }
+            return lsc;
+        }
+        public static bool IsItInChecks(AnestheticTicket atck, IList<SaveCheck> lsck)
+        {
+            bool res = false;
+            SaveCheck sc = (from sck in lsck
+                            where sck.ProcedureId == atck.Procedure.ProcedureId
+                            select sck).FirstOrDefault<SaveCheck>();
+            if (sc != null) res = true;
+            return res;
+        }
+
+        public static void CheckPolicy(Patient patient, AriClinicContext ctx)
+        {
+
+            // Does this customer have a policiy yet?
+            if (patient.Customer.Policies.Count > 0) return;
+            
+            // He hasn't. Is there only one insurance company in db?.
+            if (ctx.Insurances.Count() != 1) return;
+            Insurance insurance = ctx.Insurances.First<Insurance>();
+            
+            // There's only one insurance company and we create a policy related to it.
+            Policy policy = new Policy();
+            policy.Insurance = insurance;
+            policy.Customer = patient.Customer;
+            ctx.Add(policy);
+        }
+
+        public static PreviousMedicalRecord GetPreviousMedicalRecord(int patientId, AriClinicContext ctx)
+        {
+            PreviousMedicalRecord pmr = null;
+            return pmr;
+        }
+
+        public static int NextFrn(AriClinicContext ctx)
+        {
+            int nxtfrn = 0;
+            int i = (from p in ctx.Patients
+                     select p.OftId).Max();
+            nxtfrn = ++i;
+            return nxtfrn;
+        }
+
+        public static string GetInsuranceInformation(Patient patient, AriClinicContext ctx)
+        {
+            string res = "";
+            Policy pol = GetPolicyInForce(patient, DateTime.Now, ctx);
+            if (pol == null)
+            {
+                // there's not policy in force
+                pol = (from p in patient.Customer.Policies
+                       orderby p.EndDate descending
+                       select p).FirstOrDefault<Policy>();
+            }
+            if (pol != null)
+            {
+                res = String.Format("{0} [{1}] {2:dd/MM/yyyy} - {3:dd/MM/yyyy}", pol.Insurance.Name, pol.PolicyNumber, pol.BeginDate, pol.EndDate);
+            }
+            return res;
         }
     }
 }

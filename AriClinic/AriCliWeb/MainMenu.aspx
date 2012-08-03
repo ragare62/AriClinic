@@ -101,7 +101,7 @@
           }
           function LaunchPatient()
           {
-              var w1 = window.open("PatientGrid.aspx", "PAT", "width=600, height=500,resizable=1")
+              var w1 = window.open("PatientGrid.aspx", "PAT", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchProfessional()
@@ -116,7 +116,7 @@
           }
           function LaunchTicket()
           {
-              var w1 = window.open("TicketGrid.aspx", "TICKET", "fullscreen=yes,resizable=1")
+              var w1 = window.open("TicketGrid.aspx", "TICKET", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchSettlement()
@@ -131,12 +131,12 @@
           }
           function LaunchInvoice()
           {
-              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1")
+              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchPayment()
           {
-              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "fullscreen=yes,resizable=1")
+              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "fullscreen=yes,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchRTickets()
@@ -157,6 +157,18 @@
               var w1 = window.open("RptView.aspx?Report=ranestckprof", "ANESTCKPROF", "width=900, height=600,resizable=1")
               w1.focus();
           }
+          function LaunchRrisk() {
+              var w1 = window.open("RptView.aspx?Report=rrisk", "RRISK", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
+          function LaunchRPCA() {
+              var w1 = window.open("RptView.aspx?Report=rpca", "RPCAF", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
+          function LaunchRTckSrg() {
+              var w1 = window.open("RptView.aspx?Report=rtcksrg", "RTCKSRG", "width=900, height=600,resizable=1")
+              w1.focus();
+          }
           function LaunchProcedure()
           {
               var w1 = window.open("ProcedureGrid.aspx", "PROCEDURE", "width=580, height=380,resizable=1")
@@ -169,7 +181,7 @@
           }
           function LaunchServiceNote()
           {
-              var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=850, height=500,resizable=1")
+              var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=900, height=600,resizable=1,scrollbars=1")
               w1.focus();
           }
           function LaunchParameter()
@@ -318,6 +330,22 @@
               var w1 = window.open("SourceGrid.aspx", "SOURCE", "width=500, height=500,resizable=1")
               w1.focus();
           }
+          function LaunchRAppointmentDay() {
+              var w1 = window.open("RptView.aspx?Report=rappointmentday", "RAPTDAY", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
+          function LaunchRptGPByClinic() {
+              var w1 = window.open("RptView.aspx?Report=rptgpbyclinic", "RAPTGPCLINIC", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
+          function LaunchRptInvoiceMain() {
+              var w1 = window.open("RptView.aspx?Report=rptinvoicemain", "RPTINVMAIN", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
+          function LaunchRptVATResume() {
+              var w1 = window.open("RptView.aspx?Report=rptvatresume", "RPTVATRESUME", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -444,15 +472,27 @@
                         <telerik:RadMenuItem runat="server" Text="Tickets por profesional (Anestesia)" 
                             Value="ranestckprof">
                         </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados" 
+                        <telerik:RadMenuItem runat="server" Text="Tickets por cirujano (Anestesia)" 
+                            Value="rtcksrg">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tickets alto riesgo (Anestesia)" 
+                            Value="rrisk">
+                        </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Cobros realizados (Por tiquet)" 
                                            Value="rpayments">
                       </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas" 
+                        <telerik:RadMenuItem runat="server" 
+                            Text="Cobros realizados (Por nota / clínica / f.pago)" Value="rptgpbyclinic">
+                        </telerik:RadMenuItem>
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (*)" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 
                                            Value="profInvoices">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Liquidación de IVA" 
+                            Value="rptvatresume">
+                        </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Adeudos" Value="debt">
@@ -477,10 +517,22 @@
                       </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Text="Nomenclator" Value="rnomenclator">
+                  <telerik:RadMenuItem runat="server" Text="Anestesia" Value="anesthetics">
+                      <Items>
+                          <telerik:RadMenuItem runat="server" Owner="" Text="Nomenclator" 
+                              Value="rnomenclator">
+                          </telerik:RadMenuItem>
+                          <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" Value="rpca">
+                          </telerik:RadMenuItem>
+                      </Items>
                   </telerik:RadMenuItem>
-                  <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" 
-                                       Value="rbombasPCEA">
+                  <telerik:RadMenuItem runat="server" Text="Citas" 
+                                       Value="appointments">
+                      <Items>
+                          <telerik:RadMenuItem runat="server" Text="Citas diarias por agenda" 
+                              Value="rappointmentday">
+                          </telerik:RadMenuItem>
+                      </Items>
                   </telerik:RadMenuItem>
 
                 </Items>

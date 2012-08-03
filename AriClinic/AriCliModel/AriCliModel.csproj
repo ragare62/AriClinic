@@ -70,6 +70,15 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="AriCliException.cs" />
+    <Compile Include="BackFamily.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="BackGinecology.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="BackPersonal.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="BaseVisit.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -82,6 +91,7 @@
     <Compile Include="Clinic.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="CntAnestheticTickets.cs" />
     <Compile Include="CntAriCli.cs" />
     <Compile Include="CntDocs.cs">
       <SubType>Code</SubType>
@@ -201,6 +211,9 @@
     <Compile Include="PrescriptionGlasses.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="PreviousMedicalRecord.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Procedure.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -223,6 +236,7 @@
     <Compile Include="Refractometry.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="SaveCheck.cs" />
     <Compile Include="Service.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>

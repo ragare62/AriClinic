@@ -60,10 +60,12 @@
     <Reference Include="Telerik.OpenAccess.Web, Version=2011.3.1129.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
       <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.UI">
+    <Reference Include="Telerik.Web.UI, Version=2011.3.1305.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Users\Programador\AppData\Roaming\Telerik\Updates\Telerik.Web.UI_2011_3_1305_Dev_hotfix\Bin40\Telerik.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins">
+    <Reference Include="Telerik.Web.UI.Skins, Version=2011.3.1305.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Users\Programador\AppData\Roaming\Telerik\Updates\Telerik.Web.UI_2011_3_1305_Dev_hotfix\Bin40\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -190,6 +192,27 @@
     <Compile Include="BiometryForm.aspx.designer.cs">
       <DependentUpon>BiometryForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BackPersonalForm.aspx.cs">
+      <DependentUpon>BackPersonalForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackPersonalForm.aspx.designer.cs">
+      <DependentUpon>BackPersonalForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackFamilyForm.aspx.cs">
+      <DependentUpon>BackFamilyForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackFamilyForm.aspx.designer.cs">
+      <DependentUpon>BackFamilyForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackGinecologyForm.aspx.cs">
+      <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackGinecologyForm.aspx.designer.cs">
+      <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GeneralPaymentForm2.aspx.cs">
       <DependentUpon>GeneralPaymentForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +233,13 @@
     </Compile>
     <Compile Include="GeneralPaymentForm.aspx.designer.cs">
       <DependentUpon>GeneralPaymentForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PreviousMedicalRecordForm.aspx.cs">
+      <DependentUpon>PreviousMedicalRecordForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreviousMedicalRecordForm.aspx.designer.cs">
+      <DependentUpon>PreviousMedicalRecordForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="SourceForm.aspx.cs">
       <DependentUpon>SourceForm.aspx</DependentUpon>
@@ -1062,11 +1092,20 @@
     <Content Include="AppointmentGrid.aspx" />
     <Content Include="ContactLensesTestForm.aspx" />
     <Content Include="BiometryForm.aspx" />
+    <Content Include="BackPersonalForm.aspx" />
+    <Content Include="BackFamilyForm.aspx" />
+    <Content Include="BackGinecologyForm.aspx" />
     <Content Include="GeneralPaymentForm2.aspx" />
     <Content Include="GeneralPaymentGrid.aspx" />
     <Content Include="GeneralPaymentForm.aspx" />
     <Content Include="images\folder_cubes.png" />
     <Content Include="images\gears_run.png" />
+    <Content Include="images\layout_north.png" />
+    <Content Include="images\layout_south.png" />
+    <Content Include="images\pill_blue.png" />
+    <Content Include="images\pill_green.png" />
+    <Content Include="images\printer24.png" />
+    <Content Include="PreviousMedicalRecordForm.aspx" />
     <Content Include="SourceForm.aspx" />
     <Content Include="SourceGrid.aspx" />
     <Content Include="FundusForm.aspx" />
@@ -1074,6 +1113,11 @@
     <Content Include="OphVisitTab.aspx" />
     <Content Include="OphVisitForm.aspx" />
     <Content Include="RptPCEAForm.aspx" />
+    <Content Include="StyleAdvanced.css" />
+    <Content Include="StyleForms.css" />
+    <Content Include="Tools\FullSetOfTools.xml" />
+    <Content Include="Tools\tools.xml" />
+    <Content Include="Tools\ToolsFile.xml" />
     <Content Include="TopographyForm.aspx" />
     <Content Include="PaquimetryForm.aspx" />
     <Content Include="VisitTab.aspx" />
@@ -1343,7 +1387,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

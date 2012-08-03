@@ -171,7 +171,7 @@ WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @TD
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAANQAAABQCAYAAABh/1vWAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsOAAALDgFAvuFBAAAAFnRFWHRDcmVhdGlvbiBUaW1l
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsNAAALDQHtB8AsAAAAFnRFWHRDcmVhdGlvbiBUaW1l
         ADA0LzAxLzExPDKlwQAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNAay06AAAArWcHJW
         V3ic7VvdbyNXFb8OdmaTdb69a9JxJxnMCiRIcWznS+Jlm00/1N3til2WQmktx/YkodlkcT6WZRWQQOJD
         5Ymn5i9AfeCFB8QT79m6j1RdVaJPleCpQgippSjD75w7M54ZfyR27HGk9kxsz9y59557zvmdcz/z+Piv

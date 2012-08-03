@@ -26,8 +26,8 @@ public partial class Default : System.Web.UI.Page
         // Set default values
         if (!IsPostBack)
         {
-            RadSkinManager1.Skin = "Outlook";
-            Session["Skin"] = "Outlook";
+            //RadSkinManager1.Skin = "Office2007";
+            //Session["Skin"] = "Office2007";
             HealthcareCompany hc = CntAriCli.GetHealthCompany(ctx);
             lblHealthcareCompany.Text = hc.Name;
             Session["Company"] = hc;

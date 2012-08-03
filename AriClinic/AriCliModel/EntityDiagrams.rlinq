@@ -545,6 +545,9 @@
           <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="9226a0d3-d41a-437c-b934-13aa48f09d03" type="System.String" />
+        <orm:field name="insuranceInformation" property="InsuranceInformation" uniqueId="29f1e3be-0cbb-41d2-8e73-cb851ac36646" type="System.String">
+          <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="insurance_information" ado-type="" />
+        </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="3b29d975-8298-499c-911e-bb5fd0cb906b" type="AriCliModel.Customer">
           <orm:reference uniqueId="cbc90740-994d-4433-a9d5-ac25f49d59cc" />
         </orm:field>
@@ -571,6 +574,18 @@
         </orm:field>
         <orm:field name="appointmentInfos" property="AppointmentInfos" behavior="readwrite" uniqueId="bca42d9f-8136-4517-9514-3c99419fc20f" type="AriCliModel.AppointmentInfo">
           <orm:collection element-class="AriCliModel.AppointmentInfo" inverse-field="patient" order-by="" uniqueId="a8a435fb-4244-4fb6-8157-7b78269c0248" />
+        </orm:field>
+        <orm:field name="previousMedicalRecords" property="PreviousMedicalRecords" behavior="readwrite" uniqueId="0b3a2671-36ea-4746-91b1-671a1bec8bd7" type="AriCliModel.PreviousMedicalRecord">
+          <orm:collection element-class="AriCliModel.PreviousMedicalRecord" inverse-field="patient" order-by="" uniqueId="5fd6070d-eff5-46ea-8f79-32ce80418e04" />
+        </orm:field>
+        <orm:field name="backPersonals" property="BackPersonals" behavior="readwrite" uniqueId="d65a969d-dc50-4436-a590-c15e76fb5595" type="AriCliModel.BackPersonal">
+          <orm:collection element-class="AriCliModel.BackPersonal" inverse-field="patient" order-by="" uniqueId="fb672b8b-a10e-466f-9bf5-495879d5869d" />
+        </orm:field>
+        <orm:field name="backFamilies" property="BackFamilies" behavior="readwrite" uniqueId="8fc0eecc-59dc-48ea-a447-1250d16bd6e0" type="AriCliModel.BackFamily">
+          <orm:collection element-class="AriCliModel.BackFamily" inverse-field="patient" order-by="" uniqueId="495ef17f-01ca-4317-9974-8513f7776f88" />
+        </orm:field>
+        <orm:field name="backGinecologies" property="BackGinecologies" behavior="readwrite" uniqueId="014139f0-85a8-42a6-8973-6d6ef64e1bda" type="AriCliModel.BackGinecology">
+          <orm:collection element-class="AriCliModel.BackGinecology" inverse-field="patient" order-by="" uniqueId="fc92c363-7184-41c1-b5d8-e127d043db7d" />
         </orm:field>
       </orm:class>
       <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
@@ -740,13 +755,16 @@
           <orm:column name="serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="year" property="Year" behavior="readwrite" null-value="none" uniqueId="a7d518a9-3ca3-45b4-8ff9-93ae6516d2f8" type="System.Int32">
-          <orm:column name="year" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
+          <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="invoiceNumber" property="InvoiceNumber" behavior="readwrite" null-value="none" uniqueId="0f7aaaf6-e864-4c12-82f5-08ceddef5c61" type="System.Int32">
           <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="total" property="Total" behavior="readwrite" null-value="none" uniqueId="5312b213-c84a-44b1-8bd3-257320193377" type="System.Decimal">
           <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
+        </orm:field>
+        <orm:field name="invoiceKey" property="InvoiceKey" behavior="readwrite" uniqueId="3939e6c2-e32f-492b-b7f9-3095751fbafa" type="System.String">
+          <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="a26c3897-6d49-4b82-9265-aa76ad1d55ce" type="AriCliModel.Customer">
           <orm:reference uniqueId="4ea97b1e-e654-4d44-9e0d-cbfd87e045f6">
@@ -963,6 +981,9 @@
         </orm:field>
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professional" order-by="" uniqueId="a3450b89-8e50-4d91-a845-99dc5e73841b" />
+        </orm:field>
+        <orm:field name="treatments" property="Treatments" behavior="readwrite" uniqueId="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" type="AriCliModel.Treatment">
+          <orm:collection element-class="AriCliModel.Treatment" inverse-field="professional" order-by="" uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
         </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -1430,6 +1451,9 @@
         </orm:field>
         <orm:field name="baseVisit" property="BaseVisit" behavior="readwrite" uniqueId="3efce21e-33ad-418e-a860-65125728e9a8" type="AriCliModel.BaseVisit">
           <orm:reference uniqueId="af5967b0-47d7-4772-a893-6d710dda981c" />
+        </orm:field>
+        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="7f37d445-efeb-4b2e-b819-6375c937429f" type="AriCliModel.Professional">
+          <orm:reference uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
         </orm:field>
         <orm:index name="idx_treatment_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -2314,6 +2338,9 @@
         <orm:field name="taxWithHoldingPercentage" property="TaxWithHoldingPercentage" behavior="readwrite" uniqueId="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" type="System.Decimal">
           <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         </orm:field>
+        <orm:field name="invoiceKey" property="InvoiceKey" behavior="readwrite" uniqueId="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" type="System.String">
+          <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
+        </orm:field>
         <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="af45273a-d3db-44a1-812b-50e86bedbecf" type="AriCliModel.Professional">
           <orm:reference uniqueId="27175d91-0156-49d7-b9ff-09ea0208af74">
             <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -2828,6 +2855,86 @@
           <orm:column name="service_note_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
       </orm:class>
+      <orm:class name="PreviousMedicalRecord" behavior="readwrite" uniqueId="baaddc15-cb0a-494b-8a38-79ee26d3021c">
+        <orm:table name="previous_medical_record" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="previousMedicalRecordId" />
+        </orm:identity>
+        <orm:field name="previousMedicalRecordId" property="PreviousMedicalRecordId" behavior="readwrite" uniqueId="e22b8571-af1b-4cdb-960a-18d2d0999786" type="System.Int32">
+          <orm:column name="previous_medical_record_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="content" property="Content" behavior="readwrite" uniqueId="2fd8d110-bbe2-4011-961c-85a2e667c8e1" type="System.String">
+          <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="9dec102f-5693-457f-a811-8c395e618240" type="AriCliModel.Patient">
+          <orm:reference uniqueId="5fd6070d-eff5-46ea-8f79-32ce80418e04" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="BackPersonal" behavior="readwrite" uniqueId="79256dc3-9f49-4072-93b7-79cb232833d8">
+        <orm:table name="back_personal" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="backPersonalId" />
+        </orm:identity>
+        <orm:field name="backPersonalId" property="BackPersonalId" behavior="readwrite" uniqueId="58a27e4f-29e2-47eb-a32f-00cf9d19aaff" type="System.Int32">
+          <orm:column name="back_personal_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="content" property="Content" behavior="readwrite" uniqueId="45f924c6-d9fb-454e-9a95-85a4944b20f6" type="System.String">
+          <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="b6f298f1-a3ba-470c-87a0-7e91b0cf005c" type="AriCliModel.Patient">
+          <orm:reference uniqueId="fb672b8b-a10e-466f-9bf5-495879d5869d" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="BackFamily" behavior="readwrite" uniqueId="de7f5fa6-c3d7-413c-9ed4-31c696c3e853">
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="backFamilyId" />
+        </orm:identity>
+        <orm:field name="backFamilyId" property="BackFamilyId" behavior="readwrite" uniqueId="03c3132c-8c7c-4242-b8be-fe776925f49e" type="System.Int32" />
+        <orm:field name="content" property="Content" behavior="readwrite" uniqueId="7c11252f-bae4-4204-aff9-7c54ab65706e" type="System.String" />
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="3b638c2f-5c8b-408e-84c5-e3ce1347b77b" type="AriCliModel.Patient">
+          <orm:reference uniqueId="495ef17f-01ca-4317-9974-8513f7776f88" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="BackGinecology" behavior="readwrite" uniqueId="b6ec4dfe-39e8-4b37-99b5-d343f4da8d06">
+        <orm:table name="back_ginecoloy" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="backGinecologyId" />
+        </orm:identity>
+        <orm:field name="backGinecologyId" property="BackGinecologyId" behavior="readwrite" uniqueId="cd061029-8182-41ae-b27a-3e9e334fed46" type="System.Int32">
+          <orm:column name="back_ginecoloy_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="menstrualFormula" property="MenstrualFormula" behavior="readwrite" uniqueId="33f4b64c-06dc-43c7-8de5-673d9259dd5a" type="System.String">
+          <orm:column name="menstrual_formula" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="menarche" property="Menarche" behavior="readwrite" uniqueId="ec6775bf-0992-4afa-bb20-50f625f23a19" type="System.String">
+          <orm:column name="menarche" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="menopause" property="Menopause" behavior="readwrite" uniqueId="8afc1b8c-1585-4dbf-b05e-184eef5392f4" type="System.String">
+          <orm:column name="menopause" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="abortions" property="Abortions" behavior="readwrite" uniqueId="cd453351-85d5-4712-a4a8-9143de93cc8d" type="System.Int32">
+          <orm:column name="abortions" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="cesareanDeliveries" property="CesareanDeliveries" behavior="readwrite" uniqueId="7687f68e-41bd-4e98-a8d2-d1f37bf30283" type="System.Int32">
+          <orm:column name="cesarean_deliveries" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="vaginalDeliveries" property="VaginalDeliveries" behavior="readwrite" uniqueId="ccb4a59e-9bbc-40ae-9eb5-73c2ff17ba97" type="System.Int32">
+          <orm:column name="vaginal_deliveries" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="content" property="Content" behavior="readwrite" uniqueId="908683cf-c880-472d-8750-6e34ca58c31a" type="System.String">
+          <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="dateOfLastMestrual" property="DateOfLastMestrual" behavior="readwrite" uniqueId="cb6c76b7-e4f0-4c5b-ac28-7b6c4a48550d" type="System.DateTime">
+          <orm:column name="date_of_last_mestrual" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="c0f47334-85dc-427a-947b-71da25a82f5a" type="AriCliModel.Patient">
+          <orm:reference uniqueId="fc92c363-7184-41c1-b5d8-e127d043db7d" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3034,7 +3141,8 @@
         <orm:column name="born_date" sql-type="datetime" nullable="true" scale="0" ado-type="DateTime" />
         <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="last_update" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="" />
-        <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column name="comments" sql-type="longtext" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="insurance_information" ado-type="" />
         <orm:constraint name="ref_patient_person" destination-table="person">
           <orm:column name="person_id" sql-type="integer" nullable="false" scale="0" primary-key="true" ado-type="Int32" />
         </orm:constraint>
@@ -3066,9 +3174,10 @@
         <orm:column name="invoice_number" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
         <orm:column name="invoice_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="invoice_date" sql-type="datetime" nullable="false" scale="0" ado-type="DateTime" />
-        <orm:column name="year" sql-type="integer" nullable="false" scale="0" ado-type="Int32" />
+        <orm:column name="year" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="12" scale="2" ado-type="Decimal" />
+        <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_invoice_customer_id">
           <orm:column name="customer_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         </orm:index>
@@ -3222,6 +3331,7 @@
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
         <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_professional_invoice_person_id">
           <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
@@ -3622,6 +3732,25 @@
         <orm:index name="idx_service_note_user_id">
           <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:index>
+      </orm:table>
+      <orm:table name="previous_medical_record">
+        <orm:column name="previous_medical_record_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+      </orm:table>
+      <orm:table name="back_personal">
+        <orm:column name="back_personal_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+      </orm:table>
+      <orm:table name="back_ginecoloy">
+        <orm:column name="back_ginecoloy_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="menstrual_formula" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="menarche" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="menopause" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="abortions" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="cesarean_deliveries" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="vaginal_deliveries" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="content" sql-type="longtext" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        <orm:column name="date_of_last_mestrual" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -4238,6 +4367,7 @@
       <Property Id="cbf2d6ec-b541-40e3-b423-735f4bd6b955" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
       <Property Id="c9a9f7f6-a398-411b-b917-34b66eda83a4" name="LastUpdate" type="DateTime" label="LastUpdate : DateTime" />
       <Property Id="9226a0d3-d41a-437c-b934-13aa48f09d03" name="Comments" label="Comments : String" />
+      <Property Id="29f1e3be-0cbb-41d2-8e73-cb851ac36646" name="InsuranceInformation" label="InsuranceInformation : String" />
       <AssociationTargets>
         <Association Id="cbc90740-994d-4433-a9d5-ac25f49d59cc" SourceMultiplicity="ZeroOne" name="PatientHasCustomer">
           <DomainClassMoniker name="/AriClinicContext/Customer" />
@@ -4293,6 +4423,18 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="73b01213-1960-41f2-8652-23306bfaf2b0">
           <NavigationalProperty Id="7e0752f6-9da7-4670-9fb6-68ae4dda2ddc" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f54a314a-01b0-436d-a482-a40f6cb98d2c">
+          <NavigationalProperty Id="0b3a2671-36ea-4746-91b1-671a1bec8bd7" name="PreviousMedicalRecords" type="IList&lt;PreviousMedicalRecord&gt;" label="PreviousMedicalRecords : IList&lt;PreviousMedicalRecord&gt;" nullable="true" kind="Persistent" fieldName="previousMedicalRecords" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="385cb38f-4a87-4a3a-bc1e-4b11c048d38d">
+          <NavigationalProperty Id="d65a969d-dc50-4436-a590-c15e76fb5595" name="BackPersonals" type="IList&lt;BackPersonal&gt;" label="BackPersonals : IList&lt;BackPersonal&gt;" nullable="true" kind="Persistent" fieldName="backPersonals" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9716b623-3351-4186-adac-722ca43f97b3">
+          <NavigationalProperty Id="8fc0eecc-59dc-48ea-a447-1250d16bd6e0" name="BackFamilies" type="IList&lt;BackFamily&gt;" label="BackFamilies : IList&lt;BackFamily&gt;" nullable="true" kind="Persistent" fieldName="backFamilies" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f49cbb7c-9233-4005-bf51-f7387efd3f5f">
+          <NavigationalProperty Id="014139f0-85a8-42a6-8973-6d6ef64e1bda" name="BackGinecologies" type="IList&lt;BackGinecology&gt;" label="BackGinecologies : IList&lt;BackGinecology&gt;" nullable="true" kind="Persistent" fieldName="backGinecologies" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4495,6 +4637,7 @@
       <Property Id="a7d518a9-3ca3-45b4-8ff9-93ae6516d2f8" name="Year" type="Int32" label="Year : Int32" kind="Persistent" fieldName="year" />
       <Property Id="0f7aaaf6-e864-4c12-82f5-08ceddef5c61" name="InvoiceNumber" type="Int32" label="InvoiceNumber : Int32" kind="Persistent" fieldName="invoiceNumber" />
       <Property Id="5312b213-c84a-44b1-8bd3-257320193377" name="Total" type="Decimal" label="Total : Decimal" kind="Persistent" fieldName="total" />
+      <Property Id="3939e6c2-e32f-492b-b7f9-3095751fbafa" name="InvoiceKey" label="InvoiceKey : String" />
       <AssociationTargets>
         <Association Id="4ea97b1e-e654-4d44-9e0d-cbfd87e045f6" SourceMultiplicity="ZeroOne" name="InvoiceHasCustomer">
           <DomainClassMoniker name="/AriClinicContext/Customer" />
@@ -4779,6 +4922,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="f736a236-6f73-4060-b9a3-a2d7fa778f6c">
           <NavigationalProperty Id="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a9803322-4681-470c-b00d-fb21516ec291">
+          <NavigationalProperty Id="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" name="Treatments" type="IList&lt;Treatment&gt;" label="Treatments : IList&lt;Treatment&gt;" nullable="true" kind="Persistent" fieldName="treatments" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5407,6 +5553,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" SourceMultiplicity="ZeroOne" name="TreatmentHasProfessional">
+          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="2bba97a9-2373-4dcc-8178-6714265ba5ee">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/Treatments" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f08ed48b-d0e7-4b51-a529-bf5b58f07073">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Treatment/Professional" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="7603cf5e-ed23-4d14-b2bd-79a03358f8d4">
@@ -5417,6 +5576,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="aed440e8-2f90-4b1d-ad2a-c7ea9a24d2e5">
           <NavigationalProperty Id="3efce21e-33ad-418e-a860-65125728e9a8" name="BaseVisit" type="BaseVisit" label="BaseVisit : BaseVisit" nullable="true" kind="Persistent" fieldName="baseVisit" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="df65a904-93de-4284-8449-949feaa03f95">
+          <NavigationalProperty Id="7f37d445-efeb-4b2e-b819-6375c937429f" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5999,6 +6161,7 @@
       <Property Id="2bee66a5-fbca-4cd2-bb35-e77d573718aa" name="Amount" type="Decimal" label="Amount : Decimal" />
       <Property Id="4c5c4b87-2991-4b15-a6db-b7535cf75b15" name="Serial" label="Serial : String" />
       <Property Id="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" name="TaxWithHoldingPercentage" type="Decimal" label="TaxWithHoldingPercentage : Decimal" />
+      <Property Id="62d9f2c9-7543-43f6-a80d-7b04e022ccd5" name="InvoiceKey" label="InvoiceKey : String" />
       <AssociationTargets>
         <Association Id="27175d91-0156-49d7-b9ff-09ea0208af74" SourceMultiplicity="ZeroOne" name="ProfessionalInvoiceHasProfessional">
           <DomainClassMoniker name="/AriClinicContext/Professional" />
@@ -6559,6 +6722,109 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="baaddc15-cb0a-494b-8a38-79ee26d3021c" name="PreviousMedicalRecord" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="e22b8571-af1b-4cdb-960a-18d2d0999786" name="PreviousMedicalRecordId" type="System.Int32" label="PreviousMedicalRecordId : System.Int32" identity="true" />
+      <Property Id="2fd8d110-bbe2-4011-961c-85a2e667c8e1" name="Content" label="Content : String" />
+      <AssociationTargets>
+        <Association Id="5fd6070d-eff5-46ea-8f79-32ce80418e04" SourceMultiplicity="ZeroOne" name="PreviousMedicalRecordHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="11d632e2-db1e-4fb2-9bdc-66a53530407d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/PreviousMedicalRecords" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bdc3d631-a08e-4b57-bd15-f92f44d55921">
+              <NavigationalPropertyMoniker name="/AriClinicContext/PreviousMedicalRecord/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="bbb97c78-1bf5-45c8-81c9-19c0c706a2c7">
+          <NavigationalProperty Id="9dec102f-5693-457f-a811-8c395e618240" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="79256dc3-9f49-4072-93b7-79cb232833d8" name="BackPersonal" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="58a27e4f-29e2-47eb-a32f-00cf9d19aaff" name="BackPersonalId" type="System.Int32" label="BackPersonalId : System.Int32" identity="true" />
+      <Property Id="45f924c6-d9fb-454e-9a95-85a4944b20f6" name="Content" label="Content : String" />
+      <AssociationTargets>
+        <Association Id="fb672b8b-a10e-466f-9bf5-495879d5869d" SourceMultiplicity="ZeroOne" name="BackPersonalHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7fcb6ae1-6ffb-4a13-8e3b-b41dcab66a2f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BackPersonals" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="85422b50-0ab8-457c-a3a4-2745b25b3ddd">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BackPersonal/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="4e1930ad-5032-4372-9e3d-406cdd9b01f0">
+          <NavigationalProperty Id="b6f298f1-a3ba-470c-87a0-7e91b0cf005c" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="de7f5fa6-c3d7-413c-9ed4-31c696c3e853" name="BackFamily" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="03c3132c-8c7c-4242-b8be-fe776925f49e" name="BackFamilyId" type="System.Int32" label="BackFamilyId : System.Int32" identity="true" />
+      <Property Id="7c11252f-bae4-4204-aff9-7c54ab65706e" name="Content" label="Content : String" />
+      <AssociationTargets>
+        <Association Id="495ef17f-01ca-4317-9974-8513f7776f88" SourceMultiplicity="ZeroOne" name="BackFamilyHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="df7994d3-8300-4555-a6f9-80492e83351c">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BackFamilies" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="611e13ad-da44-4223-8a0e-a68df5cd7e4a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BackFamily/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="e892915f-e4a8-46fe-a3c8-9fccac1dd0ce">
+          <NavigationalProperty Id="3b638c2f-5c8b-408e-84c5-e3ce1347b77b" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="b6ec4dfe-39e8-4b37-99b5-d343f4da8d06" name="BackGinecology" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="cd061029-8182-41ae-b27a-3e9e334fed46" name="BackGinecologyId" type="System.Int32" label="BackGinecologyId : System.Int32" identity="true" />
+      <Property Id="33f4b64c-06dc-43c7-8de5-673d9259dd5a" name="MenstrualFormula" label="MenstrualFormula : String" />
+      <Property Id="ec6775bf-0992-4afa-bb20-50f625f23a19" name="Menarche" label="Menarche : String" />
+      <Property Id="8afc1b8c-1585-4dbf-b05e-184eef5392f4" name="Menopause" label="Menopause : String" />
+      <Property Id="cd453351-85d5-4712-a4a8-9143de93cc8d" name="Abortions" type="Int32" label="Abortions : Int32" />
+      <Property Id="7687f68e-41bd-4e98-a8d2-d1f37bf30283" name="CesareanDeliveries" type="Int32" label="CesareanDeliveries : Int32" />
+      <Property Id="ccb4a59e-9bbc-40ae-9eb5-73c2ff17ba97" name="VaginalDeliveries" type="Int32" label="VaginalDeliveries : Int32" />
+      <Property Id="908683cf-c880-472d-8750-6e34ca58c31a" name="Content" label="Content : String" />
+      <Property Id="cb6c76b7-e4f0-4c5b-ac28-7b6c4a48550d" name="DateOfLastMestrual" type="DateTime" label="DateOfLastMestrual : DateTime" />
+      <AssociationTargets>
+        <Association Id="fc92c363-7184-41c1-b5d8-e127d043db7d" SourceMultiplicity="ZeroOne" name="BackGinecologyHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="f7dece7f-8e99-4d5a-ae12-128e51511dbc">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BackGinecologies" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="3d40bc35-db8c-417f-a858-bd9ed5b64a74">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BackGinecology/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ef2aaaa4-f53c-4f9d-b480-9db14c3c3fe6">
+          <NavigationalProperty Id="c0f47334-85dc-427a-947b-71da25a82f5a" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -6630,6 +6896,10 @@
         <entitySetProperty name="Fundus" type="Fundus" label="Fundus : IQueryable&lt;Fundus&gt;" />
         <entitySetProperty name="Sources" type="Source" label="Sources : IQueryable&lt;Source&gt;" />
         <entitySetProperty name="GeneralPayments" type="GeneralPayment" label="GeneralPayments : IQueryable&lt;GeneralPayment&gt;" />
+        <entitySetProperty name="PreviousMedicalRecords" type="PreviousMedicalRecord" label="PreviousMedicalRecords : IQueryable&lt;PreviousMedicalRecord&gt;" />
+        <entitySetProperty name="BackPersonals" type="BackPersonal" label="BackPersonals : IQueryable&lt;BackPersonal&gt;" />
+        <entitySetProperty name="BackFamilies" type="BackFamily" label="BackFamilies : IQueryable&lt;BackFamily&gt;" />
+        <entitySetProperty name="BackGinecologies" type="BackGinecology" label="BackGinecologies : IQueryable&lt;BackGinecology&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

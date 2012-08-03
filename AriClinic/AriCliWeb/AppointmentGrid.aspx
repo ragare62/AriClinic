@@ -44,22 +44,22 @@
           }
           function NewAppointmentRecord()
           {
-              var w1 = window.open("AppointmentForm.aspx", null, "width=600, height=500,resizable=1");
+              var w1 = window.open("AppointmentForm.aspx", null, "width=600, height=550,resizable=1");
               w1.focus();
           }
           function EditAppointmentRecord(id)
           {
-              var w2 = window.open("AppointmentForm.aspx?AppointmentId=" + id, null, "width=600, height=500,resizable=1");
+              var w2 = window.open("AppointmentForm.aspx?AppointmentId=" + id, null, "width=600, height=550,resizable=1");
               w2.focus();
           }
           function NewAppointmentRecordInTab() {
               var w1 = window.open("AppointmentForm.aspx?CustomerId=" + gup('CustomerId') + "&PatientId=" + gup('PatientId')
-                                   , "apptb_nr", "width=600, height=500,resizable=1");
+                                   , "apptb_nr", "width=600, height=550,resizable=1");
               w1.focus();
           }
           function EditAppointmentRecordInTab(id) {
               var w2 = window.open("AppointmentForm.aspx?CustomerId=" + gup('CustomerId') + +"&PatientId=" + gup('PatientId')
-                                   + "&AppointmentId=" + id, "apptb_er", "width=600, height=500,resizable=1");
+                                   + "&AppointmentId=" + id, "apptb_er", "width=600, height=550,resizable=1");
               w2.focus();
           }
           function CloseWindow()

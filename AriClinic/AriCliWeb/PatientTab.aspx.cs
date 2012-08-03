@@ -134,6 +134,19 @@ public partial class PatientTab : System.Web.UI.Page
                 frame.Attributes["src"] = String.Format("VisitGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
                                                         , pat.PersonId);
                 break;
+            case "previousmedicalrecord":
+                frame.Attributes["src"] = String.Format("PreviousMedicalrecordForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
+                break;
+            case "backpersonal": 
+            case "backgrounds":
+                frame.Attributes["src"] = String.Format("BackPersonalForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
+                break;
+            case "backfamily":
+                frame.Attributes["src"] = String.Format("BackFamilyForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
+                break;
+            case "backginecology":
+                frame.Attributes["src"] = String.Format("BackGinecologyForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
+                break;
         }
     }
     #endregion

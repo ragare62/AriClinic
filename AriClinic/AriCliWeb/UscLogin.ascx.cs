@@ -48,6 +48,8 @@ namespace AriCliWeb
             Session["User"] = user; // stores user in a ssesion variable.
             Clinic cl = CntAriCli.GetClinic(Int32.Parse(rdcbClinic.SelectedValue), ctx);
             Session["Clinic"] = cl;
+            if (user.Professionals.Count > 0)
+                Session["Professional"] = user.Professionals[0];
             // Write log
             CntAriCli.WriteLog(user, DateTime.Now, Request.ServerVariables["REMOTE_ADDR"], "Default.aspx", "Login", ctx);
             Response.Redirect("MainMenu.aspx");

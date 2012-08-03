@@ -184,7 +184,7 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
         RefreshGrid(true);
         if (e.Argument == "new")
         {
-            RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
+            //RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
             RadGrid1.Rebind();
         }
         if (e.Argument == "yes")
@@ -216,13 +216,13 @@ public partial class LabTestAssignedGrid : System.Web.UI.Page
     protected void RefreshGrid(bool rebind)
     {
         if (patient == null && visit == null)
-            RadGrid1.DataSource = CntAriCli.GetLabTestAssigneds(ctx);
+            RadGrid1.DataSource = CntAriCli.GetLabTestAssigneds(ctx).OrderByDescending(x => x.LabTestDate);
         else
         {
             if (patient != null)
-                RadGrid1.DataSource = patient.LabTestAssigneds;
+                RadGrid1.DataSource = patient.LabTestAssigneds.OrderByDescending(x => x.LabTestDate);
             if (visit != null)
-                RadGrid1.DataSource = visit.LabTestAssigneds;
+                RadGrid1.DataSource = visit.LabTestAssigneds.OrderByDescending(x => x.LabTestDate);
         }
         if (rebind)
             RadGrid1.Rebind();

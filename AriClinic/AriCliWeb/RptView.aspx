@@ -50,15 +50,8 @@
 
         <div id="ViewArea" class="normalText" style="width:100%; height:550px">
             <telerik:ReportViewer runat="server" Skin="Office2007" ID="ReportViewer1" Width="100%" 
-                Height="500px" meta:resourcekey="ReportViewer1Resource1" ReportBookID="">
+                Height="600px" meta:resourcekey="ReportViewer1Resource1" ReportBookID="">
             </telerik:ReportViewer>
-        </div>
-        <div id="Separator">
-          &nbsp;
-        </div>
-        <div id="Messages" class="messageText" style="width:100%">
-          <asp:Label ID="lblMessage" runat="server" Text="Mensajes" 
-                     meta:resourcekey="lblMessageResource1"></asp:Label>
         </div>
       </telerik:RadAjaxPanel>
     </form>

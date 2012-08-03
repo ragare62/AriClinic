@@ -481,7 +481,7 @@ public partial class SettelmentGrid : System.Web.UI.Page
     protected void btnComp_Click(object sender, EventArgs e)
     {
         ArrayList selectedItems = (ArrayList)Session["selectedItems"];
-
+        if (selectedItems == null) return;
         foreach (string item in selectedItems)
         {
             int id = int.Parse(item);

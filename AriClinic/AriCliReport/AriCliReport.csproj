@@ -52,6 +52,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReptAnesTicketProfessional.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReptAnesTicketProfessional.Designer.cs">
+      <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReptInvoiceVAT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReptInvoiceVAT.Designer.cs">
+      <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptAnestheticTicketByProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -64,17 +81,53 @@
     <Compile Include="RptBombaDolor.Designer.cs">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptDayAppointment.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptDayAppointment.Designer.cs">
+      <DependentUpon>RptDayAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptGPByClinic.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptGPByClinic.Designer.cs">
+      <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoiceLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoiceLine.Designer.cs">
+      <DependentUpon>RptInvoiceLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInvoiceMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoiceMain.Designer.cs">
+      <DependentUpon>RptInvoiceMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPCA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptPCA.Designer.cs">
       <DependentUpon>RptPCA.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptPrescription.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPrescription.Designer.cs">
+      <DependentUpon>RptPrescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptProfessionalInvoices.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptProfessionalInvoices.Designer.cs">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptRisk.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptRisk.Designer.cs">
+      <DependentUpon>RptRisk.cs</DependentUpon>
     </Compile>
     <Compile Include="RptServSurgeon.cs">
       <SubType>Component</SubType>
@@ -87,6 +140,18 @@
     </Compile>
     <Compile Include="RptTicketsByProfessional.Designer.cs">
       <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTicketsSurgeon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTicketsSurgeon.Designer.cs">
+      <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptVATResume.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptVATResume.Designer.cs">
+      <DependentUpon>RptVATResume.cs</DependentUpon>
     </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
@@ -248,6 +313,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Logo_150.png" />
@@ -257,23 +326,53 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReptAnesTicketProfessional.resx">
+      <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReptInvoiceVAT.resx">
+      <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptAnestheticTicketByProfessional.resx">
       <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptBombaDolor.resx">
       <DependentUpon>RptBombaDolor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RptDayAppointment.resx">
+      <DependentUpon>RptDayAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptGPByClinic.resx">
+      <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoiceLine.resx">
+      <DependentUpon>RptInvoiceLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoiceMain.resx">
+      <DependentUpon>RptInvoiceMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptPCA.resx">
       <DependentUpon>RptPCA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RptPrescription.resx">
+      <DependentUpon>RptPrescription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptProfessionalInvoices.resx">
       <DependentUpon>RptProfessionalInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptRisk.resx">
+      <DependentUpon>RptRisk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptServSurgeon.resx">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptTicketsByProfessional.resx">
       <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTicketsSurgeon.resx">
+      <DependentUpon>RptTicketsSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptVATResume.resx">
+      <DependentUpon>RptVATResume.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>

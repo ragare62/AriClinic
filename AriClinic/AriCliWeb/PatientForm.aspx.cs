@@ -54,6 +54,7 @@ public partial class PatientForm : System.Web.UI.Page
             LoadSexCombo(null);
             LoadSourceCombo(null);
             LoadClinicCombo(null);
+            txtFrn.Text = String.Format("{0:0}", CntAriCli.NextFrn(ctx));
         }
         // 
         if (Request.QueryString["Type"] != null)
@@ -67,6 +68,7 @@ public partial class PatientForm : System.Web.UI.Page
                 tt.Attributes["class"] = "buttonsFomat0";
                 btnCancel.Visible = false;
                 btnCancel0.Visible = false;
+                btnAccept0.Visible = true; btnAccept0.Enabled = true;
             }
         }
 
@@ -103,7 +105,7 @@ public partial class PatientForm : System.Web.UI.Page
             return;
         if (type == "InTab")
         {
-            lblMessage.Text = Resources.GeneralResource.RecordRefreshed;
+            RadAjaxManager1.Alert(Resources.GeneralResource.RecordRefreshed);
             return;
         }
         if (nuevo)
@@ -126,12 +128,12 @@ public partial class PatientForm : System.Web.UI.Page
     {
         if (rdcbSex.SelectedValue == "")
         {
-            lblMessage.Text = Resources.GeneralResource.SexValueNeeded;
+            RadAjaxManager1.Alert(Resources.GeneralResource.SexValueNeeded);
             return false;
         }
         if (rdcbClinic.SelectedValue == "")
         {
-            lblMessage.Text = Resources.GeneralResource.ClinicNeeded;
+            RadAjaxManager1.Alert(Resources.GeneralResource.ClinicNeeded);
             return false;
         }
         //if (rddpBornDate.SelectedDate == null) 
@@ -182,6 +184,7 @@ public partial class PatientForm : System.Web.UI.Page
         txtComments.Text = pat.Comments;
         if (pat.Customer != null)
             txtVATIN.Text = pat.Customer.VATIN;
+        txtFrn.Text = String.Format("{0:0}", pat.OftId);
     }
 
     protected void UnloadData(Patient pat)
@@ -201,9 +204,12 @@ public partial class PatientForm : System.Web.UI.Page
         {
             CreateAssociatedCustomer(pat, ctx);
         }
+        pat.InsuranceInformation = CntAriCli.GetInsuranceInformation(pat, ctx);
+        txtInsuranceInformation.Text = pat.InsuranceInformation;
         pat.Customer.VATIN = txtVATIN.Text;
         pat.Comments = txtComments.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);
+        pat.OftId = int.Parse(txtFrn.Text);
     }
 
     protected void LoadSexCombo(Patient pat)
@@ -260,6 +266,7 @@ public partial class PatientForm : System.Web.UI.Page
         };
         ctx.Add(cus);
         pat.Customer = cus;
+        CntAriCli.CheckPolicy(pat, ctx);
     }
 
 
@@ -279,6 +286,33 @@ public partial class PatientForm : System.Web.UI.Page
                 UscEmailGrid1.RefreshGrid(true);
                 break;
         }
+    }
+
+    protected void btnAccept0_Click(object sender, ImageClickEventArgs e)
+    {
+        string command = "";
+        bool nuevo = false;
+        if (pat == null)
+        {
+            command = "CloseAndRebind('new')";
+            nuevo = true;
+        }
+        else
+        {
+            command = "CloseAndRebind('')";
+        }
+        if (!CreateChange())
+            return;
+        if (type == "InTab")
+        {
+            RadAjaxManager1.Alert(Resources.GeneralResource.RecordRefreshed);
+            return;
+        }
+        if (nuevo)
+        {
+            command = String.Format("PatientRecord({0});", pat.PersonId);
+        }
+        RadAjaxManager1.ResponseScripts.Add(command);
     }
 
 

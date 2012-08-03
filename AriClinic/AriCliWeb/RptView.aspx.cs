@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using AriCliModel;
 using AriCliReport;
+using AriCliWeb;
 using Telerik.Web.UI;
 using AriCliWeb;
 
@@ -11,6 +13,12 @@ public partial class RptView : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
+    DateTime fDate = DateTime.Now;
+    DateTime tDate = DateTime.Now;
+    Diary diary = null;
+    BaseVisit visit = null;
+    Treatment treatment = null;
+    Invoice invoice = null;
     string report = "";
     Permission per = null;
 
@@ -32,6 +40,18 @@ public partial class RptView : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Report"] != null)
             report = Request.QueryString["Report"];
+        if (Request.QueryString["FDate"] != null)
+            fDate = CntWeb.ParseUrlDate(Request.QueryString["FDate"]);
+        if (Request.QueryString["TDate"] != null)
+            tDate = CntWeb.ParseUrlDate(Request.QueryString["TDate"]);
+        if (Request.QueryString["Diary"] != null)
+            diary = CntAriCli.GetDiary(int.Parse(Request.QueryString["Diary"]),ctx);
+        if (Request.QueryString["Visit"] != null)
+            visit = CntAriCli.GetVisit(int.Parse(Request.QueryString["Visit"]), ctx);
+        if (Request.QueryString["Treatment"] != null)
+            treatment = CntAriCli.GetTreatment(int.Parse(Request.QueryString["Treatment"]), ctx);
+        if (Request.QueryString["Invoice"] != null)
+            invoice = CntAriCli.GetInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -112,14 +132,84 @@ public partial class RptView : System.Web.UI.Page
                         break;
                     case "ranestckprof":
                         this.Title = "Tiques anestésicos por profesional";
-                        RptAnestheticTicketByProfessional rtanesprf = new RptAnestheticTicketByProfessional();
+                        ReptAnesTicketProfessional rtanesprf = new ReptAnesTicketProfessional();
                         ReportViewer1.Report = rtanesprf;
-                        break;                        
+                        break;
+                    case "rpca":
+                        this.Title = "Informe de bombas PCEA";
+                        RptPCA rpca = new RptPCA();
+                        ReportViewer1.Report = rpca;
+                        break;
+                    case "rtcksrg":
+                        this.Title = "Tiques anestésicos por cirujano";
+                        RptTicketsSurgeon rtcksrg = new RptTicketsSurgeon();
+                        ReportViewer1.Report = rtcksrg;
+                        break;
+                    case "rrisk":
+                        this.Title = "Tiques con alto riesgo";
+                        RptRisk rrisk = new RptRisk();
+                        ReportViewer1.Report = rrisk;
+                        break;
+                    case "rappointmentday":
+                        this.Title = "Citas diarias por agenda";
+                        RptDayAppointment rdap = new RptDayAppointment();
+                        rdap.ReportParameters["SDate"].Value = fDate;
+                        if (diary != null)
+                        {
+                            rdap.ReportParameters["Diary"].MultiValue = false;
+                            rdap.ReportParameters["Diary"].Value = diary.DiaryId;
+                        }
+                        ReportViewer1.Report = rdap;
+                        break;
+                    case "prescription":
+                        this.Title = "Recetas";
+                        RptPrescription rpres = new RptPrescription();
+                        if (treatment != null)
+                        {
+                            rpres.ReportParameters["Treatment"].Visible = false;
+                            rpres.ReportParameters["Treatment"].MultiValue = false;
+                            rpres.ReportParameters["Treatment"].Value = treatment.TreatmentId;
+                        }
+                        if (visit != null)
+                        {
+                            IList<int> ltrt = new List<int>();
+                            foreach (Treatment t in visit.Treatments)
+                            {
+                                ltrt.Add(t.TreatmentId);
+                            }
+                            rpres.ReportParameters["Treatment"].Visible = false;
+                            rpres.ReportParameters["Treatment"].MultiValue = true;
+                            rpres.ReportParameters["Treatment"].Value = ltrt;
+                        }
+                        ReportViewer1.Report = rpres;
+                        break;
+                    case "rptgpbyclinic":
+                        this.Title = "Cobros generales por clínica";
+                        RptGPByClinic rpt = new RptGPByClinic();
+                        rpt.ReportParameters["FDate"].Value = DateTime.Now;
+                        rpt.ReportParameters["TDate"].Value = DateTime.Now;
+                        ReportViewer1.Report = rpt;
+                        break;
+                    case "rptinvoicemain":
+                        this.Title = "Impresión de facturas de cliente";
+                        RptInvoiceMain rptimain = new RptInvoiceMain();
+                        if (invoice != null)
+                        {
+                            rptimain.ReportParameters["InvoiceKey"].MultiValue = false;
+                            rptimain.ReportParameters["InvoiceKey"].Value = invoice.InvoiceId;
+                        }
+                        ReportViewer1.Report = rptimain;
+                        break;
+                    case "rptvatresume":
+                        this.Title = "Liquidación de IVA por periodo";
+                        RptVATResume rptvr = new RptVATResume();
+                        ReportViewer1.Report = rptvr;
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = ex.Message;
+                //lblMessage.Text = ex.Message;
             }
         }
     }
@@ -145,7 +235,7 @@ public partial class RptView : System.Web.UI.Page
             || Request.QueryString["ToDate"] == null 
             || Request.QueryString["InsuranceId"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -175,7 +265,7 @@ public partial class RptView : System.Web.UI.Page
             || Request.QueryString["ToDate"] == null
             || Request.QueryString["ClinicId"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -191,7 +281,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -208,7 +298,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -225,7 +315,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -285,7 +375,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
             || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -314,7 +404,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -328,7 +418,7 @@ public partial class RptView : System.Web.UI.Page
     {
         if (Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime toDate = DateTime.Parse(Request.QueryString["ToDate"]);
@@ -354,7 +444,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);
@@ -370,7 +460,7 @@ public partial class RptView : System.Web.UI.Page
         if (Request.QueryString["FromDate"] == null
            || Request.QueryString["ToDate"] == null)
         {
-            lblMessage.Text = Resources.GeneralResource.ParameterError;
+            //lblMessage.Text = Resources.GeneralResource.ParameterError;
             return;
         }
         DateTime fromDate = DateTime.Parse(Request.QueryString["FromDate"]);

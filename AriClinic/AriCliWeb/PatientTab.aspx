@@ -68,6 +68,8 @@
                             <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
                                 Selected="True">
                             </telerik:RadTab>
+                            <telerik:RadTab runat="server" Owner="" Text="Citas" Value="appointment">
+                            </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Tickets" Value="ticket">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Nota de servicio" Value="servnote">
@@ -83,9 +85,17 @@
                     </telerik:RadTab>
                     <telerik:RadTab runat="server" Text="Hist. Clínica" Value="visit">
                         <Tabs>
-                            <telerik:RadTab runat="server" Text="Visitas" Value="visit">
+                            <telerik:RadTab runat="server" Text="Antecedentes" Value="backgrounds">
+                                <Tabs>
+                                    <telerik:RadTab runat="server" Text="Personales" Value="backpersonal">
+                                    </telerik:RadTab>
+                                    <telerik:RadTab runat="server" Text="Familiares" Value="backfamily">
+                                    </telerik:RadTab>
+                                    <telerik:RadTab runat="server" Text="Ginecológicos" Value="backginecology">
+                                    </telerik:RadTab>
+                                </Tabs>
                             </telerik:RadTab>
-                            <telerik:RadTab runat="server" Text="Citas" Value="appointment">
+                            <telerik:RadTab runat="server" Text="Visitas" Value="visit">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Diagnósticos" Value="diagnosticassigned">
                             </telerik:RadTab>
@@ -99,13 +109,16 @@
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Text="Documentos" Value="docs">
                             </telerik:RadTab>
+                            <telerik:RadTab runat="server" Text="Historial anterior" 
+                                Value="previousmedicalrecord">
+                            </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>
                 </Tabs>
             </telerik:RadTabStrip>
         </div>
         <div id="BodyArea" class="normalText" style="width:100%">
-           <iframe id="FrmArea" runat="server" width="100%" height="700px">
+           <iframe id="FrmArea" runat="server" width="100%" height="500px">
            </iframe>
         </div>
         <div id="Separator">

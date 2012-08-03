@@ -111,6 +111,15 @@ public partial class SchedulerGeneral {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
+    /// Control RadToolBar1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadToolBar RadToolBar1;
+    
+    /// <summary>
     /// Control RadScheduler1.
     /// </summary>
     /// <remarks>

@@ -585,6 +585,38 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<PreviousMedicalRecord> PreviousMedicalRecords 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<PreviousMedicalRecord>();
+	    	}
+		}
+		
+		public IQueryable<BackPersonal> BackPersonals 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<BackPersonal>();
+	    	}
+		}
+		
+		public IQueryable<BackFamily> BackFamilies 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<BackFamily>();
+	    	}
+		}
+		
+		public IQueryable<BackGinecology> BackGinecologies 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<BackGinecology>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -862,6 +894,22 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<GeneralPayment> GeneralPayments 
+		{ 
+			get;
+		}
+		IQueryable<PreviousMedicalRecord> PreviousMedicalRecords 
+		{ 
+			get;
+		}
+		IQueryable<BackPersonal> BackPersonals 
+		{ 
+			get;
+		}
+		IQueryable<BackFamily> BackFamilies 
+		{ 
+			get;
+		}
+		IQueryable<BackGinecology> BackGinecologies 
 		{ 
 			get;
 		}

@@ -105,6 +105,8 @@ width: 339px;
 {
 z-index: 1;
 left: 490px;
+top: 105px;
+position: absolute;
 height: 44px;
 width: 159px;
 }
@@ -199,6 +201,11 @@ width: 642px;
                           break;
                   }
               }
+          }
+          function printInvoice(invoice) {
+              var url = "RptView.aspx?Report=rptinvoicemain&Invoice=" + invoice;
+              var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+              w.focus();
           }
         </script>
 
@@ -331,6 +338,9 @@ width: 642px;
         </div>
         <%--Line 6--%>
         <div id="Buttons" class="buttonsFomat">
+          <asp:ImageButton ID="btnPrint" runat="server" TabIndex="6" 
+                           ImageUrl="~/images/printer24.png" onclick="btnPrint_Click" ToolTip="Imprimir factura" />
+          &nbsp;
           <asp:ImageButton ID="btnAccept" runat="server" TabIndex="6" 
                            ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" />
           &nbsp;

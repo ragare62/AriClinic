@@ -50,6 +50,12 @@ public partial class TicketForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                prof = user.Professionals[0];
+                txtProfessionalId.Text = prof.PersonId.ToString();
+                txtProfessionalName.Text = prof.FullName;
+            }
         }
         // 
         if (Request.QueryString["CustomerId"] != null)
@@ -82,8 +88,11 @@ public partial class TicketForm : System.Web.UI.Page
             txtComercialName.Text = cus.FullName; txtComercialName.Enabled = false;
             cl = sn.Clinic;
             prof = sn.Professional;
-            txtProfessionalId.Text = prof.PersonId.ToString(); txtProfessionalId.Enabled = false;
-            txtProfessionalName.Text = prof.FullName; txtProfessionalName.Enabled = false;
+            if (prof != null)
+            {
+                txtProfessionalId.Text = prof.PersonId.ToString(); txtProfessionalId.Enabled = false;
+                txtProfessionalName.Text = prof.FullName; txtProfessionalName.Enabled = false;
+            }
         }
         // 
         if (Request.QueryString["TicketId"] != null)
@@ -197,8 +206,11 @@ public partial class TicketForm : System.Web.UI.Page
         tck.Policy = CntAriCli.GetPolicy(policyId, ctx);
         insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
         tck.InsuranceService = CntAriCli.GetInsuranceService(insuranceServiceId, ctx);
-        clinicId = Int32.Parse(rdcbClinic.SelectedValue);
-        tck.Clinic = CntAriCli.GetClinic(clinicId, ctx);
+        if (rdcbClinic.SelectedValue != "")
+        {
+            clinicId = Int32.Parse(rdcbClinic.SelectedValue);
+            tck.Clinic = CntAriCli.GetClinic(clinicId, ctx);
+        }
         tck.User = CntAriCli.GetUser(user.UserId, ctx);
         tck.Description = txtDescription.Text;
         tck.Amount = Decimal.Parse(txtAmount.Text);
@@ -259,7 +271,7 @@ public partial class TicketForm : System.Web.UI.Page
         {
             rdcbClinic.Items.Add(new RadComboBoxItem(c.Name, c.ClinicId.ToString()));
         }
-        if (tck != null)
+        if (tck != null && tck.Clinic != null)
         {
             rdcbClinic.SelectedValue = tck.Clinic.ClinicId.ToString();
         }

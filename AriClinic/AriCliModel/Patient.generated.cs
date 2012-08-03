@@ -113,6 +113,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string insuranceInformation;
+		public virtual string InsuranceInformation 
+		{ 
+		    get
+		    {
+		        return this.insuranceInformation;
+		    }
+		    set
+		    {
+		        this.insuranceInformation = value;
+		    }
+		}
+		
 		private string comments;
 		public virtual string Comments 
 		{ 
@@ -212,6 +225,42 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.appointmentInfos;
+		    }
+		}
+		
+		private IList<PreviousMedicalRecord> previousMedicalRecords = new List<PreviousMedicalRecord>();
+		public virtual IList<PreviousMedicalRecord> PreviousMedicalRecords 
+		{ 
+		    get
+		    {
+		        return this.previousMedicalRecords;
+		    }
+		}
+		
+		private IList<BackPersonal> backPersonals = new List<BackPersonal>();
+		public virtual IList<BackPersonal> BackPersonals 
+		{ 
+		    get
+		    {
+		        return this.backPersonals;
+		    }
+		}
+		
+		private IList<BackFamily> backFamilies = new List<BackFamily>();
+		public virtual IList<BackFamily> BackFamilies 
+		{ 
+		    get
+		    {
+		        return this.backFamilies;
+		    }
+		}
+		
+		private IList<BackGinecology> backGinecologies = new List<BackGinecology>();
+		public virtual IList<BackGinecology> BackGinecologies 
+		{ 
+		    get
+		    {
+		        return this.backGinecologies;
 		    }
 		}
 		

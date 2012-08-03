@@ -403,7 +403,7 @@ namespace AriCliReport
             this.textBox17.Format = "{0:dd/MM/yyyy}";
             this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.02083333395421505D), Telerik.Reporting.Drawing.Unit.Inch(0.40011802315711975D));
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(4.4791669845581055D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
+            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(6.3791670799255371D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
             this.textBox17.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(20D);
             this.textBox17.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;

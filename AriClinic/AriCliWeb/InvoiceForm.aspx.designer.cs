@@ -282,6 +282,15 @@ public partial class InvoiceForm {
     protected global::System.Web.UI.WebControls.Label lblMessage;
     
     /// <summary>
+    /// Control btnPrint.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnPrint;
+    
+    /// <summary>
     /// Control btnAccept.
     /// </summary>
     /// <remarks>

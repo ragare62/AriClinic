@@ -69,11 +69,12 @@ public partial class TicketGrid : System.Web.UI.Page
             tt.Attributes["class"] = "ghost";
             // hide patient column
             RadGrid1.Columns.FindByDataField("Policy.Customer.FullName").Visible = false;
+            //
+            RadGrid1.PageSize = 6;
         }
         else
         {
-            //
-            RadGrid1.PageSize = 6;
+            
         }
         if (Request.QueryString["AnestheticServiceNoteId"] != null)
         {
@@ -318,13 +319,13 @@ public partial class TicketGrid : System.Web.UI.Page
         else
         {
             if (pat == null && cus == null)
-                RadGrid1.DataSource = CntAriCli.GetTickets(notpaid, ctx);
+                RadGrid1.DataSource = CntAriCli.GetTickets(notpaid, ctx).OrderByDescending(x => x.TicketDate);
             else
             {
                 if (pat != null)
-                    RadGrid1.DataSource = CntAriCli.GeTickets(notpaid, cus, ctx);
+                    RadGrid1.DataSource = CntAriCli.GeTickets(notpaid, cus, ctx).OrderByDescending(x => x.TicketDate);
                 if (cus != null)
-                    RadGrid1.DataSource = CntAriCli.GetTicketsNotInvoiced(cus, ctx);
+                    RadGrid1.DataSource = CntAriCli.GetTicketsNotInvoiced(cus, ctx).OrderByDescending(x => x.TicketDate);
             }
         }
         if (rebind) RadGrid1.Rebind();

@@ -287,6 +287,27 @@ public partial class MainMenu : System.Web.UI.Page
             case "ranestckprof":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRAnesTckProf();");
                 break;
+            case "rpca":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRPCA();");
+                break;
+            case "rtcksrg":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRTckSrg();");
+                break;
+            case "rrisk":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRrisk();");
+                break;
+            case "rappointmentday":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRAppointmentDay();");
+                break;
+            case "rptgpbyclinic":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptGPByClinic();");
+                break;
+            case "rptinvoicemain":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptInvoiceMain();");
+                break;
+            case "rptvatresume":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptVATResume();");
+                break;
             default:
                 break;
         }

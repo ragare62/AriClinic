@@ -2,6 +2,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
@@ -43,17 +44,17 @@
           }
           function NewPatientRecord()
           {
-              var w1 = window.open("PatientForm.aspx", null, "width=770, height=680,resizable=1");
+              var w1 = window.open("PatientForm.aspx", null, "width=960, height=480,resizable=1,scrollbars=1");
               w1.focus();
           }
           function EditPatientRecord(id)
           {
-              var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=770, height=680,resizable=1");
+              var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=960, height=480,resizable=1,scrollbars=1");
               w2.focus();
           }
           function ViewHisAdm(id)
           {
-              var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "fullscreen=yes,resizable=1");
+              var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "width=1024, height=768,resizable=1,scrollbars=1");
               w2.focus();
           }
           function CloseWindow()
@@ -86,6 +87,11 @@
               <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
             </UpdatedControls>
           </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="rdcInsurance">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
@@ -100,8 +106,17 @@
           <asp:Label ID="lblTitle" runat="server" Text="Pacientes" 
                      meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+        <div id="Insurance" class="optionsText">
+          <asp:Label ID="lblInsurance" runat="server" Text="Filtrar por aseguradora:"></asp:Label>
+          <br />
+          <telerik:RadComboBox ID="rdcInsurance" runat="server" Width="100%" 
+                               EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
+                               ItemsPerRequest="10" Height="100px" AutoPostBack="true" 
+                onselectedindexchanged="rdcInsurance_SelectedIndexChanged">
+          </telerik:RadComboBox>
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
-          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" PageSize="6" 
+          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" PageSize="10" EnableLinqExpressions="false" 
                            AllowPaging="True" AllowFilteringByColumn="True" 
                            AllowSorting="True" ShowGroupPanel="True"
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
@@ -125,6 +140,13 @@
                                          SortExpression="PersonId" UniqueName="PersonId" 
                                          FilterControlAltText="Filter PersonId column">
                 </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="OftId" DataType="System.Int32" 
+                                         FilterControlToolTip="Filtrar por ID" FilterImageToolTip="Filtro"
+                                         HeaderText="Ant.N.Historia" 
+                                         meta:resourceKey="GridBoundColumnResource1" ReadOnly="True" 
+                                         SortExpression="OftId" UniqueName="OftId" 
+                                         FilterControlAltText="Filter PersonId column">
+                </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="FullName" 
                                          FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
                                          HeaderText="Nombre completo" 
@@ -132,6 +154,37 @@
                                          SortExpression="FullNAme" UniqueName="FullName" 
                                          FilterControlAltText="Filter Name column">
                 </telerik:GridBoundColumn>
+                <telerik:GridTemplateColumn UniqueName="INS" AllowFiltering="false" HeaderText="IG:Aseguradora / Grupo PN:Poliza">
+                    <ItemTemplate>
+                        <div id="insurance-data">
+                            <asp:Label ID="lblInsuranceData" runat="server" Text="INSURANCE"></asp:Label>
+                        </div>
+                    </ItemTemplate>
+                </telerik:GridTemplateColumn>
+
+                <telerik:GridBoundColumn DataField="Surname1" 
+                                         FilterControlToolTip="Filtrar por primer apellido" FilterImageToolTip="Filtro"
+                                         HeaderText="Primer apellido" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Surname1" UniqueName="Surname1" 
+                                         FilterControlAltText="Filter Surname column">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Surname2" 
+                                         FilterControlToolTip="Filtrar por segundo apellido" FilterImageToolTip="Filtro"
+                                         HeaderText="Segundo apellido" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Surname2" UniqueName="Surname2" 
+                                         FilterControlAltText="Filter Surname column">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Name" 
+                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
+                                         HeaderText="Nombre" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="Name" UniqueName="Name" 
+                                         FilterControlAltText="Filter name column">
+                </telerik:GridBoundColumn>
+
+
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                                             meta:resourceKey="GridTemplateColumnResource1" UniqueName="Template">
@@ -145,7 +198,7 @@
                     
                     <asp:ImageButton ID="HisAdm" runat="server" 
                     ImageUrl="~/images/folder_cubes_16.png" meta:resourceKey="HisAdmResource1" 
-                    ToolTip="Abrir historial administrativo" />
+                    ToolTip="Abrir historial" />
                     
                     <asp:ImageButton ID="Delete" runat="server" 
                                      ImageUrl="~/images/document_delete_16.png" meta:resourceKey="DeleteResource1" 

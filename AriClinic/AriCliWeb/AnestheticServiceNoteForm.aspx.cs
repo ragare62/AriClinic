@@ -20,6 +20,8 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     Clinic cl = null;
     Customer cus = null;
     AnestheticServiceNote asn = null;
+    //IList<SaveCheck> lschk = new List<SaveCheck>();
+    bool[] lschk;
     bool firstTime;
     int customerId = 0;
     int clinicId = 0;
@@ -164,10 +166,13 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             asn = new AnestheticServiceNote();
             UnloadData(asn);
             ctx.Add(asn);
+            lschk = CntAriCli.SaveTckChecks(asn);
         }
         else
         { 
             asn = CntAriCli.GetAnestheticServiceNote(anestheticServiceNoteId, ctx);
+            //lschk = CntAriCli.SaveChecks(asn);
+            lschk = CntAriCli.SaveTckChecks(asn);
             bool procedurechanged = false;
             if(Session["procedurechanged"]!=null)
                 procedurechanged = (bool)Session["procedurechanged"];
@@ -189,25 +194,29 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
             }
             UnloadData(asn);
         }
-        //ctx.SaveChanges();
-
-        //try
-        //{
-            return UpdateRelatedTickets(asn);
-        //}
-        //catch (Exception e)
-        //{ 
-            
-        //}
+        //bool res = UpdateRelatedTickets(asn, lschk);
+        // ---
+        bool res = CntAriCli.UpdateRelatedTckV2(asn, lschk, ctx);
+        // Update anesthetic service note total
+        asn.Total = asn.AnestheticTickets.Sum(x => x.Amount);
+        ctx.SaveChanges();
+        if (firstTime)
+        {
+            firstTime = false;
+            Response.Redirect(String.Format("AnestheticServiceNoteForm.aspx?AnestheticServiceNoteId={0}", asn.AnestheticServiceNoteId));
+        }
+        return res;
     }
 
-    protected bool UpdateRelatedTickets(AnestheticServiceNote asn)
+    protected bool UpdateRelatedTickets(AnestheticServiceNote asn, IList<SaveCheck> lschk)
     {
         try
         {
+            ctx.Delete(asn.AnestheticTickets);
+            asn.AnestheticTickets.Clear();
+            CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx, lschk);
             if (firstTime)
             {
-                CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
                 firstTime = false;
                 Response.Redirect(String.Format("AnestheticServiceNoteForm.aspx?AnestheticServiceNoteId={0}", asn.AnestheticServiceNoteId));
             }
@@ -253,6 +262,7 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         //
         chkChecked.Checked = asn.Chk1;
         chkCkecked2.Checked = asn.Chk2;
+        //chkCkecked2.Checked = AreThereTicketsChecked(asn);
         chkChecked3.Checked = asn.Chk3;
         if (asn.Professional != null)
         {
@@ -337,6 +347,8 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
         }
 
         asn.Procedures.Clear();
+        ctx.SaveChanges();
+        //ctx.Delete(asn.Procedures);
 
         if (rdcProcedureName1.SelectedValue != "")
         {
@@ -565,5 +577,14 @@ public partial class AnestheticServiceNoteForm : System.Web.UI.Page
     protected void chkCkecked3_CheckedChanged(object sender, EventArgs e)
     {
 
+    }
+    protected bool AreThereTicketsChecked(AnestheticServiceNote asn)
+    {
+        bool res = false;
+        var rs = from t in asn.AnestheticTickets
+                 where t.Checked == true
+                 select t;
+        if (rs.Count() > 0) res = true;
+        return res;
     }
 }

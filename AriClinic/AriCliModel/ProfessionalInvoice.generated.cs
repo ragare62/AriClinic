@@ -113,6 +113,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string invoiceKey;
+		public virtual string InvoiceKey 
+		{ 
+		    get
+		    {
+		        return this.invoiceKey;
+		    }
+		    set
+		    {
+		        this.invoiceKey = value;
+		    }
+		}
+		
 		private Professional professional;
 		public virtual Professional Professional 
 		{ 

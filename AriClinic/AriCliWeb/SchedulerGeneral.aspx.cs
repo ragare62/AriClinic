@@ -127,11 +127,14 @@ public partial class SchedulerGeneral : System.Web.UI.Page
     protected void RadScheduler1_AppointmentDataBound(object sender, SchedulerEventArgs e)
     {
         string estado = e.Appointment.Description;
+        int id = (int)e.Appointment.ID;
+        appointment = CntAriCli.GetAppointment(id, ctx);
         //Modificamos la apariencia según el estado
         switch (estado)
         {
             case "0":
                 // Citado dejamos el item como está
+                e.Appointment.CssClass = "rsCategoryWhite";
                 break;
             case "1":
                 // Programada
@@ -139,19 +142,22 @@ public partial class SchedulerGeneral : System.Web.UI.Page
                 break;
             case "2":
                 // Sala de espera
-                e.Appointment.CssClass = "rsCategoryRed"; //rsCategoryGreen
+                e.Appointment.CssClass = "rsCategoryPink"; //rsCategoryGreen
                 break;
             case "3":
                 // Atendido
                 e.Appointment.CssClass = "rsCategoryGreen"; //rsCategoryYellow
                 break;
             case "4":
+            case "5":
                 // No presentado / Sin hora?
                 e.Appointment.CssClass = "rsCategoryYellow"; //rsCategoryBlue
                 break;
             default:
                 break;
         }
+        // now we charge the new description
+        e.Appointment.Description = CntAriCli.GetAppointmentDescription(appointment, ctx);
     }
     protected void RadScheduler1_NavigationComplete(object sender, SchedulerNavigationCompleteEventArgs e)
     {
@@ -164,6 +170,27 @@ public partial class SchedulerGeneral : System.Web.UI.Page
         if (e.Argument == "RebindScheduler")
         {
             SchedulerLoad();
+        }
+    }
+
+    protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
+    {
+        switch (e.Item.Value)
+        {
+            case "morning":
+                RadScheduler1.DayStartTime = new TimeSpan(8, 0, 0);
+                RadScheduler1.DayEndTime = new TimeSpan(15, 59, 0);
+                RadScheduler1.Rebind();
+                break;
+            case "evening":
+                RadScheduler1.DayStartTime = new TimeSpan(16, 0, 0);
+                RadScheduler1.DayEndTime = new TimeSpan(23, 59, 0);
+                RadScheduler1.Rebind();
+                break;
+            case "print":
+                string js = String.Format("printDiary({0:yyyyMMdd}, {1});", RadScheduler1.SelectedDate, diary.DiaryId);
+                RadAjaxManager1.ResponseScripts.Add(js);
+                break;
         }
     }
 }

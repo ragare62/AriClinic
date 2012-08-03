@@ -94,15 +94,25 @@ DELETE FROM lab_test_assigned;
 ALTER TABLE lab_test_assigned AUTO_INCREMENT=1;
 DELETE FROM lab_test;
 ALTER TABLE lab_test AUTO_INCREMENT=1;
+DELETE FROM back_family;
+ALTER TABLE back_family AUTO_INCREMENT=1;
+DELETE FROM back_personal;
+ALTER TABLE back_personal AUTO_INCREMENT=1;
+DELETE FROM back_ginecoloy;
+ALTER TABLE back_ginecoloy AUTO_INCREMENT=1;
+DELETE FROM previous_medical_record;
+ALTER TABLE previous_medical_record AUTO_INCREMENT=1;
 #
 DELETE FROM professional;
 ALTER TABLE professional AUTO_INCREMENT=1;
+DELETE FROM patient;
+ALTER TABLE patient AUTO_INCREMENT=1;
+
 DELETE FROM clinic;
 ALTER TABLE clinic AUTO_INCREMENT=1;
 DELETE FROM customer;
 ALTER TABLE customer AUTO_INCREMENT=1;
-DELETE FROM patient;
-ALTER TABLE patient AUTO_INCREMENT=1;
+
 DELETE FROM person;
 ALTER TABLE person AUTO_INCREMENT=1;
 DELETE FROM source;

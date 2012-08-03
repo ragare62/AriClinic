@@ -336,4 +336,28 @@
   <data name="PayInNote" xml:space="preserve">
     <value>El ticket pertenece a una nota y debe ser pagado en ella</value>
   </data>
+  <data name="PreviousMedicalRecord" xml:space="preserve">
+    <value>Historial anterior</value>
+  </data>
+  <data name="TwoButtonsWarning" xml:space="preserve">
+    <value>Dispone de dos botones (arriba y abajo derecha) para guardar los datos, si hace modificaciones guárdelas haciendo clic en cualquiera de ellos.</value>
+  </data>
+  <data name="DataStoredOk" xml:space="preserve">
+    <value>Los datos han sido guardados.</value>
+  </data>
+  <data name="AckGinecology" xml:space="preserve">
+    <value>Antecedente ginecológico</value>
+  </data>
+  <data name="BackFamily" xml:space="preserve">
+    <value>Antecedente familiar</value>
+  </data>
+  <data name="BackPersonal" xml:space="preserve">
+    <value>Antecedente personal</value>
+  </data>
+  <data name="VisitFirstAccept" xml:space="preserve">
+    <value>Se han guardado los datos básicos de la visita, ahora se han abierto las solapas por si desea introducir información detallada. Cuando termine de instroducir datos vuelva a darle a "Aceptar" para cerra esta ventana y actualizar la lista.</value>
+  </data>
+  <data name="BeginGreaterThanEndDates" xml:space="preserve">
+    <value>La fecha final no puede ser menor que la de inicio.</value>
+  </data>
 </root>

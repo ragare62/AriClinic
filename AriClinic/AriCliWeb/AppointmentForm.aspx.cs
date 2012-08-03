@@ -22,6 +22,7 @@ public partial class AppointmentForm : System.Web.UI.Page
     int appId = 0;
     int patientId = 0;
     Permission per = null;
+    Professional professional = null;
     AppointmentInfo app = null;
     DateTime? beginDateTime= null; DateTime? endDateTime = null;
     string type = "";
@@ -44,6 +45,8 @@ public partial class AppointmentForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+                professional = user.Professionals[0];
         }
         if (Request.QueryString["DiaryId"] != null)
         {
@@ -188,6 +191,14 @@ public partial class AppointmentForm : System.Web.UI.Page
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
+        if (rddtBeginDateTime.SelectedDate > rddtEndDateTime.SelectedDate)
+        {
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
+                                    , Resources.GeneralResource.Warning
+                                    , Resources.GeneralResource.BeginGreaterThanEndDates);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return false;
+        }
         return true;
     }
 
@@ -218,6 +229,10 @@ public partial class AppointmentForm : System.Web.UI.Page
     protected void LoadData(AppointmentInfo app)
     {
         LoadStatusCombo(app);
+        if (professional != null)
+        {
+            LoadProfessionalCombo(professional);
+        }
         if (app == null) return; // There isn't any agenda to show
         txtAppointmentId.Text = String.Format("{0:00000000}", app.AppointmentId);
         LoadPatientCombo(app.Patient);
@@ -231,6 +246,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             rddtArrival.SelectedDate = app.Arrival;
         txtDuration.Text = app.Duration.ToString();
         txtSubject.Text = app.Subject;
+        txtDescription.Text = CntAriCli.GetAppointmentDescription(app, ctx);
         txtComments.Text = app.Comments;
         //
         string command = String.Format("return ViewHisAdm({0});", app.Patient.PersonId);
@@ -275,6 +291,7 @@ public partial class AppointmentForm : System.Web.UI.Page
         ddlStatus.Items.Add(new ListItem("Sala de espera","2"));
         ddlStatus.Items.Add(new ListItem("Atendida", "3"));
         ddlStatus.Items.Add(new ListItem("No presentado","4"));
+        ddlStatus.Items.Add(new ListItem("Sin hora", "5"));
         if (app != null)
         {
             ddlStatus.SelectedValue = app.Status;
@@ -428,6 +445,14 @@ public partial class AppointmentForm : System.Web.UI.Page
             TimeCalculation(apptype);
         }
         
+    }
+
+    protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlStatus.SelectedValue == "2")
+        {
+            rddtArrival.SelectedDate = DateTime.Now;
+        }
     }
 
 

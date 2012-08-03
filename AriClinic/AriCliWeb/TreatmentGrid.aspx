@@ -44,33 +44,33 @@
           }
           function NewTreatmentRecord()
           {
-              var w1 = window.open("TreatmentForm.aspx", "TRATGRD", "width=600, height=500,resizable=1");
+              var w1 = window.open("TreatmentForm.aspx", "TRATGRD", "width=650, height=550,resizable=1");
               w1.focus();
           }
           function EditTreatmentRecord(id)
           {
-              var w2 = window.open("TreatmentForm.aspx?TreatmentId=" + id, "TRATGRD", "width=600, height=500,resizable=1");
+              var w2 = window.open("TreatmentForm.aspx?TreatmentId=" + id, "TRATGRD", "width=650, height=550,resizable=1");
               w2.focus();
           }
           function NewTreatmentRecordInTab()
           {
-              var w1 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId'), "TRATGRD", "width=600, height=500,resizable=1");
+              var w1 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId'), "TRATGRD", "width=650, height=550,resizable=1");
               w1.focus();
           }
           function EditTreatmentRecordInTab(id)
           {
               var w2 = window.open("TreatmentForm.aspx?PatientId=" + gup('PatientId') +
-                                   "&TreatmentId=" + id, "TRATGRD", "width=600, height=500,resizable=1");
+                                   "&TreatmentId=" + id, "TRATGRD", "width=650, height=550,resizable=1");
               w2.focus();
           }
 
           function NewTreatmentRecordInVisit() {
-              var w1 = window.open("TreatmentForm.aspx?VisitId=" + gup('VisitId'), "TRATVISIT", "width=600, height=500,resizable=1");
+              var w1 = window.open("TreatmentForm.aspx?VisitId=" + gup('VisitId'), "TRATVISIT", "width=650, height=550,resizable=1");
               w1.focus();
           }
           function EditTreatmentRecordInVisit(id) {
               var w2 = window.open("TreatmentForm.aspx?VisitId=" + gup('VisitId') +
-                                   "&TreatmentId=" + id, "TRATVISIT", "width=600, height=500,resizable=1");
+                                   "&TreatmentId=" + id, "TRATVISIT", "width=650, height=550,resizable=1");
               w2.focus();
           }
           function CloseWindow()

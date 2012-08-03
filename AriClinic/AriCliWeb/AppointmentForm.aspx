@@ -295,7 +295,8 @@
                                 <div id="Status" class="normalText">
                                     <asp:Label ID="lblStatus" runat="server" Text="Estado:"></asp:Label>
                                     <br />
-                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="11">
+                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="200px" TabIndex="11" 
+                                        AutoPostBack="True" onselectedindexchanged="ddlStatus_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
 
@@ -314,12 +315,23 @@
                         </tr>
                         <tr>
                             <td colspan="4">
+                                <div ID="Description" class="normalText">
+                                    <asp:Label ID="lblDescription" runat="server" Text="Descripción:" 
+                                               ToolTip="Este es el texto que aparecerá en el calendario"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtDescription" runat="server" Enabled="false" 
+                                                 TabIndex="12" Width="507px" Height="23px"></asp:TextBox>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
                                 <div ID="Comments" class="normalText">
                                     <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
                                                ToolTip="Observaciones"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtComments" runat="server" 
-                                                 TabIndex="13" Width="507px" Height="116px" TextMode="MultiLine"></asp:TextBox>
+                                                 TabIndex="13" Width="507px" Height="70px" TextMode="MultiLine"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>

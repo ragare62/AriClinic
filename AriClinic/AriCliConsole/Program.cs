@@ -14,18 +14,10 @@ namespace AriCliConsole
         {
             ctx = new AriClinicContext("AriClinicContext");
 
-            SetPermissions(14, 7);
-            //SetPermissions(14, 6);
-            //Console.WriteLine("-- Begin program --");
+            Console.WriteLine("-- Begin program --");
+            FixAnestheticNotes(ctx);
 
-            ////CreateThings();
-
-            //Console.Write("Número a validar: ");
-            //string num = Console.ReadLine();
-            //bool comoNif = VATControl.ValidateNif(ref num);
-            //Console.WriteLine("Rsultado {0} // {1}", comoNif, num);
-
-            //Console.WriteLine("-- End program. Press <ENTER> to exit --");
+            Console.WriteLine("-- End program. Press <ENTER> to exit --");
             Console.ReadLine();
         }
 
@@ -174,6 +166,14 @@ namespace AriCliConsole
             p.View = true;
 
             ctx.SaveChanges();
+        }
+
+        private static void FixAnestheticNotes(AriClinicContext ctx)
+        {
+            foreach (AnestheticServiceNote asn in ctx.AnestheticServiceNotes)
+            {
+                CntAriCli.CheckAnestheticServiceNoteTickets(asn, ctx);
+            }
         }
     }
 }

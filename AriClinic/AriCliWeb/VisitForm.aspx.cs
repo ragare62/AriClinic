@@ -48,6 +48,11 @@ public partial class VisitForm : System.Web.UI.Page
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
+            if (user.Professionals.Count > 0)
+            {
+                professional = user.Professionals[0];
+                LoadComboProfesional(professional);
+            }
         }
 
         // 
@@ -61,13 +66,7 @@ public partial class VisitForm : System.Web.UI.Page
         {
             rdpVisitDate.SelectedDate = DateTime.Now;
             // load professional
-            if (user.Professionals.Count > 0)
-            {
-                Professional p = user.Professionals[0];
-                rdcProfessional.Items.Clear();
-                rdcProfessional.Items.Add(new RadComboBoxItem(p.FullName, p.PersonId.ToString()));
-                rdcProfessional.SelectedValue = p.PersonId.ToString();
-            }
+            if (Session["Professional"] != null) LoadComboProfesional((Professional)Session["Professional"]);
             // called from an appointment?
             if (Request.QueryString["AppointmentId"] != null) 
             {
@@ -81,10 +80,7 @@ public partial class VisitForm : System.Web.UI.Page
                     //
                     rdpVisitDate.SelectedDate = app.BeginDateTime;
                     //
-                    Professional prof = app.Professional;
-                    rdcProfessional.Items.Clear();
-                    rdcProfessional.Items.Add(new RadComboBoxItem(prof.FullName, prof.PersonId.ToString()));
-                    rdcProfessional.SelectedValue = prof.PersonId.ToString();
+                    LoadComboProfesional(app.Professional);
                     //
                     AppointmentType appt = app.AppointmentType;
                     rdcAppointmentType.Items.Clear();
@@ -145,20 +141,18 @@ public partial class VisitForm : System.Web.UI.Page
             command = "CloseAndRebind('')";
         if (!CreateChange())
             return;
+        if (Session["FromAppointment"] != null)
+        {
+            command = "CancelEdit();";
+            Session["FromAppointment"] = null;
+        }
         if (type == "InTab" && command == "CloseAndRebind('new')")
         {
             command = String.Format("parentReload('VisitTab.aspx?VisitId={0}');", visit.VisitId);
-            Session["FromAppointment"] = true;
+            //RadWindowManager1.RadConfirm(Resources.GeneralResource.VisitFirstAccept,"noHaceNada", null, null, null,Resources.GeneralResource.Warning);
         }
-        else
-        {
-            if (Session["FromAppointment"] != null)
-            {
-                command = "CancelEdit();";
-                Session["FromAppointment"] = null;
-            }
-        }
-        if (caller == "Appointment") command = "CancelEdit();";
+        if (caller == "Appointment")
+            command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -204,7 +198,6 @@ public partial class VisitForm : System.Web.UI.Page
             visit = new BaseVisit();
             if (app != null)
             {
-                
                 visit.AppointmentInfo = app;
             }
             UnloadData(visit);
@@ -325,5 +318,12 @@ public partial class VisitForm : System.Web.UI.Page
         {
             combo.Items.Add(new RadComboBoxItem(apt.Name, apt.AppointmentTypeId.ToString()));
         }
+    }
+    protected void LoadComboProfesional(Professional professional)
+    {
+        if (professional == null) return; // do nothing
+        rdcProfessional.Items.Clear();
+        rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
+        rdcProfessional.SelectedValue = professional.PersonId.ToString();
     }
 }
