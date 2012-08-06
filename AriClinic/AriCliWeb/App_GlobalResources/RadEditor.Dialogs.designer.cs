@@ -61,7 +61,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Copyright 2002-2009 ©Telerik  Todos los derechos reservados..
+        ///   Busca una cadena traducida similar a Copyright 2002-2012 ©Telerik  All rights reserved..
         /// </summary>
         internal static string About_Copyright {
             get {
@@ -70,7 +70,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a RadEditor por Telerik.
+        ///   Busca una cadena traducida similar a RadEditor by Telerik.
         /// </summary>
         internal static string About_Title {
             get {
@@ -79,7 +79,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Agregar.
+        ///   Busca una cadena traducida similar a Actual Size.
+        /// </summary>
+        internal static string Common_ActualSize {
+            get {
+                return ResourceManager.GetString("Common_ActualSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Add.
         /// </summary>
         internal static string Common_Add {
             get {
@@ -88,7 +97,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a [agregar destino personalizado...].
+        ///   Busca una cadena traducida similar a Add Custom Color....
+        /// </summary>
+        internal static string Common_AddCustomColor {
+            get {
+                return ResourceManager.GetString("Common_AddCustomColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a [add custom target...].
         /// </summary>
         internal static string Common_AddCustomTarget {
             get {
@@ -97,7 +115,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Extensiones de archivos permitidas.
+        ///   Busca una cadena traducida similar a File extensions allowed.
         /// </summary>
         internal static string Common_AllowedExtensions {
             get {
@@ -106,7 +124,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Aplicar clase.
+        ///   Busca una cadena traducida similar a All Properties....
+        /// </summary>
+        internal static string Common_AllProperties {
+            get {
+                return ResourceManager.GetString("Common_AllProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Apply Class.
         /// </summary>
         internal static string Common_ApplyClass {
             get {
@@ -115,7 +142,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Atrás.
+        ///   Busca una cadena traducida similar a Back.
         /// </summary>
         internal static string Common_Back {
             get {
@@ -124,7 +151,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Color de fondo.
+        ///   Busca una cadena traducida similar a Background Color.
         /// </summary>
         internal static string Common_BackgroundColor {
             get {
@@ -133,7 +160,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Imagen de fondo.
+        ///   Busca una cadena traducida similar a Back Image.
         /// </summary>
         internal static string Common_BackgroundImage {
             get {
@@ -142,7 +169,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Negro.
+        ///   Busca una cadena traducida similar a Best Fit.
+        /// </summary>
+        internal static string Common_BestFit {
+            get {
+                return ResourceManager.GetString("Common_BestFit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Black.
         /// </summary>
         internal static string Common_Black {
             get {
@@ -151,7 +187,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Azul.
+        ///   Busca una cadena traducida similar a Blue.
         /// </summary>
         internal static string Common_Blue {
             get {
@@ -160,7 +196,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Color del borde.
+        ///   Busca una cadena traducida similar a Border Color.
         /// </summary>
         internal static string Common_BorderColor {
             get {
@@ -169,7 +205,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Grosor del borde.
+        ///   Busca una cadena traducida similar a Border Width.
         /// </summary>
         internal static string Common_BorderWidth {
             get {
@@ -178,7 +214,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Bottom.
         /// </summary>
         internal static string Common_Bottom {
             get {
@@ -196,7 +232,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cancelar.
+        ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         internal static string Common_Cancel {
             get {
@@ -205,7 +241,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CSS celda.
+        ///   Busca una cadena traducida similar a Cell CSS.
         /// </summary>
         internal static string Common_CellCss {
             get {
@@ -214,7 +250,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Especificar ID de la clase.
+        ///   Busca una cadena traducida similar a Specify Class ID.
         /// </summary>
         internal static string Common_ClassID {
             get {
@@ -223,7 +259,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ID de la clase.
+        ///   Busca una cadena traducida similar a Class ID.
         /// </summary>
         internal static string Common_ClassIDText {
             get {
@@ -232,7 +268,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Limpiar.
+        ///   Busca una cadena traducida similar a Clear.
         /// </summary>
         internal static string Common_Clear {
             get {
@@ -241,7 +277,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Limpiar clase.
+        ///   Busca una cadena traducida similar a Clear Class.
         /// </summary>
         internal static string Common_ClearClass {
             get {
@@ -250,7 +286,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¡Por favor, especifique el archivo a subir!.
+        ///   Busca una cadena traducida similar a Please, provide file to upload!.
         /// </summary>
         internal static string Common_Client_AlertFile {
             get {
@@ -259,7 +295,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cerrar.
+        ///   Busca una cadena traducida similar a Close.
         /// </summary>
         internal static string Common_Close {
             get {
@@ -268,9 +304,9 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¿Está seguro que desea eliminar el archivo seleccionado?
-        ///El archivo seleccionado podría estar en uso. Si es eliminado, algunas páginas no se desplegaran de forma adecuada.
-        ///Presione &quot;Aceptar&quot; para confirmar la eliminación..
+        ///   Busca una cadena traducida similar a Are you sure you want to delete the selected item?
+        ///It might still be in use. If deleted, some pages will not be displayed properly.
+        ///Press &quot;OK&quot; to confirm deletion..
         /// </summary>
         internal static string Common_ConfirmDelete {
             get {
@@ -279,7 +315,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¿Mantener proporciones?.
+        ///   Busca una cadena traducida similar a Constrain proportions?.
         /// </summary>
         internal static string Common_ConstrainProportions {
             get {
@@ -288,7 +324,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Botones del control.
+        ///   Busca una cadena traducida similar a Control Buttons.
         /// </summary>
         internal static string Common_ControlButtons {
             get {
@@ -297,7 +333,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Crear.
+        ///   Busca una cadena traducida similar a Copy.
+        /// </summary>
+        internal static string Common_Copy {
+            get {
+                return ResourceManager.GetString("Common_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Create.
         /// </summary>
         internal static string Common_Create {
             get {
@@ -306,7 +351,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Especifique el nombre de la carpeta.
+        ///   Busca una cadena traducida similar a Enter the new folder name.
         /// </summary>
         internal static string Common_CreateNewFolder {
             get {
@@ -315,7 +360,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Crear imagen en miniatura.
+        ///   Busca una cadena traducida similar a Create thumbnail.
         /// </summary>
         internal static string Common_CreateThumbnail {
             get {
@@ -324,7 +369,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Clase CSS.
+        ///   Busca una cadena traducida similar a CSS Class.
         /// </summary>
         internal static string Common_CssClass {
             get {
@@ -333,7 +378,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Destino personalizado.
+        ///   Busca una cadena traducida similar a Custom Targets.
         /// </summary>
         internal static string Common_CustomTargets {
             get {
@@ -342,7 +387,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Disminuir.
+        ///   Busca una cadena traducida similar a Decrease.
         /// </summary>
         internal static string Common_Decrease {
             get {
@@ -351,7 +396,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Eliminar.
+        ///   Busca una cadena traducida similar a Delete.
         /// </summary>
         internal static string Common_Delete {
             get {
@@ -360,7 +405,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Unidad de dimensión.
+        ///   Busca una cadena traducida similar a Dimension unit.
         /// </summary>
         internal static string Common_DimensionUnit {
             get {
@@ -369,7 +414,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ya existe un archivo en el destino con el nombre espeficiado y ha seleccionado no reescribirlo.
+        ///   Busca una cadena traducida similar a A file with a name same as the target already exists!.
         /// </summary>
         internal static string Common_FileExists {
             get {
@@ -378,7 +423,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Adelante.
+        ///   Busca una cadena traducida similar a Forward.
         /// </summary>
         internal static string Common_Forward {
             get {
@@ -387,7 +432,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Verde.
+        ///   Busca una cadena traducida similar a Green.
         /// </summary>
         internal static string Common_Green {
             get {
@@ -396,7 +441,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a {4} Página &lt;strong&gt;{0}&lt;/strong&gt; de &lt;strong&gt;{1}&lt;/strong&gt;. Elementos &lt;strong&gt;{2}&lt;/strong&gt; al &lt;strong&gt;{3}&lt;/strong&gt; de &lt;strong&gt;{5}&lt;/strong&gt;.
+        ///   Busca una cadena traducida similar a {4} Page &lt;strong&gt;{0}&lt;/strong&gt; of &lt;strong&gt;{1}&lt;/strong&gt;. Items &lt;strong&gt;{2}&lt;/strong&gt; to &lt;strong&gt;{3}&lt;/strong&gt; of &lt;strong&gt;{5}&lt;/strong&gt;.
         /// </summary>
         internal static string Common_GridPagerText {
             get {
@@ -405,7 +450,34 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Altura.
+        ///   Busca una cadena traducida similar a Sort asc.
+        /// </summary>
+        internal static string Common_GridSortedAscToolTip {
+            get {
+                return ResourceManager.GetString("Common_GridSortedAscToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sort desc.
+        /// </summary>
+        internal static string Common_GridSortedDescToolTip {
+            get {
+                return ResourceManager.GetString("Common_GridSortedDescToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Click here to sort.
+        /// </summary>
+        internal static string Common_GridSortToolTip {
+            get {
+                return ResourceManager.GetString("Common_GridSortToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Height.
         /// </summary>
         internal static string Common_Height {
             get {
@@ -423,7 +495,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto alterno.
+        ///   Busca una cadena traducida similar a Alt Text.
         /// </summary>
         internal static string Common_ImageAltText {
             get {
@@ -432,7 +504,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Editor de imágenes.
+        ///   Busca una cadena traducida similar a Image Editor.
         /// </summary>
         internal static string Common_ImageEditor {
             get {
@@ -441,7 +513,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de la imagen.
+        ///   Busca una cadena traducida similar a Image Properties.
         /// </summary>
         internal static string Common_ImageFieldSet {
             get {
@@ -450,7 +522,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Aumentar.
+        ///   Busca una cadena traducida similar a Increase.
         /// </summary>
         internal static string Common_Increase {
             get {
@@ -459,7 +531,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Insertar.
+        ///   Busca una cadena traducida similar a Insert.
         /// </summary>
         internal static string Common_Insert {
             get {
@@ -468,7 +540,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Caracteres inválidos en el nombre de la carpeta.
+        ///   Busca una cadena traducida similar a Invalid characters in folder name..
         /// </summary>
         internal static string Common_InvalidCharactersInPath {
             get {
@@ -477,7 +549,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a La extensión del archivo cargado no es válida.  Por favor seleccione un archivo válido..
+        ///   Busca una cadena traducida similar a The extension of the uploaded file is not valid. Please, provide a valid file!.
         /// </summary>
         internal static string Common_InvalidFileExtension {
             get {
@@ -486,7 +558,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El tamaño del archivo cargado excede el tamaño máximo permitido.
+        ///   Busca una cadena traducida similar a The size of the uploaded file exceeds max size allowed.
         /// </summary>
         internal static string Common_InvalidFileSize {
             get {
@@ -504,7 +576,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Izquierda.
+        ///   Busca una cadena traducida similar a Left.
         /// </summary>
         internal static string Common_Left {
             get {
@@ -513,7 +585,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar en.
+        ///   Busca una cadena traducida similar a Look in.
         /// </summary>
         internal static string Common_LookIn {
             get {
@@ -522,7 +594,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño máximo permitido.
+        ///   Busca una cadena traducida similar a Margin.
+        /// </summary>
+        internal static string Common_Margin {
+            get {
+                return ResourceManager.GetString("Common_Margin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Max file size allowed.
         /// </summary>
         internal static string Common_MaxFileSize {
             get {
@@ -540,7 +621,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a No se puede escribir en el folder destino.
+        ///   Busca una cadena traducida similar a Cannot write to the target folder!.
         /// </summary>
         internal static string Common_MessageCannotWriteToFolder {
             get {
@@ -549,7 +630,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique dimensiones de imagen válidas.
+        ///   Busca una cadena traducida similar a Please, provide valid image dimensions.
         /// </summary>
         internal static string Common_MessageNoValidDimensions {
             get {
@@ -558,7 +639,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¡La imagen seleccionada para conversión reside en un servidor distinto!.
+        ///   Busca una cadena traducida similar a The specified for conversion image file resides on a different server!.
         /// </summary>
         internal static string Common_MessageSourceNotLocal {
             get {
@@ -567,7 +648,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Medio.
+        ///   Busca una cadena traducida similar a Middle.
         /// </summary>
         internal static string Common_Middle {
             get {
@@ -576,7 +657,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ya existe un objeto con ese nombre en este directorio.
+        ///   Busca una cadena traducida similar a An object with the same name already exists in this directory!.
         /// </summary>
         internal static string Common_NameExists {
             get {
@@ -585,7 +666,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nueva carpeta.
+        ///   Busca una cadena traducida similar a New Folder.
         /// </summary>
         internal static string Common_NewFolder {
             get {
@@ -594,7 +675,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nombre nueva imagen.
+        ///   Busca una cadena traducida similar a New image name.
         /// </summary>
         internal static string Common_NewImageName {
             get {
@@ -612,7 +693,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sin Color.
+        ///   Busca una cadena traducida similar a No Color.
         /// </summary>
         internal static string Common_NoColor {
             get {
@@ -621,7 +702,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ninguno.
+        ///   Busca una cadena traducida similar a None.
         /// </summary>
         internal static string Common_None {
             get {
@@ -630,7 +711,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El folder seleccionado no pudo ser creado porque la aplicación no tiene suficientes permisos. Por favor, contacte su administrador..
+        ///   Busca una cadena traducida similar a The selected folder could not be created because the application did not have enough permissions. Please, contact the administrator..
         /// </summary>
         internal static string Common_NoPermissionsToCreateFolder {
             get {
@@ -639,7 +720,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El archivo seleccionado no pudo ser eliminado porque la aplicación no tiene suficientes permisos. Por favor, contacte su administrador..
+        ///   Busca una cadena traducida similar a The selected file could not be deleted because the application did not have enough permissions. Please, contact the administrator..
         /// </summary>
         internal static string Common_NoPermissionsToDeleteFile {
             get {
@@ -648,7 +729,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El folder seleccionado no pudo ser eliminado porque la aplicación no tiene suficientes permisos. Por favor, contacte su administrador..
+        ///   Busca una cadena traducida similar a The selected folder could not be deleted because the application did not have enough permissions. Please, contact the administrator..
         /// </summary>
         internal static string Common_NoPermissionsToDeleteFolder {
             get {
@@ -657,7 +738,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¡Por favor, seleccione un archivo para subir!.
+        ///   Busca una cadena traducida similar a Please, select a file to upload!.
         /// </summary>
         internal static string Common_NoUploadedFile {
             get {
@@ -666,7 +747,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Aceptar.
+        ///   Busca una cadena traducida similar a OK.
         /// </summary>
         internal static string Common_OK {
             get {
@@ -675,7 +756,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abrir.
+        ///   Busca una cadena traducida similar a Open.
         /// </summary>
         internal static string Common_Open {
             get {
@@ -684,7 +765,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Naranja.
+        ///   Busca una cadena traducida similar a Orange.
         /// </summary>
         internal static string Common_Orange {
             get {
@@ -693,7 +774,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sobreescribir el archivo si existe?.
+        ///   Busca una cadena traducida similar a Overwrite if file exists?.
         /// </summary>
         internal static string Common_OverwriteExisting {
             get {
@@ -702,7 +783,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Pegar.
+        ///   Busca una cadena traducida similar a Paste.
         /// </summary>
         internal static string Common_Paste {
             get {
@@ -711,7 +792,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Porciento.
+        ///   Busca una cadena traducida similar a Please, insert the Html content, which you want to paste.
+        /// </summary>
+        internal static string Common_PasteHtmlMessage {
+            get {
+                return ResourceManager.GetString("Common_PasteHtmlMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Percent.
         /// </summary>
         internal static string Common_Percent {
             get {
@@ -720,7 +810,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Píxel.
+        ///   Busca una cadena traducida similar a Pixel.
         /// </summary>
         internal static string Common_Pixel {
             get {
@@ -729,7 +819,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Destinos pre-establecidos.
+        ///   Busca una cadena traducida similar a Preset Targets.
         /// </summary>
         internal static string Common_PresetTargets {
             get {
@@ -738,7 +828,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Vista preliminar.
+        ///   Busca una cadena traducida similar a Preview.
         /// </summary>
         internal static string Common_Preview {
             get {
@@ -747,7 +837,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades.
+        ///   Busca una cadena traducida similar a Properties.
         /// </summary>
         internal static string Common_Properties {
             get {
@@ -756,7 +846,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Panel de propiedades.
+        ///   Busca una cadena traducida similar a Properties panel.
         /// </summary>
         internal static string Common_PropertiesPanel {
             get {
@@ -765,7 +855,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rojo.
+        ///   Busca una cadena traducida similar a Red.
         /// </summary>
         internal static string Common_Red {
             get {
@@ -774,7 +864,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Refrescar.
+        ///   Busca una cadena traducida similar a Refresh.
         /// </summary>
         internal static string Common_Refresh {
             get {
@@ -783,7 +873,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Remover.
+        ///   Busca una cadena traducida similar a Remove.
         /// </summary>
         internal static string Common_Remove {
             get {
@@ -792,7 +882,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Renombrar.
+        ///   Busca una cadena traducida similar a Rename.
         /// </summary>
         internal static string Common_Rename {
             get {
@@ -801,7 +891,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho.
+        ///   Busca una cadena traducida similar a Right.
         /// </summary>
         internal static string Common_Right {
             get {
@@ -810,7 +900,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Seleccionar.
+        ///   Busca una cadena traducida similar a Select.
         /// </summary>
         internal static string Common_Select {
             get {
@@ -819,11 +909,20 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Seleccionar archivo.
+        ///   Busca una cadena traducida similar a Select file.
         /// </summary>
         internal static string Common_SelectFile {
             get {
                 return ResourceManager.GetString("Common_SelectFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Set.
+        /// </summary>
+        internal static string Common_Set {
+            get {
+                return ResourceManager.GetString("Common_Set", resourceCulture);
             }
         }
         
@@ -837,7 +936,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ordenar por extensión.
+        ///   Busca una cadena traducida similar a Sort by Extension.
         /// </summary>
         internal static string Common_SortByExtTitle {
             get {
@@ -846,7 +945,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nombre de archivo.
+        ///   Busca una cadena traducida similar a Filename.
         /// </summary>
         internal static string Common_SortByFilename {
             get {
@@ -855,7 +954,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ordenar por nombre de archivo.
+        ///   Busca una cadena traducida similar a Sort by Filename.
         /// </summary>
         internal static string Common_SortByFilenameTitle {
             get {
@@ -864,7 +963,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño.
+        ///   Busca una cadena traducida similar a Size.
         /// </summary>
         internal static string Common_SortBySize {
             get {
@@ -873,7 +972,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ordenar por tamaño.
+        ///   Busca una cadena traducida similar a Sort by Size.
         /// </summary>
         internal static string Common_SortBySizeTitle {
             get {
@@ -882,7 +981,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Editor de estilos.
+        ///   Busca una cadena traducida similar a Style Builder.
         /// </summary>
         internal static string Common_StyleBuilder {
             get {
@@ -891,7 +990,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CSS de la tabla.
+        ///   Busca una cadena traducida similar a Table CSS.
         /// </summary>
         internal static string Common_TableCss {
             get {
@@ -900,7 +999,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Destino.
+        ///   Busca una cadena traducida similar a Target.
         /// </summary>
         internal static string Common_Target {
             get {
@@ -909,7 +1008,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nueva ventana.
+        ///   Busca una cadena traducida similar a New Window.
         /// </summary>
         internal static string Common_TargetBlank {
             get {
@@ -918,7 +1017,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Panel de media.
+        ///   Busca una cadena traducida similar a Media Pane.
         /// </summary>
         internal static string Common_TargetMedia {
             get {
@@ -927,7 +1026,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ventana madre.
+        ///   Busca una cadena traducida similar a Parent Window.
         /// </summary>
         internal static string Common_TargetParent {
             get {
@@ -936,7 +1035,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Panel de búsqueda.
+        ///   Busca una cadena traducida similar a Search Pane.
         /// </summary>
         internal static string Common_TargetSearch {
             get {
@@ -945,7 +1044,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Misma ventana.
+        ///   Busca una cadena traducida similar a Same Window.
         /// </summary>
         internal static string Common_TargetSelf {
             get {
@@ -954,7 +1053,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ventana del navegador.
+        ///   Busca una cadena traducida similar a Browser Window.
         /// </summary>
         internal static string Common_TargetTop {
             get {
@@ -963,7 +1062,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Arriba.
+        ///   Busca una cadena traducida similar a Top.
         /// </summary>
         internal static string Common_Top {
             get {
@@ -972,7 +1071,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Up.
         /// </summary>
         internal static string Common_Up {
             get {
@@ -981,7 +1080,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Subir.
+        ///   Busca una cadena traducida similar a Upload.
         /// </summary>
         internal static string Common_Upload {
             get {
@@ -990,7 +1089,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Subir archivo.
+        ///   Busca una cadena traducida similar a Upload.
         /// </summary>
         internal static string Common_UploadFile {
             get {
@@ -999,7 +1098,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Subiendo....
+        ///   Busca una cadena traducida similar a Uploading....
         /// </summary>
         internal static string Common_Uploading {
             get {
@@ -1017,7 +1116,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, use CTRL + V para pegar el contenido que desea limpiar.
+        ///   Busca una cadena traducida similar a Please, use CTRL + V to paste below the content you would like to be cleaned.
         /// </summary>
         internal static string Common_UseControlVMessage {
             get {
@@ -1026,7 +1125,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Blanco.
+        ///   Busca una cadena traducida similar a White.
         /// </summary>
         internal static string Common_White {
             get {
@@ -1035,7 +1134,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancho.
+        ///   Busca una cadena traducida similar a Width.
         /// </summary>
         internal static string Common_Width {
             get {
@@ -1044,7 +1143,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Amarillo.
+        ///   Busca una cadena traducida similar a Yellow.
         /// </summary>
         internal static string Common_Yellow {
             get {
@@ -1053,7 +1152,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sí.
+        ///   Busca una cadena traducida similar a Yes.
         /// </summary>
         internal static string Common_Yes {
             get {
@@ -1062,7 +1161,25 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades del documento.
+        ///   Busca una cadena traducida similar a Zoom In.
+        /// </summary>
+        internal static string Common_ZoomIn {
+            get {
+                return ResourceManager.GetString("Common_ZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Zoom Out.
+        /// </summary>
+        internal static string Common_ZoomOut {
+            get {
+                return ResourceManager.GetString("Common_ZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Document Properties.
         /// </summary>
         internal static string DocumentManager_DocumentPropertiesLegend {
             get {
@@ -1071,7 +1188,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Manejador de documentos.
+        ///   Busca una cadena traducida similar a Document Manager.
         /// </summary>
         internal static string DocumentManager_Title {
             get {
@@ -1089,7 +1206,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a {0} ocurrencias han sido reemplazadas!.
+        ///   Busca una cadena traducida similar a {0} occurrences in the text have been replaced!.
         /// </summary>
         internal static string FindAndReplace_AllReplaced {
             get {
@@ -1098,7 +1215,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Susceptible a mayúsculas/minúsculas.
+        ///   Busca una cadena traducida similar a Case Sensitive.
         /// </summary>
         internal static string FindAndReplace_CaseSensitive {
             get {
@@ -1107,7 +1224,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Down.
         /// </summary>
         internal static string FindAndReplace_Down {
             get {
@@ -1116,7 +1233,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto completo.
+        ///   Busca una cadena traducida similar a Entire text.
         /// </summary>
         internal static string FindAndReplace_EntireText {
             get {
@@ -1125,7 +1242,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar.
+        ///   Busca una cadena traducida similar a Find.
         /// </summary>
         internal static string FindAndReplace_Find {
             get {
@@ -1134,7 +1251,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar próximo.
+        ///   Busca una cadena traducida similar a Find Next.
         /// </summary>
         internal static string FindAndReplace_FindNext {
             get {
@@ -1143,7 +1260,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Coincidir mayúsculas y minúsculas.
+        ///   Busca una cadena traducida similar a Match case.
         /// </summary>
         internal static string FindAndReplace_MatchCase {
             get {
@@ -1152,7 +1269,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Coincidir palabras completas.
+        ///   Busca una cadena traducida similar a Match whole words.
         /// </summary>
         internal static string FindAndReplace_MatchWholeWords {
             get {
@@ -1161,7 +1278,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a La cadena de búsqueda no fue encontrada.
+        ///   Busca una cadena traducida similar a The search string was not found..
         /// </summary>
         internal static string FindAndReplace_NotFound {
             get {
@@ -1170,7 +1287,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¡La función de búsqueda no está soportada por este navegador!.
+        ///   Busca una cadena traducida similar a The find function is not supported by this browser!.
         /// </summary>
         internal static string FindAndReplace_NotSupported {
             get {
@@ -1179,7 +1296,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reemplazar.
+        ///   Busca una cadena traducida similar a Replace.
         /// </summary>
         internal static string FindAndReplace_Replace {
             get {
@@ -1188,7 +1305,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reemplazar todo.
+        ///   Busca una cadena traducida similar a Replace All.
         /// </summary>
         internal static string FindAndReplace_ReplaceAll {
             get {
@@ -1197,7 +1314,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reemplazar con.
+        ///   Busca una cadena traducida similar a Replace With.
         /// </summary>
         internal static string FindAndReplace_ReplaceWith {
             get {
@@ -1206,7 +1323,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar.
+        ///   Busca una cadena traducida similar a Search.
         /// </summary>
         internal static string FindAndReplace_Search {
             get {
@@ -1215,7 +1332,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Dirección.
+        ///   Busca una cadena traducida similar a Direction.
         /// </summary>
         internal static string FindAndReplace_SearchDirection {
             get {
@@ -1224,7 +1341,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar en.
+        ///   Busca una cadena traducida similar a Search In.
         /// </summary>
         internal static string FindAndReplace_SearchIn {
             get {
@@ -1233,7 +1350,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Opciones de búsqueda.
+        ///   Busca una cadena traducida similar a Search Options.
         /// </summary>
         internal static string FindAndReplace_SearchOptions {
             get {
@@ -1242,7 +1359,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar.
+        ///   Busca una cadena traducida similar a Find.
         /// </summary>
         internal static string FindAndReplace_SearchText {
             get {
@@ -1251,7 +1368,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Selección.
+        ///   Busca una cadena traducida similar a Selection.
         /// </summary>
         internal static string FindAndReplace_Selection {
             get {
@@ -1260,7 +1377,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar y reemplazar.
+        ///   Busca una cadena traducida similar a Find &amp;amp; Replace.
         /// </summary>
         internal static string FindAndReplace_Title {
             get {
@@ -1269,7 +1386,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique un ID de clase.
+        ///   Busca una cadena traducida similar a Please, provide a Class ID!.
         /// </summary>
         internal static string FlashManager_AlertClassID {
             get {
@@ -1278,7 +1395,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique el ancho y alto de la animación Flash..
+        ///   Busca una cadena traducida similar a Please, provide width and height of the flash file!.
         /// </summary>
         internal static string FlashManager_AlertWidthHeight {
             get {
@@ -1287,7 +1404,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Línea de base.
+        ///   Busca una cadena traducida similar a Baseline.
         /// </summary>
         internal static string FlashManager_Baseline {
             get {
@@ -1296,7 +1413,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Centrado abajo.
+        ///   Busca una cadena traducida similar a Center Bottom.
         /// </summary>
         internal static string FlashManager_CenterBottom {
             get {
@@ -1305,7 +1422,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Centrado medio.
+        ///   Busca una cadena traducida similar a Center Center.
         /// </summary>
         internal static string FlashManager_CenterCenter {
             get {
@@ -1314,7 +1431,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Centrado arriba.
+        ///   Busca una cadena traducida similar a Center Top.
         /// </summary>
         internal static string FlashManager_CenterTop {
             get {
@@ -1323,7 +1440,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Personalizado.
+        ///   Busca una cadena traducida similar a Custom.
         /// </summary>
         internal static string FlashManager_Custom {
             get {
@@ -1332,7 +1449,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alinear Flash.
+        ///   Busca una cadena traducida similar a Flash Align.
         /// </summary>
         internal static string FlashManager_FlashAlign {
             get {
@@ -1341,7 +1458,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Menu Flash.
+        ///   Busca una cadena traducida similar a Flash Menu.
         /// </summary>
         internal static string FlashManager_FlashMenu {
             get {
@@ -1350,7 +1467,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades animación Flash.
+        ///   Busca una cadena traducida similar a Flash Movie Properties.
         /// </summary>
         internal static string FlashManager_FlashPropertiesLegend {
             get {
@@ -1359,7 +1476,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alto.
+        ///   Busca una cadena traducida similar a High.
         /// </summary>
         internal static string FlashManager_High {
             get {
@@ -1368,7 +1485,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alinear HTML.
+        ///   Busca una cadena traducida similar a HTML Align.
         /// </summary>
         internal static string FlashManager_HtmlAlign {
             get {
@@ -1377,7 +1494,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Izquierda.
+        ///   Busca una cadena traducida similar a Left.
         /// </summary>
         internal static string FlashManager_Left {
             get {
@@ -1386,7 +1503,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Izquierda abajo.
+        ///   Busca una cadena traducida similar a Left Bottom.
         /// </summary>
         internal static string FlashManager_LeftBottom {
             get {
@@ -1395,7 +1512,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Izquierda centrado.
+        ///   Busca una cadena traducida similar a Left Center.
         /// </summary>
         internal static string FlashManager_LeftCenter {
             get {
@@ -1404,7 +1521,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Izquierda arriba.
+        ///   Busca una cadena traducida similar a Left Top.
         /// </summary>
         internal static string FlashManager_LeftTop {
             get {
@@ -1413,7 +1530,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Repetir.
+        ///   Busca una cadena traducida similar a Loop.
         /// </summary>
         internal static string FlashManager_Loop {
             get {
@@ -1422,7 +1539,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Low.
         /// </summary>
         internal static string FlashManager_Low {
             get {
@@ -1431,7 +1548,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Medio.
+        ///   Busca una cadena traducida similar a Medium.
         /// </summary>
         internal static string FlashManager_Medium {
             get {
@@ -1440,7 +1557,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Medio.
+        ///   Busca una cadena traducida similar a Middle.
         /// </summary>
         internal static string FlashManager_Middle {
             get {
@@ -1449,7 +1566,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tocar.
+        ///   Busca una cadena traducida similar a Play.
         /// </summary>
         internal static string FlashManager_Play {
             get {
@@ -1458,7 +1575,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Calidad.
+        ///   Busca una cadena traducida similar a Quality.
         /// </summary>
         internal static string FlashManager_Quality {
             get {
@@ -1467,7 +1584,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho.
+        ///   Busca una cadena traducida similar a Right.
         /// </summary>
         internal static string FlashManager_Right {
             get {
@@ -1476,7 +1593,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho abajo.
+        ///   Busca una cadena traducida similar a Right Bottom.
         /// </summary>
         internal static string FlashManager_RightBottom {
             get {
@@ -1485,7 +1602,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho centrado.
+        ///   Busca una cadena traducida similar a Right Center.
         /// </summary>
         internal static string FlashManager_RightCenter {
             get {
@@ -1494,7 +1611,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho arriba.
+        ///   Busca una cadena traducida similar a Right Top.
         /// </summary>
         internal static string FlashManager_RightTop {
             get {
@@ -1503,7 +1620,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tope texto.
+        ///   Busca una cadena traducida similar a TextTop.
         /// </summary>
         internal static string FlashManager_TextTop {
             get {
@@ -1512,7 +1629,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Manejador de Flash.
+        ///   Busca una cadena traducida similar a Flash Manager.
         /// </summary>
         internal static string FlashManager_Title {
             get {
@@ -1521,7 +1638,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Arriba.
+        ///   Busca una cadena traducida similar a Top.
         /// </summary>
         internal static string FlashManager_Top {
             get {
@@ -1530,7 +1647,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Transparente.
+        ///   Busca una cadena traducida similar a Transparent.
         /// </summary>
         internal static string FlashManager_Transparent {
             get {
@@ -1539,7 +1656,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mostrar número de líneas.
+        ///   Busca una cadena traducida similar a Display Line Numbers.
         /// </summary>
         internal static string FormatCodeBlock_DisplayLineNumbers {
             get {
@@ -1629,7 +1746,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Altura máxima del fragmento.
+        ///   Busca una cadena traducida similar a Max Snippet Height.
         /// </summary>
         internal static string FormatCodeBlock_MaxSnippetHeight {
             get {
@@ -1638,7 +1755,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancho máximo del fragmento.
+        ///   Busca una cadena traducida similar a Max Snippet Width.
         /// </summary>
         internal static string FormatCodeBlock_MaxSnippetWidth {
             get {
@@ -1647,7 +1764,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Pegar código fuente abajo.
+        ///   Busca una cadena traducida similar a Paste source code below.
         /// </summary>
         internal static string FormatCodeBlock_PasteSourceCode {
             get {
@@ -1656,7 +1773,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Seleccione el idioma.
+        ///   Busca una cadena traducida similar a Select Language.
         /// </summary>
         internal static string FormatCodeBlock_SelectLanguage {
             get {
@@ -1665,7 +1782,151 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Recortar.
+        ///   Busca una cadena traducida similar a Add Text.
+        /// </summary>
+        internal static string ImageEditor_AddText {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Color.
+        /// </summary>
+        internal static string ImageEditor_AddText_Color {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The color of the text to add.
+        /// </summary>
+        internal static string ImageEditor_AddText_ColorToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_ColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a (Current Color is {0}).
+        /// </summary>
+        internal static string ImageEditor_AddText_CurrentColorText {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_CurrentColorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Font Family.
+        /// </summary>
+        internal static string ImageEditor_AddText_FontFamily {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_FontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The font family of the text to add.
+        /// </summary>
+        internal static string ImageEditor_AddText_FontFamilyToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_FontFamilyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Font Size.
+        /// </summary>
+        internal static string ImageEditor_AddText_FontSize {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The size of the text to add.
+        /// </summary>
+        internal static string ImageEditor_AddText_FontSizeToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_FontSizeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pick Color.
+        /// </summary>
+        internal static string ImageEditor_AddText_PickColorToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_PickColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your text here....
+        /// </summary>
+        internal static string ImageEditor_AddText_SampleText {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_SampleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Insert Text.
+        /// </summary>
+        internal static string ImageEditor_AddText_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_AddText_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Position.
+        /// </summary>
+        internal static string ImageEditor_Common_Position {
+            get {
+                return ResourceManager.GetString("ImageEditor_Common_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Drag to change the value.
+        /// </summary>
+        internal static string ImageEditor_Common_SliderDrag {
+            get {
+                return ResourceManager.GetString("ImageEditor_Common_SliderDrag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Swap Width and Height.
+        /// </summary>
+        internal static string ImageEditor_Common_SwapWidthHeight {
+            get {
+                return ResourceManager.GetString("ImageEditor_Common_SwapWidthHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a X.
+        /// </summary>
+        internal static string ImageEditor_Common_X {
+            get {
+                return ResourceManager.GetString("ImageEditor_Common_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Y.
+        /// </summary>
+        internal static string ImageEditor_Common_Y {
+            get {
+                return ResourceManager.GetString("ImageEditor_Common_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crop.
         /// </summary>
         internal static string ImageEditor_Crop {
             get {
@@ -1674,25 +1935,43 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Deshabilitar recortar.
+        ///   Busca una cadena traducida similar a Aspect Ratio.
         /// </summary>
-        internal static string ImageEditor_DisableCrop {
+        internal static string ImageEditor_Crop_AspectRatio {
             get {
-                return ResourceManager.GetString("ImageEditor_DisableCrop", resourceCulture);
+                return ResourceManager.GetString("ImageEditor_Crop_AspectRatio", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Habilitar recortar.
+        ///   Busca una cadena traducida similar a Select Aspect Ratio.
         /// </summary>
-        internal static string ImageEditor_EnableCrop {
+        internal static string ImageEditor_Crop_AspectRatioToolTip {
             get {
-                return ResourceManager.GetString("ImageEditor_EnableCrop", resourceCulture);
+                return ResourceManager.GetString("ImageEditor_Crop_AspectRatioToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reversar.
+        ///   Busca una cadena traducida similar a Crop.
+        /// </summary>
+        internal static string ImageEditor_Crop_Button {
+            get {
+                return ResourceManager.GetString("ImageEditor_Crop_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crop Image.
+        /// </summary>
+        internal static string ImageEditor_Crop_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Crop_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Flip.
         /// </summary>
         internal static string ImageEditor_Flip {
             get {
@@ -1701,7 +1980,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reversar ambos.
+        ///   Busca una cadena traducida similar a Flip Both.
         /// </summary>
         internal static string ImageEditor_FlipBoth {
             get {
@@ -1710,7 +1989,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reversar horizontal.
+        ///   Busca una cadena traducida similar a Flip Horizontal.
         /// </summary>
         internal static string ImageEditor_FlipHorizontal {
             get {
@@ -1719,7 +1998,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reversar vertical.
+        ///   Busca una cadena traducida similar a Flip Vertical.
         /// </summary>
         internal static string ImageEditor_FlipVertical {
             get {
@@ -1728,7 +2007,34 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Opacidad.
+        ///   Busca una cadena traducida similar a Flip None.
+        /// </summary>
+        internal static string ImageEditor_Flip_None {
+            get {
+                return ResourceManager.GetString("ImageEditor_Flip_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Flip.
+        /// </summary>
+        internal static string ImageEditor_Flip_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Flip_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Insert Image.
+        /// </summary>
+        internal static string ImageEditor_InsertImage_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_InsertImage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Opacity.
         /// </summary>
         internal static string ImageEditor_Opacity {
             get {
@@ -1737,7 +2043,70 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cambiar tamaño.
+        ///   Busca una cadena traducida similar a Enter a value between 0 and 100%.
+        /// </summary>
+        internal static string ImageEditor_Opacity_TextboxToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Opacity_TextboxToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Opacity.
+        /// </summary>
+        internal static string ImageEditor_Opacity_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Opacity_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Print Image.
+        /// </summary>
+        internal static string ImageEditor_Print {
+            get {
+                return ResourceManager.GetString("ImageEditor_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Print.
+        /// </summary>
+        internal static string ImageEditor_Print_Button {
+            get {
+                return ResourceManager.GetString("ImageEditor_Print_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Print Image.
+        /// </summary>
+        internal static string ImageEditor_Print_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Print_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Redo.
+        /// </summary>
+        internal static string ImageEditor_Redo {
+            get {
+                return ResourceManager.GetString("ImageEditor_Redo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Restore Image.
+        /// </summary>
+        internal static string ImageEditor_Reset {
+            get {
+                return ResourceManager.GetString("ImageEditor_Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resize.
         /// </summary>
         internal static string ImageEditor_Resize {
             get {
@@ -1746,16 +2115,61 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reestablecer imagen.
+        ///   Busca una cadena traducida similar a Resize.
         /// </summary>
-        internal static string ImageEditor_RestoreImage {
+        internal static string ImageEditor_Resize_Button {
             get {
-                return ResourceManager.GetString("ImageEditor_RestoreImage", resourceCulture);
+                return ResourceManager.GetString("ImageEditor_Resize_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rotar.
+        ///   Busca una cadena traducida similar a Percentage.
+        /// </summary>
+        internal static string ImageEditor_Resize_Percentage {
+            get {
+                return ResourceManager.GetString("ImageEditor_Resize_Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Percentage of original Width x Height [0,100%].
+        /// </summary>
+        internal static string ImageEditor_Resize_PercentageToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Resize_PercentageToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Preset Sizes.
+        /// </summary>
+        internal static string ImageEditor_Resize_PresetSizes {
+            get {
+                return ResourceManager.GetString("ImageEditor_Resize_PresetSizes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select Preset Width x Height.
+        /// </summary>
+        internal static string ImageEditor_Resize_PresetSizesToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Resize_PresetSizesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resize.
+        /// </summary>
+        internal static string ImageEditor_Resize_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Resize_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rotate.
         /// </summary>
         internal static string ImageEditor_Rotate {
             get {
@@ -1764,7 +2178,43 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Guardar.
+        ///   Busca una cadena traducida similar a Rotate Left by 90 degrees.
+        /// </summary>
+        internal static string ImageEditor_RotateLeft {
+            get {
+                return ResourceManager.GetString("ImageEditor_RotateLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rotate Right by 90 degrees.
+        /// </summary>
+        internal static string ImageEditor_RotateRight {
+            get {
+                return ResourceManager.GetString("ImageEditor_RotateRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select a rotation angle.
+        /// </summary>
+        internal static string ImageEditor_Rotate_DropDownToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Rotate_DropDownToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rotate.
+        /// </summary>
+        internal static string ImageEditor_Rotate_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Rotate_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save.
         /// </summary>
         internal static string ImageEditor_Save {
             get {
@@ -1773,7 +2223,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Guardar como....
+        ///   Busca una cadena traducida similar a Save As....
         /// </summary>
         internal static string ImageEditor_SaveAs {
             get {
@@ -1782,16 +2232,142 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño actual.
+        ///   Busca una cadena traducida similar a Download Image.
         /// </summary>
-        internal static string ImageManager_ActualSize {
+        internal static string ImageEditor_Save_ClientRadioText {
             get {
-                return ResourceManager.GetString("ImageManager_ActualSize", resourceCulture);
+                return ResourceManager.GetString("ImageEditor_Save_ClientRadioText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, especifique el alto o ancho del thumbnail..
+        ///   Busca una cadena traducida similar a File Name.
+        /// </summary>
+        internal static string ImageEditor_Save_FileNameLabel {
+            get {
+                return ResourceManager.GetString("ImageEditor_Save_FileNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter File Name.
+        /// </summary>
+        internal static string ImageEditor_Save_FileNameToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Save_FileNameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save Image on Server.
+        /// </summary>
+        internal static string ImageEditor_Save_ServerRadioText {
+            get {
+                return ResourceManager.GetString("ImageEditor_Save_ServerRadioText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save Image.
+        /// </summary>
+        internal static string ImageEditor_Save_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Save_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Last Action.
+        /// </summary>
+        internal static string ImageEditor_StatusBar_LastAction {
+            get {
+                return ResourceManager.GetString("ImageEditor_StatusBar_LastAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pos..
+        /// </summary>
+        internal static string ImageEditor_StatusBar_Position {
+            get {
+                return ResourceManager.GetString("ImageEditor_StatusBar_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Size.
+        /// </summary>
+        internal static string ImageEditor_StatusBar_Size {
+            get {
+                return ResourceManager.GetString("ImageEditor_StatusBar_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Zoom.
+        /// </summary>
+        internal static string ImageEditor_StatusBar_Zoom {
+            get {
+                return ResourceManager.GetString("ImageEditor_StatusBar_Zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Undo.
+        /// </summary>
+        internal static string ImageEditor_Undo {
+            get {
+                return ResourceManager.GetString("ImageEditor_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Zoom.
+        /// </summary>
+        internal static string ImageEditor_Zoom {
+            get {
+                return ResourceManager.GetString("ImageEditor_Zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Zoom to 100%.
+        /// </summary>
+        internal static string ImageEditor_Zoom_ActualSizeToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Zoom_ActualSizeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fit image in editable area.
+        /// </summary>
+        internal static string ImageEditor_Zoom_BestFitToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Zoom_BestFitToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter a value between 0 and 100%.
+        /// </summary>
+        internal static string ImageEditor_Zoom_TextboxToolTip {
+            get {
+                return ResourceManager.GetString("ImageEditor_Zoom_TextboxToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Zoom.
+        /// </summary>
+        internal static string ImageEditor_Zoom_Title {
+            get {
+                return ResourceManager.GetString("ImageEditor_Zoom_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please, provide either thumbnail width or thumbnail height..
         /// </summary>
         internal static string ImageManager_AlertDimensions {
             get {
@@ -1800,7 +2376,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique una altura válido para la imagen..
+        ///   Busca una cadena traducida similar a Please, provide valid image height..
         /// </summary>
         internal static string ImageManager_AlertHeight {
             get {
@@ -1809,7 +2385,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique un ancho válido para la imagen..
+        ///   Busca una cadena traducida similar a Please, provide valid image width..
         /// </summary>
         internal static string ImageManager_AlertWidth {
             get {
@@ -1818,16 +2394,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ajuste perfecto.
-        /// </summary>
-        internal static string ImageManager_BestFit {
-            get {
-                return ResourceManager.GetString("ImageManager_BestFit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Manejador de imágenes.
+        ///   Busca una cadena traducida similar a Image Manager.
         /// </summary>
         internal static string ImageManager_Title {
             get {
@@ -1836,25 +2403,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ver más grande.
-        /// </summary>
-        internal static string ImageManager_ZoomIn {
-            get {
-                return ResourceManager.GetString("ImageManager_ZoomIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Ver más pequeño.
-        /// </summary>
-        internal static string ImageManager_ZoomOut {
-            get {
-                return ResourceManager.GetString("ImageManager_ZoomOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Está seguro que desea eliminar TODAS las áreas.
+        ///   Busca una cadena traducida similar a Are you sure you want to delete ALL areas..
         /// </summary>
         internal static string ImageMap_AlertDeleteAllAreas {
             get {
@@ -1863,7 +2412,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Está seguro que desea eliminar ésta área.
+        ///   Busca una cadena traducida similar a Are you sure you want to delete this area..
         /// </summary>
         internal static string ImageMap_AlertDeleteArea {
             get {
@@ -1872,7 +2421,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de área inválidas.  Por favor indique la URL..
+        ///   Busca una cadena traducida similar a Invalid Area Properties. Please enter url..
         /// </summary>
         internal static string ImageMap_AlertInvalidAreaProperties {
             get {
@@ -1881,7 +2430,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¡Propiedades inválidas!.
+        ///   Busca una cadena traducida similar a Invalid Properties!.
         /// </summary>
         internal static string ImageMap_AlertInvalidProperties {
             get {
@@ -1890,7 +2439,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Dimensiones de área inválidas.  Saltando ésta área..
+        ///   Busca una cadena traducida similar a Wrong area dimensions detected. Skipping this area..
         /// </summary>
         internal static string ImageMap_AlertWrongAreaDimensions {
             get {
@@ -1899,7 +2448,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades del área seleccionada.
+        ///   Busca una cadena traducida similar a Selected Area Properties.
         /// </summary>
         internal static string ImageMap_AreaFieldSet {
             get {
@@ -1908,7 +2457,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Elegir imagen.
+        ///   Busca una cadena traducida similar a Choose Image.
         /// </summary>
         internal static string ImageMap_ChooseImage {
             get {
@@ -1917,7 +2466,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Círculo.
+        ///   Busca una cadena traducida similar a Circle.
         /// </summary>
         internal static string ImageMap_Circle {
             get {
@@ -1926,7 +2475,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto alterno.
+        ///   Busca una cadena traducida similar a Alt Text.
         /// </summary>
         internal static string ImageMap_Comment {
             get {
@@ -1935,7 +2484,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Definir propiedades del área.
+        ///   Busca una cadena traducida similar a Define Area Properties.
         /// </summary>
         internal static string ImageMap_DefineAreaPropertiesLegend {
             get {
@@ -1944,7 +2493,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Puede arrastrar sobre la imagen para crear una nueva área..
+        ///   Busca una cadena traducida similar a You can drag over the image to create a new Area..
         /// </summary>
         internal static string ImageMap_HowToAdd {
             get {
@@ -1953,16 +2502,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Imagen Src.
-        /// </summary>
-        internal static string ImageMap_ImageSrc {
-            get {
-                return ResourceManager.GetString("ImageMap_ImageSrc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Nueva área.
+        ///   Busca una cadena traducida similar a New Area.
         /// </summary>
         internal static string ImageMap_NewArea {
             get {
@@ -1971,7 +2511,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Polígono.
+        ///   Busca una cadena traducida similar a Polygon.
         /// </summary>
         internal static string ImageMap_Polygon {
             get {
@@ -1980,7 +2520,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rectángulo.
+        ///   Busca una cadena traducida similar a Rectangle.
         /// </summary>
         internal static string ImageMap_Rectangle {
             get {
@@ -1989,7 +2529,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Remover todos.
+        ///   Busca una cadena traducida similar a Remove All.
         /// </summary>
         internal static string ImageMap_RemoveAllAreas {
             get {
@@ -1998,7 +2538,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Remover área.
+        ///   Busca una cadena traducida similar a Remove Area.
         /// </summary>
         internal static string ImageMap_RemoveArea {
             get {
@@ -2007,7 +2547,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Seleccionar figura de área.
+        ///   Busca una cadena traducida similar a Select Area Shape.
         /// </summary>
         internal static string ImageMap_SelectAreaShape {
             get {
@@ -2016,7 +2556,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor seleccione una imagen para poder crear un mapa de imágenes..
+        ///   Busca una cadena traducida similar a Please choose an image in order to create image map..
         /// </summary>
         internal static string ImageMap_SelectImage {
             get {
@@ -2025,7 +2565,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Arrastre la esquina inferior derecha para cambiar el tamaño del área..
+        ///   Busca una cadena traducida similar a Drag the bottom right corner to resize the Area..
         /// </summary>
         internal static string ImageMap_ShapeAlt {
             get {
@@ -2034,7 +2574,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Actualizar área.
+        ///   Busca una cadena traducida similar a Update Area.
         /// </summary>
         internal static string ImageMap_UpdateArea {
             get {
@@ -2043,7 +2583,88 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancla.
+        ///   Busca una cadena traducida similar a Advanced Mode.
+        /// </summary>
+        internal static string InsertExternalVideo_AdvancedMode {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_AdvancedMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Aspect ratio.
+        /// </summary>
+        internal static string InsertExternalVideo_AspectRatio {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_AspectRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Play the video automatically on load.
+        /// </summary>
+        internal static string InsertExternalVideo_AutoplaySetting {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_AutoplaySetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Embed code.
+        /// </summary>
+        internal static string InsertExternalVideo_EmbedCode {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_EmbedCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Embed video settings.
+        /// </summary>
+        internal static string InsertExternalVideo_EmbedVideoSettings {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_EmbedVideoSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enable fullscreen button.
+        /// </summary>
+        internal static string InsertExternalVideo_FullscreenSetting {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_FullscreenSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Paste Youtube or Vimeo video URL.
+        /// </summary>
+        internal static string InsertExternalVideo_PasteVideoURL {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_PasteVideoURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enable privacy-enhanced mode.
+        /// </summary>
+        internal static string InsertExternalVideo_PrivacySetting {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_PrivacySetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Display title before video starts playing.
+        /// </summary>
+        internal static string InsertExternalVideo_ShowTitleSetting {
+            get {
+                return ResourceManager.GetString("InsertExternalVideo_ShowTitleSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Anchor.
         /// </summary>
         internal static string LinkManager_AnchorTab {
             get {
@@ -2061,7 +2682,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancla existente.
+        ///   Busca una cadena traducida similar a Existing Anchor.
         /// </summary>
         internal static string LinkManager_ExistingAnchor {
             get {
@@ -2070,7 +2691,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enlace.
+        ///   Busca una cadena traducida similar a Hyperlink.
         /// </summary>
         internal static string LinkManager_HyperlinkTab {
             get {
@@ -2079,7 +2700,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Dirección.
+        ///   Busca una cadena traducida similar a Address.
         /// </summary>
         internal static string LinkManager_LinkAddress {
             get {
@@ -2088,7 +2709,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nombre.
+        ///   Busca una cadena traducida similar a Name.
         /// </summary>
         internal static string LinkManager_LinkName {
             get {
@@ -2097,7 +2718,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Asunto.
+        ///   Busca una cadena traducida similar a Subject.
         /// </summary>
         internal static string LinkManager_LinkSubject {
             get {
@@ -2106,7 +2727,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Destino.
+        ///   Busca una cadena traducida similar a Target.
         /// </summary>
         internal static string LinkManager_LinkTarget {
             get {
@@ -2115,7 +2736,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto del enlace.
+        ///   Busca una cadena traducida similar a Link Text.
         /// </summary>
         internal static string LinkManager_LinkText {
             get {
@@ -2133,7 +2754,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tipo.
+        ///   Busca una cadena traducida similar a Type.
         /// </summary>
         internal static string LinkManager_LinkType {
             get {
@@ -2151,7 +2772,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a otro.
+        ///   Busca una cadena traducida similar a other.
         /// </summary>
         internal static string LinkManager_Other {
             get {
@@ -2160,7 +2781,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Manejador de enlaces.
+        ///   Busca una cadena traducida similar a Hyperlink Manager.
         /// </summary>
         internal static string LinkManager_Title {
             get {
@@ -2169,7 +2790,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, especifique un valor válido para la propiedad..
+        ///   Busca una cadena traducida similar a Please, provide valid property value!.
         /// </summary>
         internal static string MediaManager_AlertValue {
             get {
@@ -2178,7 +2799,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique el ancho y algo del archivo de medios..
+        ///   Busca una cadena traducida similar a Please, provide width and height of the media file!.
         /// </summary>
         internal static string MediaManager_AlertWidthHeight {
             get {
@@ -2187,7 +2808,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alinear.
+        ///   Busca una cadena traducida similar a Align.
         /// </summary>
         internal static string MediaManager_Align {
             get {
@@ -2196,7 +2817,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si el tamaño de presentación se puede cambiar..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the display size can be changed..
         /// </summary>
         internal static string MediaManager_AllowChangeDisplaySize {
             get {
@@ -2205,7 +2826,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si el escaneo está activado para archivos que lo soporten (avanzar y retroceder)..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether scanning is enabled for files that support scanning (fast-forwarding and rewinding)..
         /// </summary>
         internal static string MediaManager_AllowScan {
             get {
@@ -2214,7 +2835,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si la animación comienza antes de mostrar la primera imagen..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether animation runs before the first image displays..
         /// </summary>
         internal static string MediaManager_AnimationAtStart {
             get {
@@ -2223,7 +2844,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cursor estándar y reloj de arena pequeño.
+        ///   Busca una cadena traducida similar a Standard arrow and small hourglass.
         /// </summary>
         internal static string MediaManager_Arrowhourglass {
             get {
@@ -2232,7 +2853,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica el número del flujo de audio actual..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the stream number of the current audio stream..
         /// </summary>
         internal static string MediaManager_AudioStream {
             get {
@@ -2241,7 +2862,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si el control de Windows Media Player automáticamente regresa al punto inicial del video luego de que el video termine de tocar o haya terminado..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control automatically returns to the clip&apos;s starting point after the clip finishes playing or has otherwise stopped..
         /// </summary>
         internal static string MediaManager_AutoRewind {
             get {
@@ -2250,7 +2871,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si el control de Windows Media Player ajusta el tamaño del contenido actual de manera automática al tamaño especificado por la propiedad &lt;B&gt;DisplaySize&lt;/B&gt;..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control automatically resizes to accommodate the current media item at the size specified by the &lt;B&gt;DisplaySize&lt;/B&gt; property..
         /// </summary>
         internal static string MediaManager_AutoSize {
             get {
@@ -2259,7 +2880,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si debe de tocar el clip automáticamente..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether to start playing the clip automatically..
         /// </summary>
         internal static string MediaManager_AutoStart {
             get {
@@ -2268,7 +2889,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica el balance de estéreo..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating the stereo balance..
         /// </summary>
         internal static string MediaManager_Balance {
             get {
@@ -2277,7 +2898,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Línea de base.
+        ///   Busca una cadena traducida similar a Baseline.
         /// </summary>
         internal static string MediaManager_Baseline {
             get {
@@ -2286,7 +2907,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Bottom.
         /// </summary>
         internal static string MediaManager_Bottom {
             get {
@@ -2295,7 +2916,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Subtítulo2.
+        ///   Busca una cadena traducida similar a Caption2.
         /// </summary>
         internal static string MediaManager_Caption2 {
             get {
@@ -2304,7 +2925,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si los subtítulos están encendidos o apagados..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether closed captioning is on or off..
         /// </summary>
         internal static string MediaManager_CCActive {
             get {
@@ -2313,7 +2934,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica si el usuario puede encender o apagar la reproducción de video haciéndole clic al video..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the user can toggle playback on and off by clicking the video image..
         /// </summary>
         internal static string MediaManager_ClickToPlay {
             get {
@@ -2322,7 +2943,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve la clave de color utilizada para reproducción de DVD..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the color key being used by the DVD playback..
         /// </summary>
         internal static string MediaManager_ColorKey {
             get {
@@ -2331,7 +2952,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Retícula en cruz.
+        ///   Busca una cadena traducida similar a Crosshair.
         /// </summary>
         internal static string MediaManager_Crosshair {
             get {
@@ -2340,7 +2961,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un número que identifica el ángulo actual de la cámara..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a number identifying the current camera angle..
         /// </summary>
         internal static string MediaManager_CurrentAngle {
             get {
@@ -2349,7 +2970,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un número que identifica el flujo de audio actual..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating the current audio stream..
         /// </summary>
         internal static string MediaManager_CurrentAudioStream {
             get {
@@ -2358,7 +2979,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que identifica el servicio de subtítulos actual..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating the current closed captioning service..
         /// </summary>
         internal static string MediaManager_CurrentCCService {
             get {
@@ -2367,7 +2988,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve el número del marcador actual..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the current marker number..
         /// </summary>
         internal static string MediaManager_CurrentMarker {
             get {
@@ -2376,7 +2997,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve la posición actual del clip en segundos..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the clip&apos;s current position, in seconds..
         /// </summary>
         internal static string MediaManager_CurrentPosition {
             get {
@@ -2385,7 +3006,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que indica el flujo de subimagenes actual..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating the current subpicture stream..
         /// </summary>
         internal static string MediaManager_CurrentSubpictureStream {
             get {
@@ -2394,7 +3015,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve el tipo de cursor..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the cursor type..
         /// </summary>
         internal static string MediaManager_CursorType {
             get {
@@ -2403,7 +3024,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Personalizado.
+        ///   Busca una cadena traducida similar a Custom.
         /// </summary>
         internal static string MediaManager_Custom {
             get {
@@ -2412,7 +3033,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Personalizado -.
+        ///   Busca una cadena traducida similar a Custom -.
         /// </summary>
         internal static string MediaManager_Customh {
             get {
@@ -2421,7 +3042,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Predeterminado. Subtítulo1.
+        ///   Busca una cadena traducida similar a Default. Caption1.
         /// </summary>
         internal static string MediaManager_DefaultCaption1 {
             get {
@@ -2430,7 +3051,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve un valor que representa el marco HTTP predeterminado..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value representing the default target HTTP frame..
         /// </summary>
         internal static string MediaManager_DefaultFrame {
             get {
@@ -2439,7 +3060,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &lt;br /&gt;&lt;b&gt;Descripción: &lt;/b&gt;.
+        ///   Busca una cadena traducida similar a &lt;br /&gt;&lt;b&gt;Description: &lt;/b&gt;.
         /// </summary>
         internal static string MediaManager_Description {
             get {
@@ -2448,7 +3069,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño  especificado en tiempo de diseño.
+        ///   Busca una cadena traducida similar a Size specified at design time.
         /// </summary>
         internal static string MediaManager_DesignTime {
             get {
@@ -2457,7 +3078,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve el color de fondo del panel de visualización..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the background color of the display panel..
         /// </summary>
         internal static string MediaManager_DisplayBackColor {
             get {
@@ -2466,7 +3087,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o devuelve el color de frente del panel de visualización..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the foreground color of the display panel..
         /// </summary>
         internal static string MediaManager_DisplayForeColor {
             get {
@@ -2475,7 +3096,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de estado despliega la posición actual en segundos (Si) o en fotogramas (No)..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the status bar displays the current position in seconds (Yes) or frames (No)..
         /// </summary>
         internal static string MediaManager_DisplayMode {
             get {
@@ -2484,7 +3105,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el tamaño de la ventana de visualización de imágenes..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the size of the image display window..
         /// </summary>
         internal static string MediaManager_DisplaySize {
             get {
@@ -2493,7 +3114,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha de doble orientación NE-SO.
+        ///   Busca una cadena traducida similar a Double-pointed arrow NE-SW.
         /// </summary>
         internal static string MediaManager_DoublepointedNESW {
             get {
@@ -2502,7 +3123,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha de doble orientación N-S.
+        ///   Busca una cadena traducida similar a Double-pointed arrow N-S.
         /// </summary>
         internal static string MediaManager_DoublepointedNS {
             get {
@@ -2511,7 +3132,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha de doble orientación NO-SE.
+        ///   Busca una cadena traducida similar a Double-pointed arrow NW-SE.
         /// </summary>
         internal static string MediaManager_DoublepointedNWSE {
             get {
@@ -2520,7 +3141,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha de doble orientación O-E.
+        ///   Busca una cadena traducida similar a Double-pointed arrow pointing W-E.
         /// </summary>
         internal static string MediaManager_DoublepointedWE {
             get {
@@ -2529,7 +3150,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Duplica el tamaño de la imagen original.
+        ///   Busca una cadena traducida similar a Double the dimensions of the source image.
         /// </summary>
         internal static string MediaManager_DoubleSourceImage {
             get {
@@ -2538,7 +3159,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el menú contextual se muestra cuando el usuario hace clic con el botón derecho del ratón..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the context menu appears when the user clicks the right mouse button..
         /// </summary>
         internal static string MediaManager_EnableContextMenu {
             get {
@@ -2547,7 +3168,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control de Windows Media Player está habilitado..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control is enabled..
         /// </summary>
         internal static string MediaManager_Enabled {
             get {
@@ -2556,7 +3177,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control de Windows Media Player despliega los controles cuando está en modo de pantalla completa..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether Windows Media Player displays controls in full-screen mode..
         /// </summary>
         internal static string MediaManager_EnableFullScreenControls {
             get {
@@ -2565,7 +3186,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si los controles de posicionamiento están habilitados en la barra de control..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the position controls are enabled on the control bar..
         /// </summary>
         internal static string MediaManager_EnablePositionControls {
             get {
@@ -2574,7 +3195,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de deslizamiento está habilitada..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the trackbar control is enabled..
         /// </summary>
         internal static string MediaManager_EnableTracker {
             get {
@@ -2583,7 +3204,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño de la pantalla completa.
+        ///   Busca una cadena traducida similar a Size of the entire screen.
         /// </summary>
         internal static string MediaManager_EntireScreen {
             get {
@@ -2592,7 +3213,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Servicio de Datos Extendido (XDS).
+        ///   Busca una cadena traducida similar a Extended Data Services (XDS).
         /// </summary>
         internal static string MediaManager_ExtendedDataServices {
             get {
@@ -2601,7 +3222,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha de cuatro puntas.
+        ///   Busca una cadena traducida similar a Four-pointed arrow.
         /// </summary>
         internal static string MediaManager_Fourpointedarrow {
             get {
@@ -2610,7 +3231,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a La mitad del tamaño de la pantalla.
+        ///   Busca una cadena traducida similar a Half the size of the screen.
         /// </summary>
         internal static string MediaManager_HalfScreen {
             get {
@@ -2619,7 +3240,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancho y altura son la mitad de la imagen original.
+        ///   Busca una cadena traducida similar a W and H are one-half of the source image.
         /// </summary>
         internal static string MediaManager_HalfSourceImage {
             get {
@@ -2628,7 +3249,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mano señalando con el dedo índice.
+        ///   Busca una cadena traducida similar a Hand with pointing index finger.
         /// </summary>
         internal static string MediaManager_Handpointing {
             get {
@@ -2637,7 +3258,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el reproductor de medios está visible en el navegador..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the player is visible in the browser..
         /// </summary>
         internal static string MediaManager_Hidden {
             get {
@@ -2646,7 +3267,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Reloj de arena.
+        ///   Busca una cadena traducida similar a Hourglass.
         /// </summary>
         internal static string MediaManager_Hourglass {
             get {
@@ -2655,7 +3276,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control de Windows Media Player invoca URLs en un navegador de manera automática (URL flipping)..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control automatically invokes URLs in a browser (URL flipping)..
         /// </summary>
         internal static string MediaManager_InvokeURLs {
             get {
@@ -2664,7 +3285,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica la localidad actual utilizada para el soporte del idioma nacional..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating the current locale used for national language support..
         /// </summary>
         internal static string MediaManager_Language {
             get {
@@ -2673,7 +3294,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de la media.
+        ///   Busca una cadena traducida similar a Media Properties.
         /// </summary>
         internal static string MediaManager_MediaPropertiesLegend {
             get {
@@ -2682,7 +3303,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mitad.
+        ///   Busca una cadena traducida similar a Middle.
         /// </summary>
         internal static string MediaManager_Middle {
             get {
@@ -2691,7 +3312,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el estado del modo silencioso del control Windows Media Player..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the current mute state of the Windows Media Player control..
         /// </summary>
         internal static string MediaManager_Mute {
             get {
@@ -2700,7 +3321,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a N/D.
+        ///   Busca una cadena traducida similar a N/A.
         /// </summary>
         internal static string MediaManager_NA {
             get {
@@ -2709,7 +3330,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ninguno.
+        ///   Busca una cadena traducida similar a None.
         /// </summary>
         internal static string MediaManager_None {
             get {
@@ -2718,7 +3339,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a No hay flujo de subimagen.
+        ///   Busca una cadena traducida similar a There is no subpicture stream.
         /// </summary>
         internal static string MediaManager_Nosubpicturestream {
             get {
@@ -2727,7 +3348,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna la cantidad de veces que un clip se reproduce.
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the number of times a clip plays.
         /// </summary>
         internal static string MediaManager_PlayCount {
             get {
@@ -2736,7 +3357,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control de Windows Media Player esta en modo de vista previa..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether Windows Media Player is in preview mode..
         /// </summary>
         internal static string MediaManager_PreviewMode {
             get {
@@ -2745,7 +3366,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Un cuarto del tamaño de la pantalla.
+        ///   Busca una cadena traducida similar a One-quarter the size of the screen.
         /// </summary>
         internal static string MediaManager_QuarterScreen {
             get {
@@ -2754,7 +3375,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna la velocidad de reproducción del clip..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the playback rate of the clip..
         /// </summary>
         internal static string MediaManager_Rate {
             get {
@@ -2763,7 +3384,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecha.
+        ///   Busca una cadena traducida similar a Right.
         /// </summary>
         internal static string MediaManager_Right {
             get {
@@ -2772,7 +3393,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mismo tamaño que la imagen original.
+        ///   Busca una cadena traducida similar a Same size as the source image.
         /// </summary>
         internal static string MediaManager_Samesize {
             get {
@@ -2781,7 +3402,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el tiempo en el clip actual en el que se va a finalizar la reproducción. Esta propiedad no puede ser especificada o leída hasta que la propiedad &lt;B&gt;ReadyState&lt;/B&gt; (solo lectura) tenga un valor de 4..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the time within the current clip at which playback will stop. This property cannot be set or retrieved until the &lt;B&gt;ReadyState&lt;/B&gt; property (read-only) has a value of 4..
         /// </summary>
         internal static string MediaManager_SelectionEnd {
             get {
@@ -2790,7 +3411,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el tiempo en el clip actual en el que se va iniciar la reproducción..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the time within the current clip at which playback will begin..
         /// </summary>
         internal static string MediaManager_SelectionStart {
             get {
@@ -2799,7 +3420,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Seleccionar Propiedad.
+        ///   Busca una cadena traducida similar a Select Property.
         /// </summary>
         internal static string MediaManager_SelectProperty {
             get {
@@ -2808,7 +3429,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de error..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends error events..
         /// </summary>
         internal static string MediaManager_SendErrorEvents {
             get {
@@ -2817,7 +3438,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de teclado..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends keyboard events..
         /// </summary>
         internal static string MediaManager_SendKeyboardEvents {
             get {
@@ -2826,7 +3447,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de click de ratón..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends mouse click events..
         /// </summary>
         internal static string MediaManager_SendMouseClickEvents {
             get {
@@ -2835,7 +3456,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de movimientos de ratón..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends mouse move events..
         /// </summary>
         internal static string MediaManager_SendMouseMoveEvents {
             get {
@@ -2844,7 +3465,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de cambio de estado abierto..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends open state change events..
         /// </summary>
         internal static string MediaManager_SendOpenStateChangeEvents {
             get {
@@ -2853,7 +3474,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media envía eventos de cambio de estado de reproducción..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends play state change events..
         /// </summary>
         internal static string MediaManager_SendPlayStateChangeEvents {
             get {
@@ -2862,7 +3483,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor Windows Media envía eventos de advertencia..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control sends warning events..
         /// </summary>
         internal static string MediaManager_SendWarningEvents {
             get {
@@ -2871,7 +3492,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si los controles de audio aparecen en la barra de control..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the audio controls appear on the control bar..
         /// </summary>
         internal static string MediaManager_ShowAudioControls {
             get {
@@ -2880,7 +3501,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el área de subtítulos está visible y si los subtítulos están activados..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the closed caption area is visible and closed captioning is enabled..
         /// </summary>
         internal static string MediaManager_ShowCaptioning {
             get {
@@ -2889,7 +3510,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de control es visible..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the control bar is visible..
         /// </summary>
         internal static string MediaManager_ShowControls {
             get {
@@ -2898,7 +3519,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el panel de visualización está visible..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the display panel is visible..
         /// </summary>
         internal static string MediaManager_ShowDisplay {
             get {
@@ -2907,7 +3528,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de Ir A está visible..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Go To bar is visible..
         /// </summary>
         internal static string MediaManager_ShowGotoBar {
             get {
@@ -2916,7 +3537,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si los controles de posición aparecen en la barra de control..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the position controls appear on the control bar..
         /// </summary>
         internal static string MediaManager_ShowPositionControls {
             get {
@@ -2925,7 +3546,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de estado está visible..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the status bar is visible..
         /// </summary>
         internal static string MediaManager_ShowStatusBar {
             get {
@@ -2934,7 +3555,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la barra de pistas está visible..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the trackbar is visible..
         /// </summary>
         internal static string MediaManager_ShowTracker {
             get {
@@ -2943,7 +3564,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Un dieciseisavo del tamaño de la pantalla.
+        ///   Busca una cadena traducida similar a One-sixteenth the size of the screen.
         /// </summary>
         internal static string MediaManager_SixteenthScreen {
             get {
@@ -2952,7 +3573,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sector circular.
+        ///   Busca una cadena traducida similar a Slashed circle.
         /// </summary>
         internal static string MediaManager_SlashedCircle {
             get {
@@ -2961,7 +3582,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha estándar.
+        ///   Busca una cadena traducida similar a Standard arrow.
         /// </summary>
         internal static string MediaManager_Standardarrow {
             get {
@@ -2970,7 +3591,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El flujo es válido.
+        ///   Busca una cadena traducida similar a The stream is valid.
         /// </summary>
         internal static string MediaManager_Streamisvalid {
             get {
@@ -2979,7 +3600,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si la subimagen está siendo desplegada..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the subpicture is displayed..
         /// </summary>
         internal static string MediaManager_SubpictureOn {
             get {
@@ -2988,7 +3609,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto1.
+        ///   Busca una cadena traducida similar a Text1.
         /// </summary>
         internal static string MediaManager_Text1 {
             get {
@@ -2997,7 +3618,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Texto2.
+        ///   Busca una cadena traducida similar a Text2.
         /// </summary>
         internal static string MediaManager_Text2 {
             get {
@@ -3006,7 +3627,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cursor parpadeante de texto.
+        ///   Busca una cadena traducida similar a Text I-beam.
         /// </summary>
         internal static string MediaManager_TextIbeam {
             get {
@@ -3015,7 +3636,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tope del Texto.
+        ///   Busca una cadena traducida similar a TextTop.
         /// </summary>
         internal static string MediaManager_TextTop {
             get {
@@ -3024,7 +3645,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Gestor de Medios.
+        ///   Busca una cadena traducida similar a Media Manager.
         /// </summary>
         internal static string MediaManager_Title {
             get {
@@ -3033,7 +3654,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el control del Reproductor de Windows Media es transparente antes de comenzar a reproducir y después de finalizar la reproducción..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the Windows Media Player control is transparent before play begins and after play ends.
         /// </summary>
         internal static string MediaManager_TransparentAtStart {
             get {
@@ -3042,7 +3663,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique un valor entre cero y siete indicando el flujo actual de audio, ó 0xFFFFFFFF si no hay ningún flujo seleccionado..
+        ///   Busca una cadena traducida similar a Please, enter a value ranging from zero to seven indicating the current audio stream, or 0xFFFFFFFF if no stream is selected..
         /// </summary>
         internal static string MediaManager_ValidateAudio {
             get {
@@ -3051,7 +3672,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, especifique un valor numérico que corresponda a un LCID que identifique una localidad para soporte del idioma nacional..
+        ///   Busca una cadena traducida similar a Please, specify a numeric value that corresponds to an LCID identifying a locale for national language support..
         /// </summary>
         internal static string MediaManager_ValidateLCID {
             get {
@@ -3060,7 +3681,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique solo valores numéricos..
+        ///   Busca una cadena traducida similar a Please, enter only numeric values..
         /// </summary>
         internal static string MediaManager_ValidateNumber {
             get {
@@ -3069,7 +3690,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique un valor entre –10.00 y 10.00..
+        ///   Busca una cadena traducida similar a Please, enter a value ranging from –10.00 to 10.00..
         /// </summary>
         internal static string MediaManager_ValidateNumber10 {
             get {
@@ -3078,7 +3699,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, indique un valor entre –10,000 y 10,000..
+        ///   Busca una cadena traducida similar a Please, enter a value ranging from –10,000 to 10,000..
         /// </summary>
         internal static string MediaManager_ValidateNumber10000 {
             get {
@@ -3087,7 +3708,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, especifique un valor hexadecimal..
+        ///   Busca una cadena traducida similar a Please, specify a hexadecimal value..
         /// </summary>
         internal static string MediaManager_ValidateNumberHex {
             get {
@@ -3096,7 +3717,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Valor.
+        ///   Busca una cadena traducida similar a Value.
         /// </summary>
         internal static string MediaManager_Value {
             get {
@@ -3105,7 +3726,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Flecha vertical.
+        ///   Busca una cadena traducida similar a Vertical arrow.
         /// </summary>
         internal static string MediaManager_Verticalarrow {
             get {
@@ -3114,7 +3735,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna un valor que indica si el efecto tridimensional del borde del video esta activado..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves a value indicating whether the three-dimensional video border effect is enabled..
         /// </summary>
         internal static string MediaManager_VideoBorder3D {
             get {
@@ -3123,7 +3744,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el color del borde del video..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the color of the video border..
         /// </summary>
         internal static string MediaManager_VideoBorderColor {
             get {
@@ -3132,7 +3753,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el ancho del borde del video en píxeles..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the width of the video border, in pixels..
         /// </summary>
         internal static string MediaManager_VideoBorderWidth {
             get {
@@ -3141,7 +3762,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta propiedad especifica o retorna el volumen, en cientos de decibeles..
+        ///   Busca una cadena traducida similar a This property specifies or retrieves the volume, in hundredths of decibels..
         /// </summary>
         internal static string MediaManager_Volume {
             get {
@@ -3150,7 +3771,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Color de Fondo.
+        ///   Busca una cadena traducida similar a Back color.
         /// </summary>
         internal static string PageProperties_BackColor {
             get {
@@ -3159,7 +3780,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Posición Base.
+        ///   Busca una cadena traducida similar a Base location.
         /// </summary>
         internal static string PageProperties_BaseLocation {
             get {
@@ -3168,7 +3789,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Atributos de Body.
+        ///   Busca una cadena traducida similar a Body Attributes.
         /// </summary>
         internal static string PageProperties_BodyAttributes {
             get {
@@ -3177,7 +3798,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Margen Inferior.
+        ///   Busca una cadena traducida similar a Bottom Margin.
         /// </summary>
         internal static string PageProperties_BottomMargin {
             get {
@@ -3186,7 +3807,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nombre Class.
+        ///   Busca una cadena traducida similar a Class Name.
         /// </summary>
         internal static string PageProperties_ClassName {
             get {
@@ -3195,7 +3816,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Descripción.
+        ///   Busca una cadena traducida similar a Description.
         /// </summary>
         internal static string PageProperties_Description {
             get {
@@ -3204,7 +3825,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Palabras Claves.
+        ///   Busca una cadena traducida similar a Keywords.
         /// </summary>
         internal static string PageProperties_Keywords {
             get {
@@ -3213,7 +3834,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Margen Izquierdo.
+        ///   Busca una cadena traducida similar a Left Margin.
         /// </summary>
         internal static string PageProperties_LeftMargin {
             get {
@@ -3222,7 +3843,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Atributos de Página.
+        ///   Busca una cadena traducida similar a Page Attributes.
         /// </summary>
         internal static string PageProperties_PageAttributes {
             get {
@@ -3231,7 +3852,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Título de Página.
+        ///   Busca una cadena traducida similar a Page Title.
         /// </summary>
         internal static string PageProperties_PageTitle {
             get {
@@ -3240,7 +3861,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Margen Derecho.
+        ///   Busca una cadena traducida similar a Right Margin.
         /// </summary>
         internal static string PageProperties_RightMargin {
             get {
@@ -3249,7 +3870,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Margen Superior.
+        ///   Busca una cadena traducida similar a Top Margin.
         /// </summary>
         internal static string PageProperties_TopMargin {
             get {
@@ -3258,7 +3879,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, no elimine esta cadena. RadEditor la necesita para determinar si un archivo de recursos externos está presente en App_GlobalResources..
+        ///   Busca una cadena traducida similar a Please, do not delete this string. RadEditor needs it to determine if an external resource file is present in App_GlobalResources..
         /// </summary>
         internal static string ReservedResource {
             get {
@@ -3267,7 +3888,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Limitar.
+        ///   Busca una cadena traducida similar a Constrain.
         /// </summary>
         internal static string SetImageProperties_Constrain {
             get {
@@ -3276,7 +3897,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Espaciado Horizontal.
+        ///   Busca una cadena traducida similar a Horizontal Spacing.
         /// </summary>
         internal static string SetImageProperties_HorizontalSpacing {
             get {
@@ -3285,7 +3906,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alineación de Imágenes.
+        ///   Busca una cadena traducida similar a Image Alignment.
         /// </summary>
         internal static string SetImageProperties_ImageAlignment {
             get {
@@ -3294,7 +3915,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Imagen Src.
+        ///   Busca una cadena traducida similar a Image Src.
         /// </summary>
         internal static string SetImageProperties_ImageSrc {
             get {
@@ -3303,7 +3924,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Descripción larga.
+        ///   Busca una cadena traducida similar a Link to original.
+        /// </summary>
+        internal static string SetImageProperties_LinkToOriginal {
+            get {
+                return ResourceManager.GetString("SetImageProperties_LinkToOriginal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Long Description.
         /// </summary>
         internal static string SetImageProperties_LongDescription {
             get {
@@ -3312,7 +3942,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de la Imagen.
+        ///   Busca una cadena traducida similar a Open in a new window.
+        /// </summary>
+        internal static string SetImageProperties_OpenInNewWindow {
+            get {
+                return ResourceManager.GetString("SetImageProperties_OpenInNewWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Image Properties.
         /// </summary>
         internal static string SetImageProperties_Title {
             get {
@@ -3321,7 +3960,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Espaciado Vertical.
+        ///   Busca una cadena traducida similar a Vertical Spacing.
         /// </summary>
         internal static string SetImageProperties_VerticalSpacing {
             get {
@@ -3330,7 +3969,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Actualización Automática.
+        ///   Busca una cadena traducida similar a Auto Upgrade.
         /// </summary>
         internal static string SilverlightManager_AutoUpgrade {
             get {
@@ -3339,7 +3978,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Activar Acceso Html.
+        ///   Busca una cadena traducida similar a Enable Html Access.
         /// </summary>
         internal static string SilverlightManager_EnableHtmlAccess {
             get {
@@ -3348,7 +3987,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Version Mínima Runtime.
+        ///   Busca una cadena traducida similar a Min Runtime Version.
         /// </summary>
         internal static string SilverlightManager_MinVersion {
             get {
@@ -3357,7 +3996,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sin Ventanas.
+        ///   Busca una cadena traducida similar a Windowless.
         /// </summary>
         internal static string SilverlightManager_Windowless {
             get {
@@ -3366,7 +4005,1006 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Opciones de Accesibilidad.
+        ///   Busca una cadena traducida similar a Absolute.
+        /// </summary>
+        internal static string StyleBuilder_Absolute {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Absolute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Alignment.
+        /// </summary>
+        internal static string StyleBuilder_Alignment {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Alignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Allow floating objects.
+        /// </summary>
+        internal static string StyleBuilder_AllowFloatingObjects {
+            get {
+                return ResourceManager.GetString("StyleBuilder_AllowFloatingObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Allow text to flow.
+        /// </summary>
+        internal static string StyleBuilder_AllowTextToFlow {
+            get {
+                return ResourceManager.GetString("StyleBuilder_AllowTextToFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Always use scrollbars.
+        /// </summary>
+        internal static string StyleBuilder_AlwaysUseScrollbars {
+            get {
+                return ResourceManager.GetString("StyleBuilder_AlwaysUseScrollbars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Background.
+        /// </summary>
+        internal static string StyleBuilder_BackgroundTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_BackgroundTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Baseline.
+        /// </summary>
+        internal static string StyleBuilder_Baseline {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Baseline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a As a block element.
+        /// </summary>
+        internal static string StyleBuilder_Block {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bold.
+        /// </summary>
+        internal static string StyleBuilder_Bold {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Bold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bolder.
+        /// </summary>
+        internal static string StyleBuilder_Bolder {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Bolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Border.
+        /// </summary>
+        internal static string StyleBuilder_BorderTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_BorderTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Both.
+        /// </summary>
+        internal static string StyleBuilder_Both {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Both", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bulleted.
+        /// </summary>
+        internal static string StyleBuilder_Bulleted {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Bulleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bullets.
+        /// </summary>
+        internal static string StyleBuilder_Bullets {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Bullets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Capitalization.
+        /// </summary>
+        internal static string StyleBuilder_Capitalization {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Capitalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Capitalize.
+        /// </summary>
+        internal static string StyleBuilder_Capitalize {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Capitalize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Center.
+        /// </summary>
+        internal static string StyleBuilder_Center {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Circle.
+        /// </summary>
+        internal static string StyleBuilder_Circle {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Circle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Clipping.
+        /// </summary>
+        internal static string StyleBuilder_Clipping {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Clipping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Collapse.
+        /// </summary>
+        internal static string StyleBuilder_Collapse {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Collapse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Collapse border.
+        /// </summary>
+        internal static string StyleBuilder_CollapseBorder {
+            get {
+                return ResourceManager.GetString("StyleBuilder_CollapseBorder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Collapsed.
+        /// </summary>
+        internal static string StyleBuilder_Collapsed {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Collapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Color.
+        /// </summary>
+        internal static string StyleBuilder_Color {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Content.
+        /// </summary>
+        internal static string StyleBuilder_Content {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Content is clipped.
+        /// </summary>
+        internal static string StyleBuilder_ContentIsClipped {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ContentIsClipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Content is not clipped.
+        /// </summary>
+        internal static string StyleBuilder_ContentIsNotClipped {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ContentIsNotClipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Custom.
+        /// </summary>
+        internal static string StyleBuilder_Custom {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Custom bullet.
+        /// </summary>
+        internal static string StyleBuilder_CustomBullet {
+            get {
+                return ResourceManager.GetString("StyleBuilder_CustomBullet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dashed.
+        /// </summary>
+        internal static string StyleBuilder_Dashed {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Dashed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Disk.
+        /// </summary>
+        internal static string StyleBuilder_Disk {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Disk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Display.
+        /// </summary>
+        internal static string StyleBuilder_Display {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Display", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do not allow.
+        /// </summary>
+        internal static string StyleBuilder_DoNotAllow {
+            get {
+                return ResourceManager.GetString("StyleBuilder_DoNotAllow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do not use background image.
+        /// </summary>
+        internal static string StyleBuilder_DoNotUseBgrImage {
+            get {
+                return ResourceManager.GetString("StyleBuilder_DoNotUseBgrImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Don&apos;t allow text on sides.
+        /// </summary>
+        internal static string StyleBuilder_DontAllowTextOnSides {
+            get {
+                return ResourceManager.GetString("StyleBuilder_DontAllowTextOnSides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dotted.
+        /// </summary>
+        internal static string StyleBuilder_Dotted {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Dotted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Double line.
+        /// </summary>
+        internal static string StyleBuilder_DoubleLine {
+            get {
+                return ResourceManager.GetString("StyleBuilder_DoubleLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edges.
+        /// </summary>
+        internal static string StyleBuilder_EdgesTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_EdgesTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Effects.
+        /// </summary>
+        internal static string StyleBuilder_Effects {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Effects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fixed background.
+        /// </summary>
+        internal static string StyleBuilder_FixedBackground {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FixedBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Flow control.
+        /// </summary>
+        internal static string StyleBuilder_FlowControl {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FlowControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Font Attributes.
+        /// </summary>
+        internal static string StyleBuilder_FontAttributes {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FontAttributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Family.
+        /// </summary>
+        internal static string StyleBuilder_FontFamily {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Font Name.
+        /// </summary>
+        internal static string StyleBuilder_FontName {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FontName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Size.
+        /// </summary>
+        internal static string StyleBuilder_FontSize {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Font.
+        /// </summary>
+        internal static string StyleBuilder_FontTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_FontTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Groove.
+        /// </summary>
+        internal static string StyleBuilder_Groove {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Groove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hidden.
+        /// </summary>
+        internal static string StyleBuilder_Hidden {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Horizontal.
+        /// </summary>
+        internal static string StyleBuilder_Horizontal {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Horizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Image.
+        /// </summary>
+        internal static string StyleBuilder_Image {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Indentation.
+        /// </summary>
+        internal static string StyleBuilder_Indentation {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Indentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a As an inflow element.
+        /// </summary>
+        internal static string StyleBuilder_Inline {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Inline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inset.
+        /// </summary>
+        internal static string StyleBuilder_Inset {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Inset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inside (Text is not indented).
+        /// </summary>
+        internal static string StyleBuilder_Inside {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Inside", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Italics.
+        /// </summary>
+        internal static string StyleBuilder_Italics {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Italics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Justification.
+        /// </summary>
+        internal static string StyleBuilder_Justification {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Justification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Justify.
+        /// </summary>
+        internal static string StyleBuilder_Justify {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Justify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Larger.
+        /// </summary>
+        internal static string StyleBuilder_Larger {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Larger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Layout.
+        /// </summary>
+        internal static string StyleBuilder_LayoutTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_LayoutTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Left-to-right.
+        /// </summary>
+        internal static string StyleBuilder_LeftToRight {
+            get {
+                return ResourceManager.GetString("StyleBuilder_LeftToRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Letters.
+        /// </summary>
+        internal static string StyleBuilder_Letters {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Letters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lighter.
+        /// </summary>
+        internal static string StyleBuilder_Lighter {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Lighter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lines.
+        /// </summary>
+        internal static string StyleBuilder_Lines {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Lines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lists.
+        /// </summary>
+        internal static string StyleBuilder_ListsTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ListsTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lowercase.
+        /// </summary>
+        internal static string StyleBuilder_Lowercase {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Lowercase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Medium.
+        /// </summary>
+        internal static string StyleBuilder_Medium {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Medium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Middle.
+        /// </summary>
+        internal static string StyleBuilder_Middle {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Middle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Normal.
+        /// </summary>
+        internal static string StyleBuilder_Normal {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Normal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &amp;lt;Not Set&amp;gt;.
+        /// </summary>
+        internal static string StyleBuilder_NotSet {
+            get {
+                return ResourceManager.GetString("StyleBuilder_NotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a On either side.
+        /// </summary>
+        internal static string StyleBuilder_OnEitherSide {
+            get {
+                return ResourceManager.GetString("StyleBuilder_OnEitherSide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Only on left.
+        /// </summary>
+        internal static string StyleBuilder_OnlyOnLeft {
+            get {
+                return ResourceManager.GetString("StyleBuilder_OnlyOnLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Only on right.
+        /// </summary>
+        internal static string StyleBuilder_OnlyOnRight {
+            get {
+                return ResourceManager.GetString("StyleBuilder_OnlyOnRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Outset.
+        /// </summary>
+        internal static string StyleBuilder_Outset {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Outset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Outside (Text is indented in).
+        /// </summary>
+        internal static string StyleBuilder_Outside {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Outside", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Overflow.
+        /// </summary>
+        internal static string StyleBuilder_Overflow {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Overflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Overline.
+        /// </summary>
+        internal static string StyleBuilder_Overline {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Overline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Padding.
+        /// </summary>
+        internal static string StyleBuilder_Padding {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Padding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Position.
+        /// </summary>
+        internal static string StyleBuilder_Position {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Relative.
+        /// </summary>
+        internal static string StyleBuilder_Relative {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Relative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ridge.
+        /// </summary>
+        internal static string StyleBuilder_Ridge {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Ridge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Right-to-left.
+        /// </summary>
+        internal static string StyleBuilder_RightToLeft {
+            get {
+                return ResourceManager.GetString("StyleBuilder_RightToLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Same for all.
+        /// </summary>
+        internal static string StyleBuilder_SameForAll {
+            get {
+                return ResourceManager.GetString("StyleBuilder_SameForAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Scrolling.
+        /// </summary>
+        internal static string StyleBuilder_Scrolling {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Scrolling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Scrolling background.
+        /// </summary>
+        internal static string StyleBuilder_ScrollingBackground {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ScrollingBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Small caps.
+        /// </summary>
+        internal static string StyleBuilder_SmallCaps {
+            get {
+                return ResourceManager.GetString("StyleBuilder_SmallCaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Smaller.
+        /// </summary>
+        internal static string StyleBuilder_Smaller {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Smaller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Solid line.
+        /// </summary>
+        internal static string StyleBuilder_SolidLine {
+            get {
+                return ResourceManager.GetString("StyleBuilder_SolidLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Spacing between.
+        /// </summary>
+        internal static string StyleBuilder_SpacingBetween {
+            get {
+                return ResourceManager.GetString("StyleBuilder_SpacingBetween", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Specific.
+        /// </summary>
+        internal static string StyleBuilder_Specific {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Specific", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Square.
+        /// </summary>
+        internal static string StyleBuilder_Square {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Square", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Strikethrough.
+        /// </summary>
+        internal static string StyleBuilder_Strikethrough {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Strikethrough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Style.
+        /// </summary>
+        internal static string StyleBuilder_Style {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Style", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sub.
+        /// </summary>
+        internal static string StyleBuilder_Sub {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Sub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Super.
+        /// </summary>
+        internal static string StyleBuilder_Super {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Super", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Text-bottom.
+        /// </summary>
+        internal static string StyleBuilder_TextBottom {
+            get {
+                return ResourceManager.GetString("StyleBuilder_TextBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Text direction.
+        /// </summary>
+        internal static string StyleBuilder_TextDirection {
+            get {
+                return ResourceManager.GetString("StyleBuilder_TextDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Text flow.
+        /// </summary>
+        internal static string StyleBuilder_TextFlow {
+            get {
+                return ResourceManager.GetString("StyleBuilder_TextFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Text.
+        /// </summary>
+        internal static string StyleBuilder_TextTab {
+            get {
+                return ResourceManager.GetString("StyleBuilder_TextTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Text-top.
+        /// </summary>
+        internal static string StyleBuilder_TextTop {
+            get {
+                return ResourceManager.GetString("StyleBuilder_TextTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Thick.
+        /// </summary>
+        internal static string StyleBuilder_Thick {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Thick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Thin.
+        /// </summary>
+        internal static string StyleBuilder_Thin {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Thin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tiling.
+        /// </summary>
+        internal static string StyleBuilder_Tiling {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Tiling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a To the left.
+        /// </summary>
+        internal static string StyleBuilder_ToTheLeft {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ToTheLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a To the right.
+        /// </summary>
+        internal static string StyleBuilder_ToTheRight {
+            get {
+                return ResourceManager.GetString("StyleBuilder_ToTheRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Not bulleted.
+        /// </summary>
+        internal static string StyleBuilder_UnBulleted {
+            get {
+                return ResourceManager.GetString("StyleBuilder_UnBulleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Underline.
+        /// </summary>
+        internal static string StyleBuilder_Underline {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Underline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Uppercase.
+        /// </summary>
+        internal static string StyleBuilder_Uppercase {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Uppercase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Use scrollbars if needed.
+        /// </summary>
+        internal static string StyleBuilder_UseScrollbarsIfNeeded {
+            get {
+                return ResourceManager.GetString("StyleBuilder_UseScrollbarsIfNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Vertical.
+        /// </summary>
+        internal static string StyleBuilder_Vertical {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Vertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Visibility.
+        /// </summary>
+        internal static string StyleBuilder_Visibility {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Visibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Visible.
+        /// </summary>
+        internal static string StyleBuilder_Visible {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Words.
+        /// </summary>
+        internal static string StyleBuilder_Words {
+            get {
+                return ResourceManager.GetString("StyleBuilder_Words", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Accessibility Options.
         /// </summary>
         internal static string TableWizard_AccessibilityOptions {
             get {
@@ -3375,16 +5013,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Añadir Color Personalizado....
-        /// </summary>
-        internal static string TableWizard_AddCustomColor {
-            get {
-                return ResourceManager.GetString("TableWizard_AddCustomColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Añadir Color Hexadecimal....
+        ///   Busca una cadena traducida similar a Add Hex Color....
         /// </summary>
         internal static string TableWizard_AddHexColor {
             get {
@@ -3393,7 +5022,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Adicional.
+        ///   Busca una cadena traducida similar a Additional.
         /// </summary>
         internal static string TableWizard_Additional {
             get {
@@ -3402,7 +5031,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alineación.
+        ///   Busca una cadena traducida similar a Alignment.
         /// </summary>
         internal static string TableWizard_Alignment {
             get {
@@ -3411,7 +5040,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Los cuatro lados.
+        ///   Busca una cadena traducida similar a All four sides.
         /// </summary>
         internal static string TableWizard_AllFourSides {
             get {
@@ -3420,7 +5049,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Todas las filas y columnas.
+        ///   Busca una cadena traducida similar a All rows and columns.
         /// </summary>
         internal static string TableWizard_AllRowsAndColomns {
             get {
@@ -3429,7 +5058,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Aplicar formatos especiales a.
+        ///   Busca una cadena traducida similar a Apply special formats to.
         /// </summary>
         internal static string TableWizard_ApplySpecialFormatsTo {
             get {
@@ -3438,7 +5067,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Asociar las celdas con las cabeceras.
+        ///   Busca una cadena traducida similar a Associate cells with headers.
         /// </summary>
         internal static string TableWizard_AssociateCellsWithHeaders {
             get {
@@ -3447,16 +5076,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Fondo.
-        /// </summary>
-        internal static string TableWizard_Background {
-            get {
-                return ResourceManager.GetString("TableWizard_Background", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Línea de base.
+        ///   Busca una cadena traducida similar a Baseline.
         /// </summary>
         internal static string TableWizard_Baseline {
             get {
@@ -3465,7 +5085,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Entre todas las filas y columnas.
+        ///   Busca una cadena traducida similar a Between all rows and columns.
         /// </summary>
         internal static string TableWizard_Betweenall {
             get {
@@ -3474,7 +5094,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Entre columnas.
+        ///   Busca una cadena traducida similar a Between columns.
         /// </summary>
         internal static string TableWizard_BetweenColumns {
             get {
@@ -3483,7 +5103,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Between las filas y el grupo de columnas.
+        ///   Busca una cadena traducida similar a Between row and column group.
         /// </summary>
         internal static string TableWizard_Betweengroup {
             get {
@@ -3492,7 +5112,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Entre filas.
+        ///   Busca una cadena traducida similar a Between rows.
         /// </summary>
         internal static string TableWizard_BetweenRows {
             get {
@@ -3501,7 +5121,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Borde.
+        ///   Busca una cadena traducida similar a Border.
         /// </summary>
         internal static string TableWizard_Border {
             get {
@@ -3510,7 +5130,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abajo.
+        ///   Busca una cadena traducida similar a Bottom.
         /// </summary>
         internal static string TableWizard_Bottom {
             get {
@@ -3519,7 +5139,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sólo en el lado inferior.
+        ///   Busca una cadena traducida similar a Bottom side only.
         /// </summary>
         internal static string TableWizard_BottomSide {
             get {
@@ -3528,7 +5148,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Leyenda.
+        ///   Busca una cadena traducida similar a Caption.
         /// </summary>
         internal static string TableWizard_Caption {
             get {
@@ -3537,7 +5157,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alinear Leyenda.
+        ///   Busca una cadena traducida similar a Caption Align.
         /// </summary>
         internal static string TableWizard_CaptionAlign {
             get {
@@ -3546,7 +5166,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rellenado de Celdas.
+        ///   Busca una cadena traducida similar a Cell Padding.
         /// </summary>
         internal static string TableWizard_CellPadding {
             get {
@@ -3555,7 +5175,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Espaciamiento de Celdas.
+        ///   Busca una cadena traducida similar a Cell Spacing.
         /// </summary>
         internal static string TableWizard_CellSpacing {
             get {
@@ -3564,7 +5184,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Centrar.
+        ///   Busca una cadena traducida similar a Center.
         /// </summary>
         internal static string TableWizard_Center {
             get {
@@ -3573,7 +5193,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Columnas.
+        ///   Busca una cadena traducida similar a Columns.
         /// </summary>
         internal static string TableWizard_Columns {
             get {
@@ -3582,7 +5202,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Número de Columna y Extension de Columna.
+        ///   Busca una cadena traducida similar a Column Number and Column Span.
         /// </summary>
         internal static string TableWizard_ColumnSettings {
             get {
@@ -3591,7 +5211,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Extensión de Columna.
+        ///   Busca una cadena traducida similar a Column Span.
         /// </summary>
         internal static string TableWizard_ColumnSpan {
             get {
@@ -3600,7 +5220,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contenido.
+        ///   Busca una cadena traducida similar a Content.
         /// </summary>
         internal static string TableWizard_Content {
             get {
@@ -3609,7 +5229,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Alineación de Contenido.
+        ///   Busca una cadena traducida similar a Content Alignment.
         /// </summary>
         internal static string TableWizard_ContentAlignment {
             get {
@@ -3618,7 +5238,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Personalizado.
+        ///   Busca una cadena traducida similar a Custom.
         /// </summary>
         internal static string TableWizard_Custom {
             get {
@@ -3627,7 +5247,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Personalizado -.
+        ///   Busca una cadena traducida similar a Custom -.
         /// </summary>
         internal static string TableWizard_Customh {
             get {
@@ -3636,7 +5256,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Dimensiones.
+        ///   Busca una cadena traducida similar a Dimensions.
         /// </summary>
         internal static string TableWizard_Dimensions {
             get {
@@ -3645,7 +5265,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Primera Columna.
+        ///   Busca una cadena traducida similar a First Column.
         /// </summary>
         internal static string TableWizard_FirstColumn {
             get {
@@ -3654,7 +5274,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Marco.
+        ///   Busca una cadena traducida similar a Frame.
         /// </summary>
         internal static string TableWizard_Frame {
             get {
@@ -3663,7 +5283,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Columnas de cabecera.
+        ///   Busca una cadena traducida similar a Heading columns.
         /// </summary>
         internal static string TableWizard_HeadingColumns {
             get {
@@ -3672,7 +5292,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Fila cabecera.
+        ///   Busca una cadena traducida similar a Heading Row.
         /// </summary>
         internal static string TableWizard_HeadingRow {
             get {
@@ -3681,7 +5301,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Filas de cabecera.
+        ///   Busca una cadena traducida similar a Heading rows.
         /// </summary>
         internal static string TableWizard_HeadingRows {
             get {
@@ -3690,7 +5310,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cabeceras.
+        ///   Busca una cadena traducida similar a Headings.
         /// </summary>
         internal static string TableWizard_HeadingsLabel {
             get {
@@ -3708,7 +5328,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Altura de celdas incorrecta..
+        ///   Busca una cadena traducida similar a Invalid cell height..
         /// </summary>
         internal static string TableWizard_InvalidCellHeight {
             get {
@@ -3717,7 +5337,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancho de celdas incorrecta..
+        ///   Busca una cadena traducida similar a Invalid cell width..
         /// </summary>
         internal static string TableWizard_InvalidCellWidth {
             get {
@@ -3726,7 +5346,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Altura de tablas incorrecta..
+        ///   Busca una cadena traducida similar a Invalid table height..
         /// </summary>
         internal static string TableWizard_InvalidTableHeight {
             get {
@@ -3735,7 +5355,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ancho de tablas incorrecta..
+        ///   Busca una cadena traducida similar a Invalid table width..
         /// </summary>
         internal static string TableWizard_InvalidTableWidth {
             get {
@@ -3744,7 +5364,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ultima columna.
+        ///   Busca una cadena traducida similar a Last Column.
         /// </summary>
         internal static string TableWizard_LastColumn {
             get {
@@ -3753,7 +5373,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ultima fila.
+        ///   Busca una cadena traducida similar a Last Row.
         /// </summary>
         internal static string TableWizard_LastRow {
             get {
@@ -3762,7 +5382,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Disposición.
+        ///   Busca una cadena traducida similar a Layout.
         /// </summary>
         internal static string TableWizard_Layout {
             get {
@@ -3771,7 +5391,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sólo lados izquierdo y derecho.
+        ///   Busca una cadena traducida similar a Right and left sides only.
         /// </summary>
         internal static string TableWizard_LeftAndRightSide {
             get {
@@ -3780,7 +5400,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Lada izquierdo.
+        ///   Busca una cadena traducida similar a Left side.
         /// </summary>
         internal static string TableWizard_LeftSide {
             get {
@@ -3789,7 +5409,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Centro.
+        ///   Busca una cadena traducida similar a Middle.
         /// </summary>
         internal static string TableWizard_Middle {
             get {
@@ -3798,7 +5418,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sin bordes.
+        ///   Busca una cadena traducida similar a No borders.
         /// </summary>
         internal static string TableWizard_NoBorders {
             get {
@@ -3807,7 +5427,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sin Diseño de Clase CSS.
+        ///   Busca una cadena traducida similar a No CSS Class Layout.
         /// </summary>
         internal static string TableWizard_NoCSSClassLayout {
             get {
@@ -3816,7 +5436,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sin bordes interiores.
+        ///   Busca una cadena traducida similar a No interior borders.
         /// </summary>
         internal static string TableWizard_NoInteriorBorders {
             get {
@@ -3825,7 +5445,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a no ajuste el texto.
+        ///   Busca una cadena traducida similar a no text wrapping.
         /// </summary>
         internal static string TableWizard_NoTextWrapping {
             get {
@@ -3834,7 +5454,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a No Ajuste.
+        ///   Busca una cadena traducida similar a No Wrapping.
         /// </summary>
         internal static string TableWizard_NoWrapping {
             get {
@@ -3843,7 +5463,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Otras Opciones.
+        ///   Busca una cadena traducida similar a Other Options.
         /// </summary>
         internal static string TableWizard_OtherOptionsLabel {
             get {
@@ -3852,7 +5472,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a píxeles,%.
+        ///   Busca una cadena traducida similar a pixels, %.
         /// </summary>
         internal static string TableWizard_PixelsOrPercents {
             get {
@@ -3861,7 +5481,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor, introduzca el valor hexadecimal de color personalizado.
+        ///   Busca una cadena traducida similar a Please, provide the custom color HEX value.
         /// </summary>
         internal static string TableWizard_PromptColor {
             get {
@@ -3870,7 +5490,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Derecho.
+        ///   Busca una cadena traducida similar a Right.
         /// </summary>
         internal static string TableWizard_Right {
             get {
@@ -3879,7 +5499,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Solo el lado derecho.
+        ///   Busca una cadena traducida similar a Right-hand side only.
         /// </summary>
         internal static string TableWizard_RightSide {
             get {
@@ -3888,7 +5508,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Filas.
+        ///   Busca una cadena traducida similar a Rows.
         /// </summary>
         internal static string TableWizard_Rows {
             get {
@@ -3897,7 +5517,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Número de Fila y Extension de Fila.
+        ///   Busca una cadena traducida similar a Row Number and Row Span.
         /// </summary>
         internal static string TableWizard_RowSettings {
             get {
@@ -3906,7 +5526,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Envergadura Fila.
+        ///   Busca una cadena traducida similar a Row Span.
         /// </summary>
         internal static string TableWizard_RowSpan {
             get {
@@ -3915,7 +5535,16 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tamaño.
+        ///   Busca una cadena traducida similar a Select All.
+        /// </summary>
+        internal static string TableWizard_SelectAll {
+            get {
+                return ResourceManager.GetString("TableWizard_SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Size.
         /// </summary>
         internal static string TableWizard_Size {
             get {
@@ -3924,7 +5553,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Resumen.
+        ///   Busca una cadena traducida similar a Summary.
         /// </summary>
         internal static string TableWizard_Summary {
             get {
@@ -3933,7 +5562,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Diseño de Tablas.
+        ///   Busca una cadena traducida similar a Table Design.
         /// </summary>
         internal static string TableWizard_Tab1HeaderText {
             get {
@@ -3942,7 +5571,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de Tablas.
+        ///   Busca una cadena traducida similar a Table Properties.
         /// </summary>
         internal static string TableWizard_Tab2HeaderText {
             get {
@@ -3951,7 +5580,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Propiedades de Celdas.
+        ///   Busca una cadena traducida similar a Cell Properties.
         /// </summary>
         internal static string TableWizard_Tab3HeaderText {
             get {
@@ -3960,7 +5589,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Accesibilidad.
+        ///   Busca una cadena traducida similar a Accessibility.
         /// </summary>
         internal static string TableWizard_Tab4HeaderText {
             get {
@@ -3969,7 +5598,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Usted esta intentando cambiar el borde a un tamaño de valor mayor que el máximo (1000). El valor se cambiará a 1000..
+        ///   Busca una cadena traducida similar a You are trying to set border size to a greater value than maximum (1000). It will be set to 1000..
         /// </summary>
         internal static string TableWizard_TableBorderControlSizeOverflow {
             get {
@@ -3978,7 +5607,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Controles de Tablas.
+        ///   Busca una cadena traducida similar a Table Controls.
         /// </summary>
         internal static string TableWizard_TableControls {
             get {
@@ -3987,7 +5616,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tabla de Diseño Preliminar.
+        ///   Busca una cadena traducida similar a Table Design Preview.
         /// </summary>
         internal static string TableWizard_TableDesignPreviewLabel {
             get {
@@ -3996,7 +5625,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Asistente para Tablas.
+        ///   Busca una cadena traducida similar a Table Wizard.
         /// </summary>
         internal static string TableWizard_Title {
             get {
@@ -4005,7 +5634,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Solo los lados de arriba y abajo.
+        ///   Busca una cadena traducida similar a Top and bottom sides only.
         /// </summary>
         internal static string TableWizard_TopAndBottomSide {
             get {
@@ -4014,7 +5643,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Solo el lado de arriba.
+        ///   Busca una cadena traducida similar a Top side only.
         /// </summary>
         internal static string TableWizard_TopSide {
             get {
@@ -4023,7 +5652,7 @@ namespace Resources.RadEditor {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Utilizar Color.
+        ///   Busca una cadena traducida similar a Use Color.
         /// </summary>
         internal static string TableWizard_UseColor {
             get {
@@ -4037,6 +5666,24 @@ namespace Resources.RadEditor {
         internal static string TableWizard_Vertical {
             get {
                 return ResourceManager.GetString("TableWizard_Vertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Initial Content.
+        /// </summary>
+        internal static string TrackChangesDialog_InitialContent {
+            get {
+                return ResourceManager.GetString("TrackChangesDialog_InitialContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Track Changes.
+        /// </summary>
+        internal static string TrackChangesDialog_TrackChanges {
+            get {
+                return ResourceManager.GetString("TrackChangesDialog_TrackChanges", resourceCulture);
             }
         }
     }
