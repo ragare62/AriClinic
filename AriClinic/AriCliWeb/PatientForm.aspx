@@ -304,7 +304,8 @@
                                     <asp:Label ID="lblInsuranceInformation" runat="server" Text="Información de asegurado:" 
                                                ToolTip="Información sobre el asegurado" ></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtInsuranceInformation" runat="server" Width="100%" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="txtInsuranceInformation" runat="server" Width="100%" 
+                                        TabIndex="3" Enabled="False"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>

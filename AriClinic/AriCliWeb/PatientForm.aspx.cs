@@ -185,6 +185,7 @@ public partial class PatientForm : System.Web.UI.Page
         if (pat.Customer != null)
             txtVATIN.Text = pat.Customer.VATIN;
         txtFrn.Text = String.Format("{0:0}", pat.OftId);
+        txtInsuranceInformation.Text = pat.InsuranceInformation;
     }
 
     protected void UnloadData(Patient pat)
