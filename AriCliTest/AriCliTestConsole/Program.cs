@@ -17,7 +17,8 @@ namespace AriCliTestConsole
             OleDbConnection con = CntOft.GetOftConnection("OFT");
             // open AriClinic connection
             AriClinicContext ctx = new AriClinicContext("MIESTETIC");
-            CntOft.ImportServiceNote(con, ctx);
+            //CntOft.ImportServiceNote(con, ctx);
+            Procesar();
             Console.WriteLine("-- End program --");
             Console.ReadLine();
         }
@@ -36,7 +37,7 @@ namespace AriCliTestConsole
 
             #region Importaciones probadas
 
-            //#region C1
+            #region C1
             //// (0) Borrar todo
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Borrando registros existentes... ";
@@ -51,50 +52,50 @@ namespace AriCliTestConsole
             //CntOft.DeleteVisit(ctx);
             //CntOft.DeletePrimaryClasses(ctx);
 
-            ////// (1) Patients
+            //// (1) Patients
             //System.Threading.Thread.Sleep(100);
             //i++;
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Importando pacientes... ";
             //i3 = (i / i2) * 100;
             //context.SecondaryPercent = i3.ToString();
-            //CntOft.ImportPatientCustomer(con, ctx);
+            CntOft.ImportPatientCustomer(con, ctx);
 
-            ////// (2) Tax types
+            //// (2) Tax types
             //System.Threading.Thread.Sleep(100);
             //i++;
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Importando tipos de IVA... ";
             //i3 = (i / i2) * 100;
             //context.SecondaryPercent = i3.ToString();
-            //CntOft.ImportTaxTypes(con, ctx);
+            CntOft.ImportTaxTypes(con, ctx);
 
-            ////// (3) Services 
+            //// (3) Services 
             //System.Threading.Thread.Sleep(100);
             //i++;
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Importando servicios... ";
             //i3 = (i / i2) * 100;
             //context.SecondaryPercent = i3.ToString();
-            //CntOft.ImportCategories(con, ctx);
+            CntOft.ImportCategories(con, ctx);
 
-            ////// (4) Porfesionales
+            //// (4) Porfesionales
             //System.Threading.Thread.Sleep(100);
             //i++;
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Importando médicos... ";
             //i3 = (i / i2) * 100;
             //context.SecondaryPercent = i3.ToString();
-            //CntOft.ImportProfessionals(con, ctx);
+            CntOft.ImportProfessionals(con, ctx);
 
-            ////// (5) Aseguradoras y pólizas
+            //// (5) Aseguradoras y pólizas
             //System.Threading.Thread.Sleep(100);
             //i++;
             //context.SecondaryValue = i.ToString();
             //context.CurrentOperationText = i.ToString() + " Importando aseguradoras y pólizas... ";
             //i3 = (i / i2) * 100;
             //context.SecondaryPercent = i3.ToString();
-            //CntOft.ImportAssurancePolicies(con, ctx);
+            CntOft.ImportAssurancePolicies(con, ctx);
 
             //// (6) Notas de servicio
             CntOft.ImportServiceNote(con, ctx);
@@ -153,3 +154,4 @@ namespace AriCliTestConsole
         }
     }
 }
+            #endregion

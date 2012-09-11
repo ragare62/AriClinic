@@ -256,6 +256,7 @@ namespace RidocciConsole
         {
             // (0) Borra tipos previos
             ctx.Delete(ctx.Sources);
+            ctx.SaveChanges();
 
             // (1) Dar de alta las procedencias
             string sql = "SELECT * FROM ProcMed";

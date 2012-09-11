@@ -536,8 +536,15 @@ namespace AriCliTestConsole
                 ServiceNote note = (from n in ctx.ServiceNotes
                                     where n.Oft_Ano == idAno && n.Oft_NumNota == idNumNota
                                     select n).FirstOrDefault<ServiceNote>();
-
-                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, cl, ctx);
+                GeneralPayment gp = new GeneralPayment();
+                gp.PaymentMethod = pm;
+                gp.Amount = (decimal)dr["Importe"];
+                gp.PaymentDate = (DateTime)dr["Fecha"];
+                gp.ServiceNote = note;
+                gp.Clinic = cl;
+                gp.Description = (string)dr["Descripcion"];
+                ctx.Add(gp);
+                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"],note, cl, gp, ctx);
                 if (!res)
                 {
                 }
