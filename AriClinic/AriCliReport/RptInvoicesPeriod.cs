@@ -38,7 +38,6 @@ namespace AriCliReport
             IList<Invoice> invoices = CntAriCli.GetInvoices(fromDate, toDate, ctx1);
             this.DataSource = invoices;
             this.subReport2.ReportSource.DataSource = GetInvoiceLines(invoices);
-
         }
 
         public static string GetCompanyName()
