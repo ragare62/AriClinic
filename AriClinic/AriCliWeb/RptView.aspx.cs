@@ -108,7 +108,9 @@ public partial class RptView : System.Web.UI.Page
                         LoadPatientInvoice();
                         break;
                     case "patdebt":
-                        LoadPatientDebt();
+                        this.Title = "Deudas de pacientes";
+                        RptDebtByCustomer rptdbp = new RptDebtByCustomer();
+                        ReportViewer1.Report = rptdbp;
                         break;
                     case "insurdebt":
                         LoadInsuranceDebt();
