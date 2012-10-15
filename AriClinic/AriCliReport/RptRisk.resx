@@ -117,7 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sqlRisk.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="sqlRisk.SelectCommand" xml:space="preserve">
+    <value>SELECT        anesthetic_service_note.anesthetic_service_note_id, anesthetic_ticket.ticket_id, ticket.ticket_date, ticket.description, ticket.amount, 
+                         professional.comercial_name AS prof_name, professional_1.comercial_name AS srg_name, anesthetic_service_note.chk3, customer.comercial_name AS cus_name, 
+                         policy.policy_number, insurance.name AS ins_name, insurance.insurance_id, healthcare_company.name AS company_name
+FROM            anesthetic_service_note INNER JOIN
+                         anesthetic_ticket ON anesthetic_service_note.anesthetic_service_note_id = anesthetic_ticket.anesthetic_service_note_id INNER JOIN
+                         ticket ON anesthetic_ticket.ticket_id = ticket.ticket_id INNER JOIN
+                         professional ON ticket.person_id = professional.person_id INNER JOIN
+                         professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id INNER JOIN
+                         customer ON anesthetic_service_note.customer_person_id = customer.person_id INNER JOIN
+                         policy ON ticket.policy_id = policy.policy_id INNER JOIN
+                         insurance ON policy.insurance_id = insurance.insurance_id, healthcare_company
+WHERE        (anesthetic_service_note.chk3 = 1)
+AND ticket.ticket_date &gt;= @FDate
+AND ticket.ticket_date &lt;= @TDate
+AND insurance.insurance_id IN (@Insurance)</value>
+  </data>
+  <data name="sqlRisk.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
         NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
@@ -142,23 +159,22 @@
         AAAABkBURGF0ZQYPAAAACTA2LzEvMjAxMwoBBwAAAAUAAAAB8P////b///8LAAAABhEAAAAKQEluc3Vy
         YW5jZQYSAAAAATEKCw==
 </value>
-  </metadata>
-  <data name="sqlRisk.SelectCommand" xml:space="preserve">
-    <value>SELECT        anesthetic_service_note.anesthetic_service_note_id, anesthetic_ticket.ticket_id, ticket.ticket_date, ticket.description, ticket.amount, 
-                         professional.comercial_name AS prof_name, professional_1.comercial_name AS srg_name, anesthetic_service_note.chk3, customer.comercial_name AS cus_name, 
-                         policy.policy_number, insurance.name AS ins_name, insurance.insurance_id, healthcare_company.name AS company_name
-FROM            anesthetic_service_note INNER JOIN
-                         anesthetic_ticket ON anesthetic_service_note.anesthetic_service_note_id = anesthetic_ticket.anesthetic_service_note_id INNER JOIN
-                         ticket ON anesthetic_ticket.ticket_id = ticket.ticket_id INNER JOIN
-                         professional ON ticket.person_id = professional.person_id INNER JOIN
-                         professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id INNER JOIN
-                         customer ON anesthetic_service_note.customer_person_id = customer.person_id INNER JOIN
-                         policy ON ticket.policy_id = policy.policy_id INNER JOIN
-                         insurance ON policy.insurance_id = insurance.insurance_id, healthcare_company
-WHERE        (anesthetic_service_note.chk3 = 1)
-AND ticket.ticket_date &gt;= @FDate
-AND ticket.ticket_date &lt;= @TDate
-AND insurance.insurance_id IN (@Insurance)</value>
+  </data>
+  <data name="sqlInsurance.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
+        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
+        ZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlckNvbGxlY3Rpb24BAAAAEkNvbGxlY3Rp
+        b25gMStpdGVtcwOnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBv
+        cnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249NS4z
+        LjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        AgAAAAkDAAAABAMAAACnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5S
+        ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
+        NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
+        ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
+        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAAAQAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJl
+        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
+</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -1109,23 +1125,8 @@ AND insurance.insurance_id IN (@Insurance)</value>
         sQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="sqlInsurance.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
-        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
-        ZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlckNvbGxlY3Rpb24BAAAAEkNvbGxlY3Rp
-        b25gMStpdGVtcwOnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBv
-        cnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249NS4z
-        LjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
-        AgAAAAkDAAAABAMAAACnAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5S
-        ZXBvcnRpbmcuU3FsRGF0YVNvdXJjZVBhcmFtZXRlciwgVGVsZXJpay5SZXBvcnRpbmcsIFZlcnNpb249
-        NS4zLjExLjExMTYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFi
-        ZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNv
-        dXJjZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAAAQAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJl
-        cG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
-</value>
-  </metadata>
-  <metadata name="$this.ShowSnapGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ShowSnapGrid" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>

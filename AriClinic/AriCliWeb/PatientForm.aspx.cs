@@ -55,6 +55,7 @@ public partial class PatientForm : System.Web.UI.Page
             LoadSourceCombo(null);
             LoadClinicCombo(null);
             txtFrn.Text = String.Format("{0:0}", CntAriCli.NextFrn(ctx));
+            rdtOpenDate.SelectedDate = DateTime.Now;
         }
         // 
         if (Request.QueryString["Type"] != null)

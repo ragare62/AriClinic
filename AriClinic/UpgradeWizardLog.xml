@@ -447,6 +447,7 @@
   <event action="Analyze" type="Success" name="RptAnestheticTicketByProfessional.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptAnestheticTicketByProfessional.resx" />
   <event action="Analyze" type="Success" name="RptBombaDolor.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptBombaDolor.resx" />
   <event action="Analyze" type="Success" name="RptDayAppointment.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptDayAppointment.resx" />
+  <event action="Analyze" type="Success" name="RptDebtByCustomer.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptDebtByCustomer.resx" />
   <event action="Analyze" type="Success" name="RptGPByClinic.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptGPByClinic.resx" />
   <event action="Analyze" type="Success" name="RptInsuranceDebt.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInsuranceDebt.resx" />
   <event action="Analyze" type="Success" name="RptInvoice.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInvoice.resx" />
@@ -456,6 +457,7 @@
   <event action="Analyze" type="Success" name="RptNomenclator.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptNomenclator.resx" />
   <event action="Analyze" type="Success" name="RptParamInvoices.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptParamInvoices.resx" />
   <event action="Analyze" type="Success" name="RptParamTickets.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptParamTickets.resx" />
+  <event action="Analyze" type="Success" name="RptPatientBySource.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientBySource.resx" />
   <event action="Analyze" type="Success" name="RptPatientDebt.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientDebt.resx" />
   <event action="Analyze" type="Success" name="RptPatientInvoice.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientInvoice.resx" />
   <event action="Analyze" type="Success" name="RptPayments.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPayments.resx" />
@@ -484,4 +486,58 @@
   <event action="Analyze" type="Success" name="subServNoteTicket.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\subServNoteTicket.resx" />
   <event action="Analyze" type="Success" name="AriCliReport" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\AriCliReport.csproj" />
   <event action="Analyze" type="Success" name="AriClinic" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriClinic.sln" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Upgrade" type="Success" name="Register Directives" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Upgrade" type="Success" name="RptView.aspx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\RptView.aspx" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="Http Handlers" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="Handlers (IIS7+)" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="web.config" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\web.config" />
+  <event action="Upgrade" type="Success" name="AriCliWeb" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliWeb\AriCliWeb.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Upgrade" type="Success" name="ReptAnesTicketProfessional.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\ReptAnesTicketProfessional.resx" />
+  <event action="Upgrade" type="Success" name="ReptInvoiceVAT.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\ReptInvoiceVAT.resx" />
+  <event action="Upgrade" type="Success" name="RptAnesNote.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptAnesNote.resx" />
+  <event action="Upgrade" type="Success" name="RptAnestheticTicketByProfessional.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptAnestheticTicketByProfessional.resx" />
+  <event action="Upgrade" type="Success" name="RptBombaDolor.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptBombaDolor.resx" />
+  <event action="Upgrade" type="Success" name="RptDayAppointment.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptDayAppointment.resx" />
+  <event action="Upgrade" type="Success" name="RptDebtByCustomer.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptDebtByCustomer.resx" />
+  <event action="Upgrade" type="Success" name="RptGPByClinic.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptGPByClinic.resx" />
+  <event action="Upgrade" type="Success" name="RptInsuranceDebt.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInsuranceDebt.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoice.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInvoice.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoiceLine.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInvoiceLine.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoiceMain.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInvoiceMain.resx" />
+  <event action="Upgrade" type="Success" name="RptInvoicesPeriod.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptInvoicesPeriod.resx" />
+  <event action="Upgrade" type="Success" name="RptNomenclator.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptNomenclator.resx" />
+  <event action="Upgrade" type="Success" name="RptParamInvoices.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptParamInvoices.resx" />
+  <event action="Upgrade" type="Success" name="RptParamTickets.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptParamTickets.resx" />
+  <event action="Upgrade" type="Success" name="RptPatientBySource.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientBySource.resx" />
+  <event action="Upgrade" type="Success" name="RptPatientDebt.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientDebt.resx" />
+  <event action="Upgrade" type="Success" name="RptPatientInvoice.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPatientInvoice.resx" />
+  <event action="Upgrade" type="Success" name="RptPayments.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPayments.resx" />
+  <event action="Upgrade" type="Success" name="RptPCA.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPCA.resx" />
+  <event action="Upgrade" type="Success" name="RptPrescription.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptPrescription.resx" />
+  <event action="Upgrade" type="Success" name="RptProfessionalInvoice.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptProfessionalInvoice.resx" />
+  <event action="Upgrade" type="Success" name="RptProfessionalInvoices.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptProfessionalInvoices.resx" />
+  <event action="Upgrade" type="Success" name="RptRisk.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptRisk.resx" />
+  <event action="Upgrade" type="Success" name="RptServCategory.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptServCategory.resx" />
+  <event action="Upgrade" type="Success" name="RptServicesComparer.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptServicesComparer.resx" />
+  <event action="Upgrade" type="Success" name="RptServNote.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptServNote.resx" />
+  <event action="Upgrade" type="Success" name="RptServProfessional.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptServProfessional.resx" />
+  <event action="Upgrade" type="Success" name="RptServSurgeon.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptServSurgeon.resx" />
+  <event action="Upgrade" type="Success" name="RptTicket.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTicket.resx" />
+  <event action="Upgrade" type="Success" name="RptTickets.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTickets.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsByProfessional.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTicketsByProfessional.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsNoPaid.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTicketsNoPaid.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsPaid.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTicketsPaid.resx" />
+  <event action="Upgrade" type="Success" name="RptTicketsSurgeon.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptTicketsSurgeon.resx" />
+  <event action="Upgrade" type="Success" name="RptVATResume.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\RptVATResume.resx" />
+  <event action="Upgrade" type="Success" name="SubInvoiceFooter.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\SubInvoiceFooter.resx" />
+  <event action="Upgrade" type="Success" name="SubInvoiceLine.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\SubInvoiceLine.resx" />
+  <event action="Upgrade" type="Success" name="SubProfessionalInvoiceFooter.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\SubProfessionalInvoiceFooter.resx" />
+  <event action="Upgrade" type="Success" name="SubProfessionalInvoiceLine.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\SubProfessionalInvoiceLine.resx" />
+  <event action="Upgrade" type="Success" name="SubServiceComp.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\SubServiceComp.resx" />
+  <event action="Upgrade" type="Success" name="subServNoteTicket.resx" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\subServNoteTicket.resx" />
+  <event action="Upgrade" type="Success" name="AriCliReport" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriCliReport\AriCliReport.csproj" />
+  <event action="Upgrade" type="Success" name="AriClinic" path="C:\ProyectosNet\ariclinic_beta\AriClinic\AriClinic.sln" />
 </log>

@@ -72,8 +72,17 @@ public partial class PatientTab : System.Web.UI.Page
     protected void RadTabStrip1_TabClick(object sender, RadTabStripEventArgs e)
     {
         frame = (HtmlControl)this.FindControl("FrmArea");
+        int idx = e.Tab.Index;
         switch (e.Tab.Value)
         {
+            case "HA":
+                frame.Attributes["src"] = String.Format("PolicyGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                                        , pat.PersonId);
+                break;
+            case "HC":
+                frame.Attributes["src"] = String.Format("VisitGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                        , pat.PersonId);
+                break;
             case "patient":
                 frame.Attributes["src"] = String.Format("PatientForm.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
                                                         , pat.PersonId);

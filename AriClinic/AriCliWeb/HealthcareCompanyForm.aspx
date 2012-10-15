@@ -41,16 +41,16 @@ left: 117px;
 top: 40px;
 position: absolute;
 height: 44px;
-width: 447px;
+width: 396px;
 }
 #VATIN
 {
 z-index: 1;
-left: 591px;
-top: 40px;
+left: 533px;
+top: 39px;
 position: absolute;
 height: 44px;
-width: 129px;
+width: 94px;
 }
 #Message
 {
@@ -100,6 +100,16 @@ top: 286px;
 position: absolute;
 height: 145px;
 width: 377px;
+}
+
+#SERIAL
+{
+z-index: 1;
+left: 642px;
+top: 39px;
+position: absolute;
+height: 44px;
+width: 77px;
 }
 
 </style>
@@ -264,14 +274,14 @@ width: 377px;
           <asp:Label ID="lblName" runat="server" Text="Nombre de la empresa:" 
                      ToolTip="Nombre a asignar al grupo"></asp:Label>
           <br />
-          <asp:TextBox ID="txtName" runat="server" Width="437px"></asp:TextBox>
+          <asp:TextBox ID="txtName" runat="server" Width="379px"></asp:TextBox>
         </div>
 
         <div ID="VATIN" class="normalText">
           <asp:Label ID="lblVATIN" runat="server" Text="NIF:" 
                      ToolTip="Identificación fiscal"></asp:Label>
           <br />
-          <asp:TextBox ID="txtVATIN" runat="server" Width="119px"></asp:TextBox>
+          <asp:TextBox ID="txtVATIN" runat="server" Width="77px"></asp:TextBox>
         </div>
 
         <div ID="Message" class="messageText">
@@ -305,6 +315,12 @@ width: 377px;
           <br />
           <uc3:UscEmailGrid ID="UscEmailGrid1" runat="server" />
         </div>
+          <div ID="SERIAL" class="normalText">
+              <asp:Label ID="lblSERIAL" runat="server" Text="SERIE FACT:" 
+                  ToolTip="Identificación fiscal"></asp:Label>
+              <br />
+              <asp:TextBox ID="txtSERIAL" runat="server" Width="65px"></asp:TextBox>
+          </div>
       </telerik:RadAjaxPanel>
     </form>
   </body>

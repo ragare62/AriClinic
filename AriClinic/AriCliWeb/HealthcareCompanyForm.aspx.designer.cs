@@ -244,4 +244,22 @@ public partial class HealthcareCompanyForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::AriCliWeb.UscEmailGrid UscEmailGrid1;
+    
+    /// <summary>
+    /// Control lblSERIAL.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblSERIAL;
+    
+    /// <summary>
+    /// Control txtSERIAL.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtSERIAL;
 }

@@ -62,7 +62,7 @@
                 <Tabs>
                     <telerik:RadTab runat="server" Text="Filiación" Value="patient" Selected="True">
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="His. Administrativo" Value="policy" 
+                    <telerik:RadTab runat="server" Text="His. Administrativo" Value="HA" 
                         SelectedIndex="0">
                         <Tabs>
                             <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
@@ -83,7 +83,7 @@
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>
-                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="visit">
+                    <telerik:RadTab runat="server" Text="Hist. Clínica" Value="HC">
                         <Tabs>
                             <telerik:RadTab runat="server" Text="Antecedentes" Value="backgrounds">
                                 <Tabs>

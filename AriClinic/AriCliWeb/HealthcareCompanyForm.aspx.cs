@@ -108,11 +108,13 @@ public partial class HealthcareCompanyForm : System.Web.UI.Page
         txtHcId.Text = hc.HcId.ToString();
         txtName.Text = hc.Name;
         txtVATIN.Text = hc.VATIN;
+        txtSERIAL.Text = hc.InvoiceSerial;
     }
     protected void UnloadData(HealthcareCompany hc)
     {
         hc.Name = txtName.Text;
         hc.VATIN = txtVATIN.Text;
+        hc.InvoiceSerial = txtSERIAL.Text;
     }
     #endregion Auxiliary functions
 

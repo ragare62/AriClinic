@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sqlInvoiceVAT.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="sqlInvoiceVAT.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFhUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj01LjMuMTEuMTEx
         NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlBQEAAAAyVGVs
@@ -140,16 +140,18 @@
         bmRsZXIHAAAAAgAAAAX4////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAIBgAAAAsAAAAG
         CQAAAA1ASW52b2ljZUlkVmF0BgoAAAACMTAKCw==
 </value>
-  </metadata>
+  </data>
+  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+  <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
+    <value>0.1in</value>
+  </data>
   <data name="sqlInvoiceVAT.SelectCommand" xml:space="preserve">
     <value>SELECT invoice_id, tax_percentage AS pr, SUM(amount) AS pvp, SUM(amount) / (1 + tax_percentage / 100) AS b, SUM(amount) - (SUM(amount) / (1 + tax_percentage / 100)) AS c
 FROM invoice_line GROUP BY invoice_id, tax_percentage
 HAVING invoice_id = @InvoiceIdVat;</value>
   </data>
-  <metadata name="$this.ShowSnapGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ShowSnapGrid" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
-    <value>0.1in</value>
-  </metadata>
+  </data>
 </root>

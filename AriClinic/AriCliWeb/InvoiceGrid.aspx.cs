@@ -185,12 +185,12 @@ public partial class InvoiceGrid : System.Web.UI.Page
     protected void RefreshGrid(bool rebind)
     {
         if (pat == null && cus == null)
-            RadGrid1.DataSource = ctx.Invoices;
+            RadGrid1.DataSource = ctx.Invoices.OrderByDescending(x => x.InvoiceDate);
         else
         {
             //if (pat != null)
             //    RadGrid1.DataSource = pat.Customer.Invoices;
-            RadGrid1.DataSource = cus.Invoices;
+            RadGrid1.DataSource = cus.Invoices.OrderByDescending(x => x.InvoiceDate);
         }
         if (rebind) RadGrid1.Rebind();
     }

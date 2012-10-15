@@ -1156,6 +1156,7 @@ namespace AriCliModel
         {
             return (from inv in ctx.Invoices
                     where inv.InvoiceDate >= fini && inv.InvoiceDate <= ffin
+                    orderby inv.InvoiceDate descending
                     select inv).ToList<Invoice>();
         }
 
@@ -1163,6 +1164,7 @@ namespace AriCliModel
         {
             return (from inv in ctx1.Invoices
                     where inv.InvoiceDate <= ffin && inv.Customer.PersonId == idCustomer
+                    orderby inv.InvoiceDate descending
                     select inv).ToList<Invoice>();
         }
 
