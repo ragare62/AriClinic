@@ -1265,7 +1265,11 @@ namespace AriCliModel
 
         public static string GetAppointmentDescription(AppointmentInfo app, AriClinicContext ctx)
         {
-            return String.Format("FRN:{0} - {1}",app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
+            Parameter par = CntAriCli.GetParameter(ctx);
+            string description = "";
+            if (par.AppointmentExtension)
+                description =  String.Format("FRN:{0} - {1}",app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
+            return description;
         }
 
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)

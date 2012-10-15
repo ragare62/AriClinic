@@ -123,6 +123,7 @@ public partial class ParameterForm : System.Web.UI.Page
             ser = CntAriCli.GetService(int.Parse(txtServiceId.Text), ctx);
         parameter.PainPump = ser;
         parameter.UseNomenclator = chkChecked.Checked;
+        parameter.AppointmentExtension = chkAppointmentExtension.Checked;
     }
 
 

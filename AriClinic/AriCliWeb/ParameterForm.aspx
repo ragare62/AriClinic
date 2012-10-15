@@ -92,6 +92,19 @@
               </td>
             </tr>
             <tr>
+              <td>
+              </td>
+              <td>
+                <div ID="AppointmentExtension" class="normalText">
+                  <asp:Label ID="lblAppointmentExtension" runat="server" Text="Extension de cita:" 
+                             ToolTip="Utilizar la extensión de cita"></asp:Label>
+                  <br />
+                  <asp:CheckBox ID="chkAppointmentExtension" runat="server" 
+                                Text="Mostrar información adicional de cita" TabIndex="14" />
+                </div>
+              </td>
+            </tr>
+            <tr>
               <td colspan="3">
                 <div ID="Buttons" class="buttonsFomat">
                   <asp:ImageButton ID="btnAccept" runat="server" TabIndex="19" 
