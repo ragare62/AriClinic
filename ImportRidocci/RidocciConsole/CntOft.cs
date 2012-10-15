@@ -135,17 +135,12 @@ namespace RidocciConsole
         {
             // (1) Eliminar los datos que pudiera haber previamente y que serán
             // sustituidos por los nuevos.
-            ctx.Delete(ctx.Addresses); // eliminar direcciones.
-            ctx.Delete(ctx.Emails); // eliminar correos electrónicos
-            ctx.Delete(ctx.Telephones); // eliminar teléfonos.
-            ctx.Delete(ctx.Policies); // eliminar las pólizas.
-
-            ctx.Delete(ctx.Customers); // eliminar los clientes.
-            ctx.Delete(ctx.Patients); // por último, los pacientes.
-            ctx.SaveChanges();
+            //DeletePatientRelated(ctx);
 
             // (1.1) Montar las procedencias
-            ImportSources(con, ctx);
+            //ImportSources(con, ctx);
+
+
 
             // (2) Lleer todos los pacientes en OFT
             string sql = "SELECT * FROM Historiales";
@@ -164,17 +159,26 @@ namespace RidocciConsole
                 ++reg; // un registro más (para saber por donde va)
                 Console.WriteLine("registro {1:#####0} de {2:#####0} / {0}", (string)dr["Nombre"], reg, nreg);
                 // (2.1) Crear cliente
-                Customer customer = new Customer();
+                Customer customer = CntAriCli.GetCustomerByOftId((int)dr["NumHis"], ctx);
+                if (customer == null)
+                {
+                    customer = new Customer();
+                    customer.OftId = (int)dr["NumHis"];
+                    ctx.Add(customer);
+                }
                 if (dr["NumDni"] != DBNull.Value)
                     customer.VATIN = (string)dr["NumDni"];
                 customer.FullName = (string)dr["Nombre"];
                 customer.ComercialName = (string)dr["Nombre"];
-                customer.OftId = (int)dr["NumHis"];
-                ctx.Add(customer);
                 ctx.SaveChanges();
 
                 // (2.2) Crear paciente y asignarle el cliente
-                Patient patient = new Patient();
+                Patient patient = CntAriCli.GetPatientByOftId((int)dr["NumHis"], ctx);
+                if (patient == null)
+                {
+                    patient.OftId = (int)dr["NumHis"];
+                    ctx.Add(patient);
+                }
                 patient.Name = (string)dr["Nom"];
                 patient.Surname1 = (string)dr["Apell1"];
                 if (dr["Apell2"] != DBNull.Value)
@@ -187,15 +191,20 @@ namespace RidocciConsole
                     if ((byte)dr["Sexo"] == 2)
                         patient.Sex = "W";
                 patient.Customer = customer;
-                patient.OftId = (int)dr["NumHis"];
                 // asignar la procedencia
                 Source src = (from s in ctx.Sources
                               where s.OftId == (int)dr["IdProcMed"]
                               select s).FirstOrDefault<Source>();
                 if (src != null)
                     patient.Source = src;
+                // asignar la fecha de apertura
+                if (dr["FecAper"] != DBNull.Value)
+                    patient.OpenDate = (DateTime)dr["FecAper"];
+                ctx.SaveChanges();
 
-                ctx.Add(patient);
+                // eliminar los datos asociados
+                ctx.Delete(customer.Addresses);
+                ctx.Delete(patient.Addresses);
                 ctx.SaveChanges();
 
                 // (2.3) Crear la dirección y asignársela a cliente y paciente.
@@ -210,6 +219,13 @@ namespace RidocciConsole
                 customer.Addresses.Add(address);
                 patient.Addresses.Add(address);
                 ctx.SaveChanges();
+
+
+                // eliminar los teléfonos asociados
+                ctx.Delete(customer.Telephones);
+                ctx.Delete(patient.Telephones);
+                ctx.SaveChanges();
+
 
                 // (2.4) Lo mismo para los teléfono.
                 Telephone telephone = new Telephone();
@@ -239,6 +255,11 @@ namespace RidocciConsole
                     patient.Telephones.Add(telephone);
                     customer.Telephones.Add(telephone);
                 }
+
+                // eliminar los correos anteriores
+                ctx.Delete(customer.Emails);
+                ctx.Delete(patient.Emails);
+                ctx.SaveChanges();
 
                 // (2.5) Igual pero para correos electrónicos
                 Email email = new Email();
@@ -270,10 +291,14 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Procedencias {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomProcMed"]);
-                Source src = new Source();
+                Source src = CntAriCli.GetSourceByOftId((int)dr["IdProcMed"], ctx);
+                if (src == null)
+                {
+                    src = new Source();
+                    src.OftId = (int)dr["IdProcMed"];
+                    ctx.Add(src);
+                }
                 src.Name = (string)dr["NomProcMed"];
-                src.OftId = (int)dr["IdProcMed"];
-                ctx.Add(src);
                 ctx.SaveChanges();
             }
         }
@@ -1748,6 +1773,20 @@ namespace RidocciConsole
         }
 
         #region Auxiliary functions
+        public static void DeletePatientRelated(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.Emails); // eliminar correos electrónicos
+            ctx.Delete(ctx.Telephones); // eliminar teléfonos.
+            ctx.Delete(ctx.Policies); // eliminar las pólizas.
+
+            ctx.Delete(ctx.Customers); // eliminar los clientes.
+            ctx.Delete(ctx.Patients); // por último, los pacientes.
+            ctx.Delete(ctx.Addresses); // eliminar direcciones.
+
+            ctx.SaveChanges();
+        }
+        #endregion
+
         #region GetConnectionstring
         /// <summary>
         /// method to retrieve connection stringed in the web.config file
@@ -1774,7 +1813,7 @@ namespace RidocciConsole
         //    return conn;
         //}
         #endregion
-        #endregion
+
     }
 
 }

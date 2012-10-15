@@ -363,6 +363,24 @@ public partial class PatientForm {
     protected global::System.Web.UI.WebControls.TextBox txtInsuranceInformation;
     
     /// <summary>
+    /// Control lblOpenDate.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblOpenDate;
+    
+    /// <summary>
+    /// Control rdtOpenDate.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadDatePicker rdtOpenDate;
+    
+    /// <summary>
     /// Control lblComments.
     /// </summary>
     /// <remarks>

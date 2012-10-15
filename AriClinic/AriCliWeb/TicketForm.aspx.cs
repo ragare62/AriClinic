@@ -227,7 +227,9 @@ public partial class TicketForm : System.Web.UI.Page
         tck.Comments = txtComments.Text;
         // Is there a service note?
         if (sn != null)
+        {
             tck.ServiceNote = sn;
+        }
 
     }
 

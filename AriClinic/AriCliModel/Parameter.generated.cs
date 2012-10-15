@@ -16,6 +16,9 @@ using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
+using Telerik.OpenAccess.Metadata.Fluent;
+using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using AriCliModel;
 
 
 namespace AriCliModel	
@@ -45,6 +48,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.useNomenclator = value;
+		    }
+		}
+		
+		private bool appointmentExtension;
+		public virtual bool AppointmentExtension 
+		{ 
+		    get
+		    {
+		        return this.appointmentExtension;
+		    }
+		    set
+		    {
+		        this.appointmentExtension = value;
 		    }
 		}
 		

@@ -249,6 +249,7 @@ public partial class VisitForm : System.Web.UI.Page
     {
         visit.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         visit.VisitDate = (DateTime)rdpVisitDate.SelectedDate;
+        visit.Patient.LastUpdate = visit.VisitDate;
         visit.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
         if (rdcVisitReason.SelectedValue != "")
             visit.VisitReason = CntAriCli.GetVisitReason(int.Parse(rdcVisitReason.SelectedValue), ctx);

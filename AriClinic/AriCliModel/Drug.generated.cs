@@ -16,6 +16,8 @@ using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
+using Telerik.OpenAccess.Metadata.Fluent;
+using Telerik.OpenAccess.Metadata.Fluent.Advanced;
 
 
 namespace AriCliModel	

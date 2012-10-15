@@ -296,7 +296,12 @@ namespace AriCliModel
                     where p.PersonId == id
                     select p).FirstOrDefault<Patient>();
         }
-
+        public static Patient GetPatientByOftId(int oftId, AriClinicContext ctx)
+        {
+            return (from p in ctx.Patients
+                    where p.OftId == oftId
+                    select p).FirstOrDefault<Patient>();
+        }
         public static int CalulatedAge(DateTime BornDate)
         {
             int age = 0;
@@ -340,12 +345,22 @@ namespace AriCliModel
                     select t).FirstOrDefault<Ticket>();
         }
 
-        public static DateTime? IsDateNull(DateTime dt)
+        public static DateTime? IsDateNull(DateTime? dt)
         {
             if (String.Format("{0:dd/MM/yyyy}", dt) == "01/01/0001")
                 return null;
             else
                 return dt;
+        }
+
+        public static bool OaDateNull(DateTime? dt)
+        {
+            bool res = true;
+            if (dt != null)
+            {
+                if (String.Format("{0:dd/MM/yyyy}", dt) != "01/01/0001") res = false;
+            }
+            return res;
         }
 
         public static string DateNullFormat(DateTime dt)
@@ -544,7 +559,12 @@ namespace AriCliModel
                     where c.PersonId == customerId
                     select c).FirstOrDefault<Customer>();
         }
-
+        public static Customer GetCustomerByOftId(int oftId, AriClinicContext ctx)
+        {
+            return (from c in ctx.Customers
+                    where c.OftId == oftId
+                    select c).FirstOrDefault<Customer>();
+        }
         public static IList<Customer> GetCustomers(AriClinicContext ctx)
         {
             return (from c in ctx.Customers
@@ -1634,7 +1654,12 @@ namespace AriCliModel
                     where s.SourceId == id
                     select s).FirstOrDefault<Source>();
         }
-
+        public static Source GetSourceByOftId(int oftId, AriClinicContext ctx)
+        {
+            return (from s in ctx.Sources
+                    where s.OftId == oftId
+                    select s).FirstOrDefault<Source>();
+        }
         public static decimal GetServiceNoteAmount(ServiceNote snote)
         {
             decimal a = 0;
@@ -1730,5 +1755,8 @@ namespace AriCliModel
             }
             return res;
         }
+        #region Auxiliary functions
+        #endregion
+
     }
 }

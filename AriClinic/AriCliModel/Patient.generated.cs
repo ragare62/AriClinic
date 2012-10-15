@@ -16,6 +16,9 @@ using System.Collections.Generic;
 using Telerik.OpenAccess;
 using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
+using Telerik.OpenAccess.Metadata.Fluent;
+using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using AriCliModel;
 
 
 namespace AriCliModel	
@@ -136,6 +139,19 @@ namespace AriCliModel
 		    set
 		    {
 		        this.comments = value;
+		    }
+		}
+		
+		private DateTime openDate;
+		public virtual DateTime OpenDate 
+		{ 
+		    get
+		    {
+		        return this.openDate;
+		    }
+		    set
+		    {
+		        this.openDate = value;
 		    }
 		}
 		

@@ -186,6 +186,9 @@ public partial class PatientForm : System.Web.UI.Page
             txtVATIN.Text = pat.Customer.VATIN;
         txtFrn.Text = String.Format("{0:0}", pat.OftId);
         txtInsuranceInformation.Text = pat.InsuranceInformation;
+        if (!CntAriCli.OaDateNull(pat.OpenDate))
+            rdtOpenDate.SelectedDate = pat.OpenDate;
+        
     }
 
     protected void UnloadData(Patient pat)
@@ -211,6 +214,9 @@ public partial class PatientForm : System.Web.UI.Page
         pat.Comments = txtComments.Text;
         CntAriCli.UpdateCustomerRelatedData(pat, ctx);
         pat.OftId = int.Parse(txtFrn.Text);
+        if (rdtOpenDate.SelectedDate != null)
+            pat.OpenDate = (DateTime)rdtOpenDate.SelectedDate;
+        pat.LastUpdate = DateTime.Now;
     }
 
     protected void LoadSexCombo(Patient pat)

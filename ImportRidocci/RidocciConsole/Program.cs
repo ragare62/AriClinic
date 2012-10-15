@@ -16,7 +16,8 @@ namespace RidocciConsole
         {
             Console.WriteLine("-- begin --");
             //CargaRidocci();
-            CargaOFT();
+            //CargaOFT();
+            CargaCortaOft();
             Console.WriteLine(" -- Press <ENTER> --");
             Console.ReadLine();
         }
@@ -538,6 +539,24 @@ namespace RidocciConsole
 
 
         #endregion
+
+        #region Carga corta de OFT
+        public static void CargaCortaOft()
+        {
+            int i2 = 12;
+            int i = 0;
+            int i3 = 0;
+            decimal per = 0;
+            // open OFT connection
+            OleDbConnection con = CntOft.GetOftConnection("OFT");
+            // open AriClinic connection
+            AriClinicContext ctx = new AriClinicContext("MIESTETIC");
+            // start importing things
+            Console.WriteLine("--> Import patients");
+            CntOft.ImportPatientCustomer(con, ctx);
+        }
+        #endregion 
+
         #region Funciones individuales (OFT)
         public static void CargaOFT()
         {

@@ -40,7 +40,7 @@
                     //TELERIK
                     //window.radconfirm = function(text, mozEvent)
                     //We will change the radconfirm function so it takes all the original radconfirm attributes
-                    window.radconfirm = function (text, mozEvent, oWidth, oHeight, callerObj, oTitle){
+                    window.radconfirm = function (text, mozEvent, oWidth, oHeight, callerObj, oTitle) {
                         var ev = mozEvent ? mozEvent : window.event; //Moz support requires passing the event argument manually   
                         //Cancel the event   
                         ev.cancelBubble = true;
@@ -54,18 +54,18 @@
                         var callerObj = ev.srcElement ? ev.srcElement : ev.target;
 
                         //Call the original radconfirm and pass it all necessary parameters   
-                        if (callerObj){
+                        if (callerObj) {
                             //Show the confirm, then when it is closing, if returned value was true, automatically call the caller's click method again.   
-                            var callBackFn = function (arg){
-                                if (arg){
+                            var callBackFn = function (arg) {
+                                if (arg) {
                                     callerObj["onclick"] = "";
                                     if (callerObj.click)
                                         callerObj.click(); //Works fine every time in IE, but does not work for links in Moz   
-                                    else if (callerObj.tagName == "A"){
-                                        try{
+                                    else if (callerObj.tagName == "A") {
+                                        try {
                                             eval(callerObj.href)
                                         }
-                                        catch (e){
+                                        catch (e) {
                                         }
                                     }
                                 }
@@ -86,40 +86,40 @@
                 <script type="text/javascript">
                     //Put your JavaScript code here.
                     // In order to show item changes in the grid
-                    function refreshGrid(arg){
+                    function refreshGrid(arg) {
                         //alert("Hello from refreshGrid");
-                        if (!arg){
+                        if (!arg) {
                             $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("");
                         }
-                        else{
+                        else {
                             $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(arg);
                         }
                     }
-                    function NewAddressRecord(){
+                    function NewAddressRecord() {
                         var w1 = window.open("AddressForm.aspx?PatientId=" + gup('PatientId'), "Patient_na", "width=700, height=350,resizable=1");
                         w1.focus();
                     }
-                    function EditAddressRecord(id){
+                    function EditAddressRecord(id) {
                         var w2 = window.open("AddressForm.aspx?PatientId=" + gup('PatientId') + "&AddressId=" + id
                                              , "Patient_ea"
                                              , "width=700, height=350,resizable=1");
                         w2.focus();
                     }
-                    function NewTelephoneRecord(){
+                    function NewTelephoneRecord() {
                         var w3 = window.open("TelephoneForm.aspx?PatientId=" + gup('PatientId'), "Patient_nt", "width=650, height=250,resizable=1");
                         w3.focus();
                     }
-                    function EditTelephoneRecord(id){
+                    function EditTelephoneRecord(id) {
                         var w4 = window.open("TelephoneForm.aspx?PatientId=" + gup('PatientId') + "&TelephoneId=" + id
                                              , "Patient_et"
                                              , "width=650, height=250,resizable=1");
                         w4.focus();
                     }
-                    function NewEmailRecord(){
+                    function NewEmailRecord() {
                         var w5 = window.open("EmailForm.aspx?PatientId=" + gup('PatientId'), "Patient_ne", "width=650, height=250,resizable=1");
                         w5.focus();
                     }
-                    function EditEmailRecord(id){
+                    function EditEmailRecord(id) {
                         var w6 = window.open("EmailForm.aspx?PatientId=" + gup('PatientId') + "&EmailId=" + id
                                              , "Patient_ee"
                                              , "width=650, height=250,resizable=1");
@@ -299,13 +299,29 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="5">
+                            <td colspan="5" style="padding:5px;">
                                 <div id="InsuranceInformation" class="normalText">
                                     <asp:Label ID="lblInsuranceInformation" runat="server" Text="Información de asegurado:" 
                                                ToolTip="Información sobre el asegurado" ></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtInsuranceInformation" runat="server" Width="100%" 
-                                        TabIndex="3" Enabled="False"></asp:TextBox>
+                                                 TabIndex="3" Enabled="False"></asp:TextBox>
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <div ID="OpenDate" class="normalText" >
+                                    <asp:Label ID="lblOpenDate" runat="server" Text="Fecha de apertura:" 
+                                               ToolTip="Fecha en la que se abrió la historia"></asp:Label>
+                                    <br />
+                                    <telerik:RadDatePicker ID="rdtOpenDate" runat="server" Culture="es-ES" CssClass="myCenter"  
+                                                           MinDate=""  TabIndex="4">
+                                        <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                                                  ViewSelectorText="x">
+                                        </Calendar>
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy">
+                                        </DateInput>
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                                    </telerik:RadDatePicker>
                                 </div>
                             </td>
                         </tr>
