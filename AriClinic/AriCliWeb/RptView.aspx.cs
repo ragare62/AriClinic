@@ -207,6 +207,11 @@ public partial class RptView : System.Web.UI.Page
                         RptVATResume rptvr = new RptVATResume();
                         ReportViewer1.Report = rptvr;
                         break;
+                    case "rptpatientbysource":
+                        this.Title = "Pacientes por procedencia";
+                        RptPatientBySource rptpbs = new RptPatientBySource();
+                        ReportViewer1.Report = rptpbs;
+                        break;
                 }
             }
             catch (Exception ex)

@@ -9,7 +9,7 @@
           <orm:single-field field-name="userId" />
         </orm:identity>
         <orm:field name="userId" property="UserId" behavior="readwrite" null-value="none" uniqueId="4e379db7-c9a9-419e-8f31-d5c4d3642c89" type="System.Int32">
-          <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="name" property="Name" behavior="readwrite" null-value="none" uniqueId="0601414c-ecc9-44a8-bf85-823fd1ee1b2a" type="System.String">
           <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="Varchar" />
@@ -20,10 +20,11 @@
         <orm:field name="password" property="Password" behavior="readwrite" null-value="none" uniqueId="d87bdcc4-bc28-4e2b-a6cc-9981f471680e" type="System.String">
           <orm:column name="password" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="profile" property="Profile" uniqueId="6c254931-d63a-45a4-98db-9bbe2e0b0494" type="System.Int32">
+          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="profile" ado-type="" />
+        </orm:field>
         <orm:field name="userGroup" property="UserGroup" behavior="readwrite" null-value="none" uniqueId="4f0e1afa-f830-4ec6-96f8-ccca051f5760" type="AriCliModel.UserGroup">
-          <orm:reference uniqueId="ab0ced04-bff9-4384-a72c-b2aa6929c04f">
-            <orm:column name="user_group_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" target-class="AriCliModel.UserGroup" target-field="userGroupId" />
-          </orm:reference>
+          <orm:reference uniqueId="ab0ced04-bff9-4384-a72c-b2aa6929c04f" />
         </orm:field>
         <orm:field name="invoiceLines" property="InvoiceLines" behavior="readwrite" null-value="none" uniqueId="ba6a3c78-04cb-45f4-926f-60e23d90e081" type="AriCliModel.InvoiceLine">
           <orm:collection element-class="AriCliModel.InvoiceLine" inverse-field="user" managed="true" order-by="" uniqueId="68d5dd58-f695-41bf-8e00-952e31ed8fd4" />
@@ -1083,7 +1084,7 @@
           <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="procedure" order-by="" uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
         </orm:field>
       </orm:class>
-      <orm:class name="AnestheticTicket" use-default-mapping="true" behavior="readwrite" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
+      <orm:class name="AnestheticTicket" behavior="readwrite" use-default-mapping="true" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
         <orm:identity>
           <orm:internal>
             <orm:column name="ticket_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -1106,7 +1107,7 @@
         </orm:index>
         <orm:index name="idx_anesthetic_ticket_person_id">
           <orm:columnMapping>
-            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
         <orm:index name="idx_anesthetic_ticket_procedure_id">
@@ -3121,11 +3122,12 @@
         <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="user">
-        <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
         <orm:column name="user_group_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         <orm:column name="password" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="Varchar" />
         <orm:column name="login" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="profile" ado-type="" />
       </orm:table>
       <orm:table name="telephone">
         <orm:column name="telephone_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -4062,6 +4064,7 @@
       <Property Id="0601414c-ecc9-44a8-bf85-823fd1ee1b2a" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
       <Property Id="69c96ddf-4a5f-4a58-8abd-99d72e651c28" name="Login" label="Login : String" kind="Persistent" fieldName="login" />
       <Property Id="d87bdcc4-bc28-4e2b-a6cc-9981f471680e" name="Password" label="Password : String" kind="Persistent" fieldName="password" />
+      <Property Id="6c254931-d63a-45a4-98db-9bbe2e0b0494" name="Profile" type="Int32" label="Profile : Int32" fieldName="profile" />
       <AssociationTargets>
         <Association Id="ab0ced04-bff9-4384-a72c-b2aa6929c04f" SourceMultiplicity="ZeroOne" name="UserHasUserGroup">
           <DomainClassMoniker name="/AriClinicContext/UserGroup" />

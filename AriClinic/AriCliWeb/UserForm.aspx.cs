@@ -132,6 +132,7 @@ public partial class UserForm : System.Web.UI.Page
         txtLogin.Text = u.Login;
         LoadGroupCombo(u);
         LoadProfessional(u);
+        ddlProfile.SelectedValue = u.Profile.ToString();
     }
 
     protected void UnloadData(User u)
@@ -149,6 +150,7 @@ public partial class UserForm : System.Web.UI.Page
             Professional p = CntAriCli.GetProfessional(int.Parse(ddlProfessional.SelectedValue), ctx);
             if (p != null) p.User = u;
         }
+        u.Profile = int.Parse(ddlProfile.SelectedValue);
     }
     protected void LoadGroupCombo(User u)
     {

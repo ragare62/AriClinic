@@ -156,24 +156,6 @@ public partial class UserForm {
     protected global::System.Web.UI.WebControls.TextBox txtPassword1;
     
     /// <summary>
-    /// Control lblPassword2.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblPassword2;
-    
-    /// <summary>
-    /// Control txtPassword2.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtPassword2;
-    
-    /// <summary>
     /// Control lblGroup.
     /// </summary>
     /// <remarks>
@@ -192,6 +174,24 @@ public partial class UserForm {
     protected global::System.Web.UI.WebControls.DropDownList ddlGroup;
     
     /// <summary>
+    /// Control lblPassword2.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblPassword2;
+    
+    /// <summary>
+    /// Control txtPassword2.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtPassword2;
+    
+    /// <summary>
     /// Control lblProfessional.
     /// </summary>
     /// <remarks>
@@ -208,6 +208,24 @@ public partial class UserForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.DropDownList ddlProfessional;
+    
+    /// <summary>
+    /// Control lblProfile.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblProfile;
+    
+    /// <summary>
+    /// Control ddlProfile.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DropDownList ddlProfile;
     
     /// <summary>
     /// Control lblMessage.

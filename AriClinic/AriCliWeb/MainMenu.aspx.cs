@@ -29,7 +29,9 @@ public partial class MainMenu : System.Web.UI.Page
         if (Session["User"] == null)
             Response.Redirect("Default.aspx");
         User u = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
-        //ChekPermissions(u.UserGroup, RadMenu1.Items);
+        CheckPermissions(u.UserGroup, RadMenu1.Items);
+        CheckPermissions(u.UserGroup, RadToolBar1);
+        CheckProfile(u);
         SetSessionValues();
     }
 
@@ -73,44 +75,6 @@ public partial class MainMenu : System.Web.UI.Page
             lblHealthcareCompany.Text = hc.Name;
         }
     }
-    #endregion Auxiliary functions
-
-    protected void RadMenu1_ItemClick(object sender, RadMenuEventArgs e)
-    {
-        Launcher(e.Item.Value);
-    }
-    
-    protected void ChekPermissions(UserGroup ug, RadMenuItemCollection col)
-    {
-        foreach (RadMenuItem i in col) 
-        {
-            Process pr = (from p in ctx.Processes
-                          where p.Code == i.Value
-                          select p).FirstOrDefault<Process>();
-           
-            if (pr != null)
-            {
-                Permission per = CntAriCli.GetPermission(ug, pr, ctx);
-                if (per != null)
-                {
-                    if (!per.View) i.Visible = false;
-                }
-                else i.Visible = false; // If no permission not show
-            }
-            else i.Visible = false; // If doesn't exits not show
-
-            // recursive call if there are submenus or items in it
-            if (i.Items.Count > 0)
-                ChekPermissions(ug, i.Items);
-        }
-    }
-
-    protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
-    {
-        Launcher(e.Item.Value);
-
-    }
-   
     protected void Launcher(string process)
     {
         switch (process)
@@ -260,7 +224,7 @@ public partial class MainMenu : System.Web.UI.Page
             case "profInvoices":
                 RadAjaxManager1.ResponseScripts.Add("LaunchProfInvoices();");
                 break;
-                 case "rbombasPCEA":
+            case "rbombasPCEA":
                 RadAjaxManager1.ResponseScripts.Add("LaunchbombasPCEA();");
                 break;
             case "labtest":
@@ -308,9 +272,94 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptvatresume":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptVATResume();");
                 break;
+            case "rptpatientbysource":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptPatientBySource();");
+                break;
             default:
                 break;
         }
 
     }
+    #endregion Auxiliary functions
+
+    #region Clic events
+    protected void RadMenu1_ItemClick(object sender, RadMenuEventArgs e)
+    {
+        Launcher(e.Item.Value);
+    }
+    protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
+    {
+        Launcher(e.Item.Value);
+
+    }
+    #endregion
+
+    #region Permissions
+    protected void CheckPermissions(UserGroup ug, RadMenuItemCollection col)
+    {
+        foreach (RadMenuItem i in col)
+        {
+            Process pr = (from p in ctx.Processes
+                          where p.Code == i.Value
+                          select p).FirstOrDefault<Process>();
+
+            if (pr != null)
+            {
+                Permission per = CntAriCli.GetPermission(ug, pr, ctx);
+                if (per != null)
+                {
+                    if (!per.View) i.Visible = false;
+                }
+                else i.Visible = false; // If no permission not show
+            }
+            else i.Visible = false; // If doesn't exits not show
+
+            // recursive call if there are submenus or items in it
+            if (i.Items.Count > 0)
+                CheckPermissions(ug, i.Items);
+        }
+    }
+    protected void CheckProfile(User usu)
+    {
+        RadToolBar1.Visible = false;
+        switch (usu.Profile)
+        {
+            case 0:
+                RadMenu1.Items[0].Visible = true;
+                RadToolBar1.Visible = true;
+                break;
+            case 1:
+                RadMenu1.Items[1].Visible = false;
+                RadMenu1.Items[3].Visible = false;
+                break;
+            case 2:
+                RadMenu1.Items[4].Visible = false;
+                break;
+        }
+    }
+    protected void CheckPermissions(UserGroup ug, RadToolBar rdt)
+    {
+        foreach (RadToolBarItem i in rdt.Items)
+        {
+            Process pr = (from p in ctx.Processes
+                          where p.Code == i.Value
+                          select p).FirstOrDefault<Process>();
+
+            if (pr != null)
+            {
+                Permission per = CntAriCli.GetPermission(ug, pr, ctx);
+                if (per != null)
+                {
+                    if (!per.View) i.Visible = false;
+                }
+                else i.Visible = false; // If no permission not show
+            }
+            else i.Visible = false; // If doesn't exits not show
+        }
+    }
+    #endregion
+
+
+   
+
 }

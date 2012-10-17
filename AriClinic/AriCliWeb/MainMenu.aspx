@@ -346,6 +346,10 @@
               var w1 = window.open("RptView.aspx?Report=rptvatresume", "RPTVATRESUME", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchRptPatientBySource() {
+              var w1 = window.open("RptView.aspx?Report=rptpatientbysource", "RPTPATIENTBYSOURCE", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -461,6 +465,13 @@
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Informes" Value="reports">
                 <Items>
+                    <telerik:RadMenuItem runat="server" Text="General" Value="rpgeneral">
+                        <Items>
+                            <telerik:RadMenuItem runat="server" Text="Pacientes por procedencia" 
+                                Value="rptpatientbysource">
+                            </telerik:RadMenuItem>
+                        </Items>
+                    </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Facturación" Value="invoicing">
                     <Items>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Tickets emitidos" 
@@ -608,12 +619,12 @@
                   </telerik:RadToolBarButton>
                 </Buttons>
               </telerik:RadToolBarSplitButton>
-              <telerik:RadToolBarSplitButton runat="server" 
+              <telerik:RadToolBarSplitButton runat="server" value = "servicenote"
                                              ImageUrl="~/images/toolbar/calculator.png" Text="Notas de servicio">
                 <Buttons>
                   <telerik:RadToolBarButton runat="server" 
                                             ImageUrl="~/images/toolbar/calculator.png" 
-                                            Text="N.Servi. (General)" Value="servicenote">
+                                            Text="N.Servi. (General)" Value="servicenot">
                   </telerik:RadToolBarButton>
                   <telerik:RadToolBarButton runat="server" 
                                             ImageUrl="~/images/toolbar/calculator.png" 

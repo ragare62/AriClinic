@@ -77,6 +77,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private int profile;
+		public virtual int Profile 
+		{ 
+		    get
+		    {
+		        return this.profile;
+		    }
+		    set
+		    {
+		        this.profile = value;
+		    }
+		}
+		
 		private UserGroup userGroup;
 		public virtual UserGroup UserGroup 
 		{ 

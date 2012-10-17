@@ -34,6 +34,21 @@ public partial class PatientTab : System.Web.UI.Page
                             where p.Code == "scat"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
+            // TAB control according to user profile
+            switch (user.Profile)
+            {
+                case 0:
+                    // medical - administration (all is accesible)
+                    break;
+                case 1:
+                    // medical - Only clinical record
+                    RadTabStrip1.Tabs[1].Visible = false;
+                    break;
+                case 2:
+                    // asministration - Only administrative record
+                    RadTabStrip1.Tabs[2].Visible = false;
+                    break;
+            }
         }
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
