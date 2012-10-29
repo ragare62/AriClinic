@@ -318,7 +318,7 @@
           }
           function LaunchVisit()
           {
-              var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=800, height=500,resizable=1")
+              var w1 = window.open("VisitGrid.aspx", "VISITGRID", "width=1024, height=600,resizable=1")
               w1.focus();
           }
           function LaunchbombasPCEA()
