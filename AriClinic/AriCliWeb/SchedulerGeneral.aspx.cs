@@ -149,9 +149,11 @@ public partial class SchedulerGeneral : System.Web.UI.Page
                 e.Appointment.CssClass = "rsCategoryGreen"; //rsCategoryYellow
                 break;
             case "4":
+                e.Appointment.CssClass = "rsCategoryYellow";
+                break;
             case "5":
                 // No presentado / Sin hora?
-                e.Appointment.CssClass = "rsCategoryYellow"; //rsCategoryBlue
+                e.Appointment.CssClass = "rsCategoryOrange"; //rsCategoryBlue
                 break;
             default:
                 break;

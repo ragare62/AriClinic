@@ -612,7 +612,7 @@
                   </telerik:RadToolBarButton>
                 </Buttons>
               </telerik:RadToolBarSplitButton>
-              <telerik:RadToolBarSplitButton runat="server" Text="Agendas" Value="diary">
+              <telerik:RadToolBarSplitButton runat="server" Text="Agendas" Value="citation">
                 <Buttons>
                   <telerik:RadToolBarButton runat="server" ImageUrl="~/images/toolbar/books.png" 
                                             Text="Agendas (Todas)" Value="agenda">
