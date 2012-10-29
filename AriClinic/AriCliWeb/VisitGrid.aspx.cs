@@ -33,6 +33,9 @@ public partial class VisitGrid : System.Web.UI.Page
                             where p.Code == "diagnosticassigned"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
+            // control base visit type
+            if (user.BaseVisitType != null)
+                rdcVisitType.SelectedValue = user.BaseVisitType.Code;
         }
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)

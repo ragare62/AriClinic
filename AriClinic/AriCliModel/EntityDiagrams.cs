@@ -620,6 +620,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<BaseVisitType> BaseVisitTypes 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<BaseVisitType>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -983,6 +991,11 @@ namespace AriCliModel
 		}
 
 		IQueryable<BackGinecology> BackGinecologies 
+		{ 
+			get;
+		}
+
+		IQueryable<BaseVisitType> BaseVisitTypes 
 		{ 
 			get;
 		}

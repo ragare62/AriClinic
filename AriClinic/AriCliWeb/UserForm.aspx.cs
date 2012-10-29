@@ -13,14 +13,19 @@ using Telerik.Web.UI;
 
 public partial class UserForm : System.Web.UI.Page 
 {
+    
     #region Variables declarations
+    
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
     int userId = 0;
     Permission per = null;
+    
     #endregion Variables declarations
+    
     #region Init Load Unload events
+        
     protected void Page_Init(object sender, EventArgs e)
     {
         ctx = new AriClinicContext("AriClinicContext");
@@ -50,23 +55,25 @@ public partial class UserForm : System.Web.UI.Page
         else
         {
             LoadGroupCombo(null);
+            LoadBaseVisitType(null);
         }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+        
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
         if (ctx != null)
             ctx.Dispose();
     }
-
-    #endregion Init Load Unload events
     
+    #endregion Init Load Unload events
+        
     #region Page events (clics)
+        
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         if (!CreateChange())
@@ -74,16 +81,17 @@ public partial class UserForm : System.Web.UI.Page
         string command = "CloseAndRebind('')";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     #endregion Page events (clics)
-
+        
     #region Auxiliary functions
+            
     protected bool DataOk()
     {
         // new user needs a password
@@ -103,7 +111,7 @@ public partial class UserForm : System.Web.UI.Page
         }
         return true;
     }
-
+        
     protected bool CreateChange()
     {
         if (!DataOk())
@@ -124,7 +132,7 @@ public partial class UserForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
-
+        
     protected void LoadData(User u)
     {
         txtUserId.Text = u.UserId.ToString();
@@ -132,9 +140,10 @@ public partial class UserForm : System.Web.UI.Page
         txtLogin.Text = u.Login;
         LoadGroupCombo(u);
         LoadProfessional(u);
+        LoadBaseVisitType(u);
         ddlProfile.SelectedValue = u.Profile.ToString();
     }
-
+            
     protected void UnloadData(User u)
     {
         u.Name = txtName.Text;
@@ -148,10 +157,15 @@ public partial class UserForm : System.Web.UI.Page
         if (ddlProfessional.SelectedValue != "") 
         {
             Professional p = CntAriCli.GetProfessional(int.Parse(ddlProfessional.SelectedValue), ctx);
-            if (p != null) p.User = u;
+            if (p != null)
+                p.User = u;
         }
         u.Profile = int.Parse(ddlProfile.SelectedValue);
+        u.BaseVisitType = (from bvt in ctx.BaseVisitTypes
+                           where bvt.Code == ddlBaseVisitType.SelectedValue
+                           select bvt).FirstOrDefault<BaseVisitType>();
     }
+            
     protected void LoadGroupCombo(User u)
     {
         ddlGroup.Items.Clear(); // clear all previous options
@@ -164,6 +178,20 @@ public partial class UserForm : System.Web.UI.Page
             ddlGroup.SelectedValue = u.UserGroup.UserGroupId.ToString();
         }
     }
+            
+    protected void LoadBaseVisitType(User u)
+    {
+        ddlBaseVisitType.Items.Clear(); // clear all previous options
+        foreach (BaseVisitType bvt in ctx.BaseVisitTypes)
+        {
+            ddlBaseVisitType.Items.Add(new ListItem(bvt.Name, bvt.Code));
+        }
+        if (u != null)
+        {
+            ddlBaseVisitType.SelectedValue = u.BaseVisitType.Code;
+        }
+    }
+            
     protected void LoadProfessional(User u)
     {
         ddlProfessional.Items.Clear(); // clear all previous options
@@ -181,5 +209,7 @@ public partial class UserForm : System.Web.UI.Page
             ddlProfessional.SelectedValue = "";
         }
     }
+
     #endregion Auxiliary functions
+
 }

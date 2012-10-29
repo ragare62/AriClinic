@@ -135,6 +135,18 @@
         </tr>
         <tr>
             <td colspan="10">
+               <div ID="BaseVisitType" class="normalText">
+                  <asp:Label ID="lblBaseVisitType" runat="server" Text="Tipo de visita por defecto:" 
+                             ToolTip="Tipo de visita por defecto"></asp:Label>
+                  <br />
+                  <asp:DropDownList ID="ddlBaseVisitType" runat="server" Height="22px" Width="386px" 
+                        TabIndex="6">
+                  </asp:DropDownList>
+               </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10">
                 <div ID="Message" class="messageText">
                   <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
                 </div>
@@ -144,11 +156,11 @@
             <td colspan="10">
                 <div ID="Buttons" class="buttonsFomat">
                   <asp:ImageButton ID="btnAccept" runat="server" 
-                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" TabIndex="6" />
+                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" TabIndex="7" />
                   &nbsp;
                   <asp:ImageButton ID="btnCancel" runat="server" 
                                    ImageUrl="~/images/document_out.png" CausesValidation="False" 
-                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar"  TabIndex="7"/>
+                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar"  TabIndex="8"/>
                 </div>
             </td>
         </tr>

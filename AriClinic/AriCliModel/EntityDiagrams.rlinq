@@ -9,7 +9,7 @@
           <orm:single-field field-name="userId" />
         </orm:identity>
         <orm:field name="userId" property="UserId" behavior="readwrite" null-value="none" uniqueId="4e379db7-c9a9-419e-8f31-d5c4d3642c89" type="System.Int32">
-          <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="user_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="name" property="Name" behavior="readwrite" null-value="none" uniqueId="0601414c-ecc9-44a8-bf85-823fd1ee1b2a" type="System.String">
           <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="Varchar" />
@@ -21,7 +21,7 @@
           <orm:column name="password" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="profile" property="Profile" uniqueId="6c254931-d63a-45a4-98db-9bbe2e0b0494" type="System.Int32">
-          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="profile" ado-type="" />
+          <orm:column name="profile" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="userGroup" property="UserGroup" behavior="readwrite" null-value="none" uniqueId="4f0e1afa-f830-4ec6-96f8-ccca051f5760" type="AriCliModel.UserGroup">
           <orm:reference uniqueId="ab0ced04-bff9-4384-a72c-b2aa6929c04f" />
@@ -49,6 +49,9 @@
         </orm:field>
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="50f4cc66-0d28-4d49-b333-25329aab8c39" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="user" order-by="" uniqueId="5636ccb9-43f2-4074-a495-2469e4b5d5e3" />
+        </orm:field>
+        <orm:field name="baseVisitType" property="BaseVisitType" behavior="readwrite" uniqueId="a8b04954-87f7-42f7-85ac-a8fc3049a0d0" type="AriCliModel.BaseVisitType">
+          <orm:reference uniqueId="b55c3857-3ec8-44d1-9fdd-bc51d97c7a47" />
         </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">
@@ -2723,6 +2726,9 @@
         <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" behavior="readwrite" uniqueId="bc6d354b-a1db-4104-aea1-47f811503a52" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="baseVisit" order-by="" uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
         </orm:field>
+        <orm:field name="baseVisitType" property="BaseVisitType" behavior="readwrite" uniqueId="3d1dda5e-02b9-4605-b00c-b7257299e7dc" type="AriCliModel.BaseVisitType">
+          <orm:reference uniqueId="e63d6a81-b5ad-4dab-8253-350d6a94fc8b" />
+        </orm:field>
         <orm:index name="idx_base_visit_person_id">
           <orm:columnMapping>
             <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -3068,6 +3074,23 @@
           <orm:reference uniqueId="fc92c363-7184-41c1-b5d8-e127d043db7d" />
         </orm:field>
       </orm:class>
+      <orm:class name="BaseVisitType" use-default-mapping="true" uniqueId="d255e9ae-c62f-42d6-8dd5-2f4702f5bb8d">
+        <orm:identity>
+          <orm:single-field field-name="code" />
+        </orm:identity>
+        <orm:field name="code" property="Code" uniqueId="da9e5356-5850-4889-be7a-7a643f698595" type="System.String">
+          <orm:column name="code" sql-type="varchar" nullable="false" length="255" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="df819195-e734-4bef-81f8-2e17a88b052b" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="f6bcab00-118c-4d1e-bee1-cfa29f935af0" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="baseVisitType" managed="true" order-by="" uniqueId="e63d6a81-b5ad-4dab-8253-350d6a94fc8b" />
+        </orm:field>
+        <orm:field name="users" property="Users" behavior="readwrite" uniqueId="cebce98b-442e-4ed4-b25d-e78f82bfdee6" type="AriCliModel.User">
+          <orm:collection element-class="AriCliModel.User" inverse-field="baseVisitType" managed="true" order-by="" uniqueId="b55c3857-3ec8-44d1-9fdd-bc51d97c7a47" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3122,12 +3145,12 @@
         <orm:column name="name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="user">
-        <orm:column name="user_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="user_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="user_group_id" sql-type="integer" nullable="true" scale="0" ado-type="Int32" />
         <orm:column name="password" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="Varchar" />
         <orm:column name="login" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="profile" ado-type="" />
+        <orm:column name="profile" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="telephone">
         <orm:column name="telephone_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -4079,6 +4102,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="b55c3857-3ec8-44d1-9fdd-bc51d97c7a47" SourceMultiplicity="ZeroOne" name="UserHasBaseVisitType">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisitType" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7cea802e-8c20-4e7a-a478-107fb98a27b8">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisitType/Users" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="2e59a522-7ef1-4240-af99-3567c8f2bdd9">
+              <NavigationalPropertyMoniker name="/AriClinicContext/User/BaseVisitType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="21c34b37-0c6e-4792-8db1-c47de729b244">
@@ -4107,6 +4143,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="94fd34cb-27eb-44f5-a321-0f010bc525ce">
           <NavigationalProperty Id="50f4cc66-0d28-4d49-b333-25329aab8c39" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="17808529-d2e7-4e70-ab62-eebb068112f1">
+          <NavigationalProperty Id="a8b04954-87f7-42f7-85ac-a8fc3049a0d0" name="BaseVisitType" type="BaseVisitType" label="BaseVisitType : BaseVisitType" nullable="true" kind="Persistent" fieldName="baseVisitType" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -6765,6 +6804,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="e63d6a81-b5ad-4dab-8253-350d6a94fc8b" SourceMultiplicity="ZeroOne" name="BaseVisitHasBaseVisitType">
+          <DomainClassMoniker name="/AriClinicContext/BaseVisitType" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="27f5aad7-e2e0-4172-bdfb-9409cdcc242b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisitType/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="37547554-da67-4da6-926b-d4a913258306">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/BaseVisitType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="0e653a1f-0456-49fb-ac03-f84686e0f4de">
@@ -6796,6 +6848,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="45388c04-cbce-43e1-a0d2-608b070df14f">
           <NavigationalProperty Id="d99428bc-bb89-4159-8d6a-1ef5c5cee4b7" name="AppointmentInfo" type="AppointmentInfo" label="AppointmentInfo : AppointmentInfo" nullable="true" kind="Persistent" fieldName="appointmentInfo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="66a71dfe-f806-434f-948c-837b5a0ce3dd">
+          <NavigationalProperty Id="3d1dda5e-02b9-4605-b00c-b7257299e7dc" name="BaseVisitType" type="BaseVisitType" label="BaseVisitType : BaseVisitType" nullable="true" kind="Persistent" fieldName="baseVisitType" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7099,6 +7154,18 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="d255e9ae-c62f-42d6-8dd5-2f4702f5bb8d" name="BaseVisitType" namespace="AriCliModel" showPropertiesCompartment="true" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="da9e5356-5850-4889-be7a-7a643f698595" name="Code" label="Code : String" identity="true" fieldName="code" />
+      <Property Id="df819195-e734-4bef-81f8-2e17a88b052b" name="Name" label="Name : String" fieldName="name" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="768eefec-4792-4ffc-9e27-724ca3795f9a">
+          <NavigationalProperty Id="f6bcab00-118c-4d1e-bee1-cfa29f935af0" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="83d0056d-ba8b-439a-9e28-67b9567882f5">
+          <NavigationalProperty Id="cebce98b-442e-4ed4-b25d-e78f82bfdee6" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -7174,6 +7241,7 @@
         <entitySetProperty name="BackPersonals" type="BackPersonal" label="BackPersonals : IQueryable&lt;BackPersonal&gt;" />
         <entitySetProperty name="BackFamilies" type="BackFamily" label="BackFamilies : IQueryable&lt;BackFamily&gt;" />
         <entitySetProperty name="BackGinecologies" type="BackGinecology" label="BackGinecologies : IQueryable&lt;BackGinecology&gt;" />
+        <entitySetProperty name="BaseVisitTypes" namespace="AriCliModel" type="BaseVisitType" label="BaseVisitTypes : IQueryable&lt;AriCliModel.BaseVisitType&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

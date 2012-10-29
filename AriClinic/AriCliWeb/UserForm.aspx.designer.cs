@@ -228,6 +228,24 @@ public partial class UserForm {
     protected global::System.Web.UI.WebControls.DropDownList ddlProfile;
     
     /// <summary>
+    /// Control lblBaseVisitType.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblBaseVisitType;
+    
+    /// <summary>
+    /// Control ddlBaseVisitType.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DropDownList ddlBaseVisitType;
+    
+    /// <summary>
     /// Control lblMessage.
     /// </summary>
     /// <remarks>

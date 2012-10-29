@@ -155,6 +155,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private BaseVisitType baseVisitType;
+		public virtual BaseVisitType BaseVisitType 
+		{ 
+		    get
+		    {
+		        return this.baseVisitType;
+		    }
+		    set
+		    {
+		        this.baseVisitType = value;
+		    }
+		}
+		
 		private IList<ExaminationAssigned> examinationAssigneds = new List<ExaminationAssigned>();
 		public virtual IList<ExaminationAssigned> ExaminationAssigneds 
 		{ 

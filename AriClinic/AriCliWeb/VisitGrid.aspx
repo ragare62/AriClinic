@@ -54,8 +54,8 @@
                       w1 = window.open("VisitTab.aspx", "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
-                  case "ophvisit":
-                      w1 = window.open("OphVisitTab.aspx", "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
+                  case "ophthalmologic":
+                      w1 = window.open("ophthalmologicTab.aspx", "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
               }
@@ -70,8 +70,8 @@
                       w2 = window.open("VisitTab.aspx?VisitId=" + id, "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
-                  case "ophvisit":
-                      w2 = window.open("OphVisitTab.aspx?VisitId=" + id, "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
+                  case "ophthalmologic":
+                      w2 = window.open("ophthalmologicTab.aspx?VisitId=" + id, "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
               }
@@ -86,8 +86,8 @@
                       w1 = window.open("VisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
-                  case "ophvisit":
-                      w1 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
+                  case "ophthalmologic":
+                      w1 = window.open("ophthalmologicTab.aspx?PatientId=" + gup('PatientId'), "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w1.focus();
                       break;
               }
@@ -101,8 +101,8 @@
                                    "&VisitId=" + id, "VISIT", "width=800, height=600,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
-                  case "ophvisit":
-                      w2 = window.open("OphVisitTab.aspx?PatientId=" + gup('PatientId') +
+                  case "ophthalmologic":
+                      w2 = window.open("ophthalmologicTab.aspx?PatientId=" + gup('PatientId') +
                                    "&VisitId=" + id, "VISIT", "width=900, height=700,resizable=1,scrollbars=1");
                       w2.focus();
                       break;
@@ -185,7 +185,7 @@
             <Items>
               <telerik:RadComboBoxItem runat="server" Text="General" Value="general" Selected="true" />
               <telerik:RadComboBoxItem runat="server" Text="Visita oftalmológica" 
-                                       Value="ophvisit" />
+                                       Value="ophthalmologic" />
             </Items>
           </telerik:RadComboBox>
         </div>
@@ -224,6 +224,12 @@
                                          HeaderText="Fecha" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="VisitDate" UniqueName="VisitDate">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="BaseVisitType.Name" 
+                                         FilterControlToolTip="Filtrar por tipo visita" FilterImageToolTip="Filtro"
+                                         HeaderText="Tipo visita" 
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
+                                         SortExpression="BaseVisitType.Name" UniqueName="BaseVisitType.Name">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="AppointmentType.Name" 
                                          FilterControlToolTip="Filtrar por tipo de cita" FilterImageToolTip="Filtro"

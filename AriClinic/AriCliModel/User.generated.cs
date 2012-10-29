@@ -103,6 +103,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private BaseVisitType baseVisitType;
+		public virtual BaseVisitType BaseVisitType 
+		{ 
+		    get
+		    {
+		        return this.baseVisitType;
+		    }
+		    set
+		    {
+		        this.baseVisitType = value;
+		    }
+		}
+		
 		private IList<InvoiceLine> invoiceLines = new List<InvoiceLine>();
 		public virtual IList<InvoiceLine> InvoiceLines 
 		{ 
