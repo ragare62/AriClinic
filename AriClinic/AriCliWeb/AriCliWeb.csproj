@@ -213,6 +213,34 @@
     <Compile Include="BackGinecologyForm.aspx.designer.cs">
       <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PrescriptionGlassesForm.aspx.cs">
+      <DependentUpon>PrescriptionGlassesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrescriptionGlassesForm.aspx.designer.cs">
+      <DependentUpon>PrescriptionGlassesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CycloplegiaForm.aspx.cs">
+      <DependentUpon>CycloplegiaForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CycloplegiaForm.aspx.designer.cs">
+      <DependentUpon>CycloplegiaForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectiveOpticalExaminationForm.aspx.cs">
+      <DependentUpon>SubjectiveOpticalExaminationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubjectiveOpticalExaminationForm.aspx.designer.cs">
+      <DependentUpon>SubjectiveOpticalExaminationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OpticalObjectiveExaminationForm.aspx.cs">
+      <DependentUpon>OpticalObjectiveExaminationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpticalObjectiveExaminationForm.aspx.designer.cs">
+      <DependentUpon>OpticalObjectiveExaminationForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GeneralPaymentForm2.aspx.cs">
       <DependentUpon>GeneralPaymentForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1095,6 +1123,10 @@
     <Content Include="BackPersonalForm.aspx" />
     <Content Include="BackFamilyForm.aspx" />
     <Content Include="BackGinecologyForm.aspx" />
+    <Content Include="PrescriptionGlassesForm.aspx" />
+    <Content Include="CycloplegiaForm.aspx" />
+    <Content Include="SubjectiveOpticalExaminationForm.aspx" />
+    <Content Include="OpticalObjectiveExaminationForm.aspx" />
     <Content Include="GeneralPaymentForm2.aspx" />
     <Content Include="GeneralPaymentGrid.aspx" />
     <Content Include="GeneralPaymentForm.aspx" />

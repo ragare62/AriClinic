@@ -532,6 +532,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string signMD;
+		public virtual string SignMD 
+		{ 
+		    get
+		    {
+		        return this.signMD;
+		    }
+		    set
+		    {
+		        this.signMD = value;
+		    }
+		}
+		
 		private Refractometry refractometry1;
 		public virtual Refractometry Refractometry 
 		{ 

@@ -3,7 +3,7 @@
 var w;
 
 function printDiary(dt, diary) {
-    var url = "RptView.aspx?Report=rappointmentday&TDate=" + dt + "&Diary=" + diary;
+    var url = "RptView.aspx?Report=rappointmentday&FDate=" + dt + "&Diary=" + diary;
     w = window.open(url, "rptview", "width=800,height=600,resizable=1");
     w.focus();
 }

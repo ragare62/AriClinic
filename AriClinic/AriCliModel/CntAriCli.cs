@@ -1483,6 +1483,31 @@ namespace AriCliModel
                     where gt.Id == id
                     select gt).FirstOrDefault<GlassesTest>();
         }
+        public static PrescriptionGlasses GetPrescriptionGlasses(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.PrescriptionGlasses
+                    where gt.Id == id
+                    select gt).FirstOrDefault<PrescriptionGlasses>();
+        }
+        public static OpticalObjectiveExamination GetOpticalObjectiveExamination(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.OpticalObjectiveExaminations
+                    where gt.Id == id
+                    select gt).FirstOrDefault<OpticalObjectiveExamination>();
+        }
+        public static SubjectiveOpticalExamination GetSubjectiveOpticalExamination(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.SubjectiveOpticalExaminations
+                    where gt.Id == id
+                    select gt).FirstOrDefault<SubjectiveOpticalExamination>();
+        }
+        public static Cycloplegia GetCycloplegia(int id, AriClinicContext ctx)
+        {
+            return (from gt in ctx.Cycloplegias
+                    where gt.Id == id
+                    select gt).FirstOrDefault<Cycloplegia>();
+        }
+
         public static int InvoiceAnesthesicServiceNote(AnestheticServiceNote asn, AriClinicContext ctx)
         {
             // it there's an invoice related to this service 

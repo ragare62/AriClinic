@@ -273,6 +273,34 @@ public partial class RefractometryForm : System.Web.UI.Page
                     frame.Attributes["src"] = String.Format("ContactLensesTestForm.aspx?RefractometryId={0}&ContactLensesTestId={1}",
                         refractometry.ExaminationAssignedId, refractometry.ContactLensesTests[0].Id);
                 break;
+            case "T4":
+                if (refractometry.OpticalObjectiveExaminations.Count() == 0)
+                    frame.Attributes["src"] = String.Format("OpticalObjectiveExaminationForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("OpticalObjectiveExamination.aspx?RefractometryId={0}&OpticalObjectiveExaminationId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.ContactLensesTests[0].Id);
+                break;
+            case "T5":
+                if (refractometry.SubjectiveOpticalExaminations.Count() == 0)
+                    frame.Attributes["src"] = String.Format("SubjectiveOpticalExaminationForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("SubjectiveOpticalExaminationForm.aspx?RefractometryId={0}&SubjectiveOpticalExaminationId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.SubjectiveOpticalExaminations[0].Id);
+                break;
+            case "T6":
+                if (refractometry.PrescriptionGlasses.Count() == 0)
+                    frame.Attributes["src"] = String.Format("PrescriptionGlassesForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("PrescriptionGlassesForm.aspx?RefractometryId={0}&PrescriptionGlassesId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.PrescriptionGlasses[0].Id);
+                break;
+            case "T7":
+                if (refractometry.Cycloplegias.Count() == 0)
+                    frame.Attributes["src"] = String.Format("CycloplegiaForm.aspx?RefractometryId={0}", refractometry.ExaminationAssignedId);
+                else
+                    frame.Attributes["src"] = String.Format("CycloplegiaForm.aspx?RefractometryId={0}&CycloplegiaId={1}",
+                        refractometry.ExaminationAssignedId, refractometry.Cycloplegias[0].Id);
+                break;
         }
     }
 }
