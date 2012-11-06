@@ -19,6 +19,7 @@ public partial class RptView : System.Web.UI.Page
     BaseVisit visit = null;
     Treatment treatment = null;
     Invoice invoice = null;
+    PrescriptionGlasses prescriptionGlasses = null;
     string report = "";
     Permission per = null;
 
@@ -52,6 +53,8 @@ public partial class RptView : System.Web.UI.Page
             treatment = CntAriCli.GetTreatment(int.Parse(Request.QueryString["Treatment"]), ctx);
         if (Request.QueryString["Invoice"] != null)
             invoice = CntAriCli.GetInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
+        if (Request.QueryString["PrescriptionGlasses"] != null)
+            prescriptionGlasses = CntAriCli.GetPrescriptionGlasses(int.Parse(Request.QueryString["PrescriptionGlasses"]), ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -165,12 +168,12 @@ public partial class RptView : System.Web.UI.Page
                         break;
                     case "prescription":
                         this.Title = "Recetas";
-                        RptPrescription rpres = new RptPrescription();
+                        RptPrescription rprescription = new RptPrescription();
                         if (treatment != null)
                         {
-                            rpres.ReportParameters["Treatment"].Visible = false;
-                            rpres.ReportParameters["Treatment"].MultiValue = false;
-                            rpres.ReportParameters["Treatment"].Value = treatment.TreatmentId;
+                            rprescription.ReportParameters["Treatment"].Visible = false;
+                            rprescription.ReportParameters["Treatment"].MultiValue = false;
+                            rprescription.ReportParameters["Treatment"].Value = treatment.TreatmentId;
                         }
                         if (visit != null)
                         {
@@ -179,11 +182,11 @@ public partial class RptView : System.Web.UI.Page
                             {
                                 ltrt.Add(t.TreatmentId);
                             }
-                            rpres.ReportParameters["Treatment"].Visible = false;
-                            rpres.ReportParameters["Treatment"].MultiValue = true;
-                            rpres.ReportParameters["Treatment"].Value = ltrt;
+                            rprescription.ReportParameters["Treatment"].Visible = false;
+                            rprescription.ReportParameters["Treatment"].MultiValue = true;
+                            rprescription.ReportParameters["Treatment"].Value = ltrt;
                         }
-                        ReportViewer1.Report = rpres;
+                        ReportViewer1.Report = rprescription;
                         break;
                     case "rptgpbyclinic":
                         this.Title = "Cobros generales por clínica";
@@ -211,6 +214,17 @@ public partial class RptView : System.Web.UI.Page
                         this.Title = "Pacientes por procedencia";
                         RptPatientBySource rptpbs = new RptPatientBySource();
                         ReportViewer1.Report = rptpbs;
+                        break;
+                    case "prescriptionglasses":
+                        this.Title = "Receta de gafas";
+                        RptPrescriptionGlasses rpresglasses = new RptPrescriptionGlasses();
+                        if (prescriptionGlasses != null)
+                        {
+                            rpresglasses.ReportParameters["PreGlasId"].Visible = false;
+                            rpresglasses.ReportParameters["PreGlasId"].MultiValue = false;
+                            rpresglasses.ReportParameters["PreGlasId"].Value = prescriptionGlasses.Id;
+                        }
+                        ReportViewer1.Report = rpresglasses;
                         break;
                 }
             }

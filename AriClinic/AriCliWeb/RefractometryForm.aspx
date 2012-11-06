@@ -174,7 +174,7 @@
             </tr>
             <tr>
             <td colspan="2">
-            <iframe id="FrmArea" runat="server" width="100%" height="300px">
+            <iframe id="FrmArea" runat="server" width="100%" height="400px">
            </iframe>
             </td>
             </tr>

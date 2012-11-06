@@ -18,7 +18,7 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
     AriClinicContext ctx = null;
     User user = null;
     Refractometry refractometry = null;
-    PrescriptionGlasses PrescriptionGlasses = null;
+    PrescriptionGlasses prescriptionGlasses = null;
     int id = 0;
     Permission per = null;
 
@@ -45,9 +45,9 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
         if (Request.QueryString["PrescriptionGlassesId"] != null)
         {
             id = Int32.Parse(Request.QueryString["PrescriptionGlassesId"]);
-            PrescriptionGlasses = CntAriCli.GetPrescriptionGlasses(id, ctx);
-            refractometry = PrescriptionGlasses.Refractometry;
-            LoadData(PrescriptionGlasses);
+            prescriptionGlasses = CntAriCli.GetPrescriptionGlasses(id, ctx);
+            refractometry = prescriptionGlasses.Refractometry;
+            LoadData(prescriptionGlasses);
         }
         if (Request.QueryString["RefractometryId"] != null)
         {
@@ -72,7 +72,7 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "";
-        if (PrescriptionGlasses == null)
+        if (prescriptionGlasses == null)
             command = "CloseAndRebind('new')";
         else
             command = "CloseAndRebind('')";
@@ -108,23 +108,23 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
     {
         if (!DataOk())
             return false;
-        if (PrescriptionGlasses == null)
+        if (prescriptionGlasses == null)
         {
-            PrescriptionGlasses = new PrescriptionGlasses();
-            PrescriptionGlasses.Refractometry = refractometry;
-            UnloadData(PrescriptionGlasses);
-            ctx.Add(PrescriptionGlasses);
+            prescriptionGlasses = new PrescriptionGlasses();
+            prescriptionGlasses.Refractometry = refractometry;
+            UnloadData(prescriptionGlasses);
+            ctx.Add(prescriptionGlasses);
         }
         else
         {
-            PrescriptionGlasses = CntAriCli.GetPrescriptionGlasses(PrescriptionGlasses.Id, ctx);
-            UnloadData(PrescriptionGlasses);
+            prescriptionGlasses = CntAriCli.GetPrescriptionGlasses(prescriptionGlasses.Id, ctx);
+            UnloadData(prescriptionGlasses);
         }
         ctx.SaveChanges();
         RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','success',null,0,0)"
                                                           , Resources.GeneralResource.Success
                                                           , Resources.GeneralResource.CorrectlyStored));
-        Response.Redirect(String.Format("PrescriptionGlassesForm.aspx?PrescriptionGlassesId={0}", PrescriptionGlasses.Id));
+        Response.Redirect(String.Format("PrescriptionGlassesForm.aspx?PrescriptionGlassesId={0}", prescriptionGlasses.Id));
         return true;
     }
 
@@ -203,4 +203,13 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
     }
 
     #endregion Auxiliary functions
+
+    protected void btnPrint_Click(object sender, ImageClickEventArgs e)
+    {
+        if (!CreateChange())
+            return;
+        string js = String.Format("printPrescription({0});", prescriptionGlasses.Id);
+        RadAjaxManager1.ResponseScripts.Add(js);
+        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
+    }
 }

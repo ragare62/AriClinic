@@ -253,7 +253,7 @@ public partial class PrescriptionGlassesForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtFarAxisLeftEye;
-
+    
     /// <summary>
     /// Control txtFarPrismLeftEye.
     /// </summary>
@@ -262,8 +262,7 @@ public partial class PrescriptionGlassesForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtFarPrismLeftEye;
-
-
+    
     /// <summary>
     /// Control txtFarCenter.
     /// </summary>
@@ -434,7 +433,7 @@ public partial class PrescriptionGlassesForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtBothAxisLeftEye;
-
+    
     /// <summary>
     /// Control txtBothPrismLeftEye.
     /// </summary>
@@ -443,9 +442,7 @@ public partial class PrescriptionGlassesForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtBothPrismLeftEye;
-
-
-
+    
     /// <summary>
     /// Control txtBothCenter.
     /// </summary>
@@ -490,6 +487,15 @@ public partial class PrescriptionGlassesForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtComments;
+    
+    /// <summary>
+    /// Control btnPrint.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnPrint;
     
     /// <summary>
     /// Control btnAccept.
