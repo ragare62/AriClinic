@@ -76,7 +76,7 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
             command = "CloseAndRebind('new')";
         else
             command = "CloseAndRebind('')";
-        if (!CreateChange())
+        if (!CreateChange(false))
             return;
         RadAjaxManager1.ResponseScripts.Add(command);
     }
@@ -104,7 +104,7 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
         return true;
     }
 
-    protected bool CreateChange()
+    protected bool CreateChange(bool fromPrint)
     {
         if (!DataOk())
             return false;
@@ -121,10 +121,13 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
             UnloadData(prescriptionGlasses);
         }
         ctx.SaveChanges();
-        RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','success',null,0,0)"
-                                                          , Resources.GeneralResource.Success
-                                                          , Resources.GeneralResource.CorrectlyStored));
-        Response.Redirect(String.Format("PrescriptionGlassesForm.aspx?PrescriptionGlassesId={0}", prescriptionGlasses.Id));
+        if (!fromPrint)
+        {
+            RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','success',null,0,0)"
+                                                              , Resources.GeneralResource.Success
+                                                              , Resources.GeneralResource.CorrectlyStored));
+            Response.Redirect(String.Format("PrescriptionGlassesForm.aspx?PrescriptionGlassesId={0}", prescriptionGlasses.Id));
+        }
         return true;
     }
 
@@ -206,10 +209,9 @@ public partial class PrescriptionGlassesForm : System.Web.UI.Page
 
     protected void btnPrint_Click(object sender, ImageClickEventArgs e)
     {
-        if (!CreateChange())
+        if (!CreateChange(true))
             return;
         string js = String.Format("printPrescription({0});", prescriptionGlasses.Id);
         RadAjaxManager1.ResponseScripts.Add(js);
-        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
     }
 }

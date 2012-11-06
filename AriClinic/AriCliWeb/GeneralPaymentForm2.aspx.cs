@@ -53,6 +53,7 @@ public partial class GeneralPaymentForm2 : System.Web.UI.Page
             serviceNote = CntAriCli.GetServiceNote(serviceNoteId, ctx);
             txtServiceNoteData.Text = String.Format("{0} ({1:dd/MM/yy}) T:{2:0.00} P:{3:0.00}", serviceNote.Customer.ComercialName, serviceNote.ServiceNoteDate, serviceNote.Total, serviceNote.Paid);
             txtAmount.Value = (double)CntAriCli.GetUnpaid(serviceNote, ctx);
+            if (serviceNote.Clinic != null) clinic = serviceNote.Clinic;
             SetFocus(rdcbClinic);
         }
         if (Request.QueryString["GeneralPaymentId"] != null)
