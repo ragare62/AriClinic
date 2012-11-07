@@ -313,7 +313,7 @@ namespace RidocciConsole
         public static void ImportTaxTypes(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.TaxTypes);
+            //ctx.Delete(ctx.TaxTypes);
 
             // (1) Dar de alta los tipos de IVA importados.
             string sql = "SELECT * FROM TiposIva";
@@ -323,16 +323,24 @@ namespace RidocciConsole
             da.Fill(ds, "ConTiposIVA");
             int nreg = ds.Tables["ConTiposIVA"].Rows.Count;
             int reg = 0;
+            TaxType tt = null;
             foreach (DataRow dr in ds.Tables["ConTiposIVA"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Tipos IVA {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomTipoIva"]);
-                TaxType tt = new TaxType();
-                tt.Name = (string)dr["NomTipoIva"];
-                Single p = (Single)dr["Porcentaje"];
+                Console.WriteLine("Tipos IVA {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomTipoIva"]);
+                tt = (from ti in ctx.TaxTypes
+                      where ti.OftId == (int)localDr["IdTipoIVA"]
+                      select ti).FirstOrDefault<TaxType>();
+                if (tt == null)
+                {
+                    tt = new TaxType();
+                    ctx.Add(tt);
+                }
+                tt.Name = (string)localDr["NomTipoIva"];
+                Single p = (Single)localDr["Porcentaje"];
                 tt.Percentage = decimal.Parse(p.ToString());
-                tt.OftId = (int)dr["IdTipoIva"];
-                ctx.Add(tt);
+                tt.OftId = (int)localDr["IdTipoIva"];
             }
             ctx.SaveChanges();
         }
@@ -347,8 +355,8 @@ namespace RidocciConsole
             int id = 0;
 
             // (0) Borrar los datos previos.
-            ctx.Delete(ctx.Services);
-            ctx.Delete(ctx.ServiceCategories);
+            //ctx.Delete(ctx.Services);
+            //ctx.Delete(ctx.ServiceCategories);
             
             // (1) Dar de alta las categorias de servicio
             string sql = "SELECT * FROM TipServMed";
@@ -358,14 +366,22 @@ namespace RidocciConsole
             da.Fill(ds, "ConServicios");
             int nreg = ds.Tables["ConServicios"].Rows.Count;
             int reg = 0;
+            ServiceCategory sc = null;
             foreach (DataRow dr in ds.Tables["ConServicios"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Categorias {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomTipServMed"]);
-                ServiceCategory sc = new ServiceCategory();
-                sc.Name = (string)dr["NomTipServMed"];
-                sc.OftId = (int)dr["IdTipservMed"];
-                ctx.Add(sc);
+                Console.WriteLine("Categorias {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomTipServMed"]);
+                sc = (from scat in ctx.ServiceCategories
+                      where scat.OftId == (int)localDr["IdTipServMed"]
+                      select scat).FirstOrDefault<ServiceCategory>();
+                if (sc == null)
+                {
+                    sc = new ServiceCategory();
+                    ctx.Add(sc);
+                }
+                sc.Name = (string)localDr["NomTipServMed"];
+                sc.OftId = (int)localDr["IdTipservMed"];
                 ctx.SaveChanges();
             }
             // (2) Con las categorías dadas de alta  damos de alta los
@@ -377,18 +393,24 @@ namespace RidocciConsole
             da.Fill(ds, "ConServ2");
             nreg = ds.Tables["ConServ2"].Rows.Count;
             reg = 0;
+            Service s = null;
             foreach (DataRow dr in ds.Tables["ConServ2"].Rows)
             {
                 reg++;
-
-                Service s = new Service();
+                s = (from sr in ctx.Services
+                     where sr.OftId == (int)dr["IdServMed"]
+                     select sr).FirstOrDefault<Service>();
+                if (s == null)
+                {
+                    s = new Service();
+                    ctx.Add(s);
+                }
                 s.Name = (string)dr["NomServMed"];
                 id = (int)dr["IdTipServMed"];
-                s.ServiceCategory = (from sc in ctx.ServiceCategories
-                                     where sc.OftId == id
-                                     select sc).FirstOrDefault<ServiceCategory>();
+                s.ServiceCategory = (from scat in ctx.ServiceCategories
+                                     where scat.OftId == id
+                                     select scat).FirstOrDefault<ServiceCategory>();
                 s.OftId = (int)dr["IdServMed"];
-                ctx.Add(s);
             }
             ctx.SaveChanges();
         }
@@ -401,7 +423,7 @@ namespace RidocciConsole
         public static void ImportProfessionals(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Borrar los professionales que existieran previamente
-            ctx.Delete(ctx.Professionals);
+            //ctx.Delete(ctx.Professionals);
 
             //(1) Leer los Médicos de OFT
             string sql = "SELECT * FROM Medicos";
@@ -411,15 +433,23 @@ namespace RidocciConsole
             da.Fill(ds, "ConMedicos");
             int nreg = ds.Tables["ConMedicos"].Rows.Count;
             int reg = 0;
+            Professional p = null;
             foreach (DataRow dr in ds.Tables["ConMedicos"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Profesionales {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomMed"]);
-                Professional p = new Professional();
-                p.ComercialName = (string)dr["NomMed"];
+                Console.WriteLine("Profesionales {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomMed"]);
+                p = (from pf in ctx.Professionals
+                     where pf.OftId == (int)localDr["IdMed"]
+                     select pf).FirstOrDefault<Professional>();
+                if (p == null)
+                {
+                    p = new Professional();
+                    ctx.Add(p);
+                }
+                p.ComercialName = (string)localDr["NomMed"];
                 p.FullName = p.ComercialName;
-                p.OftId = (int)dr["IdMed"];
-                ctx.Add(p);
+                p.OftId = (int)localDr["IdMed"];
             }
             ctx.SaveChanges();
         }
@@ -427,15 +457,22 @@ namespace RidocciConsole
         public static void ImportAssurancePolicies(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Borrar las aseguradoras y pólizas previas.
-            ctx.Delete(ctx.Policies);
-            ctx.Delete(ctx.Insurances);
-            ctx.Delete(ctx.InsuranceServices);
+            //ctx.Delete(ctx.Policies);
+            //ctx.Delete(ctx.Insurances);
+            //ctx.Delete(ctx.InsuranceServices);
 
             //(1) Por defecto creamos una aseguradora que es la clínica de Valencia.
-            Insurance insurance = new Insurance();
-            insurance.Name = "MIESTETIC (Valencia)";
-            insurance.Internal = true;
-            ctx.Add(insurance);
+
+            Insurance insurance = (from i in ctx.Insurances
+                                   where i.Name == "MIESTETIC (Valencia)"
+                                   select i).FirstOrDefault<Insurance>();
+            if (insurance == null)
+            {
+                insurance = new Insurance();
+                insurance.Name = "MIESTETIC (Valencia)";
+                insurance.Internal = true;
+                ctx.Add(insurance);
+            }
 
             //(2) Ahora leemos, de nuevo, todos los tipos de servicio porque en OFT
             // ellos llevan los importes y en nuestro caso son los Insurance services
@@ -446,27 +483,42 @@ namespace RidocciConsole
             da.Fill(ds, "ConServicios");
             int nreg = ds.Tables["ConServicios"].Rows.Count;
             int reg = 0;
+            InsuranceService ins = null;
             foreach (DataRow dr in ds.Tables["ConServicios"].Rows)
             {
                 reg++;
                 Console.WriteLine("Servicions {0:#####0} de {1:#####0} {2}", reg, nreg, "SERVICIO");
                 int id = (int)dr["IdServMed"];
-                InsuranceService ins = new InsuranceService();
+                ins = (from i in ctx.InsuranceServices
+                       where i.OftId == id
+                       select i).FirstOrDefault<InsuranceService>();
+                if (ins == null)
+                {
+                    ins = new InsuranceService();
+                    ctx.Add(ins);
+                }
                 ins.Insurance = insurance;
                 ins.Service = (from s in ctx.Services
                                where s.OftId == id
                                select s).FirstOrDefault<Service>();
                 ins.Price = (decimal)dr["Importe"];
-                ctx.Add(ins);
             }
 
             //(3) por último asignamos una póliza a todos los clientes que tenemos dados de alta.
             foreach (Customer cus in ctx.Customers)
             {
-                Policy pol = new Policy();
-                pol.Customer = cus;
-                pol.Insurance = insurance;
-                ctx.Add(pol);
+                Customer localCus = cus;
+                Policy pol = (from p in ctx.Policies
+                              where p.Customer.PersonId == localCus.PersonId &&
+                                    p.Insurance.InsuranceId == insurance.InsuranceId
+                              select p).FirstOrDefault<Policy>();
+                if (pol == null)
+                {
+                    pol = new Policy();
+                    pol.Customer = localCus;
+                    pol.Insurance = insurance;
+                    ctx.Add(pol);
+                }
             }
             ctx.SaveChanges();
         }
@@ -474,17 +526,23 @@ namespace RidocciConsole
         public static void ImportServiceNote(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Borrar las notas de servicio y tickets previos
-            ctx.Delete(ctx.Payments);
-            ctx.Delete(ctx.GeneralPayments);
-            ctx.Delete(ctx.Tickets);
-            ctx.Delete(ctx.ServiceNotes);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.Payments);
+            //ctx.Delete(ctx.GeneralPayments);
+            //ctx.Delete(ctx.Tickets);
+            //ctx.Delete(ctx.ServiceNotes);
+            //ctx.SaveChanges();
 
             // Nos hace falta una clínica, la creamos ahora
-            Clinic cl = new Clinic();
-            cl.Name = "Clinica Valencia";
-            ctx.Add(cl);
-            ctx.SaveChanges();
+            Clinic cl = (from c in ctx.Clinics
+                         where c.Name == "Clinica Valencia"
+                         select c).FirstOrDefault<Clinic>();
+            if (cl == null)
+            {
+                cl = new Clinic();
+                cl.Name = "Clinica Valencia";
+                ctx.Add(cl);
+                ctx.SaveChanges();
+            }
 
             //(1) Leer las notas de servicio OFT
             string sql = "SELECT * FROM NotaServicio";
@@ -498,7 +556,15 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Notas de servicio {0:#####0} de {1:#####0} A:{2} N:{3}", reg, nreg,(int)dr["Ano"], (int)dr["NumNota"]);
-                ServiceNote sn = new ServiceNote();
+                ServiceNote sn = (from s in ctx.ServiceNotes
+                                  where s.Oft_Ano == (int)dr["Ano"]
+                                  && s.Oft_NumNota == (int)dr["NumNota"]
+                                  select s).FirstOrDefault<ServiceNote>();
+                if (sn == null)
+                {
+                    sn = new ServiceNote();
+                    ctx.Add(sn);
+                }
                 int id = (int)dr["NumHis"];
                 sn.Customer = (from cus in ctx.Customers
                                where cus.OftId == id
@@ -513,7 +579,6 @@ namespace RidocciConsole
                 sn.Professional = prf;
                 sn.Oft_Ano = (int)dr["Ano"];
                 sn.Oft_NumNota = (int)dr["NumNota"];
-                ctx.Add(sn);
                 ctx.SaveChanges();
             }
 
@@ -535,17 +600,31 @@ namespace RidocciConsole
                 int idNumNota = (int)dr["NumNota"];
                 int idProfessional = (int)dr["IdMed"];
 
-                Ticket tk = new Ticket();
-                tk.InsuranceService = (from ins in ctx.InsuranceServices
-                                       where ins.Service.OftId == idSer
-                                       select ins).FirstOrDefault<InsuranceService>();
-                tk.ServiceNote = (from sn in ctx.ServiceNotes
-                                  where sn.Oft_Ano == idAno && sn.Oft_NumNota == idNumNota
-                                  select sn).FirstOrDefault<ServiceNote>();
-                tk.Amount = (decimal)dr["Importe"];
-                tk.Professional = (from p in ctx.Professionals
-                                   where p.OftId == idProfessional
-                                   select p).FirstOrDefault<Professional>();
+                InsuranceService insuranceService = (from ins in ctx.InsuranceServices
+                                                     where ins.Service.OftId == idSer
+                                                     select ins).FirstOrDefault<InsuranceService>();
+                ServiceNote serviceNote = (from sn in ctx.ServiceNotes
+                                           where sn.Oft_Ano == idAno && sn.Oft_NumNota == idNumNota
+                                           select sn).FirstOrDefault<ServiceNote>();
+                Decimal amount = (decimal)dr["Importe"];
+                Professional professional = (from p in ctx.Professionals
+                                             where p.OftId == idProfessional
+                                             select p).FirstOrDefault<Professional>();
+                Ticket tk = (from t in ctx.Tickets
+                             where t.ServiceNote.ServiceNoteId == serviceNote.ServiceNoteId
+                             && t.InsuranceService.InsuranceServiceId == insuranceService.InsuranceServiceId
+                             && t.Professional.PersonId == professional.PersonId
+                             && t.Amount == amount
+                             select t).FirstOrDefault<Ticket>();
+                if (tk == null)
+                {
+                    tk = new Ticket();
+                    ctx.Add(tk);
+                }
+                tk.InsuranceService = insuranceService;
+                tk.ServiceNote = serviceNote;
+                tk.Amount = amount;
+                tk.Professional = professional;
                 tk.ServiceNote.Professional = tk.Professional;
                 if (tk.ServiceNote.Professional == null)
                     tk.ServiceNote.Professional = tk.Professional;
@@ -555,7 +634,6 @@ namespace RidocciConsole
                 // hay notas sin cliente, no deberia pero las hay
                 if (tk.ServiceNote.Customer != null)
                     tk.Policy = tk.ServiceNote.Customer.Policies.FirstOrDefault<Policy>();
-                ctx.Add(tk);
                 ctx.SaveChanges();
             }
 
@@ -564,7 +642,7 @@ namespace RidocciConsole
         public static void ImportPaymentTypes(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borrar antiguas formas de pago
-            ctx.Delete(ctx.PaymentMethods);
+            // ctx.Delete(ctx.PaymentMethods);
 
             //(2) Lleer todos los pacientes en OFT
             string sql = "SELECT * FROM FormaPago";
@@ -578,10 +656,16 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Formas de pago {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomFormaPago"]);
-                PaymentMethod pm = new PaymentMethod();
+                PaymentMethod pm = (from pme in ctx.PaymentMethods
+                                    where pme.OftId == (int)dr["IdFormaPago"]
+                                    select pme).FirstOrDefault<PaymentMethod>();
+                if (pm == null)
+                {
+                    pm = new PaymentMethod();
+                    ctx.Add(pm);
+                }
                 pm.Name = (string)dr["NomFormaPago"];
                 pm.OftId = (int)dr["IdFormaPago"];
-                ctx.Add(pm);
             }
             ctx.SaveChanges();
         }
@@ -589,8 +673,8 @@ namespace RidocciConsole
         public static void ImportPayments(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borrar antiguos pagos
-            ctx.Delete(ctx.GeneralPayments);
-            ctx.Delete(ctx.Payments);
+            //ctx.Delete(ctx.GeneralPayments);
+            //ctx.Delete(ctx.Payments);
             foreach (Ticket tt in ctx.Tickets)
             {
                 tt.Paid = 0;
@@ -621,17 +705,26 @@ namespace RidocciConsole
                                     where n.Oft_Ano == idAno && n.Oft_NumNota == idNumNota
                                     select n).FirstOrDefault<ServiceNote>();
                 // we create a general payment too
-                GeneralPayment gp = new GeneralPayment();
+                GeneralPayment gp = (from gpp in ctx.GeneralPayments
+                                     where gpp.ServiceNote.ServiceNoteId == note.ServiceNoteId
+                                     && gpp.PaymentDate == (DateTime)dr["Fecha"]
+                                     && gpp.PaymentMethod.PaymentMethodId == pm.PaymentMethodId
+                                     && gpp.Amount == (decimal)dr["Importe"]
+                                     select gpp).FirstOrDefault<GeneralPayment>();
+                if (gp == null)
+                {
+                    gp = new GeneralPayment();
+                    gp.Clinic = cl;
+                    ctx.Add(gp);
+                }
                 gp.Amount = (decimal)dr["Importe"];
                 gp.ServiceNote = note;
                 gp.PaymentDate = (DateTime)dr["Fecha"];
                 gp.PaymentMethod = pm;
                 gp.Description = (string)dr["Descripcion"];
                 note.Paid = note.Paid + gp.Amount;
-                ctx.Add(gp);
-
-
-                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, cl, gp, ctx);
+                ctx.Delete(gp.Payments);
+                bool res = CntAriCli.PayNote(pm, (decimal)dr["Importe"], (DateTime)dr["Fecha"], (string)dr["Descripcion"], note, gp.Clinic, gp, ctx);
                 if (!res)
                 {
                 }
@@ -641,8 +734,8 @@ namespace RidocciConsole
         public static void ImportAppointmentType(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Primero borrar citas y los tipos de cita anteriores
-            ctx.Delete(ctx.AppointmentInfos);
-            ctx.Delete(ctx.AppointmentTypes);
+            //ctx.Delete(ctx.AppointmentInfos);
+            //ctx.Delete(ctx.AppointmentTypes);
 
             //(2) Leer los tipos de OFT y darlos de alta en AriClinic
             string sql = "SELECT * FROM TiposCita";
@@ -658,11 +751,17 @@ namespace RidocciConsole
                 Console.WriteLine("Formas de pago {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomTipCit"]);
                 int id = (int)dr["IdTipCit"];
                 DateTime durac = (DateTime)dr["Durac"];
-                AppointmentType apptype = new AppointmentType();
+                AppointmentType apptype = (from apt in ctx.AppointmentTypes
+                                           where apt.OftId == id
+                                           select apt).FirstOrDefault<AppointmentType>();
+                if (apptype == null)
+                {
+                    apptype = new AppointmentType();
+                    ctx.Add(apptype);
+                }
                 apptype.Name = (string)dr["NomTipCit"];
                 apptype.Duration = durac.Minute;
                 apptype.OftId = id;
-                ctx.Add(apptype);
             }
             ctx.SaveChanges();
         }
@@ -670,7 +769,7 @@ namespace RidocciConsole
         public static void ImportDiary(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borramos las agendas anteriores
-            ctx.Delete(ctx.Diaries);
+            //ctx.Delete(ctx.Diaries);
 
             //(2) Leer las agendas OFT y darlas de alta en AriClinic
             string sql = "SELECT * FROM LibrosCita";
@@ -685,13 +784,19 @@ namespace RidocciConsole
                 reg++;
                 Console.WriteLine("Formas de pago {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomLibCit"]);
                 int id = (int)dr["IdLibCit"];
-                Diary dia = new Diary();
+                Diary dia = (from d in ctx.Diaries
+                             where d.OftId == id
+                             select d).FirstOrDefault<Diary>();
+                if (dia == null)
+                {
+                    dia = new Diary();
+                    ctx.Add(dia);
+                }
                 dia.BeginHour = (DateTime)dr["HrIni"];
                 dia.EndHour = (DateTime)dr["HrFin"];
                 dia.Name = (string)dr["NomLibCit"];
                 dia.TimeStep = 10;
                 dia.OftId = id;
-                ctx.Add(dia);
             }
             ctx.SaveChanges();
         }
@@ -699,7 +804,7 @@ namespace RidocciConsole
         public static void ImportAppointmentInfo(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borramos las citas anteriores.
-            ctx.Delete(ctx.AppointmentInfos);
+            //ctx.Delete(ctx.AppointmentInfos);
 
             //(2) Leer las agendas OFT y darlas de alta en AriClinic
             string sql = "SELECT * FROM Citas";
@@ -718,28 +823,40 @@ namespace RidocciConsole
                 i3++;
                 reg++;
                 Console.WriteLine("Citas {0:#####0} de {1:#####0} {2}", reg, nreg, "CITAS");
-                AppointmentInfo app = new AppointmentInfo();
-                int id = (int)dr["IdTipCit"];
+                int id = (int)dr["NumHis"];
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == id
+                                   select p).FirstOrDefault<Patient>();
+                id = (int)dr["IdLibCit"];
+                Diary diary = (from d in ctx.Diaries
+                               where d.OftId == id
+                               select d).FirstOrDefault<Diary>();
+                DateTime dt = (DateTime)dr["Fecha"];
+                DateTime ht = (DateTime)dr["Hora"];
+                DateTime dd = new DateTime(dt.Year, dt.Month, dt.Day, ht.Hour, ht.Minute, ht.Second);
+                AppointmentInfo app = (from a in ctx.AppointmentInfos
+                                       where a.Diary.DiaryId == diary.DiaryId
+                                       && a.Patient.PersonId == patient.PersonId
+                                       && a.BeginDateTime == dd
+                                       select a).FirstOrDefault<AppointmentInfo>();
+                if (app == null)
+                {
+                    app = new AppointmentInfo();
+                    ctx.Add(app);
+                }
+                id = (int)dr["IdTipCit"];
                 app.AppointmentType = (from at in ctx.AppointmentTypes
                                        where at.OftId == id
                                        select at).FirstOrDefault<AppointmentType>();
-                id = (int)dr["IdLibCit"];
-                app.Diary = (from d in ctx.Diaries
-                             where d.OftId == id
-                             select d).FirstOrDefault<Diary>();
-                id = (int)dr["NumHis"];
-                app.Patient = (from p in ctx.Patients
-                               where p.OftId == id
-                               select p).FirstOrDefault<Patient>();
+                app.Diary = diary;
+                app.Patient = patient;
                 id = (int)dr["IdMed"];
                 app.Professional = (from pr in ctx.Professionals
                                     where pr.OftId == id
                                     select pr).FirstOrDefault<Professional>();
 
                 i4++;
-                DateTime dt = (DateTime)dr["Fecha"];
-                DateTime ht = (DateTime)dr["Hora"];
-                DateTime dd = new DateTime(dt.Year, dt.Month, dt.Day, ht.Hour, ht.Minute, ht.Second);
+
                 app.BeginDateTime = dd;
                 ht = (DateTime)dr["HrFin"];
                 dd = new DateTime(dt.Year, dt.Month, dt.Day, ht.Hour, ht.Minute, ht.Second);
@@ -755,7 +872,6 @@ namespace RidocciConsole
                 {
                     app.Subject = "SIN PACIENTE";
                 }
-                ctx.Add(app);
                 ctx.SaveChanges();
             }
 
@@ -764,8 +880,8 @@ namespace RidocciConsole
         public static void ImportInvoices(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Delete previous invoices
-            ctx.Delete(ctx.InvoiceLines);
-            ctx.Delete(ctx.Invoices);
+            //ctx.Delete(ctx.InvoiceLines);
+            //ctx.Delete(ctx.Invoices);
 
             //
 
@@ -779,19 +895,33 @@ namespace RidocciConsole
             int reg = 0;
             foreach (DataRow dr in ds.Tables["ConFacturas"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
                 Console.WriteLine("Facturas {0:#####0} de {1:#####0} {2}", reg, nreg, "FACTURAS 1");
-                Invoice inv = new Invoice();
-                inv.InvoiceDate = (DateTime)dr["Fecha"];
-                inv.Year = (int)dr["Ano"];
-                inv.InvoiceNumber = (int)dr["NumFactura"];
+                Invoice inv = (from f in ctx.Invoices
+                               where f.Serial == "F" &&
+                                     f.Year == (int)localDr["Ano"] &&
+                                     f.InvoiceNumber == (int)localDr["NumFactura"]
+                               select f).FirstOrDefault<Invoice>();
+                if (inv == null)
+                {
+                    inv = new Invoice();
+                    ctx.Add(inv);
+                }
+                else
+                {
+                    // if exits all lines will be recreated
+                    ctx.Delete(inv.InvoiceLines);
+                }
+                inv.InvoiceDate = (DateTime)localDr["Fecha"];
+                inv.Year = (int)localDr["Ano"];
+                inv.InvoiceNumber = (int)localDr["NumFactura"];
                 inv.Serial = "F"; // we must to set serial parameter to "F"
-                int id = (int)dr["NumHis"];
+                int id = (int)localDr["NumHis"];
                 inv.Customer = (from c in ctx.Customers
                                 where c.OftId == id
                                 select c).FirstOrDefault<Customer>();
-                inv.Total = (decimal)dr["Total"];
-                ctx.Add(inv);
+                inv.Total = (decimal)localDr["Total"];
                 ctx.SaveChanges();
             }
             
@@ -826,7 +956,7 @@ namespace RidocciConsole
                               select s).FirstOrDefault<Service>();
                 sv.TaxType = tx;
                 Invoice inv = (from iv in ctx.Invoices
-                               where iv.Year == Ano && iv.InvoiceNumber == NumFac
+                               where iv.Year == Ano && iv.InvoiceNumber == NumFac && iv.Serial == "F"
                                select iv).FirstOrDefault<Invoice>();
                 il.Invoice = inv;
                 il.TaxType = tx;
@@ -842,7 +972,7 @@ namespace RidocciConsole
         public static void ImportVisitReasons(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.VisitReasons);
+            //ctx.Delete(ctx.VisitReasons);
 
             // (1) Dar de alta los tipos de IVA importados.
             string sql = "SELECT * FROM Motivos";
@@ -854,12 +984,19 @@ namespace RidocciConsole
             int reg = 0;
             foreach (DataRow dr in ds.Tables["ConMotivos"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Motivos visita {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomMot"]);
-                VisitReason vr = new VisitReason();
-                vr.Name = (string)dr["NomMot"];
-                vr.OftId = (int)dr["IdMot"];
-                ctx.Add(vr);
+                Console.WriteLine("Motivos visita {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomMot"]);
+                VisitReason vr = (from v in ctx.VisitReasons
+                                  where v.OftId == (int)localDr["IdMot"]
+                                  select v).FirstOrDefault<VisitReason>();
+                if (vr == null)
+                {
+                   vr = new VisitReason();
+                   ctx.Add(vr);
+                }
+                vr.Name = (string)localDr["NomMot"];
+                vr.OftId = (int)localDr["IdMot"];
             }
             ctx.SaveChanges();
         }
@@ -868,12 +1005,12 @@ namespace RidocciConsole
         {
             int id = 0;
             // (0) Borra tipos previos
-            ctx.Delete(ctx.MotAppends);
-            ctx.Delete(ctx.AntSegments);
-            ctx.Delete(ctx.Fundus);
-            ctx.Delete(ctx.OphthalmologicVisits);
-            ctx.Delete(ctx.BaseVisits);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.MotAppends);
+            //ctx.Delete(ctx.AntSegments);
+            //ctx.Delete(ctx.Fundus);
+            //ctx.Delete(ctx.OphthalmologicVisits);
+            //ctx.Delete(ctx.BaseVisits);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta las visitas importadas
             string sql = "SELECT * FROM HistVisitas";
@@ -886,8 +1023,16 @@ namespace RidocciConsole
             foreach (DataRow dr in ds.Tables["ConVisitas"].Rows)
             {
                 reg++;
+                Boolean newVisit = false;
                 Console.WriteLine("Visitas {0:#####0} de {1:#####0} {2}", reg, nreg, "VISITAS");
-                BaseVisit visit = new BaseVisit();
+                BaseVisit visit = (from v in ctx.BaseVisits
+                                   where v.OftRefVisita == (int)dr["RefVisita"]
+                                   select v).FirstOrDefault<BaseVisit>();
+                if (visit == null)
+                {
+                    visit = new BaseVisit();
+                    newVisit = true;
+                }
                 visit.OftRefVisita = (int)dr["RefVisita"];
                 visit.VisitDate = (DateTime)dr["Fecha"];
                 id = (int)dr["IdTipCit"];
@@ -910,7 +1055,15 @@ namespace RidocciConsole
                     visit.Comments = (string)dr["Observaciones"];
                 if ((decimal)(float)dr["TOOD"] != 0 || (decimal)(float)dr["TOOI"] != 0)
                 {
-                    OphthalmologicVisit ophVisit = new OphthalmologicVisit();
+                    OphthalmologicVisit ophVisit;
+                    if (newVisit)
+                    {
+                        ophVisit = new OphthalmologicVisit();
+                    }
+                    else
+                    {
+                        ophVisit = (OphthalmologicVisit)visit;
+                    }
                     ophVisit.OftRefVisita = visit.OftRefVisita;
                     ophVisit.AppointmentType = visit.AppointmentType;
                     ophVisit.VisitReason = visit.VisitReason;
@@ -919,11 +1072,19 @@ namespace RidocciConsole
                     ophVisit.Professional = visit.Professional;
                     ophVisit.Comments = visit.Comments;
                     ophVisit.VType = "ophvisit";
-                    ctx.Add(ophVisit);
+                    if (newVisit) ctx.Add(ophVisit);
                     ctx.SaveChanges();
 
                     // Motilidad y anejos
-                    MotAppend mot = new MotAppend();
+                    MotAppend mot;
+                    if (newVisit)
+                    {
+                        mot = new MotAppend();
+                    }
+                    else
+                    {
+                        mot = ophVisit.MotAppends[0];
+                    }
                     if (dr["MotOcular"] != DBNull.Value)
                         mot.EyeMotility = (string)dr["MotOcular"];
                     if (dr["cejas"] != DBNull.Value)
@@ -955,11 +1116,19 @@ namespace RidocciConsole
                     mot.C12RE = (decimal)(float)dr["C12OD"];
                     mot.C12LE = (decimal)(float)dr["C12OI"];
                     mot.OphthalmologicVisit = ophVisit;
-                    ctx.Add(mot);
+                    if (newVisit) ctx.Add(mot);
                     ctx.SaveChanges();
 
                     // Segmento anterior
-                    AntSegment ant = new AntSegment();
+                    AntSegment ant;
+                    if (newVisit)
+                    {
+                        ant = new AntSegment();
+                    }
+                    else
+                    {
+                        ant = ophVisit.AntSegments[0];
+                    }
                     if (dr["ObsParpados"] != DBNull.Value)
                         ant.EyebrowsComments = (string)dr["ObsParpados"];
                     if (dr["Conjuntiva"].GetType() == typeof(DBNull))
@@ -980,11 +1149,19 @@ namespace RidocciConsole
                     ant.EyestrainLE = (decimal)(float)dr["TOOI"];
                     ant.EyestrainRE = (decimal)(float)dr["TOOD"];
                     ant.OphthalmologicVisit = ophVisit;
-                    ctx.Add(ant);
+                    if (newVisit) ctx.Add(ant);
                     ctx.SaveChanges();
 
                     // Fondo de ojo
-                    Fundus fundus = new Fundus();
+                    Fundus fundus;
+                    if (newVisit)
+                    {
+                        fundus = new Fundus();
+                    }
+                    else
+                    {
+                        fundus = ophVisit.Fundus[0];
+                    }
                     if (dr["NervioOptico"] != DBNull.Value)
                         fundus.OpticNerve = (string)dr["NervioOptico"];
                     if (dr["Vasos"] != DBNull.Value)
@@ -996,13 +1173,13 @@ namespace RidocciConsole
                     if (dr["Periferia"] != DBNull.Value)
                         fundus.Periphery = (string)dr["Periferia"];
                     fundus.OphthalmologicVisit = ophVisit;
-                    ctx.Add(fundus);
+                    if (newVisit) ctx.Add(fundus);
                     ctx.SaveChanges();
                 }
                 else
                 {
                     visit.VType = "general";
-                    ctx.Add(visit);
+                    if (newVisit) ctx.Add(visit);
                     ctx.SaveChanges();
                 }
             }
@@ -1011,9 +1188,9 @@ namespace RidocciConsole
         public static void ImportDiagnostics(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.DiagnosticAssigneds);
-            ctx.Delete(ctx.Diagnostics);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.DiagnosticAssigneds);
+            //ctx.Delete(ctx.Diagnostics);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM Diagnosticos";
@@ -1027,10 +1204,16 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Diagnósticos {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomDiag"]);
-                Diagnostic diag = new Diagnostic();
+                Diagnostic diag = (from d in ctx.Diagnostics
+                                   where d.OftId == (int)dr["IdDiag"]
+                                   select d).FirstOrDefault<Diagnostic>();
+                if (diag == null)
+                {
+                    diag = new Diagnostic();
+                    ctx.Add(diag);
+                }
                 diag.OftId = (int)dr["IdDiag"];
                 diag.Name = (string)dr["NomDiag"];
-                ctx.Add(diag);
                 ctx.SaveChanges();
             }
         }
@@ -1038,8 +1221,8 @@ namespace RidocciConsole
         public static void ImportDiagnosticsAssigned(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.DiagnosticAssigneds);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.DiagnosticAssigneds);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM HistDiag";
@@ -1053,7 +1236,7 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Diagnósticos asignados {0:#####0} de {1:#####0} {2}", reg, nreg, "DG ASIGNADOS");
-                DiagnosticAssigned das = new DiagnosticAssigned();
+
                 int id = (int)dr["IdDiag"];
                 Diagnostic diag = (from d in ctx.Diagnostics
                                    where d.OftId == id
@@ -1062,6 +1245,16 @@ namespace RidocciConsole
                 Patient patient = (from p in ctx.Patients
                                    where p.OftId == id
                                    select p).FirstOrDefault<Patient>();
+                DiagnosticAssigned das = (from d in ctx.DiagnosticAssigneds
+                                          where d.Patient.PersonId == patient.PersonId
+                                          && d.Diagnostic.DiagnosticId == diag.DiagnosticId
+                                          && d.DiagnosticDate == (DateTime)dr["Fecha"]
+                                          select d).FirstOrDefault<DiagnosticAssigned>();
+                if (das == null)
+                {
+                    das = new DiagnosticAssigned();
+                    ctx.Add(das);
+                }
                 das.Patient = patient;
                 das.Diagnostic = diag;
                 if ((int)dr["TipoProc"] == 1)
@@ -1073,7 +1266,6 @@ namespace RidocciConsole
                 }
                 das.DiagnosticDate = (DateTime)dr["Fecha"];
                 das.Comments = (string)dr["Observa"];
-                ctx.Add(das);
                 ctx.SaveChanges();
             }
         }
@@ -1081,22 +1273,22 @@ namespace RidocciConsole
         public static void ImportExaminations(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.WithoutGlassesTests);
-            ctx.Delete(ctx.GlassesTests);
-            ctx.Delete(ctx.ContactLensesTests);
-            ctx.Delete(ctx.OpticalObjectiveExaminations);
-            ctx.Delete(ctx.SubjectiveOpticalExaminations);
-            ctx.Delete(ctx.Cycloplegias);
-            ctx.Delete(ctx.PrescriptionGlasses);
+            //ctx.Delete(ctx.WithoutGlassesTests);
+            //ctx.Delete(ctx.GlassesTests);
+            //ctx.Delete(ctx.ContactLensesTests);
+            //ctx.Delete(ctx.OpticalObjectiveExaminations);
+            //ctx.Delete(ctx.SubjectiveOpticalExaminations);
+            //ctx.Delete(ctx.Cycloplegias);
+            //ctx.Delete(ctx.PrescriptionGlasses);
 
-            ctx.Delete(ctx.Refractometries);
-            ctx.Delete(ctx.Biometries);
-            ctx.Delete(ctx.Paquimetries);
-            ctx.Delete(ctx.Topographies);
+            //ctx.Delete(ctx.Refractometries);
+            //ctx.Delete(ctx.Biometries);
+            //ctx.Delete(ctx.Paquimetries);
+            //ctx.Delete(ctx.Topographies);
 
-            ctx.Delete(ctx.ExaminationAssigneds);
-            ctx.Delete(ctx.Examinations);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.ExaminationAssigneds);
+            //ctx.Delete(ctx.Examinations);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM Exploraciones";
@@ -1108,12 +1300,20 @@ namespace RidocciConsole
             int reg = 0;
             foreach (DataRow dr in ds.Tables["ConExploraciones"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Exploraciones {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomExEs"]);
-                Examination exam = new Examination();
-                exam.OftId = (int)dr["IdExEs"];
-                exam.Name = (string)dr["NomExEs"];
-                int tp = (int)dr["Tipo"];
+                Console.WriteLine("Exploraciones {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomExEs"]);
+                Examination exam = (from e in ctx.Examinations
+                                    where e.OftId == (int)localDr["IdExEs"]
+                                    select e).FirstOrDefault<Examination>();
+                if (exam == null)
+                {
+                    exam = new Examination();
+                    ctx.Add(exam);
+                }
+                exam.OftId = (int)localDr["IdExEs"];
+                exam.Name = (string)localDr["NomExEs"];
+                int tp = (int)localDr["Tipo"];
                 exam.ExaminationType = CntAriCli.GetExaminationType("general", ctx);
                 switch (tp)
                 {
@@ -1130,7 +1330,6 @@ namespace RidocciConsole
                         exam.ExaminationType = CntAriCli.GetExaminationType("topography", ctx);
                         break;
                 }
-                ctx.Add(exam);
                 ctx.SaveChanges();
             }
         }
@@ -1138,21 +1337,21 @@ namespace RidocciConsole
         public static void ImportExaminationsAssigned(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.WithoutGlassesTests);
-            ctx.Delete(ctx.GlassesTests);
-            ctx.Delete(ctx.ContactLensesTests);
-            ctx.Delete(ctx.OpticalObjectiveExaminations);
-            ctx.Delete(ctx.SubjectiveOpticalExaminations);
-            ctx.Delete(ctx.Cycloplegias);
-            ctx.Delete(ctx.PrescriptionGlasses);
+            //ctx.Delete(ctx.WithoutGlassesTests);
+            //ctx.Delete(ctx.GlassesTests);
+            //ctx.Delete(ctx.ContactLensesTests);
+            //ctx.Delete(ctx.OpticalObjectiveExaminations);
+            //ctx.Delete(ctx.SubjectiveOpticalExaminations);
+            //ctx.Delete(ctx.Cycloplegias);
+            //ctx.Delete(ctx.PrescriptionGlasses);
 
-            ctx.Delete(ctx.Refractometries);
-            ctx.Delete(ctx.Biometries);
-            ctx.Delete(ctx.Paquimetries);
-            ctx.Delete(ctx.Topographies);
+            //ctx.Delete(ctx.Refractometries);
+            //ctx.Delete(ctx.Biometries);
+            //ctx.Delete(ctx.Paquimetries);
+            //ctx.Delete(ctx.Topographies);
 
-            ctx.Delete(ctx.ExaminationAssigneds);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.ExaminationAssigneds);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM HistExplor";
@@ -1165,17 +1364,31 @@ namespace RidocciConsole
             foreach (DataRow dr in ds.Tables["ConExploraciones"].Rows)
             {
                 reg++;
+                Boolean newEx = false;
                 Console.WriteLine("Exploraciones asignadas {0:#####0} de {1:#####0} {2}", reg, nreg, "EXPASG");
-                ExaminationAssigned examas = new ExaminationAssigned();
                 int id = (int)dr["NumHis"];
-                examas.Patient = (from p in ctx.Patients
-                                  where p.OftId == id
-                                  select p).FirstOrDefault<Patient>();
+                Patient patient = (from p in ctx.Patients
+                                   where p.OftId == id
+                                   select p).FirstOrDefault<Patient>();
                 id = (int)dr["IdExEs"];
-                examas.Examination = (from ex in ctx.Examinations
-                                      where ex.OftId == id
-                                      select ex).FirstOrDefault<Examination>();
-                examas.ExaminationDate = (DateTime)dr["Fecha"];
+                Examination examination = (from ex in ctx.Examinations
+                                           where ex.OftId == id
+                                           select ex).FirstOrDefault<Examination>();
+                DateTime examinationDate = (DateTime)dr["Fecha"];
+                ExaminationAssigned examas = (from e in ctx.ExaminationAssigneds
+                                              where e.Patient.PersonId == patient.PersonId
+                                              && e.Examination.ExaminationId == examination.ExaminationId
+                                              && e.ExaminationDate == examinationDate
+                                              select e).FirstOrDefault<ExaminationAssigned>();
+                if (examas == null)
+                {
+                    examas = new ExaminationAssigned();
+                    newEx = true;
+                }
+
+                examas.Patient = patient;
+                examas.Examination = examination;
+                examas.ExaminationDate = examinationDate;
                 examas.Comments = (string)dr["Hallazgos"];
                 if ((int)dr["TipoProc"] == 1)
                 {
@@ -1187,11 +1400,15 @@ namespace RidocciConsole
                 switch (examas.Examination.ExaminationType.Code)
                 {
                     case "general":
-                        ctx.Add(examas);
+                        if (newEx) ctx.Add(examas);
                         ctx.SaveChanges();
                         break;
                     case "refractometry":
-                        Refractometry refra = new Refractometry();
+                        Refractometry refra;    
+                        if (newEx)
+                            refra = new Refractometry();
+                        else
+                            refra = (Refractometry)examas;
                         refra.Patient = examas.Patient;
                         refra.Examination = examas.Examination;
                         refra.ExaminationDate = examas.ExaminationDate;
@@ -1199,11 +1416,15 @@ namespace RidocciConsole
                         refra.Comments = examas.Comments;
                         id = (int)dr["ExtExEs"];
                         ProcessRefractometry(id, refra, con, ctx);
-                        ctx.Add(refra);
+                        if (newEx) ctx.Add(refra);
                         ctx.SaveChanges();
                         break;
                     case "paquimetry":
-                        Paquimetry paq = new Paquimetry();
+                        Paquimetry paq;
+                        if (newEx)
+                            paq = new Paquimetry();
+                        else
+                            paq = (Paquimetry)examas;
                         paq.Patient = examas.Patient;
                         paq.Examination = examas.Examination;
                         paq.ExaminationDate = examas.ExaminationDate;
@@ -1211,27 +1432,35 @@ namespace RidocciConsole
                         paq.Comments = examas.Comments;
                         id = (int)dr["ExtExEs"];
                         ProcessPaquimetry(id, paq, con, ctx);
-                        ctx.Add(paq);
+                        if (newEx) ctx.Add(paq);
                         ctx.SaveChanges();
                         break;
                     case "biometry":
-                        Biometry bio = new Biometry();
+                        Biometry bio;
+                        if (newEx)
+                            bio = new Biometry();
+                        else
+                            bio = (Biometry)examas;
                         bio.Patient = examas.Patient;
                         bio.Examination = examas.Examination;
                         bio.ExaminationDate = examas.ExaminationDate;
                         bio.BaseVisit = examas.BaseVisit;
                         bio.Comments = examas.Comments;
-                        ctx.Add(bio);
+                        if (newEx) ctx.Add(bio);
                         ctx.SaveChanges();
                         break;
                     case "topography":
-                        Topography top = new Topography();
+                        Topography top;
+                        if (newEx)
+                            top = new Topography();
+                        else
+                            top = (Topography)examas;
                         top.Patient = examas.Patient;
                         top.Examination = examas.Examination;
                         top.ExaminationDate = examas.ExaminationDate;
                         top.BaseVisit = examas.BaseVisit;
                         top.Comments = examas.Comments;
-                        ctx.Add(top);
+                        if (newEx) ctx.Add(top);
                         ctx.SaveChanges();
                         break;
                 }
@@ -1639,9 +1868,9 @@ namespace RidocciConsole
         public static void ImportProcedures(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            ctx.Delete(ctx.ProcedureAssigneds);
-            ctx.Delete(ctx.Procedures);
-            ctx.SaveChanges();
+            //ctx.Delete(ctx.ProcedureAssigneds);
+            //ctx.Delete(ctx.Procedures);
+            //ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM Procedimientos";
@@ -1653,12 +1882,19 @@ namespace RidocciConsole
             int reg = 0;
             foreach (DataRow dr in ds.Tables["ConProcedimientos"].Rows)
             {
+                DataRow localDr = dr;
                 reg++;
-                Console.WriteLine("Procedimientos {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomProEs"]);
-                Procedure proc = new Procedure();
-                proc.OftId = (int)dr["IdProEs"];
-                proc.Name = (string)dr["NomProEs"];
-                ctx.Add(proc);
+                Console.WriteLine("Procedimientos {0:#####0} de {1:#####0} {2}", reg, nreg, (string)localDr["NomProEs"]);
+                Procedure proc = (from p in ctx.Procedures
+                                  where p.OftId == (int)localDr["IdProEs"]
+                                  select p).FirstOrDefault<Procedure>();
+                if (proc == null)
+                {
+                    proc = new Procedure();
+                    ctx.Add(proc);
+                }
+                proc.OftId = (int)localDr["IdProEs"];
+                proc.Name = (string)localDr["NomProEs"];
                 ctx.SaveChanges();
             }
         }
@@ -1681,20 +1917,30 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Procedimientos {0:#####0} de {1:#####0} {2}", reg, nreg, "ASGPROCS");
-                ProcedureAssigned pa = new ProcedureAssigned();
                 int id = (int)dr["IdProEs"];
-                Procedure pro = (from p in ctx.Procedures
+                Procedure procedure = (from p in ctx.Procedures
                                  where p.OftId == id
                                  select p).FirstOrDefault<Procedure>();
                 id = (int)dr["NumHis"];
                 Patient patient = (from p in ctx.Patients
                                    where p.OftId == id
                                    select p).FirstOrDefault<Patient>();
+                DateTime procedureDate = (DateTime)dr["Fecha"];
+
+                ProcedureAssigned pa = (from pas in ctx.ProcedureAssigneds
+                                        where pas.Patient.PersonId == patient.PersonId
+                                        && pas.Procedure.ProcedureId == procedure.ProcedureId
+                                        && pas.ProcedureDate == procedureDate
+                                        select pas).FirstOrDefault<ProcedureAssigned>();
+                if (pa == null)
+                {
+                    pa = new ProcedureAssigned();
+                    ctx.Add(pa);
+                }
                 pa.Patient = patient;
-                pa.Procedure = pro;
-                pa.ProcedureDate = (DateTime)dr["Fecha"];
+                pa.Procedure = procedure;
+                pa.ProcedureDate = procedureDate;
                 pa.Comments = (string)dr["Observa"];
-                ctx.Add(pa);
                 ctx.SaveChanges();
             }
         }
@@ -1720,10 +1966,16 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Fármacos {0:#####0} de {1:#####0} {2}", reg, nreg, (string)dr["NomFarm"]);
-                Drug d = new Drug();
+                Drug d = (from drg in ctx.Drugs
+                          where drg.OftId == (int)dr["IdFarm"]
+                          select drg).FirstOrDefault<Drug>();
+                if (d == null)
+                {
+                    d = new Drug();
+                    ctx.Add(d);
+                }
                 d.OftId = (int)dr["IdFarm"];
                 d.Name = (string)dr["NomFarm"];
-                ctx.Add(d);
                 ctx.SaveChanges();
             }
         }
@@ -1746,7 +1998,6 @@ namespace RidocciConsole
             {
                 reg++;
                 Console.WriteLine("Tratamientos {0:#####0} de {1:#####0} {2}", reg, nreg, "TREATMENT");
-                Treatment t = new Treatment();
                 int id = (int)dr["IdFarm"];
                 Drug dia = (from d in ctx.Drugs
                             where d.OftId == id
@@ -1755,6 +2006,19 @@ namespace RidocciConsole
                 Patient patient = (from p in ctx.Patients
                                    where p.OftId == id
                                    select p).FirstOrDefault<Patient>();
+                DateTime treatmentDate = (DateTime)dr["Fecha"];
+
+                Treatment t = (from tr in ctx.Treatments
+                               where tr.Patient.PersonId == patient.PersonId
+                               && tr.Drug.DrugId == dia.DrugId
+                               && tr.TreatmentDate == treatmentDate
+                               select tr).FirstOrDefault<Treatment>();
+                if (t == null)
+                {
+                    t = new Treatment();
+                    ctx.Add(t);
+                }
+
                 t.Patient = patient;
                 t.Drug = dia;
                 if ((int)dr["TipoProc"] == 1)
@@ -1764,10 +2028,9 @@ namespace RidocciConsole
                                    where v.OftRefVisita == id
                                    select v).FirstOrDefault<BaseVisit>();
                 }
-                t.TreatmentDate = (DateTime)dr["Fecha"];
+                t.TreatmentDate = treatmentDate;
                 t.Recommend = (string)dr["Posologia"];
                 t.Quantity = (int)(float)dr["Cantidad"];
-                ctx.Add(t);
                 ctx.SaveChanges();
             }
         }

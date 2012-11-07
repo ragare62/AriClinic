@@ -1331,6 +1331,8 @@ namespace AriCliModel
 
         public static void CreatePayment(Ticket t, PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, GeneralPayment gp, AriClinicContext ctx)
         {
+            // Now we need verify if there's a payment yet with the same values
+
             Payment p = new Payment();
             p.Amount = amount;
             p.Clinic = cl;
