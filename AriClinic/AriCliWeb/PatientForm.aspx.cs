@@ -217,7 +217,7 @@ public partial class PatientForm : System.Web.UI.Page
         pat.OftId = int.Parse(txtFrn.Text);
         if (rdtOpenDate.SelectedDate != null)
             pat.OpenDate = (DateTime)rdtOpenDate.SelectedDate;
-        pat.LastUpdate = DateTime.Now;
+        //pat.LastUpdate = DateTime.Now;
     }
 
     protected void LoadSexCombo(Patient pat)

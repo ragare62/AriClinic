@@ -21,6 +21,7 @@ public partial class VisitForm : System.Web.UI.Page
     Patient patient = null;
     VisitReason visitReason = null;
     AppointmentInfo app = null;
+    bool newVisit = false;
     string caller = "";
     bool fromAppointment = false;
     int professionalId = 0;
@@ -196,6 +197,7 @@ public partial class VisitForm : System.Web.UI.Page
         if (visit == null)
         {
             visit = new BaseVisit();
+            newVisit = true;
             if (app != null)
             {
                 visit.AppointmentInfo = app;
@@ -249,7 +251,8 @@ public partial class VisitForm : System.Web.UI.Page
     {
         visit.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         visit.VisitDate = (DateTime)rdpVisitDate.SelectedDate;
-        visit.Patient.LastUpdate = visit.VisitDate;
+        if (newVisit)
+            visit.Patient.LastUpdate = visit.VisitDate;
         visit.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
         if (rdcVisitReason.SelectedValue != "")
             visit.VisitReason = CntAriCli.GetVisitReason(int.Parse(rdcVisitReason.SelectedValue), ctx);

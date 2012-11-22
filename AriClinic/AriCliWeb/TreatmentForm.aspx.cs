@@ -21,6 +21,7 @@ public partial class TreatmentForm : System.Web.UI.Page
     Patient patient = null;
     BaseVisit visit = null;
     Professional professional = null;
+    bool newTreatment = false;
     int drugId = 0;
     int treatmentId = 0;
     int patientId = 0;
@@ -167,6 +168,7 @@ public partial class TreatmentForm : System.Web.UI.Page
         if (treatment == null)
         {
             treatment = new Treatment();
+            newTreatment = true;
             UnloadData(treatment);
             ctx.Add(treatment);
         }

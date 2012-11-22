@@ -93,6 +93,7 @@ public partial class TicketForm : System.Web.UI.Page
                 txtProfessionalId.Text = prof.PersonId.ToString(); txtProfessionalId.Enabled = false;
                 txtProfessionalName.Text = prof.FullName; txtProfessionalName.Enabled = false;
             }
+            rddpTicketDate.SelectedDate = sn.ServiceNoteDate;
         }
         // 
         if (Request.QueryString["TicketId"] != null)
@@ -112,6 +113,8 @@ public partial class TicketForm : System.Web.UI.Page
         {
             // If there isn't a ticket the default date must be today
             rddpTicketDate.SelectedDate = DateTime.Now;
+            if (sn != null)
+                rddpTicketDate.SelectedDate = sn.ServiceNoteDate;
             LoadPolicyCombo(null);
             LoadClinicCombo(null);
         }
@@ -333,7 +336,9 @@ public partial class TicketForm : System.Web.UI.Page
         {
             txtInsuranceServiceId.Text = insuranceService.InsuranceServiceId.ToString();
             txtInsuranceServiceName.Text = insuranceService.Service.Name;
-            txtDescription.Text = insuranceService.Service.Name;
+            // Solo cambiamos la descripción si no había algo previamente
+            if (txtDescription.Text == "")
+                txtDescription.Text = insuranceService.Service.Name;
             //txtAmount.Text = String.Format("{0:0.00}", insuranceService.Price);
             if (txtAmount.Text == "")
                 txtAmount.Text = insuranceService.Price.ToString();
