@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Copyright" xml:space="preserve">
     <value>Copyright 2002-2012 ©Telerik  All rights reserved.</value>
@@ -310,6 +310,9 @@ Press "OK" to confirm deletion.</value>
   </data>
   <data name="Common_PasteHtmlMessage" xml:space="preserve">
     <value>Please, insert the Html content, which you want to paste</value>
+  </data>
+	<data name="Common_PasteMarkdownMessage" xml:space="preserve">
+    <value>Please, insert the Markdown content, which you want to paste</value>
   </data>
   <data name="Common_Percent" xml:space="preserve">
     <value>Percent</value>
@@ -1993,5 +1996,8 @@ Press "OK" to confirm deletion.</value>
   </data>
   <data name="InsertExternalVideo_ShowTitleSetting" xml:space="preserve">
     <value>Display title before video starts playing</value>
+  </data>
+  <data name="Common_NonExistingFolder" xml:space="preserve">
+    <value>You are trying to navigate to a non-existing folder or you do not have proper permissions to view this folder. Please, contact the administrator.</value>
   </data>
 </root>

@@ -37,7 +37,8 @@ namespace AriCliReport
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoices(fromDate, toDate, ctx1);
             this.DataSource = invoices;
-            this.subReport2.ReportSource.DataSource = GetInvoiceLines(invoices);
+            //this.subReport2.ReportSource.DataSource = GetInvoiceLines(invoices);
+            this.subReport2.Report.DataSource = GetInvoiceLines(invoices);
         }
 
         public static string GetCompanyName()

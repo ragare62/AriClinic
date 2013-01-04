@@ -25,7 +25,7 @@ namespace AriCliModel
 {
 	public partial class AriClinicContext : OpenAccessContext, IAriClinicContextUnitOfWork
 	{
-		private static string connectionStringName = @"AriClinicContext";
+		private static string connectionStringName = @"Ariclinic_anesConnection";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		
@@ -632,6 +632,7 @@ namespace AriCliModel
 		{
 			BackendConfiguration backend = new BackendConfiguration();
 			backend.Backend = "mysql";
+			backend.ProviderName = "MySql.Data.MySqlClient";
 			backend.Logging.LogEventsToTrace = false;
 			backend.Logging.MetricStoreSnapshotInterval = 0;
 			return backend;

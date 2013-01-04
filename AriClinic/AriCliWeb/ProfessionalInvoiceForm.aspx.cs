@@ -254,5 +254,15 @@ namespace AriCliWeb
             }
         }
 
+        protected void rddpInvoiceDate_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
+        {
+            // VRS 2013.1.0.1 (When date changes, year form filed must change according).
+            if (rddpInvoiceDate.SelectedDate != null)
+            {
+                DateTime myNewDate = (DateTime)rddpInvoiceDate.SelectedDate.Value;
+                txtYear.Text = myNewDate.Year.ToString();
+            }
+        }
+
     }
 }

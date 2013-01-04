@@ -86,21 +86,21 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
-		{ 
-		    get
-		    {
-		        return this.anestheticServiceNotes;
-		    }
-		}
-		
 		private IList<ProcedureAssigned> procedureAssigneds = new List<ProcedureAssigned>();
 		public virtual IList<ProcedureAssigned> ProcedureAssigneds 
 		{ 
 		    get
 		    {
 		        return this.procedureAssigneds;
+		    }
+		}
+		
+		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
+		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.anestheticServiceNotes;
 		    }
 		}
 		

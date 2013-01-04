@@ -101,7 +101,7 @@
           <orm:collection element-class="AriCliModel.Address" inverse-field="healthcareCompany" order-by="" uniqueId="19a2d1e2-2fa5-4abe-823e-48006ac02f19" />
         </orm:field>
       </orm:class>
-      <orm:class name="Telephone" behavior="readwrite" uniqueId="2ab507b1-6875-4b14-b395-de3f83e26d84">
+      <orm:class name="Telephone" discriminator-value="AriCliModel.Telephone" behavior="readwrite" uniqueId="2ab507b1-6875-4b14-b395-de3f83e26d84">
         <orm:table name="telephone" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -138,7 +138,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Email" behavior="readwrite" uniqueId="301753d4-1208-4fda-833e-48d1d097082c">
+      <orm:class name="Email" discriminator-value="AriCliModel.Email" behavior="readwrite" uniqueId="301753d4-1208-4fda-833e-48d1d097082c">
         <orm:table name="email" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -175,7 +175,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Log" behavior="readwrite" uniqueId="cb1e494f-2502-4311-a596-eff74ea8cc1c">
+      <orm:class name="Log" discriminator-value="AriCliModel.Log" behavior="readwrite" uniqueId="cb1e494f-2502-4311-a596-eff74ea8cc1c">
         <orm:table name="log" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -372,7 +372,7 @@
           <orm:collection element-class="AriCliModel.GeneralPayment" inverse-field="clinic" order-by="" uniqueId="6a737e45-67ae-49a0-b1ed-f30b7ec7b319" />
         </orm:field>
       </orm:class>
-      <orm:class name="Person" behavior="readwrite" uniqueId="3c11c626-c882-4fff-b20b-04a6e1273531">
+      <orm:class name="Person" discriminator-value="AriCliModel.Person" behavior="readwrite" uniqueId="3c11c626-c882-4fff-b20b-04a6e1273531">
         <orm:table name="person" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -398,7 +398,7 @@
           <orm:collection element-class="AriCliModel.Email" inverse-field="person" managed="true" order-by="" uniqueId="2a2bb83e-3648-4d4c-9db2-a468abc95d91" />
         </orm:field>
       </orm:class>
-      <orm:class name="ServiceCategory" behavior="readwrite" uniqueId="07092112-ac62-4595-8704-177a517b9d21">
+      <orm:class name="ServiceCategory" discriminator-value="AriCliModel.ServiceCategory" behavior="readwrite" uniqueId="07092112-ac62-4595-8704-177a517b9d21">
         <orm:table name="service_category" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -418,7 +418,7 @@
           <orm:collection element-class="AriCliModel.Service" inverse-field="serviceCategory" managed="true" order-by="" uniqueId="3a55cc5c-a09c-4a3e-ae61-847cb1ad6f00" />
         </orm:field>
       </orm:class>
-      <orm:class name="TaxType" behavior="readwrite" uniqueId="5d79e00c-df16-49d3-91eb-e5663e44aa2e">
+      <orm:class name="TaxType" discriminator-value="AriCliModel.TaxType" behavior="readwrite" uniqueId="5d79e00c-df16-49d3-91eb-e5663e44aa2e">
         <orm:table name="tax_type" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -536,7 +536,7 @@
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="insuranceService" managed="true" order-by="" uniqueId="72e8f79e-5c8e-4dd8-b62d-714157b633f3" />
         </orm:field>
       </orm:class>
-      <orm:class name="Patient" behavior="readwrite" uniqueId="60d531d5-f095-40bb-a72e-ba6109c98e06" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
+      <orm:class name="Patient" inheritance-modifier="vertical" discriminator-value="AriCliModel.Patient" behavior="readwrite" uniqueId="60d531d5-f095-40bb-a72e-ba6109c98e06" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="patient" />
         <orm:identity>
           <orm:internal>
@@ -614,7 +614,7 @@
           <orm:collection element-class="AriCliModel.BackGinecology" inverse-field="patient" order-by="" uniqueId="fc92c363-7184-41c1-b5d8-e127d043db7d" />
         </orm:field>
       </orm:class>
-      <orm:class name="Customer" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
+      <orm:class name="Customer" inheritance-modifier="vertical" discriminator-value="AriCliModel.MetaClass1" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="customer" />
         <orm:identity>
           <orm:internal>
@@ -979,7 +979,7 @@
           <orm:collection element-class="AriCliModel.Professional" inverse-field="taxWithholdingType" managed="true" order-by="" uniqueId="f5aee760-8744-420d-ab81-7a8699ab738f" />
         </orm:field>
       </orm:class>
-      <orm:class name="Professional" behavior="readwrite" uniqueId="afcb331b-3695-4c2f-a92a-4357c7d7e1c3" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
+      <orm:class name="Professional" inheritance-modifier="vertical" discriminator-value="AriCliModel.Professional" behavior="readwrite" uniqueId="afcb331b-3695-4c2f-a92a-4357c7d7e1c3" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
         <orm:table name="professional" />
         <orm:identity>
           <orm:internal>
@@ -1056,7 +1056,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Procedure" behavior="readwrite" uniqueId="e6ce65e6-2ed0-405c-8c36-5189a2dde9aa">
+      <orm:class name="Procedure" discriminator-value="AriCliModel.Procedure" behavior="readwrite" uniqueId="e6ce65e6-2ed0-405c-8c36-5189a2dde9aa">
         <orm:table name="procedure" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1080,14 +1080,14 @@
         <orm:field name="anestheticTickets" property="AnestheticTickets" behavior="readwrite" null-value="none" uniqueId="fad080a5-93d0-439d-857c-377c591c1ccf" type="AriCliModel.AnestheticTicket">
           <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="procedure" managed="true" order-by="" uniqueId="5420581d-daec-410b-895e-49243bbe958a" />
         </orm:field>
-        <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" behavior="readwrite" uniqueId="257eaa1c-ce0f-4541-8efb-3db4bac2c350" type="AriCliModel.AnestheticServiceNote">
-          <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="procedures" order-by="" uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" />
-        </orm:field>
         <orm:field name="procedureAssigneds" property="ProcedureAssigneds" behavior="readwrite" uniqueId="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" type="AriCliModel.ProcedureAssigned">
           <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="procedure" order-by="" uniqueId="4951c4db-281a-4887-8890-e19bbd5c9b84" />
         </orm:field>
+        <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" behavior="readwrite" uniqueId="257eaa1c-ce0f-4541-8efb-3db4bac2c350" type="AriCliModel.AnestheticServiceNote">
+          <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="procedures" managed="true" order-by="" uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" />
+        </orm:field>
       </orm:class>
-      <orm:class name="AnestheticTicket" behavior="readwrite" use-default-mapping="true" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
+      <orm:class name="AnestheticTicket" inheritance-modifier="vertical" discriminator-value="AriCliModel.AnestheticTicket" behavior="readwrite" use-default-mapping="true" uniqueId="999b9394-9f8d-4b6a-835e-1f367d434e20" persistent-baseclass="AriCliModel.Ticket" inheritance="new-table">
         <orm:identity>
           <orm:internal>
             <orm:column name="ticket_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -1119,7 +1119,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="AnestheticServiceNote" behavior="readwrite" uniqueId="ed53bbce-11f1-42eb-8479-0a2242282cff">
+      <orm:class name="AnestheticServiceNote" discriminator-value="AriCliModel.AnestheticServiceNote" behavior="readwrite" uniqueId="ed53bbce-11f1-42eb-8479-0a2242282cff">
         <orm:table name="anesthetic_service_note" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1179,19 +1179,19 @@
             <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
+        <orm:field name="anestheticTickets1" property="AnestheticTickets" behavior="readwrite" uniqueId="2727a477-05a9-45d7-91f7-ff4bc8523234" type="AriCliModel.AnestheticTicket">
+          <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="anestheticServiceNote1" order-by="" uniqueId="6b28d7d6-dd83-4d95-808e-832cce3fb761" />
+        </orm:field>
         <orm:field name="procedures" property="Procedures" behavior="readwrite" uniqueId="eb8d61de-6a14-4837-9945-d14956d5448a" type="AriCliModel.Procedure">
           <orm:join-table uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" association-name="ProceduresReferenceAnestheticServiceNotes">
             <orm:table name="anesthetic_service_note_procedures" join-table="true" />
             <orm:owner>
-              <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" scale="0" ado-type="" target-class="AriCliModel.AnestheticServiceNote" target-field="anestheticServiceNoteId" />
+              <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" scale="0" ado-type="" target-table="'anesthetic_service_note'" target-column="anesthetic_service_note_id" />
             </orm:owner>
             <orm:value>
-              <orm:column name="procedure_id" sql-type="int" nullable="true" scale="0" ado-type="" target-class="AriCliModel.Procedure" target-field="procedureId" />
+              <orm:column name="procedure_id" sql-type="int" nullable="true" scale="0" ado-type="" target-table="'procedure'" target-column="procedure_id" />
             </orm:value>
           </orm:join-table>
-        </orm:field>
-        <orm:field name="anestheticTickets1" property="AnestheticTickets" behavior="readwrite" uniqueId="2727a477-05a9-45d7-91f7-ff4bc8523234" type="AriCliModel.AnestheticTicket">
-          <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="anestheticServiceNote1" order-by="" uniqueId="6b28d7d6-dd83-4d95-808e-832cce3fb761" />
         </orm:field>
         <orm:index name="idx_anesthetic_service_note_clinic_id">
           <orm:columnMapping>
@@ -1373,7 +1373,7 @@
           <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="appointmentType" order-by="" uniqueId="8c12e5b7-2abb-48fb-b042-4907a92c4540" />
         </orm:field>
       </orm:class>
-      <orm:class name="AppointmentInfo" update-schema="true" behavior="readwrite" uniqueId="01665655-e572-4141-b0ca-d18992d6a74e">
+      <orm:class name="AppointmentInfo" discriminator-value="AriCliModel.AppointmentInfo" update-schema="true" behavior="readwrite" uniqueId="01665655-e572-4141-b0ca-d18992d6a74e">
         <orm:table name="appointment" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1497,7 +1497,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Diagnostic" behavior="readwrite" uniqueId="97ac6875-5b86-4831-9e37-99a2971c36d2">
+      <orm:class name="Diagnostic" discriminator-value="AriCliModel.Diagnostic" behavior="readwrite" uniqueId="97ac6875-5b86-4831-9e37-99a2971c36d2">
         <orm:table name="diagnostic" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1533,7 +1533,7 @@
           <orm:column name="oft_id" sql-type="integer" length="0" scale="0" ado-type="Int32" />
         </orm:field>
       </orm:class>
-      <orm:class name="Treatment" update-schema="true" behavior="readwrite" uniqueId="311fd894-f124-4eca-adb1-01e3c7f27824">
+      <orm:class name="Treatment" discriminator-value="AriCliModel.Treatment" update-schema="true" behavior="readwrite" uniqueId="311fd894-f124-4eca-adb1-01e3c7f27824">
         <orm:table name="treatment" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1574,7 +1574,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="UnitType" update-schema="true" behavior="readwrite" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
+      <orm:class name="UnitType" discriminator-value="AriCliModel.UnitType" update-schema="true" behavior="readwrite" uniqueId="2452e3a7-f1b9-4e81-9963-0f7e0c85cfee">
         <orm:table name="unit_type" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1591,7 +1591,7 @@
           <orm:collection element-class="AriCliModel.LabTest" inverse-field="unitType" order-by="" uniqueId="afe631f1-6cbc-464e-bdf2-01c5fb7e7fdf" />
         </orm:field>
       </orm:class>
-      <orm:class name="Examination" update-schema="true" behavior="readwrite" uniqueId="700e85fc-a419-4899-8ecf-74904ab2ac3f">
+      <orm:class name="Examination" discriminator-value="AriCliModel.Examination" update-schema="true" behavior="readwrite" uniqueId="700e85fc-a419-4899-8ecf-74904ab2ac3f">
         <orm:table name="examination" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -1645,7 +1645,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Refractometry" update-schema="true" behavior="readwrite" uniqueId="fe7a23dd-f2c7-4ee8-aa1f-836ab270bf35" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+      <orm:class name="Refractometry" inheritance-modifier="vertical" discriminator-value="AriCliModel.Refractometry" update-schema="true" behavior="readwrite" uniqueId="fe7a23dd-f2c7-4ee8-aa1f-836ab270bf35" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
         <orm:table name="refractometry" />
         <orm:identity>
           <orm:internal>
@@ -1675,7 +1675,7 @@
           <orm:collection element-class="AriCliModel.Cycloplegia" inverse-field="refractometry1" order-by="" uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
       </orm:class>
-      <orm:class name="WithoutGlassesTest" update-schema="true" behavior="readwrite" uniqueId="608e44f0-9f59-42ff-b0f7-c3737c16cf4f">
+      <orm:class name="WithoutGlassesTest" discriminator-value="AriCliModel.WithoutGlassesTest" update-schema="true" behavior="readwrite" uniqueId="608e44f0-9f59-42ff-b0f7-c3737c16cf4f">
         <orm:table name="without_glasses_test" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2273,7 +2273,7 @@
           <orm:column name="close_sphericity_centers" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="signMD" property="SignMD" uniqueId="2fd8eb37-56e5-466f-949d-8418f0d77780" type="System.String">
-          <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="sign_MD" ado-type="" />
+          <orm:column name="sign_MD" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="refractometry1" property="Refractometry" behavior="readwrite" uniqueId="17b294eb-14ee-49c2-8b78-98dd407a537d" type="AriCliModel.Refractometry">
           <orm:reference uniqueId="4ef29db0-e22a-491e-9af2-2122c262bbd3" />
@@ -2285,7 +2285,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Cycloplegia" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
+      <orm:class name="Cycloplegia" discriminator-value="AriCliModel.Cycloplegia" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="5d1eedaa-9608-44dd-b060-76a30d407308">
         <orm:identity>
           <orm:key-generator name="autoinc" />
           <orm:single-field field-name="id" />
@@ -2607,7 +2607,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="ProcedureAssigned" update-schema="true" behavior="readwrite" uniqueId="669ff2b1-3770-4746-99e6-88c50a28071b">
+      <orm:class name="ProcedureAssigned" discriminator-value="AriCliModel.ProcedureAssigned" update-schema="true" behavior="readwrite" uniqueId="669ff2b1-3770-4746-99e6-88c50a28071b">
         <orm:table name="procedure_assigned" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2643,7 +2643,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Biometry" update-schema="true" behavior="readwrite" uniqueId="6c106c04-8b76-4549-a765-e030095e6bc7" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+      <orm:class name="Biometry" inheritance-modifier="vertical" discriminator-value="AriCliModel.Biometry" update-schema="true" behavior="readwrite" uniqueId="6c106c04-8b76-4549-a765-e030095e6bc7" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
         <orm:table name="biometry" />
         <orm:identity>
           <orm:internal>
@@ -2657,7 +2657,7 @@
         <orm:field name="alxLeftEye" property="AlxLeftEye" behavior="readwrite" uniqueId="f145ff3b-2fec-405f-9151-3c288bcf0d62" type="System.Decimal" />
         <orm:field name="alxRightEye" property="AlxRightEye" behavior="readwrite" uniqueId="35e00f18-de58-4003-a315-3e0c3246c1f8" type="System.Decimal" />
       </orm:class>
-      <orm:class name="Paquimetry" update-schema="true" behavior="readwrite" uniqueId="6570c076-f0fb-4256-95fa-901c680a157a" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+      <orm:class name="Paquimetry" inheritance-modifier="vertical" discriminator-value="AriCliModel.Paquimetry" update-schema="true" behavior="readwrite" uniqueId="6570c076-f0fb-4256-95fa-901c680a157a" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
         <orm:table name="paquimetry" />
         <orm:identity>
           <orm:internal>
@@ -2676,7 +2676,7 @@
         <orm:field name="leftEyeC5" property="LeftEyeC5" behavior="readwrite" uniqueId="57868baa-d8a9-4a4f-a393-137e6a3c7bd6" type="System.Decimal" />
         <orm:field name="leftEyeC7" property="LeftEyeC7" behavior="readwrite" uniqueId="d0116777-ca74-4c49-ba2d-c13e2a4c1711" type="System.Decimal" />
       </orm:class>
-      <orm:class name="Topography" update-schema="true" behavior="readwrite" uniqueId="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
+      <orm:class name="Topography" inheritance-modifier="vertical" discriminator-value="AriCliModel.DomainClass1" update-schema="true" behavior="readwrite" uniqueId="2c4f2c55-99ca-4aba-b6d5-a1b1b56b8f10" persistent-baseclass="AriCliModel.ExaminationAssigned" inheritance="new-table">
         <orm:identity />
         <orm:discriminator discriminator-value="AriCliModel.DomainClass1" />
         <orm:field name="rightEyeK1" property="RightEyeK1" behavior="readwrite" uniqueId="2d0b97a6-2e11-426b-a75c-bae7b2e33eb3" type="System.Decimal" />
@@ -2688,7 +2688,7 @@
         <orm:field name="leftEyeAstig" property="LeftEyeAstig" behavior="readwrite" uniqueId="70ea5c8b-587c-4ce2-b895-61fb1c62e62a" type="System.Decimal" />
         <orm:field name="leftEyeAxis" property="LeftEyeAxis" behavior="readwrite" uniqueId="919bda7b-26da-413f-8a15-f42e6bb705a2" type="System.Decimal" />
       </orm:class>
-      <orm:class name="VisitReason" update-schema="true" behavior="readwrite" uniqueId="e36ea4c8-bb15-412d-884e-8d192c01a24d">
+      <orm:class name="VisitReason" discriminator-value="AriCliModel.VisitReason" update-schema="true" behavior="readwrite" uniqueId="e36ea4c8-bb15-412d-884e-8d192c01a24d">
         <orm:table name="visit_reason" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2708,7 +2708,7 @@
           <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="visitReason" order-by="" uniqueId="f9287a00-9b5b-49e2-88c8-75351248c7fa" />
         </orm:field>
       </orm:class>
-      <orm:class name="BaseVisit" behavior="readwrite" uniqueId="86c81f85-f044-4973-acc9-abd7f769e8b3">
+      <orm:class name="BaseVisit" discriminator-value="AriCliModel.Base_visit" behavior="readwrite" uniqueId="86c81f85-f044-4973-acc9-abd7f769e8b3">
         <orm:table name="base_visit" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2779,7 +2779,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="OphthalmologicVisit" update-schema="true" behavior="readwrite" uniqueId="af0eac44-1b2b-4193-a568-27fe0e3a0385" persistent-baseclass="AriCliModel.BaseVisit" inheritance="new-table">
+      <orm:class name="OphthalmologicVisit" inheritance-modifier="vertical" discriminator-value="AriCliModel.OphthalmologicVisit" update-schema="true" behavior="readwrite" uniqueId="af0eac44-1b2b-4193-a568-27fe0e3a0385" persistent-baseclass="AriCliModel.BaseVisit" inheritance="new-table">
         <orm:table name="ophthalmologic_visit" />
         <orm:identity>
           <orm:internal>
@@ -2798,7 +2798,7 @@
           <orm:collection element-class="AriCliModel.Fundus" inverse-field="ophthalmologicVisit" order-by="" uniqueId="8a076dc0-be2b-43f2-a0d1-bcb6d75dbac0" />
         </orm:field>
       </orm:class>
-      <orm:class name="AntSegment" update-schema="true" behavior="readwrite" uniqueId="40574235-c24e-4a25-89ae-7c44c13ff78d">
+      <orm:class name="AntSegment" discriminator-value="AriCliModel.DomainClass1" update-schema="true" behavior="readwrite" uniqueId="40574235-c24e-4a25-89ae-7c44c13ff78d">
         <orm:table name="ant_segment" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2842,7 +2842,7 @@
           <orm:reference uniqueId="f46be196-0271-4e4e-9dab-dad884d0f1db" />
         </orm:field>
       </orm:class>
-      <orm:class name="MotAppend" update-schema="true" behavior="readwrite" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
+      <orm:class name="MotAppend" discriminator-value="AriCliModel.DomainClass1" update-schema="true" behavior="readwrite" uniqueId="3b42178f-cf6c-48ae-931e-d758403647cd">
         <orm:table name="mot_append" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -2945,7 +2945,7 @@
           </orm:columnMapping>
         </orm:index>
       </orm:class>
-      <orm:class name="Fundus" update-schema="true" behavior="readwrite" uniqueId="1057988c-c334-4765-8f1f-3b04e6d59413">
+      <orm:class name="Fundus" discriminator-value="AriCliModel.DomainClass1" update-schema="true" behavior="readwrite" uniqueId="1057988c-c334-4765-8f1f-3b04e6d59413">
         <orm:table name="fundus" />
         <orm:identity>
           <orm:key-generator name="autoinc" />
@@ -4121,7 +4121,7 @@
         <orm:column name="both_acuity" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="close_sphericity_centers" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="sign_MD" ado-type="" />
+        <orm:column name="sign_MD" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
         <orm:index name="idx_prescription_glasses_examination_assigned_id">
           <orm:columnMapping>
             <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -4131,8 +4131,8 @@
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
-    <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic</AppConfigConnectionString>
+    <AppConfigConnectionPropertyName>Ariclinic_anesConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>server=localhost;User Id=root;password=aritel;Persist Security Info=True;database=ariclinic_anes</AppConfigConnectionString>
     <InitialCatalog>ariclinic_miestetic</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -4150,12 +4150,16 @@
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
     <SchemaUpdateSettings>
+      <NamePrefix>2013.1.0.1_</NamePrefix>
+      <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
-      <DeploymentDirectory>AriCliModel</DeploymentDirectory>
+      <DeploymentDirectory>SQL\</DeploymentDirectory>
+      <UpdateDatabaseOperation>Migrate</UpdateDatabaseOperation>
     </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
         <Backend>mysql</Backend>
+        <ProviderName>MySql.Data.MySqlClient</ProviderName>
         <Logging>
           <LogToTrace>False</LogToTrace>
           <MetricStoreSnapshotInterval>0</MetricStoreSnapshotInterval>

@@ -33,7 +33,8 @@ namespace AriCliReport
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             ServiceNote servNote = CntAriCli.GetServiceNote(idservnote, ctx1);
             this.DataSource = servNote;
-            this.subReport1.ReportSource.DataSource = servNote.Tickets;
+            //this.subReport1.ReportSource.DataSource = servNote.Tickets;
+            this.subReport1.Report.DataSource = servNote.Tickets;
         }
 
         public static string GetCompanyName()

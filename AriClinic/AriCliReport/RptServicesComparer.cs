@@ -33,8 +33,8 @@ namespace AriCliReport
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Service> insServ = CntAriCli.GetServices(ctx1);
             this.DataSource = insServ;
-            subReport1.ReportSource.DataSource = getInsuranceServices(insServ);
-            
+            //subReport1.ReportSource.DataSource = getInsuranceServices(insServ);
+            subReport1.Report.DataSource = getInsuranceServices(insServ);
         }
 
         public static string GetCompanyName()

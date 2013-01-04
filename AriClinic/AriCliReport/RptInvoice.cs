@@ -69,8 +69,10 @@ namespace AriCliReport
                 }
                 
                 this.DataSource = invoice;
-                this.subReport1.ReportSource.DataSource = invoice.InvoiceLines;
-                this.subReport2.ReportSource.DataSource = invoice.InvoiceLines;
+                //this.subReport1.ReportSource.DataSource = invoice.InvoiceLines;
+                //this.subReport2.ReportSource.DataSource = invoice.InvoiceLines;
+                this.subReport1.Report.DataSource = invoice.InvoiceLines;
+                this.subReport2.Report.DataSource = invoice.InvoiceLines;
             }
         }
 

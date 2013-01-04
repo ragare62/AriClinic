@@ -33,7 +33,8 @@ namespace AriCliReport
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoicesByCustomer(ffin, idCustomer, ctx1);
             this.DataSource = invoices;
-            this.subReport2.ReportSource.DataSource = GetInvoideLines(invoices);
+            //this.subReport2.ReportSource.DataSource = GetInvoideLines(invoices);
+            this.subReport2.Report.DataSource = GetInvoideLines(invoices);
 
         }
         public RptPatientInvoice(DateTime ffin, AriClinicContext ctx1)
@@ -43,7 +44,8 @@ namespace AriCliReport
             companyname = CntAriCli.GetHealthCompany(ctx1).Name;
             IList<Invoice> invoices = CntAriCli.GetInvoices(new DateTime(), ffin, ctx1);
             this.DataSource = invoices;
-            this.subReport2.ReportSource.DataSource = GetInvoideLines(invoices);
+            //this.subReport2.ReportSource.DataSource = GetInvoideLines(invoices);
+            this.subReport2.Report.DataSource = GetInvoideLines(invoices);
 
         }
         public static string GetCompanyName()

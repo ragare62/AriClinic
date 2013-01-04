@@ -48,9 +48,10 @@ namespace AriCliReport
             if (invoice != null)
             {
                 this.DataSource = invoice;
-                this.subReport1.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
-                this.subReport2.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
-
+                //this.subReport1.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
+                //this.subReport2.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
+                this.subReport1.Report.DataSource = invoice.ProfessionalInvoiceLines;
+                this.subReport2.Report.DataSource = invoice.ProfessionalInvoiceLines;
                 HealthcareCompanyData(ctx1);
                 ProfessionalData(invoice);
             }

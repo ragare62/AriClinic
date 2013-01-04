@@ -34,7 +34,8 @@ namespace AriCliReport
             if (aneNote != null)
             {
                 this.DataSource = aneNote;
-                this.subReport1.ReportSource.DataSource = aneNote.AnestheticTickets;
+                //this.subReport1.ReportSource.DataSource = aneNote.AnestheticTickets;
+                this.subReport1.Report.DataSource = aneNote.AnestheticTickets;
             }
         }
 

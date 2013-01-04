@@ -279,7 +279,15 @@
                   <asp:Label ID="lblInvoiceDate" runat="server" Text="Fecha de factura:" 
                              ToolTip="Fecha de emisión de la factura"></asp:Label>
                   <br />
-                  <telerik:RadDatePicker ID="rddpInvoiceDate" runat="server">
+                  <telerik:RadDatePicker ID="rddpInvoiceDate" runat="server" AutoPostBack="True" 
+                        onselecteddatechanged="rddpInvoiceDate_SelectedDateChanged">
+                      <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                          ViewSelectorText="x">
+                      </Calendar>
+                      <DateInput AutoPostBack="True" DateFormat="M/d/yyyy" 
+                          DisplayDateFormat="M/d/yyyy" LabelWidth="40%">
+                      </DateInput>
+                      <DatePopupButton HoverImageUrl="" ImageUrl="" />
                   </telerik:RadDatePicker>
                 </div>
               </td>

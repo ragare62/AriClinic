@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -437,5 +437,32 @@
   </data>
   <data name="DeleteText" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="AggregateFunctionAvg" xml:space="preserve">
+    <value>Avg</value>
+  </data>
+  <data name="AggregateFunctionCount" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="AggregateFunctionCountDistinct" xml:space="preserve">
+    <value>CountDistinct</value>
+  </data>
+  <data name="AggregateFunctionCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="AggregateFunctionFirst" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="AggregateFunctionLast" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="AggregateFunctionMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="AggregateFunctionMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="AggregateFunctionSum" xml:space="preserve">
+    <value>Sum</value>
   </data>
 </root>
