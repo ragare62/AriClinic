@@ -280,12 +280,15 @@
                              ToolTip="Fecha de emisión de la factura"></asp:Label>
                   <br />
                   <telerik:RadDatePicker ID="rddpInvoiceDate" runat="server" AutoPostBack="True" 
-                        onselecteddatechanged="rddpInvoiceDate_SelectedDateChanged">
+                        onselecteddatechanged="rddpInvoiceDate_SelectedDateChanged" 
+                        Culture="es-ES" 
+                        HiddenInputTitleAttibute="Visually hidden input created for functionality purposes." 
+                        WrapperTableSummary="Table holding date picker control for selection of dates.">
                       <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                           ViewSelectorText="x">
                       </Calendar>
-                      <DateInput AutoPostBack="True" DateFormat="M/d/yyyy" 
-                          DisplayDateFormat="M/d/yyyy" LabelWidth="40%">
+                      <DateInput AutoPostBack="True" DateFormat="dd/MM/yyyy" 
+                          DisplayDateFormat="dd/MM/yyyy" LabelWidth="40%">
                       </DateInput>
                       <DatePopupButton HoverImageUrl="" ImageUrl="" />
                   </telerik:RadDatePicker>

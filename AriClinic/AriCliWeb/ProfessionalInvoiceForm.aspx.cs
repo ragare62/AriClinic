@@ -121,6 +121,18 @@ namespace AriCliWeb
                 lblMessage.Text = Resources.GeneralResource.DateNeeded;
                 return false;
             }
+            // we need the professional in order to do another test
+            if (txtProfessionalId.Text == "")
+            {
+                lblMessage.Text = Resources.GeneralResource.ProfessionalNeeded;
+                return false;
+            }
+            prof = CntAriCli.GetProfessional(int.Parse(txtProfessionalId.Text), ctx);
+            if (prof == null)
+            {
+                lblMessage.Text = Resources.GeneralResource.ProfessionalNeeded;
+                return false;
+            }
             // check if there're invoices with older date
             if (inv == null)
             {
