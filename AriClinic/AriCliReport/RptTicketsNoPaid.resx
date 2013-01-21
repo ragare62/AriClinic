@@ -121,8 +121,8 @@
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAF0AAAAeCAYAAABOvRIBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOsAAA
-        DrABTsv9PgAAC3ZJREFUaEPtWgl0lNUVTleqBMIiiMi+ioinHK2V1kpLsajIvskWNtkKtIqCgNQiiyDg
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOrwAA
+        Dq8BcRFD7gAAC3ZJREFUaEPtWgl0lNUVTleqBMIiiMi+ioinHK2V1kpLsajIvskWNtkKtIqCgNQiiyDg
         hiBV1EI5IlZTDlXEVilLMplMJntIyAYJIWENkJ3st993/7xxMgnZBI4C75w5ZN689/77vnfvd7/7frzu
         mh4iNz/XFgOvm4BfW8CJ91UBvftT1ka6PeWsEEXs7zLVWan/Rjv4Kw46ge0xI0Rajg2S9r7B0mKMXbpO
         cwr77xhnl98siJQOk4IVfILdHQfDz40E/BUHneAR6Nf+lSZ5BaVii82S1uMdANwha/55QthsMVn4HqTA
@@ -174,7 +174,7 @@
         rOqc4P+pae16Nj+XYAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=6.2.12.1017, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=6.2.13.110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
   <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
     <value>0.1in</value>
   </data>

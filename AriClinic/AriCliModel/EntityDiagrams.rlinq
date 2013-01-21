@@ -1179,19 +1179,19 @@
             <orm:column name="professional_person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
-        <orm:field name="anestheticTickets1" property="AnestheticTickets" behavior="readwrite" uniqueId="2727a477-05a9-45d7-91f7-ff4bc8523234" type="AriCliModel.AnestheticTicket">
-          <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="anestheticServiceNote1" order-by="" uniqueId="6b28d7d6-dd83-4d95-808e-832cce3fb761" />
-        </orm:field>
         <orm:field name="procedures" property="Procedures" behavior="readwrite" uniqueId="eb8d61de-6a14-4837-9945-d14956d5448a" type="AriCliModel.Procedure">
           <orm:join-table uniqueId="40c831af-60c3-4c74-b5fa-2d1a73193592" association-name="ProceduresReferenceAnestheticServiceNotes">
             <orm:table name="anesthetic_service_note_procedures" join-table="true" />
             <orm:owner>
-              <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" scale="0" ado-type="" target-table="'anesthetic_service_note'" target-column="anesthetic_service_note_id" />
+              <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" length="0" scale="0" ado-type="" target-table="'anesthetic_service_note'" target-column="anesthetic_service_note_id" />
             </orm:owner>
             <orm:value>
-              <orm:column name="procedure_id" sql-type="int" nullable="true" scale="0" ado-type="" target-table="'procedure'" target-column="procedure_id" />
+              <orm:column name="procedure_id" sql-type="int" nullable="true" length="0" scale="0" ado-type="" target-table="'procedure'" target-column="procedure_id" />
             </orm:value>
           </orm:join-table>
+        </orm:field>
+        <orm:field name="anestheticTickets1" property="AnestheticTickets" behavior="readwrite" uniqueId="2727a477-05a9-45d7-91f7-ff4bc8523234" type="AriCliModel.AnestheticTicket">
+          <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="anestheticServiceNote1" order-by="" uniqueId="6b28d7d6-dd83-4d95-808e-832cce3fb761" />
         </orm:field>
         <orm:index name="idx_anesthetic_service_note_clinic_id">
           <orm:columnMapping>
@@ -3471,8 +3471,8 @@
         </orm:constraint>
       </orm:table>
       <orm:table name="anesthetic_service_note_procedures" join-table="true">
-        <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" scale="0" ado-type="" />
-        <orm:column name="procedure_id" sql-type="int" nullable="true" scale="0" ado-type="" />
+        <orm:column name="anesthetic_service_note_id" sql-type="int" nullable="true" length="0" scale="0" ado-type="" />
+        <orm:column name="procedure_id" sql-type="int" nullable="true" length="0" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="diary">
         <orm:column name="time_step" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
@@ -4132,7 +4132,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>Ariclinic_anesConnection</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;User Id=root;password=aritel;Persist Security Info=True;database=ariclinic_anes</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_anes</AppConfigConnectionString>
     <InitialCatalog>ariclinic_miestetic</InitialCatalog>
     <NamingSettings>
       <ClassRules>

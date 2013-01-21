@@ -8,7 +8,8 @@
 
 
 
-<%@ Register Assembly="Telerik.OpenAccess.Web, Version=2012.3.1012.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342" Namespace="Telerik.OpenAccess" TagPrefix="telerik" %>
+
+<%@ Register Assembly="Telerik.OpenAccess.Web, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342" Namespace="Telerik.OpenAccess" TagPrefix="telerik" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

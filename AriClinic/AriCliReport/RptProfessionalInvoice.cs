@@ -1,6 +1,7 @@
 namespace AriCliReport
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
     using System.Windows.Forms;
@@ -44,10 +45,12 @@ namespace AriCliReport
             ctx1 = new AriClinicContext("AriClinicContext");
 
             invoice = CntAriCli.GetProfessionalInvoice(idInvoice, ctx1);
+            IList<ProfessionalInvoice> invoiceList = new List<ProfessionalInvoice>();
 
             if (invoice != null)
             {
-                this.DataSource = invoice;
+                invoiceList.Add(invoice);
+                this.DataSource = invoiceList;
                 //this.subReport1.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
                 //this.subReport2.ReportSource.DataSource = invoice.ProfessionalInvoiceLines;
                 this.subReport1.Report.DataSource = invoice.ProfessionalInvoiceLines;
@@ -127,7 +130,7 @@ namespace AriCliReport
 
         public static string GetProfessionalcontact()
         {
-            return "Teléfono:" + professionaltelf.Number + " - Email:" + professionalemail.Url;
+            return "Telï¿½fono:" + professionaltelf.Number + " - Email:" + professionalemail.Url;
         }
 
         public static string GetProfessionalNif()
