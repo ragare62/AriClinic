@@ -386,8 +386,14 @@ public partial class RptView : System.Web.UI.Page
     {
         if (Request.QueryString["Invoice"] != null)
         {
-            RptProfessionalInvoice rtck = new RptProfessionalInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
-            ReportViewer1.Report = rtck;
+            //RptProfessionalInvoice rtck = new RptProfessionalInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
+            ProfessionalInvoice pI = CntAriCli.GetProfessionalInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
+            if (pI != null)
+            {
+                RptProfessionalInvoice2 rtck = new RptProfessionalInvoice2();
+                rtck.ReportParameters["InvoiceId"].Value = pI.InvoiceId;
+                ReportViewer1.Report = rtck;
+            }
         }
     }
 

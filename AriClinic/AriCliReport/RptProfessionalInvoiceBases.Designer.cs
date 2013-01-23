@@ -13,18 +13,21 @@ namespace AriCliReport
             Telerik.Reporting.ReportParameter reportParameter2 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
             this.detail = new Telerik.Reporting.DetailSection();
+            this.textBox7 = new Telerik.Reporting.TextBox();
+            this.textBox4 = new Telerik.Reporting.TextBox();
+            this.textBox5 = new Telerik.Reporting.TextBox();
             this.sqlProfessionalInvoiceBases = new Telerik.Reporting.SqlDataSource();
             this.textBox2 = new Telerik.Reporting.TextBox();
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.textBox3 = new Telerik.Reporting.TextBox();
-            this.textBox7 = new Telerik.Reporting.TextBox();
-            this.textBox4 = new Telerik.Reporting.TextBox();
-            this.textBox5 = new Telerik.Reporting.TextBox();
             this.reportHeaderSection1 = new Telerik.Reporting.ReportHeaderSection();
             this.reportFooterSection1 = new Telerik.Reporting.ReportFooterSection();
             this.textBox13 = new Telerik.Reporting.TextBox();
             this.txtSubTotal = new Telerik.Reporting.TextBox();
             this.textBox8 = new Telerik.Reporting.TextBox();
+            this.textBox6 = new Telerik.Reporting.TextBox();
+            this.textBox9 = new Telerik.Reporting.TextBox();
+            this.textBox10 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // detail
@@ -36,14 +39,45 @@ namespace AriCliReport
             this.textBox5});
             this.detail.Name = "detail";
             // 
+            // textBox7
+            // 
+            this.textBox7.Angle = 0D;
+            this.textBox7.Format = "{0:N2}";
+            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.11811026185750961D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.6377952098846436D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox7.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox7.Value = "= (Fields.[TaxAmount] * 100) / (Fields.tax_percentage + 100)";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Angle = 0D;
+            this.textBox4.Format = "{0:N2}";
+            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8346455097198486D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.70866137742996216D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox4.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox4.Value = "= Fields.tax_percentage";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Angle = 0D;
+            this.textBox5.Format = "{0:N2}";
+            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6614177227020264D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.8503932952880859D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox5.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox5.Value = "= Fields.[TaxAmount]-((Fields.[TaxAmount]  * 100) / (Fields.tax_percentage + 100)" +
+    ")";
+            // 
             // sqlProfessionalInvoiceBases
             // 
             this.sqlProfessionalInvoiceBases.ConnectionString = "AriClinicContext";
             this.sqlProfessionalInvoiceBases.Name = "sqlProfessionalInvoiceBases";
             this.sqlProfessionalInvoiceBases.Parameters.AddRange(new Telerik.Reporting.SqlDataSourceParameter[] {
             new Telerik.Reporting.SqlDataSourceParameter("@InvoiceId", System.Data.DbType.Int32, "=Parameters.InvoiceId.Value")});
-            this.sqlProfessionalInvoiceBases.SelectCommand = "SELECT invoice_id, SUM(amount), tax_percentage\r\nFROM professional_invoice_line\r\nW" +
-    "HERE invoice_id = @InvoiceId\r\nGROUP BY invoice_id;";
+            this.sqlProfessionalInvoiceBases.SelectCommand = "SELECT invoice_id, SUM(amount) as TaxAmount, tax_percentage\r\nFROM professional_in" +
+    "voice_line\r\nWHERE invoice_id = @InvoiceId\r\nGROUP BY tax_percentage";
             // 
             // textBox2
             // 
@@ -87,37 +121,6 @@ namespace AriCliReport
             this.textBox3.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox3.Value = "Cuota";
             // 
-            // textBox7
-            // 
-            this.textBox7.Angle = 0D;
-            this.textBox7.Format = "{0:N2}";
-            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.11811026185750961D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.6377952098846436D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
-            this.textBox7.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox7.Value = "= (Fields.[SUM(amount)] * 100) / (Fields.tax_percentage + 100)";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Angle = 0D;
-            this.textBox4.Format = "{0:0.00 %}";
-            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8346455097198486D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.70866137742996216D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
-            this.textBox4.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox4.Value = "= Fields.tax_percentage";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Angle = 0D;
-            this.textBox5.Format = "{0:N2}";
-            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6614177227020264D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.8503932952880859D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
-            this.textBox5.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox5.Value = "= Fields.[SUM(amount)]-((Fields.[SUM(amount)] * 100) / (Fields.tax_percentage + 1" +
-    "00))";
-            // 
             // reportHeaderSection1
             // 
             this.reportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(1.0000003576278687D);
@@ -133,43 +136,81 @@ namespace AriCliReport
             this.reportFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox13,
             this.txtSubTotal,
-            this.textBox8});
+            this.textBox8,
+            this.textBox6,
+            this.textBox9,
+            this.textBox10});
             this.reportFooterSection1.Name = "reportFooterSection1";
             // 
             // textBox13
             // 
             this.textBox13.Format = "{0:###,##0.00}";
-            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.2362208366394043D), Telerik.Reporting.Drawing.Unit.Inch(0.11811002343893051D));
+            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.70866173505783081D), Telerik.Reporting.Drawing.Unit.Inch(0.19685029983520508D));
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.0998815298080444D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.3833463191986084D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
             this.textBox13.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox13.Style.Font.Bold = true;
             this.textBox13.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox13.Style.Visible = true;
-            this.textBox13.Value = "SubTotal: ";
+            this.textBox13.Value = "Subtotal (suma de bases): ";
             // 
             // txtSubTotal
             // 
             this.txtSubTotal.Angle = 0D;
             this.txtSubTotal.Format = "{0:N2}";
-            this.txtSubTotal.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.3361811637878418D), Telerik.Reporting.Drawing.Unit.Inch(0.11811002343893051D));
+            this.txtSubTotal.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.0920867919921875D), Telerik.Reporting.Drawing.Unit.Inch(0.19685029983520508D));
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.4197241067886353D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
             this.txtSubTotal.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.txtSubTotal.Value = "= SUM((Fields.[SUM(amount)] * 100) / (Fields.tax_percentage + 100))";
+            this.txtSubTotal.Value = "= SUM((Fields.[TaxAmount] * 100) / (Fields.tax_percentage + 100))";
             // 
             // textBox8
             // 
             this.textBox8.Format = "{0:###,##0.00}";
-            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.9527559280395508D), Telerik.Reporting.Drawing.Unit.Inch(0.31818899512290955D));
+            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.70866173505783081D), Telerik.Reporting.Drawing.Unit.Inch(0.39692926406860352D));
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.3833463191986084D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
             this.textBox8.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox8.Style.Font.Bold = true;
             this.textBox8.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox8.Style.Visible = true;
-            this.textBox8.Value = "= AriCliReport.RptProfessionalInvoiceBases.GetTaxWitholdingDesc(Parameters.TaxWit" +
-    "hholding.Value)";
+            this.textBox8.Value = "Retención profesional ({Parameters.TaxWithholding.Value}): ";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Angle = 0D;
+            this.textBox6.Format = "{0:N2}";
+            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.0920867919921875D), Telerik.Reporting.Drawing.Unit.Inch(0.39692926406860352D));
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.4197241067886353D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox6.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox6.Value = "= (SUM((Fields.[TaxAmount] * 100) / (Fields.tax_percentage + 100))) * (Parameters" +
+    ".TaxWithholding.Value)";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Format = "{0:###,##0.00}";
+            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.2362208366394043D), Telerik.Reporting.Drawing.Unit.Inch(0.98106288909912109D));
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.0998815298080444D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox9.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox9.Style.Font.Bold = true;
+            this.textBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(12D);
+            this.textBox9.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox9.Style.Visible = true;
+            this.textBox9.Value = "Total factura";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Angle = 0D;
+            this.textBox10.Format = "{0:C2}";
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.3361811637878418D), Telerik.Reporting.Drawing.Unit.Inch(0.98106288909912109D));
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.4197241067886353D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox10.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(12D);
+            this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox10.Value = "= SUM(Fields.TaxAmount) - ((SUM((Fields.[TaxAmount] * 100) / (Fields.tax_percenta" +
+    "ge + 100))) * (Parameters.TaxWithholding.Value))";
             // 
             // RptProfessionalInvoiceBases
             // 
@@ -219,5 +260,8 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox13;
         private Telerik.Reporting.TextBox txtSubTotal;
         private Telerik.Reporting.TextBox textBox8;
+        private Telerik.Reporting.TextBox textBox6;
+        private Telerik.Reporting.TextBox textBox9;
+        private Telerik.Reporting.TextBox textBox10;
     }
 }

@@ -323,7 +323,7 @@ namespace AriCliReport
             // 
             // textBox8
             // 
-            this.textBox8.Format = "{0:0.00 %}";
+            this.textBox8.Format = "{0:N2}";
             this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.4330711364746094D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
