@@ -35,6 +35,7 @@ public partial class TicketForm : System.Web.UI.Page
     Permission per = null;
 
     #endregion Variables declarations
+
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -264,6 +265,10 @@ public partial class TicketForm : System.Web.UI.Page
                     if (p.Type == Resources.ConstantsResource.Primary)
                         rdcbPolicy.SelectedValue = p.PolicyId.ToString();
                 }
+                Policy pol = (from po in cus.Policies
+                              where po.Type == "Primary"
+                              select po).FirstOrDefault<Policy>();
+                if (pol != null) rdcbPolicy.SelectedValue = pol.PolicyId.ToString();
             }
         }
     }
@@ -382,6 +387,7 @@ public partial class TicketForm : System.Web.UI.Page
         }
     }
     #endregion
+
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
         customerId = Int32.Parse(e.Argument);

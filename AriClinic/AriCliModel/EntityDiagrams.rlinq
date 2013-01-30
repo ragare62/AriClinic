@@ -4131,9 +4131,9 @@
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
-    <AppConfigConnectionPropertyName>Ariclinic_anesConnection</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_anes</AppConfigConnectionString>
-    <InitialCatalog>ariclinic_miestetic</InitialCatalog>
+    <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_frido</AppConfigConnectionString>
+    <InitialCatalog>ariclinic_frido</InitialCatalog>
     <NamingSettings>
       <ClassRules>
         <CaseMode>PascalCase</CaseMode>
@@ -4150,7 +4150,7 @@
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
     <SchemaUpdateSettings>
-      <NamePrefix>2013.1.0.1_</NamePrefix>
+      <NamePrefix>2013.1.0.3_</NamePrefix>
       <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>SQL\</DeploymentDirectory>
@@ -4158,7 +4158,7 @@
     </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
-        <Backend>mysql</Backend>
+        <Backend>MySql</Backend>
         <ProviderName>MySql.Data.MySqlClient</ProviderName>
         <Logging>
           <LogToTrace>False</LogToTrace>

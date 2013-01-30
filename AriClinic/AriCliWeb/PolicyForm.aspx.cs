@@ -113,8 +113,11 @@ public partial class PolicyForm : System.Web.UI.Page
         {
             if (PrimaryExists())
             {
-                lblMessage.Text = Resources.GeneralResource.AlreadyPrimary;
-                return false;
+                // If there's a Primary different from this
+                // update it tpo Secondary
+                Policy pol = WhoIsPrimary();
+                pol.Type = "Secondary";
+                ctx.SaveChanges();
             }
         }
         // check that is an insurance selected
@@ -179,6 +182,11 @@ public partial class PolicyForm : System.Web.UI.Page
         {
             rdcbType.SelectedValue = pol.Type;
         }
+        else
+        {
+            // by default "Secondary in new policies
+            rdcbType.SelectedValue = "Secondary";
+        }
     }
 
     protected void LoadInsuranceCombo(Policy pol)
@@ -217,6 +225,18 @@ public partial class PolicyForm : System.Web.UI.Page
             if (pol.PolicyId == policyId) return false;
         }
         return true;
+    }
+    private Policy WhoIsPrimary()
+    {
+        Policy pol = null;
+        if (pat != null)
+        {
+            pol = (from p in ctx.Policies
+                   where p.Type == "Primary"
+                         && p.Customer.PersonId == pat.PersonId
+                   select p).FirstOrDefault<Policy>();
+        }
+        return pol;
     }
     #endregion Auxiliary functions
 }
