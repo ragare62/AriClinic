@@ -368,7 +368,10 @@ public partial class RptView : System.Web.UI.Page
     {
         if (Request.QueryString["idAnesNote"] != null)
         {
-            RptAnesNote rtck = new RptAnesNote(int.Parse(Request.QueryString["idAnesNote"]), ctx);
+            //RptAnesNote rtck = new RptAnesNote(int.Parse(Request.QueryString["idAnesNote"]), ctx);
+            RptAnesNote2 rtck = new RptAnesNote2();
+            rtck.ReportParameters["AnesNoteId"].Value = int.Parse(Request.QueryString["idAnesNote"]);
+            rtck.ReportParameters["AnesNoteId"].Visible = false;
             ReportViewer1.Report = rtck;
         }
     }

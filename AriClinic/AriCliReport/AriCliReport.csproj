@@ -71,6 +71,12 @@
     <Compile Include="ReptInvoiceVAT.Designer.cs">
       <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptAnesNote2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAnesNote2.Designer.cs">
+      <DependentUpon>RptAnesNote2.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptAnestheticTicketByProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -363,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReptInvoiceVAT.resx">
       <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptAnesNote2.resx">
+      <DependentUpon>RptAnesNote2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptAnestheticTicketByProfessional.resx">
       <DependentUpon>RptAnestheticTicketByProfessional.cs</DependentUpon>
