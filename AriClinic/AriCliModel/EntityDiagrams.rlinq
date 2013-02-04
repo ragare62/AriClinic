@@ -1393,7 +1393,7 @@
           <orm:column name="arrival" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="2ffc12d4-5a33-4f73-a719-d733e01161bc" type="System.String">
-          <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="recurrence" property="Recurrence" behavior="readwrite" uniqueId="4d78f763-be0e-4390-a0cc-a2667b0a0275" type="System.String">
           <orm:column name="recurrence" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
@@ -1618,22 +1618,22 @@
           <orm:single-field field-name="examinationAssignedId" />
         </orm:identity>
         <orm:field name="examinationAssignedId" property="ExaminationAssignedId" behavior="readwrite" uniqueId="f5a6f41b-ec18-48e9-9ec0-af2eacf701da" type="System.Int32">
-          <orm:column name="examination_assigned_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="examinationDate" property="ExaminationDate" behavior="readwrite" uniqueId="92c51bf2-ef9a-436a-ac68-24ab9f7f9db4" type="System.DateTime">
           <orm:column name="examination_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="9bc0a6f2-1499-490f-a205-1c66e95be447" type="System.String">
-          <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="examination" property="Examination" behavior="readwrite" uniqueId="3cd64684-2d95-4642-9f1c-96f6e0e89ad5" type="AriCliModel.Examination">
           <orm:reference uniqueId="67479349-596c-45e3-99a2-55ac07e739b6">
-            <orm:column name="examination_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="examination_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
         <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="96cef444-12db-4a98-80fb-6d78ecf88187" type="AriCliModel.Patient">
           <orm:reference uniqueId="edc3defa-4c18-4b3e-b752-c95f7aa7db72">
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:reference>
         </orm:field>
         <orm:field name="baseVisit" property="BaseVisit" behavior="readwrite" uniqueId="240c759d-6eb4-44c2-ab99-f854e7119285" type="AriCliModel.BaseVisit">
@@ -1641,7 +1641,7 @@
         </orm:field>
         <orm:index name="idx_examination_assigned_person_id">
           <orm:columnMapping>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
       </orm:class>
@@ -2722,7 +2722,7 @@
           <orm:column name="visit_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         </orm:field>
         <orm:field name="comments" property="Comments" behavior="readwrite" uniqueId="6de33a04-2c93-4b5c-8f9e-01e00f8e2e21" type="System.String">
-          <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="vType" property="VType" behavior="readwrite" uniqueId="ea2c718f-1ee0-4b1c-afdf-2233efdf263e" type="System.String">
           <orm:column name="vtype" sql-type="varchar" length="255" scale="0" ado-type="Varchar" />
@@ -3783,15 +3783,15 @@
         </orm:index>
       </orm:table>
       <orm:table name="examination_assigned">
-        <orm:column name="voa_class" sql-type="INTEGER" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="examination_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="voa_class" sql-type="integer" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="examination_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="examination_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
-        <orm:column name="examination_assigned_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+        <orm:column name="examination_assigned_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         <orm:index name="idx_examination_assigned_person_id">
           <orm:columnMapping>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
       </orm:table>
@@ -3858,7 +3858,7 @@
       <orm:table name="base_visit">
         <orm:column name="visit_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="visit_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
-        <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         <orm:column name="visit_reason_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -3952,7 +3952,7 @@
         <orm:column name="begin_date_time" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="end_date_time" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="arrival" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
-        <orm:column name="comments" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         <orm:column name="recurrence" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="status" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="duration" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
