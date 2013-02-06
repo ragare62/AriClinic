@@ -80,10 +80,10 @@
           <orm:single-field field-name="hcId" />
         </orm:identity>
         <orm:field name="hcId" property="HcId" behavior="readwrite" null-value="none" uniqueId="afbab467-43b0-412e-a43c-2b8d1723b456" type="System.Int32">
-          <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="name" property="Name" behavior="readwrite" null-value="none" uniqueId="698a2773-7a32-43c3-8282-cad94d93b40f" type="System.String">
-          <orm:column name="name" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+          <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="vATIN" property="VATIN" behavior="readwrite" null-value="none" uniqueId="409a674f-3917-4bd7-8709-210930266e57" type="System.String">
           <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
@@ -3203,9 +3203,9 @@
         </orm:constraint>
       </orm:table>
       <orm:table name="healthcare_company">
-        <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
-        <orm:column name="name" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+        <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="email">
@@ -4150,7 +4150,7 @@
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
     <SchemaUpdateSettings>
-      <NamePrefix>2013.1.0.3_</NamePrefix>
+      <NamePrefix>2013.1.0.5_</NamePrefix>
       <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>SQL\</DeploymentDirectory>

@@ -78,6 +78,11 @@ namespace AriCliReport
         {
             return GetInvoiceAmount(invoiceId) - GetTaxWithholdingAmount(invoiceId, taxWithHolding);
         }
+
+        public static string GetTaxWihholdingText(decimal txVal)
+        {
+            return String.Format("Retención profesional ({0:0.00%}) ", txVal);
+        }
         
     }
 }

@@ -218,9 +218,9 @@ namespace AriCliReport
             // 
             // textBox16
             // 
-            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5147113800048828D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.3307089805603027D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.3592255115509033D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.5432281494140625D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox16.Style.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(255)))));
             this.textBox16.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox16.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
@@ -241,26 +241,26 @@ namespace AriCliReport
             // textBox7
             // 
             this.textBox7.Format = "{0:dd/MM/yyyy}";
-            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5146317481994629D), Telerik.Reporting.Drawing.Unit.Inch(0.20011813938617706D));
+            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.3307089805603027D), Telerik.Reporting.Drawing.Unit.Inch(0.20011813938617706D));
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.359304666519165D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.5432279109954834D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox7.Style.Font.Bold = true;
             this.textBox7.Value = "= Fields.company_name";
             // 
             // textBox10
             // 
             this.textBox10.Format = "{0:dd/MM/yyyy}";
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5146317481994629D), Telerik.Reporting.Drawing.Unit.Inch(0.40019688010215759D));
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.3306293487548828D), Telerik.Reporting.Drawing.Unit.Inch(0.40019688010215759D));
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.359304666519165D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.5433073043823242D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox10.Value = "CIF: {Fields.company_vatin}";
             // 
             // textBox3
             // 
             this.textBox3.Format = "{0:dd/MM/yyyy}";
-            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5147113800048828D), Telerik.Reporting.Drawing.Unit.Inch(0.60027557611465454D));
+            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.3307089805603027D), Telerik.Reporting.Drawing.Unit.Inch(0.60027557611465454D));
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.359304666519165D), Telerik.Reporting.Drawing.Unit.Inch(1.2500786781311035D));
+            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.5433073043823242D), Telerik.Reporting.Drawing.Unit.Inch(1.2500786781311035D));
             this.textBox3.Value = "Direccion:\r\n{Fields.company_street}\r\n({Fields.company_postcode}) {Fields.company_" +
     "city}\r\n{Fields.company_province} [{Fields.company_country}]";
             // 

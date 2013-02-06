@@ -28,6 +28,8 @@ namespace AriCliReport
             this.textBox6 = new Telerik.Reporting.TextBox();
             this.textBox9 = new Telerik.Reporting.TextBox();
             this.textBox10 = new Telerik.Reporting.TextBox();
+            this.textBox11 = new Telerik.Reporting.TextBox();
+            this.textBox12 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // detail
@@ -139,7 +141,9 @@ namespace AriCliReport
             this.textBox8,
             this.textBox6,
             this.textBox9,
-            this.textBox10});
+            this.textBox10,
+            this.textBox11,
+            this.textBox12});
             this.reportFooterSection1.Name = "reportFooterSection1";
             // 
             // textBox13
@@ -169,12 +173,12 @@ namespace AriCliReport
             this.textBox8.Format = "{0:###,##0.00}";
             this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.70866173505783081D), Telerik.Reporting.Drawing.Unit.Inch(0.39692926406860352D));
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.3833463191986084D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.4409446716308594D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
             this.textBox8.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox8.Style.Font.Bold = true;
             this.textBox8.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox8.Style.Visible = true;
-            this.textBox8.Value = "Retención profesional ({Parameters.TaxWithholding.Value}): ";
+            this.textBox8.Value = "Retención profesional (";
             // 
             // textBox6
             // 
@@ -211,6 +215,30 @@ namespace AriCliReport
             this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox10.Value = "= SUM(Fields.TaxAmount) - ((SUM((Fields.[TaxAmount] * 100) / (Fields.tax_percenta" +
     "ge + 100))) * (Parameters.TaxWithholding.Value))";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Format = "{0:###,##0.00}";
+            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.1496851444244385D), Telerik.Reporting.Drawing.Unit.Inch(0.39692926406860352D));
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.59039336442947388D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox11.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox11.Style.Font.Bold = true;
+            this.textBox11.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox11.Style.Visible = true;
+            this.textBox11.Value = "= Parameters.TaxWithholding.Value * 100";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Format = "{0:###,##0.00}";
+            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.74015736579895D), Telerik.Reporting.Drawing.Unit.Inch(0.39692926406860352D));
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.35185050964355469D), Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D));
+            this.textBox12.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox12.Style.Font.Bold = true;
+            this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox12.Style.Visible = true;
+            this.textBox12.Value = "%):";
             // 
             // RptProfessionalInvoiceBases
             // 
@@ -263,5 +291,7 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox6;
         private Telerik.Reporting.TextBox textBox9;
         private Telerik.Reporting.TextBox textBox10;
+        private Telerik.Reporting.TextBox textBox11;
+        private Telerik.Reporting.TextBox textBox12;
     }
 }
