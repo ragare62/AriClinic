@@ -18,7 +18,8 @@ namespace RidocciConsole
             //CargaRidocci();
             //CargaOFT();
             CargaCortaOft();
-            Console.WriteLine(" -- Press <ENTER> --");
+
+            Console.WriteLine(" -- end Press <ENTER> --");
             Console.ReadLine();
         }
         #region Funciones individuales (RIDOCCI)
