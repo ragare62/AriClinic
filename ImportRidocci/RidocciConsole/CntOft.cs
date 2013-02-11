@@ -123,7 +123,7 @@ namespace RidocciConsole
         /// <returns>OleDb connection1</returns>
         public static OleDbConnection GetOftConnection(string path)
         {
-            return new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Publicacion\\OFT.mdb");
+            return new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Publicaciones\\OFT.mdb");
         }
 
         /// <summary>
@@ -135,7 +135,15 @@ namespace RidocciConsole
         {
             // (1) Eliminar los datos que pudiera haber previamente y que serán
             // sustituidos por los nuevos.
-            //DeletePatientRelated(ctx);
+            // DeletePatientRelated(ctx);
+
+            /* ACL-176
+             * Ahora solo pretendem,os importar direcciones, correos y telfonos
+             * suponemos que personas, pacientes y clientes son correctos
+             * y que los pacientes están corretamente ligados a clientes
+             * 
+             * */
+            DeleteEmailsAddressAndTelephones(ctx);
 
             // (1.1) Montar las procedencias
             //ImportSources(con, ctx);
@@ -159,6 +167,7 @@ namespace RidocciConsole
                 ++reg; // un registro más (para saber por donde va)
                 Console.WriteLine("registro {1:#####0} de {2:#####0} / {0}", (string)dr["Nombre"], reg, nreg);
                 // (2.1) Crear cliente
+                // ACL-176 nos aseguramos que al menos el cliente existe
                 Customer customer = CntAriCli.GetCustomerByOftId((int)dr["NumHis"], ctx);
                 if (customer == null)
                 {
@@ -190,8 +199,10 @@ namespace RidocciConsole
                 if (dr["Sexo"] != DBNull.Value)
                     if ((byte)dr["Sexo"] == 2)
                         patient.Sex = "W";
+                // ACL-176 machacamos la asociación
                 patient.Customer = customer;
                 // asignar la procedencia
+                // ACL-176 la procedencia preexiste
                 Source src = (from s in ctx.Sources
                               where s.OftId == (int)dr["IdProcMed"]
                               select s).FirstOrDefault<Source>();
@@ -202,12 +213,13 @@ namespace RidocciConsole
                     patient.OpenDate = (DateTime)dr["FecAper"];
                 ctx.SaveChanges();
 
-                // eliminar los datos asociados
-                ctx.Delete(customer.Addresses);
-                ctx.Delete(patient.Addresses);
-                ctx.SaveChanges();
+                // ACL-176 innecesario por el borre inicial
+                //// eliminar los datos asociados
+                //ctx.Delete(customer.Addresses);
+                //ctx.Delete(patient.Addresses);
+                //ctx.SaveChanges();
 
-                // (2.3) Crear la dirección y asignársela a cliente y paciente.
+                // (2.3) Crear la dirección y asignársela a paciente y cliente.
                 Address address = new Address();
                 address.Street = (string)dr["Direccion"];
                 address.City = (string)dr["Poblacion"];
@@ -215,16 +227,29 @@ namespace RidocciConsole
                     address.PostCode = (string)dr["CodPostal"];
                 address.Province = (string)dr["Provincia"];
                 address.Type = "Primary";
+                // ACL-176 ¿Qué persona es el paciente?
+                address.Person = CntAriCli.GetPersonByPatient(patient, ctx);
                 ctx.Add(address);
-                customer.Addresses.Add(address);
-                patient.Addresses.Add(address);
+                ctx.SaveChanges();
+                // ACL-176 pacientes y clientes tienen duplicados sus registros
+                address = new Address();
+                address.Street = (string)dr["Direccion"];
+                address.City = (string)dr["Poblacion"];
+                if (dr["CodPostal"] != DBNull.Value)
+                    address.PostCode = (string)dr["CodPostal"];
+                address.Province = (string)dr["Provincia"];
+                address.Type = "Primary";
+                // ACL-176 ¿Qué persona es el paciente?
+                address.Person = CntAriCli.GetPersonByCustomer(customer, ctx);
+                ctx.Add(address);
                 ctx.SaveChanges();
 
 
-                // eliminar los teléfonos asociados
-                ctx.Delete(customer.Telephones);
-                ctx.Delete(patient.Telephones);
-                ctx.SaveChanges();
+                // ACL-176 el borre inicial lo vuelve innecesario
+                //// eliminar los teléfonos asociados
+                //ctx.Delete(customer.Telephones);
+                //ctx.Delete(patient.Telephones);
+                //ctx.SaveChanges();
 
 
                 // (2.4) Lo mismo para los teléfono.
@@ -232,44 +257,114 @@ namespace RidocciConsole
                 if (dr["Tel1"] != DBNull.Value)
                 {
                     telephone.Number = (string)dr["Tel1"];
-                    telephone.Type = "Primary";
-                    ctx.Add(telephone);
-                    patient.Telephones.Add(telephone);
-                    customer.Telephones.Add(telephone);
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Primary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByPatient(patient, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
                 }
                 if (dr["Tel2"] != DBNull.Value)
                 {
                     telephone = new Telephone();
                     telephone.Number = (string)dr["Tel2"];
-                    telephone.Type = "Primary";
-                    ctx.Add(telephone);
-                    patient.Telephones.Add(telephone);
-                    customer.Telephones.Add(telephone);
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Primary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByPatient(patient, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
                 }
                 if (dr["Movil"] != DBNull.Value)
                 {
                     telephone = new Telephone();
                     telephone.Number = (string)dr["Movil"];
-                    telephone.Type = "Secondary";
-                    ctx.Add(telephone);
-                    patient.Telephones.Add(telephone);
-                    customer.Telephones.Add(telephone);
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Secondary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByPatient(patient, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
                 }
 
-                // eliminar los correos anteriores
-                ctx.Delete(customer.Emails);
-                ctx.Delete(patient.Emails);
-                ctx.SaveChanges();
+                //ACL-176 Es un rollo pero hay que repetir todo el proceso para el cliente
+                telephone = new Telephone();
+                if (dr["Tel1"] != DBNull.Value)
+                {
+                    telephone.Number = (string)dr["Tel1"];
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Primary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByCustomer(customer, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
+                }
+                if (dr["Tel2"] != DBNull.Value)
+                {
+                    telephone = new Telephone();
+                    telephone.Number = (string)dr["Tel2"];
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Primary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByCustomer(customer, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
+                }
+                if (dr["Movil"] != DBNull.Value)
+                {
+                    telephone = new Telephone();
+                    telephone.Number = (string)dr["Movil"];
+                    if (telephone.Number != "")
+                    {
+                        telephone.Type = "Secondary";
+                        // ACL-176 turno del paciente
+                        telephone.Person = CntAriCli.GetPersonByCustomer(customer, ctx);
+                        ctx.Add(telephone);
+                        ctx.SaveChanges();
+                    }
+
+                }
+
+                // ACL-176 innecasrio por borre total
+                //// eliminar los correos anteriores
+                //ctx.Delete(customer.Emails);
+                //ctx.Delete(patient.Emails);
+                //ctx.SaveChanges();
 
                 // (2.5) Igual pero para correos electrónicos
                 Email email = new Email();
                 if (dr["Email"] != DBNull.Value)
                     email.Url = (string)dr["Email"];
-                email.Type = "Primary";
-                ctx.Add(email);
-                patient.Emails.Add(email);
-                customer.Emails.Add(email);
-                ctx.SaveChanges();
+                if (email.Url != "0" && email.Url != "")
+                {
+                    email.Type = "Primary";
+                    //ACL-176 turno de paciente
+                    email.Person = CntAriCli.GetPersonByPatient(patient, ctx);
+                    ctx.Add(email);
+                    ctx.SaveChanges();
+                }
+                // ACL-176 ahora el cliente.
+                email = new Email();
+                if (dr["Email"] != DBNull.Value)
+                    email.Url = (string)dr["Email"];
+                if (email.Url != "0" && email.Url != "")
+                {
+                    email.Type = "Primary";
+                    //ACL-176 turno de paciente
+                    email.Person = CntAriCli.GetPersonByCustomer(customer, ctx);
+                    ctx.Add(email);
+                    ctx.SaveChanges();
+                }
             }
         }
 
@@ -2046,6 +2141,13 @@ namespace RidocciConsole
             ctx.Delete(ctx.Patients); // por último, los pacientes.
             ctx.Delete(ctx.Addresses); // eliminar direcciones.
 
+            ctx.SaveChanges();
+        }
+        public static void DeleteEmailsAddressAndTelephones(AriClinicContext ctx)
+        {
+            ctx.Delete(ctx.Emails); // eliminar correos electrónicos
+            ctx.Delete(ctx.Telephones); // eliminar teléfonos.
+            ctx.Delete(ctx.Addresses); // eliminar las direcciones.
             ctx.SaveChanges();
         }
         #endregion

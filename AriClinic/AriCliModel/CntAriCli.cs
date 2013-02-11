@@ -1788,6 +1788,19 @@ namespace AriCliModel
             }
             return res;
         }
+
+        public static Person GetPersonByPatient(Patient patient, AriClinicContext ctx)
+        {
+            return (from p in ctx.People
+                    where p.PersonId == patient.PersonId
+                    select p).FirstOrDefault<Person>();
+        }
+        public static Person GetPersonByCustomer(Customer customer, AriClinicContext ctx)
+        {
+            return (from p in ctx.People
+                    where p.PersonId == customer.PersonId
+                    select p).FirstOrDefault<Person>();
+        }
         #region Auxiliary functions
         #endregion
 
