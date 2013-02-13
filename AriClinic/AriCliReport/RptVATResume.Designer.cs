@@ -12,6 +12,7 @@ namespace AriCliReport
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptVATResume));
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter2 = new Telerik.Reporting.ReportParameter();
+            Telerik.Reporting.ReportParameter reportParameter3 = new Telerik.Reporting.ReportParameter();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.textBox14 = new Telerik.Reporting.TextBox();
             this.textBox13 = new Telerik.Reporting.TextBox();
@@ -48,6 +49,7 @@ namespace AriCliReport
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox12 = new Telerik.Reporting.TextBox();
             this.textBox15 = new Telerik.Reporting.TextBox();
+            this.sqlVATType = new Telerik.Reporting.SqlDataSource();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeaderSection1
@@ -283,7 +285,8 @@ namespace AriCliReport
             this.sqlVATResume.Name = "sqlVATResume";
             this.sqlVATResume.Parameters.AddRange(new Telerik.Reporting.SqlDataSourceParameter[] {
             new Telerik.Reporting.SqlDataSourceParameter("@FDate", System.Data.DbType.Date, "=Parameters.FDate.Value"),
-            new Telerik.Reporting.SqlDataSourceParameter("@TDate", System.Data.DbType.Date, "=Parameters.TDate.Value")});
+            new Telerik.Reporting.SqlDataSourceParameter("@TDate", System.Data.DbType.Date, "=Parameters.TDate.Value"),
+            new Telerik.Reporting.SqlDataSourceParameter("@TaxTypeId", System.Data.DbType.Int32, "=Parameters.TaxTypeId.Value")});
             this.sqlVATResume.SelectCommand = resources.GetString("sqlVATResume.SelectCommand");
             // 
             // labelsGroup
@@ -419,6 +422,12 @@ namespace AriCliReport
             this.textBox15.StyleName = "Data";
             this.textBox15.Value = "= Sum(Fields.c)";
             // 
+            // sqlVATType
+            // 
+            this.sqlVATType.ConnectionString = "AriClinicContext";
+            this.sqlVATType.Name = "sqlVATType";
+            this.sqlVATType.SelectCommand = "SELECT        tax_type_id, name\r\nFROM            tax_type";
+            // 
             // RptVATResume
             // 
             this.DataSource = this.sqlVATResume;
@@ -448,8 +457,16 @@ namespace AriCliReport
             reportParameter2.Text = "Hasta fecha";
             reportParameter2.Type = Telerik.Reporting.ReportParameterType.DateTime;
             reportParameter2.Visible = true;
+            reportParameter3.AvailableValues.DataSource = this.sqlVATType;
+            reportParameter3.AvailableValues.DisplayMember = "= Fields.name";
+            reportParameter3.AvailableValues.ValueMember = "= Fields.tax_type_id";
+            reportParameter3.Name = "TaxTypeId";
+            reportParameter3.Text = "Tipo IVA";
+            reportParameter3.Type = Telerik.Reporting.ReportParameterType.Integer;
+            reportParameter3.Visible = true;
             this.ReportParameters.Add(reportParameter1);
             this.ReportParameters.Add(reportParameter2);
+            this.ReportParameters.Add(reportParameter3);
             this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
             new Telerik.Reporting.Sorting("=Fields.invoice_date", Telerik.Reporting.SortDirection.Asc)});
             this.Style.BackgroundColor = System.Drawing.Color.White;
@@ -496,5 +513,6 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox22;
         private Telerik.Reporting.TextBox pageInfoTextBox;
         private Telerik.Reporting.TextBox textBox21;
+        private Telerik.Reporting.SqlDataSource sqlVATType;
     }
 }
