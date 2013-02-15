@@ -13,6 +13,7 @@ namespace AriCliReport
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter2 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter3 = new Telerik.Reporting.ReportParameter();
+            this.sqlVATType = new Telerik.Reporting.SqlDataSource();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.textBox14 = new Telerik.Reporting.TextBox();
             this.textBox13 = new Telerik.Reporting.TextBox();
@@ -49,8 +50,13 @@ namespace AriCliReport
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox12 = new Telerik.Reporting.TextBox();
             this.textBox15 = new Telerik.Reporting.TextBox();
-            this.sqlVATType = new Telerik.Reporting.SqlDataSource();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // sqlVATType
+            // 
+            this.sqlVATType.ConnectionString = "AriClinicContext";
+            this.sqlVATType.Name = "sqlVATType";
+            this.sqlVATType.SelectCommand = "SELECT        tax_type_id, name\r\nFROM            tax_type";
             // 
             // pageHeaderSection1
             // 
@@ -422,12 +428,6 @@ namespace AriCliReport
             this.textBox15.StyleName = "Data";
             this.textBox15.Value = "= Sum(Fields.c)";
             // 
-            // sqlVATType
-            // 
-            this.sqlVATType.ConnectionString = "AriClinicContext";
-            this.sqlVATType.Name = "sqlVATType";
-            this.sqlVATType.SelectCommand = "SELECT        tax_type_id, name\r\nFROM            tax_type";
-            // 
             // RptVATResume
             // 
             this.DataSource = this.sqlVATResume;
@@ -460,6 +460,7 @@ namespace AriCliReport
             reportParameter3.AvailableValues.DataSource = this.sqlVATType;
             reportParameter3.AvailableValues.DisplayMember = "= Fields.name";
             reportParameter3.AvailableValues.ValueMember = "= Fields.tax_type_id";
+            reportParameter3.MultiValue = true;
             reportParameter3.Name = "TaxTypeId";
             reportParameter3.Text = "Tipo IVA";
             reportParameter3.Type = Telerik.Reporting.ReportParameterType.Integer;
