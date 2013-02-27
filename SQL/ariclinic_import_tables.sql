@@ -1,9 +1,9 @@
 /* import from original database */
-DELETE FROM ariclinic_miestetic_original.healthcare_company;
+DELETE FROM ariclinic_miestetic.healthcare_company;
 INSERT INTO ariclinic_miestetic.healthcare_company
 SELECT * FROM ariclinic_miestetic_original.healthcare_company;
 
-DELETE * FROM ariclinic_miestetic_original.user_group;
+DELETE FROM ariclinic_miestetic.user_group;
 INSERT INTO ariclinic_miestetic.user_group
 SELECT * FROM ariclinic_miestetic_original.user_group;
 
@@ -28,7 +28,7 @@ DELETE FROM ariclinic_miestetic.permission;
 INSERT INTO ariclinic_miestetic.permission
 SELECT * FROM ariclinic_miestetic_original.permission;
 
-/* parametersparameter */
+/* parameters */
 DELETE FROM ariclinic_miestetic.parameter;
 INSERT INTO ariclinic_miestetic.parameter
 SELECT * FROM ariclinic_miestetic_original.parameter;
@@ -48,6 +48,7 @@ DELETE FROM ariclinic_miestetic.tax_withholding_type;
 INSERT INTO ariclinic_miestetic.tax_withholding_type
 SELECT * FROM ariclinic_miestetic_original.tax_withholding_type;
 
+
 /* person (need for professional */
 INSERT INTO ariclinic_miestetic.person
 SELECT ariclinic_miestetic_original.person.* 
@@ -60,32 +61,7 @@ DELETE FROM ariclinic_miestetic.professional;
 INSERT INTO ariclinic_miestetic.professional
 SELECT * FROM ariclinic_miestetic_original.professional;
 
-/* service_category */
-DELETE FROM ariclinic_miestetic.service_category;
-INSERT INTO ariclinic_miestetic.service_category
-SELECT * FROM ariclinic_miestetic_original.service_category;
-
-/* service */
-DELETE FROM ariclinic_miestetic.service;
-INSERT INTO ariclinic_miestetic.service
-SELECT * FROM ariclinic_miestetic_original.service;
-
-/* insurance */
-DELETE FROM ariclinic_miestetic.insurance;
-INSERT INTO ariclinic_miestetic.insurance
-SELECT * FROM ariclinic_miestetic_original.insurance;
-
-/* insurance service */
-DELETE FROM ariclinic_miestetic.insurance_service;
-INSERT INTO ariclinic_miestetic.insurance_service
-SELECT * FROM ariclinic_miestetic_original.insurance_service;
-
-/* service note */
-DELETE FROM ariclinic_miestetic.service_note;
-INSERT INTO ariclinic_miestetic.service_note
-SELECT * FROM ariclinic_miestetic_original.service_note;
-
-/* ticket */
-DELETE FROM ariclinic_miestetic.ticket;
-INSERT INTO ariclinic_miestetic.ticket
-SELECT * FROM ariclinic_miestetic_original.ticket;
+/* examination_type */
+DELETE FROM ariclinic_miestetic.examination_type;
+INSERT INTO ariclinic_miestetic.examination_type
+SELECT * FROM ariclinic_miestetic_original.examination_type;

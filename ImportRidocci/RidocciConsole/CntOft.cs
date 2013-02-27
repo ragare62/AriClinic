@@ -410,7 +410,8 @@ namespace RidocciConsole
         public static void ImportTaxTypes(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.TaxTypes);
+            ctx.Delete(ctx.TaxTypes);
+            ctx.SaveChanges();
 
             // (1) Dar de alta los tipos de IVA importados.
             string sql = "SELECT * FROM TiposIva";
@@ -452,8 +453,9 @@ namespace RidocciConsole
             int id = 0;
 
             // (0) Borrar los datos previos.
-            //ctx.Delete(ctx.Services);
-            //ctx.Delete(ctx.ServiceCategories);
+            ctx.Delete(ctx.Services);
+            ctx.Delete(ctx.ServiceCategories);
+            ctx.SaveChanges();
             
             // (1) Dar de alta las categorias de servicio
             string sql = "SELECT * FROM TipServMed";
@@ -554,9 +556,10 @@ namespace RidocciConsole
         public static void ImportAssurancePolicies(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Borrar las aseguradoras y pólizas previas.
-            //ctx.Delete(ctx.Policies);
-            //ctx.Delete(ctx.Insurances);
-            //ctx.Delete(ctx.InsuranceServices);
+            ctx.Delete(ctx.Policies);
+            ctx.Delete(ctx.Insurances);
+            ctx.Delete(ctx.InsuranceServices);
+            ctx.SaveChanges();
 
             //(1) Por defecto creamos una aseguradora que es la clínica de Valencia.
 
@@ -739,7 +742,8 @@ namespace RidocciConsole
         public static void ImportPaymentTypes(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borrar antiguas formas de pago
-            // ctx.Delete(ctx.PaymentMethods);
+            ctx.Delete(ctx.PaymentMethods);
+            ctx.SaveChanges();
 
             //(2) Lleer todos los pacientes en OFT
             string sql = "SELECT * FROM FormaPago";
@@ -770,8 +774,10 @@ namespace RidocciConsole
         public static void ImportPayments(OleDbConnection con, AriClinicContext ctx)
         {
             //(1) Borrar antiguos pagos
-            //ctx.Delete(ctx.GeneralPayments);
-            //ctx.Delete(ctx.Payments);
+            ctx.Delete(ctx.GeneralPayments);
+            ctx.Delete(ctx.Payments);
+            ctx.SaveChanges();
+
             foreach (Ticket tt in ctx.Tickets)
             {
                 tt.Paid = 0;
@@ -977,8 +983,9 @@ namespace RidocciConsole
         public static void ImportInvoices(OleDbConnection con, AriClinicContext ctx)
         {
             //(0) Delete previous invoices
-            //ctx.Delete(ctx.InvoiceLines);
-            //ctx.Delete(ctx.Invoices);
+            ctx.Delete(ctx.InvoiceLines);
+            ctx.Delete(ctx.Invoices);
+            ctx.SaveChanges();
 
             //
 
@@ -1069,7 +1076,8 @@ namespace RidocciConsole
         public static void ImportVisitReasons(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.VisitReasons);
+            ctx.Delete(ctx.VisitReasons);
+            ctx.SaveChanges();
 
             // (1) Dar de alta los tipos de IVA importados.
             string sql = "SELECT * FROM Motivos";
@@ -1102,12 +1110,12 @@ namespace RidocciConsole
         {
             int id = 0;
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.MotAppends);
-            //ctx.Delete(ctx.AntSegments);
-            //ctx.Delete(ctx.Fundus);
-            //ctx.Delete(ctx.OphthalmologicVisits);
-            //ctx.Delete(ctx.BaseVisits);
-            //ctx.SaveChanges();
+            ctx.Delete(ctx.MotAppends);
+            ctx.Delete(ctx.AntSegments);
+            ctx.Delete(ctx.Fundus);
+            ctx.Delete(ctx.OphthalmologicVisits);
+            ctx.Delete(ctx.BaseVisits);
+            ctx.SaveChanges();
 
             // (1) Dar de alta las visitas importadas
             string sql = "SELECT * FROM HistVisitas";
@@ -1285,9 +1293,9 @@ namespace RidocciConsole
         public static void ImportDiagnostics(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.DiagnosticAssigneds);
-            //ctx.Delete(ctx.Diagnostics);
-            //ctx.SaveChanges();
+            ctx.Delete(ctx.DiagnosticAssigneds);
+            ctx.Delete(ctx.Diagnostics);
+            ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM Diagnosticos";
@@ -1318,8 +1326,8 @@ namespace RidocciConsole
         public static void ImportDiagnosticsAssigned(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.DiagnosticAssigneds);
-            //ctx.SaveChanges();
+            ctx.Delete(ctx.DiagnosticAssigneds);
+            ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM HistDiag";

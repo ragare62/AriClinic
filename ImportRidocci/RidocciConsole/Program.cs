@@ -553,8 +553,41 @@ namespace RidocciConsole
             // open AriClinic connection
             AriClinicContext ctx = new AriClinicContext("MIESTETIC");
             // start importing things
-            Console.WriteLine("--> Import patients");
-            CntOft.ImportPatientCustomer(con, ctx);
+            //Console.WriteLine("--> Import patients");
+            //CntOft.ImportPatientCustomer(con, ctx);
+            //Console.WriteLine("--> Tipos de IVA");
+            //CntOft.ImportTaxTypes(con, ctx);
+
+            //Console.WriteLine("--> Import categories");
+            //CntOft.ImportCategories(con, ctx);
+
+            //Console.WriteLine("--> Insurance services");
+            //CntOft.ImportAssurancePolicies(con, ctx);
+
+            //Console.WriteLine("--> Import service note");
+            //CntOft.ImportServiceNote(con, ctx);
+
+            //Console.WriteLine("--> Pagos");
+            //CntOft.ImportPaymentTypes(con, ctx);
+            //CntOft.ImportPayments(con, ctx);
+
+            //Console.WriteLine("--> Invoices");
+            //CntOft.ImportInvoices(con, ctx);
+
+            //Console.WriteLine("--> Visits");
+            //CntOft.ImportVisitReasons(con, ctx);
+            //CntOft.ImportVisits(con, ctx);
+
+            //Console.WriteLine("--> diagnostics");
+            //CntOft.ImportDiagnostics(con, ctx);
+            //CntOft.ImportDiagnosticsAssigned(con, ctx);
+
+            Console.WriteLine("--> Examinations");
+            CntOft.ImportExaminations(con, ctx);
+            CntOft.ImportExaminationsAssigned(con, ctx);
+
+
+
         }
         #endregion 
 
