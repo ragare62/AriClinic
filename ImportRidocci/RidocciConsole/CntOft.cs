@@ -146,7 +146,7 @@ namespace RidocciConsole
             DeleteEmailsAddressAndTelephones(ctx);
 
             // (1.1) Montar las procedencias
-            //ImportSources(con, ctx);
+           ImportSources(con, ctx);
 
 
 
@@ -185,6 +185,7 @@ namespace RidocciConsole
                 Patient patient = CntAriCli.GetPatientByOftId((int)dr["NumHis"], ctx);
                 if (patient == null)
                 {
+                    patient = new Patient();
                     patient.OftId = (int)dr["NumHis"];
                     ctx.Add(patient);
                 }
