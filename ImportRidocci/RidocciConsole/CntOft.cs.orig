@@ -146,8 +146,12 @@ namespace RidocciConsole
             DeleteEmailsAddressAndTelephones(ctx);
 
             // (1.1) Montar las procedencias
+<<<<<<< HEAD
+           ImportSources(con, ctx);
+=======
             Console.WriteLine("Importing sources...");
             ImportSources(con, ctx);
+>>>>>>> db64728f28baa62fde99c5a87807b546952a3e20
 
 
 
