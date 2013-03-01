@@ -67,7 +67,7 @@
 
 
                     function ViewHisAdm(id) {
-                        var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "fullscreen=yes,resizable=1");
+                        var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "width=900, height=650,resizable=1, scrollbars=1");
                         w2.focus();
                     }
                     function CreateVisit(id) {

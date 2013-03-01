@@ -10,7 +10,11 @@ namespace AriCliReport
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptInvoiceMain));
+            Telerik.Reporting.InstanceReportSource instanceReportSource1 = new Telerik.Reporting.InstanceReportSource();
+            Telerik.Reporting.InstanceReportSource instanceReportSource2 = new Telerik.Reporting.InstanceReportSource();
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
+            this.rptInvoiceLine1 = new AriCliReport.RptInvoiceLine();
+            this.reptInvoiceVAT1 = new AriCliReport.ReptInvoiceVAT();
             this.sqlInvoiceFilter = new Telerik.Reporting.SqlDataSource();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.detail = new Telerik.Reporting.DetailSection();
@@ -38,6 +42,7 @@ namespace AriCliReport
             this.textBox16 = new Telerik.Reporting.TextBox();
             this.textBox18 = new Telerik.Reporting.TextBox();
             this.textBox19 = new Telerik.Reporting.TextBox();
+            this.subReport1 = new Telerik.Reporting.SubReport();
             this.textBox20 = new Telerik.Reporting.TextBox();
             this.textBox21 = new Telerik.Reporting.TextBox();
             this.textBox22 = new Telerik.Reporting.TextBox();
@@ -45,20 +50,25 @@ namespace AriCliReport
             this.textBox24 = new Telerik.Reporting.TextBox();
             this.textBox25 = new Telerik.Reporting.TextBox();
             this.textBox26 = new Telerik.Reporting.TextBox();
-            this.subReport1 = new Telerik.Reporting.SubReport();
-            this.rptInvoiceLine1 = new AriCliReport.RptInvoiceLine();
             this.subReport2 = new Telerik.Reporting.SubReport();
-            this.reptInvoiceVAT1 = new AriCliReport.ReptInvoiceVAT();
             ((System.ComponentModel.ISupportInitialize)(this.rptInvoiceLine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reptInvoiceVAT1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // rptInvoiceLine1
+            // 
+            this.rptInvoiceLine1.Name = "rptInvoiceLine1";
+            // 
+            // reptInvoiceVAT1
+            // 
+            this.reptInvoiceVAT1.Name = "reptInvoiceVAT1";
             // 
             // sqlInvoiceFilter
             // 
             this.sqlInvoiceFilter.ConnectionString = "AriClinicContext";
             this.sqlInvoiceFilter.Name = "sqlInvoiceFilter";
             this.sqlInvoiceFilter.SelectCommand = "SELECT invoice_id, CONCAT(YEAR,\"-\",RIGHT(CONCAT(\"000000\",invoice_number),6),\"-\",S" +
-                "ERIAL) AS keyid \r\nFROM invoice ORDER BY 2 DESC;";
+    "ERIAL) AS keyid \r\nFROM invoice ORDER BY 2 DESC;";
             // 
             // pageHeaderSection1
             // 
@@ -88,8 +98,8 @@ namespace AriCliReport
             // 
             this.invoiceId.GroupFooter = this.groupFooterSection1;
             this.invoiceId.GroupHeader = this.groupHeaderSection1;
-            this.invoiceId.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.invoice_id")});
+            this.invoiceId.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.invoice_id")});
             this.invoiceId.Name = "invoiceId";
             // 
             // groupFooterSection1
@@ -345,6 +355,16 @@ namespace AriCliReport
             this.textBox19.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.textBox19.Value = "= Fields.country";
             // 
+            // subReport1
+            // 
+            this.subReport1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(5.0799989700317383D), Telerik.Reporting.Drawing.Unit.Mm(72.740005493164062D));
+            this.subReport1.Name = "subReport1";
+            instanceReportSource1.Parameters.Add(new Telerik.Reporting.Parameter("InvoiceId", "=Fields.invoice_id"));
+            instanceReportSource1.ReportDocument = this.rptInvoiceLine1;
+            this.subReport1.ReportSource = instanceReportSource1;
+            this.subReport1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(186.99998474121094D), Telerik.Reporting.Drawing.Unit.Mm(16D));
+            this.subReport1.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            // 
             // textBox20
             // 
             this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(132.08000183105469D), Telerik.Reporting.Drawing.Unit.Mm(21.940000534057617D));
@@ -420,30 +440,14 @@ namespace AriCliReport
             this.textBox26.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.textBox26.Value = "= Fields.cus_country";
             // 
-            // subReport1
-            // 
-            this.subReport1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(5.0799989700317383D), Telerik.Reporting.Drawing.Unit.Mm(72.740005493164062D));
-            this.subReport1.Name = "subReport1";
-            this.subReport1.Parameters.Add(new Telerik.Reporting.Parameter("InvoiceId", "=Fields.invoice_id"));
-            this.subReport1.ReportSource = this.rptInvoiceLine1;
-            this.subReport1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(186.99998474121094D), Telerik.Reporting.Drawing.Unit.Mm(16D));
-            this.subReport1.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
-            // 
-            // rptInvoiceLine1
-            // 
-            this.rptInvoiceLine1.Name = "rptInvoiceLine1";
-            // 
             // subReport2
             // 
             this.subReport2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(5.0799989700317383D), Telerik.Reporting.Drawing.Unit.Mm(93.05999755859375D));
             this.subReport2.Name = "subReport2";
-            this.subReport2.Parameters.Add(new Telerik.Reporting.Parameter("InvoiceIdVat", "=Fields.invoice_id"));
-            this.subReport2.ReportSource = this.reptInvoiceVAT1;
+            instanceReportSource2.Parameters.Add(new Telerik.Reporting.Parameter("InvoiceIdVat", "=Fields.invoice_id"));
+            instanceReportSource2.ReportDocument = this.reptInvoiceVAT1;
+            this.subReport2.ReportSource = instanceReportSource2;
             this.subReport2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(186.99998474121094D), Telerik.Reporting.Drawing.Unit.Mm(21.000001907348633D));
-            // 
-            // reptInvoiceVAT1
-            // 
-            this.reptInvoiceVAT1.Name = "reptInvoiceVAT1";
             // 
             // RptInvoiceMain
             // 
@@ -456,6 +460,7 @@ namespace AriCliReport
             this.pageHeaderSection1,
             this.detail,
             this.pageFooterSection1});
+            this.Name = "RptInvoiceMain";
             this.PageSettings.Landscape = false;
             this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
             this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
@@ -467,8 +472,9 @@ namespace AriCliReport
             reportParameter1.AvailableValues.ValueMember = "= Fields.invoice_id";
             reportParameter1.MultiValue = true;
             reportParameter1.Name = "InvoiceKey";
-            reportParameter1.Text = "Factura";
+            reportParameter1.Text = "Factura ";
             reportParameter1.Type = Telerik.Reporting.ReportParameterType.Integer;
+            reportParameter1.Visible = true;
             this.ReportParameters.Add(reportParameter1);
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.UnitOfMeasure = Telerik.Reporting.Drawing.UnitType.Mm;

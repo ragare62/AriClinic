@@ -582,9 +582,18 @@ namespace RidocciConsole
             //CntOft.ImportDiagnostics(con, ctx);
             //CntOft.ImportDiagnosticsAssigned(con, ctx);
 
-            Console.WriteLine("--> Examinations");
-            CntOft.ImportExaminations(con, ctx);
-            CntOft.ImportExaminationsAssigned(con, ctx);
+            //Console.WriteLine("--> Examinations");
+            //CntOft.ImportExaminations(con, ctx);
+            //CntOft.ImportExaminationsAssigned(con, ctx);
+
+            Console.WriteLine("-> Procedures");
+            CntOft.ImportProcedures(con, ctx);
+            CntOft.ImportProceduresAssigned(con, ctx);
+
+            Console.WriteLine("-> Treatments");
+            CntOft.ImportDrugs(con, ctx);
+            CntOft.ImportTreatment(con, ctx);
+                
 
 
 

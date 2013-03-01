@@ -119,6 +119,12 @@
     <Compile Include="RptInvoiceMain.Designer.cs">
       <DependentUpon>RptInvoiceMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptInvoicesPeriod2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInvoicesPeriod2.Designer.cs">
+      <DependentUpon>RptInvoicesPeriod2.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPatientBySource.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -395,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptInvoiceMain.resx">
       <DependentUpon>RptInvoiceMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInvoicesPeriod2.resx">
+      <DependentUpon>RptInvoicesPeriod2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPatientBySource.resx">
       <DependentUpon>RptPatientBySource.cs</DependentUpon>
