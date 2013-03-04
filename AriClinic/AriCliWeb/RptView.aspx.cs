@@ -226,6 +226,11 @@ public partial class RptView : System.Web.UI.Page
                         }
                         ReportViewer1.Report = rpresglasses;
                         break;
+                    case "rpinvoicesperiod2":
+                        this.Title = "Facturas por periodo y cliente";
+                        RptInvoicesPeriod2 rptinvp2 = new RptInvoicesPeriod2();
+                        ReportViewer1.Report = rptinvp2;
+                        break;
                 }
             }
             catch (Exception ex)

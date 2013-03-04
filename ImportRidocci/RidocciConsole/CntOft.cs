@@ -1973,9 +1973,9 @@ namespace RidocciConsole
         public static void ImportProcedures(OleDbConnection con, AriClinicContext ctx)
         {
             // (0) Borra tipos previos
-            //ctx.Delete(ctx.ProcedureAssigneds);
-            //ctx.Delete(ctx.Procedures);
-            //ctx.SaveChanges();
+            ctx.Delete(ctx.ProcedureAssigneds);
+            ctx.Delete(ctx.Procedures);
+            ctx.SaveChanges();
 
             // (1) Dar de alta los diferentes diagnósticos
             string sql = "SELECT * FROM Procedimientos";

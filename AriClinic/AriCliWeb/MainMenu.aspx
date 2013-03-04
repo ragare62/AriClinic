@@ -116,27 +116,27 @@
           }
           function LaunchTicket()
           {
-              var w1 = window.open("TicketGrid.aspx", "TICKET", "fullscreen=yes,resizable=1,scrollbars=1")
+              var w1 = window.open("TicketGrid.aspx", "TICKET", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchSettlement()
           {
-              var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "fullscreen=yes,resizable=1")
+              var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchChecks()
           {
-              var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "fullscreen=yes,resizable=1")
+              var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchInvoice()
           {
-              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "fullscreen=yes,resizable=1,scrollbars=1")
+              var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchPayment()
           {
-              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "fullscreen=yes,resizable=1,scrollbars=1")
+              var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchRTickets()
@@ -216,7 +216,7 @@
           }
           function LaunchRInvoicesPeriod()
           {
-              var w1 = window.open("RptInvoicePeriodForm.aspx", "RINVPERIOD", "width=440, height=300,resizable=1")
+              var w1 = window.open("RptView.aspx?Report=rpinvoicesperiod2", "RPINVOICEP", "width=800, height=600,resizable=1")
               w1.focus();
           }
           function LaunchRPatientDebt()
@@ -241,7 +241,7 @@
           }
           function LaunchAppointment()
           {
-              var w1 = window.open("AppointmentGrid.aspx", "APPOINTMENT", "fullscreen=yes,resizable=1")
+              var w1 = window.open("AppointmentGrid.aspx", "APPOINTMENT", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
           function LaunchDocuments()
@@ -287,7 +287,7 @@
 
           function LaunchProfiIvoice()
           {
-              var w1 = window.open("ProfessionalInvoiceGrid.aspx", "PROFINV", "fullscreen=yes,resizable=1")
+              var w1 = window.open("ProfessionalInvoiceGrid.aspx", "PROFINV", "width=900, height=650,resizable=1, scrollbars=1")
               w1.focus();
           }
 

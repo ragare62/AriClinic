@@ -10,6 +10,7 @@ namespace AriCliReport
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptInvoicesPeriod));
+            Telerik.Reporting.InstanceReportSource instanceReportSource1 = new Telerik.Reporting.InstanceReportSource();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.textBox5 = new Telerik.Reporting.TextBox();
             this.pictureBox1 = new Telerik.Reporting.PictureBox();
@@ -71,7 +72,7 @@ namespace AriCliReport
             // 
             // textBox3
             // 
-            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(8.297877311706543D), Telerik.Reporting.Drawing.Unit.Inch(0.25628939270973206D));
+            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(8.297877311706543D), Telerik.Reporting.Drawing.Unit.Inch(0.099999986588954926D));
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.7020833492279053D), Telerik.Reporting.Drawing.Unit.Inch(0.23618102073669434D));
             this.textBox3.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -212,8 +213,8 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("InvoiceId")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("InvoiceId")});
             this.group1.Name = "group1";
             // 
             // groupFooterSection1
@@ -239,7 +240,8 @@ namespace AriCliReport
             // 
             this.subReport2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D), Telerik.Reporting.Drawing.Unit.Inch(0.29984283447265625D));
             this.subReport2.Name = "subReport2";
-            this.subReport2.ReportSource = this.subInvoiceFooter1;
+            instanceReportSource1.ReportDocument = this.subInvoiceFooter1;
+            this.subReport2.ReportSource = instanceReportSource1;
             this.subReport2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.999922752380371D), Telerik.Reporting.Drawing.Unit.Inch(0.30000004172325134D));
             this.subReport2.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Bottom;
             // 
@@ -258,6 +260,7 @@ namespace AriCliReport
             this.detail,
             this.pageFooterSection1,
             this.reportFooterSection1});
+            this.Name = "RptInvoicesPeriod";
             this.PageSettings.Landscape = true;
             this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
             this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
