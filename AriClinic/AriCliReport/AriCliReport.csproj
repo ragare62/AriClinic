@@ -179,6 +179,12 @@
     <Compile Include="RptServSurgeon.Designer.cs">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTemplate.Designer.cs">
+      <DependentUpon>RptTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptTicketsByProfessional.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -348,6 +354,7 @@
     <Compile Include="subServNoteTicket.Designer.cs">
       <DependentUpon>subServNoteTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="TemplateView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
@@ -359,6 +366,7 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -431,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptServSurgeon.resx">
       <DependentUpon>RptServSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTemplate.resx">
+      <DependentUpon>RptTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptTicketsByProfessional.resx">
       <DependentUpon>RptTicketsByProfessional.cs</DependentUpon>

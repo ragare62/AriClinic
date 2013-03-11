@@ -628,6 +628,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Template> Templates 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Template>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -997,6 +1005,11 @@ namespace AriCliModel
 		}
 
 		IQueryable<BaseVisitType> BaseVisitTypes 
+		{ 
+			get;
+		}
+
+		IQueryable<Template> Templates 
 		{ 
 			get;
 		}

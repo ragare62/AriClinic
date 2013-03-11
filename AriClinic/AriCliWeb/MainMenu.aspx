@@ -350,6 +350,10 @@
               var w1 = window.open("RptView.aspx?Report=rptpatientbysource", "RPTPATIENTBYSOURCE", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchTemplate() {
+              var w1 = window.open("TemplateGrid.aspx", "TEMPLATE", "width=650, height=400,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -495,7 +499,7 @@
                         <telerik:RadMenuItem runat="server" 
                             Text="Cobros realizados (Por nota / clínica / f.pago)" Value="rptgpbyclinic">
                         </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (*)" 
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (por cliente)" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 
@@ -545,6 +549,9 @@
                           </telerik:RadMenuItem>
                       </Items>
                   </telerik:RadMenuItem>
+
+                    <telerik:RadMenuItem runat="server" Text="Plantillas" Value="templategrid">
+                    </telerik:RadMenuItem>
 
                 </Items>
               </telerik:RadMenuItem>

@@ -323,5 +323,16 @@ public partial class PatientForm : System.Web.UI.Page
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
+    protected void rddpBornDate_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
+    {
+        // Calculated age when born date is introduced
+        if (rddpBornDate.SelectedDate != null)
+        {
+            DateTime bornDate = (DateTime)rddpBornDate.SelectedDate;
+            txtAge.Text = CntAriCli.CalulatedAge(bornDate).ToString();
+        }
+
+    }
+
 
 }

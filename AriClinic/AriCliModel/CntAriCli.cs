@@ -1801,6 +1801,19 @@ namespace AriCliModel
                     where p.PersonId == customer.PersonId
                     select p).FirstOrDefault<Person>();
         }
+
+        public static IList<Template> GetTemplates(AriClinicContext ctx)
+        {
+            return (from t in ctx.Templates
+                    select t).ToList<Template>();
+        }
+        public static Template GetTemplate(int id, AriClinicContext ctx)
+        {
+            return (from t in ctx.Templates
+                    where t.TemplateId == id
+                    select t).FirstOrDefault<Template>();
+        }
+
         #region Auxiliary functions
         #endregion
 

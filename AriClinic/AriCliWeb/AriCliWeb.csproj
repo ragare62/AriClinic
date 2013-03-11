@@ -221,6 +221,27 @@
     <Compile Include="BackGinecologyForm.aspx.designer.cs">
       <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TemplateViewForm.aspx.cs">
+      <DependentUpon>TemplateViewForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateViewForm.aspx.designer.cs">
+      <DependentUpon>TemplateViewForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateForm.aspx.cs">
+      <DependentUpon>TemplateForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateForm.aspx.designer.cs">
+      <DependentUpon>TemplateForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateGrid.aspx.cs">
+      <DependentUpon>TemplateGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateGrid.aspx.designer.cs">
+      <DependentUpon>TemplateGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PrescriptionGlassesForm.aspx.cs">
       <DependentUpon>PrescriptionGlassesForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1131,6 +1152,9 @@
     <Content Include="BackPersonalForm.aspx" />
     <Content Include="BackFamilyForm.aspx" />
     <Content Include="BackGinecologyForm.aspx" />
+    <Content Include="TemplateViewForm.aspx" />
+    <Content Include="TemplateForm.aspx" />
+    <Content Include="TemplateGrid.aspx" />
     <Content Include="PrescriptionGlassesForm.aspx" />
     <Content Include="CycloplegiaForm.aspx" />
     <Content Include="SubjectiveOpticalExaminationForm.aspx" />
@@ -1331,8 +1355,7 @@
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\Anestesia.pubxml" />
-    <None Include="Properties\PublishProfiles\Ariclinic.pubxml" />
+    <None Include="Properties\PublishProfiles\AriClinic2013.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">

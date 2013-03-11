@@ -275,6 +275,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptpatientbysource":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptPatientBySource();");
                 break;
+            case "templategrid":
+                RadAjaxManager1.ResponseScripts.Add("LaunchTemplate();");
+                break;
             default:
                 break;
         }

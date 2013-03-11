@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AriCliReport.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAgAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.ReptAnesTicketProfessional" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDCAAAYAAQAAABCAFAAAAABCIgQAIAAAEAAIEADQAIQ=</HashCode>
+      <FileName>ReptAnesTicketProfessional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.ReptInvoiceVAT" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAAACBBAAAAABCIBQAAAAAEAAIAAAAAIA=</HashCode>
+      <FileName>ReptInvoiceVAT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptAnesNote" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAABCAEAAAAARCIEAAAQAAEAAIEAhAAIA=</HashCode>
+      <FileName>RptAnesNote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptAnesNote2" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAABCAEAAAAABCIBAgAAAAEAAIEABAAIA=</HashCode>
+      <FileName>RptAnesNote2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptAnestheticTicketByProfessional" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDCAQAAABQAACBCAFAAAACBCIgQAAAAAMAAJCABAAMY=</HashCode>
+      <FileName>RptAnestheticTicketByProfessional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptBombaDolor" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAQAAQAAABCAEAAAAARCIFAUAAAEEAEIEABAAIA=</HashCode>
+      <FileName>RptBombaDolor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptDayAppointment" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QjCAQAAAAQCAAACAEAgAACBCIgQAACAAEAAJCABAAIY=</HashCode>
+      <FileName>RptDayAppointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptDebtByCustomer" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCCAAAYAAQAAABCAEAAAAABCIhQAAAAIEAAMEABAAIQ=</HashCode>
+      <FileName>RptDebtByCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptGPByClinic" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCCAAIYAAQAAABCABAEAAABCKgQAgAAAEAEIEABAAYQ=</HashCode>
+      <FileName>RptGPByClinic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInsuranceDebt" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEAAAAARCIkAAAAAAEAAIEABABIA=</HashCode>
+      <FileName>RptInsuranceDebt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInvoice" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QSEAAAQQEQAAABCAMIAAAARCJFAAAAAAEAAIEBwAAoQ=</HashCode>
+      <FileName>RptInvoice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInvoiceLine" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAABBAAAAAACIAAIAAAAEAAIAAAAAIA=</HashCode>
+      <FileName>RptInvoiceLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInvoiceMain" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAQAEQACABGAEAAAAABCIAAAAAAAEABIEBgAAKA=</HashCode>
+      <FileName>RptInvoiceMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInvoicesPeriod" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAQAEQAAABCAEAAgAARCIFAUAAAEEAEIEBBAAIA=</HashCode>
+      <FileName>RptInvoicesPeriod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptInvoicesPeriod2" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACgAAAQAEQAAABCAAAAAAABCIgQAAAAAEAAJEABAAIQ=</HashCode>
+      <FileName>RptInvoicesPeriod2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptNomenclator" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAAQAAABCAEAAAIAQCAkAAAAAAEAAIEABAAAA=</HashCode>
+      <FileName>RptNomenclator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptParamInvoices" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAQAAABAAAAABAAQCAEAUAAAEEAEIEABAAAA=</HashCode>
+      <FileName>RptParamInvoices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptParamTickets" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACABQAAABAAAAIAAAQCAEAUAAAEEAEIEABAAAA=</HashCode>
+      <FileName>RptParamTickets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPatientBySource" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCCAAAQAAQAAABKAEQAAAABCIAQQAAAAEAAIEABAAIQ=</HashCode>
+      <FileName>RptPatientBySource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPatientDebt" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEAAAAARCIkAAAAAAEAAIEABABIA=</HashCode>
+      <FileName>RptPatientDebt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPatientInvoice" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAYAEQAAABCAEAAgAARCAlAAAAAAEAAIEBBAAIA=</HashCode>
+      <FileName>RptPatientInvoice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPayments" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEAAAAABCIgAUAAAEEAEIEAAAAIA=</HashCode>
+      <FileName>RptPayments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPCA" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDCAQIAAAQAAAADCFEgAACBCIgwAAAAAEAAJCABAAIY=</HashCode>
+      <FileName>RptPCA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPrescription" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAEQAAAACAEAgAAAACIAQAIAAoGAAMABAAAYA=</HashCode>
+      <FileName>RptPrescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptPrescriptionGlasses" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAQAAQAAAACAEAAAAABCIAQAAAAAEAAKAAAAIIA=</HashCode>
+      <FileName>RptPrescriptionGlasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptProfessionalInvoice" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QSAFAEQIQQAAEjCAMICAAARCpNAAAACAEgAIEJwQAoE=</HashCode>
+      <FileName>RptProfessionalInvoice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptProfessionalInvoice2" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAhhCAEAAAAABCIBAAAAAAUAAIEAgAAIA=</HashCode>
+      <FileName>RptProfessionalInvoice2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptProfessionalInvoiceBases" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QGAAAAAAAQMAAACBEAAAABBCIBAAAAQEEAAIAAEAAIA=</HashCode>
+      <FileName>RptProfessionalInvoiceBases.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptProfessionalInvoices" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAASAAQAAABGBEAABAARCIEAUAAAEEAEIEIBAAIA=</HashCode>
+      <FileName>RptProfessionalInvoices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptRisk" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDCAQAAAAQABAADCFEgAACBCIgwAAAAAEAAJCABAAIY=</HashCode>
+      <FileName>RptRisk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptServCategory" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAcAAQAAABCAEAAAAARCI0AUAAAEEAEIEABACIA=</HashCode>
+      <FileName>RptServCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptServicesComparer" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCABAAYAAQAAABCAAAAAAARCIkAAAAAAUEAIEAhABAA=</HashCode>
+      <FileName>RptServicesComparer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptServNote" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAABCAEAAAAARCIEAAAQAAEAAIEAhAAIA=</HashCode>
+      <FileName>RptServNote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptServProfessional" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAeAAQAAABGBEAABAARCI0AUQAAEEAEIEABABoA=</HashCode>
+      <FileName>RptServProfessional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptServSurgeon" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAeAAQAAABGBEAABAARCI0AUQAAEEAEIEABABoA=</HashCode>
+      <FileName>RptServSurgeon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTemplate" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAACAAAAAAAAAAAIEAAAAAA=</HashCode>
+      <FileName>RptTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTicket" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAQAAABCAEAAAAARCIEAAAAAAEAAIEAFAAIA=</HashCode>
+      <FileName>RptTicket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTickets" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEACAACRCIkAUAAAEEAEIEQAABIA=</HashCode>
+      <FileName>RptTickets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTicketsByProfessional" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QHCAQAAABQAACACAFAgAACBCIgQAAAAAMgApCCBAAM4=</HashCode>
+      <FileName>RptTicketsByProfessional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTicketsNoPaid" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEAAAAABCIgAUAAAEEAEIEABAAIA=</HashCode>
+      <FileName>RptTicketsNoPaid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTicketsPaid" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAYAAQAAABCAEAAAAABCIgAUAAAEEAEIEABAAIA=</HashCode>
+      <FileName>RptTicketsPaid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptTicketsSurgeon" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RDCAQAAAAQQAAACANAgACCBCIgQBAAAAEAAJCABAAIY=</HashCode>
+      <FileName>RptTicketsSurgeon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.RptVATResume" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCCAAAAAAQAAABCAFAAAAABCIgQCIAAAEAEJGABhAIQ=</HashCode>
+      <FileName>RptVATResume.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.SubInvoiceFooter" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAIAAQAAABCBEAAAAAACAhAAAAAAEAAIEAAAAIA=</HashCode>
+      <FileName>SubInvoiceFooter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.SubInvoiceLine" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAABAAEAAAAABCAAAAAAAAEAAIEAAAAAA=</HashCode>
+      <FileName>SubInvoiceLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.SubProfessionalInvoiceFooter" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAIAAQAAABCBEAAAAABCIhAAAAAAEAAIEAAAAIA=</HashCode>
+      <FileName>SubProfessionalInvoiceFooter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.SubProfessionalInvoiceLine" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAABAAEAAAAABCAAAAAAAAEAAIEAAAAAA=</HashCode>
+      <FileName>SubProfessionalInvoiceLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.SubServiceComp" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAABAAEAAAAABiAAAAAAAAEAAIEAAAAAA=</HashCode>
+      <FileName>SubServiceComp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.subServNoteTicket" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAABAAEAAAAABCAAAAAAAAEAAIEAAAAAA=</HashCode>
+      <FileName>subServNoteTicket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AriCliReport.TemplateView">
+    <Position X="16.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TemplateView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

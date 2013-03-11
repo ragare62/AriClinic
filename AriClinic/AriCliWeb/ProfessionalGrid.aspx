@@ -43,12 +43,12 @@
           }
           function NewProfessionalRecord()
           {
-              var w1 = window.open("ProfessionalForm.aspx", null, "width=770, height=750,resizable=1");
+              var w1 = window.open("ProfessionalForm.aspx", null, "width=800, height=700,resizable=1");
               w1.focus();
           }
           function EditProfessionalRecord(id)
           {
-              var w2 = window.open("ProfessionalForm.aspx?ProfessionalId=" + id, null, "width=770, height=750,resizable=1");
+              var w2 = window.open("ProfessionalForm.aspx?ProfessionalId=" + id, null, "width=800, height=700,resizable=1");
               w2.focus();
           }
           function ViewHisAdm(id)
@@ -131,6 +131,13 @@
                                          HeaderText="Nombre completo" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
                                          SortExpression="FullNAme" UniqueName="FullName" 
+                                         FilterControlAltText="Filter Name column">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Inactive"
+                                         FilterControlToolTip="Filtrar por actividad" FilterImageToolTip="Filtro"
+                                         HeaderText="Inactivo" 
+                                         meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
+                                         SortExpression="Inactive" UniqueName="Inactive" 
                                          FilterControlAltText="Filter Name column">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Type"

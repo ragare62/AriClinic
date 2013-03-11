@@ -174,6 +174,15 @@ public partial class ProfessionalForm {
     protected global::System.Web.UI.WebControls.TextBox txtVATIN;
     
     /// <summary>
+    /// Control chkInactive.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.CheckBox chkInactive;
+    
+    /// <summary>
     /// Control lblComercialName.
     /// </summary>
     /// <remarks>

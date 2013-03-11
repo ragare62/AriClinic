@@ -116,6 +116,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private bool inactive;
+		public virtual bool Inactive 
+		{ 
+		    get
+		    {
+		        return this.inactive;
+		    }
+		    set
+		    {
+		        this.inactive = value;
+		    }
+		}
+		
 		private TaxWithholdingType taxWithholdingType;
 		public virtual TaxWithholdingType TaxWithholdingType 
 		{ 

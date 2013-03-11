@@ -4,14 +4,13 @@ using System.Web.UI.WebControls;
 using AriCliModel;
 using Telerik.Web.UI;
 using AriCliWeb;
-using System.Drawing;
 
-public partial class ProfessionalGrid : System.Web.UI.Page 
+public partial class TemplateGrid : System.Web.UI.Page 
 {
     AriClinicContext ctx = null;
     User user = null;
-    HealthcareCompany hc = null;
     int callNumber = 0;
+    HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
 
@@ -26,7 +25,7 @@ public partial class ProfessionalGrid : System.Web.UI.Page
         {
             user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "professional"
+                            where p.Code == "templategrid"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
         }
@@ -34,8 +33,7 @@ public partial class ProfessionalGrid : System.Web.UI.Page
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
         //
-        if (Request.QueryString["CallNumber"] != null)
-            callNumber = int.Parse(Request.QueryString["CallNumber"]);
+
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -56,7 +54,7 @@ public partial class ProfessionalGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = ctx.Professionals;
+        RadGrid1.DataSource = ctx.Templates;
     }
 
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -73,7 +71,7 @@ public partial class ProfessionalGrid : System.Web.UI.Page
             string command = "";
             GridDataItem gdi;
             int id = 0;
-            string call = "Professional";
+            string call = "Template";
             
             id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
 
@@ -81,45 +79,34 @@ public partial class ProfessionalGrid : System.Web.UI.Page
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
 
-            name = gdi["FullName"].Text;
-            Professional prof = CntAriCli.GetProfessional(id, ctx); 
-            if (callNumber > 0) call = String.Format("Professional{0}", callNumber);
+            name = gdi["Name"].Text;
+            if (callNumber > 0) call = String.Format("Template{0}", callNumber);
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');"
                                     , id.ToString()
-                                    , prof.InvoiceSerial
+                                    , null
                                     , name
                                     , null
                                     , call);
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 
-            // Localization (true = SI, false = NO)
-            name = gdi["Inactive"].Text;
-            if (name == "True")
-            {
-                gdi["Inactive"].Text = "SI";
-                gdi["Inactive"].ForeColor = Color.Red;
-            }
-            else
-            {
-                gdi["Inactive"].Text = "NO";
-                gdi["Inactive"].ForeColor = Color.Green;
-            }
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditProfessionalRecord({0});", id);
-            imgb.OnClientClick = command;
-
-            // assign javascript to view administrative historial
-            imgb = (ImageButton)e.Item.FindControl("HisAdm");
-            command = String.Format("return ViewHisAdm({0});", id);
+            command = String.Format("return EditTemplateRecord({0});", id);
             imgb.OnClientClick = command;
 
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
-            command = String.Format("return confirm('{0} {1}');", Resources.GeneralResource.DeleteRecordQuestion, name);
+            command = String.Format("return radconfirm('{0}',event,300,100,'','{1}');"
+                                    , Resources.GeneralResource.DeleteRecordQuestion + " " + name
+                                    , Resources.GeneralResource.DeleteRecord);
             imgb.OnClientClick = command;
             imgb.Visible = per.Create;
+
+            // print button
+            imgb = (ImageButton)e.Item.FindControl("Print");
+            command = String.Format("PrintTemplate({0});", id);
+            imgb.OnClientClick = command;
         }
     }
 
@@ -142,8 +129,10 @@ public partial class ProfessionalGrid : System.Web.UI.Page
                 case "Edit":
                     break;
                 case "Delete":
-                    Professional cus = CntAriCli.GetProfessional(id, ctx);
-                    ctx.Delete(cus);
+                    Template taxt = (from t in ctx.Templates
+                                    where t.TemplateId == id
+                                    select t).FirstOrDefault<Template>();
+                    ctx.Delete(taxt);
                     ctx.SaveChanges();
                     RefreshGrid();
                     break;
@@ -155,17 +144,19 @@ public partial class ProfessionalGrid : System.Web.UI.Page
 
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-        RefreshGrid();
-        if (e.Argument == "new") 
-        { 
-            RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
-            RadGrid1.Rebind();
+        switch (e.Argument)
+        {
+            case "new":
+                // go to last page
+                RadGrid1.CurrentPageIndex = RadGrid1.PageCount - 1;
+                break;
         }
+        RefreshGrid();
     }
 
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.Professionals;
+        RadGrid1.DataSource = ctx.Templates;
         RadGrid1.Rebind();
     }
 }

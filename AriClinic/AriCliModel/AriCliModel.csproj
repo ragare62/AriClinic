@@ -264,6 +264,9 @@
     <Compile Include="Telephone.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Template.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Ticket.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -309,6 +312,9 @@
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-01-30 15-03-08%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-02-04 18-23-43%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-02-06 09-01-22%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 09-04-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 12-08-02%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 17-54-20%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

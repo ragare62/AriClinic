@@ -9,40 +9,6 @@
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-#TitleArea
-{
-z-index: 1;
-left: 5px;
-top: 0px;
-position: absolute;
-height: 19px;
-width: 441px;
-}
-#GridArea
-{
-z-index: 1;
-left: 7px;
-top: 34px;
-position: absolute;
-height: 291px;
-width: 441px;
-}
-#Messages
-{
-z-index: 1;
-left: 6px;
-top: 336px;
-position: absolute;
-height: 34px;
-width: 441px;
-}
-.style1
-{
-width: 27px;
-height: 20px;
-}
-</style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   </head>
   <body>
@@ -167,10 +133,10 @@ height: 20px;
           <asp:Label ID="lblTitle" runat="server" Text="Procesos"></asp:Label>
         </div>
         <div id="GridArea" class="normalText">
-          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="436px" 
+          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="100%" 
                            AllowPaging="true" PageSize="5" 
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
-                           onneeddatasource="RadGrid1_NeedDataSource" Height="282px">
+                           onneeddatasource="RadGrid1_NeedDataSource">
             <MasterTableView AutoGenerateColumns="false" datakeynames="ProcessId" CommandItemDisplay="Top">
               <Columns>
                 <telerik:GridBoundColumn DataField="ProcessId" DataType="System.Int32" 

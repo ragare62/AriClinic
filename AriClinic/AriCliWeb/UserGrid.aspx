@@ -9,40 +9,6 @@
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-#TitleArea
-{
-z-index: 1;
-left: 5px;
-top: 0px;
-position: absolute;
-height: 19px;
-width: 441px;
-}
-#GridArea
-{
-z-index: 1;
-left: 7px;
-top: 34px;
-position: absolute;
-height: 291px;
-width: 441px;
-}
-#Messages
-{
-z-index: 1;
-left: 6px;
-top: 336px;
-position: absolute;
-height: 34px;
-width: 441px;
-}
-.style1
-{
-width: 27px;
-height: 20px;
-}
-</style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   </head>
   <body>
@@ -158,19 +124,18 @@ height: 20px;
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
       </telerik:RadSkinManager>
-      <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Height="350px" 
-                            Width="450px" 
-                            style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 371px; width: 459px">
+      <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%"
+                            style="z-index: 1; min-height: 400px; min-width: 459px">
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           
           <asp:Label ID="lblTitle" runat="server" Text="Usuarios"></asp:Label>
         </div>
         <div id="GridArea" class="normalText">
-          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="436px" 
+          <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007" Width="100%" 
                            AllowPaging="true" PageSize="6" 
                            onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
-                           onneeddatasource="RadGrid1_NeedDataSource" Height="282px">
+                           onneeddatasource="RadGrid1_NeedDataSource">
             <MasterTableView AutoGenerateColumns="false" datakeynames="UserId" CommandItemDisplay="Top">
               <Columns>
                 <telerik:GridBoundColumn DataField="UserId" DataType="System.Int32" 

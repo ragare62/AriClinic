@@ -238,11 +238,11 @@
                                                ToolTip="Fecha de nacimiento"></asp:Label>
                                     <br />
                                     <telerik:RadDatePicker ID="rddpBornDate" runat="server" Culture="es-ES" CssClass="myCenter"  
-                                                           MinDate=""  TabIndex="4">
+                                                           MinDate=""  TabIndex="4" AutoPostBack="True" OnSelectedDateChanged="rddpBornDate_SelectedDateChanged">
                                         <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                                                   ViewSelectorText="x">
                                         </Calendar>
-                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy">
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" AutoPostBack="True">
                                         </DateInput>
                                         <DatePopupButton HoverImageUrl="" ImageUrl="" />
                                     </telerik:RadDatePicker>

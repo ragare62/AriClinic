@@ -204,7 +204,7 @@ public partial class TreatmentForm : System.Web.UI.Page
         rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
         txtRecommend.Text = tr.Recommend;
         if (tr.Quantity != 0)
-            txtQuantity.Value = tr.Quantity;
+            txtQuantity.Value = (double)tr.Quantity;
     }
 
     protected void UnloadData(Treatment tr)
@@ -215,7 +215,7 @@ public partial class TreatmentForm : System.Web.UI.Page
         if (visit != null)
             tr.BaseVisit = visit;
         tr.Recommend = txtRecommend.Text;
-        if (txtQuantity.Text != "") tr.Quantity = (int)txtQuantity.Value;
+        if (txtQuantity.Text != "") tr.Quantity = (decimal)txtQuantity.Value;
         if (rdcProfessional.SelectedValue != "")
         {
             tr.Professional = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);

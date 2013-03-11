@@ -80,7 +80,7 @@
           <orm:single-field field-name="hcId" />
         </orm:identity>
         <orm:field name="hcId" property="HcId" behavior="readwrite" null-value="none" uniqueId="afbab467-43b0-412e-a43c-2b8d1723b456" type="System.Int32">
-          <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
+          <orm:column name="hc_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="name" property="Name" behavior="readwrite" null-value="none" uniqueId="698a2773-7a32-43c3-8282-cad94d93b40f" type="System.String">
           <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
@@ -983,40 +983,39 @@
         <orm:table name="professional" />
         <orm:identity>
           <orm:internal>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:internal>
         </orm:identity>
         <orm:discriminator discriminator-value="AriCliModel.Professional" />
         <orm:field name="vATIN" property="VATIN" behavior="readwrite" null-value="none" uniqueId="8c848a3d-5b5f-4e48-9b65-bb586e265597" type="System.String">
-          <orm:column name="vatin" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
+          <orm:column name="vatin" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="type" property="Type" behavior="readwrite" null-value="none" uniqueId="cbc53cae-4128-4faa-9279-7b43b7b08e31" type="System.String">
-          <orm:column name="type" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
+          <orm:column name="type" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="002fb188-dae4-4acb-9564-6e8f9159f6dd" type="System.String">
-          <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
+          <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="commission" property="Commission" behavior="readwrite" null-value="none" uniqueId="016defdc-d9c5-494d-84d6-921d402f048d" type="System.Decimal">
-          <orm:column name="commission" sql-type="decimal" nullable="true" length="5" scale="2" ado-type="Decimal" />
+          <orm:column name="commission" sql-type="decimal" nullable="true" length="20" scale="10" ado-type="Numeric" />
         </orm:field>
         <orm:field name="comercialName" property="ComercialName" behavior="readwrite" null-value="none" uniqueId="75931639-93e8-4ff8-a2d7-e63606abced1" type="System.String">
-          <orm:column name="comercial_name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
+          <orm:column name="comercial_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="license" property="License" behavior="readwrite" null-value="none" uniqueId="029ec5f3-9b42-43f4-8bd7-403f99422b22" type="System.String">
-          <orm:column name="license" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
+          <orm:column name="license" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="oftId" property="OftId" behavior="readwrite" uniqueId="4fa272a7-a3dd-4317-b0b5-8a0ad6a61317" type="System.Int32">
-          <orm:column name="oft_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+          <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="inactive" property="Inactive" uniqueId="8894f0b5-ba83-4695-ac6d-18800606b2a8" type="System.Boolean">
+          <orm:column name="inactive" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
         </orm:field>
         <orm:field name="taxWithholdingType" property="TaxWithholdingType" behavior="readwrite" null-value="none" uniqueId="4f1e9c93-1a4e-414b-b77f-8c758599c775" type="AriCliModel.TaxWithholdingType">
-          <orm:reference uniqueId="f5aee760-8744-420d-ab81-7a8699ab738f">
-            <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.TaxWithholdingType" target-field="taxWithholdingTypeId" />
-          </orm:reference>
+          <orm:reference uniqueId="f5aee760-8744-420d-ab81-7a8699ab738f" />
         </orm:field>
         <orm:field name="user" property="User" behavior="readwrite" null-value="none" uniqueId="c558b09a-3ddf-4f36-91b7-048dab2c5b26" type="AriCliModel.User">
-          <orm:reference uniqueId="c4d138be-9361-4b07-b433-d1aaf47bef0f">
-            <orm:column name="user_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" target-class="AriCliModel.User" target-field="userId" />
-          </orm:reference>
+          <orm:reference uniqueId="c4d138be-9361-4b07-b433-d1aaf47bef0f" />
         </orm:field>
         <orm:field name="anestheticTickets" property="AnestheticTickets" behavior="readwrite" null-value="none" uniqueId="6f15dfd4-508c-42ea-8c6b-3f0d9f13d676" type="AriCliModel.AnestheticTicket">
           <orm:collection element-class="AriCliModel.AnestheticTicket" inverse-field="surgeon" managed="true" order-by="" uniqueId="f1b15604-d7a0-40e5-af9a-b40c516e1fad" />
@@ -1047,12 +1046,12 @@
         </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:columnMapping>
-            <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
+            <orm:column name="tax_withholding_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
-        <orm:index name="idx_prfssnl_prsn_d">
+        <orm:index name="idx_professional_user_id">
           <orm:columnMapping>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+            <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
       </orm:class>
@@ -1110,7 +1109,7 @@
         </orm:index>
         <orm:index name="idx_anesthetic_ticket_person_id">
           <orm:columnMapping>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
         <orm:index name="idx_anesthetic_ticket_procedure_id">
@@ -1549,8 +1548,8 @@
         <orm:field name="recommend" property="Recommend" behavior="readwrite" uniqueId="bccab8ee-7582-4457-9be9-8b31bacb5f64" type="System.String">
           <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         </orm:field>
-        <orm:field name="quantity" property="Quantity" behavior="readwrite" uniqueId="b25226c8-728a-45e0-97ad-e33a86b16e03" type="System.Int32">
-          <orm:column name="quantity" sql-type="integer" length="0" scale="0" ado-type="Int32" />
+        <orm:field name="quantity" property="Quantity" behavior="readwrite" uniqueId="b25226c8-728a-45e0-97ad-e33a86b16e03" type="System.Decimal">
+          <orm:column name="quantity" sql-type="decimal" length="20" scale="10" ado-type="Int32" />
         </orm:field>
         <orm:field name="drug" property="Drug" behavior="readwrite" uniqueId="09987183-29ff-4a93-a247-8e1290d707e7" type="AriCliModel.Drug">
           <orm:reference uniqueId="50c135e7-730d-46f8-8f9e-757c13048502">
@@ -3125,6 +3124,22 @@
           <orm:collection element-class="AriCliModel.User" inverse-field="baseVisitType" managed="true" order-by="" uniqueId="b55c3857-3ec8-44d1-9fdd-bc51d97c7a47" />
         </orm:field>
       </orm:class>
+      <orm:class name="Template" uniqueId="95600ea5-38de-4dc8-a96c-e213c56dcdb4">
+        <orm:table name="template" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="templateId" />
+        </orm:identity>
+        <orm:field name="templateId" property="TemplateId" uniqueId="43e6045f-a155-4883-8b58-058b45e497de" type="System.Int32">
+          <orm:column name="template_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="4d4257f4-f26f-4bdb-8f9c-ef4db0a11988" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="content" property="Content" uniqueId="0eb9e949-0c47-4d46-8fc5-7918cc834c56" type="System.String">
+          <orm:column name="content" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3203,7 +3218,7 @@
         </orm:constraint>
       </orm:table>
       <orm:table name="healthcare_company">
-        <orm:column name="hc_id" sql-type="integer" nullable="false" scale="0" primary-key="true" length="0" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="hc_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
@@ -3689,41 +3704,13 @@
         <orm:column name="code" sql-type="varchar" nullable="false" length="255" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
       </orm:table>
-      <orm:table name="professional">
-        <orm:column name="vatin" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
-        <orm:column name="user_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="type" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
-        <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="person_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        <orm:column name="oft_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="license" sql-type="varchar" nullable="true" length="25" scale="0" ado-type="Varchar" />
-        <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="10" scale="0" ado-type="Varchar" />
-        <orm:column name="commission" sql-type="decimal" nullable="true" length="5" scale="2" ado-type="Decimal" />
-        <orm:column name="comercial_name" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
-        <orm:index name="idx_professional_tax_withholding_type_id">
-          <orm:columnMapping>
-            <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
-        <orm:index name="idx_prfssnl_prsn_d">
-          <orm:columnMapping>
-            <orm:column name="person_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
-        <orm:constraint name="ref_professional_tax_withholding_type" destination-table="tax_withholding_type">
-          <orm:column name="tax_withholding_type_id" sql-type="INTEGER" nullable="true" length="0" scale="0" ado-type="Int32" />
-        </orm:constraint>
-        <orm:constraint name="ref_professional_person" destination-table="person">
-          <orm:column name="person_id" sql-type="INTEGER" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        </orm:constraint>
-      </orm:table>
       <orm:table name="treatment">
         <orm:column name="treatment_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="treatment_date" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         <orm:column name="recommend" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="drug_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="quantity" sql-type="integer" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="quantity" sql-type="decimal" length="20" scale="10" ado-type="Int32" />
         <orm:index name="idx_treatment_person_id">
           <orm:columnMapping>
             <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -4127,6 +4114,37 @@
             <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
           </orm:columnMapping>
         </orm:index>
+      </orm:table>
+      <orm:table name="professional">
+        <orm:column name="person_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="vatin" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="type" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="commission" sql-type="decimal" nullable="true" length="20" scale="10" ado-type="Numeric" />
+        <orm:column name="comercial_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="license" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="oft_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="inactive" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
+        <orm:column name="tax_withholding_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_professional_tax_withholding_type_id">
+          <orm:columnMapping>
+            <orm:column name="tax_withholding_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_professional_user_id">
+          <orm:columnMapping>
+            <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="ref_professional_person" destination-table="person">
+          <orm:column name="person_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="template">
+        <orm:column name="template_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="content" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -5262,6 +5280,7 @@
       <Property Id="75931639-93e8-4ff8-a2d7-e63606abced1" name="ComercialName" label="ComercialName : String" kind="Persistent" fieldName="comercialName" />
       <Property Id="029ec5f3-9b42-43f4-8bd7-403f99422b22" name="License" label="License : String" kind="Persistent" fieldName="license" />
       <Property Id="4fa272a7-a3dd-4317-b0b5-8a0ad6a61317" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
+      <Property Id="8894f0b5-ba83-4695-ac6d-18800606b2a8" name="Inactive" type="Boolean" label="Inactive : Boolean" fieldName="inactive" />
       <AssociationTargets>
         <Association Id="f5aee760-8744-420d-ab81-7a8699ab738f" SourceMultiplicity="ZeroOne" name="ProfessionalHasTaxWithholdingType">
           <DomainClassMoniker name="/AriClinicContext/TaxWithholdingType" />
@@ -5916,7 +5935,7 @@
       <Property Id="2a60076b-3999-4f17-9f4b-a48bb3f1c449" name="TreatmentId" type="Int32" label="TreatmentId : Int32" identity="true" />
       <Property Id="0a043529-20e4-4021-8052-bb77c2a15c6d" name="TreatmentDate" type="DateTime" label="TreatmentDate : DateTime" />
       <Property Id="bccab8ee-7582-4457-9be9-8b31bacb5f64" name="Recommend" label="Recommend : String" />
-      <Property Id="b25226c8-728a-45e0-97ad-e33a86b16e03" name="Quantity" type="Int32" label="Quantity : Int32" />
+      <Property Id="b25226c8-728a-45e0-97ad-e33a86b16e03" name="Quantity" type="Decimal" label="Quantity : Decimal" />
       <AssociationTargets>
         <Association Id="50c135e7-730d-46f8-8f9e-757c13048502" SourceMultiplicity="ZeroOne" name="TreatmentHasDrug">
           <DomainClassMoniker name="/AriClinicContext/Drug" />
@@ -7253,6 +7272,11 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="95600ea5-38de-4dc8-a96c-e213c56dcdb4" name="Template" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="43e6045f-a155-4883-8b58-058b45e497de" name="TemplateId" type="System.Int32" label="TemplateId : System.Int32" identity="true" fieldName="templateId" />
+      <Property Id="4d4257f4-f26f-4bdb-8f9c-ef4db0a11988" name="Name" label="Name : String" fieldName="name" />
+      <Property Id="0eb9e949-0c47-4d46-8fc5-7918cc834c56" name="Content" label="Content : String" fieldName="content" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -7329,6 +7353,7 @@
         <entitySetProperty name="BackFamilies" type="BackFamily" label="BackFamilies : IQueryable&lt;BackFamily&gt;" />
         <entitySetProperty name="BackGinecologies" type="BackGinecology" label="BackGinecologies : IQueryable&lt;BackGinecology&gt;" />
         <entitySetProperty name="BaseVisitTypes" namespace="AriCliModel" type="BaseVisitType" label="BaseVisitTypes : IQueryable&lt;AriCliModel.BaseVisitType&gt;" />
+        <entitySetProperty name="Templates" namespace="AriCliModel" type="Template" label="Templates : IQueryable&lt;AriCliModel.Template&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

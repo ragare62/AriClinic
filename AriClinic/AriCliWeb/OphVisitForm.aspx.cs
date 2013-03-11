@@ -239,6 +239,7 @@ public partial class OphVisitForm : System.Web.UI.Page
                  select p;
         foreach (Professional professional in rs)
         {
+            if (!professional.Inactive)
             combo.Items.Add(new RadComboBoxItem(professional.ComercialName, professional.PersonId.ToString()));
         }
     }
