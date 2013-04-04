@@ -133,11 +133,11 @@ namespace AriCliReport
             // 
             this.procedure.GroupFooter = this.groupFooterSection2;
             this.procedure.GroupHeader = this.groupHeaderSection2;
-            this.procedure.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("procedureId")});
+            this.procedure.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("procedureId")});
             this.procedure.Name = "procedure";
-            this.procedure.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("Name", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.procedure.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("Name", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection2
             // 

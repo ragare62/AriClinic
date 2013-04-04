@@ -146,8 +146,8 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("Policy.Insurance.Name")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("Policy.Insurance.Name")});
             this.group1.Name = "group1";
             // 
             // groupFooterSection1
@@ -261,8 +261,8 @@ namespace AriCliReport
             // 
             this.group2.GroupFooter = this.groupFooterSection2;
             this.group2.GroupHeader = this.groupHeaderSection2;
-            this.group2.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=InsuranceService.Service.Name")});
+            this.group2.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=InsuranceService.Service.Name")});
             this.group2.Name = "group2";
             // 
             // groupFooterSection2

@@ -123,7 +123,7 @@ namespace RidocciConsole
         /// <returns>OleDb connection1</returns>
         public static OleDbConnection GetOftConnection(string path)
         {
-            return new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Publicaciones\\OFT.mdb");
+            return new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Intercambio\\OFT.mdb");
         }
 
         /// <summary>
@@ -2188,6 +2188,48 @@ namespace RidocciConsole
         //    return conn;
         //}
         #endregion
+
+
+        public static void ActualizaFacturas(OleDbConnection con, AriClinicContext ctx)
+        {
+
+            // (1) Dar de alta las procedencias
+            string sql = "SELECT * FROM NotaServicio";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConNota");
+            int nreg = ds.Tables["ConNota"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConNota"].Rows)
+            {
+                reg++;
+                Console.WriteLine("Act Notas -  {0:#####0} de {1:#####0}", reg, nreg);
+                int ano = (int)dr["Ano"];
+                int numNota = (int)dr["NumNota"];
+                int anoFact = (int)dr["AnoFact"];
+                int numFact = (int)dr["NumFact"];
+                if (anoFact != 0)
+                {
+                    // buscamos la nota de servicio
+                    ServiceNote sn = (from s in ctx.ServiceNotes
+                                      where s.Oft_Ano == ano && s.Oft_NumNota == numNota
+                                      select s).FirstOrDefault<ServiceNote>();
+                    if (sn != null)
+                    {
+                        // ahora la factura relacionada
+                        Invoice inv = (from i in ctx.Invoices
+                                       where i.Year == anoFact && i.InvoiceNumber == numFact
+                                       select i).FirstOrDefault<Invoice>();
+                        if (inv != null)
+                        {
+                            sn.Invoice = inv;
+                            ctx.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
 
     }
 

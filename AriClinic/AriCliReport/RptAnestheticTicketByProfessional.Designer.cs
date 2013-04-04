@@ -227,8 +227,8 @@ namespace AriCliReport
             // 
             this.comercial_nameGroup.GroupFooter = this.comercial_nameGroupFooter;
             this.comercial_nameGroup.GroupHeader = this.comercial_nameGroupHeader;
-            this.comercial_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.comercial_name")});
+            this.comercial_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.comercial_name")});
             this.comercial_nameGroup.Name = "comercial_nameGroup";
             // 
             // pageFooter
@@ -467,9 +467,9 @@ namespace AriCliReport
             this.ReportParameters.Add(reportParameter1);
             this.ReportParameters.Add(reportParameter2);
             this.ReportParameters.Add(reportParameter3);
-            this.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=Fields.comercial_name", Telerik.Reporting.Data.SortDirection.Asc),
-            new Telerik.Reporting.Data.Sorting("=Fields.service_note_date", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=Fields.comercial_name", Telerik.Reporting.SortDirection.Asc),
+            new Telerik.Reporting.Sorting("=Fields.service_note_date", Telerik.Reporting.SortDirection.Asc)});
             this.Style.BackgroundColor = System.Drawing.Color.White;
             styleRule1.Selectors.AddRange(new Telerik.Reporting.Drawing.ISelector[] {
             new Telerik.Reporting.Drawing.StyleSelector("Title")});

@@ -17,7 +17,8 @@ namespace RidocciConsole
             Console.WriteLine("-- begin --");
             //CargaRidocci();
             //CargaOFT();
-            CargaCortaOft();
+            //CargaCortaOft();
+            ActualizaOft();
 
             Console.WriteLine(" -- end Press <ENTER> --");
             Console.ReadLine();
@@ -599,6 +600,26 @@ namespace RidocciConsole
 
         }
         #endregion 
+
+        #region Actualización de facturas y relacion con notas de servicio
+        public static void ActualizaOft()
+        {
+            int i2 = 12;
+            int i = 0;
+            int i3 = 0;
+            decimal per = 0;
+            // open OFT connection
+            OleDbConnection con = CntOft.GetOftConnection("OFT");
+            // open AriClinic connection
+            AriClinicContext ctx = new AriClinicContext("MIESTETIC");
+
+            CntOft.ActualizaFacturas(con, ctx);
+
+
+
+        }
+        #endregion 
+
 
         #region Funciones individuales (OFT)
         public static void CargaOFT()

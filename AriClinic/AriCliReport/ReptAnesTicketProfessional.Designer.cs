@@ -276,8 +276,8 @@ namespace AriCliReport
             // 
             this.grpProfessional.GroupFooter = this.groupFooterSection1;
             this.grpProfessional.GroupHeader = this.groupHeaderSection1;
-            this.grpProfessional.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.professional_name")});
+            this.grpProfessional.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.professional_name")});
             this.grpProfessional.Name = "grpProfessional";
             // 
             // groupFooterSection1

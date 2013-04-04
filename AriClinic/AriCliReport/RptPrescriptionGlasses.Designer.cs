@@ -127,8 +127,8 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.id")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.id")});
             this.group1.Name = "group1";
             // 
             // groupHeaderSection1

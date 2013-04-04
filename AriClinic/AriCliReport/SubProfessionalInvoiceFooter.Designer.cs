@@ -235,11 +235,11 @@ namespace AriCliReport
             // 
             this.group2.GroupFooter = this.groupFooterSection2;
             this.group2.GroupHeader = this.groupHeaderSection2;
-            this.group2.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=TaxType.TaxTypeId")});
+            this.group2.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=TaxType.TaxTypeId")});
             this.group2.Name = "group2";
-            this.group2.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=TaxType.TaxTypeId", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.group2.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=TaxType.TaxTypeId", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection2
             // 

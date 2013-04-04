@@ -175,11 +175,11 @@ namespace AriCliReport
             // 
             this.Profesional.GroupFooter = this.groupFooterSection1;
             this.Profesional.GroupHeader = this.groupHeaderSection1;
-            this.Profesional.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Professional.PersonId")});
+            this.Profesional.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Professional.PersonId")});
             this.Profesional.Name = "Profesional";
-            this.Profesional.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=Professional.FullName", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Profesional.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=Professional.FullName", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection1
             // 
@@ -469,8 +469,8 @@ namespace AriCliReport
             this.PageSettings.Margins.Right = new Telerik.Reporting.Drawing.Unit(2.5399999618530273D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.Margins.Top = new Telerik.Reporting.Drawing.Unit(2.5399999618530273D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=InvoiceDate", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=InvoiceDate", Telerik.Reporting.SortDirection.Asc)});
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.Style.Color = System.Drawing.Color.Black;
             this.Width = new Telerik.Reporting.Drawing.Unit(5.912539005279541D, Telerik.Reporting.Drawing.UnitType.Inch);

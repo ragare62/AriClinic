@@ -148,11 +148,11 @@ namespace AriCliReport
             // 
             this.group2.GroupFooter = this.groupFooterSection2;
             this.group2.GroupHeader = this.groupHeaderSection2;
-            this.group2.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("InvoiceId")});
+            this.group2.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("InvoiceId")});
             this.group2.Name = "group2";
-            this.group2.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("InvoiceDate", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.group2.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("InvoiceDate", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection2
             // 
@@ -233,11 +233,11 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("Customer.PersonId")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("Customer.PersonId")});
             this.group1.Name = "group1";
-            this.group1.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("Customer.FullName", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.group1.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("Customer.FullName", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection1
             // 

@@ -205,8 +205,8 @@ namespace AriCliReport
             // 
             this.diary_nameGroup.GroupFooter = this.diary_nameGroupFooter;
             this.diary_nameGroup.GroupHeader = this.diary_nameGroupHeader;
-            this.diary_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.diary_name")});
+            this.diary_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.diary_name")});
             this.diary_nameGroup.Name = "diary_nameGroup";
             // 
             // pageHeader

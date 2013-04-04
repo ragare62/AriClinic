@@ -166,11 +166,11 @@ namespace AriCliReport
             // 
             this.Profesional.GroupFooter = this.groupFooterSection1;
             this.Profesional.GroupHeader = this.groupHeaderSection1;
-            this.Profesional.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Surgeon.PersonId")});
+            this.Profesional.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Surgeon.PersonId")});
             this.Profesional.Name = "Profesional";
-            this.Profesional.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=Surgeon.FullName", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Profesional.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=Surgeon.FullName", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection1
             // 
@@ -199,11 +199,11 @@ namespace AriCliReport
             // 
             this.ServiceCategory.GroupFooter = this.groupFooterSection2;
             this.ServiceCategory.GroupHeader = this.groupHeaderSection2;
-            this.ServiceCategory.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=InsuranceService.Service.ServiceCategory.ServiceCategoryId")});
+            this.ServiceCategory.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=InsuranceService.Service.ServiceCategory.ServiceCategoryId")});
             this.ServiceCategory.Name = "group1";
-            this.ServiceCategory.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=InsuranceService.Service.ServiceCategory.Name", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.ServiceCategory.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=InsuranceService.Service.ServiceCategory.Name", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection2
             // 
@@ -282,11 +282,11 @@ namespace AriCliReport
             // 
             this.Service.GroupFooter = this.groupFooterSection3;
             this.Service.GroupHeader = this.groupHeaderSection3;
-            this.Service.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=InsuranceService.Service.ServiceId")});
+            this.Service.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=InsuranceService.Service.ServiceId")});
             this.Service.Name = "group2";
-            this.Service.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=InsuranceService.Service.Name", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Service.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=InsuranceService.Service.Name", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection3
             // 
@@ -418,8 +418,8 @@ namespace AriCliReport
             this.PageSettings.Margins.Right = new Telerik.Reporting.Drawing.Unit(2.5399999618530273D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.Margins.Top = new Telerik.Reporting.Drawing.Unit(2.5399999618530273D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=TicketDate", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=TicketDate", Telerik.Reporting.SortDirection.Asc)});
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.Style.Color = System.Drawing.Color.Black;
             this.Width = new Telerik.Reporting.Drawing.Unit(5.912539005279541D, Telerik.Reporting.Drawing.UnitType.Inch);

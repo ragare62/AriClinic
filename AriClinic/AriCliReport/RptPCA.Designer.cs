@@ -242,8 +242,8 @@ namespace AriCliReport
             // 
             this.ins_nameGroup.GroupFooter = this.ins_nameGroupFooter;
             this.ins_nameGroup.GroupHeader = this.ins_nameGroupHeader;
-            this.ins_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.ins_name")});
+            this.ins_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.ins_name")});
             this.ins_nameGroup.Name = "ins_nameGroup";
             // 
             // pageHeader
@@ -481,8 +481,8 @@ namespace AriCliReport
             reportParameter2.Visible = true;
             reportParameter3.AvailableValues.DataSource = this.sqlInsurance;
             reportParameter3.AvailableValues.DisplayMember = "= Fields.name";
-            reportParameter3.AvailableValues.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=Fields.name", Telerik.Reporting.Data.SortDirection.Asc)});
+            reportParameter3.AvailableValues.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=Fields.name", Telerik.Reporting.SortDirection.Asc)});
             reportParameter3.AvailableValues.ValueMember = "= Fields.insurance_id";
             reportParameter3.MultiValue = true;
             reportParameter3.Name = "Insurance";
