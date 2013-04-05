@@ -1356,6 +1356,7 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\AriClinic2013.pubxml" />
+    <None Include="Properties\PublishProfiles\AriClinicW8.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
@@ -1457,7 +1458,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

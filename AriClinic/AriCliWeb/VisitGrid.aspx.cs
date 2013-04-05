@@ -111,7 +111,7 @@ public partial class VisitGrid : System.Web.UI.Page
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
             vtype = gdi["VType"].Text;
-            if (vtype =="") vtype="general";
+            if (vtype =="" || vtype=="&nbsp;") vtype="general";
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             if (patient != null)

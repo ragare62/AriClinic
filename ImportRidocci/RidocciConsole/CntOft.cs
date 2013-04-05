@@ -2217,6 +2217,7 @@ namespace RidocciConsole
                                       select s).FirstOrDefault<ServiceNote>();
                     if (sn != null)
                     {
+                        Console.WriteLine("---------------------->FACTURA RELACIONADA");
                         // ahora la factura relacionada
                         Invoice inv = (from i in ctx.Invoices
                                        where i.Year == anoFact && i.InvoiceNumber == numFact
@@ -2224,6 +2225,45 @@ namespace RidocciConsole
                         if (inv != null)
                         {
                             sn.Invoice = inv;
+                            ctx.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void ActualizaTiposCitaVisitas(OleDbConnection con, AriClinicContext ctx)
+        {
+            // 
+            string sql = "SELECT * FROM HistVisitas";
+            cmd = new OleDbCommand(sql, con);
+            da = new OleDbDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "ConVisitas");
+            int nreg = ds.Tables["ConVisitas"].Rows.Count;
+            int reg = 0;
+            foreach (DataRow dr in ds.Tables["ConVisitas"].Rows)
+            {
+                reg++;
+                Console.WriteLine("Act visitas -  {0:#####0} de {1:#####0}", reg, nreg);
+                int oft_ref_visita = (int)dr["RefVisita"];
+                int oft_id = (int)dr["IdTipCit"];
+                if (oft_id != 0)
+                {
+                    // buscamos la nota de servicio
+                    BaseVisit visit = (from v in ctx.BaseVisits
+                                       where v.OftRefVisita == oft_ref_visita
+                                       select v).FirstOrDefault<BaseVisit>();
+                    if (visit != null)
+                    {
+                        Console.WriteLine("---------------------->Tipo visita");
+                        // ahora el tiipo relacionado relacionada
+                        AppointmentType atype = (from a in ctx.AppointmentTypes
+                                                 where a.OftId == oft_id
+                                                 select a).FirstOrDefault<AppointmentType>();
+                        if (atype != null)
+                        {
+                            visit.AppointmentType = atype;
                             ctx.SaveChanges();
                         }
                     }

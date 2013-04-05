@@ -613,10 +613,8 @@ namespace RidocciConsole
             // open AriClinic connection
             AriClinicContext ctx = new AriClinicContext("MIESTETIC");
 
-            CntOft.ActualizaFacturas(con, ctx);
-
-
-
+            //CntOft.ActualizaFacturas(con, ctx);
+            CntOft.ActualizaTiposCitaVisitas(con,ctx);
         }
         #endregion 
 
