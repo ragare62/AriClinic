@@ -4150,7 +4150,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_frido</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_anes</AppConfigConnectionString>
     <InitialCatalog>ariclinic_frido</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -4168,7 +4168,7 @@
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
     <SchemaUpdateSettings>
-      <NamePrefix>2013.1.0.5_</NamePrefix>
+      <NamePrefix>2013.1.0.5_anes</NamePrefix>
       <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>SQL\</DeploymentDirectory>
