@@ -278,6 +278,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "templategrid":
                 RadAjaxManager1.ResponseScripts.Add("LaunchTemplate();");
                 break;
+            case "logaccess":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLogAccess();");
+                break;
             default:
                 break;
         }
