@@ -55,7 +55,7 @@
                 <telerik:GridBoundColumn DataField="LogId" DataType="System.Int32" 
                                          HeaderText="ID" ReadOnly="true" Visible="true" 
                                          UniqueName="LogId" SortExpression="LogId"></telerik:GridBoundColumn>
-                <telerik:GridBoundColumn DataField="Stamp" DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy hh:mm:ss}" 
+                <telerik:GridBoundColumn DataField="Stamp" DataType="System.DateTime" DataFormatString="{0:dd/MM/yyyy HH:mm:ss}" 
                                          HeaderText="Fecha / Hora" ReadOnly="true" Visible="true" 
                                          UniqueName="Stamp" SortExpression="Stamp"></telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="User.Name" DataType="System.String"
