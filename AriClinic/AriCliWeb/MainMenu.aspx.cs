@@ -284,6 +284,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "campaign":
                 RadAjaxManager1.ResponseScripts.Add("LaunchCampaign();");
                 break;
+            case "channel":
+                RadAjaxManager1.ResponseScripts.Add("LaunchChannel();");
+                break;
             default:
                 break;
         }

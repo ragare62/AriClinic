@@ -235,6 +235,20 @@
     <Compile Include="CampaignGrid.aspx.designer.cs">
       <DependentUpon>CampaignGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChannelForm.aspx.cs">
+      <DependentUpon>ChannelForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChannelForm.aspx.designer.cs">
+      <DependentUpon>ChannelForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelGrid.aspx.cs">
+      <DependentUpon>ChannelGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChannelGrid.aspx.designer.cs">
+      <DependentUpon>ChannelGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LogGrid.aspx.cs">
       <DependentUpon>LogGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1175,6 +1189,8 @@
     <Content Include="BackGinecologyForm.aspx" />
     <Content Include="CampaignForm.aspx" />
     <Content Include="CampaignGrid.aspx" />
+    <Content Include="ChannelForm.aspx" />
+    <Content Include="ChannelGrid.aspx" />
     <Content Include="LogGrid.aspx" />
     <Content Include="TemplateViewForm.aspx" />
     <Content Include="TemplateForm.aspx" />

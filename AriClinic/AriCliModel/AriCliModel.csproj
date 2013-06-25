@@ -94,6 +94,9 @@
     <Compile Include="Campaign.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Channel.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Clinic.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -322,6 +325,7 @@
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 17-54-20%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-18-39%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-36-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 16-22-51%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

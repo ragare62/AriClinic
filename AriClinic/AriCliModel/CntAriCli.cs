@@ -1827,6 +1827,21 @@ namespace AriCliModel
                     select c).FirstOrDefault<Campaign>();
         }
 
+        public static IList<Channel> GetChannels(AriClinicContext ctx)
+        {
+            return (from c in ctx.Channels
+                    select c).ToList<Channel>();
+        }
+
+        public static Channel GetChannel(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.Channels
+                    where c.ChannelId == id
+                    select c).FirstOrDefault<Channel>();
+        }
+
+
+
         #region Auxiliary functions
         #endregion
 

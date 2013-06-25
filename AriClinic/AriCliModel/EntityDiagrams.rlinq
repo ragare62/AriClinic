@@ -1829,11 +1829,6 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_glasses_test_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1868,11 +1863,6 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
-        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -2012,11 +2002,6 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -2144,11 +2129,6 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:table name="prescription_glasses" />
@@ -2413,11 +2393,6 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_cycloplegia_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -3158,6 +3133,18 @@
         </orm:field>
         <orm:field name="endDate" property="EndDate" uniqueId="c03d9133-fa0a-4e34-a24e-f85cfeb1ca50" type="System.DateTime">
           <orm:column name="end_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Channel" use-default-mapping="true" uniqueId="ee9acd26-0052-4d88-8623-b039b1b7934f">
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="channelId" />
+        </orm:identity>
+        <orm:field name="channelId" property="ChannelId" uniqueId="f02323bb-07a2-49f7-9d6b-42d04a896757" type="System.Int32">
+          <orm:column name="channel_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="ee441d22-9d02-4ff7-9ee5-3b45299bc1f8" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -4193,6 +4180,7 @@
       <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>SQL\</DeploymentDirectory>
+      <UpdateDatabaseOperation>Migrate</UpdateDatabaseOperation>
     </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
@@ -7303,6 +7291,10 @@
       <Property Id="e1c11e56-09ee-4227-9247-817ba428894c" name="StartDate" type="DateTime" label="StartDate : DateTime" fieldName="startDate" />
       <Property Id="c03d9133-fa0a-4e34-a24e-f85cfeb1ca50" name="EndDate" type="DateTime" label="EndDate : DateTime" fieldName="endDate" />
     </DomainClass>
+    <DomainClass Id="ee9acd26-0052-4d88-8623-b039b1b7934f" name="Channel" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="f02323bb-07a2-49f7-9d6b-42d04a896757" name="ChannelId" type="System.Int32" label="ChannelId : System.Int32" identity="true" fieldName="channelId" />
+      <Property Id="ee441d22-9d02-4ff7-9ee5-3b45299bc1f8" name="Name" label="Name : String" fieldName="name" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -7381,6 +7373,7 @@
         <entitySetProperty name="BaseVisitTypes" namespace="AriCliModel" type="BaseVisitType" label="BaseVisitTypes : IQueryable&lt;AriCliModel.BaseVisitType&gt;" />
         <entitySetProperty name="Templates" namespace="AriCliModel" type="Template" label="Templates : IQueryable&lt;AriCliModel.Template&gt;" />
         <entitySetProperty name="Campaigns" namespace="AriCliModel" type="Campaign" label="Campaigns : IQueryable&lt;AriCliModel.Campaign&gt;" />
+        <entitySetProperty name="Channels" namespace="AriCliModel" type="Channel" label="Channels : IQueryable&lt;AriCliModel.Channel&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

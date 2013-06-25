@@ -362,6 +362,10 @@
               var w1 = window.open("CampaignGrid.aspx", "CPG", "width=600, height=500,resizable=1")
               w1.focus();
           }
+          function LaunchChannel() {
+              var w1 = window.open("ChannelGrid.aspx", "CPG", "width=600, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -613,6 +617,8 @@
                 <telerik:RadMenuItem runat="server" Text="CRM" Value="crm">
                     <Items>
                         <telerik:RadMenuItem runat="server" Text="Campañas" Value="campaign">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Canales" Value="channel">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>
