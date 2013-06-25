@@ -188,5 +188,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Request> requests = new List<Request>();
+		public virtual IList<Request> Requests 
+		{ 
+		    get
+		    {
+		        return this.requests;
+		    }
+		}
+		
 	}
 }

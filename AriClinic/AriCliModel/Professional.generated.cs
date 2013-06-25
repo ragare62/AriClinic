@@ -209,15 +209,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AppointmentInfo> appointmentInfos = new List<AppointmentInfo>();
-		public virtual IList<AppointmentInfo> AppointmentInfos 
-		{ 
-		    get
-		    {
-		        return this.appointmentInfos;
-		    }
-		}
-		
 		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
 		public virtual IList<ServiceNote> ServiceNotes 
 		{ 
@@ -233,6 +224,15 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.treatments;
+		    }
+		}
+		
+		private IList<AppointmentInfo> appointmentInfos = new List<AppointmentInfo>();
+		public virtual IList<AppointmentInfo> AppointmentInfos 
+		{ 
+		    get
+		    {
+		        return this.appointmentInfos;
 		    }
 		}
 		

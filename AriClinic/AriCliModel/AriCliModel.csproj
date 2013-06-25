@@ -245,6 +245,9 @@
     <Compile Include="Refractometry.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Request.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="SaveCheck.cs" />
     <Compile Include="Service.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
@@ -326,6 +329,9 @@
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-18-39%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-36-05%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 16-22-51%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-48-23%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-51-34%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-53-36%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

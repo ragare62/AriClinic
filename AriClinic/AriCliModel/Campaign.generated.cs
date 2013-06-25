@@ -18,6 +18,7 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using AriCliModel;
 
 
 namespace AriCliModel	
@@ -73,6 +74,15 @@ namespace AriCliModel
 		    set
 		    {
 		        this.endDate = value;
+		    }
+		}
+		
+		private IList<Request> requests = new List<Request>();
+		public virtual IList<Request> Requests 
+		{ 
+		    get
+		    {
+		        return this.requests;
 		    }
 		}
 		

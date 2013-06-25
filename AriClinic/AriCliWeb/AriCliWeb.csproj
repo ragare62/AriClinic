@@ -249,6 +249,20 @@
     <Compile Include="ChannelGrid.aspx.designer.cs">
       <DependentUpon>ChannelGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RequestForm.aspx.cs">
+      <DependentUpon>RequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestForm.aspx.designer.cs">
+      <DependentUpon>RequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestGrid.aspx.cs">
+      <DependentUpon>RequestGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestGrid.aspx.designer.cs">
+      <DependentUpon>RequestGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LogGrid.aspx.cs">
       <DependentUpon>LogGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1191,6 +1205,8 @@
     <Content Include="CampaignGrid.aspx" />
     <Content Include="ChannelForm.aspx" />
     <Content Include="ChannelGrid.aspx" />
+    <Content Include="RequestForm.aspx" />
+    <Content Include="RequestGrid.aspx" />
     <Content Include="LogGrid.aspx" />
     <Content Include="TemplateViewForm.aspx" />
     <Content Include="TemplateForm.aspx" />

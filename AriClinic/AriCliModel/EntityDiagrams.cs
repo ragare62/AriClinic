@@ -652,6 +652,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Request> Requests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Request>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1036,6 +1044,11 @@ namespace AriCliModel
 		}
 
 		IQueryable<Channel> Channels 
+		{ 
+			get;
+		}
+
+		IQueryable<Request> Requests 
 		{ 
 			get;
 		}
