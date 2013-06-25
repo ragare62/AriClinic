@@ -358,6 +358,10 @@
               var w1 = window.open("LogGrid.aspx", "LOG", "width=800, height=600,resizable=1, scrollbars=1")
               w1.focus();
           }
+          function LaunchCampaign() {
+              var w1 = window.open("CampaignGrid.aspx", "CPG", "width=600, height=500,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -606,6 +610,12 @@
                   </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
+                <telerik:RadMenuItem runat="server" Text="CRM" Value="crm">
+                    <Items>
+                        <telerik:RadMenuItem runat="server" Text="Campañas" Value="campaign">
+                        </telerik:RadMenuItem>
+                    </Items>
+                </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Salir" Value="exit">
               </telerik:RadMenuItem>
             </Items>

@@ -89,7 +89,7 @@
           <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String">
-          <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
+          <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="telephones1" property="Telephones" behavior="readwrite" uniqueId="cf3f967f-b65b-4f2d-8ebb-71673407a00c" type="AriCliModel.Telephone">
           <orm:collection element-class="AriCliModel.Telephone" inverse-field="healthcareCompany1" order-by="" uniqueId="b3ba6165-c5f3-4051-abc3-d4da371d830e" />
@@ -1565,7 +1565,9 @@
           <orm:reference uniqueId="af5967b0-47d7-4772-a893-6d710dda981c" />
         </orm:field>
         <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="7f37d445-efeb-4b2e-b819-6375c937429f" type="AriCliModel.Professional">
-          <orm:reference uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
+          <orm:reference uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1">
+            <orm:column name="person_id2" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
+          </orm:reference>
         </orm:field>
         <orm:index name="idx_treatment_person_id">
           <orm:columnMapping>
@@ -2474,7 +2476,7 @@
           <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         </orm:field>
         <orm:field name="serial" property="Serial" behavior="readwrite" uniqueId="4c5c4b87-2991-4b15-a6db-b7535cf75b15" type="System.String">
-          <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+          <orm:column name="serial" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         </orm:field>
         <orm:field name="taxWithHoldingPercentage" property="TaxWithHoldingPercentage" behavior="readwrite" uniqueId="3f0b08b6-c055-4ca2-a3fb-8a2d4ddb6b7a" type="System.Decimal">
           <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
@@ -3140,6 +3142,24 @@
           <orm:column name="content" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
         </orm:field>
       </orm:class>
+      <orm:class name="Campaign" use-default-mapping="true" uniqueId="6b20f3b4-7c57-4dd6-8236-0777c3a5096b">
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="campaignId" />
+        </orm:identity>
+        <orm:field name="campaignId" property="CampaignId" uniqueId="e0173a38-a8c7-4d79-9dcf-faf9dc66f5f9" type="System.Int32">
+          <orm:column name="campaign_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="ee3b3145-752c-4d24-b0fd-97dd65a26de7" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="startDate" property="StartDate" uniqueId="e1c11e56-09ee-4227-9247-817ba428894c" type="System.DateTime">
+          <orm:column name="start_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="endDate" property="EndDate" uniqueId="c03d9133-fa0a-4e34-a24e-f85cfeb1ca50" type="System.DateTime">
+          <orm:column name="end_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3221,7 +3241,7 @@
         <orm:column name="hc_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
-        <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
       </orm:table>
       <orm:table name="email">
         <orm:column name="url" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
@@ -3566,7 +3586,7 @@
         <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="total" sql-type="decimal" nullable="false" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column name="serial" sql-type="varchar" nullable="false" length="0" scale="0" ado-type="Varchar" />
+        <orm:column name="serial" sql-type="varchar" nullable="false" length="30" scale="0" ado-type="Varchar" />
         <orm:column name="tax_whith_holding_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_professional_invoice_person_id">
@@ -3711,6 +3731,7 @@
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="drug_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="quantity" sql-type="decimal" length="20" scale="10" ado-type="Int32" />
+        <orm:column name="person_id2" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         <orm:index name="idx_treatment_person_id">
           <orm:columnMapping>
             <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -4150,7 +4171,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_anes</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_comun</AppConfigConnectionString>
     <InitialCatalog>ariclinic_frido</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -4168,11 +4189,10 @@
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
     <SchemaUpdateSettings>
-      <NamePrefix>2013.1.0.5_anes</NamePrefix>
+      <NamePrefix>2013.1.0.5_comun</NamePrefix>
       <ExecuteScript>true</ExecuteScript>
       <DeploymentProject>AriCliModel</DeploymentProject>
       <DeploymentDirectory>SQL\</DeploymentDirectory>
-      <UpdateDatabaseOperation>Migrate</UpdateDatabaseOperation>
     </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
@@ -7277,6 +7297,12 @@
       <Property Id="4d4257f4-f26f-4bdb-8f9c-ef4db0a11988" name="Name" label="Name : String" fieldName="name" />
       <Property Id="0eb9e949-0c47-4d46-8fc5-7918cc834c56" name="Content" label="Content : String" fieldName="content" />
     </DomainClass>
+    <DomainClass Id="6b20f3b4-7c57-4dd6-8236-0777c3a5096b" name="Campaign" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="e0173a38-a8c7-4d79-9dcf-faf9dc66f5f9" name="CampaignId" type="System.Int32" label="CampaignId : System.Int32" identity="true" fieldName="campaignId" />
+      <Property Id="ee3b3145-752c-4d24-b0fd-97dd65a26de7" name="Name" label="Name : String" fieldName="name" />
+      <Property Id="e1c11e56-09ee-4227-9247-817ba428894c" name="StartDate" type="DateTime" label="StartDate : DateTime" fieldName="startDate" />
+      <Property Id="c03d9133-fa0a-4e34-a24e-f85cfeb1ca50" name="EndDate" type="DateTime" label="EndDate : DateTime" fieldName="endDate" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -7354,6 +7380,7 @@
         <entitySetProperty name="BackGinecologies" type="BackGinecology" label="BackGinecologies : IQueryable&lt;BackGinecology&gt;" />
         <entitySetProperty name="BaseVisitTypes" namespace="AriCliModel" type="BaseVisitType" label="BaseVisitTypes : IQueryable&lt;AriCliModel.BaseVisitType&gt;" />
         <entitySetProperty name="Templates" namespace="AriCliModel" type="Template" label="Templates : IQueryable&lt;AriCliModel.Template&gt;" />
+        <entitySetProperty name="Campaigns" namespace="AriCliModel" type="Campaign" label="Campaigns : IQueryable&lt;AriCliModel.Campaign&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

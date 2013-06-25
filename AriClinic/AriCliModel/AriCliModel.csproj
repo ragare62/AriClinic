@@ -91,6 +91,9 @@
     <Compile Include="Biometry.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Campaign.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Clinic.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -312,10 +315,13 @@
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-01-30 15-03-08%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-02-04 18-23-43%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_anesAriClinicContext%282013-04-09 08-37-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_anesAriClinicContext%282013-06-24 19-00-20%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-02-06 09-01-22%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 09-04-05%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 12-08-02%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 17-54-20%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-18-39%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-36-05%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

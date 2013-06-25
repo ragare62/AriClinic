@@ -281,6 +281,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "logaccess":
                 RadAjaxManager1.ResponseScripts.Add("LaunchLogAccess();");
                 break;
+            case "campaign":
+                RadAjaxManager1.ResponseScripts.Add("LaunchCampaign();");
+                break;
             default:
                 break;
         }

@@ -1814,6 +1814,19 @@ namespace AriCliModel
                     select t).FirstOrDefault<Template>();
         }
 
+        public static IList<Campaign> GetCampaigns(AriClinicContext ctx)
+        {
+            return (from c in ctx.Campaigns
+                    select c).ToList<Campaign>();
+        }
+
+        public static Campaign GetCampaign(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.Campaigns
+                    where c.CampaignId == id
+                    select c).FirstOrDefault<Campaign>();
+        }
+
         #region Auxiliary functions
         #endregion
 

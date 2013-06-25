@@ -636,6 +636,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Campaign> Campaigns 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Campaign>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1010,6 +1018,11 @@ namespace AriCliModel
 		}
 
 		IQueryable<Template> Templates 
+		{ 
+			get;
+		}
+
+		IQueryable<Campaign> Campaigns 
 		{ 
 			get;
 		}

@@ -221,6 +221,20 @@
     <Compile Include="BackGinecologyForm.aspx.designer.cs">
       <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CampaignForm.aspx.cs">
+      <DependentUpon>CampaignForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignForm.aspx.designer.cs">
+      <DependentUpon>CampaignForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CampaignGrid.aspx.cs">
+      <DependentUpon>CampaignGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignGrid.aspx.designer.cs">
+      <DependentUpon>CampaignGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LogGrid.aspx.cs">
       <DependentUpon>LogGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1159,6 +1173,8 @@
     <Content Include="BackPersonalForm.aspx" />
     <Content Include="BackFamilyForm.aspx" />
     <Content Include="BackGinecologyForm.aspx" />
+    <Content Include="CampaignForm.aspx" />
+    <Content Include="CampaignGrid.aspx" />
     <Content Include="LogGrid.aspx" />
     <Content Include="TemplateViewForm.aspx" />
     <Content Include="TemplateForm.aspx" />
@@ -1466,7 +1482,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
