@@ -360,4 +360,10 @@
   <data name="BeginGreaterThanEndDates" xml:space="preserve">
     <value>La fecha final no puede ser menor que la de inicio.</value>
   </data>
+  <data name="PatientOrCandidateNeeded" xml:space="preserve">
+    <value>Se necesita un paciente o un candidato</value>
+  </data>
+  <data name="RequestInformationNeeded" xml:space="preserve">
+    <value>Se necesitan la información solicitada.</value>
+  </data>
 </root>

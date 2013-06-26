@@ -249,6 +249,13 @@
     <Compile Include="ChannelGrid.aspx.designer.cs">
       <DependentUpon>ChannelGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReplayForm.aspx.cs">
+      <DependentUpon>ReplayForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReplayForm.aspx.designer.cs">
+      <DependentUpon>ReplayForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RequestForm.aspx.cs">
       <DependentUpon>RequestForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1205,6 +1212,7 @@
     <Content Include="CampaignGrid.aspx" />
     <Content Include="ChannelForm.aspx" />
     <Content Include="ChannelGrid.aspx" />
+    <Content Include="ReplayForm.aspx" />
     <Content Include="images\document_certificate.png" />
     <Content Include="images\document_check.png" />
     <Content Include="images\document_exchange.png" />

@@ -77,7 +77,7 @@ public partial class RequestGrid : System.Web.UI.Page
             // assign javascript function to select button
             imgb = (ImageButton)e.Item.FindControl("Select");
             gdi = (GridDataItem)e.Item;
-            name = gdi["Name"].Text;
+            name = gdi["RequestDateTime"].Text + "(" + gdi["Patient.FullName"].Text + gdi["FullName"].Text + ")";
             command = String.Format("return Selection('{0}','{1}','{2}','{3}','{4}');",
                 id.ToString(),
                 null,

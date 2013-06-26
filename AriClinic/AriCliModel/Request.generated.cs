@@ -194,6 +194,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string fullName;
+		public virtual string FullName 
+		{ 
+		    get
+		    {
+		        return this.fullName;
+		    }
+		    set
+		    {
+		        this.fullName = value;
+		    }
+		}
+		
 		private Patient patient;
 		public virtual Patient Patient 
 		{ 
@@ -269,6 +282,15 @@ namespace AriCliModel
 		    set
 		    {
 		        this.source = value;
+		    }
+		}
+		
+		private IList<Replay> replays = new List<Replay>();
+		public virtual IList<Replay> Replays 
+		{ 
+		    get
+		    {
+		        return this.replays;
 		    }
 		}
 		

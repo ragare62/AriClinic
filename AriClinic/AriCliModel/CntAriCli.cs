@@ -1853,6 +1853,18 @@ namespace AriCliModel
                     select c).FirstOrDefault<Request>();
         }
 
+        public static IList<Replay> GetReplays(AriClinicContext ctx)
+        {
+            return (from c in ctx.Replays
+                    select c).ToList<Replay>();
+        }
+
+        public static Replay GetReplay(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.Replays
+                    where c.ReplayId == id
+                    select c).FirstOrDefault<Replay>();
+        }
 
         #region Auxiliary functions
         #endregion

@@ -197,5 +197,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Replay> replays = new List<Replay>();
+		public virtual IList<Replay> Replays 
+		{ 
+		    get
+		    {
+		        return this.replays;
+		    }
+		}
+		
 	}
 }

@@ -56,6 +56,9 @@
         <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="cebb6bce-1a27-4303-b40a-efd955a55add" type="AriCliModel.Request">
           <orm:collection element-class="AriCliModel.Request" inverse-field="user" order-by="" uniqueId="53696360-3ea4-49f0-a683-f3ae098b6004" />
         </orm:field>
+        <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="12b59783-cc75-4cb6-a69e-d7344f65c05d" type="AriCliModel.Replay">
+          <orm:collection element-class="AriCliModel.Replay" inverse-field="user" order-by="" uniqueId="135322e2-e345-4391-8159-d21a17399d2d" />
+        </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">
         <orm:table name="user_group" />
@@ -486,6 +489,9 @@
         </orm:field>
         <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="1a370ad9-be29-4df9-8de1-e5c92644a22d" type="AriCliModel.Request">
           <orm:collection element-class="AriCliModel.Request" inverse-field="service" order-by="" uniqueId="ee4150d4-103d-498c-8906-9150c6058820" />
+        </orm:field>
+        <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="df84d7c9-b4d0-417e-9fca-638af9d3f1f8" type="AriCliModel.Replay">
+          <orm:collection element-class="AriCliModel.Replay" inverse-field="service" order-by="" uniqueId="af11057d-4fa3-4081-90a4-b7a200afaff5" />
         </orm:field>
       </orm:class>
       <orm:class name="Insurance" behavior="readwrite" uniqueId="a3fba74f-e42c-4451-8123-99f82a0e396a">
@@ -1845,11 +1851,6 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_glasses_test_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1884,11 +1885,6 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
-        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -2028,11 +2024,6 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -2160,11 +2151,6 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:table name="prescription_glasses" />
@@ -2429,11 +2415,6 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
-        <orm:index name="idx_cycloplegia_examination_assigned_id">
-          <orm:columnMapping>
-            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-          </orm:columnMapping>
-        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -3199,6 +3180,9 @@
         <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="5decefdf-2fb0-4357-99d6-9f6b49624ca7" type="AriCliModel.Request">
           <orm:collection element-class="AriCliModel.Request" inverse-field="channel" order-by="" uniqueId="1c11f5d0-7237-4d0a-8efc-a06d39f21a67" />
         </orm:field>
+        <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="18fdc7b1-a346-4207-afd5-f7337f2d2fdd" type="AriCliModel.Replay">
+          <orm:collection element-class="AriCliModel.Replay" inverse-field="channel" order-by="" uniqueId="e9ec1e25-cf1a-4440-8fed-2ce23e4bb15d" />
+        </orm:field>
       </orm:class>
       <orm:class name="Request" uniqueId="83d5c2f0-c1e5-4de0-a93a-17426c90d07f">
         <orm:table name="request" />
@@ -3245,6 +3229,9 @@
         <orm:field name="status" property="Status" uniqueId="8867cb0e-6804-4a62-9ac3-6c8cf21e644c" type="System.String">
           <orm:column name="status" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
         </orm:field>
+        <orm:field name="fullName" property="FullName" uniqueId="5ea9fa87-b965-4590-a039-11f8c0326147" type="System.String">
+          <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="full_name" ado-type="" />
+        </orm:field>
         <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="6e87b753-0b16-4b2b-b923-0ddab7914630" type="AriCliModel.Patient">
           <orm:reference uniqueId="84718d76-260b-46e8-ba20-1b0aa8cce8cf" />
         </orm:field>
@@ -3262,6 +3249,37 @@
         </orm:field>
         <orm:field name="source" property="Source" behavior="readwrite" uniqueId="877fe311-a5db-4b40-a6fa-02c4f49dc2e3" type="AriCliModel.Source">
           <orm:reference uniqueId="40125c5e-5f0e-49ce-a244-708b9d12b608" />
+        </orm:field>
+        <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="07509cc6-1054-4fec-bd7b-aba5030f4619" type="AriCliModel.Replay">
+          <orm:collection element-class="AriCliModel.Replay" inverse-field="request" order-by="" uniqueId="5a3a10fd-188f-47d6-a011-e71b6e7ca923" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Replay" uniqueId="f50e1314-1679-4cf3-bf21-41d4d4cc1c2e">
+        <orm:table name="replay" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="replayId" />
+        </orm:identity>
+        <orm:field name="replayId" property="ReplayId" uniqueId="5e01b829-99ae-4959-bf88-b0c6c05347a9" type="System.Int32">
+          <orm:column name="replay_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="replayDate" property="ReplayDate" uniqueId="8574f2f6-56a8-49d8-8e0d-ecd30bfe86d4" type="System.DateTime">
+          <orm:column name="replay_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="6e1d45a6-069e-47da-aa55-271067448acf" type="System.String">
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="channel" property="Channel" behavior="readwrite" uniqueId="19213a31-ee0e-4a4f-b24c-035f167551d5" type="AriCliModel.Channel">
+          <orm:reference uniqueId="e9ec1e25-cf1a-4440-8fed-2ce23e4bb15d" />
+        </orm:field>
+        <orm:field name="user" property="User" behavior="readwrite" uniqueId="d67bf9f5-95fe-467d-90ff-c42b584866ec" type="AriCliModel.User">
+          <orm:reference uniqueId="135322e2-e345-4391-8159-d21a17399d2d" />
+        </orm:field>
+        <orm:field name="request" property="Request" behavior="readwrite" uniqueId="05436074-b91e-427c-868a-87a5c4bd2b04" type="AriCliModel.Request">
+          <orm:reference uniqueId="5a3a10fd-188f-47d6-a011-e71b6e7ca923" />
+        </orm:field>
+        <orm:field name="service" property="Service" behavior="readwrite" uniqueId="b86a257f-b8c9-4073-9865-6519d797890b" type="AriCliModel.Service">
+          <orm:reference uniqueId="af11057d-4fa3-4081-90a4-b7a200afaff5" />
         </orm:field>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -4301,6 +4319,12 @@
         <orm:column name="postal_code" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
         <orm:column name="status" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
+        <orm:column nullable="false" scale="0" length="255" sql-type="varchar" name="full_name" ado-type="" />
+      </orm:table>
+      <orm:table name="replay">
+        <orm:column name="replay_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="replay_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="Varchar" />
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -4409,6 +4433,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="8f7c2bf2-8308-44a3-9fc2-a041650756ec">
           <NavigationalProperty Id="cebb6bce-1a27-4303-b40a-efd955a55add" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d4b9efd7-43f3-4847-97a5-ec8ec22dbd30">
+          <NavigationalProperty Id="12b59783-cc75-4cb6-a69e-d7344f65c05d" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4874,6 +4901,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="29111381-89b9-421a-a2e0-c2862bae024a">
           <NavigationalProperty Id="1a370ad9-be29-4df9-8de1-e5c92644a22d" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="df10c5a1-7592-44ad-9f4c-3db30018d88c">
+          <NavigationalProperty Id="df84d7c9-b4d0-417e-9fca-638af9d3f1f8" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7464,6 +7494,9 @@
         <classHasNavigationalProperties Id="3fdcf396-912f-4bb7-b5d2-15f0cf6e5972">
           <NavigationalProperty Id="5decefdf-2fb0-4357-99d6-9f6b49624ca7" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="80e0ec24-26a3-4903-b1a8-d926223bd6ab">
+          <NavigationalProperty Id="18fdc7b1-a346-4207-afd5-f7337f2d2fdd" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="83d5c2f0-c1e5-4de0-a93a-17426c90d07f" name="Request" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -7480,6 +7513,7 @@
       <Property Id="f5f8c190-88eb-4cfd-b736-b1ea7b1ac8fe" name="PostalCode" label="PostalCode : String" fieldName="postalCode" />
       <Property Id="eb5ec69e-32a6-46ca-a645-32bcf92a6005" name="Comments" label="Comments : String" fieldName="comments" />
       <Property Id="8867cb0e-6804-4a62-9ac3-6c8cf21e644c" name="Status" label="Status : String" fieldName="status" />
+      <Property Id="5ea9fa87-b965-4590-a039-11f8c0326147" name="FullName" label="FullName : String" fieldName="fullName" />
       <AssociationTargets>
         <Association Id="84718d76-260b-46e8-ba20-1b0aa8cce8cf" SourceMultiplicity="ZeroOne" name="RequestHasPatient">
           <DomainClassMoniker name="/AriClinicContext/Patient" />
@@ -7579,6 +7613,82 @@
         <classHasNavigationalProperties Id="d7a8a1cb-397f-491d-a901-ae7d88966360">
           <NavigationalProperty Id="877fe311-a5db-4b40-a6fa-02c4f49dc2e3" name="Source" type="Source" label="Source : Source" nullable="true" kind="Persistent" fieldName="source" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="b7a8de24-8749-41c4-9a70-79e304d51e61">
+          <NavigationalProperty Id="07509cc6-1054-4fec-bd7b-aba5030f4619" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="f50e1314-1679-4cf3-bf21-41d4d4cc1c2e" name="Replay" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="5e01b829-99ae-4959-bf88-b0c6c05347a9" name="ReplayId" type="System.Int32" label="ReplayId : System.Int32" identity="true" fieldName="replayId" />
+      <Property Id="8574f2f6-56a8-49d8-8e0d-ecd30bfe86d4" name="ReplayDate" type="DateTime" label="ReplayDate : DateTime" fieldName="replayDate" />
+      <Property Id="6e1d45a6-069e-47da-aa55-271067448acf" name="Comments" label="Comments : String" fieldName="comments" />
+      <AssociationTargets>
+        <Association Id="e9ec1e25-cf1a-4440-8fed-2ce23e4bb15d" SourceMultiplicity="ZeroOne" name="ReplayHasChannel">
+          <DomainClassMoniker name="/AriClinicContext/Channel" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="6cebf61f-e73e-43fd-bcf7-aa9fdc603a83">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Channel/Replays" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="7b5e8e1d-c786-455e-aec2-89c2caf83bc0">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Replay/Channel" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="135322e2-e345-4391-8159-d21a17399d2d" SourceMultiplicity="ZeroOne" name="ReplayHasUser">
+          <DomainClassMoniker name="/AriClinicContext/User" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="a4b3d4bf-8da7-4c11-9149-9dc46c8fd5f6">
+              <NavigationalPropertyMoniker name="/AriClinicContext/User/Replays" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5947dac7-da2d-4f7f-bf45-c1aafbb0ee1e">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Replay/User" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="5a3a10fd-188f-47d6-a011-e71b6e7ca923" SourceMultiplicity="ZeroOne" name="ReplayHasRequest">
+          <DomainClassMoniker name="/AriClinicContext/Request" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d360459a-3b12-4aac-9685-fdb574a307d1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Request/Replays" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="c5a58762-5976-4f03-b326-2e79ffd3f61c">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Replay/Request" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="af11057d-4fa3-4081-90a4-b7a200afaff5" SourceMultiplicity="ZeroOne" name="ReplayHasService">
+          <DomainClassMoniker name="/AriClinicContext/Service" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="3efff5fe-1209-40d4-9df4-4af49a54e2a2">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Service/Replays" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="a0f5ee75-e39f-4d88-b7a9-7d2023f098c1">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Replay/Service" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="662f6ca8-2b7d-4964-ab22-a8d7a5cf9d03">
+          <NavigationalProperty Id="19213a31-ee0e-4a4f-b24c-035f167551d5" name="Channel" type="Channel" label="Channel : Channel" nullable="true" kind="Persistent" fieldName="channel" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="869f4668-e909-4d65-928b-d049249c59c4">
+          <NavigationalProperty Id="d67bf9f5-95fe-467d-90ff-c42b584866ec" name="User" type="User" label="User : User" nullable="true" kind="Persistent" fieldName="user" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0ca3ff6c-a834-41ea-894f-9a2e40bb189d">
+          <NavigationalProperty Id="05436074-b91e-427c-868a-87a5c4bd2b04" name="Request" type="Request" label="Request : Request" nullable="true" kind="Persistent" fieldName="request" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c5fb79bf-7706-4a24-b19c-2e5aa662b71a">
+          <NavigationalProperty Id="b86a257f-b8c9-4073-9865-6519d797890b" name="Service" type="Service" label="Service : Service" nullable="true" kind="Persistent" fieldName="service" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
   </Types>
@@ -7661,6 +7771,7 @@
         <entitySetProperty name="Campaigns" namespace="AriCliModel" type="Campaign" label="Campaigns : IQueryable&lt;AriCliModel.Campaign&gt;" />
         <entitySetProperty name="Channels" namespace="AriCliModel" type="Channel" label="Channels : IQueryable&lt;AriCliModel.Channel&gt;" />
         <entitySetProperty name="Requests" namespace="AriCliModel" type="Request" label="Requests : IQueryable&lt;AriCliModel.Request&gt;" />
+        <entitySetProperty name="Replays" namespace="AriCliModel" type="Replay" label="Replays : IQueryable&lt;AriCliModel.Replay&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

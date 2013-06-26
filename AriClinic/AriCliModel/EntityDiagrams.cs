@@ -660,6 +660,14 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Replay> Replays 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Replay>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1049,6 +1057,11 @@ namespace AriCliModel
 		}
 
 		IQueryable<Request> Requests 
+		{ 
+			get;
+		}
+
+		IQueryable<Replay> Replays 
 		{ 
 			get;
 		}

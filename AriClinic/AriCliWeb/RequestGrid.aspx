@@ -86,7 +86,7 @@
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
           
-          <asp:Label ID="lblTitle" runat="server" Text="Canales de comunicación" 
+          <asp:Label ID="lblTitle" runat="server" Text="Solicitudes de información" 
                 meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
         <div id="GridArea" class="normalText" style="width:100%">
@@ -121,7 +121,7 @@
                     <telerik:GridBoundColumn DataField="Patient.FullName" 
                         FilterControlAltText="Filter Name column" HeaderText="Paciente"
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
-                        SortExpression="Patient.FullName" UniqueName="PaFullName">
+                        SortExpression="Patient.FullName" UniqueName="Patient.FullName">
                     </telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Status" 
                         FilterControlAltText="Filter Name column" HeaderText="Estado"

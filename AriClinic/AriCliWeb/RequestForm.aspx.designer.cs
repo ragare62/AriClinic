@@ -336,13 +336,13 @@ public partial class RequestForm {
     protected global::System.Web.UI.WebControls.Label lblBornDate;
     
     /// <summary>
-    /// Control rddpBornDate.
+    /// Control rdtBornDate.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadDatePicker rddpBornDate;
+    protected global::Telerik.Web.UI.RadDatePicker rdtBornDate;
     
     /// <summary>
     /// Control lblPostalCode.
