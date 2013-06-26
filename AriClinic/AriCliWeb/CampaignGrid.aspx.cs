@@ -80,7 +80,7 @@ public partial class CampaignGrid : System.Web.UI.Page
                                     , null
                                     , name
                                     , null
-                                    , "Clinic");
+                                    , "Campaign");
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 

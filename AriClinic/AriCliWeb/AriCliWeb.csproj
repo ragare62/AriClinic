@@ -1205,6 +1205,9 @@
     <Content Include="CampaignGrid.aspx" />
     <Content Include="ChannelForm.aspx" />
     <Content Include="ChannelGrid.aspx" />
+    <Content Include="images\document_certificate.png" />
+    <Content Include="images\document_check.png" />
+    <Content Include="images\document_exchange.png" />
     <Content Include="RequestForm.aspx" />
     <Content Include="RequestGrid.aspx" />
     <Content Include="LogGrid.aspx" />
@@ -1514,7 +1517,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

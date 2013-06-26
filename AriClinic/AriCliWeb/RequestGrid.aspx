@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>
-      Canales de comunicación
+      Solicitudes de información
     </title>
     <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
     <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -43,12 +43,12 @@
           }
           function NewRequestRecord()
           {
-              var w1 = window.open("RequestForm.aspx", null, "width=450, height=200,resizable=1");
+              var w1 = window.open("RequestForm.aspx", "NRQ", "width=800, height=750,resizable=1");
               w1.focus();
           }
           function EditRequestRecord(id)
           {
-              var w2 = window.open("RequestForm.aspx?RequestId=" + id, null, "width=450, height=200,resizable=1");
+              var w2 = window.open("RequestForm.aspx?RequestId=" + id, "ERQ", "width=800, height=750,resizable=1");
               w2.focus();
           }
           function CloseWindow()
@@ -108,11 +108,32 @@
                         meta:resourcekey="GridBoundColumnResource1" ReadOnly="True" 
                         SortExpression="RequestId" UniqueName="RequestId">
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Name" 
-                        FilterControlAltText="Filter Name column" HeaderText="Canal" 
+                    <telerik:GridBoundColumn DataField="RequestDateTime" 
+                        FilterControlAltText="Filter Name column" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}"
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
-                        SortExpression="Name" UniqueName="Name">
+                        SortExpression="RequestDateTime" UniqueName="RequestDateTime">
                     </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="FullName" 
+                        FilterControlAltText="Filter Name column" HeaderText="Candidato"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="FullName" UniqueName="FullName">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Patient.FullName" 
+                        FilterControlAltText="Filter Name column" HeaderText="Paciente"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="Patient.FullName" UniqueName="PaFullName">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Status" 
+                        FilterControlAltText="Filter Name column" HeaderText="Estado"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="Status" UniqueName="Status">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Service.Name" 
+                        FilterControlAltText="Filter Name column" HeaderText="Servicio"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="Service.Name" UniqueName="Service.Name">
+                    </telerik:GridBoundColumn>
+
                     <telerik:GridTemplateColumn AllowFiltering="False" 
                         FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                         meta:resourcekey="GridTemplateColumnResource1" UniqueName="Template">

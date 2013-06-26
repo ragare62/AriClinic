@@ -83,7 +83,7 @@ public partial class ChannelGrid : System.Web.UI.Page
                 null,
                 name,
                 null,
-                "Clinic");
+                "Channel");
             imgb.OnClientClick = command;
             if (type != "S")
                 imgb.Visible = false; // not called from another form

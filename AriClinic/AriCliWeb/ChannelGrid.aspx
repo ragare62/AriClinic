@@ -43,12 +43,12 @@
           }
           function NewChannelRecord()
           {
-              var w1 = window.open("ChannelForm.aspx", null, "width=450, height=200,resizable=1");
+              var w1 = window.open("ChannelForm.aspx", "NCHN", "width=450, height=200,resizable=1");
               w1.focus();
           }
           function EditChannelRecord(id)
           {
-              var w2 = window.open("ChannelForm.aspx?ChannelId=" + id, null, "width=450, height=200,resizable=1");
+              var w2 = window.open("ChannelForm.aspx?ChannelId=" + id, "ECHN", "width=450, height=200,resizable=1");
               w2.focus();
           }
           function CloseWindow()

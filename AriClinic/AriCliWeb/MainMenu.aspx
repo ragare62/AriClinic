@@ -363,7 +363,11 @@
               w1.focus();
           }
           function LaunchChannel() {
-              var w1 = window.open("ChannelGrid.aspx", "CPG", "width=600, height=500,resizable=1")
+              var w1 = window.open("ChannelGrid.aspx", "CHNN", "width=600, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchRequest() {
+              var w1 = window.open("RequestGrid.aspx", "REQ", "width=800, height=600,resizable=1")
               w1.focus();
           }
         </script>
@@ -619,6 +623,8 @@
                         <telerik:RadMenuItem runat="server" Text="Campañas" Value="campaign">
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Canales" Value="channel">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Solicitudes de información" Value="request">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

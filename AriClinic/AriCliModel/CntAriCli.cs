@@ -1840,6 +1840,18 @@ namespace AriCliModel
                     select c).FirstOrDefault<Channel>();
         }
 
+        public static IList<Request> GetRequests(AriClinicContext ctx)
+        {
+            return (from c in ctx.Requests
+                    select c).ToList<Request>();
+        }
+
+        public static Request GetRequest(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.Requests
+                    where c.RequestId == id
+                    select c).FirstOrDefault<Request>();
+        }
 
 
         #region Auxiliary functions

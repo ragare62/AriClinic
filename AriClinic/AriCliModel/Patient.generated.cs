@@ -155,6 +155,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string fullName;
+		public virtual string FullName 
+		{ 
+		    get
+		    {
+		        return this.fullName;
+		    }
+		    set
+		    {
+		        this.fullName = value;
+		    }
+		}
+		
 		private Customer customer;
 		public virtual Customer Customer 
 		{ 

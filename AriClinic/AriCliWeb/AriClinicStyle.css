@@ -71,6 +71,13 @@
 	padding:2px;
 	color: #CC0000;
 }
+.normalTextBlue
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding:2px;
+	color:#2865CC;
+}
 .normalTextRight
 {
 	font-family: Arial, Helvetica, sans-serif;

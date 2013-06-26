@@ -332,6 +332,7 @@
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-48-23%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-51-34%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-53-36%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-26 09-13-48%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
