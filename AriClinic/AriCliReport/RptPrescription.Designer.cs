@@ -108,8 +108,8 @@ namespace AriCliReport
             // 
             this.patient_nameGroup.GroupFooter = this.patient_nameGroupFooter;
             this.patient_nameGroup.GroupHeader = this.patient_nameGroupHeader;
-            this.patient_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.patient_name")});
+            this.patient_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.patient_name")});
             this.patient_nameGroup.Name = "patient_nameGroup";
             // 
             // prof_nameGroupHeader
@@ -174,8 +174,8 @@ namespace AriCliReport
             // 
             this.prof_nameGroup.GroupFooter = this.prof_nameGroupFooter;
             this.prof_nameGroup.GroupHeader = this.prof_nameGroupHeader;
-            this.prof_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.prof_name")});
+            this.prof_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.prof_name")});
             this.prof_nameGroup.Name = "prof_nameGroup";
             // 
             // pageHeader

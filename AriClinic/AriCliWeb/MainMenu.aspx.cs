@@ -275,6 +275,21 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptpatientbysource":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptPatientBySource();");
                 break;
+            case "templategrid":
+                RadAjaxManager1.ResponseScripts.Add("LaunchTemplate();");
+                break;
+            case "logaccess":
+                RadAjaxManager1.ResponseScripts.Add("LaunchLogAccess();");
+                break;
+            case "campaign":
+                RadAjaxManager1.ResponseScripts.Add("LaunchCampaign();");
+                break;
+            case "channel":
+                RadAjaxManager1.ResponseScripts.Add("LaunchChannel();");
+                break;
+            case "request":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRequest();");
+                break;
             default:
                 break;
         }

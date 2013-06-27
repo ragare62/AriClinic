@@ -43,12 +43,12 @@
           }
           function NewSourceRecord()
           {
-              var w1 = window.open("SourceForm.aspx", null, "width=450, height=320,resizable=1");
+              var w1 = window.open("SourceForm.aspx", "NSRC", "width=450, height=320,resizable=1");
               w1.focus();
           }
           function EditSourceRecord(id)
           {
-              var w2 = window.open("SourceForm.aspx?SourceId=" + id, null, "width=450, height=320,resizable=1");
+              var w2 = window.open("SourceForm.aspx?SourceId=" + id, "ESRC", "width=450, height=320,resizable=1");
               w2.focus();
           }
           function CloseWindow()

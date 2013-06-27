@@ -59,7 +59,7 @@ namespace AriCliWeb
         {
             if (!DataOk()) return;
 
-            string command = String.Format("reportProfesionalSrv('{0}','{1}',{2})"
+            string command = String.Format("reportprofessionalinvoices('{0}','{1}',{2})"
                                             , rddpFromDate.SelectedDate
                                             , rddpToDate.SelectedDate
                                             , cmbprof.SelectedValue);

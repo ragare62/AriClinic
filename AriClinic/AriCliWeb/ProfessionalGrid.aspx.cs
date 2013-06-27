@@ -93,6 +93,18 @@ public partial class ProfessionalGrid : System.Web.UI.Page
             imgb.OnClientClick = command;
             if (type != "S") imgb.Visible = false; // not called from another form
 
+            // Localization (true = SI, false = NO)
+            name = gdi["Inactive"].Text;
+            if (name == "True")
+            {
+                gdi["Inactive"].Text = "SI";
+                gdi["Inactive"].ForeColor = Color.Red;
+            }
+            else
+            {
+                gdi["Inactive"].Text = "NO";
+                gdi["Inactive"].ForeColor = Color.Green;
+            }
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
             command = String.Format("return EditProfessionalRecord({0});", id);

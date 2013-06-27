@@ -195,6 +195,18 @@
                   <HeaderStyle HorizontalAlign="Right" />
                   <ItemStyle HorizontalAlign="Right" />
                 </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Invoice.Year" 
+                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
+                                         HeaderText="FAC(Año)" 
+                                         meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
+                                         SortExpression="Invoice.Year" UniqueName="Invoice.Year">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="Invoice.InvoiceNumber" 
+                                         FilterControlToolTip="Filtrar por nombre" FilterImageToolTip="Filtro"
+                                         HeaderText="FAC(Numero)" 
+                                         meta:resourceKey="GridBoundColumnResource3" ReadOnly="True" 
+                                         SortExpression="Invoice.InvoiceNumber" UniqueName="Invoice.InvoiceNumber">
+                </telerik:GridBoundColumn>
                 <telerik:GridTemplateColumn AllowFiltering="False" 
                                             FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                                             meta:resourceKey="GridTemplateColumnResource1" UniqueName="Template">

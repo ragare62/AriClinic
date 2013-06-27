@@ -465,4 +465,19 @@
   <data name="AggregateFunctionSum" xml:space="preserve">
     <value>Sum</value>
   </data>
+  <data name="GoToPageTextBoxToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChangePageSizeButtonToolTip" xml:space="preserve">
+    <value>Change Page Size</value>
+  </data>
+  <data name="ChangePageSizeTextBoxToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChangePageSizeComboBoxTableSummary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChangePageSizeComboBoxToolTip" xml:space="preserve">
+    <value />
+  </data>
 </root>

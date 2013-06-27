@@ -99,5 +99,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<EstimateLine> estimateLines = new List<EstimateLine>();
+		public virtual IList<EstimateLine> EstimateLines 
+		{ 
+		    get
+		    {
+		        return this.estimateLines;
+		    }
+		}
+		
 	}
 }

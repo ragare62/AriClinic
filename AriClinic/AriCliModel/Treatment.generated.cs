@@ -64,8 +64,8 @@ namespace AriCliModel
 		    }
 		}
 		
-		private int quantity;
-		public virtual int Quantity 
+		private decimal quantity;
+		public virtual decimal Quantity 
 		{ 
 		    get
 		    {

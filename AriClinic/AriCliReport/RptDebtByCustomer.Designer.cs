@@ -64,8 +64,8 @@ namespace AriCliReport
             // 
             // detail
             // 
-            formattingRule1.Filters.AddRange(new Telerik.Reporting.Data.Filter[] {
-            new Telerik.Reporting.Data.Filter("= Parameters.prm_detalle.Value", Telerik.Reporting.Data.FilterOperator.Equal, "False")});
+            formattingRule1.Filters.AddRange(new Telerik.Reporting.Filter[] {
+            new Telerik.Reporting.Filter("= Parameters.prm_detalle.Value", Telerik.Reporting.FilterOperator.Equal, "False")});
             formattingRule1.Style.Visible = false;
             this.detail.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
             formattingRule1});
@@ -100,8 +100,8 @@ namespace AriCliReport
             // 
             this.grp_paciente.GroupFooter = this.groupFooterSection1;
             this.grp_paciente.GroupHeader = this.groupHeaderSection1;
-            this.grp_paciente.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.full_name")});
+            this.grp_paciente.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.full_name")});
             this.grp_paciente.Name = "grp_paciente";
             // 
             // groupHeaderSection1
@@ -431,8 +431,8 @@ namespace AriCliReport
             // 
             // groupHeaderSection2
             // 
-            formattingRule2.Filters.AddRange(new Telerik.Reporting.Data.Filter[] {
-            new Telerik.Reporting.Data.Filter("= Parameters.prm_detalle.Value", Telerik.Reporting.Data.FilterOperator.Equal, "=False")});
+            formattingRule2.Filters.AddRange(new Telerik.Reporting.Filter[] {
+            new Telerik.Reporting.Filter("= Parameters.prm_detalle.Value", Telerik.Reporting.FilterOperator.Equal, "=False")});
             formattingRule2.Style.Visible = false;
             this.groupHeaderSection2.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
             formattingRule2});

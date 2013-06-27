@@ -78,7 +78,7 @@
                         return false;
                     }
                     function PatientRecord(id) {
-                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=770, height=680,resizable=1");
+                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=770, height=680,resizable=1");
                         w2.focus();
                         //window.close();
                     }
@@ -124,6 +124,11 @@
                                              , "Patient_ee"
                                              , "width=650, height=250,resizable=1");
                         w6.focus();
+                    }
+                    function associateRequest(args) {
+                        if (args) {
+                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("request");
+                        }
                     }
                 </script>
                 <script type="text/javascript" src="GeneralFormFunctions.js">
@@ -238,11 +243,11 @@
                                                ToolTip="Fecha de nacimiento"></asp:Label>
                                     <br />
                                     <telerik:RadDatePicker ID="rddpBornDate" runat="server" Culture="es-ES" CssClass="myCenter"  
-                                                           MinDate=""  TabIndex="4">
+                                                           MinDate=""  TabIndex="4" AutoPostBack="True" OnSelectedDateChanged="rddpBornDate_SelectedDateChanged">
                                         <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                                                   ViewSelectorText="x">
                                         </Calendar>
-                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy">
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" AutoPostBack="True">
                                         </DateInput>
                                         <DatePopupButton HoverImageUrl="" ImageUrl="" />
                                     </telerik:RadDatePicker>

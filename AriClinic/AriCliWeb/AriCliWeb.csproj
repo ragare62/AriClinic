@@ -52,28 +52,28 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.Web, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\..\..\Program Files\Telerik\RadControls for ASP.NET AJAX Q3 2012\Bin40\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2013\Bin40\Telerik.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.UI.Skins">
-      <HintPath>..\..\..\..\Program Files\Telerik\RadControls for ASP.NET AJAX Q3 2012\Bin40\Telerik.Web.UI.Skins.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\RadControls for ASP.NET AJAX Q1 2013\Bin40\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.Web, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Reporting, Version=6.2.13.110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.Reporting, Version=7.0.13.220, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
       <SpecificVersion>True</SpecificVersion>
     </Reference>
-    <Reference Include="Telerik.ReportViewer.WebForms, Version=6.2.13.110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.ReportViewer.WebForms, Version=7.0.13.220, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
       <SpecificVersion>True</SpecificVersion>
     </Reference>
   </ItemGroup>
@@ -220,6 +220,83 @@
     </Compile>
     <Compile Include="BackGinecologyForm.aspx.designer.cs">
       <DependentUpon>BackGinecologyForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CampaignForm.aspx.cs">
+      <DependentUpon>CampaignForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignForm.aspx.designer.cs">
+      <DependentUpon>CampaignForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CampaignGrid.aspx.cs">
+      <DependentUpon>CampaignGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignGrid.aspx.designer.cs">
+      <DependentUpon>CampaignGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelForm.aspx.cs">
+      <DependentUpon>ChannelForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChannelForm.aspx.designer.cs">
+      <DependentUpon>ChannelForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelGrid.aspx.cs">
+      <DependentUpon>ChannelGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChannelGrid.aspx.designer.cs">
+      <DependentUpon>ChannelGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReplayForm.aspx.cs">
+      <DependentUpon>ReplayForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReplayForm.aspx.designer.cs">
+      <DependentUpon>ReplayForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestForm.aspx.cs">
+      <DependentUpon>RequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestForm.aspx.designer.cs">
+      <DependentUpon>RequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestGrid.aspx.cs">
+      <DependentUpon>RequestGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestGrid.aspx.designer.cs">
+      <DependentUpon>RequestGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogGrid.aspx.cs">
+      <DependentUpon>LogGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogGrid.aspx.designer.cs">
+      <DependentUpon>LogGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateViewForm.aspx.cs">
+      <DependentUpon>TemplateViewForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateViewForm.aspx.designer.cs">
+      <DependentUpon>TemplateViewForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateForm.aspx.cs">
+      <DependentUpon>TemplateForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateForm.aspx.designer.cs">
+      <DependentUpon>TemplateForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateGrid.aspx.cs">
+      <DependentUpon>TemplateGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateGrid.aspx.designer.cs">
+      <DependentUpon>TemplateGrid.aspx</DependentUpon>
     </Compile>
     <Compile Include="PrescriptionGlassesForm.aspx.cs">
       <DependentUpon>PrescriptionGlassesForm.aspx</DependentUpon>
@@ -1131,6 +1208,20 @@
     <Content Include="BackPersonalForm.aspx" />
     <Content Include="BackFamilyForm.aspx" />
     <Content Include="BackGinecologyForm.aspx" />
+    <Content Include="CampaignForm.aspx" />
+    <Content Include="CampaignGrid.aspx" />
+    <Content Include="ChannelForm.aspx" />
+    <Content Include="ChannelGrid.aspx" />
+    <Content Include="ReplayForm.aspx" />
+    <Content Include="images\document_certificate.png" />
+    <Content Include="images\document_check.png" />
+    <Content Include="images\document_exchange.png" />
+    <Content Include="RequestForm.aspx" />
+    <Content Include="RequestGrid.aspx" />
+    <Content Include="LogGrid.aspx" />
+    <Content Include="TemplateViewForm.aspx" />
+    <Content Include="TemplateForm.aspx" />
+    <Content Include="TemplateGrid.aspx" />
     <Content Include="PrescriptionGlassesForm.aspx" />
     <Content Include="CycloplegiaForm.aspx" />
     <Content Include="SubjectiveOpticalExaminationForm.aspx" />
@@ -1331,8 +1422,8 @@
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\Anestesia.pubxml" />
-    <None Include="Properties\PublishProfiles\Ariclinic.pubxml" />
+    <None Include="Properties\PublishProfiles\AriClinic2013.pubxml" />
+    <None Include="Properties\PublishProfiles\AriClinicW8.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
@@ -1434,7 +1525,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

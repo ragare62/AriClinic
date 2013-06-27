@@ -40,14 +40,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.OpenAccess, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2012.3.1209.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,12 @@
     <Compile Include="Biometry.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Campaign.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Channel.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Clinic.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -127,6 +133,12 @@
     <Compile Include="EntityDiagrams.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Estimate.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateLine.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="Examination.generated.cs">
@@ -239,6 +251,12 @@
     <Compile Include="Refractometry.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="Replay.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Request.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="SaveCheck.cs" />
     <Compile Include="Service.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
@@ -262,6 +280,9 @@
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="Telephone.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Template.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
     <Compile Include="Ticket.generated.cs">
@@ -308,7 +329,25 @@
     <Content Include="SQL\2013.1.0.1_Ariclinic_anesConnection%282013-01-30 14-31-44%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-01-30 15-03-08%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.3_AriClinicContext%282013-02-04 18-23-43%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_anesAriClinicContext%282013-04-09 08-37-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_anesAriClinicContext%282013-06-24 19-00-20%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-02-06 09-01-22%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 09-04-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 12-08-02%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_AriClinicContext%282013-03-11 17-54-20%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-18-39%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 08-36-05%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 16-22-51%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-48-23%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-51-34%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-25 17-53-36%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-26 09-13-48%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-26 17-13-47%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-26 17-45-39%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-26 18-00-21%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-27 18-29-37%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-27 18-34-10%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-06-27 18-37-34%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

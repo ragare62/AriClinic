@@ -234,8 +234,8 @@ namespace AriCliReport
             // 
             this.source.GroupFooter = this.groupFooterSection1;
             this.source.GroupHeader = this.groupHeaderSection1;
-            this.source.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.source")});
+            this.source.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.source")});
             this.source.Name = "source";
             // 
             // groupFooterSection1

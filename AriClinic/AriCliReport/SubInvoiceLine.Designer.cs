@@ -72,8 +72,8 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Invoice.InvoiceId")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Invoice.InvoiceId")});
             this.group1.Name = "group1";
             // 
             // groupFooterSection1

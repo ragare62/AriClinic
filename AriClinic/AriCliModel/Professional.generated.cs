@@ -116,6 +116,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private bool inactive;
+		public virtual bool Inactive 
+		{ 
+		    get
+		    {
+		        return this.inactive;
+		    }
+		    set
+		    {
+		        this.inactive = value;
+		    }
+		}
+		
 		private TaxWithholdingType taxWithholdingType;
 		public virtual TaxWithholdingType TaxWithholdingType 
 		{ 
@@ -196,6 +209,15 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Treatment> treatments = new List<Treatment>();
+		public virtual IList<Treatment> Treatments 
+		{ 
+		    get
+		    {
+		        return this.treatments;
+		    }
+		}
+		
 		private IList<AppointmentInfo> appointmentInfos = new List<AppointmentInfo>();
 		public virtual IList<AppointmentInfo> AppointmentInfos 
 		{ 
@@ -211,15 +233,6 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.serviceNotes;
-		    }
-		}
-		
-		private IList<Treatment> treatments = new List<Treatment>();
-		public virtual IList<Treatment> Treatments 
-		{ 
-		    get
-		    {
-		        return this.treatments;
 		    }
 		}
 		

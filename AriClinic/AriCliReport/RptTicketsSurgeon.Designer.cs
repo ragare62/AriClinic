@@ -265,8 +265,8 @@ namespace AriCliReport
             // 
             this.surgeon_nameGroup.GroupFooter = this.surgeon_nameGroupFooter;
             this.surgeon_nameGroup.GroupHeader = this.surgeon_nameGroupHeader;
-            this.surgeon_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.surgeon_name")});
+            this.surgeon_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.surgeon_name")});
             this.surgeon_nameGroup.Name = "surgeon_nameGroup";
             // 
             // pageHeader

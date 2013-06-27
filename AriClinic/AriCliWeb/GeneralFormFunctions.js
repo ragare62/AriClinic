@@ -40,12 +40,12 @@ function gup(name)
 // call service grid in order to select one
 function searchService()
 {
-    var w1 = window.open("ServiceGrid.aspx?Type=S", "SER", "width=800, height=600,resizable=1");
+    var w1 = window.open("ServiceGrid.aspx?Type=S", "SSER", "width=800, height=600,resizable=1");
     w1.focus();
 }
 function searchPatient()
 {
-    var w1 = window.open("PatientGrid.aspx?Type=S", "PAT", "width=600, height=500,resizable=1");
+    var w1 = window.open("PatientGrid.aspx?Type=S", "SPAT", "width=600, height=500,resizable=1");
     w1.focus();
 }
 function searchInsuranceService(insuranceId)
@@ -135,4 +135,16 @@ function searchVisitReason()
 {
     var w1 = window.open("VisitReasonGrid.aspx?Type=S", "VISITREASON", "width=800,height=500,resizable=1");
     w1.focus;
+}
+function searchCampaign() {
+    var w1 = window.open("CampaignGrid.aspx?Type=S", "SCPG", "width=800, height=600,resizable=1");
+    w1.focus();
+}
+function searchChannel() {
+    var w1 = window.open("ChannelGrid.aspx?Type=S", "SCHN", "width=800, height=600,resizable=1");
+    w1.focus();
+}
+function searchSource() {
+    var w1 = window.open("SourceGrid.aspx?Type=S", "SSRC", "width=800, height=600,resizable=1");
+    w1.focus();
 }

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RptProfessionalInvoicesForm.aspx.cs" Inherits="AriCliWeb.RptProfessionalInvoicesForm" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RptProfessionalSrvForm.aspx.cs" Inherits="AriCliWeb.RptProfessionalSrvForm" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -133,7 +133,7 @@
         <%--  Line 1 --%>
         <div id="TitleArea" class="titleBar2">
           <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-          <asp:Label ID="lblTitle" runat="server" Text="Informe de facturas de profesionales"></asp:Label>
+          <asp:Label ID="lblTitle" runat="server" Text="Informe de servicios de profesionales"></asp:Label>
         </div>
         <%--  Line 2 --%>
         <div id="FromDate" class="normalText">

@@ -91,11 +91,11 @@ namespace AriCliReport
             // 
             this.insuranceServ.GroupFooter = this.groupFooterSection1;
             this.insuranceServ.GroupHeader = this.groupHeaderSection1;
-            this.insuranceServ.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=InsuranceServiceId")});
+            this.insuranceServ.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=InsuranceServiceId")});
             this.insuranceServ.Name = "insuranceServ";
-            this.insuranceServ.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("Insurance.Name", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.insuranceServ.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("Insurance.Name", Telerik.Reporting.SortDirection.Asc)});
             // 
             // groupFooterSection1
             // 
@@ -111,8 +111,8 @@ namespace AriCliReport
             // 
             // SubServiceComp
             // 
-            this.Filters.AddRange(new Telerik.Reporting.Data.Filter[] {
-            new Telerik.Reporting.Data.Filter("Service.ServiceId", Telerik.Reporting.Data.FilterOperator.Equal, "=Parameters.ServiceId.Value")});
+            this.Filters.AddRange(new Telerik.Reporting.Filter[] {
+            new Telerik.Reporting.Filter("Service.ServiceId", Telerik.Reporting.FilterOperator.Equal, "=Parameters.ServiceId.Value")});
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
             this.insuranceServ});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {

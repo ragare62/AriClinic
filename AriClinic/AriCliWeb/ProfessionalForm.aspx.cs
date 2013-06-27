@@ -154,6 +154,7 @@ public partial class ProfessionalForm : System.Web.UI.Page
         LoadTaxWithholdingTypeCombo(prof);
         txtCommision.Text = String.Format("{0:##0.00}", prof.Commission);
         txtInvoiceSerial.Text = prof.InvoiceSerial;
+        chkInactive.Checked = prof.Inactive;
     }
 
     protected void UnloadData(Professional prof)
@@ -182,6 +183,7 @@ public partial class ProfessionalForm : System.Web.UI.Page
         
         if (txtCommision.Text != "")
             prof.Commission = Decimal.Parse(txtCommision.Text);
+        prof.Inactive = chkInactive.Checked;
     }
 
     protected void LoadUserCombo(User usr)

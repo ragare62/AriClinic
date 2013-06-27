@@ -176,7 +176,7 @@
 
                                 </div>
                                 <telerik:RadNumericTextBox ID="txtQuantity" runat="server" MinValue="0">
-                                    <NumberFormat DecimalDigits="0" ZeroPattern="n" />
+                                    <NumberFormat DecimalDigits="2" ZeroPattern="n" />
                                 </telerik:RadNumericTextBox>
                             </td>
                         </tr>

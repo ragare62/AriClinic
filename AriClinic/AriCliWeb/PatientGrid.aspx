@@ -44,17 +44,17 @@
           }
           function NewPatientRecord()
           {
-              var w1 = window.open("PatientForm.aspx", null, "width=960, height=480,resizable=1,scrollbars=1");
+              var w1 = window.open("PatientForm.aspx", "NPAT", "width=960, height=480,resizable=1,scrollbars=1");
               w1.focus();
           }
           function EditPatientRecord(id)
           {
-              var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=960, height=480,resizable=1,scrollbars=1");
+              var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=960, height=480,resizable=1,scrollbars=1");
               w2.focus();
           }
           function ViewHisAdm(id)
           {
-              var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "width=1024, height=768,resizable=1,scrollbars=1");
+              var w2 = window.open("PatientTab.aspx?PatientId=" + id, "PATB", "width=1024, height=768,resizable=1,scrollbars=1");
               w2.focus();
           }
           function CloseWindow()

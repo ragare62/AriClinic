@@ -155,6 +155,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string fullName;
+		public virtual string FullName 
+		{ 
+		    get
+		    {
+		        return this.fullName;
+		    }
+		    set
+		    {
+		        this.fullName = value;
+		    }
+		}
+		
 		private Customer customer;
 		public virtual Customer Customer 
 		{ 
@@ -235,15 +248,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<AppointmentInfo> appointmentInfos = new List<AppointmentInfo>();
-		public virtual IList<AppointmentInfo> AppointmentInfos 
-		{ 
-		    get
-		    {
-		        return this.appointmentInfos;
-		    }
-		}
-		
 		private IList<PreviousMedicalRecord> previousMedicalRecords = new List<PreviousMedicalRecord>();
 		public virtual IList<PreviousMedicalRecord> PreviousMedicalRecords 
 		{ 
@@ -277,6 +281,24 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.backGinecologies;
+		    }
+		}
+		
+		private IList<AppointmentInfo> appointmentInfos = new List<AppointmentInfo>();
+		public virtual IList<AppointmentInfo> AppointmentInfos 
+		{ 
+		    get
+		    {
+		        return this.appointmentInfos;
+		    }
+		}
+		
+		private IList<Request> requests = new List<Request>();
+		public virtual IList<Request> Requests 
+		{ 
+		    get
+		    {
+		        return this.requests;
 		    }
 		}
 		

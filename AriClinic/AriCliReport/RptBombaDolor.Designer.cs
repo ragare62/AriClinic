@@ -275,9 +275,9 @@ namespace AriCliReport
             // 
             this.group1.GroupFooter = this.groupFooterSection1;
             this.group1.GroupHeader = this.groupHeaderSection1;
-            this.group1.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=AnestheticServiceNote.AnestheticServiceNoteId"),
-            new Telerik.Reporting.Data.Grouping("")});
+            this.group1.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=AnestheticServiceNote.AnestheticServiceNoteId"),
+            new Telerik.Reporting.Grouping("")});
             this.group1.Name = "group1";
             // 
             // groupFooterSection1
@@ -346,8 +346,8 @@ namespace AriCliReport
             this.PageSettings.Margins.Right = new Telerik.Reporting.Drawing.Unit(1.5D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.Margins.Top = new Telerik.Reporting.Drawing.Unit(1.5D, Telerik.Reporting.Drawing.UnitType.Cm);
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.Sortings.AddRange(new Telerik.Reporting.Data.Sorting[] {
-            new Telerik.Reporting.Data.Sorting("=AnestheticServiceNote.ServiceNoteDate", Telerik.Reporting.Data.SortDirection.Asc)});
+            this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
+            new Telerik.Reporting.Sorting("=AnestheticServiceNote.ServiceNoteDate", Telerik.Reporting.SortDirection.Asc)});
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.Width = new Telerik.Reporting.Drawing.Unit(10.511772155761719D, Telerik.Reporting.Drawing.UnitType.Inch);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

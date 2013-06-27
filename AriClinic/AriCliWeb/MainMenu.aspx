@@ -350,6 +350,26 @@
               var w1 = window.open("RptView.aspx?Report=rptpatientbysource", "RPTPATIENTBYSOURCE", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchTemplate() {
+              var w1 = window.open("TemplateGrid.aspx", "TEMPLATE", "width=650, height=400,resizable=1")
+              w1.focus();
+          }
+          function LaunchLogAccess() {
+              var w1 = window.open("LogGrid.aspx", "LOG", "width=800, height=600,resizable=1, scrollbars=1")
+              w1.focus();
+          }
+          function LaunchCampaign() {
+              var w1 = window.open("CampaignGrid.aspx", "CPG", "width=600, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchChannel() {
+              var w1 = window.open("ChannelGrid.aspx", "CHNN", "width=600, height=500,resizable=1")
+              w1.focus();
+          }
+          function LaunchRequest() {
+              var w1 = window.open("RequestGrid.aspx", "REQ", "width=1024, height=750,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -394,6 +414,8 @@
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Permisos" Value="permission">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Log de accesos" Value="logaccess">
+                        </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Parámetros" Value="parameter">
@@ -495,7 +517,7 @@
                         <telerik:RadMenuItem runat="server" 
                             Text="Cobros realizados (Por nota / clínica / f.pago)" Value="rptgpbyclinic">
                         </telerik:RadMenuItem>
-                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (*)" 
+                      <telerik:RadMenuItem runat="server" Owner="" Text="Facturas emitidas (por cliente)" 
                                            Value="rinvoicesPeriod">
                       </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Facturas de profesionales" 
@@ -536,7 +558,7 @@
                           <telerik:RadMenuItem runat="server" Owner="" Text="Bombas PCEA" Value="rpca">
                           </telerik:RadMenuItem>
                       </Items>
-                  </telerik:RadMenuItem>
+                  </telerik:RadMenuItem> 
                   <telerik:RadMenuItem runat="server" Text="Citas" 
                                        Value="appointments">
                       <Items>
@@ -545,6 +567,9 @@
                           </telerik:RadMenuItem>
                       </Items>
                   </telerik:RadMenuItem>
+
+                    <telerik:RadMenuItem runat="server" Text="Plantillas" Value="templategrid">
+                    </telerik:RadMenuItem>
 
                 </Items>
               </telerik:RadMenuItem>
@@ -593,6 +618,16 @@
                   </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
+                <telerik:RadMenuItem runat="server" Text="CRM" Value="crm">
+                    <Items>
+                        <telerik:RadMenuItem runat="server" Text="Campañas" Value="campaign">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Canales" Value="channel">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Solicitudes de información" Value="request">
+                        </telerik:RadMenuItem>
+                    </Items>
+                </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Salir" Value="exit">
               </telerik:RadMenuItem>
             </Items>

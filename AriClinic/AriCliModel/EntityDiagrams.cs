@@ -628,6 +628,62 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<Template> Templates 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Template>();
+	    	}
+		}
+		
+		public IQueryable<Campaign> Campaigns 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Campaign>();
+	    	}
+		}
+		
+		public IQueryable<Channel> Channels 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Channel>();
+	    	}
+		}
+		
+		public IQueryable<Request> Requests 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Request>();
+	    	}
+		}
+		
+		public IQueryable<Replay> Replays 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Replay>();
+	    	}
+		}
+		
+		public IQueryable<EstimateLine> EstimateLines 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<EstimateLine>();
+	    	}
+		}
+		
+		public IQueryable<Estimate> Estimates 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Estimate>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -997,6 +1053,41 @@ namespace AriCliModel
 		}
 
 		IQueryable<BaseVisitType> BaseVisitTypes 
+		{ 
+			get;
+		}
+
+		IQueryable<Template> Templates 
+		{ 
+			get;
+		}
+
+		IQueryable<Campaign> Campaigns 
+		{ 
+			get;
+		}
+
+		IQueryable<Channel> Channels 
+		{ 
+			get;
+		}
+
+		IQueryable<Request> Requests 
+		{ 
+			get;
+		}
+
+		IQueryable<Replay> Replays 
+		{ 
+			get;
+		}
+
+		IQueryable<EstimateLine> EstimateLines 
+		{ 
+			get;
+		}
+
+		IQueryable<Estimate> Estimates 
 		{ 
 			get;
 		}

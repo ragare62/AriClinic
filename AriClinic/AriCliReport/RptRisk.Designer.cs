@@ -118,8 +118,8 @@ namespace AriCliReport
             // 
             this.ins_nameGroup.GroupFooter = this.ins_nameGroupFooter;
             this.ins_nameGroup.GroupHeader = this.ins_nameGroupHeader;
-            this.ins_nameGroup.Groupings.AddRange(new Telerik.Reporting.Data.Grouping[] {
-            new Telerik.Reporting.Data.Grouping("=Fields.ins_name")});
+            this.ins_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
+            new Telerik.Reporting.Grouping("=Fields.ins_name")});
             this.ins_nameGroup.Name = "ins_nameGroup";
             // 
             // pageHeader

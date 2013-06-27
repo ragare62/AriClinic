@@ -195,7 +195,7 @@
                                      ToolTip="Eliminar este registro" />
                     <asp:ImageButton ID="Print" runat="server" 
                                      ImageUrl="~/images/printer.png" meta:resourceKey="PrintResource1" 
-                                     ToolTip="Imprimir este ticket" />
+                                     ToolTip="Imprimir esta factura" />
                   </ItemTemplate>
                 </telerik:GridTemplateColumn>
               </Columns>
