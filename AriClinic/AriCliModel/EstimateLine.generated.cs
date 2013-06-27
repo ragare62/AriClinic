@@ -23,88 +23,83 @@ using AriCliModel;
 
 namespace AriCliModel	
 {
-	public partial class InsuranceService
+	public partial class EstimateLine
 	{
-		private int insuranceServiceId;
-		public virtual int InsuranceServiceId 
+		private int estimateLineId;
+		public virtual int EstimateLineId 
 		{ 
 		    get
 		    {
-		        return this.insuranceServiceId;
+		        return this.estimateLineId;
 		    }
 		    set
 		    {
-		        this.insuranceServiceId = value;
+		        this.estimateLineId = value;
 		    }
 		}
 		
-		private decimal price;
-		public virtual decimal Price 
+		private decimal amount;
+		public virtual decimal Amount 
 		{ 
 		    get
 		    {
-		        return this.price;
+		        return this.amount;
 		    }
 		    set
 		    {
-		        this.price = value;
+		        this.amount = value;
 		    }
 		}
 		
-		private int oftId;
-		public virtual int OftId 
+		private decimal discount;
+		public virtual decimal Discount 
 		{ 
 		    get
 		    {
-		        return this.oftId;
+		        return this.discount;
 		    }
 		    set
 		    {
-		        this.oftId = value;
+		        this.discount = value;
 		    }
 		}
 		
-		private Insurance insurance;
-		public virtual Insurance Insurance 
+		private string description;
+		public virtual string Description 
 		{ 
 		    get
 		    {
-		        return this.insurance;
+		        return this.description;
 		    }
 		    set
 		    {
-		        this.insurance = value;
+		        this.description = value;
 		    }
 		}
 		
-		private Service service;
-		public virtual Service Service 
+		private InsuranceService insuranceService;
+		public virtual InsuranceService InsuranceService 
 		{ 
 		    get
 		    {
-		        return this.service;
+		        return this.insuranceService;
 		    }
 		    set
 		    {
-		        this.service = value;
+		        this.insuranceService = value;
 		    }
 		}
 		
-		private IList<Ticket> tickets = new List<Ticket>();
-		public virtual IList<Ticket> Tickets 
+		private Estimate estimate;
+		public virtual Estimate Estimate 
 		{ 
 		    get
 		    {
-		        return this.tickets;
+		        return this.estimate;
 		    }
-		}
-		
-		private IList<EstimateLine> estimateLines = new List<EstimateLine>();
-		public virtual IList<EstimateLine> EstimateLines 
-		{ 
-		    get
+		    set
 		    {
-		        return this.estimateLines;
+		        this.estimate = value;
 		    }
 		}
 		

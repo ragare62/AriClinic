@@ -63,10 +63,9 @@
                     <telerik:RadTab runat="server" Text="Filiación" Value="patient" Selected="True">
                     </telerik:RadTab>
                     <telerik:RadTab runat="server" Text="His. Administrativo" Value="HA" 
-                        SelectedIndex="0">
+                        SelectedIndex="7">
                         <Tabs>
-                            <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy" 
-                                Selected="True">
+                            <telerik:RadTab runat="server" Owner="" Text="Pólizas" Value="policy">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Citas" Value="appointment">
                             </telerik:RadTab>
@@ -80,6 +79,8 @@
                                 Selected="True">
                             </telerik:RadTab>
                             <telerik:RadTab runat="server" Owner="" Text="Facturas" Value="invoice">
+                            </telerik:RadTab>
+                            <telerik:RadTab runat="server" Selected="True" Text="Solicitudes de información" Value="request">
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTab>

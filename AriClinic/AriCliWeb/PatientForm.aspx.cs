@@ -3,6 +3,7 @@ using AriCliModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
@@ -23,6 +24,7 @@ public partial class PatientForm : System.Web.UI.Page
     int patientId = 0;
     Permission per = null;
     string type = "";
+    bool withRequests = false;
 
     #endregion Variables declarations
     #region Init Load Unload events
@@ -113,7 +115,8 @@ public partial class PatientForm : System.Web.UI.Page
         {
             command = String.Format("PatientRecord({0});", pat.PersonId);
         }
-        RadAjaxManager1.ResponseScripts.Add(command);
+        if (!withRequests)
+            RadAjaxManager1.ResponseScripts.Add(command);
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -166,6 +169,16 @@ public partial class PatientForm : System.Web.UI.Page
             UnloadData(pat);
         }
         ctx.SaveChanges();
+        // control possible request
+        IList<Request> lr = CntAriCli.GetPossibleAssociateRequest(pat, ctx);
+        if (lr.Count() > 0)
+        {
+            withRequests = true;
+            Session["Requests"] = lr;
+            Session["Patient"] = pat;
+            string mes = String.Format("Hay {0} solicitudes no asociadas que podrían ser de este paciente. ¿Desea asociarlas?", lr.Count());
+            RadWindowManager1.RadConfirm(mes, "associateRequest", null, null, null, "SOLICITUDES");
+        }
         return true;
     }
 
@@ -293,6 +306,15 @@ public partial class PatientForm : System.Web.UI.Page
             case "email":
                 UscEmailGrid1.RefreshGrid(true);
                 break;
+            case "request":
+                IList<Request> lr = (IList<Request>)Session["Requests"];
+                pat = (Patient)Session["Patient"];
+                CntAriCli.SetRequestAssociation(pat, lr, ctx);
+                Session["Requests"] = null;
+                Session["Patient"] = null;
+                string command = String.Format("PatientRecord({0});", pat.PersonId);
+                RadAjaxManager1.ResponseScripts.Add(command);
+                break;
         }
     }
 
@@ -320,7 +342,8 @@ public partial class PatientForm : System.Web.UI.Page
         {
             command = String.Format("PatientRecord({0});", pat.PersonId);
         }
-        RadAjaxManager1.ResponseScripts.Add(command);
+        if (!withRequests)
+            RadAjaxManager1.ResponseScripts.Add(command);
     }
 
     protected void rddpBornDate_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)

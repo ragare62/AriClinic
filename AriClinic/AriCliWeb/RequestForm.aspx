@@ -67,11 +67,13 @@
                         comboItem.select();
                     }
                     function NewReplayRecord(id2) {
-                        var w1 = window.open("ReplayForm.aspx?RequestId=" + id2, "NRPLY", "width=800, height=750,resizable=1");
+                        //window.close();
+                        var w1 = window.open("ReplayForm.aspx?Caller=RequestForm&RequestId=" + id2, "NRPLY", "width=800, height=750,resizable=1");
                         w1.focus();
                     }
                     function EditReplayRecord(id, id2) {
-                        var w2 = window.open("ReplayForm.aspx?RequestId=" + id2 + "&ReplayId=" + id, "ERPLY", "width=800, height=750,resizable=1");
+                        //window.close();
+                        var w2 = window.open("ReplayForm.aspx?Caller=RequestForm&RequestId=" + id2 + "&ReplayId=" + id, "ERPLY", "width=800, height=750,resizable=1");
                         w2.focus();
                     }
                 </script>

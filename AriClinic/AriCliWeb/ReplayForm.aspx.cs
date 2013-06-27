@@ -22,6 +22,7 @@ public partial class ReplayForm : System.Web.UI.Page
     Request request = null;
     int requestId = 0;
     Permission per = null;
+    string caller = "";
     #endregion Variables declarations
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -77,6 +78,11 @@ public partial class ReplayForm : System.Web.UI.Page
             // default values for a new request
             rdtReplayDate.SelectedDate = DateTime.Now;
         }
+        //
+        if (Request.QueryString["Caller"] != null)
+        {
+            caller = Request.QueryString["Caller"];
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -96,8 +102,19 @@ public partial class ReplayForm : System.Web.UI.Page
     {
         if (!CreateChange())
             return;
-        string command = "CloseAndRebind('')";
-        RadAjaxManager1.ResponseScripts.Add(command);
+        string jsCommand = "";
+        if (caller == "RequestForm")
+        {
+            jsCommand = "CloseAndRequest();";
+        }
+        else
+        {
+            jsCommand = "window.close();";
+        }
+        if (jsCommand != "")
+        {
+            RadAjaxManager1.ResponseScripts.Add(jsCommand);
+        }
     }
 
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
@@ -164,6 +181,7 @@ public partial class ReplayForm : System.Web.UI.Page
     }
     protected void UnloadData(Replay chn)
     {
+        // creating / editing reply
         replay.ReplayDate = (DateTime)rdtReplayDate.SelectedDate;
         if (rdcChannel.SelectedValue != "")
         {
@@ -175,6 +193,9 @@ public partial class ReplayForm : System.Web.UI.Page
         }
         replay.Comments = txtComments.Text;
         replay.User = user;
+        // changing request accordingly
+        request.Status = "CONTESTADA";
+        replay.Request = request;
     }
     #endregion Auxiliary functions
 

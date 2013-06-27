@@ -89,6 +89,20 @@
           <asp:Label ID="lblTitle" runat="server" Text="Solicitudes de información" 
                 meta:resourcekey="lblTitleResource1"></asp:Label>
         </div>
+        <div id="StatusType" class="optionsText">
+          <asp:Label ID="lblStatusType" runat="server" Text="Elija filtro.... " ></asp:Label>
+          <br style="margin-bottom:5px;" />
+          <telerik:RadComboBox ID="rdcStatusType" runat="server" Width="100%" 
+                               EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
+                               ItemsPerRequest="10" Height="100px" Culture="es-ES" AutoPostBack="True" OnSelectedIndexChanged="rdcStatusType_SelectedIndexChanged">
+              <Items>
+                  <telerik:RadComboBoxItem runat="server" Text="TODAS" Value="TODAS"/>
+                  <telerik:RadComboBoxItem runat="server" Text="PENDIENTE" Value="PENDIENTE" Selected />
+                  <telerik:RadComboBoxItem runat="server" Text="CONTESTADA" Value="CONTESTADA" />
+                  <telerik:RadComboBoxItem runat="server" Text="CONVERTIDA" Value="CONVERTIDA" />
+              </Items>
+          </telerik:RadComboBox>
+        </div>
         <div id="GridArea" class="normalText" style="width:100%">
           <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007"
                            AllowPaging="True" PageSize="6" AllowFilteringByColumn="True" 
@@ -109,11 +123,20 @@
                         SortExpression="RequestId" UniqueName="RequestId">
                     </telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="RequestDateTime" 
-                        FilterControlAltText="Filter Name column" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}"
+                        FilterControlAltText="Filter Name column" HeaderText="Fecha solicitud" DataFormatString="{0:dd/MM/yyyy}"
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
                         SortExpression="RequestDateTime" UniqueName="RequestDateTime">
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="FullName" 
+                    <telerik:GridBoundColumn DataField="Replay.ReplayDate" 
+                        FilterControlAltText="Filter Name column" HeaderText="Fecha respuesta" DataFormatString="{0:dd/MM/yyyy}"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" Visible="false" 
+                        SortExpression="Replay.ReplayDate" UniqueName="Replay.ReplayDate">
+                    </telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Status" 
+                        FilterControlAltText="Filter Name column" HeaderText="Estado"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="Status" UniqueName="Status">
+                    </telerik:GridBoundColumn>                    <telerik:GridBoundColumn DataField="FullName" 
                         FilterControlAltText="Filter Name column" HeaderText="Candidato"
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
                         SortExpression="FullName" UniqueName="FullName">
@@ -123,17 +146,16 @@
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
                         SortExpression="Patient.FullName" UniqueName="Patient.FullName">
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Status" 
-                        FilterControlAltText="Filter Name column" HeaderText="Estado"
-                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
-                        SortExpression="Status" UniqueName="Status">
-                    </telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Service.Name" 
                         FilterControlAltText="Filter Name column" HeaderText="Servicio"
                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
                         SortExpression="Service.Name" UniqueName="Service.Name">
                     </telerik:GridBoundColumn>
-
+                    <telerik:GridBoundColumn DataField="User.Name" 
+                        FilterControlAltText="Filter Name column" HeaderText="Usuario"
+                        meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                        SortExpression="User.Name" UniqueName="User.Name">
+                    </telerik:GridBoundColumn>
                     <telerik:GridTemplateColumn AllowFiltering="False" 
                         FilterControlAltText="Filter Template column" HeaderText="Acciones" 
                         meta:resourcekey="GridTemplateColumnResource1" UniqueName="Template">

@@ -209,15 +209,6 @@ namespace AriCliModel
 		    }
 		}
 		
-		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
-		public virtual IList<ServiceNote> ServiceNotes 
-		{ 
-		    get
-		    {
-		        return this.serviceNotes;
-		    }
-		}
-		
 		private IList<Treatment> treatments = new List<Treatment>();
 		public virtual IList<Treatment> Treatments 
 		{ 
@@ -233,6 +224,15 @@ namespace AriCliModel
 		    get
 		    {
 		        return this.appointmentInfos;
+		    }
+		}
+		
+		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
+		public virtual IList<ServiceNote> ServiceNotes 
+		{ 
+		    get
+		    {
+		        return this.serviceNotes;
 		    }
 		}
 		

@@ -367,7 +367,7 @@
               w1.focus();
           }
           function LaunchRequest() {
-              var w1 = window.open("RequestGrid.aspx", "REQ", "width=800, height=600,resizable=1")
+              var w1 = window.open("RequestGrid.aspx", "REQ", "width=1024, height=750,resizable=1")
               w1.focus();
           }
         </script>

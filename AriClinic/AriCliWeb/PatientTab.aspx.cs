@@ -171,6 +171,10 @@ public partial class PatientTab : System.Web.UI.Page
             case "backginecology":
                 frame.Attributes["src"] = String.Format("BackGinecologyForm.aspx?PatientId={0}&Type=InTab", pat.PersonId);
                 break;
+            case "request":
+                frame.Attributes["src"] = String.Format("RequestGrid.aspx?PatientId={0}&Type=InTab&CustomerId=" + customerId
+                                                        , pat.PersonId);
+                break;
         }
     }
     #endregion

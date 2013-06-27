@@ -78,7 +78,7 @@
                         return false;
                     }
                     function PatientRecord(id) {
-                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, null, "width=770, height=680,resizable=1");
+                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=770, height=680,resizable=1");
                         w2.focus();
                         //window.close();
                     }
@@ -124,6 +124,11 @@
                                              , "Patient_ee"
                                              , "width=650, height=250,resizable=1");
                         w6.focus();
+                    }
+                    function associateRequest(args) {
+                        if (args) {
+                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("request");
+                        }
                     }
                 </script>
                 <script type="text/javascript" src="GeneralFormFunctions.js">

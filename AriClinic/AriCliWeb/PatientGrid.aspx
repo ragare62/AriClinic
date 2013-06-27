@@ -49,7 +49,7 @@
           }
           function EditPatientRecord(id)
           {
-              var w2 = window.open("PatientForm.aspx?PatientId=" + id, "EPAT", "width=960, height=480,resizable=1,scrollbars=1");
+              var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=960, height=480,resizable=1,scrollbars=1");
               w2.focus();
           }
           function ViewHisAdm(id)

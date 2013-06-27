@@ -668,6 +668,22 @@ namespace AriCliModel
 	    	}
 		}
 		
+		public IQueryable<EstimateLine> EstimateLines 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<EstimateLine>();
+	    	}
+		}
+		
+		public IQueryable<Estimate> Estimates 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<Estimate>();
+	    	}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1062,6 +1078,16 @@ namespace AriCliModel
 		}
 
 		IQueryable<Replay> Replays 
+		{ 
+			get;
+		}
+
+		IQueryable<EstimateLine> EstimateLines 
+		{ 
+			get;
+		}
+
+		IQueryable<Estimate> Estimates 
 		{ 
 			get;
 		}

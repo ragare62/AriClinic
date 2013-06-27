@@ -52,6 +52,11 @@
                         combo.commitChanges();
                         comboItem.select();
                     }
+                    function CloseAndRequest() {
+                        // the request status has changed to "ANSWERED" and
+                        window.opener.CloseAndRebind('');
+                        window.close();
+                    }
                 </script>
             </telerik:RadCodeBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxReplay="RadAjaxManager1_AjaxReplay">

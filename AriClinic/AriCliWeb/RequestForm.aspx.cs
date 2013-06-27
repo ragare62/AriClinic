@@ -104,6 +104,10 @@ public partial class RequestForm : System.Web.UI.Page
         {
             message += Resources.GeneralResource.RequestInformationNeeded + "<br/>";
         }
+        if (rdcPatient.SelectedValue == "" && rdcbSex.SelectedValue == "")
+        {
+            message += Resources.GeneralResource.SexValueNeeded + "<br/>";
+        }
         if (message != "")
         {
             lblMessage.Text = message;
@@ -157,7 +161,7 @@ public partial class RequestForm : System.Web.UI.Page
         if (req.Patient != null)
         {
             rdcPatient.Items.Clear();
-            rdcPatient.Items.Add(new RadComboBoxItem(req.Patient.Name, req.Patient.PersonId.ToString()));
+            rdcPatient.Items.Add(new RadComboBoxItem(req.Patient.FullName, req.Patient.PersonId.ToString()));
             rdcPatient.SelectedValue = req.Patient.PersonId.ToString();
         }
         txtSurname1.Text = req.Surname1;

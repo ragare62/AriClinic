@@ -20,14 +20,15 @@ namespace AriCliModel
         }
 
         #region Criptography
+        
         public static string GetHashCode(string password)
         {
             byte[] tmpSource = ASCIIEncoding.ASCII.GetBytes(password);
             byte[] tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
-
+            
             return ByteArrayToString(tmpHash);
         }
-
+        
         private static string ByteArrayToString(byte[] arrInput)
         {
             int i;
@@ -38,9 +39,11 @@ namespace AriCliModel
             }
             return sOutput.ToString();
         }
-
+        
         #endregion Criptography
+        
         #region User related
+        
         /// <summary>
         /// Checks if there is a user with an specific
         /// login and password
@@ -61,7 +64,7 @@ namespace AriCliModel
                 return null; // incorrect password
             return user;
         }
-
+        
         /// <summary>
         /// Encrypts a plain text in the password atribute
         /// </summary>
@@ -73,8 +76,9 @@ namespace AriCliModel
             user.Password = GetHashCode(plain);
             return user;
         }
-
+        
         #endregion User realted
+        
         /// <summary>
         /// Get Health Company information
         /// </summary>
@@ -86,7 +90,7 @@ namespace AriCliModel
                      select h;
             return rs.FirstOrDefault<HealthcareCompany>();
         }
-
+        
         /// <summary>
         /// Write the application log 
         /// </summary>
@@ -109,7 +113,7 @@ namespace AriCliModel
             ctx.Add(lg);
             ctx.SaveChanges();
         }
-
+        
         /// <summary>
         /// Verify that in the permission table all the process have an entry
         /// </summary>
@@ -140,7 +144,7 @@ namespace AriCliModel
             }
             ctx.SaveChanges();
         }
-
+        
         /// <summary>
         /// Returns a list of objects in the format requierd by RadListTree control
         /// </summary>
@@ -167,7 +171,7 @@ namespace AriCliModel
             }
             return perviews;
         }
-
+        
         /// <summary>
         /// Obtain the permisson that an specific group has over a process
         /// </summary>
@@ -183,48 +187,48 @@ namespace AriCliModel
                               select p).FirstOrDefault<Permission>();
             return per;
         }
-
+                    
         public static Clinic GetClinic(int id, AriClinicContext ctx)
         {
             return (from c in ctx.Clinics
                     where c.ClinicId == id
                     select c).FirstOrDefault<Clinic>();
         }
-
+                    
         public static IList<Clinic> GetClinics(AriClinicContext ctx)
         {
             return (from c in ctx.Clinics
                     select c).ToList<Clinic>();
         }
-
+                    
         public static ServiceCategory GetServiceCategory(int id, AriClinicContext ctx)
         {
             return (from sc in ctx.ServiceCategories
                     where sc.ServiceCategoryId == id
                     select sc).FirstOrDefault<ServiceCategory>();
         }
-
+                    
         public static TaxType GetTaxType(int id, AriClinicContext ctx)
         {
             return (from t in ctx.TaxTypes
                     where t.TaxTypeId == id
                     select t).FirstOrDefault<TaxType>();
         }
-
+                    
         public static Service GetService(int id, AriClinicContext ctx)
         {
             return (from s in ctx.Services
                     where s.ServiceId == id
                     select s).FirstOrDefault<Service>();
         }
-
+                    
         public static Insurance GetInsurance(int id, AriClinicContext ctx)
         {
             return (from i in ctx.Insurances
                     where i.InsuranceId == id
                     select i).FirstOrDefault<Insurance>();
         }
-
+            
         public static String GetInsuranceData(Patient patient, AriClinicContext ctx)
         {
             string insuranceData = "";
@@ -243,20 +247,20 @@ namespace AriCliModel
             {
                 if (plcy != null && (plcy.PolicyId != policyInForceId))
                 {
-                    insuranceData = string.Format("{0} / IG:{1} PN:{2} /", 
-                                        insuranceData, plcy.Insurance.Name, plcy.PolicyNumber);
+                    insuranceData = string.Format("{0} / IG:{1} PN:{2} /",
+                        insuranceData, plcy.Insurance.Name, plcy.PolicyNumber);
                 }
             }
             return insuranceData;
         }
-
+                    
         public static InsuranceService GetInsuranceService(int id, AriClinicContext ctx)
         {
             return (from inser in ctx.InsuranceServices
                     where inser.InsuranceServiceId == id
                     select inser).FirstOrDefault<InsuranceService>();
         }
-
+                    
         public static InsuranceService GetInsuranceService(int id, Insurance insurance, AriClinicContext ctx)
         {
             return (from i in ctx.InsuranceServices
@@ -264,14 +268,14 @@ namespace AriCliModel
                           i.Insurance.InsuranceId == insurance.InsuranceId
                     select i).FirstOrDefault<InsuranceService>();
         }
-
+                    
         public static IList<Patient> GetPatients(AriClinicContext ctx)
         {
             return (from p in ctx.Patients
                     orderby p.FullName
                     select p).ToList<Patient>();
         }
-
+                     
         public static IList<Patient> GetPatients(Insurance insurance, AriClinicContext ctx)
         {
             var rs = from p in ctx.Policies
@@ -283,47 +287,49 @@ namespace AriCliModel
                 Patient pat = (from pt in ctx.Patients
                                where pt.Customer.PersonId == p.Customer.PersonId
                                select pt).FirstOrDefault<Patient>();
-                if (pat != null) lp.Add(pat);
+                if (pat != null)
+                    lp.Add(pat);
             }
             return lp;
         }
-            
-            
-
+                    
         public static Patient GetPatient(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Patients
                     where p.PersonId == id
                     select p).FirstOrDefault<Patient>();
         }
+            
+        public static void DeletePatient(Patient patient, AriClinicContext ctx)
+        {
+            // delete associated customer
+            ctx.Delete(patient.Customer.Addresses);
+            ctx.Delete(patient.Customer.Emails);
+            ctx.Delete(patient.Customer.Telephones);
+            ctx.Delete(patient.Customer);
+            // deleting patient
+            ctx.Delete(patient.Addresses);
+            ctx.Delete(patient.Emails);
+            ctx.Delete(patient.Telephones);
+            ctx.Delete(patient);
+            // do it!
+            ctx.SaveChanges();
+        }
+                    
         public static Patient GetPatientByOftId(int oftId, AriClinicContext ctx)
         {
             return (from p in ctx.Patients
                     where p.OftId == oftId
                     select p).FirstOrDefault<Patient>();
         }
-        public static int CalulatedAge(DateTime BornDate)
-        {
-            int age = 0;
-            if (String.Format("{0:dd/MM/yy}", BornDate) != "01/01/01")
-            {
-                // Calculate age from born date
-                age = DateTime.Now.Year - BornDate.Year;
-                // Substract a year if date is before birthday
-                if (DateTime.Now.Month < BornDate.Month ||
-                    (DateTime.Now.Month == BornDate.Month && DateTime.Now.Day < BornDate.Day))
-                    age--;
-            }
-            return age;
-        }
-
+                    
         public static Policy GetPolicy(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Policies
                     where p.PolicyId == id
                     select p).FirstOrDefault<Policy>();
         }
-
+            
         public static Policy GetPolicyInForce(Patient patient, DateTime dt, AriClinicContext ctx)
         {
             Policy policy = null;
@@ -332,19 +338,19 @@ namespace AriCliModel
                       select p).FirstOrDefault();
             return policy;
         }
-
+        
         public static IList<Policy> GetPolicies(Patient patient, AriClinicContext ctx)
         {
             return patient.Customer.Policies.ToList<Policy>();
         }
-
+                    
         public static Ticket GetTicket(int id, AriClinicContext ctx)
         {
             return (from t in ctx.Tickets
                     where t.TicketId == id
                     select t).FirstOrDefault<Ticket>();
         }
-
+                
         public static DateTime? IsDateNull(DateTime? dt)
         {
             if (String.Format("{0:dd/MM/yyyy}", dt) == "01/01/0001")
@@ -352,17 +358,18 @@ namespace AriCliModel
             else
                 return dt;
         }
-
+            
         public static bool OaDateNull(DateTime? dt)
         {
             bool res = true;
             if (dt != null)
             {
-                if (String.Format("{0:dd/MM/yyyy}", dt) != "01/01/0001") res = false;
+                if (String.Format("{0:dd/MM/yyyy}", dt) != "01/01/0001")
+                    res = false;
             }
             return res;
         }
-
+            
         public static string DateNullFormat(DateTime dt)
         {
             DateTime? dt2 = IsDateNull(dt);
@@ -371,7 +378,7 @@ namespace AriCliModel
             else
                 return String.Format("{0:dd/MM/yyyy}", dt2);
         }
-
+            
         public static IList<Ticket> GetTickets(bool notPaid, AriClinicContext ctx)
         {
             if (notPaid)
@@ -389,7 +396,7 @@ namespace AriCliModel
                         select t).ToList<Ticket>();
             }
         }
-
+                      
         public static IList<Ticket> GeTickets(bool notPaid, Customer cus, AriClinicContext ctx)
         {
             var rs2 = from t in ctx.Tickets
@@ -399,7 +406,7 @@ namespace AriCliModel
                       select t;
             return rs2.ToList<Ticket>();
         }
-
+            
         public static IList<Ticket> GetTickets(DateTime fromDate, DateTime toDate, int insuranceId, string type, AriClinicContext ctx)
         {
             if (insuranceId != 0)
@@ -501,42 +508,42 @@ namespace AriCliModel
                 }
             }
         }
-
+                    
         public static User GetUser(int id, AriClinicContext ctx)
         {
             return (from u in ctx.Users
                     where u.UserId == id
                     select u).FirstOrDefault<User>();
         }
-
+                    
         public static Invoice GetInvoice(int invoiceId, AriClinicContext ctx)
         {
             return (from inv in ctx.Invoices
                     where inv.InvoiceId == invoiceId
                     select inv).FirstOrDefault<Invoice>();
         }
-
+                    
         public static ProfessionalInvoice GetProfessionalInvoice(int invoiceId, AriClinicContext ctx)
         {
             return (from inv in ctx.ProfessionalInvoices
                     where inv.InvoiceId == invoiceId
                     select inv).FirstOrDefault<ProfessionalInvoice>();
         }
-
+                    
         public static InvoiceLine GetInvoiceLine(int invoiceLineId, AriClinicContext ctx)
         {
             return (from il in ctx.InvoiceLines
                     where il.InvoiceLineId == invoiceLineId
                     select il).FirstOrDefault<InvoiceLine>();
         }
-
+                    
         public static ProfessionalInvoiceLine GetProfessionalInvoiceLine(int invoiceLineId, AriClinicContext ctx)
         {
             return (from il in ctx.ProfessionalInvoiceLines
                     where il.InvoiceLineId == invoiceLineId
                     select il).FirstOrDefault<ProfessionalInvoiceLine>();
         }
-
+                     
         public static IList<Ticket> GetTicketsNotInvoiced(AriClinicContext ctx)
         {
             var rs = from t in ctx.Tickets
@@ -544,7 +551,7 @@ namespace AriCliModel
                      select t;
             return rs.ToList<Ticket>();
         }
-
+                    
         public static IList<Ticket> GetTicketsNotInvoiced(Customer cus, AriClinicContext ctx)
         {
             return (from t in ctx.Tickets
@@ -552,26 +559,28 @@ namespace AriCliModel
                           t.InvoiceLines.Count == 0
                     select t).ToList<Ticket>();
         }
-
+                    
         public static Customer GetCustomer(int? customerId, AriClinicContext ctx)
         {
             return (from c in ctx.Customers
                     where c.PersonId == customerId
                     select c).FirstOrDefault<Customer>();
         }
+                    
         public static Customer GetCustomerByOftId(int oftId, AriClinicContext ctx)
         {
             return (from c in ctx.Customers
                     where c.OftId == oftId
                     select c).FirstOrDefault<Customer>();
         }
+                    
         public static IList<Customer> GetCustomers(AriClinicContext ctx)
         {
             return (from c in ctx.Customers
                     orderby c.FullName
                     select c).ToList<Customer>();
         }
-
+            
         public static void UpdateCustomerRelatedData(Patient pat, AriClinicContext ctx)
         {
             Customer cus = pat.Customer;
@@ -604,7 +613,7 @@ namespace AriCliModel
                 }
             }
         }
-
+            
         public static Decimal GetInvoiceTotal(Invoice inv)
         {
             Decimal total = 0;
@@ -614,7 +623,7 @@ namespace AriCliModel
             }
             return total;
         }
-
+            
         public static Decimal GetProfessionalInvoiceTotal(ProfessionalInvoice inv)
         {
             Decimal total = 0;
@@ -624,7 +633,7 @@ namespace AriCliModel
             }
             return total;
         }
-
+                     
         public static int GetNextInvoiceNumber(string serial, int year, AriClinicContext ctx)
         {
             int v = (from inv in ctx.Invoices
@@ -633,7 +642,7 @@ namespace AriCliModel
                      select inv.InvoiceNumber).Max();
             return ++v;
         }
-
+            
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
             if (prof.ProfessionalInvoices.Where(x => x.Year == year).Count() > 0)
@@ -641,13 +650,13 @@ namespace AriCliModel
                 int v = (from inv in prof.ProfessionalInvoices
                          where inv.Year == year
                          select inv.InvoiceNumber).Max();
-
+                
                 return ++v;
             }
             else
                 return 1;
         }
-
+            
         public static bool DeleteInvoice(Invoice inv, AriClinicContext ctx)
         {
             // Last invoice number?
@@ -655,7 +664,7 @@ namespace AriCliModel
             // only the last invoice can be deleted
             if (inv.InvoiceNumber != n)
                 return false;
-
+                
             // erase possible service note relation
             if (inv.ServiceNotes != null && inv.ServiceNotes.Count > 0)
             {
@@ -673,13 +682,13 @@ namespace AriCliModel
             }
             // delete lines
             ctx.Delete(inv.InvoiceLines);
-
+            
             // delete invoice
             ctx.Delete(inv);
-
+        
             return true;
         }
-
+            
         public static bool DeleteProfessionalInvoice(ProfessionalInvoice inv, AriClinicContext ctx)
         {
             // Last invoice number?
@@ -687,16 +696,16 @@ namespace AriCliModel
             // only the last invoice can be deleted
             if (inv.InvoiceNumber != n)
                 return false;
-
+            
             // delete lines
             ctx.Delete(inv.ProfessionalInvoiceLines);
-
+            
             // delete invoice
             ctx.Delete(inv);
-
+        
             return true;
         }
-
+                     
         public static bool CorrectInvoiceDate(DateTime date, AriClinicContext ctx)
         {
             var rs = from i in ctx.Invoices
@@ -707,7 +716,7 @@ namespace AriCliModel
             else
                 return true;
         }
-
+                     
         public static bool CorrectProfessionalInvoiceDate(DateTime date, Professional prof)
         {
             var rs = from i in prof.ProfessionalInvoices
@@ -718,28 +727,28 @@ namespace AriCliModel
             else
                 return true;
         }
-
+                    
         public static PaymentMethod GetPaymentMethod(int paymentMethodId, AriClinicContext ctx)
         {
             return (from pm in ctx.PaymentMethods
                     where pm.PaymentMethodId == paymentMethodId
                     select pm).FirstOrDefault<PaymentMethod>();
         }
-
+                    
         public static GeneralPayment GetGeneralPayment(int id, AriClinicContext ctx)
         {
             return (from gp in ctx.GeneralPayments
                     where gp.GeneralPaymentId == id
                     select gp).FirstOrDefault<GeneralPayment>();
         }
-
+                    
         public static Payment GetPayment(int paymentId, AriClinicContext ctx)
         {
             return (from p in ctx.Payments
                     where p.PaymentId == paymentId
                     select p).FirstOrDefault<Payment>();
         }
-
+            
         public static void UpdateTicketPayments(Ticket tck, AriClinicContext ctx)
         {
             decimal total = 0;
@@ -750,7 +759,7 @@ namespace AriCliModel
             tck.Paid = total;
             ctx.SaveChanges();
         }
-
+            
         public static bool PaymentControl(Ticket tck, Payment pay, decimal amount)
         {
             decimal thisAmount = 0;
@@ -761,16 +770,19 @@ namespace AriCliModel
             else
                 return true;
         }
+                    
         public static IList<GeneralPayment> GetGeneralPayments(AriClinicContext ctx)
         {
             return (from gp in ctx.GeneralPayments
                     select gp).ToList<GeneralPayment>();
         }
+                    
         public static IList<GeneralPayment> GetGeneralPayments(Customer cus, AriClinicContext ctx)
         {
             return (from gp in ctx.GeneralPayments
                     select gp).ToList<GeneralPayment>();
         }
+                     
         public static IList<Payment> GetPayments(Customer cus, AriClinicContext ctx)
         {
             var rs = from p in ctx.Payments
@@ -779,7 +791,7 @@ namespace AriCliModel
                      select p;
             return rs.ToList<Payment>();
         }
-
+            
         public static IList<Ticket> GetTickets(DateTime fromDate, DateTime toDate, int insuranceId, AriClinicContext ctx)
         {
             if (insuranceId == 0)
@@ -800,17 +812,19 @@ namespace AriCliModel
                 return rs.ToList<Ticket>();
             }
         }
-
+            
         public static IList<Ticket> GetTickets(DateTime fromDate, DateTime toDate, int insuranceId, AriClinicContext ctx, int noVoucher)
         {
             IList<Ticket> mTickets = GetTickets(fromDate, toDate, insuranceId, ctx);
             if (noVoucher != 0)
             {
-                mTickets = (from t in mTickets where t.Checked == false select t).ToList<Ticket>();
+                mTickets = (from t in mTickets
+                            where t.Checked == false
+                            select t).ToList<Ticket>();
             }
             return mTickets;
         }
-
+            
         public static IList<Payment> GetPayments(DateTime fromDate, DateTime toDate, int clinicId, AriClinicContext ctx)
         {
             if (clinicId == 0)
@@ -833,35 +847,35 @@ namespace AriCliModel
                 return rs.ToList<Payment>();
             }
         }
-
+                    
         public static TaxWithholdingType GetTaxWithholdingType(int id, AriClinicContext ctx)
         {
             return (from tw in ctx.TaxWithholdingTypes
                     where tw.TaxWithholdingTypeId == id
                     select tw).FirstOrDefault<TaxWithholdingType>();
         }
-
+                    
         public static Professional GetProfessional(int? id, AriClinicContext ctx)
         {
             return (from p in ctx.Professionals
                     where p.PersonId == id
                     select p).FirstOrDefault<Professional>();
         }
-
+                    
         public static Procedure GetProcedure(int id, AriClinicContext ctx)
         {
             return (from p in ctx.Procedures
                     where p.ProcedureId == id
                     select p).FirstOrDefault<Procedure>();
         }
-
+                    
         public static AnestheticServiceNote GetAnestheticServiceNote(int id, AriClinicContext ctx)
         {
             return (from ans in ctx.AnestheticServiceNotes
                     where ans.AnestheticServiceNoteId == id
                     select ans).FirstOrDefault<AnestheticServiceNote>();
         }
-
+                             
         public static Parameter GetParameter(AriClinicContext ctx)
         {
             Parameter par = (from p in ctx.Parameters
@@ -874,7 +888,7 @@ namespace AriCliModel
             }
             return par;
         }
-
+            
         public static void CheckAnestheticServiceNoteTickets(AnestheticServiceNote ansn, AriClinicContext ctx, IList<SaveCheck> lschk)
         {
             // Read parameters
@@ -927,9 +941,10 @@ namespace AriCliModel
                     {
                         anstk.Checked = CntAriCli.IsItInChecks(anstk, lschk);
                     }
-                    if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // increase 50%
+                    if (hRisk)
+                        anstk.Amount = anstk.Amount * 1.5M; // increase 50%
                     ctx.Add(anstk);
-
+            
                     ctx.SaveChanges();
                 }
             }
@@ -944,28 +959,28 @@ namespace AriCliModel
                 }
             }
         }
-
+                    
         public static Policy PrimaryPolicy(Customer cus)
         {
             return (from p in cus.Policies
                     where p.Type == "Primary"
                     select p).FirstOrDefault<Policy>();
         }
-
+                    
         public static InsuranceService PolicyIncludesService(Policy pol, Service ser)
         {
             return (from i in pol.Insurance.InsuranceServices
                     where i.Service.ServiceId == ser.ServiceId
                     select i).FirstOrDefault<InsuranceService>();
         }
-
+                    
         public static ServiceNote GetServiceNote(int id, AriClinicContext ctx)
         {
             return (from sn in ctx.ServiceNotes
                     where sn.ServiceNoteId == id
                     select sn).FirstOrDefault<ServiceNote>();
         }
-
+            
         public static void DeleteServiceNote(ServiceNote sn, AriClinicContext ctx)
         {
             // First delete related records.
@@ -977,14 +992,14 @@ namespace AriCliModel
             ctx.Delete(sn);
             ctx.SaveChanges();
         }
-
+            
         public static int InvoiceServiceNote(ServiceNote sn, AriClinicContext ctx)
         {
             // it there's an invoice related to this service 
             // we do nothing and return 0
             if (sn.Invoice != null)
                 return 0;
-
+            
             // invoice
             Invoice i = new Invoice();
             Decimal total = 0;
@@ -995,7 +1010,7 @@ namespace AriCliModel
             i.Year = i.InvoiceDate.Year;
             i.InvoiceNumber = CntAriCli.GetNextInvoiceNumber(i.Serial, i.Year, ctx);
             ctx.Add(i);
-
+                
             // invoice lines
             foreach (Ticket t in sn.Tickets)
             {
@@ -1010,12 +1025,12 @@ namespace AriCliModel
                 ctx.Add(il);
             }
             i.Total = total;
-
+        
             // save the work and return id
             ctx.SaveChanges();
             return i.InvoiceId;
         }
-
+            
         public static bool ContainsTicketsInvoiced(ServiceNote sn, AriClinicContext ctx)
         {
             foreach (Ticket t in sn.Tickets)
@@ -1025,7 +1040,7 @@ namespace AriCliModel
             }
             return false;
         }
-
+            
         public static void AddAutomaticTicket(AnestheticServiceNote ansn, Procedure proc, AriClinicContext ctx, bool multi, IList<SaveCheck> lschk)
         {
             // Does this customer have a primary policy with that service?
@@ -1069,11 +1084,12 @@ namespace AriCliModel
                 anstk.Amount = anstk.Amount / 2;
                 anstk.Comments = "-50%";
             }
-            if (hRisk) anstk.Amount = anstk.Amount * 1.5M; // high risk increase 50%
+            if (hRisk)
+                anstk.Amount = anstk.Amount * 1.5M; // high risk increase 50%
             ctx.Add(anstk);
             ctx.SaveChanges();
         }
-
+            
         public static IList<Ticket> GetTicketsByProfessional(DateTime fromDate, DateTime toDate, string ProfessionalId, AriClinicContext ctx)
         {
             int idProf = int.Parse(ProfessionalId);
@@ -1081,16 +1097,16 @@ namespace AriCliModel
                     where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Professional.PersonId == idProf
                     select t).Distinct().ToList<Ticket>();
         }
-
+                                    
         public static IList<Ticket> GetTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<Ticket> tickets = (from t in ctx.Tickets
                                     where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                     select t).ToList<Ticket>();
-
+        
             return tickets;
         }
-
+            
         public static IList<AnestheticTicket> GetTicketsByCirujano(DateTime fromDate, DateTime toDate, string ProfessionalId, AriClinicContext ctx)
         {
             int idProf = int.Parse(ProfessionalId);
@@ -1098,16 +1114,16 @@ namespace AriCliModel
                     where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon.PersonId == idProf
                     select t).Distinct().ToList<AnestheticTicket>();
         }
-
+                                              
         public static IList<AnestheticTicket> GetTicketsAnestesicos(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<AnestheticTicket> tickets = (from t in ctx.AnestheticTickets
                                               where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                               select t).ToList<AnestheticTicket>();
-
+        
             return tickets;
         }
-
+                
         public static void DeleteAnestheticServiceNote(AnestheticServiceNote ansn, AriClinicContext ctx)
         {
             foreach (AnestheticTicket at in ansn.AnestheticTickets)
@@ -1116,42 +1132,42 @@ namespace AriCliModel
             ctx.Delete(ansn);
             ctx.SaveChanges();
         }
-
+                                               
         public static IList<Professional> GetProfessionalTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.Tickets
                                                where t.TicketDate >= fromDate && t.TicketDate <= toDate
                                                select t.Professional).Distinct<Professional>().ToList<Professional>();
-
+        
             return professional;
         }
-
+                                               
         public static IList<Professional> GetSurgeonTickets(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.AnestheticTickets
                                                where t.TicketDate >= fromDate && t.TicketDate <= toDate && t.Surgeon != null
                                                select t.Surgeon).Distinct<Professional>().ToList<Professional>();
-
+        
             return professional;
         }
-
+                                               
         public static IList<Professional> GetSurgeonTickets(AriClinicContext ctx)
         {
             List<Professional> professional = (from t in ctx.AnestheticTickets
                                                where t.Surgeon != null
                                                select t.Surgeon).Distinct<Professional>().ToList<Professional>();
-
+        
             return professional;
         }
-
+                                      
         public static IList<Service> GetServices(AriClinicContext ctx)
         {
             List<Service> services = (from s in ctx.Services
                                       select s).ToList<Service>();
-
+        
             return services;
         }
-
+                    
         public static IList<Invoice> GetInvoices(DateTime fini, DateTime ffin, AriClinicContext ctx)
         {
             return (from inv in ctx.Invoices
@@ -1159,7 +1175,7 @@ namespace AriCliModel
                     orderby inv.InvoiceDate descending
                     select inv).ToList<Invoice>();
         }
-
+                    
         public static IList<Invoice> GetInvoicesByCustomer(DateTime ffin, int idCustomer, AriClinicContext ctx1)
         {
             return (from inv in ctx1.Invoices
@@ -1167,31 +1183,31 @@ namespace AriCliModel
                     orderby inv.InvoiceDate descending
                     select inv).ToList<Invoice>();
         }
-
+        
         public static IList<Diary> GetDiaries(AriClinicContext ctx)
         {
             return ctx.Diaries.ToList<Diary>();
         }
-
+                    
         public static Diary GetDiary(int id, AriClinicContext ctx)
         {
             return (from a in ctx.Diaries
                     where a.DiaryId == id
                     select a).FirstOrDefault<Diary>();
         }
-
+        
         public static IList<AppointmentType> GetAppointmentTypes(AriClinicContext ctx)
         {
             return ctx.AppointmentTypes.ToList<AppointmentType>();
         }
-
+                    
         public static AppointmentType GetAppointmentType(int id, AriClinicContext ctx)
         {
             return (from at in ctx.AppointmentTypes
                     where at.AppointmentTypeId == id
                     select at).FirstOrDefault<AppointmentType>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1199,7 +1215,7 @@ namespace AriCliModel
                     select a).ToList<AppointmentInfo>();
             //return ctx.AppointmentInfos.ToList<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetPatientAppointments(int patientId, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1207,28 +1223,28 @@ namespace AriCliModel
                     orderby a.BeginDateTime descending
                     select a).ToList<AppointmentInfo>();
         }
-
+                    
         public static AppointmentInfo GetAppointment(int id, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.AppointmentId == id
                     select a).FirstOrDefault<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(Diary diary, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.Diary.DiaryId == diary.DiaryId
                     select a).ToList<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(Diary diary, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1236,14 +1252,14 @@ namespace AriCliModel
                           a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(Professional professional, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
                     where a.Professional.PersonId == professional.PersonId
                     select a).ToList<AppointmentInfo>();
         }
-
+                    
         public static IList<AppointmentInfo> GetAppointments(Professional professional, DateTime start, DateTime end, AriClinicContext ctx)
         {
             return (from a in ctx.AppointmentInfos
@@ -1251,29 +1267,30 @@ namespace AriCliModel
                           a.BeginDateTime >= start && a.EndDateTime <= end
                     select a).ToList<AppointmentInfo>();
         }
-
+            
         public static string GetAppointmentSubject(AppointmentInfo app)
         {
             string profesional = "";
-            if (app.Professional != null) profesional = app.Professional.FullName;
+            if (app.Professional != null)
+                profesional = app.Professional.FullName;
             string frn = app.Patient.OftId.ToString();
             if (app.Arrival == null || NullDateTime(app.Arrival))
-                return String.Format("{0} ({1} | {2}) [{3}] NH:{4}", 
-                    app.Patient.FullName, app.AppointmentType.Name, app.Comments,profesional,frn);
+                return String.Format("{0} ({1} | {2}) [{3}] NH:{4}",
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, frn);
             else
                 return String.Format("{0} ({1} | {2}) [{3}] NH:{5} [{4:HH:mm:ss}]",
-                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival,frn);
+                    app.Patient.FullName, app.AppointmentType.Name, app.Comments, profesional, app.Arrival, frn);
         }
-
+            
         public static string GetAppointmentDescription(AppointmentInfo app, AriClinicContext ctx)
         {
             Parameter par = CntAriCli.GetParameter(ctx);
             string description = "";
             if (par.AppointmentExtension)
-                description =  String.Format("FRN:{0} - {1}",app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
+                description = String.Format("FRN:{0} - {1}", app.Patient.OftId, CntAriCli.GetInsuranceData(app.Patient, ctx));
             return description;
         }
-
+            
         public static bool DeleteCustomer(Customer cus, AriClinicContext ctx)
         {
             foreach (Policy item in cus.Policies)
@@ -1285,7 +1302,7 @@ namespace AriCliModel
             ctx.SaveChanges();
             return true;
         }
-
+            
         public static bool PayNote(PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, GeneralPayment gp, AriClinicContext ctx)
         {
             Payment p = null; // payment to be created
@@ -1296,9 +1313,11 @@ namespace AriCliModel
                 total_paid += tk.Paid;
             if ((note.Total - total_paid) < amount)
                 return false; // amount bigger than debt.
-
+                 
             //(1) Look for a ticket (inside note) with the same amount
-            t = (from tk in note.Tickets where (tk.Amount - tk.Paid) == amount select tk).FirstOrDefault<Ticket>();
+            t = (from tk in note.Tickets
+                 where (tk.Amount - tk.Paid) == amount
+                 select tk).FirstOrDefault<Ticket>();
             if (t != null)
             {
                 // (1.1) It exists.
@@ -1328,11 +1347,10 @@ namespace AriCliModel
             ctx.SaveChanges();
             return true;
         }
-
+            
         public static void CreatePayment(Ticket t, PaymentMethod pm, Decimal amount, DateTime dt, string des, ServiceNote note, Clinic cl, GeneralPayment gp, AriClinicContext ctx)
         {
             // Now we need verify if there's a payment yet with the same values
-
             Payment p = new Payment();
             p.Amount = amount;
             p.Clinic = cl;
@@ -1344,7 +1362,7 @@ namespace AriCliModel
             t.Paid = t.Paid + amount;
             ctx.Add(p);
         }
-
+            
         public static List<AnestheticServiceNote> GetAnestheticServiceNotesByPerson(Person p, AriClinicContext ctx)
         {
             Customer cust;
@@ -1354,12 +1372,12 @@ namespace AriCliModel
                 cust = (p as Customer);
             else
                 cust = new Customer();
-
+        
             return (from anes in ctx.AnestheticServiceNotes
                     where anes.Customer == cust
                     select anes).ToList<AnestheticServiceNote>();
         }
-
+            
         public static List<ServiceNote> GetServiceNotesByPerson(Person p, AriClinicContext ctx)
         {
             Customer cust;
@@ -1369,30 +1387,34 @@ namespace AriCliModel
                 cust = (p as Customer);
             else
                 cust = new Customer();
-
+                    
             return (from anes in ctx.ServiceNotes
                     orderby anes.ServiceNoteDate descending
                     where anes.Customer == cust
                     select anes).ToList<ServiceNote>();
         }
+                    
         public static IList<Diagnostic> GetDiagnostics(AriClinicContext ctx)
         {
             return (from d in ctx.Diagnostics
                     orderby d.Name
                     select d).ToList<Diagnostic>();
         }
+                    
         public static Diagnostic GetDiagnostic(int id, AriClinicContext ctx)
         {
             return (from d in ctx.Diagnostics
                     where d.DiagnosticId == id
                     select d).FirstOrDefault<Diagnostic>();
         }
+                    
         public static IList<DiagnosticAssigned> GetDiagnosticsAssigned(AriClinicContext ctx)
         {
             return (from da in ctx.DiagnosticAssigneds
                     orderby da.DiagnosticDate descending
                     select da).ToList<DiagnosticAssigned>();
         }
+                    
         public static IList<DiagnosticAssigned> GetDiagnosticsAssigned(Patient patient, AriClinicContext ctx)
         {
             return (from da in ctx.DiagnosticAssigneds
@@ -1400,42 +1422,49 @@ namespace AriCliModel
                     where da.Patient.PersonId == patient.PersonId
                     select da).ToList<DiagnosticAssigned>();
         }
+                    
         public static DiagnosticAssigned GetDiagnosticAssigned(int id, AriClinicContext ctx)
         {
             return (from da in ctx.DiagnosticAssigneds
                     where da.DiagnosticAssignedId == id
                     select da).FirstOrDefault<DiagnosticAssigned>();
         }
+                    
         public static IList<Drug> GetDrugs(AriClinicContext ctx)
         {
             return (from d in ctx.Drugs
                     orderby d.Name
                     select d).ToList<Drug>();
         }
+                    
         public static Drug GetDrug(int id, AriClinicContext ctx)
         {
             return (from d in ctx.Drugs
                     where d.DrugId == id
                     select d).FirstOrDefault<Drug>();
         }
+                    
         public static IList<Treatment> GetTreatments(AriClinicContext ctx)
         {
             return (from t in ctx.Treatments
                     orderby t.TreatmentDate descending
                     select t).ToList<Treatment>();
         }
+                    
         public static Treatment GetTreatment(int id, AriClinicContext ctx)
         {
             return (from t in ctx.Treatments
                     where t.TreatmentId == id
                     select t).FirstOrDefault<Treatment>();
         }
+                    
         public static IList<Examination> GetExaminations(AriClinicContext ctx)
         {
             return (from e in ctx.Examinations
                     orderby e.Name
                     select e).ToList<Examination>();
         }
+                    
         public static IList<Examination> GetExaminations(string gt, AriClinicContext ctx)
         {
             return (from e in ctx.Examinations
@@ -1443,80 +1472,91 @@ namespace AriCliModel
                     where e.ExaminationType.Code == gt
                     select e).ToList<Examination>();
         }
+                    
         public static Examination GetExamination(int id, AriClinicContext ctx)
         {
             return (from e in ctx.Examinations
                     where e.ExaminationId == id
                     select e).FirstOrDefault<Examination>();
         }
+                    
         public static IList<ExaminationAssigned> GetExaminationsAssigned(AriClinicContext ctx)
         {
             return (from ea in ctx.ExaminationAssigneds
                     orderby ea.ExaminationDate descending
                     select ea).ToList<ExaminationAssigned>();
         }
+                    
         public static ExaminationAssigned GetExaminationAssigned(int id, AriClinicContext ctx)
         {
             return (from ea in ctx.ExaminationAssigneds
                     where ea.ExaminationAssignedId == id
                     select ea).FirstOrDefault<ExaminationAssigned>();
         }
+                    
         public static IList<ExaminationType> GetExaminationTypes(AriClinicContext ctx)
         {
             return (from et in ctx.ExaminationTypes
                     orderby et.Name
                     select et).ToList<ExaminationType>();
         }
+                    
         public static ExaminationType GetExaminationType(string code, AriClinicContext ctx)
         {
             return (from et in ctx.ExaminationTypes
                     where et.Code == code
                     select et).FirstOrDefault<ExaminationType>();
         }
+                    
         public static WithoutGlassesTest GetWithoutGlassesTest(int id, AriClinicContext ctx)
         {
             return (from wh in ctx.WithoutGlassesTests
                     where wh.Id == id
                     select wh).FirstOrDefault<WithoutGlassesTest>();
         }
+                    
         public static GlassesTest GetGlassesTest(int id, AriClinicContext ctx)
         {
             return (from gt in ctx.GlassesTests
                     where gt.Id == id
                     select gt).FirstOrDefault<GlassesTest>();
         }
+                    
         public static PrescriptionGlasses GetPrescriptionGlasses(int id, AriClinicContext ctx)
         {
             return (from gt in ctx.PrescriptionGlasses
                     where gt.Id == id
                     select gt).FirstOrDefault<PrescriptionGlasses>();
         }
+                    
         public static OpticalObjectiveExamination GetOpticalObjectiveExamination(int id, AriClinicContext ctx)
         {
             return (from gt in ctx.OpticalObjectiveExaminations
                     where gt.Id == id
                     select gt).FirstOrDefault<OpticalObjectiveExamination>();
         }
+                    
         public static SubjectiveOpticalExamination GetSubjectiveOpticalExamination(int id, AriClinicContext ctx)
         {
             return (from gt in ctx.SubjectiveOpticalExaminations
                     where gt.Id == id
                     select gt).FirstOrDefault<SubjectiveOpticalExamination>();
         }
+                    
         public static Cycloplegia GetCycloplegia(int id, AriClinicContext ctx)
         {
             return (from gt in ctx.Cycloplegias
                     where gt.Id == id
                     select gt).FirstOrDefault<Cycloplegia>();
         }
-
+            
         public static int InvoiceAnesthesicServiceNote(AnestheticServiceNote asn, AriClinicContext ctx)
         {
             // it there's an invoice related to this service 
             // we do nothing and return 0
             if (asn.Invoice != null)
                 return 0;
-
+            
             // invoice
             Invoice i = new Invoice();
             Decimal total = 0;
@@ -1527,7 +1567,7 @@ namespace AriCliModel
             i.Year = i.InvoiceDate.Year;
             i.InvoiceNumber = CntAriCli.GetNextInvoiceNumber(i.Serial, i.Year, ctx);
             ctx.Add(i);
-
+                
             // invoice lines
             foreach (Ticket t in asn.AnestheticTickets)
             {
@@ -1542,12 +1582,12 @@ namespace AriCliModel
                 ctx.Add(il);
             }
             i.Total = total;
-
+        
             // save the work and return id
             ctx.SaveChanges();
             return i.InvoiceId;
         }
-
+            
         public static bool ContainsAnesthesicTicketsInvoiced(AnestheticServiceNote asn, AriClinicContext ctx)
         {
             foreach (Ticket t in asn.AnestheticTickets)
@@ -1557,142 +1597,163 @@ namespace AriCliModel
             }
             return false;
         }
+                    
         public static ContactLensesTest GetContactLensesTest(int id, AriClinicContext ctx)
         {
             return (from cl in ctx.ContactLensesTests
                     where cl.Id == id
                     select cl).FirstOrDefault<ContactLensesTest>();
         }
+                    
         public static IList<UnitType> GetUnitTypes(AriClinicContext ctx)
         {
             return (from ut in ctx.UnitTypes
                     select ut).ToList<UnitType>();
         }
+                    
         public static UnitType GetUnitType(int id, AriClinicContext ctx)
         {
             return (from ut in ctx.UnitTypes
                     where ut.UnitTypeId == id
                     select ut).FirstOrDefault<UnitType>();
         }
-
+                                                 
         public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, AriClinicContext ctx)
         {
             List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
                                                  where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate
                                                  select i).ToList<ProfessionalInvoice>();
-
+        
             return invoice;
         }
-
+                                                 
         public static IList<ProfessionalInvoice> GetProfesionalInvoices(DateTime fromDate, DateTime toDate, string idProfessional, AriClinicContext ctx)
         {
             List<ProfessionalInvoice> invoice = (from i in ctx.ProfessionalInvoices
                                                  where i.InvoiceDate >= fromDate && i.InvoiceDate <= toDate && i.Professional.PersonId.ToString() == idProfessional
                                                  select i).ToList<ProfessionalInvoice>();
-
+        
             return invoice;
         }
+                    
         public static IList<LabTest> GetLabTests(AriClinicContext ctx)
         {
             return (from l in ctx.LabTests
                     select l).ToList<LabTest>();
         }
+                    
         public static LabTest GetLabTest(int id, AriClinicContext ctx)
         {
             return (from l in ctx.LabTests
                     where l.LabTestId == id
                     select l).FirstOrDefault<LabTest>();
         }
+                    
         public static IList<LabTestAssigned> GetLabTestAssigneds(AriClinicContext ctx)
         {
             return (from la in ctx.LabTestAssigneds
                     select la).ToList<LabTestAssigned>();
         }
+                    
         public static LabTestAssigned GetLabTestAssigned(int id, AriClinicContext ctx)
         {
             return (from la in ctx.LabTestAssigneds
                     where la.LabTestAssignedId == id
                     select la).FirstOrDefault<LabTestAssigned>();
         }
+                    
         public static IList<ProcedureAssigned> GetProcedureAssigneds(AriClinicContext ctx)
         {
             return (from la in ctx.ProcedureAssigneds
                     select la).ToList<ProcedureAssigned>();
         }
+                    
         public static ProcedureAssigned GetProcedureAssigned(int id, AriClinicContext ctx)
         {
             return (from la in ctx.ProcedureAssigneds
                     where la.ProcedureAssignedId == id
                     select la).FirstOrDefault<ProcedureAssigned>();
         }
+                    
         public static IList<VisitReason> GetVisitReasons(AriClinicContext ctx)
         {
             return (from l in ctx.VisitReasons
                     select l).ToList<VisitReason>();
         }
+                    
         public static VisitReason GetVisitReason(int id, AriClinicContext ctx)
         {
             return (from l in ctx.VisitReasons
                     where l.VisitReasonId == id
                     select l).FirstOrDefault<VisitReason>();
         }
+                    
         public static IList<BaseVisit> GetVisits(AriClinicContext ctx)
         {
             return (from l in ctx.BaseVisits
                     orderby l.VisitDate descending
                     select l).ToList<BaseVisit>();
         }
+                    
         public static BaseVisit GetVisit(int id, AriClinicContext ctx)
         {
             return (from l in ctx.BaseVisits
                     where l.VisitId == id
                     select l).FirstOrDefault<BaseVisit>();
         }
+                    
         public static MotAppend GetMotAppend(int id, AriClinicContext ctx)
         {
             return (from m in ctx.MotAppends
                     where m.Id == id
                     select m).FirstOrDefault<MotAppend>();
         }
+                    
         public static AntSegment GetAntSegment(int id, AriClinicContext ctx)
         {
             return (from m in ctx.AntSegments
                     where m.Id == id
                     select m).FirstOrDefault<AntSegment>();
         }
+                    
         public static Fundus GetFundus(int id, AriClinicContext ctx)
         {
             return (from m in ctx.Fundus
                     where m.Id == id
                     select m).FirstOrDefault<Fundus>();
         }
+                            
         public static List<AnestheticTicket> GetAnestheticServiceTicketsBomba(DateTime fDate, DateTime tDate, AriClinicContext ctx1)
         {
             var anesNote = (from a in ctx1.AnestheticServiceNotes
                             where a.ServiceNoteDate >= fDate && a.ServiceNoteDate <= tDate && a.Chk1 == true && a.AnestheticTickets.Count > 0
                             select a).ToList<AnestheticServiceNote>();
-
+            
             var res = (from a in anesNote
                        select a.AnestheticTickets.First<AnestheticTicket>());
-
+        
             return res.ToList<AnestheticTicket>();
         }
+        
         public static IList<Source> GetSources(AriClinicContext ctx)
         {
             return ctx.Sources.OrderBy(x => x.Name).ToList<Source>();
         }
+                    
         public static Source GetSource(int id, AriClinicContext ctx)
         {
             return (from s in ctx.Sources
                     where s.SourceId == id
                     select s).FirstOrDefault<Source>();
         }
+                    
         public static Source GetSourceByOftId(int oftId, AriClinicContext ctx)
         {
             return (from s in ctx.Sources
                     where s.OftId == oftId
                     select s).FirstOrDefault<Source>();
         }
+            
         public static decimal GetServiceNoteAmount(ServiceNote snote)
         {
             decimal a = 0;
@@ -1702,6 +1763,7 @@ namespace AriCliModel
             }
             return a;
         }
+            
         public static decimal GetServiceNoteAmountPay(ServiceNote snote)
         {
             decimal a = 0;
@@ -1714,6 +1776,7 @@ namespace AriCliModel
             }
             return a;
         }
+            
         public static IList<SaveCheck> SaveChecks(AnestheticServiceNote asn)
         {
             IList<SaveCheck> lsc = new List<SaveCheck>();
@@ -1721,7 +1784,7 @@ namespace AriCliModel
             {
                 if (atck.Checked)
                 {
-                    SaveCheck  schk = new SaveCheck();
+                    SaveCheck schk = new SaveCheck();
                     schk.ProcedureId = atck.Procedure.ProcedureId;
                     schk.Chk = true;
                     lsc.Add(schk);
@@ -1729,24 +1792,27 @@ namespace AriCliModel
             }
             return lsc;
         }
+            
         public static bool IsItInChecks(AnestheticTicket atck, IList<SaveCheck> lsck)
         {
             bool res = false;
             SaveCheck sc = (from sck in lsck
                             where sck.ProcedureId == atck.Procedure.ProcedureId
                             select sck).FirstOrDefault<SaveCheck>();
-            if (sc != null) res = true;
+            if (sc != null)
+                res = true;
             return res;
         }
-
+            
         public static void CheckPolicy(Patient patient, AriClinicContext ctx)
         {
-
             // Does this customer have a policiy yet?
-            if (patient.Customer.Policies.Count > 0) return;
+            if (patient.Customer.Policies.Count > 0)
+                return;
             
             // He hasn't. Is there only one insurance company in db?.
-            if (ctx.Insurances.Count() != 1) return;
+            if (ctx.Insurances.Count() != 1)
+                return;
             Insurance insurance = ctx.Insurances.First<Insurance>();
             
             // There's only one insurance company and we create a policy related to it.
@@ -1755,22 +1821,13 @@ namespace AriCliModel
             policy.Customer = patient.Customer;
             ctx.Add(policy);
         }
-
+            
         public static PreviousMedicalRecord GetPreviousMedicalRecord(int patientId, AriClinicContext ctx)
         {
             PreviousMedicalRecord pmr = null;
             return pmr;
         }
-
-        public static int NextFrn(AriClinicContext ctx)
-        {
-            int nxtfrn = 0;
-            int i = (from p in ctx.Patients
-                     select p.OftId).Max();
-            nxtfrn = ++i;
-            return nxtfrn;
-        }
-
+            
         public static string GetInsuranceInformation(Patient patient, AriClinicContext ctx)
         {
             string res = "";
@@ -1788,86 +1845,254 @@ namespace AriCliModel
             }
             return res;
         }
-
+                    
         public static Person GetPersonByPatient(Patient patient, AriClinicContext ctx)
         {
             return (from p in ctx.People
                     where p.PersonId == patient.PersonId
                     select p).FirstOrDefault<Person>();
         }
+                    
         public static Person GetPersonByCustomer(Customer customer, AriClinicContext ctx)
         {
             return (from p in ctx.People
                     where p.PersonId == customer.PersonId
                     select p).FirstOrDefault<Person>();
         }
-
+                    
         public static IList<Template> GetTemplates(AriClinicContext ctx)
         {
             return (from t in ctx.Templates
                     select t).ToList<Template>();
         }
+                    
         public static Template GetTemplate(int id, AriClinicContext ctx)
         {
             return (from t in ctx.Templates
                     where t.TemplateId == id
                     select t).FirstOrDefault<Template>();
         }
-
+                    
         public static IList<Campaign> GetCampaigns(AriClinicContext ctx)
         {
             return (from c in ctx.Campaigns
                     select c).ToList<Campaign>();
         }
-
+                    
         public static Campaign GetCampaign(int id, AriClinicContext ctx)
         {
             return (from c in ctx.Campaigns
                     where c.CampaignId == id
                     select c).FirstOrDefault<Campaign>();
         }
-
+                    
         public static IList<Channel> GetChannels(AriClinicContext ctx)
         {
             return (from c in ctx.Channels
                     select c).ToList<Channel>();
         }
-
+                    
         public static Channel GetChannel(int id, AriClinicContext ctx)
         {
             return (from c in ctx.Channels
                     where c.ChannelId == id
                     select c).FirstOrDefault<Channel>();
         }
-
+                    
         public static IList<Request> GetRequests(AriClinicContext ctx)
         {
             return (from c in ctx.Requests
                     select c).ToList<Request>();
         }
-
+                    
+        public static IList<Request> GetRequestsByStatus(string status, AriClinicContext ctx)
+        {
+            return (from c in ctx.Requests
+                    where c.Status == status
+                    orderby c.RequestDateTime descending
+                    select c).ToList<Request>();
+        }
+        public static IList<Request> GetRequestsByStatus(string status, Patient patient, AriClinicContext ctx)
+        {
+            return (from c in ctx.Requests
+                    where c.Patient.PersonId == patient.PersonId
+                    && c.Status == status
+                    orderby c.RequestDateTime descending
+                    select c).ToList<Request>();
+        }                    
         public static Request GetRequest(int id, AriClinicContext ctx)
         {
             return (from c in ctx.Requests
                     where c.RequestId == id
                     select c).FirstOrDefault<Request>();
         }
-
+                    
         public static IList<Replay> GetReplays(AriClinicContext ctx)
         {
             return (from c in ctx.Replays
                     select c).ToList<Replay>();
         }
-
+                    
         public static Replay GetReplay(int id, AriClinicContext ctx)
         {
             return (from c in ctx.Replays
                     where c.ReplayId == id
                     select c).FirstOrDefault<Replay>();
         }
-
+            
         #region Auxiliary functions
-        #endregion
+            
+        public static int CalulatedAge(DateTime BornDate)
+        {
+            int age = 0;
+            if (String.Format("{0:dd/MM/yy}", BornDate) != "01/01/01")
+            {
+                // Calculate age from born date
+                age = DateTime.Now.Year - BornDate.Year;
+                // Substract a year if date is before birthday
+                if (DateTime.Now.Month < BornDate.Month ||
+                    (DateTime.Now.Month == BornDate.Month && DateTime.Now.Day < BornDate.Day))
+                    age--;
+            }
+            return age;
+        }
+                     
+        public static int NextFrn(AriClinicContext ctx)
+        {
+            int nxtfrn = 0;
+            int i = (from p in ctx.Patients
+                     select p.OftId).Max();
+            nxtfrn = ++i;
+            return nxtfrn;
+        }
+            
+        public static IList<Request> GetPossibleAssociateRequest(Patient p, AriClinicContext ctx)
+        {
+            IList<Request> lr = new List<Request>();
+            // dni match before other attempts
+            var rs = from r in ctx.Requests
+                     where r.Patient == null
+                     && r.Dni != ""
+                     && r.Dni == p.Customer.VATIN                          
+                     select r;
+            if (rs.Count() > 0)
+            {
+                foreach (Request rq in rs)
+                    lr.Add(rq);
+                return lr;
+            }
+            // first attempt
+            // Name, Surname1 and Surname2 matches
+            rs = from r in ctx.Requests
+                 where r.Patient == null 
+                 && r.FullName == p.FullName
+                 select r;
+            if (rs.Count() > 0)
+            {
+                foreach (Request rq in rs)
+                    lr.Add(rq);
+                return lr;
+            }
+            // second attempt
+            // telephone
+            foreach (Telephone t in p.Telephones)
+            {
+                rs = from r in ctx.Requests
+                     where r.Patient == null &&
+                           r.Telephone == t.Number
+                     select r;
+                if (rs.Count() > 0)
+                {
+                    foreach (Request rq in rs)
+                        lr.Add(rq);
+                    return lr;
+                }
+            }
+            // third attempt
+            // email
+            foreach (Email e in p.Emails)
+            {
+                rs = from r in ctx.Requests
+                     where r.Patient == null &&
+                           r.Email == e.Url
+                     select r;
+                if (rs.Count() > 0)
+                {
+                    foreach (Request rq in rs)
+                        lr.Add(rq);
+                    return lr;
+                }
+            }
+            return lr;
+        }
+        
+        public static void SetRequestAssociation(Patient p, IList<Request> lr, AriClinicContext ctx){
+            foreach (Request req in lr)
+            {
+                Request r = CntAriCli.GetRequest(req.RequestId, ctx);
+                if (r != null)
+                {
+                    r.Patient = CntAriCli.GetPatient(p.PersonId, ctx);
+                    r.Surname1 = "";
+                    r.Surname2 = "";
+                    r.Name = "";
+                    r.FullName = "";
+                    r.Sex = "";
+                    ctx.SaveChanges();
+                    if (r.BornDate != null && r.BornDate != new DateTime())
+                    {
+                        p.BornDate = r.BornDate;
+                    }
+                    if (r.Dni != "")
+                    {
+                        p.Customer.VATIN = r.Dni;
+                        r.Dni = "";
+                    }
+                    if (p.Addresses.Count == 0)
+                    {
+                        Address a = new Address();
+                        a.PostCode = r.PostalCode;
+                        p.Addresses.Add(a);
+                        r.PostalCode = "";
+                    }
+                    if (p.Emails.Count == 0)
+                    {
+                        Email e = new Email();
+                        e.Url = r.Email;
+                        p.Emails.Add(e);
+                        r.Email = "";
+                    }
+                    if (p.Telephones.Count == 0)
+                    {
+                        Telephone t = new Telephone();
+                        t.Number = r.Telephone;
+                        p.Telephones.Add(t);
+                        r.Telephone = "";
+                    }
+                    ctx.SaveChanges();
+                }
+            }
+        }
 
+        public static void CheckConversionRequest(Ticket tk, AriClinicContext ctx)
+        {
+            if (tk.Policy.Customer.Patients.Count > 0)
+            {
+                // obtain related patient
+                Patient p = tk.Policy.Customer.Patients[0];
+                // look for a request with the same customer and service
+                Request req = (from r in p.Requests
+                               where r.Status != "CONVERTIDA"
+                               && r.Service.ServiceId == tk.InsuranceService.Service.ServiceId
+                               select r).FirstOrDefault<Request>();
+                if (req != null)
+                {
+                    req.Status = "CONVERTIDA";
+                    ctx.SaveChanges();
+                }
+            }
+            
+        }
+        #endregion
     }
 }

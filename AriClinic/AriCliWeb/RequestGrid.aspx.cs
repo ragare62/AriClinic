@@ -12,6 +12,8 @@ public partial class RequestGrid : System.Web.UI.Page
     HealthcareCompany hc = null;
     string type = "";
     Permission per = null;
+    Patient patient = null;
+    int patientId = 0;
 
     #region Init Load Unload events
     
@@ -32,6 +34,11 @@ public partial class RequestGrid : System.Web.UI.Page
         // cheks if is call from another form
         if (Request.QueryString["Type"] != null)
             type = Request.QueryString["Type"];
+        if (Request.QueryString["PatientId"] != null)
+        {
+            patientId = int.Parse(Request.QueryString["PatientId"]);
+            patient = CntAriCli.GetPatient(patientId, ctx);
+        }
         // translate filters
         CntWeb.TranslateRadGridFilters(RadGrid1);
     }
@@ -54,7 +61,7 @@ public partial class RequestGrid : System.Web.UI.Page
     protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
     {
         // load grid data
-        RadGrid1.DataSource = ctx.Requests;
+        LoadWithStatus(rdcStatusType.SelectedValue);
     }
         
     protected void RadGrid1_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
@@ -140,7 +147,39 @@ public partial class RequestGrid : System.Web.UI.Page
         
     protected void RefreshGrid()
     {
-        RadGrid1.DataSource = ctx.Requests;
+        LoadWithStatus(rdcStatusType.SelectedValue);
+        RadGrid1.Rebind();
+    }
+
+    protected void LoadWithStatus(string status)
+    {
+        if (status == "TODAS")
+        {
+            if (patient != null)
+            {
+                RadGrid1.DataSource = ctx.Requests.OrderByDescending(x => x.RequestDateTime).Where(x => x.Patient.PersonId == patient.PersonId);
+            }
+            else
+            {
+                RadGrid1.DataSource = ctx.Requests.OrderByDescending(x => x.RequestDateTime);
+            }
+        }
+        else
+        {
+            if (patient != null)
+            {
+                RadGrid1.DataSource = CntAriCli.GetRequestsByStatus(status, ctx).Where(x => x.Patient.PersonId == patient.PersonId);
+            }
+            else
+            {
+                RadGrid1.DataSource = CntAriCli.GetRequestsByStatus(status, ctx);
+            }
+        }
+    }
+
+    protected void rdcStatusType_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        LoadWithStatus(rdcStatusType.SelectedValue);
         RadGrid1.Rebind();
     }
 }

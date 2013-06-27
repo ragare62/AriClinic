@@ -23,79 +23,70 @@ using AriCliModel;
 
 namespace AriCliModel	
 {
-	public partial class InsuranceService
+	public partial class Estimate
 	{
-		private int insuranceServiceId;
-		public virtual int InsuranceServiceId 
+		private int estimateId;
+		public virtual int EstimateId 
 		{ 
 		    get
 		    {
-		        return this.insuranceServiceId;
+		        return this.estimateId;
 		    }
 		    set
 		    {
-		        this.insuranceServiceId = value;
+		        this.estimateId = value;
 		    }
 		}
 		
-		private decimal price;
-		public virtual decimal Price 
+		private DateTime estimateDate;
+		public virtual DateTime EstimateDate 
 		{ 
 		    get
 		    {
-		        return this.price;
+		        return this.estimateDate;
 		    }
 		    set
 		    {
-		        this.price = value;
+		        this.estimateDate = value;
 		    }
 		}
 		
-		private int oftId;
-		public virtual int OftId 
+		private decimal total;
+		public virtual decimal Total 
 		{ 
 		    get
 		    {
-		        return this.oftId;
+		        return this.total;
 		    }
 		    set
 		    {
-		        this.oftId = value;
+		        this.total = value;
 		    }
 		}
 		
-		private Insurance insurance;
-		public virtual Insurance Insurance 
+		private string fullName;
+		public virtual string FullName 
 		{ 
 		    get
 		    {
-		        return this.insurance;
+		        return this.fullName;
 		    }
 		    set
 		    {
-		        this.insurance = value;
+		        this.fullName = value;
 		    }
 		}
 		
-		private Service service;
-		public virtual Service Service 
+		private Request request;
+		public virtual Request Request 
 		{ 
 		    get
 		    {
-		        return this.service;
+		        return this.request;
 		    }
 		    set
 		    {
-		        this.service = value;
-		    }
-		}
-		
-		private IList<Ticket> tickets = new List<Ticket>();
-		public virtual IList<Ticket> Tickets 
-		{ 
-		    get
-		    {
-		        return this.tickets;
+		        this.request = value;
 		    }
 		}
 		

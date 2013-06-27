@@ -131,8 +131,7 @@ public partial class PatientGrid : System.Web.UI.Page
                     break;
                 case "Delete":
                     Patient pat = CntAriCli.GetPatient(id, ctx);
-                    ctx.Delete(pat);
-                    ctx.SaveChanges();
+                    CntAriCli.DeletePatient(pat, ctx);
                     RefreshGrid();
                     break;
             }

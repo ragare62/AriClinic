@@ -294,5 +294,14 @@ namespace AriCliModel
 		    }
 		}
 		
+		private IList<Estimate> estimates = new List<Estimate>();
+		public virtual IList<Estimate> Estimates 
+		{ 
+		    get
+		    {
+		        return this.estimates;
+		    }
+		}
+		
 	}
 }
