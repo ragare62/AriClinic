@@ -90,6 +90,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private User user;
+		public virtual User User 
+		{ 
+		    get
+		    {
+		        return this.user;
+		    }
+		    set
+		    {
+		        this.user = value;
+		    }
+		}
+		
 		private IList<EstimateLine> estimateLines = new List<EstimateLine>();
 		public virtual IList<EstimateLine> EstimateLines 
 		{ 

@@ -1939,7 +1939,20 @@ namespace AriCliModel
                     where c.ReplayId == id
                     select c).FirstOrDefault<Replay>();
         }
-            
+
+        public static IList<Estimate> GetEstimates(AriClinicContext ctx)
+        {
+            return (from c in ctx.Estimates
+                    select c).ToList<Estimate>();
+        }
+
+        public static Estimate GetEstimate(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.Estimates
+                    where c.EstimateId == id
+                    select c).FirstOrDefault<Estimate>();
+        }
+ 
         #region Auxiliary functions
             
         public static int CalulatedAge(DateTime BornDate)

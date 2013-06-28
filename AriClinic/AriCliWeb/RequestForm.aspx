@@ -76,6 +76,16 @@
                         var w2 = window.open("ReplayForm.aspx?Caller=RequestForm&RequestId=" + id2 + "&ReplayId=" + id, "ERPLY", "width=800, height=750,resizable=1");
                         w2.focus();
                     }
+                    function NewEstimateRecord(id2) {
+                        //window.close();
+                        var w1 = window.open("EstimateForm.aspx?Caller=RequestForm&RequestId=" + id2, "NEST", "width=800, height=750,resizable=1");
+                        w1.focus();
+                    }
+                    function EditEstimateRecord(id, id2) {
+                        //window.close();
+                        var w2 = window.open("EstimateForm.aspx?Caller=RequestForm&RequestId=" + id2 + "&EstimateId=" + id, "EEST", "width=800, height=750,resizable=1");
+                        w2.focus();
+                    }
                 </script>
             </telerik:RadCodeBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">

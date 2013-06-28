@@ -59,6 +59,9 @@
         <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="12b59783-cc75-4cb6-a69e-d7344f65c05d" type="AriCliModel.Replay">
           <orm:collection element-class="AriCliModel.Replay" inverse-field="user" order-by="" uniqueId="135322e2-e345-4391-8159-d21a17399d2d" />
         </orm:field>
+        <orm:field name="estimates" property="Estimates" behavior="readwrite" uniqueId="3afff47b-587b-4893-aad2-f6d803143daa" type="AriCliModel.Estimate">
+          <orm:collection element-class="AriCliModel.Estimate" inverse-field="user" order-by="" uniqueId="e9ce4f9d-fe12-410d-a344-4d2f684c78ae" />
+        </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">
         <orm:table name="user_group" />
@@ -1858,6 +1861,11 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1892,6 +1900,11 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -2031,6 +2044,11 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -2158,6 +2176,11 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:table name="prescription_glasses" />
@@ -2422,6 +2445,11 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -3335,11 +3363,14 @@
         <orm:field name="fullName" property="FullName" uniqueId="b8f552cb-d025-40dd-b1f4-aee5448ba973" type="System.String">
           <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="request" property="Request" behavior="readwrite" uniqueId="26c31985-af7e-4915-9784-6001f57c7fd2" type="AriCliModel.Request">
+          <orm:reference uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
+        </orm:field>
         <orm:field name="estimateLines" property="EstimateLines" behavior="readwrite" uniqueId="8bba89f2-9437-4d39-a71e-7f026253782d" type="AriCliModel.EstimateLine">
           <orm:collection element-class="AriCliModel.EstimateLine" inverse-field="estimate" order-by="" uniqueId="0b3e5a43-f6ff-4ed7-b79f-3e71953be61a" />
         </orm:field>
-        <orm:field name="request" property="Request" behavior="readwrite" uniqueId="26c31985-af7e-4915-9784-6001f57c7fd2" type="AriCliModel.Request">
-          <orm:reference uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
+        <orm:field name="user" property="User" behavior="readwrite" uniqueId="b5974ef2-5ea3-4bd6-83b7-d87a59c1620d" type="AriCliModel.User">
+          <orm:reference uniqueId="e9ce4f9d-fe12-410d-a344-4d2f684c78ae" />
         </orm:field>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -4483,13 +4514,13 @@
           <NavigationalProperty Id="33a22153-0b9d-43de-b088-b13b5729763e" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0706908c-359d-41a1-9265-684a3ca07272">
-          <NavigationalProperty Id="ba6a3c78-04cb-45f4-926f-60e23d90e081" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="ba6a3c78-04cb-45f4-926f-60e23d90e081" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ba1963a7-4456-422a-b563-a21497014727">
-          <NavigationalProperty Id="39670036-72d8-4070-b167-68bd3ffb041a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="39670036-72d8-4070-b167-68bd3ffb041a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="19cf3d54-29fb-49d2-bde4-d86125026422">
-          <NavigationalProperty Id="19f6cd20-014e-4045-a6a0-147b2d57dc74" name="Professionals" type="IList&lt;Professional&gt;" label="Professionals : IList&lt;Professional&gt;" nullable="true" kind="Persistent" fieldName="professionals" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="19f6cd20-014e-4045-a6a0-147b2d57dc74" name="Professionals" type="IList&lt;Professional&gt;" label="Professionals : IList&lt;Professional&gt;" nullable="true" kind="Persistent" fieldName="professionals" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="bf767a06-2716-4f00-82c8-53c4eacfc09e">
           <NavigationalProperty Id="d5dd39c7-6dae-40c6-9a2b-86e8daa76c55" name="Appointments" type="IList&lt;AppointmentInfo&gt;" label="Appointments : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointments" isDependent="false" isManaged="false" />
@@ -4509,6 +4540,9 @@
         <classHasNavigationalProperties Id="d4b9efd7-43f3-4847-97a5-ec8ec22dbd30">
           <NavigationalProperty Id="12b59783-cc75-4cb6-a69e-d7344f65c05d" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5c858f93-94a4-41bb-be50-ce0cf5723a08">
+          <NavigationalProperty Id="3afff47b-587b-4893-aad2-f6d803143daa" name="Estimates" type="IList&lt;Estimate&gt;" label="Estimates : IList&lt;Estimate&gt;" nullable="true" kind="Persistent" fieldName="estimates" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5" name="UserGroup" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4516,10 +4550,10 @@
       <Property Id="1e276436-e00a-4f93-bacd-54418aaba9ae" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="cb3ca60e-ef81-491b-a134-6abfc72fdd9b">
-          <NavigationalProperty Id="6fa2e252-acc8-402f-aa45-b6e63193802d" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="6fa2e252-acc8-402f-aa45-b6e63193802d" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ad6f7d4a-b422-49bc-b986-e6696351f189">
-          <NavigationalProperty Id="316feb06-58b6-480c-a257-41724fea78c4" name="Permissions" type="IList&lt;Permission&gt;" label="Permissions : IList&lt;Permission&gt;" nullable="true" kind="Persistent" fieldName="permissions" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="316feb06-58b6-480c-a257-41724fea78c4" name="Permissions" type="IList&lt;Permission&gt;" label="Permissions : IList&lt;Permission&gt;" nullable="true" kind="Persistent" fieldName="permissions" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4706,10 +4740,10 @@
           <NavigationalProperty Id="9ec482b2-cdf0-4e42-b929-5644278c4cc9" name="ParentProcess" type="Process" label="ParentProcess : Process" nullable="true" kind="Persistent" fieldName="parentProcess" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="75f20cde-4cef-4a25-9856-9265d2d70810">
-          <NavigationalProperty Id="28ae6235-d5ef-46ee-9fd5-ae3e6ce05763" name="Processes" type="IList&lt;Process&gt;" label="Processes : IList&lt;Process&gt;" nullable="true" kind="Persistent" fieldName="processes" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="28ae6235-d5ef-46ee-9fd5-ae3e6ce05763" name="Processes" type="IList&lt;Process&gt;" label="Processes : IList&lt;Process&gt;" nullable="true" kind="Persistent" fieldName="processes" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="75844379-fbf3-47cd-9d21-9032a1bfe53b">
-          <NavigationalProperty Id="71aef017-10b7-4a18-8053-edfd70b0541d" name="Permissions" type="IList&lt;Permission&gt;" label="Permissions : IList&lt;Permission&gt;" nullable="true" kind="Persistent" fieldName="permissions" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="71aef017-10b7-4a18-8053-edfd70b0541d" name="Permissions" type="IList&lt;Permission&gt;" label="Permissions : IList&lt;Permission&gt;" nullable="true" kind="Persistent" fieldName="permissions" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4824,19 +4858,19 @@
       <Property Id="d99ca75e-209c-4930-b017-273f7506dc92" name="RemoteIp" label="RemoteIp : String" kind="Persistent" fieldName="remoteIp" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="9e190339-0a39-4099-ae21-a273ce28754b">
-          <NavigationalProperty Id="c738dc86-f17c-417b-98e3-eeecf722bbfc" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="c738dc86-f17c-417b-98e3-eeecf722bbfc" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="955c3269-0a3b-4c6a-91c2-76dbb9244754">
-          <NavigationalProperty Id="beb980c6-426e-4ebf-8b8d-360f253c8278" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="beb980c6-426e-4ebf-8b8d-360f253c8278" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="97ca0377-8944-4e65-ae52-29969f88e41b">
-          <NavigationalProperty Id="31f109b4-cae5-4a32-8aa1-141b8bf3be79" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="31f109b4-cae5-4a32-8aa1-141b8bf3be79" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="08aed4c1-553e-4562-82ce-995f6d920b9b">
-          <NavigationalProperty Id="18eee30d-cb08-4f47-a141-23734ed22406" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="18eee30d-cb08-4f47-a141-23734ed22406" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="1f412812-3335-43b3-a8e9-55daaac631cd">
-          <NavigationalProperty Id="70d9239b-532a-4553-85fa-7be453afbd22" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="70d9239b-532a-4553-85fa-7be453afbd22" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0435c173-6e19-4b21-9389-5c6a50ab1170">
           <NavigationalProperty Id="9dd64d8a-43b5-4e7c-a820-9af2f297d285" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
@@ -4883,13 +4917,13 @@
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="3e0e1051-95e2-43a6-9b74-429c76632f7d">
-          <NavigationalProperty Id="2579686b-b868-4e3b-9664-1af0789dd66b" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="2579686b-b868-4e3b-9664-1af0789dd66b" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="803c1a03-5bd1-42fe-a59c-5fa2d35b22bb">
-          <NavigationalProperty Id="c575eb09-7aeb-498f-b032-3aa126f0b55a" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="c575eb09-7aeb-498f-b032-3aa126f0b55a" name="Emails" type="IList&lt;Email&gt;" label="Emails : IList&lt;Email&gt;" nullable="true" kind="Persistent" fieldName="emails" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="88a8bf28-33fc-48a2-97c0-e27586ace8e2">
-          <NavigationalProperty Id="8649d1e7-d0d3-4674-b1d2-24ded8d8eb17" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="8649d1e7-d0d3-4674-b1d2-24ded8d8eb17" name="Addresses" type="IList&lt;Address&gt;" label="Addresses : IList&lt;Address&gt;" nullable="true" kind="Persistent" fieldName="addresses" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="cddb1e0d-e758-4945-b3db-01dd3414422a">
           <NavigationalProperty Id="cea0749d-94f1-4d49-8961-04d14db5ea23" name="Source" type="Source" label="Source : Source" nullable="true" kind="Persistent" fieldName="source" isDependent="false" isManaged="false" />
@@ -4902,7 +4936,7 @@
       <Property Id="aaedd31f-aaa9-4eb1-9117-233daa995f02" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="69fdae1b-5cfb-4c49-8283-1a2fe0b0c6fc">
-          <NavigationalProperty Id="af645bc1-c4df-487a-bf8f-167ef9854844" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="af645bc1-c4df-487a-bf8f-167ef9854844" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -4913,10 +4947,10 @@
       <Property Id="9871d791-1775-4d6b-97b2-0930bd3c72f7" name="OftId" type="Int32" label="OftId : Int32" kind="Persistent" fieldName="oftId" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="8ad949b1-a788-43ad-a20e-e2716775ab01">
-          <NavigationalProperty Id="95f124c4-4f4c-4bb9-b6a5-94be2ee4c0d7" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="95f124c4-4f4c-4bb9-b6a5-94be2ee4c0d7" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="37f1dc5e-8e30-4962-b8b2-28d90196f532">
-          <NavigationalProperty Id="c3e2f6ee-82b4-47b2-9192-12e4571c6dd2" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="c3e2f6ee-82b4-47b2-9192-12e4571c6dd2" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="604ce1f2-24a1-4fbe-a129-26f0b4117ab1">
           <NavigationalProperty Id="38926bf8-3d5f-476b-86b7-0f1a78fb185b" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
@@ -4963,13 +4997,13 @@
           <NavigationalProperty Id="21784b68-af51-4342-b0f1-e7da82f10511" name="TaxType" type="TaxType" label="TaxType : TaxType" nullable="true" kind="Persistent" fieldName="taxType" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="daf4fdda-7b9f-4aa7-8d66-fc283abeefeb">
-          <NavigationalProperty Id="7d62c4e0-8a52-43fc-b0f2-36deb7970530" name="InsuranceServices" type="IList&lt;InsuranceService&gt;" label="InsuranceServices : IList&lt;InsuranceService&gt;" nullable="true" kind="Persistent" fieldName="insuranceServices" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="7d62c4e0-8a52-43fc-b0f2-36deb7970530" name="InsuranceServices" type="IList&lt;InsuranceService&gt;" label="InsuranceServices : IList&lt;InsuranceService&gt;" nullable="true" kind="Persistent" fieldName="insuranceServices" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="2268a9f2-9435-48e1-a31c-934566adda08">
-          <NavigationalProperty Id="fcdffb57-3c49-41dc-97ed-1504ed45e541" name="Procedures" type="IList&lt;Procedure&gt;" label="Procedures : IList&lt;Procedure&gt;" nullable="true" kind="Persistent" fieldName="procedures" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="fcdffb57-3c49-41dc-97ed-1504ed45e541" name="Procedures" type="IList&lt;Procedure&gt;" label="Procedures : IList&lt;Procedure&gt;" nullable="true" kind="Persistent" fieldName="procedures" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="5ed09ae2-ce2d-45b0-95f3-4fe76c8de200">
-          <NavigationalProperty Id="dbf0d833-dda8-40c3-8482-07ca2c714556" name="Parameters" type="IList&lt;Parameter&gt;" label="Parameters : IList&lt;Parameter&gt;" nullable="true" kind="Persistent" fieldName="parameters" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="dbf0d833-dda8-40c3-8482-07ca2c714556" name="Parameters" type="IList&lt;Parameter&gt;" label="Parameters : IList&lt;Parameter&gt;" nullable="true" kind="Persistent" fieldName="parameters" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="29111381-89b9-421a-a2e0-c2862bae024a">
           <NavigationalProperty Id="1a370ad9-be29-4df9-8de1-e5c92644a22d" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
@@ -4986,7 +5020,7 @@
       <Property Id="9d3b6b02-12ea-4fd4-b0ec-d11fe75babd8" name="OftId" type="Int32" label="OftId : Int32" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="31c7499d-617d-4458-975a-d448f7facc55">
-          <NavigationalProperty Id="997a8526-8f65-49e8-ba8f-b4943950e235" name="InsuranceServices" type="IList&lt;InsuranceService&gt;" label="InsuranceServices : IList&lt;InsuranceService&gt;" nullable="true" kind="Persistent" fieldName="insuranceServices" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="997a8526-8f65-49e8-ba8f-b4943950e235" name="InsuranceServices" type="IList&lt;InsuranceService&gt;" label="InsuranceServices : IList&lt;InsuranceService&gt;" nullable="true" kind="Persistent" fieldName="insuranceServices" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="abb68a1b-cd00-4014-951e-e12022616349">
           <NavigationalProperty Id="d8b3a2a4-0e36-4f4b-9004-36d0026b1f3c" name="Policies" type="IList&lt;Policy&gt;" label="Policies : IList&lt;Policy&gt;" nullable="true" kind="Persistent" fieldName="policies1" isDependent="false" isManaged="false" />
@@ -5033,7 +5067,7 @@
           <NavigationalProperty Id="9c26f350-982a-48a4-a8a0-28783f88a3cd" name="Service" type="Service" label="Service : Service" nullable="true" kind="Persistent" fieldName="service" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="e8f6948c-605d-4fa1-a002-19e9870f77d9">
-          <NavigationalProperty Id="c75f4b46-0d85-4625-ac9e-10c26d7fb232" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="c75f4b46-0d85-4625-ac9e-10c26d7fb232" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="2e0d0091-2517-45f3-8d0a-b6c584a25c10">
           <NavigationalProperty Id="5b2aae7c-7dd0-4f83-a04b-393589a55e6d" name="EstimateLines" type="IList&lt;EstimateLine&gt;" label="EstimateLines : IList&lt;EstimateLine&gt;" nullable="true" kind="Persistent" fieldName="estimateLines" isDependent="false" isManaged="false" />
@@ -5307,10 +5341,10 @@
           <NavigationalProperty Id="cad88e77-89eb-47ce-a99d-f024d6764548" name="ServiceNote" type="ServiceNote" label="ServiceNote : ServiceNote" nullable="true" kind="Persistent" fieldName="serviceNote" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="34452404-da96-45ad-bb74-7b8fd4c5f007">
-          <NavigationalProperty Id="577ee35f-7cd7-46ce-ae67-e65cb376d479" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="577ee35f-7cd7-46ce-ae67-e65cb376d479" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b94fa9b0-43ab-4ecd-b97c-3a961d37ba56">
-          <NavigationalProperty Id="cd08edba-cf6e-471e-827e-acbf6b17047a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="cd08edba-cf6e-471e-827e-acbf6b17047a" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0ec67108-909e-4b31-9e3e-ff8f9547aa75">
           <NavigationalProperty Id="cb93d86f-1f0b-4303-8e2a-6240ff230cb2" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
@@ -5345,10 +5379,10 @@
           <NavigationalProperty Id="a26c3897-6d49-4b82-9265-aa76ad1d55ce" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b8145d15-a94c-4bbb-8aa5-0c1cee7d14fe">
-          <NavigationalProperty Id="6fabb14f-ad10-4e39-b3dd-ca8b7b04010c" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="6fabb14f-ad10-4e39-b3dd-ca8b7b04010c" name="InvoiceLines" type="IList&lt;InvoiceLine&gt;" label="InvoiceLines : IList&lt;InvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="invoiceLines" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="c0a1b599-9c64-4541-8d15-907236abf381">
-          <NavigationalProperty Id="0c4a83af-15bb-499d-a9a1-80893a9d608f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="0c4a83af-15bb-499d-a9a1-80893a9d608f" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="7c60f8df-33da-4194-a322-046d8cdf7e1b">
           <NavigationalProperty Id="7677258f-6212-462a-aed0-bd348debb9f0" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
@@ -5435,7 +5469,7 @@
       <Property Id="ce9efd0c-ce44-4ca9-8bef-652301f27ab1" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="422e67fb-6a53-4b4c-a3ac-7360a3a17846">
-          <NavigationalProperty Id="a8bbfd4f-bac8-44a4-b835-82eecb98f3cc" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="a8bbfd4f-bac8-44a4-b835-82eecb98f3cc" name="Payments" type="IList&lt;Payment&gt;" label="Payments : IList&lt;Payment&gt;" nullable="true" kind="Persistent" fieldName="payments" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="cf15ee06-59a5-44a3-aca8-579efda7fde0">
           <NavigationalProperty Id="91d9a841-5fc7-41ab-a234-42999ffa606e" name="GeneralPayments" type="IList&lt;GeneralPayment&gt;" label="GeneralPayments : IList&lt;GeneralPayment&gt;" nullable="true" kind="Persistent" fieldName="generalPayments" isDependent="false" isManaged="false" />
@@ -5539,7 +5573,7 @@
       <Property Id="d4b61129-464a-46ff-b6b1-6bfec370319d" name="Percentage" type="Decimal" label="Percentage : Decimal" kind="Persistent" fieldName="percentage" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="d696e655-1f3b-43cc-9a12-9e415303ce48">
-          <NavigationalProperty Id="0b781a37-03a6-4e31-a1be-c0ac34f04244" name="Professionals" type="IList&lt;Professional&gt;" label="Professionals : IList&lt;Professional&gt;" nullable="true" kind="Persistent" fieldName="professionals" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="0b781a37-03a6-4e31-a1be-c0ac34f04244" name="Professionals" type="IList&lt;Professional&gt;" label="Professionals : IList&lt;Professional&gt;" nullable="true" kind="Persistent" fieldName="professionals" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5591,7 +5625,7 @@
           <NavigationalProperty Id="c558b09a-3ddf-4f36-91b7-048dab2c5b26" name="User" type="User" label="User : User" nullable="true" kind="Persistent" fieldName="user" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="5cdf4333-9e5c-4fe5-b23d-78c78749732e">
-          <NavigationalProperty Id="6f15dfd4-508c-42ea-8c6b-3f0d9f13d676" name="AnestheticTickets" type="IList&lt;AnestheticTicket&gt;" label="AnestheticTickets : IList&lt;AnestheticTicket&gt;" nullable="true" kind="Persistent" fieldName="anestheticTickets" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="6f15dfd4-508c-42ea-8c6b-3f0d9f13d676" name="AnestheticTickets" type="IList&lt;AnestheticTicket&gt;" label="AnestheticTickets : IList&lt;AnestheticTicket&gt;" nullable="true" kind="Persistent" fieldName="anestheticTickets" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="57e35fb0-6d73-4450-9a6b-5f9f9e1d29aa">
           <NavigationalProperty Id="3171a10c-3a67-4b64-a804-30a48f3a14c0" name="ProfessionalInvoices" type="IList&lt;ProfessionalInvoice&gt;" label="ProfessionalInvoices : IList&lt;ProfessionalInvoice&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoices" isDependent="false" isManaged="false" />
@@ -5640,10 +5674,10 @@
           <NavigationalProperty Id="9754d2ad-ef89-4864-9638-d7f950bc828e" name="Service" type="Service" label="Service : Service" nullable="true" kind="Persistent" fieldName="service" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b1337e28-15ff-49c6-a192-9d3f32a1eb71">
-          <NavigationalProperty Id="fad080a5-93d0-439d-857c-377c591c1ccf" name="AnestheticTickets" type="IList&lt;AnestheticTicket&gt;" label="AnestheticTickets : IList&lt;AnestheticTicket&gt;" nullable="true" kind="Persistent" fieldName="anestheticTickets" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="fad080a5-93d0-439d-857c-377c591c1ccf" name="AnestheticTickets" type="IList&lt;AnestheticTicket&gt;" label="AnestheticTickets : IList&lt;AnestheticTicket&gt;" nullable="true" kind="Persistent" fieldName="anestheticTickets" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="858fe612-e321-45d3-889d-e59a97d3dbc4">
-          <NavigationalProperty Id="257eaa1c-ce0f-4541-8efb-3db4bac2c350" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="257eaa1c-ce0f-4541-8efb-3db4bac2c350" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0abfb080-ebaa-4e6a-9330-a4a4be5c0909">
           <NavigationalProperty Id="fdeda01f-af29-4f9a-9dcd-8ade67270f7f" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
@@ -5819,7 +5853,7 @@
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="de36449d-ae3f-4681-8e26-4978c9b00fc6">
-          <NavigationalProperty Id="eb8d61de-6a14-4837-9945-d14956d5448a" name="Procedures" type="IList&lt;Procedure&gt;" label="Procedures : IList&lt;Procedure&gt;" nullable="true" kind="Persistent" fieldName="procedures" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="eb8d61de-6a14-4837-9945-d14956d5448a" name="Procedures" type="IList&lt;Procedure&gt;" label="Procedures : IList&lt;Procedure&gt;" nullable="true" kind="Persistent" fieldName="procedures" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="a57ec1c5-8418-473a-9fd2-6dfdd86c6712">
           <NavigationalProperty Id="6e4637e9-f81a-4e76-81cd-e0ebc40c145e" name="ProfessionalInvoice" type="ProfessionalInvoice" label="ProfessionalInvoice : ProfessionalInvoice" nullable="true" kind="Persistent" fieldName="professionalInvoice" isDependent="false" isManaged="false" />
@@ -5961,7 +5995,7 @@
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="3086adab-a368-41d9-95fe-fcacb337894b">
-          <NavigationalProperty Id="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="e1b4dcf7-1d6c-4e42-b05c-a3b56fcc40e4" name="Tickets" type="IList&lt;Ticket&gt;" label="Tickets : IList&lt;Ticket&gt;" nullable="true" kind="Persistent" fieldName="tickets" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="2718a393-4f59-4d07-b29c-8f00155a6855">
           <NavigationalProperty Id="be1fb3cc-6a4d-497f-9255-b272c79f5c48" name="Invoice" type="Invoice" label="Invoice : Invoice" nullable="true" kind="Persistent" fieldName="invoice" isDependent="false" isManaged="false" />
@@ -7539,10 +7573,10 @@
       <Property Id="df819195-e734-4bef-81f8-2e17a88b052b" name="Name" label="Name : String" fieldName="name" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="768eefec-4792-4ffc-9e27-724ca3795f9a">
-          <NavigationalProperty Id="f6bcab00-118c-4d1e-bee1-cfa29f935af0" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="f6bcab00-118c-4d1e-bee1-cfa29f935af0" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="83d0056d-ba8b-439a-9e28-67b9567882f5">
-          <NavigationalProperty Id="cebce98b-442e-4ed4-b25d-e78f82bfdee6" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="false" />
+          <NavigationalProperty Id="cebce98b-442e-4ed4-b25d-e78f82bfdee6" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7830,6 +7864,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="e9ce4f9d-fe12-410d-a344-4d2f684c78ae" SourceMultiplicity="ZeroOne" name="EstimateHasUser">
+          <DomainClassMoniker name="/AriClinicContext/User" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b3871506-e5a6-4120-8f6f-8d22502d51e7">
+              <NavigationalPropertyMoniker name="/AriClinicContext/User/Estimates" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4db14182-cbd5-4e79-8821-8e2db9ed1b46">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Estimate/User" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="5040e59f-51ed-4cb7-b99f-d3ace2a90162">
@@ -7837,6 +7884,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="15a95b32-15b7-4800-94da-c6f464e7e7d8">
           <NavigationalProperty Id="26c31985-af7e-4915-9784-6001f57c7fd2" name="Request" type="Request" label="Request : Request" nullable="true" kind="Persistent" fieldName="request" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1d03c3ca-9c59-42e8-a79a-722e656d1efb">
+          <NavigationalProperty Id="b5974ef2-5ea3-4bd6-83b7-d87a59c1620d" name="User" type="User" label="User : User" nullable="true" kind="Persistent" fieldName="user" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

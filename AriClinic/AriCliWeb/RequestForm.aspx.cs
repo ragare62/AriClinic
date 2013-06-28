@@ -315,6 +315,22 @@ public partial class RequestForm : System.Web.UI.Page
     
     protected void btnEstimate_Click(object sender, ImageClickEventArgs e)
     {
+        if (!CreateChange())
+            return;
+        //
+        string command = "";
+        if (req.Estimates.Count > 0)
+        {
+            // There's a replay already
+            Estimate est = req.Estimates[0];
+            command = String.Format("EditEstimateRecord('{0}','{1}');", est.EstimateId, req.RequestId);
+        }
+        else
+        {
+            command = String.Format("NewEstimateRecord('{0}');", req.RequestId);
+        }
+        // string command = "CloseAndRebind('')";
+        RadAjaxManager1.ResponseScripts.Add(command);
     }
         
     protected void btnCopy_Click(object sender, ImageClickEventArgs e)
