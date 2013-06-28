@@ -22,35 +22,41 @@
                     <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
                 </Scripts>
             </telerik:RadScriptManager>
-            <script type="text/javascript" src="GeneralFormFunctions.js">
-                //Put your JavaScript code here.
-            </script>
-            <script type="text/javascript">
-                function refreshField(v1, v2, v3, v4, type) {
-                    if (type) {
-                        switch (type) {
-                            case "Service":
-                                combo = $find("<%= rdcService.ClientID %>");
-                                loadCombo(combo, v1, v3);
-                                break;
-                            default:
-                                break;
+            <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+                <script type="text/javascript" src="GeneralFormFunctions.js">
+                    //Put your JavaScript code here.
+                </script>
+                <script type="text/javascript">
+                    function refreshField(v1, v2, v3, v4, type) {
+                        if (type) {
+                            switch (type) {
+                                case "InsuranceService":
+                                    combo = $find("<%= rdcInsuranceService.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
-                }
-                function loadCombo(combo, v1, v3) {
-                    var items = combo.get_items();
-                    items.clear();
-                    var comboItem = new Telerik.Web.UI.RadComboBoxItem();
-                    comboItem.set_text(v3);
-                    comboItem.set_value(v1);
-                    items.add(comboItem);
-                    combo.commitChanges();
-                    comboItem.select();
-                }
+                    function loadCombo(combo, v1, v3) {
+                        var items = combo.get_items();
+                        items.clear();
+                        var comboItem = new Telerik.Web.UI.RadComboBoxItem();
+                        comboItem.set_text(v3);
+                        comboItem.set_value(v1);
+                        items.add(comboItem);
+                        combo.commitChanges();
+                        comboItem.select();
+                    }
+                    function refreshOpener() {
+                        window.opener.location.reload();
+                        window.close();
+                    }
+                </script>
+            </telerik:RadCodeBlock>
 
-            </script>
-            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
             </telerik:RadAjaxManager>
             <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
             </telerik:RadSkinManager>
@@ -96,17 +102,17 @@
                             </div>
                         </td>
                         <td colspan="3">
-                            <div id="Service" class="normalText">
-                                <asp:Label ID="lblService" runat="server" Text="Servicio" 
+                            <div id="InsuranceService" class="normalText">
+                                <asp:Label ID="lblInsuranceService" runat="server" Text="Servicio asegurado" 
                                            ToolTip="Servicio por el que se interesa"></asp:Label>
-                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/search_mini.png" CausesValidation="false"
-                                                 OnClientClick="searchService();" 
+                                <asp:ImageButton ID="imgInsuranceService" runat="server" ImageUrl="~/images/search_mini.png" CausesValidation="false"
+                                                 OnClientClick="searchInsuranceService();" 
                                                  ToolTip="Haga clic aquí para buscar un servicio" style="height: 10px" />
                                 <br />
-                                <telerik:RadComboBox runat="server" ID="rdcService" Height="100px" Width="100%" ItemsPerRequest="10" 
+                                <telerik:RadComboBox runat="server" ID="rdcInsuranceService" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                      EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                                      EmptyMessage="Escriba aquí ..." TabIndex="15" AutoPostBack="True"
-                                                     onitemsrequested="rdcService_ItemsRequested">
+                                                     onitemsrequested="rdcInsuranceService_ItemsRequested" OnSelectedIndexChanged="rdcInsuranceService_SelectedIndexChanged">
                                 </telerik:RadComboBox>
                             </div>
                         </td>
@@ -127,7 +133,7 @@
                             <div id="Discount" class="normalText">
                                 <asp:Label ID ="lblDiscount" runat="server" Text="Descuento"></asp:Label>
                                 <br />
-                                <telerik:RadNumericTextBox ID="txtDiscount" runat="server"></telerik:RadNumericTextBox>
+                                <telerik:RadNumericTextBox ID="txtDiscount" runat="server" AutoPostBack="True" OnTextChanged="txtDiscount_TextChanged"></telerik:RadNumericTextBox>
                             </div>
                         </td>
                         <td colspan="2">

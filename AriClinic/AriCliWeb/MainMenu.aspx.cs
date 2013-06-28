@@ -290,6 +290,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "request":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRequest();");
                 break;
+            case "estimate":
+                RadAjaxManager1.ResponseScripts.Add("LaunchEstimate();");
+                break;
             default:
                 break;
         }

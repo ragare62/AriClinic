@@ -39,6 +39,15 @@ public partial class EstimateLineForm {
     protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
     
     /// <summary>
+    /// Control RadCodeBlock1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
+    
+    /// <summary>
     /// Control RadAjaxManager1.
     /// </summary>
     /// <remarks>
@@ -129,31 +138,31 @@ public partial class EstimateLineForm {
     protected global::Telerik.Web.UI.RadComboBox rdcbInsurance;
     
     /// <summary>
-    /// Control lblService.
+    /// Control lblInsuranceService.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblService;
+    protected global::System.Web.UI.WebControls.Label lblInsuranceService;
     
     /// <summary>
-    /// Control ImageButton1.
+    /// Control imgInsuranceService.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+    protected global::System.Web.UI.WebControls.ImageButton imgInsuranceService;
     
     /// <summary>
-    /// Control rdcService.
+    /// Control rdcInsuranceService.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcService;
+    protected global::Telerik.Web.UI.RadComboBox rdcInsuranceService;
     
     /// <summary>
     /// Control lblAmount.

@@ -317,7 +317,7 @@ public partial class RequestForm : System.Web.UI.Page
     {
         if (!CreateChange())
             return;
-        //
+        // check if 
         string command = "";
         if (req.Estimates.Count > 0)
         {
@@ -327,7 +327,42 @@ public partial class RequestForm : System.Web.UI.Page
         }
         else
         {
-            command = String.Format("NewEstimateRecord('{0}');", req.RequestId);
+            Estimate est = new Estimate();
+            est.User = user;
+            est.FullName = req.FullName;
+            est.Request = req;
+            est.EstimateDate = DateTime.Now;
+            if (req.Patient != null)
+                est.FullName = req.Patient.FullName;
+            else
+                est.FullName = req.FullName;
+            ctx.Add(est);
+            ctx.SaveChanges(); 
+            if (req.Service != null)
+            {
+                if (req.Patient != null && req.Patient.Customer != null && req.Patient.Customer.Policies.Count > 0)
+                {
+                    Policy pol = req.Patient.Customer.Policies[0];
+                    InsuranceService inss = (from i in ctx.InsuranceServices
+                                             where i.Insurance == pol.Insurance
+                                             && i.Service.ServiceId == req.Service.ServiceId
+                                             select i).FirstOrDefault<InsuranceService>();
+                    if (inss != null)
+                    {
+                        // estimate line
+                        EstimateLine estl = new EstimateLine();
+                        estl.Estimate = est;
+                        estl.InsuranceService = inss;
+                        estl.Amount = inss.Price;
+                        estl.Discount = 0;
+                        estl.Description = inss.Service.Name;
+                        ctx.Add(estl);
+                        est.Total = estl.Amount;
+                        ctx.SaveChanges();
+                    }
+                }
+            }
+            command = String.Format("EditEstimateRecord('{0}','{1}');", est.EstimateId, req.RequestId);
         }
         // string command = "CloseAndRebind('')";
         RadAjaxManager1.ResponseScripts.Add(command);

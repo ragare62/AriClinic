@@ -370,6 +370,10 @@
               var w1 = window.open("RequestGrid.aspx", "REQ", "width=1024, height=750,resizable=1")
               w1.focus();
           }
+          function LaunchEstimate() {
+              var w1 = window.open("EstimateGrid.aspx", "EST", "width=1024, height=750,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -625,6 +629,8 @@
                         <telerik:RadMenuItem runat="server" Text="Canales" Value="channel">
                         </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Solicitudes de información" Value="request">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Presupuestos" Value="estimate">
                         </telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenuItem>

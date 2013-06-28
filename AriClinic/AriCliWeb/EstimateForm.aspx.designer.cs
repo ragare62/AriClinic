@@ -174,6 +174,15 @@ public partial class EstimateForm {
     protected global::System.Web.UI.WebControls.Label lblTotal;
     
     /// <summary>
+    /// Control RadGrid1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadGrid RadGrid1;
+    
+    /// <summary>
     /// Control lblMessage.
     /// </summary>
     /// <remarks>

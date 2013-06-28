@@ -117,17 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="sqlProfessionalInvoice.SelectCommand" xml:space="preserve">
+    <value>SELECT        professional_invoice.invoice_id, professional_invoice.serial, professional_invoice.year, professional_invoice.invoice_number, professional_invoice.invoice_date, 
+                         professional_invoice.tax_whith_holding_percentage, professional_invoice.total, professional_invoice_line.invoice_line_id, professional_invoice_line.description, 
+                         professional_invoice_line.tax_percentage, professional_invoice_line.amount, professional.vatin AS prof_vatin, professional.comercial_name AS prof_name, 
+                         address_1.type, address_1.street, address_1.street2, address_1.post_code, address_1.city, address_1.province, address_1.country, 
+                         healthcare_company.name AS company_name, healthcare_company.vatin AS company_vatin, address.street AS company_street, 
+                         address.post_code AS company_postcode, address.city AS company_city, address.province AS company_province, address.country AS company_country
+FROM            address INNER JOIN
+                         healthcare_company ON address.hc_id = healthcare_company.hc_id, address address_1 RIGHT OUTER JOIN
+                         professional ON address_1.person_id = professional.person_id RIGHT OUTER JOIN
+                         professional_invoice LEFT OUTER JOIN
+                         professional_invoice_line ON professional_invoice.invoice_id = professional_invoice_line.invoice_id ON 
+                         professional.person_id = professional_invoice.person_id
+WHERE        (address_1.type = 'Primary') AND (professional_invoice.invoice_id = @InvoiceId)</value>
+  </data>
   <data name="sqlProfessionalInvoice.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAuMTMuNDI2
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAuMTMuMjIw
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUFAQAAADJUZWxl
         cmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyQ29sbGVjdGlvbgEAAAASQ29sbGVjdGlv
         bmAxK2l0ZW1zA6YBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAu
-        MTMuNDI2LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
+        MTMuMjIwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
         AAAJAwAAAAQDAAAApgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVw
         b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTcu
-        MC4xMy40MjYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        MC4xMy4yMjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
         AwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJj
         ZVBhcmFtZXRlcltdAgAAAAgICQQAAAABAAAABwAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAADQMMBgAAAE5TeXN0ZW0uRGF0YSwgVmVy
@@ -143,15 +158,15 @@
   </data>
   <data name="sqlProfessionalInvoiceId.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAuMTMuNDI2
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAuMTMuMjIw
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUFAQAAADJUZWxl
         cmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyQ29sbGVjdGlvbgEAAAASQ29sbGVjdGlv
         bmAxK2l0ZW1zA6YBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjAu
-        MTMuNDI2LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
+        MTMuMjIwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
         AAAJAwAAAAQDAAAApgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVw
         b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTcu
-        MC4xMy40MjYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        MC4xMy4yMjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
         AwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJj
         ZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAAAQAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
@@ -160,20 +175,5 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ShowSnapGrid" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="sqlProfessionalInvoice.SelectCommand" xml:space="preserve">
-    <value>SELECT        professional_invoice.invoice_id, professional_invoice.serial, professional_invoice.year, professional_invoice.invoice_number, professional_invoice.invoice_date, 
-                         professional_invoice.tax_whith_holding_percentage, professional_invoice.total, professional_invoice_line.invoice_line_id, professional_invoice_line.description, 
-                         professional_invoice_line.tax_percentage, professional_invoice_line.amount, professional.vatin AS prof_vatin, professional.comercial_name AS prof_name, 
-                         address_1.type, address_1.street, address_1.street2, address_1.post_code, address_1.city, address_1.province, address_1.country, 
-                         healthcare_company.name AS company_name, healthcare_company.vatin AS company_vatin, address.street AS company_street, 
-                         address.post_code AS company_postcode, address.city AS company_city, address.province AS company_province, address.country AS company_country
-FROM            address INNER JOIN
-                         healthcare_company ON address.hc_id = healthcare_company.hc_id, address address_1 RIGHT OUTER JOIN
-                         professional ON address_1.person_id = professional.person_id RIGHT OUTER JOIN
-                         professional_invoice LEFT OUTER JOIN
-                         professional_invoice_line ON professional_invoice.invoice_id = professional_invoice_line.invoice_id ON 
-                         professional.person_id = professional_invoice.person_id
-WHERE        (address_1.type = 'Primary') AND (professional_invoice.invoice_id = @InvoiceId)</value>
   </data>
 </root>

@@ -39,7 +39,8 @@ public partial class EstimateLineForm : System.Web.UI.Page
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
         }
-
+        //
+        LoadComboInsurance();
         // 
         if (Request.QueryString["EstimateId"] != null)
         {
@@ -73,7 +74,8 @@ public partial class EstimateLineForm : System.Web.UI.Page
     {
         if (!CreateChange())
             return;
-        string command = "CloseAndRebind('')";
+        //string command = "CloseAndRebind('')";
+        string command = "refreshOpener();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -95,13 +97,13 @@ public partial class EstimateLineForm : System.Web.UI.Page
             return false;
         if (estl == null)
         {
-            est = new Estimate();
+            estl = new EstimateLine();
             UnloadData(estl);
             ctx.Add(estl);
         }
         else
         {
-            est = CntAriCli.GetEstimate(estId, ctx);
+            estl = CntAriCli.GetEstimateLine(estlId, ctx);
             UnloadData(estl);
         }
         ctx.SaveChanges();
@@ -112,16 +114,96 @@ public partial class EstimateLineForm : System.Web.UI.Page
         txtEstimateLineId.Text = estl.EstimateLineId.ToString();
         txtDescription.Text = estl.Description;
         txtAmount.Value = (double)estl.Amount;
+        txtDiscount.Value = (double)estl.Discount;
         txtTotal.Value = (double)(estl.Amount - estl.Discount);
+        Insurance iSelect = estl.InsuranceService.Insurance;
+        InsuranceService iServ = estl.InsuranceService;
+        if (iSelect != null)
+        {
+            rdcbInsurance.SelectedValue = iSelect.InsuranceId.ToString();
+        }
+        //
+        if (iServ != null)
+        {
+            rdcInsuranceService.Items.Clear();
+            rdcInsuranceService.Items.Add(new RadComboBoxItem(iServ.Service.Name, iServ.InsuranceServiceId.ToString()));
+            rdcInsuranceService.SelectedValue = iServ.InsuranceServiceId.ToString();
+        }
     }
     protected void UnloadData(EstimateLine estl)
     {
         estl.Description = txtDescription.Text;
         estl.Amount = (decimal)txtAmount.Value;
         estl.Discount = (decimal)txtDiscount.Value;
+        estl.InsuranceService = CntAriCli.GetInsuranceService(int.Parse(rdcInsuranceService.SelectedValue), ctx);
+        if (est != null)
+        {
+            estl.Estimate = est;
+        }
+    }
+    protected void LoadComboInsurance()
+    {
+        rdcbInsurance.Items.Clear();
+        Insurance iselect = null;
+        foreach (Insurance ins in CntAriCli.GetInsurances(ctx))
+        {
+            rdcbInsurance.Items.Add(new RadComboBoxItem(ins.Name, ins.InsuranceId.ToString()));
+            if (ins.Internal) iselect = ins;
+        }
+        if (iselect != null)
+        {
+            ImageButton imgb = (ImageButton)this.FindControl("imgInsuranceService");
+            imgb.OnClientClick = String.Format("searchInsuranceService({0});", iselect.InsuranceId);
+            rdcbInsurance.SelectedValue = iselect.InsuranceId.ToString();
+        }
     }
     #endregion Auxiliary functions
+    #region Searching outside
+    protected void rdcInsuranceService_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        // control insurance box
+        if (e.Text == "")
+            return;
+        //
+        
+        Insurance ins = CntAriCli.GetInsurance(int.Parse(rdcbInsurance.SelectedValue), ctx);
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from x in ins.InsuranceServices
+                 where x.Service.Name.Contains(e.Text)
+                 select x;
+        foreach (InsuranceService inss in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(inss.Service.Name, inss.InsuranceServiceId.ToString()));
+        }
+    }
+    #endregion  
 
+    protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+    {
+
+    }
+
+    protected void rdcInsuranceService_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        if (rdcInsuranceService.SelectedValue != "")
+        {
+            InsuranceService inss = CntAriCli.GetInsuranceService(int.Parse(rdcInsuranceService.SelectedValue), ctx);
+            if (inss != null)
+            {
+                txtAmount.Value = (double)inss.Price;
+                txtDiscount.Value = 0;
+                txtTotal.Value = (double)inss.Price;
+                txtDescription.Text = inss.Service.Name;
+            }
+        }
+    }
+
+    protected void txtDiscount_TextChanged(object sender, EventArgs e)
+    {
+        // refersh total
+        txtTotal.Value = txtAmount.Value - txtDiscount.Value;
+    }
 
 
 }

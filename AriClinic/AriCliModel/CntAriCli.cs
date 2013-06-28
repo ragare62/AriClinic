@@ -221,6 +221,12 @@ namespace AriCliModel
                     where s.ServiceId == id
                     select s).FirstOrDefault<Service>();
         }
+        public static List<Insurance> GetInsurances( AriClinicContext ctx)
+        {
+            return (from i in ctx.Insurances
+                    select i).ToList<Insurance>();
+        }
+
                     
         public static Insurance GetInsurance(int id, AriClinicContext ctx)
         {

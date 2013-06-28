@@ -26,6 +26,25 @@
                 <script type="text/javascript" src="GeneralFormFunctions.js"></script>
                 <script type="text/javascript" src="dialog_box.js"></script>
                 <script type="text/javascript">
+                    function refreshGrid(arg) {
+                        //alert("Hello from refreshGrid");
+                        if (!arg) {
+                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("");
+                        }
+                        else {
+                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("new");
+                        }
+                    }
+                    function NewEstimateLine(id2) {
+                        var w1 = window.open("EstimateLineForm.aspx?EstimateId=" + id2, "NELN", "width=650, height=550,resizable=1,scrollbars=1");
+                        w1.focus();
+                    }
+                    function EditEstimateLine(id,id2) {
+                        var w2 = window.open("EstimateLineForm.aspx?EstimateLineId=" + id + "&EstimateId=" + id2, "EELN", "width=650, height=550,resizable=1,scrollbars=1");
+                        w2.focus();
+                    }
+                </script>
+                <script type="text/javascript">
                     function refreshField(v1, v2, v3, v4, type) {
                         if (type) {
                             switch (type) {
@@ -44,19 +63,17 @@
                         combo.commitChanges();
                         comboItem.select();
                     }
-                    function NewReplayRecord(id2) {
-                        //window.close();
-                        var w1 = window.open("ReplayForm.aspx?Caller=EstimateForm&EstimateId=" + id2, "NRPLY", "width=800, height=750,resizable=1");
-                        w1.focus();
-                    }
-                    function EditReplayRecord(id, id2) {
-                        //window.close();
-                        var w2 = window.open("ReplayForm.aspx?Caller=EstimateForm&EstimateId=" + id2 + "&ReplayId=" + id, "ERPLY", "width=800, height=750,resizable=1");
-                        w2.focus();
-                    }
                 </script>
             </telerik:RadCodeBlock>
-            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxEstimate="RadAjaxManager1_AjaxEstimate">
+            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+                <AjaxSettings>
+                    <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                        <UpdatedControls>
+                            <telerik:AjaxUpdatedControl ControlID="lblTotal" UpdatePanelCssClass="" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid1" UpdatePanelCssClass="" />
+                        </UpdatedControls>
+                    </telerik:AjaxSetting>
+                </AjaxSettings>
             </telerik:RadAjaxManager>
             <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
             </telerik:RadSkinManager>
@@ -125,6 +142,81 @@
                             <td colspan="1">
                                 <div id="Total" class="totalText">
                                     <asp:Label ID="lblTotal" runat="server" Text="TOTAL:"></asp:Label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div id="EstimateLineGrid" class="normalText" style="width:100%">
+                                    <telerik:RadGrid ID="RadGrid1" runat="server" Skin="Office2007"
+                                                     AllowPaging="True" PageSize="6" AllowFilteringByColumn="True" 
+                                                     onitemcommand="RadGrid1_ItemCommand" onitemdatabound="RadGrid1_ItemDataBound" 
+                                                     onneeddatasource="RadGrid1_NeedDataSource" GridLines="None" 
+                                                     meta:resourcekey="RadGrid1Resource1">
+                                        <MasterTableView AutoGenerateColumns="False" datakeynames="EstimateLineId" 
+                                                         CommandItemDisplay="Top">
+                                            <CommandItemSettings ExportToPdfText="Export to Pdf" />
+                                            <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
+                                            </RowIndicatorColumn>
+                                            <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
+                                            </ExpandCollapseColumn>
+                                            <Columns>
+                                                <telerik:GridBoundColumn DataField="EstimateLineId" DataType="System.Int32" 
+                                                                         FilterControlAltText="Filter ChannelId column" HeaderText="LID" 
+                                                                         meta:resourcekey="GridBoundColumnResource1" ReadOnly="True" 
+                                                                         SortExpression="EstimateLineId" UniqueName="EstimateLineId">
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Description" 
+                                                                         FilterControlAltText="Filter Name column" HeaderText="Concepto" 
+                                                                         meta:resourcekey="GridBoundColumnResource2" ReadOnly="True" 
+                                                                         SortExpression="Description" UniqueName="Description">
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Amount" DataFormatString="{0:C}" 
+                                                                         FilterControlToolTip="Filtrar por precio" FilterImageToolTip="Filtro"
+                                                                         HeaderText="Importe" meta:resourceKey="GridBoundColumnResource5" 
+                                                                         ReadOnly="True" SortExpression="Amount" 
+                                                                         UniqueName="Amount">
+                                                    <HeaderStyle HorizontalAlign="Right" />
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Discount" DataFormatString="{0:C}" 
+                                                                         FilterControlToolTip="Filtrar por descuento" FilterImageToolTip="Filtro"
+                                                                         HeaderText="Descuento" meta:resourceKey="GridBoundColumnResource5" 
+                                                                         ReadOnly="True" SortExpression="Discount" 
+                                                                         UniqueName="Discount">
+                                                    <HeaderStyle HorizontalAlign="Right" />
+                                                    <ItemStyle HorizontalAlign="Right" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridTemplateColumn AllowFiltering="False" 
+                                                                            FilterControlAltText="Filter Template column" HeaderText="Acciones" 
+                                                                            meta:resourcekey="GridTemplateColumnResource1" UniqueName="Template">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="Edit" runat="server" 
+                                                                         ImageUrl="~/images/document_edit_16.png" meta:resourcekey="EditResource1" 
+                                                                         ToolTip="Editar este registro" />
+                                                        <asp:ImageButton ID="Delete" runat="server" 
+                                                                         ImageUrl="~/images/document_delete_16.png" meta:resourcekey="DeleteResource1" 
+                                                                         ToolTip="Eliminar este registro" />
+                                                    </ItemTemplate>
+                                                </telerik:GridTemplateColumn>
+                                            </Columns>
+                                            <EditFormSettings>
+                                                <EditColumn FilterControlAltText="Filter EditCommandColumn column">
+                                                </EditColumn>
+                                            </EditFormSettings>
+                                            <CommandItemTemplate>
+                                                <div ID="ButtonAdd" style="padding:2px;">
+                                                    <asp:ImageButton ID="New" runat="server" ImageUrl="~/images/document_add.png" 
+                                                                     meta:resourcekey="NewResource1" OnClientClick="NewEstimateLine();" 
+                                                                     ToolTip="Añadir un nuevo registro" />
+                                                </div>
+                                            </CommandItemTemplate>
+                                        </MasterTableView>
+                                        <FilterMenu EnableImageSprites="False">
+                                        </FilterMenu>
+                                        <HeaderContextMenu CssClass="GridContextMenu GridContextMenu_Office2007">
+                                        </HeaderContextMenu>
+                                    </telerik:RadGrid>
                                 </div>
                             </td>
                         </tr>
