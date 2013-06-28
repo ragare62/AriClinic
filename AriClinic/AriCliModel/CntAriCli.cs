@@ -1952,6 +1952,18 @@ namespace AriCliModel
                     where c.EstimateId == id
                     select c).FirstOrDefault<Estimate>();
         }
+        public static IList<EstimateLine> GetEstimateLines(AriClinicContext ctx)
+        {
+            return (from c in ctx.EstimateLines
+                    select c).ToList<EstimateLine>();
+        }
+
+        public static EstimateLine GetEstimateLine(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.EstimateLines
+                    where c.EstimateLineId == id
+                    select c).FirstOrDefault<EstimateLine>();
+        }
  
         #region Auxiliary functions
             
