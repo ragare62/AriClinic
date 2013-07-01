@@ -19,6 +19,7 @@ public partial class RptView : System.Web.UI.Page
     BaseVisit visit = null;
     Treatment treatment = null;
     Invoice invoice = null;
+    Estimate estimate = null;
     PrescriptionGlasses prescriptionGlasses = null;
     string report = "";
     Permission per = null;
@@ -55,6 +56,8 @@ public partial class RptView : System.Web.UI.Page
             invoice = CntAriCli.GetInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
         if (Request.QueryString["PrescriptionGlasses"] != null)
             prescriptionGlasses = CntAriCli.GetPrescriptionGlasses(int.Parse(Request.QueryString["PrescriptionGlasses"]), ctx);
+        if (Request.QueryString["Estimate"] != null)
+            estimate = CntAriCli.GetEstimate(int.Parse(Request.QueryString["Estimate"]), ctx);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -230,6 +233,17 @@ public partial class RptView : System.Web.UI.Page
                         this.Title = "Facturas por periodo y cliente";
                         RptInvoicesPeriod2 rptinvp2 = new RptInvoicesPeriod2();
                         ReportViewer1.Report = rptinvp2;
+                        break;
+                    case "rptestimate":
+                        this.Title = "Presupuestos";
+                        RptEstimate rptestimate = new RptEstimate();
+                        if (estimate != null)
+                        {
+                            rptestimate.ReportParameters["Estimate"].Visible = false;
+                            rptestimate.ReportParameters["Estimate"].MultiValue = false;
+                            rptestimate.ReportParameters["Estimate"].Value = estimate.EstimateId;
+                        }
+                        ReportViewer1.Report = rptestimate;
                         break;
                 }
             }

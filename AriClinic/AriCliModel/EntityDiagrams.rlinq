@@ -3364,7 +3364,7 @@
           <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="comments" property="Comments" uniqueId="0d3b403f-5215-49c1-9a85-b518a72a7b39" type="System.String">
-          <orm:column nullable="false" scale="0" length="0" sql-type="text" name="comments" ado-type="" />
+          <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="request" property="Request" behavior="readwrite" uniqueId="26c31985-af7e-4915-9784-6001f57c7fd2" type="AriCliModel.Request">
           <orm:reference uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
@@ -4431,7 +4431,7 @@
         <orm:column name="estimate_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="ttal" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="text" name="comments" ado-type="" />
+        <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
     </orm:schema>
   </orm:orm>

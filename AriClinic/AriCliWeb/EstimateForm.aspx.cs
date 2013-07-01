@@ -28,7 +28,7 @@ public partial class EstimateForm : System.Web.UI.Page
     #endregion Variables declarations
     
     #region Init Load Unload events
-        
+    
     protected void Page_Init(object sender, EventArgs e)
     {
         ctx = new AriClinicContext("AriClinicContext");
@@ -81,7 +81,7 @@ public partial class EstimateForm : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-        
+    
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
@@ -92,7 +92,7 @@ public partial class EstimateForm : System.Web.UI.Page
     #endregion Init Load Unload events
     
     #region Page events (clics)
-            
+    
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         if (!CreateChange())
@@ -109,7 +109,7 @@ public partial class EstimateForm : System.Web.UI.Page
         }
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-        
+    
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
@@ -117,9 +117,9 @@ public partial class EstimateForm : System.Web.UI.Page
     }
     
     #endregion Page events (clics)
-        
+    
     #region Auxiliary functions
-        
+    
     protected bool DataOk()
     {
         string message = "";
@@ -130,14 +130,14 @@ public partial class EstimateForm : System.Web.UI.Page
         if (txtFullName.Text == "")
         {
             message += Resources.GeneralResource.CustomerNeeded + "<br/>";
-        } if (message != "")
+        }if (message != "")
         {
             lblMessage.Text = message;
             return false;
         }
         return true;
     }
-        
+    
     protected bool CreateChange()
     {
         if (!DataOk())
@@ -156,7 +156,7 @@ public partial class EstimateForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
-        
+    
     protected void LoadData(Estimate estimate)
     {
         txtEstimateId.Text = estimate.EstimateId.ToString();
@@ -165,7 +165,7 @@ public partial class EstimateForm : System.Web.UI.Page
         txtComments.Text = estimate.Comments;
         lblTotal.Text = String.Format("TOTAL: {0:###,###,#0.00}", estimate.Total);
     }
-        
+    
     protected void UnloadData(Estimate estimate)
     {
         estimate.EstimateDate = (DateTime)rdtEstimateDate.SelectedDate;
@@ -177,7 +177,7 @@ public partial class EstimateForm : System.Web.UI.Page
     }
     
     #endregion Auxiliary functions
-
+    
     protected void RadGrid1_ItemCommand(object sender, GridCommandEventArgs e)
     {
         // weonly process commands with a datasource (our image buttons)
@@ -198,8 +198,8 @@ public partial class EstimateForm : System.Web.UI.Page
                     break;
                 case "Delete":
                     EstimateLine estl = (from c in ctx.EstimateLines
-                                   where c.EstimateLineId == id
-                                   select c).FirstOrDefault<EstimateLine>();
+                                         where c.EstimateLineId == id
+                                         select c).FirstOrDefault<EstimateLine>();
                     ctx.Delete(estl);
                     ctx.SaveChanges();
                     RadGrid1.DataSource = estimate.EstimateLines;
@@ -208,9 +208,8 @@ public partial class EstimateForm : System.Web.UI.Page
                     break;
             }
         }
-
     }
-
+    
     protected void RadGrid1_ItemDataBound(object sender, GridItemEventArgs e)
     {
         if (e.Item is GridCommandItem)
@@ -225,24 +224,22 @@ public partial class EstimateForm : System.Web.UI.Page
             string command = "";
             GridDataItem gdi;
             int id = 0;
-
+            
             id = (int)e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex][e.Item.OwnerTableView.DataKeyNames[0]];
-
-
+            
             // assign javascript function to edit button
             imgb = (ImageButton)e.Item.FindControl("Edit");
-            command = String.Format("return EditEstimateLine({0},{1});", id,estimate.EstimateId);
+            command = String.Format("return EditEstimateLine({0},{1});", id, estimate.EstimateId);
             imgb.OnClientClick = command;
-
+            
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
             command = String.Format("return confirm('{0} {1}');", Resources.GeneralResource.DeleteRecordQuestion, name);
             imgb.OnClientClick = command;
             imgb.Visible = per.Create;
         }
-
     }
-
+    
     protected void RadGrid1_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
     {
         if (estimate == null)
@@ -255,7 +252,7 @@ public partial class EstimateForm : System.Web.UI.Page
         }
         RefreshTotal(estimate);
     }
-
+    
     protected void RefreshTotal(Estimate est)
     {
         decimal total = 0;
@@ -271,7 +268,7 @@ public partial class EstimateForm : System.Web.UI.Page
         est.Total = total;
         lblTotal.Text = String.Format("TOTAL: {0:###,###,#0.00}", est.Total);
     }
-
+    
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
         if (estimate == null)
@@ -284,11 +281,17 @@ public partial class EstimateForm : System.Web.UI.Page
         }
         RefreshTotal(estimate);
     }
-            
-
     
     #region Special button actions
     
-    
+    protected void btnPrint_Click(object sender, ImageClickEventArgs e)
+    {
+        if (!CreateChange())
+            return;
+        string js = String.Format("printEstimate({0});", estimate.EstimateId);
+        RadAjaxManager1.ResponseScripts.Add(js);
+        RadAjaxManager1.ResponseScripts.Add("CloseAndRebind('');");
+    }
+
     #endregion
 }

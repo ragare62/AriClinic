@@ -43,6 +43,12 @@
                         var w2 = window.open("EstimateLineForm.aspx?EstimateLineId=" + id + "&EstimateId=" + id2, "EELN", "width=650, height=550,resizable=1,scrollbars=1");
                         w2.focus();
                     }
+                    function printEstimate(id) {
+                        var url = "RptView.aspx?Report=rptestimate&Estimate=" + id;
+                        var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
+                        w.focus();
+                    }
+
                 </script>
                 <script type="text/javascript">
                     function refreshField(v1, v2, v3, v4, type) {
@@ -239,6 +245,10 @@
                         <tr>
                             <td colspan="6">
                                 <div ID="Buttons" class="buttonsFomat">
+                                    <asp:ImageButton ID="btnPrint" runat="server" TabIndex="6" 
+                                                     ImageUrl="~/images/printer24.png" onclick="btnPrint_Click" ToolTip="Imprimir factura" />
+                                    &nbsp;
+
                                     <asp:ImageButton ID="btnAccept" runat="server" 
                                                      ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" TabIndex="17" />
                                     &nbsp;
