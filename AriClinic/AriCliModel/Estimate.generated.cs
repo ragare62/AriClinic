@@ -77,6 +77,19 @@ namespace AriCliModel
 		    }
 		}
 		
+		private string comments;
+		public virtual string Comments 
+		{ 
+		    get
+		    {
+		        return this.comments;
+		    }
+		    set
+		    {
+		        this.comments = value;
+		    }
+		}
+		
 		private Request request;
 		public virtual Request Request 
 		{ 

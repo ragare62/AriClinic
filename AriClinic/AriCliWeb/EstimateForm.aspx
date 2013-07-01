@@ -39,7 +39,7 @@
                         var w1 = window.open("EstimateLineForm.aspx?EstimateId=" + id2, "NELN", "width=650, height=550,resizable=1,scrollbars=1");
                         w1.focus();
                     }
-                    function EditEstimateLine(id,id2) {
+                    function EditEstimateLine(id, id2) {
                         var w2 = window.open("EstimateLineForm.aspx?EstimateLineId=" + id + "&EstimateId=" + id2, "EELN", "width=650, height=550,resizable=1,scrollbars=1");
                         w2.focus();
                     }
@@ -69,8 +69,8 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="lblTotal" UpdatePanelCssClass="" />
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid1" UpdatePanelCssClass="" />
+                            <telerik:AjaxUpdatedControl ControlID="lblTotal" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
@@ -217,6 +217,15 @@
                                         <HeaderContextMenu CssClass="GridContextMenu GridContextMenu_Office2007">
                                         </HeaderContextMenu>
                                     </telerik:RadGrid>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div id="Comments" class="normalText">
+                                    <asp:Label ID ="lblComments" runat="server" Text="Observaciones"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtComments" runat="server" TextMode="MultiLine" Width="100%" Height="100px"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>

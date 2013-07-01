@@ -162,6 +162,7 @@ public partial class EstimateForm : System.Web.UI.Page
         txtEstimateId.Text = estimate.EstimateId.ToString();
         rdtEstimateDate.SelectedDate = estimate.EstimateDate;
         txtFullName.Text = estimate.FullName;
+        txtComments.Text = estimate.Comments;
         lblTotal.Text = String.Format("TOTAL: {0:###,###,#0.00}", estimate.Total);
     }
         
@@ -169,6 +170,7 @@ public partial class EstimateForm : System.Web.UI.Page
     {
         estimate.EstimateDate = (DateTime)rdtEstimateDate.SelectedDate;
         estimate.FullName = txtFullName.Text;
+        estimate.Comments = txtComments.Text;
         estimate.Request = req;
         estimate.User = user;
         RefreshTotal(estimate);

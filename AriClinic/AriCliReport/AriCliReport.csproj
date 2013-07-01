@@ -40,17 +40,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Reporting, Version=7.0.13.220, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.Reporting, Version=7.0.13.426, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
       <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess, Version=2013.1.418.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.418.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2013.1.418.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>C:\Program Files\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="RptDebtByCustomer.Designer.cs">
       <DependentUpon>RptDebtByCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptEstimate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptEstimate.Designer.cs">
+      <DependentUpon>RptEstimate.cs</DependentUpon>
     </Compile>
     <Compile Include="RptGPByClinic.cs">
       <SubType>Component</SubType>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptDebtByCustomer.resx">
       <DependentUpon>RptDebtByCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptEstimate.resx">
+      <DependentUpon>RptEstimate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptGPByClinic.resx">
       <DependentUpon>RptGPByClinic.cs</DependentUpon>

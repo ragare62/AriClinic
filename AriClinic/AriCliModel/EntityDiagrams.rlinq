@@ -3363,14 +3363,17 @@
         <orm:field name="fullName" property="FullName" uniqueId="b8f552cb-d025-40dd-b1f4-aee5448ba973" type="System.String">
           <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
+        <orm:field name="comments" property="Comments" uniqueId="0d3b403f-5215-49c1-9a85-b518a72a7b39" type="System.String">
+          <orm:column nullable="false" scale="0" length="0" sql-type="text" name="comments" ado-type="" />
+        </orm:field>
         <orm:field name="request" property="Request" behavior="readwrite" uniqueId="26c31985-af7e-4915-9784-6001f57c7fd2" type="AriCliModel.Request">
           <orm:reference uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
         </orm:field>
-        <orm:field name="estimateLines" property="EstimateLines" behavior="readwrite" uniqueId="8bba89f2-9437-4d39-a71e-7f026253782d" type="AriCliModel.EstimateLine">
-          <orm:collection element-class="AriCliModel.EstimateLine" inverse-field="estimate" order-by="" uniqueId="0b3e5a43-f6ff-4ed7-b79f-3e71953be61a" />
-        </orm:field>
         <orm:field name="user" property="User" behavior="readwrite" uniqueId="b5974ef2-5ea3-4bd6-83b7-d87a59c1620d" type="AriCliModel.User">
           <orm:reference uniqueId="e9ce4f9d-fe12-410d-a344-4d2f684c78ae" />
+        </orm:field>
+        <orm:field name="estimateLines" property="EstimateLines" behavior="readwrite" uniqueId="8bba89f2-9437-4d39-a71e-7f026253782d" type="AriCliModel.EstimateLine">
+          <orm:collection element-class="AriCliModel.EstimateLine" inverse-field="estimate" order-by="" uniqueId="0b3e5a43-f6ff-4ed7-b79f-3e71953be61a" />
         </orm:field>
       </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
@@ -4428,6 +4431,7 @@
         <orm:column name="estimate_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="ttal" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
         <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="text" name="comments" ado-type="" />
       </orm:table>
     </orm:schema>
   </orm:orm>
@@ -7850,6 +7854,7 @@
       <Property Id="fd5569cc-438d-4221-ad6a-0190ea76c49b" name="EstimateDate" type="DateTime" label="EstimateDate : DateTime" fieldName="estimateDate" />
       <Property Id="6a036c31-7a28-4643-9598-3db13558d8af" name="Total" type="Decimal" label="Total : Decimal" fieldName="total" />
       <Property Id="b8f552cb-d025-40dd-b1f4-aee5448ba973" name="FullName" label="FullName : String" fieldName="fullName" />
+      <Property Id="0d3b403f-5215-49c1-9a85-b518a72a7b39" name="Comments" label="Comments : String" fieldName="comments" />
       <AssociationTargets>
         <Association Id="51f4e155-e35c-4ded-81a1-489db54d3abd" SourceMultiplicity="ZeroOne" name="EstimateHasRequest">
           <DomainClassMoniker name="/AriClinicContext/Request" />
