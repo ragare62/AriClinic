@@ -114,7 +114,7 @@ public partial class EstimateLineForm : System.Web.UI.Page
         txtEstimateLineId.Text = estl.EstimateLineId.ToString();
         txtDescription.Text = estl.Description;
         txtAmount.Value = (double)estl.Amount;
-        txtDiscount.Value = (double)estl.Discount;
+        txtDiscount.Text = String.Format("{0:0.00}",estl.Discount);
         txtTotal.Value = (double)(estl.Amount - estl.Discount);
         Insurance iSelect = estl.InsuranceService.Insurance;
         InsuranceService iServ = estl.InsuranceService;
@@ -134,7 +134,7 @@ public partial class EstimateLineForm : System.Web.UI.Page
     {
         estl.Description = txtDescription.Text;
         estl.Amount = (decimal)txtAmount.Value;
-        estl.Discount = (decimal)txtDiscount.Value;
+        estl.Discount = decimal.Parse(txtDiscount.Text);
         estl.InsuranceService = CntAriCli.GetInsuranceService(int.Parse(rdcInsuranceService.SelectedValue), ctx);
         if (est != null)
         {
@@ -192,7 +192,7 @@ public partial class EstimateLineForm : System.Web.UI.Page
             if (inss != null)
             {
                 txtAmount.Value = (double)inss.Price;
-                txtDiscount.Value = 0;
+                txtDiscount.Text = "0";
                 txtTotal.Value = (double)inss.Price;
                 txtDescription.Text = inss.Service.Name;
             }
@@ -201,8 +201,33 @@ public partial class EstimateLineForm : System.Web.UI.Page
 
     protected void txtDiscount_TextChanged(object sender, EventArgs e)
     {
-        // refersh total
-        txtTotal.Value = txtAmount.Value - txtDiscount.Value;
+        //
+        string campoDiscount = txtDiscount.Text;
+        decimal discount = 0;
+        int pos = campoDiscount.IndexOf("%");
+        if (pos > 0)
+        {
+            string resto = campoDiscount.Substring(0, pos);
+            decimal porc = 0;
+            if (decimal.TryParse(resto, out porc))
+            {
+                discount = ((decimal)txtAmount.Value * (decimal)porc) / (decimal)100.0;
+                txtDiscount.Text = String.Format("{0:0.00}", discount);
+                txtTotal.Value = txtAmount.Value - (double)discount;
+            }
+        }
+        else
+        {
+            if (decimal.TryParse(txtDiscount.Text, out discount))
+            {
+                // refersh total
+                txtTotal.Value = txtAmount.Value - (double)discount;
+            }
+            else
+            {
+                lblMessage.Text = "Valor de descuento no válido";
+            }
+        }
     }
 
 

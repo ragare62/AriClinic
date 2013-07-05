@@ -2048,4 +2048,13 @@ Press "OK" to confirm deletion.</value>
   <data name="InsertSelectDialog_RemoveOption" xml:space="preserve">
     <value>Remove Option</value>
   </data>
+  <data name="ImageEditor_OpacityNotSupported" xml:space="preserve">
+    <value>The current image format does not support opacity.</value>
+  </data>
+  <data name="TrackChangesDialog_Obsolete" xml:space="preserve">
+    <value>The Track Changes dialog is obsolete. Please, use the &lt;a href="http://www.telerik.com/help/aspnet-ajax/editor-track-changes.html" target="blank"&gt;EnableTrackChanges property&lt;/a&gt; to enable an improved track changes functionality that offers better interaction and usability.</value>
+  </data>
+  <data name="Common_FileListSummary" xml:space="preserve">
+    <value>Table that lists the contents of the current directory</value>
+  </data>
 </root>

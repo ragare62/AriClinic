@@ -380,6 +380,9 @@
         <orm:field name="generalPayments" property="GeneralPayments" behavior="readwrite" uniqueId="35474eea-91ee-442a-93d6-5f0a7bd17654" type="AriCliModel.GeneralPayment">
           <orm:collection element-class="AriCliModel.GeneralPayment" inverse-field="clinic" order-by="" uniqueId="6a737e45-67ae-49a0-b1ed-f30b7ec7b319" />
         </orm:field>
+        <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="2bf5f2f3-d657-4d9a-a59d-6f09b8a2ce9b" type="AriCliModel.Request">
+          <orm:collection element-class="AriCliModel.Request" inverse-field="clinic" order-by="" uniqueId="124cfe72-b451-4fd1-82d1-8a1b24fa432c" />
+        </orm:field>
       </orm:class>
       <orm:class name="Person" discriminator-value="AriCliModel.Person" behavior="readwrite" uniqueId="3c11c626-c882-4fff-b20b-04a6e1273531">
         <orm:table name="person" />
@@ -3291,6 +3294,9 @@
         <orm:field name="estimates" property="Estimates" behavior="readwrite" uniqueId="cc02313c-ace2-47d8-99c5-788c1405a4e1" type="AriCliModel.Estimate">
           <orm:collection element-class="AriCliModel.Estimate" inverse-field="request" order-by="" uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
         </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="53e2c64b-4c09-4afe-9ce4-052bf10d05da" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="124cfe72-b451-4fd1-82d1-8a1b24fa432c" />
+        </orm:field>
       </orm:class>
       <orm:class name="Replay" uniqueId="f50e1314-1679-4cf3-bf21-41d4d4cc1c2e">
         <orm:table name="replay" />
@@ -4887,6 +4893,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="59d90f3a-bfa5-4b5c-932f-3240783249f0">
           <NavigationalProperty Id="35474eea-91ee-442a-93d6-5f0a7bd17654" name="GeneralPayments" type="IList&lt;GeneralPayment&gt;" label="GeneralPayments : IList&lt;GeneralPayment&gt;" nullable="true" kind="Persistent" fieldName="generalPayments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7eaa0291-e9ba-4de3-bd99-b24a91786990">
+          <NavigationalProperty Id="2bf5f2f3-d657-4d9a-a59d-6f09b8a2ce9b" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7706,6 +7715,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="124cfe72-b451-4fd1-82d1-8a1b24fa432c" SourceMultiplicity="ZeroOne" name="RequestHasClinic">
+          <DomainClassMoniker name="/AriClinicContext/Clinic" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="3d021315-baf5-4e0a-ab9a-f21e2a25f14a">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Requests" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b4419b53-26ce-4aa0-940a-a30255e3cd09">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Request/Clinic" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="dd3f4d41-3be6-478f-ae95-d8b125f1028d">
@@ -7731,6 +7753,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="c170a062-2ff4-4acd-b45f-240ff03caf0d">
           <NavigationalProperty Id="cc02313c-ace2-47d8-99c5-788c1405a4e1" name="Estimates" type="IList&lt;Estimate&gt;" label="Estimates : IList&lt;Estimate&gt;" nullable="true" kind="Persistent" fieldName="estimates" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7754963f-5e38-4e75-b26f-2f14508c4029">
+          <NavigationalProperty Id="53e2c64b-4c09-4afe-9ce4-052bf10d05da" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

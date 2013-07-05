@@ -111,6 +111,24 @@ public partial class RequestForm {
     protected global::System.Web.UI.WebControls.TextBox txtRequestId;
     
     /// <summary>
+    /// Control lblStatus.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblStatus;
+    
+    /// <summary>
+    /// Control txtStatus.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtStatus;
+    
+    /// <summary>
     /// Control lblRequestDateTime.
     /// </summary>
     /// <remarks>
@@ -129,22 +147,31 @@ public partial class RequestForm {
     protected global::Telerik.Web.UI.RadDatePicker rdtRequestDateTime;
     
     /// <summary>
-    /// Control lblStatus.
+    /// Control lblClinic.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblStatus;
+    protected global::System.Web.UI.WebControls.Label lblClinic;
     
     /// <summary>
-    /// Control txtStatus.
+    /// Control imgClinic.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtStatus;
+    protected global::System.Web.UI.WebControls.ImageButton imgClinic;
+    
+    /// <summary>
+    /// Control rdcClinic.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcClinic;
     
     /// <summary>
     /// Control lblCampaign.
@@ -255,6 +282,24 @@ public partial class RequestForm {
     protected global::Telerik.Web.UI.RadComboBox rdcPatient;
     
     /// <summary>
+    /// Control lblName.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblName;
+    
+    /// <summary>
+    /// Control txtName.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtName;
+    
+    /// <summary>
     /// Control lblSurname1.
     /// </summary>
     /// <remarks>
@@ -289,24 +334,6 @@ public partial class RequestForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtSurname2;
-    
-    /// <summary>
-    /// Control lblName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblName;
-    
-    /// <summary>
-    /// Control txtName.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtName;
     
     /// <summary>
     /// Control lblSex.

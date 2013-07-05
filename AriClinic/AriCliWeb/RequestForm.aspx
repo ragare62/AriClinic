@@ -51,6 +51,10 @@
                                     combo = $find("<%= rdcService.ClientID %>");
                                     loadCombo(combo, v1, v3);
                                     break;
+                                case "Clinic":
+                                    combo = $find("<%= rdcClinic.ClientID %>");
+                                    loadCombo(combo, v1, v3);
+                                    break;
                                 default:
                                     break;
                             }
@@ -108,12 +112,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="1">
                                 <div id="RequestId" class="normalText">
                                     <asp:Label ID="lblRequestId" runat="server" Text="ID:" 
                                                ToolTip="Identificador de canal, lo usa internamente el sistema"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtRequestId" runat="server" Enabled="false" Width="89px"></asp:TextBox>
+                                </div>
+                            </td>
+                            <td colspan="1">
+                                <div id="Status" class="normalText">
+                                    <asp:Label ID="lblStatus" runat="server" Text="Estado" 
+                                               ToolTip="Estado en el que se encuentra la solicitud"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtStatus" runat="server" Enabled="false" TabIndex="1"></asp:TextBox>
                                 </div>
                             </td>
                             <td colspan="2">
@@ -122,22 +134,36 @@
                                                ToolTip="Fecha en la que se abrió la historia"></asp:Label>
                                     <br />
                                     <telerik:RadDatePicker ID="rdtRequestDateTime" runat="server" Culture="es-ES" CssClass="myCenter"  
-                                                           MinDate=""  TabIndex="1">
+                                                           MinDate=""  TabIndex="2">
                                         <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                                                   ViewSelectorText="x">
                                         </Calendar>
-                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy">
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="2">
+                                            <EmptyMessageStyle Resize="None" />
+                                            <ReadOnlyStyle Resize="None" />
+                                            <FocusedStyle Resize="None" />
+                                            <DisabledStyle Resize="None" />
+                                            <InvalidStyle Resize="None" />
+                                            <HoveredStyle Resize="None" />
+                                            <EnabledStyle Resize="None" />
                                         </DateInput>
-                                        <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="2" />
                                     </telerik:RadDatePicker>
                                 </div>
                             </td>
                             <td colspan="2">
-                                <div id="Status" class="normalText">
-                                    <asp:Label ID="lblStatus" runat="server" Text="Estado" 
-                                               ToolTip="Estado en el que se encuentra la solicitud"></asp:Label>
+                                <div id="Clinic" class="normalText">
+                                    <asp:Label ID="lblClinic" runat="server" Text="Clínica " 
+                                               ToolTip="Clínica"></asp:Label>
+                                    <asp:ImageButton ID="imgClinic" runat="server" ImageUrl="~/images/search_mini.png" CausesValidation="false"
+                                                     OnClientClick="searchClinic();" 
+                                                     ToolTip="Haga clic aquí para buscar una Clínica" style="height: 10px" />
                                     <br />
-                                    <asp:TextBox ID="txtStatus" runat="server" Enabled="false"></asp:TextBox>
+                                    <telerik:RadComboBox runat="server" ID="rdcClinic" Height="100px" Width="100%" ItemsPerRequest="10" 
+                                                         EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="3" AutoPostBack="True"
+                                                         onitemsrequested="rdcClinic_ItemsRequested">
+                                    </telerik:RadComboBox>
                                 </div>
                             </td>
                         </tr>
@@ -152,7 +178,7 @@
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcCampaign" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
-                                                         EmptyMessage="Escriba aquí ..." TabIndex="2" AutoPostBack="True"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="4" AutoPostBack="True"
                                                          onitemsrequested="rdcCampaign_ItemsRequested">
                                     </telerik:RadComboBox>
                                 </div>
@@ -167,7 +193,7 @@
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcChannel" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
-                                                         EmptyMessage="Escriba aquí ..." TabIndex="3" AutoPostBack="True"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="5" AutoPostBack="True"
                                                          onitemsrequested="rdcChannel_ItemsRequested">
                                     </telerik:RadComboBox>
                                 </div>
@@ -182,7 +208,7 @@
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcSource" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
-                                                         EmptyMessage="Escriba aquí ..." TabIndex="4" AutoPostBack="True"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="6" AutoPostBack="True"
                                                          onitemsrequested="rdcSource_ItemsRequested">
                                     </telerik:RadComboBox>
                                 </div>
@@ -207,7 +233,7 @@
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcPatient" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
-                                                         EmptyMessage="Escriba aquí ..." TabIndex="5" AutoPostBack="True"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="7" AutoPostBack="True"
                                                          onitemsrequested="rdcPatient_ItemsRequested">
                                     </telerik:RadComboBox>
                                 </div>
@@ -221,22 +247,6 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div id="Surname1" class="normalText">
-                                    <asp:Label ID="lblSurname1" runat="server" Text="Primer apellido" 
-                                               ToolTip="Primer apellido"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtSurname1" runat="server" Width="100%" TabIndex="6"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td colspan="2">
-                                <div id="Surname2" class="normalText">
-                                    <asp:Label ID="lblSurname2" runat="server" Text="Segundo apellido"
-                                               ToolTip="Segundo apellido"></asp:Label>
-                                    <br />
-                                    <asp:TextBox ID="txtSurname2" runat="server" Width="100%" TabIndex="7"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td colspan="2">
                                 <div id="Name" class="normalText">
                                     <asp:Label ID="lblName" runat="server" Text="Nombre" 
                                                ToolTip="Nombre"></asp:Label>
@@ -244,6 +254,23 @@
                                     <asp:TextBox ID="txtName" runat="server" Width="100%" TabIndex="8"></asp:TextBox>
                                 </div>
                             </td>
+                            <td colspan="2">
+                                <div id="Surname1" class="normalText">
+                                    <asp:Label ID="lblSurname1" runat="server" Text="Primer apellido" 
+                                               ToolTip="Primer apellido"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtSurname1" runat="server" Width="100%" TabIndex="9"></asp:TextBox>
+                                </div>
+                            </td>
+                            <td colspan="2">
+                                <div id="Surname2" class="normalText">
+                                    <asp:Label ID="lblSurname2" runat="server" Text="Segundo apellido"
+                                               ToolTip="Segundo apellido"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtSurname2" runat="server" Width="100%" TabIndex="10"></asp:TextBox>
+                                </div>
+                            </td>
+
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -252,7 +279,7 @@
                                                ToolTip="Nombre a asignar a la Patienta"></asp:Label>
                                     <br />
                                     <telerik:RadComboBox ID="rdcbSex" runat="server" Width="126px" 
-                                                         Skin="Office2007" TabIndex="9" Culture="es-ES">
+                                                         Skin="Office2007" TabIndex="11" Culture="es-ES">
                                         <Items>
                                             <telerik:RadComboBoxItem runat="server" />
                                             <telerik:RadComboBoxItem runat="server" Text="Mujer" Value="W" />
@@ -267,13 +294,20 @@
                                                ToolTip="Fecha de nacimiento"></asp:Label>
                                     <br />
                                     <telerik:RadDatePicker ID="rdtBornDate" runat="server" Culture="es-ES" CssClass="myCenter"  
-                                                           MinDate=""  TabIndex="10" AutoPostBack="True">
+                                                           MinDate=""  TabIndex="12" AutoPostBack="True">
                                         <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                                                   ViewSelectorText="x">
                                         </Calendar>
-                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" AutoPostBack="True">
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" AutoPostBack="True" TabIndex="12">
+                                            <EmptyMessageStyle Resize="None" />
+                                            <ReadOnlyStyle Resize="None" />
+                                            <FocusedStyle Resize="None" />
+                                            <DisabledStyle Resize="None" />
+                                            <InvalidStyle Resize="None" />
+                                            <HoveredStyle Resize="None" />
+                                            <EnabledStyle Resize="None" />
                                         </DateInput>
-                                        <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="12" />
                                     </telerik:RadDatePicker>
                                 </div>
                             </td>
@@ -282,7 +316,7 @@
                                     <asp:Label ID="lblPostalCode" runat="server" Text="Cod. Postal" 
                                                ToolTip="Código postal"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtCodPostal" runat="server" TabIndex="11" ></asp:TextBox>
+                                    <asp:TextBox ID="txtCodPostal" runat="server" TabIndex="13" ></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -292,7 +326,7 @@
                                     <asp:Label ID="lblDni" runat="server" Text="DNI" 
                                                ToolTip="Identificación"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtDni" runat="server" TabIndex="12"></asp:TextBox>
+                                    <asp:TextBox ID="txtDni" runat="server" TabIndex="14"></asp:TextBox>
                                 </div>
                             </td>
                             <td colspan="2">
@@ -300,7 +334,7 @@
                                     <asp:Label ID="lblEmail" runat="server" Text="Corro electrónico" 
                                                ToolTip="Correo electrónico"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtEmail" runat="server" TabIndex="13" ></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" runat="server" TabIndex="15" ></asp:TextBox>
                                 </div>
                             </td>
                             <td colspan="2">
@@ -308,7 +342,7 @@
                                     <asp:Label ID="lblTelephone" runat="server" Text="Teléfono" 
                                                ToolTip="Teléfono"></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtTelephone" runat="server" TabIndex="14" ></asp:TextBox>
+                                    <asp:TextBox ID="txtTelephone" runat="server" TabIndex="16" ></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -330,7 +364,7 @@
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcService" Height="100px" Width="100%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
-                                                         EmptyMessage="Escriba aquí ..." TabIndex="15" AutoPostBack="True"
+                                                         EmptyMessage="Escriba aquí ..." TabIndex="17" AutoPostBack="True"
                                                          onitemsrequested="rdcService_ItemsRequested">
                                     </telerik:RadComboBox>
                                 </div>
@@ -342,7 +376,7 @@
                                     <asp:Label ID="lblComments" runat="server" Text="Observaciones:" 
                                                ToolTip="Observaciones" ></asp:Label>
                                     <br />
-                                    <asp:TextBox ID="txtComments" runat="server" Width="100%" Height="60px" TextMode="MultiLine" TabIndex="16"></asp:TextBox>
+                                    <asp:TextBox ID="txtComments" runat="server" Width="100%" Height="60px" TextMode="MultiLine" TabIndex="18"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>

@@ -23,6 +23,7 @@ namespace AriCliReport
             this.textBox15 = new Telerik.Reporting.TextBox();
             this.textBox19 = new Telerik.Reporting.TextBox();
             this.groupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
+            this.sqlEstimates = new Telerik.Reporting.SqlDataSource();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.pictureBox1 = new Telerik.Reporting.PictureBox();
             this.textBox1 = new Telerik.Reporting.TextBox();
@@ -40,7 +41,6 @@ namespace AriCliReport
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
             this.textBox2 = new Telerik.Reporting.TextBox();
             this.sqlEstimate = new Telerik.Reporting.SqlDataSource();
-            this.sqlEstimates = new Telerik.Reporting.SqlDataSource();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // groupFooterSection
@@ -138,7 +138,7 @@ namespace AriCliReport
             this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.299999862909317D), Telerik.Reporting.Drawing.Unit.Cm(0.80819916725158691D));
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(15.299999237060547D), Telerik.Reporting.Drawing.Unit.Cm(0.90000033378601074D));
-            this.textBox15.Value = "= Fields.description";
+            this.textBox15.Value = "= Fields.comments";
             // 
             // textBox19
             // 
@@ -163,9 +163,16 @@ namespace AriCliReport
             this.groupHeaderSection.Name = "groupHeaderSection";
             this.groupHeaderSection.Style.Visible = false;
             // 
+            // sqlEstimates
+            // 
+            this.sqlEstimates.ConnectionString = "AriClinicContext";
+            this.sqlEstimates.Name = "sqlEstimates";
+            this.sqlEstimates.SelectCommand = "SELECT estimate_id, estimate_date, full_name, CONCAT(COALESCE(full_name,\"\"),\" (\"," +
+    " DATE(estimate_date),\")\") as e_desc \r\nFROM estimate";
+            // 
             // pageHeaderSection1
             // 
-            this.pageHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(3.7996988296508789D);
+            this.pageHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(3.5559999942779541D);
             this.pageHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.pictureBox1,
             this.textBox1,
@@ -336,13 +343,6 @@ namespace AriCliReport
             this.sqlEstimate.Parameters.AddRange(new Telerik.Reporting.SqlDataSourceParameter[] {
             new Telerik.Reporting.SqlDataSourceParameter("@Estimate", System.Data.DbType.Int32, "=Parameters.Estimate.Value")});
             this.sqlEstimate.SelectCommand = resources.GetString("sqlEstimate.SelectCommand");
-            // 
-            // sqlEstimates
-            // 
-            this.sqlEstimates.ConnectionString = "AriClinicContext";
-            this.sqlEstimates.Name = "sqlEstimates";
-            this.sqlEstimates.SelectCommand = "SELECT estimate_id, estimate_date, full_name, CONCAT(COALESCE(full_name,\"\"),\" (\"," +
-    " DATE(estimate_date),\")\") as e_desc \r\nFROM estimate";
             // 
             // RptEstimate
             // 

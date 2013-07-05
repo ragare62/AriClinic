@@ -133,7 +133,7 @@
                             <div id="Discount" class="normalText">
                                 <asp:Label ID ="lblDiscount" runat="server" Text="Descuento"></asp:Label>
                                 <br />
-                                <telerik:RadNumericTextBox ID="txtDiscount" runat="server" AutoPostBack="True" OnTextChanged="txtDiscount_TextChanged"></telerik:RadNumericTextBox>
+                                <asp:TextBox ID="txtDiscount" runat="server" AutoPostBack="True" OnTextChanged="txtDiscount_TextChanged"></asp:TextBox>
                             </div>
                         </td>
                         <td colspan="2">

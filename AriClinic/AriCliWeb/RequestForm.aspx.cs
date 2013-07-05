@@ -50,6 +50,17 @@ public partial class RequestForm : System.Web.UI.Page
         }
         else
         {
+            // 
+            if (Session["Clinic"] != null)
+            {
+                Clinic cl = (Clinic)Session["Clinic"];
+                if (cl != null)
+                {
+                    rdcClinic.Items.Clear();
+                    rdcClinic.Items.Add(new RadComboBoxItem(cl.Name, cl.ClinicId.ToString()));
+                    rdcClinic.SelectedValue = cl.ClinicId.ToString();
+                }
+            }
             // default values for a new request
             rdtRequestDateTime.SelectedDate = DateTime.Now;
             txtStatus.Text = "PENDIENTE";
@@ -164,6 +175,12 @@ public partial class RequestForm : System.Web.UI.Page
             rdcPatient.Items.Add(new RadComboBoxItem(req.Patient.FullName, req.Patient.PersonId.ToString()));
             rdcPatient.SelectedValue = req.Patient.PersonId.ToString();
         }
+        if (req.Clinic != null)
+        {
+            rdcClinic.Items.Clear();
+            rdcClinic.Items.Add(new RadComboBoxItem(req.Clinic.Name, req.Clinic.ClinicId.ToString()));
+            rdcClinic.SelectedValue = req.Clinic.ClinicId.ToString();
+        }
         txtSurname1.Text = req.Surname1;
         txtSurname2.Text = req.Surname2;
         txtName.Text = req.Name;
@@ -204,6 +221,10 @@ public partial class RequestForm : System.Web.UI.Page
         if (rdcPatient.SelectedValue != "")
         {
             req.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        }
+        if (rdcClinic.SelectedValue != "")
+        {
+            req.Clinic = CntAriCli.GetClinic(int.Parse(rdcClinic.SelectedValue), ctx);
         }
         req.Surname1 = txtSurname1.Text;
         req.Surname2 = txtSurname2.Text;
@@ -305,6 +326,20 @@ public partial class RequestForm : System.Web.UI.Page
         }
     }
 
+    protected void rdcClinic_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
+    {
+        if (e.Text == "")
+            return;
+        RadComboBox combo = (RadComboBox)sender;
+        combo.Items.Clear();
+        var rs = from x in ctx.Clinics
+                 where x.Name.Contains(e.Text)
+                 select x;
+        foreach (Clinic cl in rs)
+        {
+            combo.Items.Add(new RadComboBoxItem(cl.Name, cl.ClinicId.ToString()));
+        }
+    }
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
     }
@@ -393,4 +428,6 @@ public partial class RequestForm : System.Web.UI.Page
     }
 
     #endregion
+
+
 }

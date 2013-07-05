@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_ConvertModelWizard_Files\UpgradeReferences.xslt"?>
+<UpgradeLog>
+  <Events>
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AddressForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AddressForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AddressForm.aspx" Message="AddressForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteForm.aspx" Message="AnestheticServiceNoteForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticServiceNoteGrid.aspx" Message="AnestheticServiceNoteGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AnestheticTicketForm.aspx" Message="AnestheticTicketForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AntSegmentForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AntSegmentForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AntSegmentForm.aspx" Message="AntSegmentForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\ConstantsResource.resx" Message="ConstantsResource.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\FilterResource.resx" Message="FilterResource.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\GeneralResource.resx" Message="GeneralResource.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\RadEditor.Dialogs.resx" Message="RadEditor.Dialogs.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\RadFilter.Main.resx" Message="RadFilter.Main.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_GlobalResources\RadGrid.Main.resx" Message="RadGrid.Main.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\InsuranceGrid.aspx.resx" Message="InsuranceGrid.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\RptView.aspx.resx" Message="RptView.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\SchedulerGeneral.aspx.resx" Message="SchedulerGeneral.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\ServiceCategoryGrid.aspx.resx" Message="ServiceCategoryGrid.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\ServiceGrid.aspx.resx" Message="ServiceGrid.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\App_LocalResources\TaxTypeGrid.aspx.resx" Message="TaxTypeGrid.aspx.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentForm.aspx" Message="AppointmentForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentGrid.aspx" Message="AppointmentGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeForm.aspx" Message="AppointmentTypeForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AppointmentTypeGrid.aspx" Message="AppointmentTypeGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackFamilyForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackFamilyForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackFamilyForm.aspx" Message="BackFamilyForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackGinecologyForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackGinecologyForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackGinecologyForm.aspx" Message="BackGinecologyForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackPersonalForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackPersonalForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BackPersonalForm.aspx" Message="BackPersonalForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BiometryForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BiometryForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\BiometryForm.aspx" Message="BiometryForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignForm.aspx" Message="CampaignForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CampaignGrid.aspx" Message="CampaignGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelForm.aspx" Message="ChannelForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ChannelGrid.aspx" Message="ChannelGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicForm.aspx" Message="ClinicForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ClinicGrid.aspx" Message="ClinicGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ContactLensesTestForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ContactLensesTestForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ContactLensesTestForm.aspx" Message="ContactLensesTestForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerForm.aspx" Message="CustomerForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerGrid.aspx" Message="CustomerGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerTab.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerTab.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CustomerTab.aspx" Message="CustomerTab.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CycloplegiaForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CycloplegiaForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\CycloplegiaForm.aspx" Message="CycloplegiaForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Default.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Default.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Default.aspx" Message="Default.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedForm.aspx" Message="DiagnosticAssignedForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticAssignedGrid.aspx" Message="DiagnosticAssignedGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticForm.aspx" Message="DiagnosticForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiagnosticGrid.aspx" Message="DiagnosticGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryForm.aspx" Message="DiaryForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DiaryGrid.aspx" Message="DiaryGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DocumentsPatient.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DocumentsPatient.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DocumentsPatient.aspx" Message="DocumentsPatient.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugForm.aspx" Message="DrugForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\DrugGrid.aspx" Message="DrugGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EmailForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EmailForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EmailForm.aspx" Message="EmailForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateForm.aspx" Message="EstimateForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateGrid.aspx" Message="EstimateGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateLineForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateLineForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\EstimateLineForm.aspx" Message="EstimateLineForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedForm.aspx" Message="ExaminationAssignedForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationAssignedGrid.aspx" Message="ExaminationAssignedGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationForm.aspx" Message="ExaminationForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ExaminationGrid.aspx" Message="ExaminationGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\FundusForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\FundusForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\FundusForm.aspx" Message="FundusForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm.aspx" Message="GeneralPaymentForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm2.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm2.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentForm2.aspx" Message="GeneralPaymentForm2.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GeneralPaymentGrid.aspx" Message="GeneralPaymentGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GlassesTestForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GlassesTestForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GlassesTestForm.aspx" Message="GlassesTestForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GoogleMapsPage.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GoogleMapsPage.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\GoogleMapsPage.aspx" Message="GoogleMapsPage.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\HealthcareCompanyForm.aspx" Message="HealthcareCompanyForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceForm.aspx" Message="InsuranceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceGrid.aspx" Message="InsuranceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceForm.aspx" Message="InsuranceServiceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InsuranceServiceGrid.aspx" Message="InsuranceServiceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceForm.aspx" Message="InvoiceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceGrid.aspx" Message="InvoiceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceLineForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceLineForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\InvoiceLineForm.aspx" Message="InvoiceLineForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedForm.aspx" Message="LabTestAssignedForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestAssignedGrid.aspx" Message="LabTestAssignedGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestForm.aspx" Message="LabTestForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LabTestGrid.aspx" Message="LabTestGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LogGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LogGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\LogGrid.aspx" Message="LogGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MainMenu.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MainMenu.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MainMenu.aspx" Message="MainMenu.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MotAppendForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MotAppendForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\MotAppendForm.aspx" Message="MotAppendForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitForm.aspx" Message="OphVisitForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitTab.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitTab.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OphVisitTab.aspx" Message="OphVisitTab.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OpticalObjectiveExaminationForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OpticalObjectiveExaminationForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\OpticalObjectiveExaminationForm.aspx" Message="OpticalObjectiveExaminationForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaquimetryForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaquimetryForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaquimetryForm.aspx" Message="PaquimetryForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ParameterForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ParameterForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ParameterForm.aspx" Message="ParameterForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientForm.aspx" Message="PatientForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientGrid.aspx" Message="PatientGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientTab.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientTab.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PatientTab.aspx" Message="PatientTab.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentForm.aspx" Message="PaymentForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentGrid.aspx" Message="PaymentGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodForm.aspx" Message="PaymentMethodForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PaymentMethodGrid.aspx" Message="PaymentMethodGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionForm.aspx" Message="PermissionForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PermissionGrid.aspx" Message="PermissionGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyForm.aspx" Message="PolicyForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PolicyGrid.aspx" Message="PolicyGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PrescriptionGlassesForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PrescriptionGlassesForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PrescriptionGlassesForm.aspx" Message="PrescriptionGlassesForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PreviousMedicalRecordForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PreviousMedicalRecordForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\PreviousMedicalRecordForm.aspx" Message="PreviousMedicalRecordForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedForm.aspx" Message="ProcedureAssignedForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureAssignedGrid.aspx" Message="ProcedureAssignedGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureForm.aspx" Message="ProcedureForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcedureGrid.aspx" Message="ProcedureGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessForm.aspx" Message="ProcessForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProcessGrid.aspx" Message="ProcessGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalForm.aspx" Message="ProfessionalForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalGrid.aspx" Message="ProfessionalGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceForm.aspx" Message="ProfessionalInvoiceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceGrid.aspx" Message="ProfessionalInvoiceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceLineForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceLineForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ProfessionalInvoiceLineForm.aspx" Message="ProfessionalInvoiceLineForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RefractometryForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RefractometryForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RefractometryForm.aspx" Message="RefractometryForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ReplayForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ReplayForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ReplayForm.aspx" Message="ReplayForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestForm.aspx" Message="RequestForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RequestGrid.aspx" Message="RequestGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptCategorySrvForm.aspx" Message="RptCategorySrvForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePatientForm.aspx" Message="RptInvoicePatientForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptInvoicePeriodForm.aspx" Message="RptInvoicePeriodForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPaymentsForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPaymentsForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPaymentsForm.aspx" Message="RptPaymentsForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPCEAForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPCEAForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPCEAForm.aspx" Message="RptPCEAForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalInvoicesForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalInvoicesForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalInvoicesForm.aspx" Message="RptProfessionalInvoicesForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptProfessionalSrvForm.aspx" Message="RptProfessionalSrvForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPruebasForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPruebasForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptPruebasForm.aspx" Message="RptPruebasForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptServiceComparerForm.aspx" Message="RptServiceComparerForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptSurgeonSrvForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptSurgeonSrvForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptSurgeonSrvForm.aspx" Message="RptSurgeonSrvForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptTicketsForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptTicketsForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptTicketsForm.aspx" Message="RptTicketsForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptView.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptView.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\RptView.aspx" Message="RptView.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SchedulerGeneral.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SchedulerGeneral.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SchedulerGeneral.aspx" Message="SchedulerGeneral.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryForm.aspx" Message="ServiceCategoryForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceCategoryGrid.aspx" Message="ServiceCategoryGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceForm.aspx" Message="ServiceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceGrid.aspx" Message="ServiceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteForm.aspx" Message="ServiceNoteForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\ServiceNoteGrid.aspx" Message="ServiceNoteGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SettlementGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SettlementGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SettlementGrid.aspx" Message="SettlementGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceForm.aspx" Message="SourceForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SourceGrid.aspx" Message="SourceGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SubjectiveOpticalExaminationForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SubjectiveOpticalExaminationForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\SubjectiveOpticalExaminationForm.aspx" Message="SubjectiveOpticalExaminationForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeForm.aspx" Message="TaxTypeForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxTypeGrid.aspx" Message="TaxTypeGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeForm.aspx" Message="TaxWithholdingTypeForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TaxWithholdingTypeGrid.aspx" Message="TaxWithholdingTypeGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TelephoneForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TelephoneForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TelephoneForm.aspx" Message="TelephoneForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateForm.aspx" Message="TemplateForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateGrid.aspx" Message="TemplateGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateViewForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateViewForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TemplateViewForm.aspx" Message="TemplateViewForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Test.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Test.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Test.aspx" Message="Test.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketForm.aspx" Message="TicketForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TicketGrid.aspx" Message="TicketGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TopographyForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TopographyForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TopographyForm.aspx" Message="TopographyForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentForm.aspx" Message="TreatmentForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\TreatmentGrid.aspx" Message="TreatmentGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeForm.aspx" Message="UnitTypeForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UnitTypeGrid.aspx" Message="UnitTypeGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscAddressGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscAddressGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscAddressGrid.ascx" Message="UscAddressGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscEmailGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscEmailGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscEmailGrid.ascx" Message="UscEmailGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInsuranceServiceGrid.ascx" Message="UscInsuranceServiceGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscInvoiceLineGrid.ascx" Message="UscInvoiceLineGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscLogin.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscLogin.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscLogin.ascx" Message="UscLogin.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscProfessionalInvoiceLineGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscProfessionalInvoiceLineGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscProfessionalInvoiceLineGrid.ascx" Message="UscProfessionalInvoiceLineGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UscTelephoneGrid.ascx" Message="UscTelephoneGrid.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserForm.aspx" Message="UserForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGrid.aspx" Message="UserGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupForm.aspx" Message="UserGroupForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\UserGroupGrid.aspx" Message="UserGroupGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitForm.aspx" Message="VisitForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitGrid.aspx" Message="VisitGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonForm.aspx" Message="VisitReasonForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonGrid.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonGrid.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitReasonGrid.aspx" Message="VisitReasonGrid.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitTab.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitTab.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\VisitTab.aspx" Message="VisitTab.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\web.config" Message="web.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\WithoutGlassesForm.aspx" Message="WithoutGlassesForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="AriCliWeb" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\App.Config" Message="App.Config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="AriCliModel" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\App.Config" Message="App.Config" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\ReptAnesTicketProfessional.resx" Message="ReptAnesTicketProfessional.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\ReptInvoiceVAT.resx" Message="ReptInvoiceVAT.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptAnesNote.resx" Message="RptAnesNote.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptAnesNote2.resx" Message="RptAnesNote2.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptAnestheticTicketByProfessional.resx" Message="RptAnestheticTicketByProfessional.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptBombaDolor.resx" Message="RptBombaDolor.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptDayAppointment.resx" Message="RptDayAppointment.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptDebtByCustomer.resx" Message="RptDebtByCustomer.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptEstimate.resx" Message="RptEstimate.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptGPByClinic.resx" Message="RptGPByClinic.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInsuranceDebt.resx" Message="RptInsuranceDebt.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInvoice.resx" Message="RptInvoice.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInvoiceLine.resx" Message="RptInvoiceLine.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInvoiceMain.resx" Message="RptInvoiceMain.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInvoicesPeriod.resx" Message="RptInvoicesPeriod.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptInvoicesPeriod2.resx" Message="RptInvoicesPeriod2.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptNomenclator.resx" Message="RptNomenclator.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptParamInvoices.resx" Message="RptParamInvoices.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptParamTickets.resx" Message="RptParamTickets.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPatientBySource.resx" Message="RptPatientBySource.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPatientDebt.resx" Message="RptPatientDebt.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPatientInvoice.resx" Message="RptPatientInvoice.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPayments.resx" Message="RptPayments.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPCA.resx" Message="RptPCA.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPrescription.resx" Message="RptPrescription.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptPrescriptionGlasses.resx" Message="RptPrescriptionGlasses.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptProfessionalInvoice.resx" Message="RptProfessionalInvoice.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptProfessionalInvoice2.resx" Message="RptProfessionalInvoice2.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptProfessionalInvoiceBases.resx" Message="RptProfessionalInvoiceBases.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptProfessionalInvoices.resx" Message="RptProfessionalInvoices.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptRisk.resx" Message="RptRisk.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptServCategory.resx" Message="RptServCategory.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptServicesComparer.resx" Message="RptServicesComparer.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptServNote.resx" Message="RptServNote.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptServProfessional.resx" Message="RptServProfessional.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptServSurgeon.resx" Message="RptServSurgeon.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTemplate.resx" Message="RptTemplate.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTicket.resx" Message="RptTicket.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTickets.resx" Message="RptTickets.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTicketsByProfessional.resx" Message="RptTicketsByProfessional.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTicketsNoPaid.resx" Message="RptTicketsNoPaid.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTicketsPaid.resx" Message="RptTicketsPaid.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptTicketsSurgeon.resx" Message="RptTicketsSurgeon.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\RptVATResume.resx" Message="RptVATResume.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\SubInvoiceFooter.resx" Message="SubInvoiceFooter.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\SubInvoiceLine.resx" Message="SubInvoiceLine.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\SubProfessionalInvoiceFooter.resx" Message="SubProfessionalInvoiceFooter.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\SubProfessionalInvoiceLine.resx" Message="SubProfessionalInvoiceLine.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\SubServiceComp.resx" Message="SubServiceComp.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\subServNoteTicket.resx" Message="subServNoteTicket.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="AriCliReport" />
+    <Event EventType="Success" Action="Analyze" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriClinic.sln" Message="AriClinic" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Test.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\Test.aspx" Message="Test.aspx" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliWeb\AriCliWeb.csproj" Message="AriCliWeb" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliModel\AriCliModel.csproj" Message="AriCliModel" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriCliReport\AriCliReport.csproj" Message="AriCliReport" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="C:\Proyectos\AriClinic\AriClinic\AriClinic.sln" Message="AriClinic" />
+  </Events>
+</UpgradeLog>
