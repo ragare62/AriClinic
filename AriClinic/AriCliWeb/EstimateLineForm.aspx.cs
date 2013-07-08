@@ -158,6 +158,7 @@ public partial class EstimateLineForm : System.Web.UI.Page
         }
     }
     #endregion Auxiliary functions
+
     #region Searching outside
     protected void rdcInsuranceService_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
@@ -167,14 +168,18 @@ public partial class EstimateLineForm : System.Web.UI.Page
         //
         
         Insurance ins = CntAriCli.GetInsurance(int.Parse(rdcbInsurance.SelectedValue), ctx);
-        RadComboBox combo = (RadComboBox)sender;
-        combo.Items.Clear();
-        var rs = from x in ins.InsuranceServices
-                 where x.Service.Name.Contains(e.Text)
-                 select x;
-        foreach (InsuranceService inss in rs)
+        if (ins != null)
         {
-            combo.Items.Add(new RadComboBoxItem(inss.Service.Name, inss.InsuranceServiceId.ToString()));
+            RadComboBox combo = (RadComboBox)sender;
+            combo.Items.Clear();
+            var rs = from x in ctx.InsuranceServices
+                     where  x.Insurance.InsuranceId == ins.InsuranceId
+                     && x.Service.Name.Contains(e.Text)
+                     select x;
+            foreach (InsuranceService inss in rs)
+            {
+                combo.Items.Add(new RadComboBoxItem(inss.Service.Name, inss.InsuranceServiceId.ToString()));
+            }
         }
     }
     #endregion  

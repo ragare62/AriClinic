@@ -3262,7 +3262,7 @@
           <orm:column name="postal_code" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="comments" property="Comments" uniqueId="eb5ec69e-32a6-46ca-a645-32bcf92a6005" type="System.String">
-          <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
+          <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="status" property="Status" uniqueId="8867cb0e-6804-4a62-9ac3-6c8cf21e644c" type="System.String">
           <orm:column name="status" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
@@ -3288,14 +3288,14 @@
         <orm:field name="source" property="Source" behavior="readwrite" uniqueId="877fe311-a5db-4b40-a6fa-02c4f49dc2e3" type="AriCliModel.Source">
           <orm:reference uniqueId="40125c5e-5f0e-49ce-a244-708b9d12b608" />
         </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="53e2c64b-4c09-4afe-9ce4-052bf10d05da" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="124cfe72-b451-4fd1-82d1-8a1b24fa432c" />
+        </orm:field>
         <orm:field name="replays" property="Replays" behavior="readwrite" uniqueId="07509cc6-1054-4fec-bd7b-aba5030f4619" type="AriCliModel.Replay">
           <orm:collection element-class="AriCliModel.Replay" inverse-field="request" order-by="" uniqueId="5a3a10fd-188f-47d6-a011-e71b6e7ca923" />
         </orm:field>
         <orm:field name="estimates" property="Estimates" behavior="readwrite" uniqueId="cc02313c-ace2-47d8-99c5-788c1405a4e1" type="AriCliModel.Estimate">
           <orm:collection element-class="AriCliModel.Estimate" inverse-field="request" order-by="" uniqueId="51f4e155-e35c-4ded-81a1-489db54d3abd" />
-        </orm:field>
-        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="53e2c64b-4c09-4afe-9ce4-052bf10d05da" type="AriCliModel.Clinic">
-          <orm:reference uniqueId="124cfe72-b451-4fd1-82d1-8a1b24fa432c" />
         </orm:field>
       </orm:class>
       <orm:class name="Replay" uniqueId="f50e1314-1679-4cf3-bf21-41d4d4cc1c2e">
@@ -4417,7 +4417,7 @@
         <orm:column name="born_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
         <orm:column name="sex" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="postal_code" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
-        <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column name="comments" sql-type="text" nullable="true" length="0" scale="0" ado-type="" />
         <orm:column name="status" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
         <orm:column name="full_name" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
       </orm:table>
