@@ -682,6 +682,14 @@ namespace AriCliModel
 			}
 		}
 		
+		public IQueryable<ServiceSubCategory> ServiceSubCategories 
+		{
+			get
+			{
+				return this.GetAll<ServiceSubCategory>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1008,6 +1016,10 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<Estimate> Estimates
+		{
+			get;
+		}
+		IQueryable<ServiceSubCategory> ServiceSubCategories
 		{
 			get;
 		}

@@ -20,6 +20,7 @@ public partial class ServiceForm : System.Web.UI.Page
     Service ser = null;
     int serviceId = 0;
     Permission per = null;
+    bool newRegister = false;
     #endregion Variables declarations
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -49,6 +50,8 @@ public partial class ServiceForm : System.Web.UI.Page
         {
             LoadTaxType(null);
             LoadServiceCategory(null);
+            LoadServiceSubCategory(null);
+            newRegister = true;
         }
     }
 
@@ -107,6 +110,15 @@ public partial class ServiceForm : System.Web.UI.Page
             //lblMessage.Text = Resources.GeneralResource.ServiceCategoryNeeded;
             return false;
         }
+        if (rdcServiceSubCategory.SelectedValue == "")
+        {
+            command = String.Format("showDialog('{0}','{1}','warning',null,0,0)"
+                , Resources.GeneralResource.Warning
+                , Resources.GeneralResource.ServiceCategoryNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            //lblMessage.Text = Resources.GeneralResource.ServiceCategoryNeeded;
+            return false;
+        }
         return true;
     }
     protected bool CreateChange()
@@ -133,12 +145,14 @@ public partial class ServiceForm : System.Web.UI.Page
         txtName.Text = ser.Name;
         LoadTaxType(ser.TaxType);
         LoadServiceCategory(ser.ServiceCategory);
+        LoadServiceSubCategory(ser.ServiceSubCategory);
     }
     protected void UnloadData(Service ser)
     {
         ser.Name = txtName.Text;
         ser.TaxType = CntAriCli.GetTaxType(Int32.Parse(rdcbTaxType.SelectedValue), ctx);
         ser.ServiceCategory = CntAriCli.GetServiceCategory(Int32.Parse(rdcbServiceCategory.SelectedValue), ctx);
+        ser.ServiceSubCategory = CntAriCli.GetServiceSubcategory(Int32.Parse(rdcServiceSubCategory.SelectedValue), ctx);
     }
     protected void LoadTaxType(TaxType taxt)
     {
@@ -176,7 +190,44 @@ public partial class ServiceForm : System.Web.UI.Page
             rdcbServiceCategory.SelectedValue = "";
         }
     }
+    protected void LoadServiceSubCategory(ServiceSubCategory sscat)
+    {
+        // clear previous items 
+        rdcServiceSubCategory.Items.Clear();
+        foreach (ServiceSubCategory s in ctx.ServiceSubCategories)
+        {
+            rdcServiceSubCategory.Items.Add(new RadComboBoxItem(s.Name, s.ServiceSubCategoryId.ToString()));
+        }
+        if (sscat != null)
+        {
+            rdcServiceSubCategory.SelectedValue = sscat.ServiceSubCategoryId.ToString();
+        }
+        else
+        {
+            rdcServiceSubCategory.Items.Add(new RadComboBoxItem(" ", ""));
+            rdcServiceSubCategory.SelectedValue = "";
+        }
+    }
+    protected void LoadServiceSubCategory2(ServiceCategory scat)
+    {
+        // clear previous items 
+        rdcServiceSubCategory.Items.Clear();
+        foreach (ServiceSubCategory s in scat.ServiceSubCategories)
+        {
+            rdcServiceSubCategory.Items.Add(new RadComboBoxItem(s.Name, s.ServiceSubCategoryId.ToString()));
+        }
+    }
+
     #endregion Auxiliary functions
+
+    protected void rdcbServiceCategory_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        ServiceCategory sc = CntAriCli.GetServiceCategory(int.Parse(rdcbServiceCategory.SelectedValue), ctx);
+        if (sc != null)
+        {
+            LoadServiceSubCategory2(sc);
+        }
+    }
 
 
 

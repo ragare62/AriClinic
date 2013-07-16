@@ -89,6 +89,19 @@ namespace AriCliModel
 			}
 		}
 		
+		private ServiceSubCategory serviceSubCategory;
+		public virtual ServiceSubCategory ServiceSubCategory
+		{
+			get
+			{
+				return this.serviceSubCategory;
+			}
+			set
+			{
+				this.serviceSubCategory = value;
+			}
+		}
+		
 		private IList<InsuranceService> insuranceServices = new List<InsuranceService>();
 		public virtual IList<InsuranceService> InsuranceServices
 		{

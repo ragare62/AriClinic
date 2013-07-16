@@ -251,6 +251,20 @@
     <Compile Include="ChannelGrid.aspx.designer.cs">
       <DependentUpon>ChannelGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ServiceSubCategoryForm.aspx.cs">
+      <DependentUpon>ServiceSubCategoryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceSubCategoryForm.aspx.designer.cs">
+      <DependentUpon>ServiceSubCategoryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSubCategoryGrid.aspx.cs">
+      <DependentUpon>ServiceSubCategoryGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServiceSubCategoryGrid.aspx.designer.cs">
+      <DependentUpon>ServiceSubCategoryGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EstimateGrid.aspx.cs">
       <DependentUpon>EstimateGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1235,6 +1249,8 @@
     <Content Include="CampaignGrid.aspx" />
     <Content Include="ChannelForm.aspx" />
     <Content Include="ChannelGrid.aspx" />
+    <Content Include="ServiceSubCategoryForm.aspx" />
+    <Content Include="ServiceSubCategoryGrid.aspx" />
     <Content Include="EstimateGrid.aspx" />
     <Content Include="EstimateLineForm.aspx" />
     <Content Include="EstimateForm.aspx" />
@@ -1551,7 +1567,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

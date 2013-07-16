@@ -22,18 +22,18 @@ using AriCliModel;
 
 namespace AriCliModel	
 {
-	public partial class ServiceCategory
+	public partial class ServiceSubCategory
 	{
-		private int serviceCategoryId;
-		public virtual int ServiceCategoryId
+		private int serviceSubCategoryId;
+		public virtual int ServiceSubCategoryId
 		{
 			get
 			{
-				return this.serviceCategoryId;
+				return this.serviceSubCategoryId;
 			}
 			set
 			{
-				this.serviceCategoryId = value;
+				this.serviceSubCategoryId = value;
 			}
 		}
 		
@@ -50,16 +50,16 @@ namespace AriCliModel
 			}
 		}
 		
-		private int oftId;
-		public virtual int OftId
+		private ServiceCategory serviceCategory;
+		public virtual ServiceCategory ServiceCategory
 		{
 			get
 			{
-				return this.oftId;
+				return this.serviceCategory;
 			}
 			set
 			{
-				this.oftId = value;
+				this.serviceCategory = value;
 			}
 		}
 		
@@ -69,15 +69,6 @@ namespace AriCliModel
 			get
 			{
 				return this.services;
-			}
-		}
-		
-		private IList<ServiceSubCategory> serviceSubCategories = new List<ServiceSubCategory>();
-		public virtual IList<ServiceSubCategory> ServiceSubCategories
-		{
-			get
-			{
-				return this.serviceSubCategories;
 			}
 		}
 		

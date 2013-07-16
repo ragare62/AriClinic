@@ -9,7 +9,7 @@
 
 
 
-public partial class ServiceForm {
+public partial class ServiceSubCategoryForm {
     
     /// <summary>
     /// Control RadStyleSheetManager1.
@@ -93,22 +93,22 @@ public partial class ServiceForm {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// Control lblServiceId.
+    /// Control lblServiceSubCategoryId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblServiceId;
+    protected global::System.Web.UI.WebControls.Label lblServiceSubCategoryId;
     
     /// <summary>
-    /// Control txtServiceId.
+    /// Control txtServiceSubCategoryId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtServiceId;
+    protected global::System.Web.UI.WebControls.TextBox txtServiceSubCategoryId;
     
     /// <summary>
     /// Control lblName.
@@ -129,24 +129,6 @@ public partial class ServiceForm {
     protected global::System.Web.UI.WebControls.TextBox txtName;
     
     /// <summary>
-    /// Control lblTaxType.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTaxType;
-    
-    /// <summary>
-    /// Control rdcbTaxType.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcbTaxType;
-    
-    /// <summary>
     /// Control lblServiceCategory.
     /// </summary>
     /// <remarks>
@@ -163,24 +145,6 @@ public partial class ServiceForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::Telerik.Web.UI.RadComboBox rdcbServiceCategory;
-    
-    /// <summary>
-    /// Control lblServiceSubCategory.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblServiceSubCategory;
-    
-    /// <summary>
-    /// Control rdcServiceSubCategory.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadComboBox rdcServiceSubCategory;
     
     /// <summary>
     /// Control lblMessage.

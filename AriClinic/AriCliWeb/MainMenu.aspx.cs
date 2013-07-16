@@ -293,6 +293,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "estimate":
                 RadAjaxManager1.ResponseScripts.Add("LaunchEstimate();");
                 break;
+            case "servicesubcategory":
+                RadAjaxManager1.ResponseScripts.Add("LaunchServiceSubCategory();");
+                break;
             default:
                 break;
         }

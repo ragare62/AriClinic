@@ -429,6 +429,9 @@
         <orm:field name="services" property="Services" behavior="readwrite" null-value="none" uniqueId="af645bc1-c4df-487a-bf8f-167ef9854844" type="AriCliModel.Service">
           <orm:collection element-class="AriCliModel.Service" inverse-field="serviceCategory" managed="true" order-by="" uniqueId="3a55cc5c-a09c-4a3e-ae61-847cb1ad6f00" />
         </orm:field>
+        <orm:field name="serviceSubCategories" property="ServiceSubCategories" behavior="readwrite" uniqueId="e06fd66c-dde3-4bb2-bcb1-81769acac6e0" type="AriCliModel.ServiceSubCategory">
+          <orm:collection element-class="AriCliModel.ServiceSubCategory" inverse-field="serviceCategory" order-by="" uniqueId="d8a61161-70e8-4e0d-bd00-ba626b51316e" />
+        </orm:field>
       </orm:class>
       <orm:class name="TaxType" discriminator-value="AriCliModel.TaxType" behavior="readwrite" uniqueId="5d79e00c-df16-49d3-91eb-e5663e44aa2e">
         <orm:table name="tax_type" />
@@ -483,6 +486,9 @@
           <orm:reference uniqueId="e432220d-f6f7-46d6-ab13-95e11eab8be7">
             <orm:column name="tax_type_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="" target-class="AriCliModel.TaxType" target-field="taxTypeId" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="serviceSubCategory" property="ServiceSubCategory" behavior="readwrite" uniqueId="00de8827-ea04-4b48-a18c-0230ef15f97a" type="AriCliModel.ServiceSubCategory">
+          <orm:reference uniqueId="ccbb5835-9daa-4c0d-89ca-20c6651ac9e1" />
         </orm:field>
         <orm:field name="insuranceServices" property="InsuranceServices" behavior="readwrite" null-value="none" uniqueId="7d62c4e0-8a52-43fc-b0f2-36deb7970530" type="AriCliModel.InsuranceService">
           <orm:collection element-class="AriCliModel.InsuranceService" inverse-field="service" managed="true" order-by="" uniqueId="2be25211-552d-4875-ba8f-ddd58bf9f502" />
@@ -3382,6 +3388,25 @@
           <orm:collection element-class="AriCliModel.EstimateLine" inverse-field="estimate" order-by="" uniqueId="0b3e5a43-f6ff-4ed7-b79f-3e71953be61a" />
         </orm:field>
       </orm:class>
+      <orm:class name="ServiceSubCategory" uniqueId="3f38d557-1e68-456d-9032-c0a623599d9f">
+        <orm:table name="service_sub_category" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="serviceSubCategoryId" />
+        </orm:identity>
+        <orm:field name="serviceSubCategoryId" property="ServiceSubCategoryId" uniqueId="452071e1-b52f-4f81-83b2-c30f4aa6b3c9" type="System.Int32">
+          <orm:column name="service_sub_category_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="name" property="Name" uniqueId="db438995-5a44-45b2-8da4-20b878b79144" type="System.String">
+          <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="serviceCategory" property="ServiceCategory" behavior="readwrite" uniqueId="18824eb1-a540-422c-acd8-ed7f35f676a2" type="AriCliModel.ServiceCategory">
+          <orm:reference uniqueId="d8a61161-70e8-4e0d-bd00-ba626b51316e" />
+        </orm:field>
+        <orm:field name="services" property="Services" behavior="readwrite" uniqueId="120870df-31c7-4a00-a018-f2cc5bcb0b60" type="AriCliModel.Service">
+          <orm:collection element-class="AriCliModel.Service" inverse-field="serviceSubCategory" order-by="" uniqueId="ccbb5835-9daa-4c0d-89ca-20c6651ac9e1" />
+        </orm:field>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -4439,6 +4464,10 @@
         <orm:column name="full_name" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="comments" sql-type="text" nullable="false" length="0" scale="0" ado-type="" />
       </orm:table>
+      <orm:table name="service_sub_category">
+        <orm:column name="service_sub_category_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
@@ -4951,6 +4980,9 @@
         <classHasNavigationalProperties Id="69fdae1b-5cfb-4c49-8283-1a2fe0b0c6fc">
           <NavigationalProperty Id="af645bc1-c4df-487a-bf8f-167ef9854844" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="true" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f909ff00-9525-492b-9cd6-859ccbaee009">
+          <NavigationalProperty Id="e06fd66c-dde3-4bb2-bcb1-81769acac6e0" name="ServiceSubCategories" type="IList&lt;ServiceSubCategory&gt;" label="ServiceSubCategories : IList&lt;ServiceSubCategory&gt;" nullable="true" kind="Persistent" fieldName="serviceSubCategories" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="5d79e00c-df16-49d3-91eb-e5663e44aa2e" name="TaxType" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -5001,6 +5033,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="ccbb5835-9daa-4c0d-89ca-20c6651ac9e1" SourceMultiplicity="ZeroOne" name="ServiceHasServiceSubCategory">
+          <DomainClassMoniker name="/AriClinicContext/ServiceSubCategory" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="d79d355a-914b-4185-9e95-4fe00922f569">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceSubCategory/Services" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="0cc7c592-5593-4ba4-bc3e-dcdad205ac06">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Service/ServiceSubCategory" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="85af3b1b-81d3-4e97-877a-0a68185e27a9">
@@ -5023,6 +5068,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="df10c5a1-7592-44ad-9f4c-3db30018d88c">
           <NavigationalProperty Id="df84d7c9-b4d0-417e-9fca-638af9d3f1f8" name="Replays" type="IList&lt;Replay&gt;" label="Replays : IList&lt;Replay&gt;" nullable="true" kind="Persistent" fieldName="replays" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ed0bbc1e-1187-4837-ada3-af894ad320da">
+          <NavigationalProperty Id="00de8827-ea04-4b48-a18c-0230ef15f97a" name="ServiceSubCategory" type="ServiceSubCategory" label="ServiceSubCategory : ServiceSubCategory" nullable="true" kind="Persistent" fieldName="serviceSubCategory" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7920,6 +7968,33 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="3f38d557-1e68-456d-9032-c0a623599d9f" name="ServiceSubCategory" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="452071e1-b52f-4f81-83b2-c30f4aa6b3c9" name="ServiceSubCategoryId" type="System.Int32" label="ServiceSubCategoryId : System.Int32" identity="true" fieldName="serviceSubCategoryId" />
+      <Property Id="db438995-5a44-45b2-8da4-20b878b79144" name="Name" label="Name : String" fieldName="name" />
+      <AssociationTargets>
+        <Association Id="d8a61161-70e8-4e0d-bd00-ba626b51316e" SourceMultiplicity="ZeroOne" name="ServiceSubCategoryHasServiceCategory">
+          <DomainClassMoniker name="/AriClinicContext/ServiceCategory" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="87fc07e6-2b9a-469c-a237-2f1c44708082">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceCategory/ServiceSubCategories" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bf33fc59-82ff-416c-bb8c-7189d25177d8">
+              <NavigationalPropertyMoniker name="/AriClinicContext/ServiceSubCategory/ServiceCategory" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="70b89a40-b742-4446-8f3e-e853a298b397">
+          <NavigationalProperty Id="18824eb1-a540-422c-acd8-ed7f35f676a2" name="ServiceCategory" type="ServiceCategory" label="ServiceCategory : ServiceCategory" nullable="true" kind="Persistent" fieldName="serviceCategory" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="570a478d-8c4c-4078-9e8e-f250abf7c97b">
+          <NavigationalProperty Id="120870df-31c7-4a00-a018-f2cc5bcb0b60" name="Services" type="IList&lt;Service&gt;" label="Services : IList&lt;Service&gt;" nullable="true" kind="Persistent" fieldName="services" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -8003,6 +8078,7 @@
         <entitySetProperty name="Replays" namespace="AriCliModel" type="Replay" label="Replays : IQueryable&lt;AriCliModel.Replay&gt;" />
         <entitySetProperty name="EstimateLines" namespace="AriCliModel" type="EstimateLine" label="EstimateLines : IQueryable&lt;AriCliModel.EstimateLine&gt;" />
         <entitySetProperty name="Estimates" namespace="AriCliModel" type="Estimate" label="Estimates : IQueryable&lt;AriCliModel.Estimate&gt;" />
+        <entitySetProperty name="ServiceSubCategories" namespace="AriCliModel" type="ServiceSubCategory" label="ServiceSubCategories : IQueryable&lt;AriCliModel.ServiceSubCategory&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

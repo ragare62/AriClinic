@@ -1,11 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServiceForm.aspx.cs" Inherits="ServiceForm" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServiceSubCategoryForm.aspx.cs" Inherits="ServiceSubCategoryForm" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>
-            Servicio
+            Subcategoria de servicio
         </title>
         <telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
         <link href="AriClinicStyle.css" rel="stylesheet" type="text/css" />
@@ -58,39 +58,27 @@
                         <td colspan="4">
                             <div id="TitleArea" class="titleBar2">
                                 <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-                                <asp:Label ID="lblTitle" runat="server" Text="Servicio"></asp:Label>
+                                <asp:Label ID="lblTitle" runat="server" Text="Subcategoria de servicios"></asp:Label>
                             </div>
 
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div id="ServiceId" class="normalText">
-                                <asp:Label ID="lblServiceId" runat="server" Text="ID:" 
-                                           ToolTip="Identificador de categoria, lo usa internamente el sistema"></asp:Label>
+                            <div id="ServiceSubCategoryId" class="normalText">
+                                <asp:Label ID="lblServiceSubCategoryId" runat="server" Text="ID:" 
+                                           ToolTip="Identificador de subcategoria, lo usa internamente el sistema"></asp:Label>
                                 <br />
-                                <asp:TextBox ID="txtServiceId" runat="server" Enabled="false" Width="89px"></asp:TextBox>
+                                <asp:TextBox ID="txtServiceSubCategoryId" runat="server" Enabled="false" Width="89px"></asp:TextBox>
                             </div>
 
                         </td>
                         <td colspan="3">
                             <div id="Name" class="normalText">
-                                <asp:Label ID="lblName" runat="server" Text="Nombre del servicio:" 
+                                <asp:Label ID="lblName" runat="server" Text="Nombre de la subcategoria:" 
                                            ToolTip="Nombre a asignar a la categoria"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="txtName" runat="server" Width="287px"></asp:TextBox>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <div ID="TaxType" class="normalText">
-                                <asp:Label ID="lblTaxType" runat="server" Text="Tipo de IVA:" 
-                                           ToolTip="IVA aplicable cuando se fcature el servicio"></asp:Label>
-                                <br />
-                                <telerik:RadComboBox ID="rdcbTaxType" runat="server">
-                                </telerik:RadComboBox>
                             </div>
 
                         </td>
@@ -101,24 +89,13 @@
                                 <asp:Label ID="lblServiceCategory" runat="server" Text="Categoria:" 
                                            ToolTip="Categoria a la que pertenece el servicio"></asp:Label>
                                 <br />
-                                <telerik:RadComboBox ID="rdcbServiceCategory" runat="server" Width="90%" AutoPostBack="True" OnSelectedIndexChanged="rdcbServiceCategory_SelectedIndexChanged">
+                                <telerik:RadComboBox ID="rdcbServiceCategory" runat="server" Width="90%">
                                 </telerik:RadComboBox>
                             </div>
 
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
-                            <div ID="ServiceSubCategory" class="normalText">
-                                <asp:Label ID="lblServiceSubCategory" runat="server" Text="Subcategoria:" 
-                                           ToolTip="Subcategoria a la que pertenece el servicio"></asp:Label>
-                                <br />
-                                <telerik:RadComboBox ID="rdcServiceSubCategory" runat="server" Width="90%">
-                                </telerik:RadComboBox>
-                            </div>
-
-                        </td>
-                    </tr>                    <tr>
                         <td colspan="4">
                             <div ID="Message" class="messageText">
                                 <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>

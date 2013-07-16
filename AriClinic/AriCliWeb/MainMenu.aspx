@@ -374,6 +374,10 @@
               var w1 = window.open("EstimateGrid.aspx", "EST", "width=1024, height=750,resizable=1")
               w1.focus();
           }
+          function LaunchServiceSubCategory() {
+              var w1 = window.open("ServiceSubCategoryGrid.aspx", "EST", "width=1024, height=750,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -404,7 +408,7 @@
         <div id="MenuArea">
           <telerik:RadMenu ID="RadMenu1" runat="server" Width="100%" Skin="Office2007" 
                            OnItemClick="RadMenu1_ItemClick" 
-                           style="top: 0px; left: 0px; height: 34px">
+                           style="top: 14px; left: 0px; height: 34px">
             <Items>
               <telerik:RadMenuItem runat="server" Text="Administración" Value="admin">
                 <Items>
@@ -452,6 +456,8 @@
                       <telerik:RadMenuItem runat="server" Owner="" 
                                            Text="Categorias de servicios médicos" Value="scat">
                       </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Subcategorías de servicios." Value="servicesubcategory">
+                        </telerik:RadMenuItem>
                       <telerik:RadMenuItem runat="server" Owner="" Text="Servicios médicos" 
                                            Value="ser">
                       </telerik:RadMenuItem>

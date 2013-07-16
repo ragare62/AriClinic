@@ -1970,7 +1970,27 @@ namespace AriCliModel
                     where c.EstimateLineId == id
                     select c).FirstOrDefault<EstimateLine>();
         }
+
+        public static IList<ServiceSubCategory> GetServiceSubcategories(AriClinicContext ctx)
+        {
+            return (from c in ctx.ServiceSubCategories
+                    select c).ToList<ServiceSubCategory>();
+        }
+
+        public static IList<ServiceSubCategory> GetServiceSubcategories(ServiceCategory serviceCategory, AriClinicContext ctx)
+        {
+            return (from c in ctx.ServiceSubCategories
+                    where c.ServiceCategory.ServiceCategoryId == serviceCategory.ServiceCategoryId
+                    select c).ToList<ServiceSubCategory>();
+        }
+        public static ServiceSubCategory GetServiceSubcategory(int id, AriClinicContext ctx)
+        {
+            return (from c in ctx.ServiceSubCategories
+                    where c.ServiceSubCategoryId == id
+                    select c).FirstOrDefault<ServiceSubCategory>();
+        }
  
+
         #region Auxiliary functions
             
         public static int CalulatedAge(DateTime BornDate)
