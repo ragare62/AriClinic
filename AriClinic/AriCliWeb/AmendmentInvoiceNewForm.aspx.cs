@@ -12,14 +12,19 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Telerik.Web.UI;
 
-public partial class HealthcareCompanyForm : System.Web.UI.Page 
+public partial class AmendmentInvoiceNewForm : System.Web.UI.Page 
 {
     #region Variables declarations
     AriClinicContext ctx = null;
     User user = null;
-    HealthcareCompany hc = null;
-    int hcID = 0;
+    ServiceCategory scat = null;
+    int serviceCategoryId = 0;
     Permission per = null;
+    AmendmentInvoice aInv = null;
+    Invoice inv = null;
+    string serial;
+    int year;
+    int invoiceNumber;
     #endregion Variables declarations
     #region Init Load Unload events
     protected void Page_Init(object sender, EventArgs e)
@@ -32,19 +37,13 @@ public partial class HealthcareCompanyForm : System.Web.UI.Page
         {
             user = CntAriCli.GetUser((Session["User"] as User).UserId, ctx);
             Process proc = (from p in ctx.Processes
-                            where p.Code == "usergroup"
+                            where p.Code == "amendmentinvoice"
                             select p).FirstOrDefault<Process>();
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
         }
-
-        // 
-        if (Request.QueryString["HcId"] != null)
-        {
-            hcID = Int32.Parse(Request.QueryString["HcId"]);
-            HealthcareCompany hc = CntAriCli.GetHealthCompany(ctx);
-            LoadData(hc);
-        }
+        // invoice date today
+        rddpInvoiceDate.SelectedDate = DateTime.Now;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -64,7 +63,7 @@ public partial class HealthcareCompanyForm : System.Web.UI.Page
     {
         if (!CreateChange())
             return;
-        string command = "CancelEdit('')"; // there is not a grid behind
+        string command = "CloseAndRebind('')";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -78,63 +77,36 @@ public partial class HealthcareCompanyForm : System.Web.UI.Page
     #region Auxiliary functions
     protected bool DataOk()
     {
+        // loading data from form
+        serial = txtInvoiceSerial.Text;
+        year = int.Parse(txtYear.Text);
+        invoiceNumber = int.Parse(txtInvoiceNumber.Text);
+        // check if there's an invoice with these data
+        inv = CntAriCli.GetInvoice(serial, year, invoiceNumber, ctx);
+        if (inv == null)
+        {
+            lblMessage.Text = "NO existe una factura con estos datos";
+            return false;
+        }
         return true;
     }
-    /// <summary>
-    /// As its name suggest if there isn't an object
-    /// it'll create it. It exists modify it.
-    /// </summary>
-    /// <returns></returns>
     protected bool CreateChange()
     {
         if (!DataOk())
             return false;
-        if (hcID == 0)
+        //
+        DateTime myDate = (DateTime)rddpInvoiceDate.SelectedDate;
+        string reason = txtReason.Text;
+        // create amendment invoice
+        aInv = CntAriCli.CreateAmendmentInvoice(inv, myDate, reason, ctx);
+        if (aInv == null)
         {
-            HealthcareCompany hc = new HealthcareCompany();
-            UnloadData(hc);
-            ctx.Add(hc);
+            lblMessage.Text = "No se ha podido crear la factura rectificativa, seguramente ya se ha generado otra contra esta factura";
+            return false;
         }
-        else
-        {
-            HealthcareCompany hc = CntAriCli.GetHealthCompany(ctx);
-            UnloadData(hc);
-        }
-        ctx.SaveChanges();
         return true;
     }
-    protected void LoadData(HealthcareCompany hc)
-    {
-        txtHcId.Text = hc.HcId.ToString();
-        txtName.Text = hc.Name;
-        txtVATIN.Text = hc.VATIN;
-        txtSERIAL.Text = hc.InvoiceSerial;
-        txtSERIAL2.Text = hc.AmendmentInvoiceSerial;
-    }
-    protected void UnloadData(HealthcareCompany hc)
-    {
-        hc.Name = txtName.Text;
-        hc.VATIN = txtVATIN.Text;
-        hc.InvoiceSerial = txtSERIAL.Text;
-        hc.AmendmentInvoiceSerial = txtSERIAL2.Text;
-    }
     #endregion Auxiliary functions
-
-    protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
-    {
-        switch (e.Argument)
-        {
-            case "address":
-                UscAddressGrid1.RefreshGrid(true);
-                break;
-            case "telephone":
-                UscTelephoneGrid1.RefreshGrid(true);
-                break;
-            case "email":
-                UscEmailGrid1.RefreshGrid(true);
-                break;
-        }
-    }
 
 
 

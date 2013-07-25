@@ -22,18 +22,18 @@ using AriCliModel;
 
 namespace AriCliModel	
 {
-	public partial class Invoice
+	public partial class AmendmentInvoice
 	{
-		private int invoiceId;
-		public virtual int InvoiceId
+		private int amendmentInvoiceId;
+		public virtual int AmendmentInvoiceId
 		{
 			get
 			{
-				return this.invoiceId;
+				return this.amendmentInvoiceId;
 			}
 			set
 			{
-				this.invoiceId = value;
+				this.amendmentInvoiceId = value;
 			}
 		}
 		
@@ -76,19 +76,6 @@ namespace AriCliModel
 			}
 		}
 		
-		private int invoiceNumber;
-		public virtual int InvoiceNumber
-		{
-			get
-			{
-				return this.invoiceNumber;
-			}
-			set
-			{
-				this.invoiceNumber = value;
-			}
-		}
-		
 		private decimal total;
 		public virtual decimal Total
 		{
@@ -115,6 +102,45 @@ namespace AriCliModel
 			}
 		}
 		
+		private int invoiceNumber;
+		public virtual int InvoiceNumber
+		{
+			get
+			{
+				return this.invoiceNumber;
+			}
+			set
+			{
+				this.invoiceNumber = value;
+			}
+		}
+		
+		private string reason;
+		public virtual string Reason
+		{
+			get
+			{
+				return this.reason;
+			}
+			set
+			{
+				this.reason = value;
+			}
+		}
+		
+		private Invoice invoice;
+		public virtual Invoice OriginalInvoice
+		{
+			get
+			{
+				return this.invoice;
+			}
+			set
+			{
+				this.invoice = value;
+			}
+		}
+		
 		private Customer customer;
 		public virtual Customer Customer
 		{
@@ -128,39 +154,12 @@ namespace AriCliModel
 			}
 		}
 		
-		private IList<InvoiceLine> invoiceLines = new List<InvoiceLine>();
-		public virtual IList<InvoiceLine> InvoiceLines
+		private IList<AmendmentInvoiceLine> amendmentInvoiceLines = new List<AmendmentInvoiceLine>();
+		public virtual IList<AmendmentInvoiceLine> AmendmentInvoiceLines
 		{
 			get
 			{
-				return this.invoiceLines;
-			}
-		}
-		
-		private IList<ServiceNote> serviceNotes = new List<ServiceNote>();
-		public virtual IList<ServiceNote> ServiceNotes
-		{
-			get
-			{
-				return this.serviceNotes;
-			}
-		}
-		
-		private IList<AnestheticServiceNote> anestheticServiceNotes = new List<AnestheticServiceNote>();
-		public virtual IList<AnestheticServiceNote> AnestheticServiceNotes
-		{
-			get
-			{
-				return this.anestheticServiceNotes;
-			}
-		}
-		
-		private IList<AmendmentInvoice> amendmentInvoices = new List<AmendmentInvoice>();
-		public virtual IList<AmendmentInvoice> AmendmentInvoices
-		{
-			get
-			{
-				return this.amendmentInvoices;
+				return this.amendmentInvoiceLines;
 			}
 		}
 		

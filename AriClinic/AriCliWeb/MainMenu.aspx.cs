@@ -296,6 +296,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "servicesubcategory":
                 RadAjaxManager1.ResponseScripts.Add("LaunchServiceSubCategory();");
                 break;
+            case "amendmentinvoice":
+                RadAjaxManager1.ResponseScripts.Add("LaunchAmendmentInvoice();");
+                break;
             default:
                 break;
         }

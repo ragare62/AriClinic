@@ -251,6 +251,41 @@
     <Compile Include="ChannelGrid.aspx.designer.cs">
       <DependentUpon>ChannelGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AmendmentInvoiceGrid.aspx.cs">
+      <DependentUpon>AmendmentInvoiceGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AmendmentInvoiceGrid.aspx.designer.cs">
+      <DependentUpon>AmendmentInvoiceGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AmendmentInvoiceForm.aspx.cs">
+      <DependentUpon>AmendmentInvoiceForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AmendmentInvoiceForm.aspx.designer.cs">
+      <DependentUpon>AmendmentInvoiceForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AmendmentInvoiceLineForm.aspx.cs">
+      <DependentUpon>AmendmentInvoiceLineForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AmendmentInvoiceLineForm.aspx.designer.cs">
+      <DependentUpon>AmendmentInvoiceLineForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AmendmentInvoiceNewForm.aspx.cs">
+      <DependentUpon>AmendmentInvoiceNewForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AmendmentInvoiceNewForm.aspx.designer.cs">
+      <DependentUpon>AmendmentInvoiceNewForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UscAmendmentInvoiceLineGrid.ascx.cs">
+      <DependentUpon>UscAmendmentInvoiceLineGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UscAmendmentInvoiceLineGrid.ascx.designer.cs">
+      <DependentUpon>UscAmendmentInvoiceLineGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ServiceSubCategoryForm.aspx.cs">
       <DependentUpon>ServiceSubCategoryForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1249,6 +1284,11 @@
     <Content Include="CampaignGrid.aspx" />
     <Content Include="ChannelForm.aspx" />
     <Content Include="ChannelGrid.aspx" />
+    <Content Include="AmendmentInvoiceGrid.aspx" />
+    <Content Include="AmendmentInvoiceForm.aspx" />
+    <Content Include="AmendmentInvoiceLineForm.aspx" />
+    <Content Include="AmendmentInvoiceNewForm.aspx" />
+    <Content Include="UscAmendmentInvoiceLineGrid.ascx" />
     <Content Include="ServiceSubCategoryForm.aspx" />
     <Content Include="ServiceSubCategoryGrid.aspx" />
     <Content Include="EstimateGrid.aspx" />
@@ -1567,7 +1607,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

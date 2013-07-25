@@ -62,6 +62,9 @@
         <orm:field name="estimates" property="Estimates" behavior="readwrite" uniqueId="3afff47b-587b-4893-aad2-f6d803143daa" type="AriCliModel.Estimate">
           <orm:collection element-class="AriCliModel.Estimate" inverse-field="user" order-by="" uniqueId="e9ce4f9d-fe12-410d-a344-4d2f684c78ae" />
         </orm:field>
+        <orm:field name="amendmentInvoiceLines" property="AmendmentInvoiceLines" behavior="readwrite" uniqueId="1c1a5309-1022-4084-ba61-e584ee161455" type="AriCliModel.AmendmentInvoiceLine">
+          <orm:collection element-class="AriCliModel.AmendmentInvoiceLine" inverse-field="user" order-by="" uniqueId="01e34fa5-c83e-4108-9db6-a925e3fc69df" />
+        </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">
         <orm:table name="user_group" />
@@ -99,6 +102,9 @@
         </orm:field>
         <orm:field name="invoiceSerial" property="InvoiceSerial" behavior="readwrite" null-value="none" uniqueId="ba811ef7-4587-4f11-8f0c-3566002f74c8" type="System.String">
           <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="amendmentInvoiceSerial" property="AmendmentInvoiceSerial" uniqueId="82d35e83-7255-4e6a-b1c8-ef9f4994702d" type="System.String">
+          <orm:column name="amendment_invoice_serial" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="telephones1" property="Telephones" behavior="readwrite" uniqueId="cf3f967f-b65b-4f2d-8ebb-71673407a00c" type="AriCliModel.Telephone">
           <orm:collection element-class="AriCliModel.Telephone" inverse-field="healthcareCompany1" order-by="" uniqueId="b3ba6165-c5f3-4051-abc3-d4da371d830e" />
@@ -461,6 +467,9 @@
         <orm:field name="professionalInvoiceLines" property="ProfessionalInvoiceLines" behavior="readwrite" uniqueId="38926bf8-3d5f-476b-86b7-0f1a78fb185b" type="AriCliModel.ProfessionalInvoiceLine">
           <orm:collection element-class="AriCliModel.ProfessionalInvoiceLine" inverse-field="taxType" order-by="" uniqueId="431df532-07c2-450a-9c97-4c1c702ebf91" />
         </orm:field>
+        <orm:field name="amendmentInvoiceLines" property="AmendmentInvoiceLines" behavior="readwrite" uniqueId="8e7e1a50-7d36-4907-a3e6-a9fb93d19ce6" type="AriCliModel.AmendmentInvoiceLine">
+          <orm:collection element-class="AriCliModel.AmendmentInvoiceLine" inverse-field="taxType" order-by="" uniqueId="2aee452c-69b8-4545-8433-b7c8256dd885" />
+        </orm:field>
       </orm:class>
       <orm:class name="Service" behavior="readwrite" uniqueId="934be2ea-af2e-4982-8660-59ba8f334ec1">
         <orm:table name="service" />
@@ -679,6 +688,9 @@
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="d00695da-8821-4d18-b4c6-6d11541bb65d" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="customer" order-by="" uniqueId="0feba4f9-4f6b-4f10-82ee-aa07ce7bbe04" />
         </orm:field>
+        <orm:field name="amendmentInvoices" property="AmendmentInvoices" behavior="readwrite" uniqueId="70ace1c8-3bed-445d-a66d-b3efda6b05ba" type="AriCliModel.AmendmentInvoice">
+          <orm:collection element-class="AriCliModel.AmendmentInvoice" inverse-field="customer" order-by="" uniqueId="bcc0775f-18a8-44fd-88f0-d84b73798dac" />
+        </orm:field>
       </orm:class>
       <orm:class name="Policy" behavior="readwrite" uniqueId="e9822f71-dacb-4c06-be9e-c144574a5184">
         <orm:table name="policy" />
@@ -855,6 +867,9 @@
         </orm:field>
         <orm:field name="anestheticServiceNotes" property="AnestheticServiceNotes" behavior="readwrite" uniqueId="7677258f-6212-462a-aed0-bd348debb9f0" type="AriCliModel.AnestheticServiceNote">
           <orm:collection element-class="AriCliModel.AnestheticServiceNote" inverse-field="invoice" order-by="" uniqueId="2f2e4833-0ff8-4a43-a42b-0cc1351d09d6" />
+        </orm:field>
+        <orm:field name="amendmentInvoices" property="AmendmentInvoices" behavior="readwrite" uniqueId="174624ca-299a-4588-957c-88bc8d4cb20f" type="AriCliModel.AmendmentInvoice">
+          <orm:collection element-class="AriCliModel.AmendmentInvoice" inverse-field="invoice" order-by="" uniqueId="f5ef759a-94fe-4977-9d49-154fe533eb18" />
         </orm:field>
         <orm:index name="idx_invoice_customer_id">
           <orm:columnMapping>
@@ -3407,6 +3422,94 @@
           <orm:collection element-class="AriCliModel.Service" inverse-field="serviceSubCategory" order-by="" uniqueId="ccbb5835-9daa-4c0d-89ca-20c6651ac9e1" />
         </orm:field>
       </orm:class>
+      <orm:class name="AmendmentInvoice" uniqueId="4c57042f-7b22-4fe1-a851-3d354aed0d7a">
+        <orm:table name="amendment_invoice" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="amendmentInvoiceId" />
+        </orm:identity>
+        <orm:field name="amendmentInvoiceId" property="AmendmentInvoiceId" uniqueId="5969e7a7-95f0-45f2-8007-7b97c5c69a79" type="System.Int32">
+          <orm:column name="amendment_invoice_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="invoiceDate" property="InvoiceDate" uniqueId="fd74f1ca-9009-40bf-824b-230259687f2a" type="System.DateTime">
+          <orm:column name="invoice_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="serial" property="Serial" uniqueId="07ce80f0-3e23-4dab-9068-879565fcd431" type="System.String">
+          <orm:column name="srial" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="year" property="Year" uniqueId="0fe534e0-e046-4fa3-b721-c9dcf581974a" type="System.Int32">
+          <orm:column name="yr" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="total" property="Total" uniqueId="64386088-88e6-4ebc-aff0-bfd721c4c91b" type="System.Decimal">
+          <orm:column name="ttal" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="invoiceKey" property="InvoiceKey" uniqueId="14452b67-41c6-4e4b-9203-e06a1064db67" type="System.String">
+          <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="invoiceNumber" property="InvoiceNumber" uniqueId="a492b114-3877-47dc-97f1-30d7e1b310df" type="System.Int32">
+          <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="reason" property="Reason" uniqueId="b68fd60c-74a0-4b9a-9240-8f5913f92dc2" type="System.String">
+          <orm:column nullable="true" scale="0" length="0" sql-type="text" name="reason" ado-type="" />
+        </orm:field>
+        <orm:field name="invoice" property="OriginalInvoice" behavior="readwrite" uniqueId="b517f748-9043-4dd2-bad0-82ba53cba7f4" type="AriCliModel.Invoice">
+          <orm:reference uniqueId="f5ef759a-94fe-4977-9d49-154fe533eb18" />
+        </orm:field>
+        <orm:field name="customer" property="Customer" behavior="readwrite" uniqueId="aca9344d-3dfb-47d4-9865-72c6e26b5b00" type="AriCliModel.Customer">
+          <orm:reference uniqueId="bcc0775f-18a8-44fd-88f0-d84b73798dac" />
+        </orm:field>
+        <orm:field name="amendmentInvoiceLines" property="AmendmentInvoiceLines" behavior="readwrite" uniqueId="910c50f4-b680-42fe-9a8b-a128ae6cd783" type="AriCliModel.AmendmentInvoiceLine">
+          <orm:collection element-class="AriCliModel.AmendmentInvoiceLine" inverse-field="amendmentInvoice" order-by="" uniqueId="4171256e-000a-4013-86dd-0a7afab66d44" />
+        </orm:field>
+        <orm:index name="idx_amendment_invoice_invoice_id">
+          <orm:columnMapping>
+            <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_amendment_invoice_person_id">
+          <orm:columnMapping>
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="AmendmentInvoiceLine" uniqueId="863b53e1-a095-4b52-a280-e388ab61dc38">
+        <orm:table name="amendment_invoice_line" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="amendmentInvoiceLineId" />
+        </orm:identity>
+        <orm:field name="amendmentInvoiceLineId" property="AmendmentInvoiceLineId" uniqueId="13c4333f-b25d-4221-b1c9-9fa6537ac526" type="System.Int32">
+          <orm:column name="amendment_invoice_line_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="description" property="Description" uniqueId="f065c85a-3066-46fc-9ab1-c271e27ed02d" type="System.String">
+          <orm:column name="description" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="taxPercentage" property="TaxPercentage" uniqueId="94cb0a9a-e797-4fc8-9ef8-70218b6905f4" type="System.Decimal">
+          <orm:column name="tax_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="amount" property="Amount" uniqueId="8747def8-4786-40cb-a223-e06ad82020e1" type="System.Decimal">
+          <orm:column name="amount" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="amendmentInvoice" property="AmendmentInvoice" behavior="readwrite" uniqueId="cfc8eeaa-61a2-439f-91e7-f84ec02267cf" type="AriCliModel.AmendmentInvoice">
+          <orm:reference uniqueId="4171256e-000a-4013-86dd-0a7afab66d44" />
+        </orm:field>
+        <orm:field name="user" property="User" behavior="readwrite" uniqueId="a0838fdd-c25c-4650-be97-7aa46ae154c0" type="AriCliModel.User">
+          <orm:reference uniqueId="01e34fa5-c83e-4108-9db6-a925e3fc69df" />
+        </orm:field>
+        <orm:field name="taxType" property="TaxType" behavior="readwrite" uniqueId="b39ef3ec-ec7d-4218-bdf4-4a9fd11140b4" type="AriCliModel.TaxType">
+          <orm:reference uniqueId="2aee452c-69b8-4545-8433-b7c8256dd885" />
+        </orm:field>
+        <orm:index name="idx_amendment_invoice_line_amendment_invoice_id">
+          <orm:columnMapping>
+            <orm:column name="amendment_invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_amendment_invoice_line_user_id">
+          <orm:columnMapping>
+            <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
       <orm:interface name="OpticalTest" uniqueId="ce87cd35-5310-47b4-88ff-a7eb6f7238c3">
         <orm:field name="farSphericityRightEye" property="FarSphericityRightEye" behavior="readwrite" uniqueId="805e31a5-4693-4052-9f24-760b3cadd3e3" type="System.String" />
         <orm:field name="farCylinderRightEye" property="FarCylinderRightEye" behavior="readwrite" uniqueId="ddfb0ec8-c15e-4991-a5cb-37e5cfb4389d" type="System.String" />
@@ -3489,6 +3592,7 @@
         <orm:column name="vatin" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="Varchar" />
         <orm:column name="name" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="Varchar" />
         <orm:column name="invoice_serial" sql-type="varchar" nullable="true" length="30" scale="0" ado-type="Varchar" />
+        <orm:column name="amendment_invoice_serial" sql-type="varchar" nullable="false" length="255" scale="0" ado-type="" />
       </orm:table>
       <orm:table name="email">
         <orm:column name="url" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="Varchar" />
@@ -4468,6 +4572,46 @@
         <orm:column name="service_sub_category_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nme" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
       </orm:table>
+      <orm:table name="amendment_invoice">
+        <orm:column name="amendment_invoice_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="invoice_date" sql-type="datetime" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.Timestamp2DateTimeConverter" ado-type="DateTime" />
+        <orm:column name="srial" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="yr" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="ttal" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        <orm:column name="invoice_key" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column nullable="true" scale="0" length="0" sql-type="text" name="reason" ado-type="" />
+        <orm:index name="idx_amendment_invoice_invoice_id">
+          <orm:columnMapping>
+            <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_amendment_invoice_person_id">
+          <orm:columnMapping>
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+      <orm:table name="amendment_invoice_line">
+        <orm:column name="amendment_invoice_line_id" sql-type="integer" nullable="false" length="0" scale="0" primary-key="true" converter="OpenAccessRuntime.Data.IntConverter" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="description" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        <orm:column name="tax_percentage" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        <orm:column name="amount" sql-type="decimal" nullable="false" length="20" scale="10" ado-type="Numeric" />
+        <orm:column name="amendment_invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:index name="idx_amendment_invoice_line_amendment_invoice_id">
+          <orm:columnMapping>
+            <orm:column name="amendment_invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_amendment_invoice_line_user_id">
+          <orm:columnMapping>
+            <orm:column name="user_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
     </orm:schema>
   </orm:orm>
   <ModelSettings xmlns="">
@@ -4582,6 +4726,9 @@
         <classHasNavigationalProperties Id="5c858f93-94a4-41bb-be50-ce0cf5723a08">
           <NavigationalProperty Id="3afff47b-587b-4893-aad2-f6d803143daa" name="Estimates" type="IList&lt;Estimate&gt;" label="Estimates : IList&lt;Estimate&gt;" nullable="true" kind="Persistent" fieldName="estimates" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d2971c11-c294-4449-a8ad-469970e8aef0">
+          <NavigationalProperty Id="1c1a5309-1022-4084-ba61-e584ee161455" name="AmendmentInvoiceLines" type="IList&lt;AmendmentInvoiceLine&gt;" label="AmendmentInvoiceLines : IList&lt;AmendmentInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5" name="UserGroup" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -4601,6 +4748,7 @@
       <Property Id="698a2773-7a32-43c3-8282-cad94d93b40f" name="Name" label="Name : String" kind="Persistent" fieldName="name" />
       <Property Id="409a674f-3917-4bd7-8709-210930266e57" name="VATIN" label="VATIN : String" kind="Persistent" fieldName="vATIN" />
       <Property Id="ba811ef7-4587-4f11-8f0c-3566002f74c8" name="InvoiceSerial" label="InvoiceSerial : String" kind="Persistent" fieldName="invoiceSerial" />
+      <Property Id="82d35e83-7255-4e6a-b1c8-ef9f4994702d" name="AmendmentInvoiceSerial" label="AmendmentInvoiceSerial : String" fieldName="amendmentInvoiceSerial" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="fedf7916-c72d-4e06-8912-917d6f3ffa26">
           <NavigationalProperty Id="cf3f967f-b65b-4f2d-8ebb-71673407a00c" name="Telephones" type="IList&lt;Telephone&gt;" label="Telephones : IList&lt;Telephone&gt;" nullable="true" kind="Persistent" fieldName="telephones1" isDependent="false" isManaged="false" />
@@ -5000,6 +5148,9 @@
         <classHasNavigationalProperties Id="604ce1f2-24a1-4fbe-a129-26f0b4117ab1">
           <NavigationalProperty Id="38926bf8-3d5f-476b-86b7-0f1a78fb185b" name="ProfessionalInvoiceLines" type="IList&lt;ProfessionalInvoiceLine&gt;" label="ProfessionalInvoiceLines : IList&lt;ProfessionalInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="professionalInvoiceLines" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="b92900c3-2ad2-4ef0-a08b-6f7edfcd5dd7">
+          <NavigationalProperty Id="8e7e1a50-7d36-4907-a3e6-a9fb93d19ce6" name="AmendmentInvoiceLines" type="IList&lt;AmendmentInvoiceLine&gt;" label="AmendmentInvoiceLines : IList&lt;AmendmentInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="934be2ea-af2e-4982-8660-59ba8f334ec1" name="Service" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -5240,6 +5391,9 @@
         <classHasNavigationalProperties Id="c3f74903-d0a8-4729-8a8b-903654764492">
           <NavigationalProperty Id="d00695da-8821-4d18-b4c6-6d11541bb65d" name="ServiceNotes" type="IList&lt;ServiceNote&gt;" label="ServiceNotes : IList&lt;ServiceNote&gt;" nullable="true" kind="Persistent" fieldName="serviceNotes" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7dea73cf-235c-4761-9c07-4e23db0dc3f6">
+          <NavigationalProperty Id="70ace1c8-3bed-445d-a66d-b3efda6b05ba" name="AmendmentInvoices" type="IList&lt;AmendmentInvoice&gt;" label="AmendmentInvoices : IList&lt;AmendmentInvoice&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoices" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e9822f71-dacb-4c06-be9e-c144574a5184" name="Policy" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
@@ -5447,6 +5601,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="7c60f8df-33da-4194-a322-046d8cdf7e1b">
           <NavigationalProperty Id="7677258f-6212-462a-aed0-bd348debb9f0" name="AnestheticServiceNotes" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="472b5c6e-1994-40d9-afd2-a91748c8a947">
+          <NavigationalProperty Id="174624ca-299a-4588-957c-88bc8d4cb20f" name="AmendmentInvoices" type="IList&lt;AmendmentInvoice&gt;" label="AmendmentInvoices : IList&lt;AmendmentInvoice&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoices" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7995,6 +8152,113 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="4c57042f-7b22-4fe1-a851-3d354aed0d7a" name="AmendmentInvoice" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="5969e7a7-95f0-45f2-8007-7b97c5c69a79" name="AmendmentInvoiceId" type="System.Int32" label="AmendmentInvoiceId : System.Int32" identity="true" fieldName="amendmentInvoiceId" />
+      <Property Id="fd74f1ca-9009-40bf-824b-230259687f2a" name="InvoiceDate" type="DateTime" label="InvoiceDate : DateTime" fieldName="invoiceDate" />
+      <Property Id="07ce80f0-3e23-4dab-9068-879565fcd431" name="Serial" label="Serial : String" fieldName="serial" />
+      <Property Id="0fe534e0-e046-4fa3-b721-c9dcf581974a" name="Year" type="Int32" label="Year : Int32" fieldName="year" />
+      <Property Id="64386088-88e6-4ebc-aff0-bfd721c4c91b" name="Total" type="Decimal" label="Total : Decimal" fieldName="total" />
+      <Property Id="14452b67-41c6-4e4b-9203-e06a1064db67" name="InvoiceKey" label="InvoiceKey : String" fieldName="invoiceKey" />
+      <Property Id="a492b114-3877-47dc-97f1-30d7e1b310df" name="InvoiceNumber" type="Int32" label="InvoiceNumber : Int32" fieldName="invoiceNumber" />
+      <Property Id="b68fd60c-74a0-4b9a-9240-8f5913f92dc2" name="Reason" label="Reason : String" fieldName="reason" />
+      <AssociationTargets>
+        <Association Id="f5ef759a-94fe-4977-9d49-154fe533eb18" SourceMultiplicity="ZeroOne" name="AmendmentInvoiceHasInvoice">
+          <DomainClassMoniker name="/AriClinicContext/Invoice" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="09fbbe58-071e-4559-96dd-70d43feeb0fb">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Invoice/AmendmentInvoices" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="46e9585f-5469-4a25-aed1-6dcf1b4a179f">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoice/OriginalInvoice" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="bcc0775f-18a8-44fd-88f0-d84b73798dac" SourceMultiplicity="ZeroOne" name="AmendmentInvoiceHasCustomer">
+          <DomainClassMoniker name="/AriClinicContext/Customer" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="67612afe-9333-4354-81c7-d211b411bf64">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Customer/AmendmentInvoices" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="087366ea-aecc-4823-a7c3-a0c4d0c1a88d">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoice/Customer" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="b1aa131e-90f5-42fe-8d88-1ca0e881e641">
+          <NavigationalProperty Id="b517f748-9043-4dd2-bad0-82ba53cba7f4" name="OriginalInvoice" type="Invoice" label="OriginalInvoice : Invoice" nullable="true" kind="Persistent" fieldName="invoice" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f556d92b-ec27-4554-8d75-55030f3bba6f">
+          <NavigationalProperty Id="aca9344d-3dfb-47d4-9865-72c6e26b5b00" name="Customer" type="Customer" label="Customer : Customer" nullable="true" kind="Persistent" fieldName="customer" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5ed66ba1-3ac5-44c7-bb07-f40aa2dd9851">
+          <NavigationalProperty Id="910c50f4-b680-42fe-9a8b-a128ae6cd783" name="AmendmentInvoiceLines" type="IList&lt;AmendmentInvoiceLine&gt;" label="AmendmentInvoiceLines : IList&lt;AmendmentInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="863b53e1-a095-4b52-a280-e388ab61dc38" name="AmendmentInvoiceLine" namespace="AriCliModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="13c4333f-b25d-4221-b1c9-9fa6537ac526" name="AmendmentInvoiceLineId" type="System.Int32" label="AmendmentInvoiceLineId : System.Int32" identity="true" fieldName="amendmentInvoiceLineId" />
+      <Property Id="f065c85a-3066-46fc-9ab1-c271e27ed02d" name="Description" label="Description : String" fieldName="description" />
+      <Property Id="94cb0a9a-e797-4fc8-9ef8-70218b6905f4" name="TaxPercentage" type="Decimal" label="TaxPercentage : Decimal" fieldName="taxPercentage" />
+      <Property Id="8747def8-4786-40cb-a223-e06ad82020e1" name="Amount" type="Decimal" label="Amount : Decimal" fieldName="amount" />
+      <AssociationTargets>
+        <Association Id="4171256e-000a-4013-86dd-0a7afab66d44" SourceMultiplicity="ZeroOne" name="AmendmentInvoiceLineHasAmendmentInvoice">
+          <DomainClassMoniker name="/AriClinicContext/AmendmentInvoice" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="848b8aca-d93f-4b66-b145-dcd3d2905694">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoice/AmendmentInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="69451864-e651-43d7-b3ce-bb8583089b09">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoiceLine/AmendmentInvoice" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="01e34fa5-c83e-4108-9db6-a925e3fc69df" SourceMultiplicity="ZeroOne" name="AmendmentInvoiceLineHasUser">
+          <DomainClassMoniker name="/AriClinicContext/User" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="93a67c70-ddfd-4179-a8b7-b1bc56374502">
+              <NavigationalPropertyMoniker name="/AriClinicContext/User/AmendmentInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5610f7d3-d9b5-4d47-9b86-1d667b0201d2">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoiceLine/User" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="2aee452c-69b8-4545-8433-b7c8256dd885" SourceMultiplicity="ZeroOne" name="AmendmentInvoiceLineHasTaxType">
+          <DomainClassMoniker name="/AriClinicContext/TaxType" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="4116daf8-5669-4e85-873d-1bdb61ff3b58">
+              <NavigationalPropertyMoniker name="/AriClinicContext/TaxType/AmendmentInvoiceLines" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="95df618e-603a-4ce2-ade5-3e5e0c89483b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/AmendmentInvoiceLine/TaxType" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="00b6016a-c139-4054-ab23-0f90e121a434">
+          <NavigationalProperty Id="cfc8eeaa-61a2-439f-91e7-f84ec02267cf" name="AmendmentInvoice" type="AmendmentInvoice" label="AmendmentInvoice : AmendmentInvoice" nullable="true" kind="Persistent" fieldName="amendmentInvoice" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d02ae94e-713f-4c90-b2d4-9ff301a5a1f5">
+          <NavigationalProperty Id="a0838fdd-c25c-4650-be97-7aa46ae154c0" name="User" type="User" label="User : User" nullable="true" kind="Persistent" fieldName="user" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="54470402-460b-41d2-a0d1-0002a0e50062">
+          <NavigationalProperty Id="b39ef3ec-ec7d-4218-bdf4-4a9fd11140b4" name="TaxType" type="TaxType" label="TaxType : TaxType" nullable="true" kind="Persistent" fieldName="taxType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="290d331f-bb58-42bd-95ca-ce7fdff95b9f">
@@ -8079,6 +8343,8 @@
         <entitySetProperty name="EstimateLines" namespace="AriCliModel" type="EstimateLine" label="EstimateLines : IQueryable&lt;AriCliModel.EstimateLine&gt;" />
         <entitySetProperty name="Estimates" namespace="AriCliModel" type="Estimate" label="Estimates : IQueryable&lt;AriCliModel.Estimate&gt;" />
         <entitySetProperty name="ServiceSubCategories" namespace="AriCliModel" type="ServiceSubCategory" label="ServiceSubCategories : IQueryable&lt;AriCliModel.ServiceSubCategory&gt;" />
+        <entitySetProperty name="AmendmentInvoices" namespace="AriCliModel" type="AmendmentInvoice" label="AmendmentInvoices : IQueryable&lt;AriCliModel.AmendmentInvoice&gt;" />
+        <entitySetProperty name="AmendmentInvoiceLines" namespace="AriCliModel" type="AmendmentInvoiceLine" label="AmendmentInvoiceLines : IQueryable&lt;AriCliModel.AmendmentInvoiceLine&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

@@ -22,97 +22,96 @@ using AriCliModel;
 
 namespace AriCliModel	
 {
-	public partial class HealthcareCompany
+	public partial class AmendmentInvoiceLine
 	{
-		private int hcId;
-		public virtual int HcId
+		private int amendmentInvoiceLineId;
+		public virtual int AmendmentInvoiceLineId
 		{
 			get
 			{
-				return this.hcId;
+				return this.amendmentInvoiceLineId;
 			}
 			set
 			{
-				this.hcId = value;
+				this.amendmentInvoiceLineId = value;
 			}
 		}
 		
-		private string name;
-		public virtual string Name
+		private string description;
+		public virtual string Description
 		{
 			get
 			{
-				return this.name;
+				return this.description;
 			}
 			set
 			{
-				this.name = value;
+				this.description = value;
 			}
 		}
 		
-		private string vATIN;
-		public virtual string VATIN
+		private decimal taxPercentage;
+		public virtual decimal TaxPercentage
 		{
 			get
 			{
-				return this.vATIN;
+				return this.taxPercentage;
 			}
 			set
 			{
-				this.vATIN = value;
+				this.taxPercentage = value;
 			}
 		}
 		
-		private string invoiceSerial;
-		public virtual string InvoiceSerial
+		private decimal amount;
+		public virtual decimal Amount
 		{
 			get
 			{
-				return this.invoiceSerial;
+				return this.amount;
 			}
 			set
 			{
-				this.invoiceSerial = value;
+				this.amount = value;
 			}
 		}
 		
-		private string amendmentInvoiceSerial;
-		public virtual string AmendmentInvoiceSerial
+		private AmendmentInvoice amendmentInvoice;
+		public virtual AmendmentInvoice AmendmentInvoice
 		{
 			get
 			{
-				return this.amendmentInvoiceSerial;
+				return this.amendmentInvoice;
 			}
 			set
 			{
-				this.amendmentInvoiceSerial = value;
+				this.amendmentInvoice = value;
 			}
 		}
 		
-		private IList<Telephone> telephones1 = new List<Telephone>();
-		public virtual IList<Telephone> Telephones
+		private User user;
+		public virtual User User
 		{
 			get
 			{
-				return this.telephones1;
+				return this.user;
+			}
+			set
+			{
+				this.user = value;
 			}
 		}
 		
-		private IList<Email> emails = new List<Email>();
-		public virtual IList<Email> Emails
+		private TaxType taxType;
+		public virtual TaxType TaxType
 		{
 			get
 			{
-				return this.emails;
+				return this.taxType;
 			}
-		}
-		
-		private IList<Address> addresses = new List<Address>();
-		public virtual IList<Address> Addresses
-		{
-			get
+			set
 			{
-				return this.addresses;
+				this.taxType = value;
 			}
 		}
 		

@@ -179,3 +179,8 @@
 	text-align:left;
     padding:10px;
 }
+.pTitle { 
+    border-bottom-style : solid;
+    border-width : 1px;
+    border-color : #060000;
+}

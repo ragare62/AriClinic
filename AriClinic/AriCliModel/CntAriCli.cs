@@ -528,6 +528,15 @@ namespace AriCliModel
                     where inv.InvoiceId == invoiceId
                     select inv).FirstOrDefault<Invoice>();
         }
+        public static Invoice GetInvoice(string serial, int year, int invoiceNumber, AriClinicContext ctx)
+        {
+            return (from inv in ctx.Invoices
+                    where inv.Serial == serial
+                    && inv.Year == year
+                    && inv.InvoiceNumber == invoiceNumber
+                    select inv).FirstOrDefault<Invoice>();
+        }
+
                     
         public static ProfessionalInvoice GetProfessionalInvoice(int invoiceId, AriClinicContext ctx)
         {
@@ -629,6 +638,16 @@ namespace AriCliModel
             }
             return total;
         }
+
+        public static Decimal GetAmendmentInvoiceTotal(AmendmentInvoice inv)
+        {
+            Decimal total = 0;
+            foreach (AmendmentInvoiceLine invl in inv.AmendmentInvoiceLines)
+            {
+                total += invl.Amount;
+            }
+            return total;
+        }
             
         public static Decimal GetProfessionalInvoiceTotal(ProfessionalInvoice inv)
         {
@@ -648,7 +667,16 @@ namespace AriCliModel
                      select inv.InvoiceNumber).Max();
             return ++v;
         }
-            
+
+        public static int GetNextAmendmentInvoiceNumber(string serial, int year, AriClinicContext ctx)
+        {
+            int v = (from inv in ctx.AmendmentInvoices
+                     where inv.Serial == serial &&
+                           inv.Year == year
+                     select inv.InvoiceNumber).Max();
+            return ++v;
+        }
+
         public static int GetNextProfessionalInvoiceNumber(Professional prof, int year, AriClinicContext ctx)
         {
             if (prof.ProfessionalInvoices.Where(x => x.Year == year).Count() > 0)
@@ -1989,8 +2017,48 @@ namespace AriCliModel
                     where c.ServiceSubCategoryId == id
                     select c).FirstOrDefault<ServiceSubCategory>();
         }
- 
 
+        public static IList<AmendmentInvoice> GetAmendmentInvoices(AriClinicContext ctx)
+        {
+            return (from ai in ctx.AmendmentInvoices
+                    select ai).ToList<AmendmentInvoice>();
+        }
+        public static AmendmentInvoice GetAmendementInvoice(int id, AriClinicContext ctx)
+        {
+            return (from ai in ctx.AmendmentInvoices
+                    where ai.AmendmentInvoiceId == id
+                    select ai).FirstOrDefault<AmendmentInvoice>();
+        }
+
+        public static IList<AmendmentInvoiceLine> GetAmendmentInvoiceLines(AriClinicContext ctx)
+        {
+            return (from ai in ctx.AmendmentInvoiceLines
+                    select ai).ToList<AmendmentInvoiceLine>();
+        }
+        public static AmendmentInvoiceLine GetAmendementInvoiceLine(int id, AriClinicContext ctx)
+        {
+            return (from ai in ctx.AmendmentInvoiceLines
+                    where ai.AmendmentInvoiceLineId == id
+                    select ai).FirstOrDefault<AmendmentInvoiceLine>();
+        }
+
+        public static bool DeleteAmendmentInvoice(AmendmentInvoice aInv, AriClinicContext ctx)
+        {
+            
+            // Last invoice number?
+            int n = GetNextAmendmentInvoiceNumber(aInv.Serial, aInv.Year, ctx) - 1;
+            // only the last invoice can be deleted
+            if (aInv.InvoiceNumber != n)
+                return false;
+
+            // delete lines
+            ctx.Delete(aInv.AmendmentInvoiceLines);
+
+            // delete invoice
+            ctx.Delete(aInv);
+
+            return true;
+        }
         #region Auxiliary functions
             
         public static int CalulatedAge(DateTime BornDate)
@@ -2143,6 +2211,49 @@ namespace AriCliModel
                 }
             }
             
+        }
+
+        public static AmendmentInvoice CreateAmendmentInvoice(Invoice invoice, DateTime vdate, string reason, AriClinicContext ctx)
+        {
+            // first of all check if there's another amendment invoice 
+            // linked to this invoice.
+            AmendmentInvoice aInv = (from a in ctx.AmendmentInvoices
+                                     where a.OriginalInvoice.InvoiceId == invoice.InvoiceId
+                                     select a).FirstOrDefault<AmendmentInvoice>();
+            if (aInv != null)
+            {
+                return null;
+            }
+            // collecting some stuff we'll need.
+            HealthcareCompany hc = CntAriCli.GetHealthCompany(ctx);
+            // now let's go to create it
+            aInv = new AmendmentInvoice();
+            aInv.Customer = invoice.Customer;
+            aInv.InvoiceDate = vdate;
+            aInv.Serial = hc.AmendmentInvoiceSerial;
+            aInv.Year = aInv.InvoiceDate.Year;
+            aInv.InvoiceNumber = CntAriCli.GetNextAmendmentInvoiceNumber(aInv.Serial, aInv.Year, ctx);
+            aInv.OriginalInvoice = invoice;
+            aInv.Reason = reason;
+            ctx.Add(aInv);
+            ctx.SaveChanges();
+            // related lines
+            decimal total = 0;
+            foreach (InvoiceLine il in invoice.InvoiceLines)
+            {
+                AmendmentInvoiceLine ail = new AmendmentInvoiceLine();
+                ail.AmendmentInvoice = aInv;
+                ail.TaxType = il.TaxType;
+                ail.TaxPercentage = il.TaxPercentage;
+                ail.Description = il.Description;
+                ail.Amount = -il.Amount;
+                total += ail.Amount;
+                ctx.Add(ail);
+                ctx.SaveChanges();
+            }
+            aInv.Total = total;
+            ctx.SaveChanges();
+            return aInv;
         }
         #endregion
     }

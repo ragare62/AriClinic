@@ -690,6 +690,22 @@ namespace AriCliModel
 			}
 		}
 		
+		public IQueryable<AmendmentInvoice> AmendmentInvoices 
+		{
+			get
+			{
+				return this.GetAll<AmendmentInvoice>();
+			}
+		}
+		
+		public IQueryable<AmendmentInvoiceLine> AmendmentInvoiceLines 
+		{
+			get
+			{
+				return this.GetAll<AmendmentInvoiceLine>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -1020,6 +1036,14 @@ namespace AriCliModel
 			get;
 		}
 		IQueryable<ServiceSubCategory> ServiceSubCategories
+		{
+			get;
+		}
+		IQueryable<AmendmentInvoice> AmendmentInvoices
+		{
+			get;
+		}
+		IQueryable<AmendmentInvoiceLine> AmendmentInvoiceLines
 		{
 			get;
 		}

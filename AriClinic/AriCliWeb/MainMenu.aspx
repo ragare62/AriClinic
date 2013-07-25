@@ -378,6 +378,10 @@
               var w1 = window.open("ServiceSubCategoryGrid.aspx", "EST", "width=1024, height=750,resizable=1")
               w1.focus();
           }
+          function LaunchAmendmentInvoice() {
+              var w1 = window.open("AmendmentInvoiceGrid.aspx", "EST", "width=1024, height=750,resizable=1")
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -483,6 +487,8 @@
                   </telerik:RadMenuItem >
                   <telerik:RadMenuItem runat="server" Text="Profesionales" Value="profInvoice">
                   </telerik:RadMenuItem>
+                    <telerik:RadMenuItem runat="server" Text="Facturas rectificativas" Value="amendmentinvoice">
+                    </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Citación" Value="citation">

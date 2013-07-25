@@ -9,7 +9,7 @@
 
 
 
-public partial class HealthcareCompanyForm {
+public partial class AmendmentInvoiceForm {
     
     /// <summary>
     /// Control RadStyleSheetManager1.
@@ -37,24 +37,6 @@ public partial class HealthcareCompanyForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
-    
-    /// <summary>
-    /// Control RadWindowManager1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
-    
-    /// <summary>
-    /// Control RadToolTipManager1.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
     
     /// <summary>
     /// Control RadScriptBlock1.
@@ -93,6 +75,15 @@ public partial class HealthcareCompanyForm {
     protected global::Telerik.Web.UI.RadInputManager RadInputManager1;
     
     /// <summary>
+    /// Control RadToolTipManager1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
+    
+    /// <summary>
     /// Control RadAjaxPanel1.
     /// </summary>
     /// <remarks>
@@ -111,148 +102,184 @@ public partial class HealthcareCompanyForm {
     protected global::System.Web.UI.WebControls.Label lblTitle;
     
     /// <summary>
-    /// Control lblHcId.
+    /// Control lblOriginalInvoice.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblHcId;
+    protected global::System.Web.UI.WebControls.Label lblOriginalInvoice;
     
     /// <summary>
-    /// Control txtHcId.
+    /// Control lblInvoiceId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtHcId;
+    protected global::System.Web.UI.WebControls.Label lblInvoiceId;
     
     /// <summary>
-    /// Control lblName.
+    /// Control txtInvoiceId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblName;
+    protected global::System.Web.UI.WebControls.TextBox txtInvoiceId;
     
     /// <summary>
-    /// Control txtName.
+    /// Control lblInvoiceSerial.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtName;
+    protected global::System.Web.UI.WebControls.Label lblInvoiceSerial;
     
     /// <summary>
-    /// Control lblVATIN.
+    /// Control txtInvoiceSerial.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblVATIN;
+    protected global::System.Web.UI.WebControls.TextBox txtInvoiceSerial;
     
     /// <summary>
-    /// Control txtVATIN.
+    /// Control lblYear.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtVATIN;
+    protected global::System.Web.UI.WebControls.Label lblYear;
     
     /// <summary>
-    /// Control lblSERIAL.
+    /// Control txtYear.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblSERIAL;
+    protected global::System.Web.UI.WebControls.TextBox txtYear;
     
     /// <summary>
-    /// Control txtSERIAL.
+    /// Control lblInvoiceNumber.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtSERIAL;
+    protected global::System.Web.UI.WebControls.Label lblInvoiceNumber;
     
     /// <summary>
-    /// Control lblSERIAL2.
+    /// Control txtInvoiceNumber.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblSERIAL2;
+    protected global::System.Web.UI.WebControls.TextBox txtInvoiceNumber;
     
     /// <summary>
-    /// Control txtSERIAL2.
+    /// Control lblInvoiceDate.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtSERIAL2;
+    protected global::System.Web.UI.WebControls.Label lblInvoiceDate;
     
     /// <summary>
-    /// Control lblAddress.
+    /// Control rddpInvoiceDate.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblAddress;
+    protected global::Telerik.Web.UI.RadDatePicker rddpInvoiceDate;
     
     /// <summary>
-    /// Control UscAddressGrid1.
+    /// Control lblCustomerId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::AriCliWeb.UscAddressGrid UscAddressGrid1;
+    protected global::System.Web.UI.WebControls.Label lblCustomerId;
     
     /// <summary>
-    /// Control lblTelephones.
+    /// Control btnCustomerId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblTelephones;
+    protected global::System.Web.UI.WebControls.ImageButton btnCustomerId;
     
     /// <summary>
-    /// Control UscTelephoneGrid1.
+    /// Control txtCustomerId.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::AriCliWeb.UscTelephoneGrid UscTelephoneGrid1;
+    protected global::System.Web.UI.WebControls.TextBox txtCustomerId;
     
     /// <summary>
-    /// Control lblEmails.
+    /// Control lblCustomerName.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblEmails;
+    protected global::System.Web.UI.WebControls.Label lblCustomerName;
     
     /// <summary>
-    /// Control UscEmailGrid1.
+    /// Control txtCustomerName.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::AriCliWeb.UscEmailGrid UscEmailGrid1;
+    protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
+    
+    /// <summary>
+    /// Control lblInvoiceTotal.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblInvoiceTotal;
+    
+    /// <summary>
+    /// Control txtInvoiceTotal.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtInvoiceTotal;
+    
+    /// <summary>
+    /// Control lblInvoiceLines.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblInvoiceLines;
+    
+    /// <summary>
+    /// Control UscAmendmentInvoiceLineGrid1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::AriCliWeb.UscAmendmentInvoiceLineGrid UscAmendmentInvoiceLineGrid1;
     
     /// <summary>
     /// Control lblMessage.
@@ -262,6 +289,15 @@ public partial class HealthcareCompanyForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Label lblMessage;
+    
+    /// <summary>
+    /// Control btnPrint.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ImageButton btnPrint;
     
     /// <summary>
     /// Control btnAccept.

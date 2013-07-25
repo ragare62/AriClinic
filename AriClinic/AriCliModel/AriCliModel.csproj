@@ -54,6 +54,12 @@
     <Compile Include="Address.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="AmendmentInvoice.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="AmendmentInvoiceLine.generated.cs">
+      <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="AnestheticServiceNote.generated.cs">
       <DependentUpon>EntityDiagrams.rlinq</DependentUpon>
     </Compile>
@@ -334,6 +340,9 @@
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-15 11-04-50%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-15 11-05-23%29.rlinq.sql" />
     <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-15 11-06-48%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-22 10-22-58%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-22 10-24-55%29.rlinq.sql" />
+    <Content Include="SQL\2013.1.0.5_comunAriClinicContext%282013-07-25 13-42-43%29.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

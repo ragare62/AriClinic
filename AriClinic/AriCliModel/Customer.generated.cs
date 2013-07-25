@@ -108,6 +108,15 @@ namespace AriCliModel
 			}
 		}
 		
+		private IList<AmendmentInvoice> amendmentInvoices = new List<AmendmentInvoice>();
+		public virtual IList<AmendmentInvoice> AmendmentInvoices
+		{
+			get
+			{
+				return this.amendmentInvoices;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591
