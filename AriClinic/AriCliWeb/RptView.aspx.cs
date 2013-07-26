@@ -214,7 +214,7 @@ public partial class RptView : System.Web.UI.Page
                         break;
                     case "rptvatresume":
                         this.Title = "Liquidación de IVA por periodo";
-                        RptVATResume rptvr = new RptVATResume();
+                        RptVatResume2 rptvr = new RptVatResume2();
                         ReportViewer1.Report = rptvr;
                         break;
                     case "rptpatientbysource":

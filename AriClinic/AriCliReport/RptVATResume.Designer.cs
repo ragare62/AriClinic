@@ -10,6 +10,8 @@ namespace AriCliReport
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptVATResume));
+            Telerik.Reporting.Group group1 = new Telerik.Reporting.Group();
+            Telerik.Reporting.Group group2 = new Telerik.Reporting.Group();
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter2 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter3 = new Telerik.Reporting.ReportParameter();
@@ -36,10 +38,8 @@ namespace AriCliReport
             this.pageInfoTextBox = new Telerik.Reporting.TextBox();
             this.textBox21 = new Telerik.Reporting.TextBox();
             this.sqlVATResume = new Telerik.Reporting.SqlDataSource();
-            this.labelsGroup = new Telerik.Reporting.Group();
             this.groupFooterVatType = new Telerik.Reporting.GroupFooterSection();
             this.groupHeaderLabels = new Telerik.Reporting.GroupHeaderSection();
-            this.vatTypeGroup = new Telerik.Reporting.Group();
             this.groupFooterSection1 = new Telerik.Reporting.GroupFooterSection();
             this.groupHeaderVatType = new Telerik.Reporting.GroupHeaderSection();
             this.textBox10 = new Telerik.Reporting.TextBox();
@@ -295,12 +295,6 @@ namespace AriCliReport
             new Telerik.Reporting.SqlDataSourceParameter("@TaxTypeId", System.Data.DbType.Int32, "=Parameters.TaxTypeId.Value")});
             this.sqlVATResume.SelectCommand = resources.GetString("sqlVATResume.SelectCommand");
             // 
-            // labelsGroup
-            // 
-            this.labelsGroup.GroupFooter = this.groupFooterVatType;
-            this.labelsGroup.GroupHeader = this.groupHeaderLabels;
-            this.labelsGroup.Name = "labelsGroup";
-            // 
             // groupFooterVatType
             // 
             this.groupFooterVatType.Height = Telerik.Reporting.Drawing.Unit.Inch(0.11811033636331558D);
@@ -311,14 +305,6 @@ namespace AriCliReport
             this.groupHeaderLabels.Height = Telerik.Reporting.Drawing.Unit.Inch(0.11814975738525391D);
             this.groupHeaderLabels.Name = "groupHeaderLabels";
             this.groupHeaderLabels.Style.Visible = false;
-            // 
-            // vatTypeGroup
-            // 
-            this.vatTypeGroup.GroupFooter = this.groupFooterSection1;
-            this.vatTypeGroup.GroupHeader = this.groupHeaderVatType;
-            this.vatTypeGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
-            new Telerik.Reporting.Grouping("=Fields.name")});
-            this.vatTypeGroup.Name = "vatTypeGroup";
             // 
             // groupFooterSection1
             // 
@@ -431,9 +417,16 @@ namespace AriCliReport
             // RptVATResume
             // 
             this.DataSource = this.sqlVATResume;
+            group1.GroupFooter = this.groupFooterVatType;
+            group1.GroupHeader = this.groupHeaderLabels;
+            group1.Name = "labelsGroup";
+            group2.GroupFooter = this.groupFooterSection1;
+            group2.GroupHeader = this.groupHeaderVatType;
+            group2.Groupings.Add(new Telerik.Reporting.Grouping("=Fields.name"));
+            group2.Name = "vatTypeGroup";
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
-            this.labelsGroup,
-            this.vatTypeGroup});
+            group1,
+            group2});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.groupHeaderLabels,
             this.groupFooterVatType,
@@ -444,10 +437,7 @@ namespace AriCliReport
             this.pageFooterSection1});
             this.Name = "RptVATResume";
             this.PageSettings.Landscape = false;
-            this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Right = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Top = Telerik.Reporting.Drawing.Unit.Mm(5D);
+            this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             reportParameter1.Name = "FDate";
             reportParameter1.Text = "Desde fecha";
@@ -468,8 +458,7 @@ namespace AriCliReport
             this.ReportParameters.Add(reportParameter1);
             this.ReportParameters.Add(reportParameter2);
             this.ReportParameters.Add(reportParameter3);
-            this.Sortings.AddRange(new Telerik.Reporting.Sorting[] {
-            new Telerik.Reporting.Sorting("=Fields.invoice_date", Telerik.Reporting.SortDirection.Asc)});
+            this.Sortings.Add(new Telerik.Reporting.Sorting("=Fields.invoice_date", Telerik.Reporting.SortDirection.Asc));
             this.Style.BackgroundColor = System.Drawing.Color.White;
             this.UnitOfMeasure = Telerik.Reporting.Drawing.UnitType.Mm;
             this.Width = Telerik.Reporting.Drawing.Unit.Inch(7.6699471473693848D);

@@ -227,6 +227,12 @@
     <Compile Include="RptVATResume.Designer.cs">
       <DependentUpon>RptVATResume.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptVatResume2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptVatResume2.Designer.cs">
+      <DependentUpon>RptVatResume2.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -379,6 +385,7 @@
       <DependentUpon>subServNoteTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="TemplateView.cs" />
+    <Compile Include="VatResumeView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
@@ -487,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptVATResume.resx">
       <DependentUpon>RptVATResume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptVatResume2.resx">
+      <DependentUpon>RptVatResume2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>
