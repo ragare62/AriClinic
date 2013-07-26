@@ -71,6 +71,18 @@
     <Compile Include="ReptInvoiceVAT.Designer.cs">
       <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptAmendmentInvoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAmendmentInvoice.Designer.cs">
+      <DependentUpon>RptAmendmentInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptAmendmentInvoiceTaxes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAmendmentInvoiceTaxes.Designer.cs">
+      <DependentUpon>RptAmendmentInvoiceTaxes.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptAnesNote2.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -112,6 +124,12 @@
     </Compile>
     <Compile Include="RptGPByClinic.Designer.cs">
       <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptHc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptHc.Designer.cs">
+      <DependentUpon>RptHc.cs</DependentUpon>
     </Compile>
     <Compile Include="RptInvoiceLine.cs">
       <SubType>Component</SubType>
@@ -392,6 +410,12 @@
     <EmbeddedResource Include="ReptInvoiceVAT.resx">
       <DependentUpon>ReptInvoiceVAT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RptAmendmentInvoice.resx">
+      <DependentUpon>RptAmendmentInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptAmendmentInvoiceTaxes.resx">
+      <DependentUpon>RptAmendmentInvoiceTaxes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptAnesNote2.resx">
       <DependentUpon>RptAnesNote2.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptGPByClinic.resx">
       <DependentUpon>RptGPByClinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptHc.resx">
+      <DependentUpon>RptHc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptInvoiceLine.resx">
       <DependentUpon>RptInvoiceLine.cs</DependentUpon>

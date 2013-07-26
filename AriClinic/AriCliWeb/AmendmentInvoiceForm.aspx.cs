@@ -159,7 +159,7 @@ public partial class AmendmentInvoiceForm : System.Web.UI.Page
 
     protected void LoadData(AmendmentInvoice aInv)
     {
-        lblOriginalInvoice.Text = String.Format("Factura original:{0}-{1}-{2} Fecha:{3:dd/MM/yyyy}",
+        lblOriginalInvoice.Text = String.Format("Factura original:{0}-{1}-{2}  Fecha:{3:dd/MM/yyyy}",
             aInv.OriginalInvoice.Serial,
             aInv.OriginalInvoice.Year,
             aInv.OriginalInvoice.InvoiceNumber,
@@ -171,6 +171,7 @@ public partial class AmendmentInvoiceForm : System.Web.UI.Page
         rddpInvoiceDate.SelectedDate = aInv.InvoiceDate;
         txtCustomerId.Text = aInv.Customer.PersonId.ToString();
         txtCustomerName.Text = aInv.Customer.ComercialName;
+        txtReason.Text = aInv.Reason;
         txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", aInv.Total);
     }
 
@@ -183,6 +184,7 @@ public partial class AmendmentInvoiceForm : System.Web.UI.Page
         aInv.InvoiceDate = (DateTime)rddpInvoiceDate.SelectedDate;
         customerId = Int32.Parse(txtCustomerId.Text);
         aInv.Customer = CntAriCli.GetCustomer(customerId, ctx);
+        aInv.Reason = txtReason.Text;
         aInv.Total = CntAriCli.GetAmendmentInvoiceTotal(aInv);
         txtInvoiceTotal.Text = String.Format("{0:####,#0.00}", aInv.Total);
         aInv.InvoiceKey = String.Format("{0}-{1:000000}-{2}", aInv.Year, aInv.InvoiceNumber, aInv.Serial);

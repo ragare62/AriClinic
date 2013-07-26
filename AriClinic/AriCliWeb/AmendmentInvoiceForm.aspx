@@ -38,12 +38,12 @@
                         }
                     }
                     function NewInvoiceLineRecord() {
-                        var w1 = window.open("AmendmentInvoiceLineForm.aspx?InvoiceId=" + gup("AmendmentInvoiceId"), "ainvl_nr1", "width=720, height=320,resizable=1");
+                        var w1 = window.open("AmendmentInvoiceLineForm.aspx?AmendmentInvoiceId=" + gup("AmendmentInvoiceId"), "ainvl_nr1", "width=720, height=320,resizable=1");
                         w1.focus();
                     }
                     
                     function EditInvoiceLineRecord(id) {
-                        var w2 = window.open("AmendmentInvoiceLineForm.aspx?InvoiceId=" + gup("AmendmentInvoiceId") + "&AmendmentInvoiceLineId=" + id, "invl_er1", "width=720, height=320,resizable=1");
+                        var w2 = window.open("AmendmentInvoiceLineForm.aspx?AmendmentInvoiceId=" + gup("AmendmentInvoiceId") + "&AmendmentInvoiceLineId=" + id, "invl_er1", "width=720, height=320,resizable=1");
                         w2.focus();
                     }
                     function CloseWindow() {
@@ -67,8 +67,8 @@
                             }
                         }
                     }
-                    function printInvoice(invoice) {
-                        var url = "RptView.aspx?Report=rptAmendmentInvoiceMain&Invoice=" + invoice;
+                    function printAmendmentInvoice(invoice) {
+                        var url = "RptView.aspx?Report=rptAmendmentInvoice&AmendmentInvoice=" + invoice;
                         var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
                         w.focus();
                     }
@@ -197,8 +197,18 @@
                             <div id="InvoiceTotal" class="normalTextRight">
                                 <asp:Label ID="lblInvoiceTotal" runat="server" Text="Total factura:" ToolTip="Total factura (iva incluido)"></asp:Label>
                                 <br />
-                                <asp:TextBox ID="txtInvoiceTotal" runat="server" style="text-align:right" TabIndex="10" Width="152px"></asp:TextBox>
+                                <asp:TextBox ID="txtInvoiceTotal" runat="server" style="text-align:right" TabIndex="10" Width="152px" Enabled="false"></asp:TextBox>
                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div id="Reason" class="normalText">
+                                <asp:Label ID="lblReason" runat="server" Text="Motivo:" ToolTip="Motivo por el que se rectifica la factura"></asp:Label>
+                                <br />
+                                <asp:TextBox ID="txtReason" runat="server" TabIndex="10" Width="100%" TextMode="MultiLine" Height="40px"></asp:TextBox>
+                            </div>
+
                         </td>
                     </tr>
                     <tr>

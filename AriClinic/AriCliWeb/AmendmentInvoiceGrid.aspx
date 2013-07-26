@@ -55,7 +55,7 @@
           }
           function reportAmendmentInvoice(invoice)
           {
-              var url = "RptView.aspx?Report=rptAmendmentInvoicemain&AmendmentInvoice=" + invoice;
+              var url = "RptView.aspx?Report=rptAmendmentInvoice&AmendmentInvoice=" + invoice;
               var w = window.open(url, "rptview", "width=800,height=600,resizable=1");
               w.focus();
           }

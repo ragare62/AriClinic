@@ -92,10 +92,8 @@
                     <tr>
                         <td colspan="5">
                             <div id="TitleArea" class="titleBar2">
-                                <caption>
                                     <img alt="minilogo" src="images/mini_logo.png" align="middle" />
-                                    <asp:Label ID="lblTitle" runat="server" Text="Linea de factura"></asp:Label>
-                                </caption>
+                                    <asp:Label ID="lblTitle" runat="server" Text="Linea de factura rectificativa"></asp:Label>
                             </div>
                         </td>
                     </tr>

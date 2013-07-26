@@ -19,6 +19,7 @@ public partial class RptView : System.Web.UI.Page
     BaseVisit visit = null;
     Treatment treatment = null;
     Invoice invoice = null;
+    AmendmentInvoice aInvoice = null;
     Estimate estimate = null;
     PrescriptionGlasses prescriptionGlasses = null;
     string report = "";
@@ -54,6 +55,9 @@ public partial class RptView : System.Web.UI.Page
             treatment = CntAriCli.GetTreatment(int.Parse(Request.QueryString["Treatment"]), ctx);
         if (Request.QueryString["Invoice"] != null)
             invoice = CntAriCli.GetInvoice(int.Parse(Request.QueryString["Invoice"]), ctx);
+        if (Request.QueryString["AmendmentInvoice"] != null)
+            aInvoice = CntAriCli.GetAmendementInvoice(int.Parse(Request.QueryString["AmendmentInvoice"]), ctx);
+
         if (Request.QueryString["PrescriptionGlasses"] != null)
             prescriptionGlasses = CntAriCli.GetPrescriptionGlasses(int.Parse(Request.QueryString["PrescriptionGlasses"]), ctx);
         if (Request.QueryString["Estimate"] != null)
@@ -244,6 +248,15 @@ public partial class RptView : System.Web.UI.Page
                             rptestimate.ReportParameters["Estimate"].Value = estimate.EstimateId;
                         }
                         ReportViewer1.Report = rptestimate;
+                        break;
+                    case "rptAmendmentInvoice":
+                        this.Title = "Impresión de facturas rectificativas";
+                        RptAmendmentInvoice rptainv = new RptAmendmentInvoice();
+                        if (aInvoice != null)
+                        {
+                            rptainv.ReportParameters["AInvoice"].Value = aInvoice.AmendmentInvoiceId;
+                        }
+                        ReportViewer1.Report = rptainv;
                         break;
                 }
             }

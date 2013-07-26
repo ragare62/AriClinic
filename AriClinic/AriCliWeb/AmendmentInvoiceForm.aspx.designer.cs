@@ -264,6 +264,24 @@ public partial class AmendmentInvoiceForm {
     protected global::System.Web.UI.WebControls.TextBox txtInvoiceTotal;
     
     /// <summary>
+    /// Control lblReason.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblReason;
+    
+    /// <summary>
+    /// Control txtReason.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtReason;
+    
+    /// <summary>
     /// Control lblInvoiceLines.
     /// </summary>
     /// <remarks>

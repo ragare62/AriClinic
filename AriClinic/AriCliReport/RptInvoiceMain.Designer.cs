@@ -12,6 +12,7 @@ namespace AriCliReport
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptInvoiceMain));
             Telerik.Reporting.InstanceReportSource instanceReportSource1 = new Telerik.Reporting.InstanceReportSource();
             Telerik.Reporting.InstanceReportSource instanceReportSource2 = new Telerik.Reporting.InstanceReportSource();
+            Telerik.Reporting.Group group1 = new Telerik.Reporting.Group();
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
             this.rptInvoiceLine1 = new AriCliReport.RptInvoiceLine();
             this.reptInvoiceVAT1 = new AriCliReport.ReptInvoiceVAT();
@@ -20,7 +21,6 @@ namespace AriCliReport
             this.detail = new Telerik.Reporting.DetailSection();
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
             this.sqlInvoice = new Telerik.Reporting.SqlDataSource();
-            this.invoiceId = new Telerik.Reporting.Group();
             this.groupFooterSection1 = new Telerik.Reporting.GroupFooterSection();
             this.groupHeaderSection1 = new Telerik.Reporting.GroupHeaderSection();
             this.textBox1 = new Telerik.Reporting.TextBox();
@@ -93,14 +93,6 @@ namespace AriCliReport
             this.sqlInvoice.Parameters.AddRange(new Telerik.Reporting.SqlDataSourceParameter[] {
             new Telerik.Reporting.SqlDataSourceParameter("@InvoiceKey", System.Data.DbType.Int32, "=Parameters.InvoiceKey.Value")});
             this.sqlInvoice.SelectCommand = resources.GetString("sqlInvoice.SelectCommand");
-            // 
-            // invoiceId
-            // 
-            this.invoiceId.GroupFooter = this.groupFooterSection1;
-            this.invoiceId.GroupHeader = this.groupHeaderSection1;
-            this.invoiceId.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
-            new Telerik.Reporting.Grouping("=Fields.invoice_id")});
-            this.invoiceId.Name = "invoiceId";
             // 
             // groupFooterSection1
             // 
@@ -452,8 +444,12 @@ namespace AriCliReport
             // RptInvoiceMain
             // 
             this.DataSource = this.sqlInvoice;
+            group1.GroupFooter = this.groupFooterSection1;
+            group1.GroupHeader = this.groupHeaderSection1;
+            group1.Groupings.Add(new Telerik.Reporting.Grouping("=Fields.invoice_id"));
+            group1.Name = "invoiceId";
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
-            this.invoiceId});
+            group1});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.groupHeaderSection1,
             this.groupFooterSection1,
@@ -462,10 +458,7 @@ namespace AriCliReport
             this.pageFooterSection1});
             this.Name = "RptInvoiceMain";
             this.PageSettings.Landscape = false;
-            this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Right = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Top = Telerik.Reporting.Drawing.Unit.Mm(5D);
+            this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             reportParameter1.AvailableValues.DataSource = this.sqlInvoiceFilter;
             reportParameter1.AvailableValues.DisplayMember = "= Fields.keyid";

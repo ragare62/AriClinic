@@ -39,9 +39,9 @@ namespace AriCliWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             // First control the type of parent page
-            if (Request.QueryString["InvoiceId"] != null)
+            if (Request.QueryString["AmendmentInvoiceId"] != null)
             {
-                aInvoiceId = Int32.Parse(Request.QueryString["InvoiceId"]);
+                aInvoiceId = Int32.Parse(Request.QueryString["AmendmentInvoiceId"]);
                 aInv = CntAriCli.GetAmendementInvoice(aInvoiceId, ctx);
                 caller = "amendmentinvoice"; // Called by Insurance
             }

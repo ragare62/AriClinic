@@ -11,7 +11,7 @@
     <ClientSettings AllowDragToGroup="False">
     </ClientSettings>
     <MasterTableView AutoGenerateColumns="False" CommandItemDisplay="Top" 
-                     DataKeyNames="InvoiceLineId">
+                     DataKeyNames="AmendmentInvoiceLineId">
       <CommandItemSettings ExportToPdfText="Export to Pdf" />
       <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
       </RowIndicatorColumn>
