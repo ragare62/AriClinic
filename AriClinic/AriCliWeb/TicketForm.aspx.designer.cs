@@ -282,6 +282,42 @@ public partial class TicketForm {
     protected global::System.Web.UI.WebControls.TextBox txtDescription;
     
     /// <summary>
+    /// Control lblPrice.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblPrice;
+    
+    /// <summary>
+    /// Control txtPrice.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtPrice;
+    
+    /// <summary>
+    /// Control Label1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label Label1;
+    
+    /// <summary>
+    /// Control txtDiscount.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtDiscount;
+    
+    /// <summary>
     /// Control lblAmount.
     /// </summary>
     /// <remarks>

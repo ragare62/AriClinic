@@ -194,6 +194,8 @@ public partial class TicketForm : System.Web.UI.Page
         txtInsuranceServiceName.Text = tck.InsuranceService.Service.Name;
         txtDescription.Text = tck.Description;
         //txtAmount.Text = String.Format("{0:###,##0.00}", tck.Amount);
+        txtPrice.Text = tck.Price.ToString();
+        txtDiscount.Text = tck.Discount.ToString();
         txtAmount.Text = tck.Amount.ToString();
         //
         chkChecked.Checked = tck.Checked;
@@ -219,6 +221,8 @@ public partial class TicketForm : System.Web.UI.Page
         }
         tck.User = CntAriCli.GetUser(user.UserId, ctx);
         tck.Description = txtDescription.Text;
+        tck.Price = Decimal.Parse(txtPrice.Text);
+        tck.Discount = Decimal.Parse(txtDiscount.Text);
         tck.Amount = Decimal.Parse(txtAmount.Text);
         tck.Checked = chkChecked.Checked;
         if (txtProfessionalId.Text != "")
@@ -349,11 +353,17 @@ public partial class TicketForm : System.Web.UI.Page
             //txtAmount.Text = String.Format("{0:0.00}", insuranceService.Price);
             if (txtAmount.Text == "")
                 txtAmount.Text = insuranceService.Price.ToString();
+            // loading prices, discount is zero by default.
+            txtPrice.Text = insuranceService.Price.ToString();
+            txtDiscount.Text = "0";
         }
         else
         {
             txtInsuranceServiceId.Text = "";
             txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
+            txtPrice.Text = "0";
+            txtDiscount.Text = "0";
+            txtAmount.Text = "0";
         }
 
     }
@@ -395,6 +405,38 @@ public partial class TicketForm : System.Web.UI.Page
         customerId = Int32.Parse(e.Argument);
         cus = CntAriCli.GetCustomer(customerId, ctx);
         LoadPolicyCombo(null);
+    }
+
+    protected void txtDiscount_TextChanged(object sender, EventArgs e)
+    {
+        // It could be an amount or a percentage.
+        //
+        string campoDiscount = txtDiscount.Text;
+        decimal discount = 0;
+        int pos = campoDiscount.IndexOf("%");
+        if (pos > 0)
+        {
+            string resto = campoDiscount.Substring(0, pos);
+            decimal porc = 0;
+            if (decimal.TryParse(resto, out porc))
+            {
+                discount = (decimal.Parse(txtPrice.Text) * (decimal)porc) / (decimal)100.0;
+                txtDiscount.Text = String.Format("{0:0.00}", discount);
+                txtAmount.Text = (decimal.Parse(txtPrice.Text) - discount).ToString();
+            }
+        }
+        else
+        {
+            if (decimal.TryParse(txtDiscount.Text, out discount))
+            {
+                // refersh total
+                txtAmount.Text = (decimal.Parse(txtPrice.Text) - discount).ToString();
+            }
+            else
+            {
+                lblMessage.Text = "Valor de descuento no válido";
+            }
+        }
     }
 
 

@@ -757,6 +757,12 @@
         <orm:field name="_checked" property="Checked" behavior="readwrite" null-value="none" uniqueId="1f5c6432-5369-424b-ba20-5d779f114383" type="System.Boolean">
           <orm:column name="checked" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
         </orm:field>
+        <orm:field name="price" property="Price" uniqueId="bf3f2582-59ea-4ea4-aeaa-97c4e864c4df" type="System.Decimal">
+          <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="price" ado-type="" />
+        </orm:field>
+        <orm:field name="discount" property="Discount" uniqueId="8f023732-4a1b-4097-8486-6229583e4bec" type="System.Decimal">
+          <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="discount" ado-type="" />
+        </orm:field>
         <orm:field name="insuranceService" property="InsuranceService" behavior="readwrite" null-value="none" uniqueId="66123665-2ac1-4cdb-ba50-5cc06df7b598" type="AriCliModel.InsuranceService">
           <orm:reference uniqueId="72e8f79e-5c8e-4dd8-b62d-714157b633f3">
             <orm:column name="insurance_service_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" target-class="AriCliModel.InsuranceService" target-field="insuranceServiceId" />
@@ -3450,7 +3456,7 @@
           <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         </orm:field>
         <orm:field name="reason" property="Reason" uniqueId="b68fd60c-74a0-4b9a-9240-8f5913f92dc2" type="System.String">
-          <orm:column nullable="true" scale="0" length="0" sql-type="text" name="reason" ado-type="" />
+          <orm:column name="reason" sql-type="text" nullable="true" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="invoice" property="OriginalInvoice" behavior="readwrite" uniqueId="b517f748-9043-4dd2-bad0-82ba53cba7f4" type="AriCliModel.Invoice">
           <orm:reference uniqueId="f5ef759a-94fe-4977-9d49-154fe533eb18" />
@@ -4035,6 +4041,8 @@
         <orm:column name="checked" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
         <orm:column name="amount" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="voa_class" sql-type="varchar" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="price" ado-type="" />
+        <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="discount" ado-type="" />
         <orm:index name="idx_ticket_clinic_id">
           <orm:columnMapping>
             <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -4582,7 +4590,7 @@
         <orm:column name="invoice_number" sql-type="integer" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column nullable="true" scale="0" length="0" sql-type="text" name="reason" ado-type="" />
+        <orm:column name="reason" sql-type="text" nullable="true" length="0" scale="0" ado-type="" />
         <orm:index name="idx_amendment_invoice_invoice_id">
           <orm:columnMapping>
             <orm:column name="invoice_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -5451,6 +5459,8 @@
       <Property Id="acd1a614-a98a-4866-b1e9-f4f8d5ff4eb3" name="Paid" type="Decimal" label="Paid : Decimal" kind="Persistent" fieldName="paid" />
       <Property Id="b73b4827-8c23-4f95-a9ba-6a39fd2fbf47" name="Comments" label="Comments : String" kind="Persistent" fieldName="comments" />
       <Property Id="1f5c6432-5369-424b-ba20-5d779f114383" name="Checked" type="Boolean" label="Checked : Boolean" kind="Persistent" fieldName="_checked" />
+      <Property Id="bf3f2582-59ea-4ea4-aeaa-97c4e864c4df" name="Price" type="Decimal" label="Price : Decimal" fieldName="price" />
+      <Property Id="8f023732-4a1b-4097-8486-6229583e4bec" name="Discount" type="Decimal" label="Discount : Decimal" fieldName="discount" />
       <inheritors>
         <inheritance Id="e422795e-a992-4eff-9e9b-7a12afa08ac9">
           <DomainClassMoniker name="/AriClinicContext/AnestheticTicket" />

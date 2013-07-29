@@ -115,6 +115,32 @@ namespace AriCliModel
 			}
 		}
 		
+		private decimal price;
+		public virtual decimal Price
+		{
+			get
+			{
+				return this.price;
+			}
+			set
+			{
+				this.price = value;
+			}
+		}
+		
+		private decimal discount;
+		public virtual decimal Discount
+		{
+			get
+			{
+				return this.discount;
+			}
+			set
+			{
+				this.discount = value;
+			}
+		}
+		
 		private InsuranceService insuranceService;
 		public virtual InsuranceService InsuranceService
 		{
