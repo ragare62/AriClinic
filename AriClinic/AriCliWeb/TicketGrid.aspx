@@ -47,12 +47,12 @@
           function NewTicketRecord()
           {
               
-              var w1 = window.open("TicketForm.aspx", "tck_nr1", "width=720, height=600,resizable=1");
+              var w1 = window.open("TicketForm.aspx", "tck_nr1", "width=900, height=600,resizable=1");
               w1.focus();
           }
           function EditTicketRecord(id)
           {
-              var w2 = window.open("TicketForm.aspx?TicketId=" + id, "tck_er1", "width=720, height=600,resizable=1");
+              var w2 = window.open("TicketForm.aspx?TicketId=" + id, "tck_er1", "width=900, height=600,resizable=1");
               w2.focus();
           }
           function NewTicketRecordInTab()
@@ -64,18 +64,18 @@
           function EditTicketRecordInTab(id)
           {
               var w2 = window.open("TicketForm.aspx?CustomerId=" + gup('CustomerId')
-                                   + "&TicketId=" + id, "tcktb_er", "width=750, height=600,resizable=1");
+                                   + "&TicketId=" + id, "tcktb_er", "width=900, height=600,resizable=1");
               w2.focus();
           }
 
           function NewTicketRecordServiceNote(id) {
               var w1 = window.open("TicketForm.aspx?ServiceNoteId=" + id
-                                   , "sntcktb_nr", "width=720, height=600,resizable=1");
+                                   , "sntcktb_nr", "width=900, height=600,resizable=1");
               w1.focus();
           }
           function EditTicketRecordServiceNote(id, id2) {
               var w2 = window.open("TicketForm.aspx?ServiceNoteId=" + id
-                                   + "&TicketId=" + id2, "sntcktb_er", "width=720, height=600,resizable=1");
+                                   + "&TicketId=" + id2, "sntcktb_er", "width=900, height=600,resizable=1");
               w2.focus();
           } 
 

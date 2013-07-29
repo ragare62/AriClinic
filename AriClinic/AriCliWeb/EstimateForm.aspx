@@ -246,7 +246,7 @@
                             <td colspan="6">
                                 <div ID="Buttons" class="buttonsFomat">
                                     <asp:ImageButton ID="btnPrint" runat="server" TabIndex="6" 
-                                                     ImageUrl="~/images/printer24.png" onclick="btnPrint_Click" ToolTip="Imprimir factura" />
+                                                     ImageUrl="~/images/printer24.png" onclick="btnPrint_Click" ToolTip="Imprimir presupuesto" />
                                     &nbsp;
 
                                     <asp:ImageButton ID="btnAccept" runat="server" 

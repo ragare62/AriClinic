@@ -39,7 +39,7 @@
                         }
                     }
                     function EditEstimateRecord(id) {
-                        var w2 = window.open("EstimateForm.aspx?EstimateId=" + id, "EEST", "width=800, height=750,resizable=1");
+                        var w2 = window.open("EstimateForm.aspx?Caller=EstimateGrid&EstimateId=" + id, "EEST", "width=800, height=750,resizable=1");
                         w2.focus();
                     }
                     function CloseWindow() {

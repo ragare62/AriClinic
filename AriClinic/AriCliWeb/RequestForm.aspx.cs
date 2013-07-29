@@ -386,6 +386,7 @@ public partial class RequestForm : System.Web.UI.Page
                     {
                         // estimate line
                         EstimateLine estl = new EstimateLine();
+                        est.Comments = "";
                         estl.Estimate = est;
                         estl.InsuranceService = inss;
                         estl.Amount = inss.Price;

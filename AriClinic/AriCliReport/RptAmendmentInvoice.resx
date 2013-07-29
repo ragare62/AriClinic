@@ -145,7 +145,7 @@
         RGF0YVNvdXJjZVBhcmFtZXRlcgMAAAACAAAACQQAAAAFBAAAAEtTeXN0ZW0uQ29sbGVjdGlvbnMuR2Vu
         ZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVwb3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIDAAAABl9p
         dGVtcwVfc2l6ZQhfdmVyc2lvbgQAACpUZWxlcmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1l
-        dGVyW10CAAAACAgDAAAACQUAAAABAAAABAAAAAcFAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9ydGlu
+        dGVyW10CAAAACAgDAAAACQUAAAABAAAABgAAAAcFAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9ydGlu
         Zy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkGAAAADQMMBwAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lv
         bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkM
         CAAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
@@ -161,7 +161,8 @@
     <value>SELECT        amendment_invoice.amendment_invoice_id, amendment_invoice.invoice_date, amendment_invoice.srial, amendment_invoice.yr, 
                          amendment_invoice.invoice_number, amendment_invoice.reason, amendment_invoice.ttal, amendment_invoice.person_id, customer.vat_in, 
                          customer.comercial_name, address.street, address.street2, address.province, address.post_code, address.city, address.country, 
-                         amendment_invoice_line.description, amendment_invoice_line.amount, amendment_invoice_line.tax_percentage, invoice.invoice_key
+                         amendment_invoice_line.description, amendment_invoice_line.amount, amendment_invoice_line.tax_percentage, invoice.invoice_key, 
+                         invoice.invoice_date AS original_date
 FROM            amendment_invoice INNER JOIN
                          invoice ON amendment_invoice.invoice_id = invoice.invoice_id LEFT OUTER JOIN
                          customer ON amendment_invoice.person_id = customer.person_id LEFT OUTER JOIN
