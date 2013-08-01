@@ -258,6 +258,12 @@ public partial class RptView : System.Web.UI.Page
                         }
                         ReportViewer1.Report = rptainv;
                         break;
+                    case "rptpricelist":
+                        this.Title = "Tarifario";
+                        RptPriceList rptplist = new RptPriceList();
+                        ReportViewer1.Report = rptplist;
+                        break;
+
                 }
             }
             catch (Exception ex)

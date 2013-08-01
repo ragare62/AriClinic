@@ -299,6 +299,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "amendmentinvoice":
                 RadAjaxManager1.ResponseScripts.Add("LaunchAmendmentInvoice();");
                 break;
+            case "rptpricelist":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptPriceList();");
+                break;
             default:
                 break;
         }

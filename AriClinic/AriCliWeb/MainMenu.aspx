@@ -382,6 +382,11 @@
               var w1 = window.open("AmendmentInvoiceGrid.aspx", "EST", "width=1024, height=750,resizable=1")
               w1.focus();
           }
+          function LaunchRptPriceList() {
+              var w1 = window.open("RptView.aspx?Report=rptpricelist", "RPTPRICELIST", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
+
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -541,6 +546,8 @@
                       </telerik:RadMenuItem>
                         <telerik:RadMenuItem runat="server" Text="Liquidación de IVA" 
                             Value="rptvatresume">
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem runat="server" Text="Tarifario" Value="rptpricelist">
                         </telerik:RadMenuItem>
                     </Items>
                   </telerik:RadMenuItem>
