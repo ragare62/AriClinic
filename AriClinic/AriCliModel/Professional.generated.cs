@@ -199,15 +199,6 @@ namespace AriCliModel
 			}
 		}
 		
-		private IList<BaseVisit> baseVisits = new List<BaseVisit>();
-		public virtual IList<BaseVisit> BaseVisits
-		{
-			get
-			{
-				return this.baseVisits;
-			}
-		}
-		
 		private IList<Treatment> treatments = new List<Treatment>();
 		public virtual IList<Treatment> Treatments
 		{
@@ -232,6 +223,15 @@ namespace AriCliModel
 			get
 			{
 				return this.serviceNotes;
+			}
+		}
+		
+		private IList<BaseVisit> baseVisits = new List<BaseVisit>();
+		public virtual IList<BaseVisit> BaseVisits
+		{
+			get
+			{
+				return this.baseVisits;
 			}
 		}
 		

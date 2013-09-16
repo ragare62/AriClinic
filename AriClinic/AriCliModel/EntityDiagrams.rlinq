@@ -631,9 +631,6 @@
         <orm:field name="procedureAssigneds" property="ProcedureAssigneds" behavior="readwrite" uniqueId="b4aef2b7-c213-44c8-a405-07505b68ee03" type="AriCliModel.ProcedureAssigned">
           <orm:collection element-class="AriCliModel.ProcedureAssigned" inverse-field="patient" order-by="" uniqueId="51328bb7-7a0f-4bd4-8adc-9b5c3995b671" />
         </orm:field>
-        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="6856ac18-9744-4a07-ab90-6e13b65b2cc2" type="AriCliModel.BaseVisit">
-          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="patient" order-by="" uniqueId="28c0a385-1db8-4b4a-a963-eca03261dd8c" />
-        </orm:field>
         <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" behavior="readwrite" uniqueId="09fbbb42-199c-4c92-9a59-9df2c6763a15" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="patient" order-by="" uniqueId="db1d98ec-bf92-4648-b169-17055ed5e50f" />
         </orm:field>
@@ -654,6 +651,9 @@
         </orm:field>
         <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="d911ba3f-2207-4917-8cac-61044e2866fd" type="AriCliModel.Request">
           <orm:collection element-class="AriCliModel.Request" inverse-field="patient" order-by="" uniqueId="84718d76-260b-46e8-ba20-1b0aa8cce8cf" />
+        </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="983cc1d4-cc09-487d-a374-298901400cd7" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="patient" order-by="" uniqueId="f4b83f98-32ef-475c-929b-999b59a45514" />
         </orm:field>
       </orm:class>
       <orm:class name="Customer" inheritance-modifier="vertical" discriminator-value="AriCliModel.MetaClass1" behavior="readwrite" uniqueId="228b0d09-c944-4c32-9ad0-8622e9062742" persistent-baseclass="AriCliModel.Person" inheritance="new-table">
@@ -758,10 +758,10 @@
           <orm:column name="checked" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
         </orm:field>
         <orm:field name="price" property="Price" uniqueId="bf3f2582-59ea-4ea4-aeaa-97c4e864c4df" type="System.Decimal">
-          <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="price" ado-type="" />
+          <orm:column name="price" sql-type="decimal" nullable="true" length="10" scale="2" ado-type="" />
         </orm:field>
         <orm:field name="discount" property="Discount" uniqueId="8f023732-4a1b-4097-8486-6229583e4bec" type="System.Decimal">
-          <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="discount" ado-type="" />
+          <orm:column name="discount" sql-type="decimal" nullable="true" length="10" scale="2" ado-type="" />
         </orm:field>
         <orm:field name="insuranceService" property="InsuranceService" behavior="readwrite" null-value="none" uniqueId="66123665-2ac1-4cdb-ba50-5cc06df7b598" type="AriCliModel.InsuranceService">
           <orm:reference uniqueId="72e8f79e-5c8e-4dd8-b62d-714157b633f3">
@@ -1086,9 +1086,6 @@
         <orm:field name="tickets1" property="Tickets" behavior="readwrite" uniqueId="f2cea502-1063-4ad3-bcd1-8715b2277252" type="AriCliModel.Ticket">
           <orm:collection element-class="AriCliModel.Ticket" inverse-field="professional1" order-by="" uniqueId="eea3a819-b088-4050-b1a1-b096d09489f8" />
         </orm:field>
-        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="09f981f5-357c-48a7-b89e-fc08686cf4e6" type="AriCliModel.BaseVisit">
-          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="professional" order-by="" uniqueId="04241e7f-d016-4765-92b8-b47547a7bc16" />
-        </orm:field>
         <orm:field name="treatments" property="Treatments" behavior="readwrite" uniqueId="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" type="AriCliModel.Treatment">
           <orm:collection element-class="AriCliModel.Treatment" inverse-field="professional" order-by="" uniqueId="95ecfc74-0643-4dd4-b01b-1e37a5f480c1" />
         </orm:field>
@@ -1097,6 +1094,9 @@
         </orm:field>
         <orm:field name="serviceNotes" property="ServiceNotes" behavior="readwrite" uniqueId="4e39cba8-0398-4c37-9ee9-3a50a9223b9f" type="AriCliModel.ServiceNote">
           <orm:collection element-class="AriCliModel.ServiceNote" inverse-field="professional" order-by="" uniqueId="a3450b89-8e50-4d91-a845-99dc5e73841b" />
+        </orm:field>
+        <orm:field name="baseVisits" property="BaseVisits" behavior="readwrite" uniqueId="bdf7375e-abdf-42e3-8b9a-44a124ffe9a3" type="AriCliModel.BaseVisit">
+          <orm:collection element-class="AriCliModel.BaseVisit" inverse-field="professional" order-by="" uniqueId="5c3cf223-f037-4cad-9c8e-d9b308c14650" />
         </orm:field>
         <orm:index name="idx_professional_tax_withholding_type_id">
           <orm:columnMapping>
@@ -2796,12 +2796,6 @@
         <orm:field name="appointmentType" property="AppointmentType" behavior="readwrite" uniqueId="ffc6cdf4-7c6f-4226-9544-b171752b2159" type="AriCliModel.AppointmentType">
           <orm:reference uniqueId="8c12e5b7-2abb-48fb-b042-4907a92c4540" />
         </orm:field>
-        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="8145eadd-15af-4976-a1bb-341e78f180ac" type="AriCliModel.Patient">
-          <orm:reference uniqueId="28c0a385-1db8-4b4a-a963-eca03261dd8c" />
-        </orm:field>
-        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="da470488-7925-4747-9e1c-6e2105adc3a7" type="AriCliModel.Professional">
-          <orm:reference uniqueId="04241e7f-d016-4765-92b8-b47547a7bc16" />
-        </orm:field>
         <orm:field name="visitReason" property="VisitReason" behavior="readwrite" uniqueId="7bce37fc-2580-4fb3-94be-6ec89fc00f2a" type="AriCliModel.VisitReason">
           <orm:reference uniqueId="f9287a00-9b5b-49e2-88c8-75351248c7fa" />
         </orm:field>
@@ -2825,6 +2819,14 @@
         </orm:field>
         <orm:field name="diagnosticAssigneds" property="DiagnosticAssigneds" behavior="readwrite" uniqueId="bc6d354b-a1db-4104-aea1-47f811503a52" type="AriCliModel.DiagnosticAssigned">
           <orm:collection element-class="AriCliModel.DiagnosticAssigned" inverse-field="baseVisit" order-by="" uniqueId="79558074-1ba0-475f-96fd-a75cee27ee3b" />
+        </orm:field>
+        <orm:field name="patient" property="Patient" behavior="readwrite" uniqueId="fd28e587-5ff0-4cfe-b547-07e3e7639726" type="AriCliModel.Patient">
+          <orm:reference uniqueId="f4b83f98-32ef-475c-929b-999b59a45514">
+            <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" ado-type="Int32" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="professional" property="Professional" behavior="readwrite" uniqueId="f6c0b4af-3e0b-461a-b4f6-2bf9ea71e8ca" type="AriCliModel.Professional">
+          <orm:reference uniqueId="5c3cf223-f037-4cad-9c8e-d9b308c14650" />
         </orm:field>
         <orm:index name="idx_base_visit_person_id">
           <orm:columnMapping>
@@ -4041,8 +4043,8 @@
         <orm:column name="checked" sql-type="bit" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.Bit2BooleanConverter" ado-type="Bit" />
         <orm:column name="amount" sql-type="decimal" nullable="true" length="20" scale="10" converter="OpenAccessRuntime.Data.DecimalConverter" ado-type="Numeric" />
         <orm:column name="voa_class" sql-type="varchar" nullable="false" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
-        <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="price" ado-type="" />
-        <orm:column nullable="true" scale="2" length="10" sql-type="decimal" name="discount" ado-type="" />
+        <orm:column name="price" sql-type="decimal" nullable="true" length="10" scale="2" ado-type="" />
+        <orm:column name="discount" sql-type="decimal" nullable="true" length="10" scale="2" ado-type="" />
         <orm:index name="idx_ticket_clinic_id">
           <orm:columnMapping>
             <orm:column name="clinic_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -4624,7 +4626,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>AriClinicContext</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_comun</AppConfigConnectionString>
+    <AppConfigConnectionString>server=localhost;user id=root;password=aritel;persist security info=True;database=ariclinic_miestetic</AppConfigConnectionString>
     <InitialCatalog>ariclinic_frido</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -5347,9 +5349,6 @@
         <classHasNavigationalProperties Id="0d519151-0574-4812-92e5-90ed71b69ea5">
           <NavigationalProperty Id="b4aef2b7-c213-44c8-a405-07505b68ee03" name="ProcedureAssigneds" type="IList&lt;ProcedureAssigned&gt;" label="ProcedureAssigneds : IList&lt;ProcedureAssigned&gt;" nullable="true" kind="Persistent" fieldName="procedureAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="ddf84af6-6c8b-4fe6-8de3-b1632984f87a">
-          <NavigationalProperty Id="6856ac18-9744-4a07-ab90-6e13b65b2cc2" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="29edc0a4-b752-46aa-8a3c-1599edffda13">
           <NavigationalProperty Id="09fbbb42-199c-4c92-9a59-9df2c6763a15" name="DiagnosticAssigneds" type="IList&lt;DiagnosticAssigned&gt;" label="DiagnosticAssigneds : IList&lt;DiagnosticAssigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -5376,6 +5375,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="81a9b596-4b7f-42b7-8ec6-cbc37825f76e">
           <NavigationalProperty Id="d911ba3f-2207-4917-8cac-61044e2866fd" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0d90d686-7166-482c-920e-017375cbb198">
+          <NavigationalProperty Id="983cc1d4-cc09-487d-a374-298901400cd7" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5864,9 +5866,6 @@
         <classHasNavigationalProperties Id="e7975269-c755-4e6a-a655-885d5c32e536">
           <NavigationalProperty Id="58d3fe3e-8291-49a6-9d82-c2fe87d87373" name="AnestheticServiceNotes1" type="IList&lt;AnestheticServiceNote&gt;" label="AnestheticServiceNotes1 : IList&lt;AnestheticServiceNote&gt;" nullable="true" kind="Persistent" fieldName="anestheticServiceNotes11" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="375fd3b1-1acd-45d2-beef-2828d99eeb6f">
-          <NavigationalProperty Id="09f981f5-357c-48a7-b89e-fc08686cf4e6" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="fd49ae33-f50e-40bf-8788-7e330b5e2e74">
           <NavigationalProperty Id="9c0ff28e-2656-4321-9ed0-6b7dd8fcc880" name="AppointmentInfos" type="IList&lt;AppointmentInfo&gt;" label="AppointmentInfos : IList&lt;AppointmentInfo&gt;" nullable="true" kind="Persistent" fieldName="appointmentInfos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -5875,6 +5874,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="a9803322-4681-470c-b00d-fb21516ec291">
           <NavigationalProperty Id="8c34372c-7ab7-4ccd-b3a1-363f529c9f41" name="Treatments" type="IList&lt;Treatment&gt;" label="Treatments : IList&lt;Treatment&gt;" nullable="true" kind="Persistent" fieldName="treatments" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="d63e2b2e-d7d7-4a22-81f0-d3dc4205316c">
+          <NavigationalProperty Id="bdf7375e-abdf-42e3-8b9a-44a124ffe9a3" name="BaseVisits" type="IList&lt;BaseVisit&gt;" label="BaseVisits : IList&lt;BaseVisit&gt;" nullable="true" kind="Persistent" fieldName="baseVisits" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -7391,32 +7393,6 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="28c0a385-1db8-4b4a-a963-eca03261dd8c" SourceMultiplicity="ZeroOne" name="BaseVisitHasPatient">
-          <DomainClassMoniker name="/AriClinicContext/Patient" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="ae78de49-e35a-4825-bc7d-1932ba591942">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BaseVisits" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="9633c4bb-12c6-4e72-a3dd-4220e660be4f">
-              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Patient" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-        <Association Id="04241e7f-d016-4765-92b8-b47547a7bc16" SourceMultiplicity="ZeroOne" name="BaseVisitHasProfessional">
-          <DomainClassMoniker name="/AriClinicContext/Professional" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="33c425ae-e8a9-46fc-b8f7-cb0fde0aa72f">
-              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/BaseVisits" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="1820f712-dc5b-415b-ad85-6322a3ce8cec">
-              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Professional" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
         <Association Id="f9287a00-9b5b-49e2-88c8-75351248c7fa" SourceMultiplicity="ZeroOne" name="BaseVisitHasVisitReason">
           <DomainClassMoniker name="/AriClinicContext/VisitReason" />
           <targetNavigationalProperty>
@@ -7456,6 +7432,32 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="f4b83f98-32ef-475c-929b-999b59a45514" SourceMultiplicity="ZeroOne" name="BaseVisitHasPatient">
+          <DomainClassMoniker name="/AriClinicContext/Patient" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="fa954bc2-10ba-4a34-95b7-9b855d6ec2a4">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Patient/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="ed9f21be-fe1a-4fa2-9a7b-1d0adc53f1eb">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Patient" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="5c3cf223-f037-4cad-9c8e-d9b308c14650" SourceMultiplicity="ZeroOne" name="BaseVisitHasProfessional">
+          <DomainClassMoniker name="/AriClinicContext/Professional" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="3b312daf-ab84-4231-9622-174c2d44313b">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Professional/BaseVisits" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="19cc612d-a269-42c5-be4e-a35e76306fc5">
+              <NavigationalPropertyMoniker name="/AriClinicContext/BaseVisit/Professional" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="0e653a1f-0456-49fb-ac03-f84686e0f4de">
@@ -7476,12 +7478,6 @@
         <classHasNavigationalProperties Id="55e9c845-23b7-4079-8905-1c97e2621aa7">
           <NavigationalProperty Id="bc6d354b-a1db-4104-aea1-47f811503a52" name="DiagnosticAssigneds" type="IList&lt;DiagnosticAssigned&gt;" label="DiagnosticAssigneds : IList&lt;DiagnosticAssigned&gt;" nullable="true" kind="Persistent" fieldName="diagnosticAssigneds" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="8d681e49-25e4-423a-9a06-6abd363b64d4">
-          <NavigationalProperty Id="8145eadd-15af-4976-a1bb-341e78f180ac" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="1a2a6efc-819a-4b09-9db6-39e641fb5a56">
-          <NavigationalProperty Id="da470488-7925-4747-9e1c-6e2105adc3a7" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="ee3d7324-0781-496b-882e-622350f949c4">
           <NavigationalProperty Id="7bce37fc-2580-4fb3-94be-6ec89fc00f2a" name="VisitReason" type="VisitReason" label="VisitReason : VisitReason" nullable="true" kind="Persistent" fieldName="visitReason" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -7490,6 +7486,12 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="66a71dfe-f806-434f-948c-837b5a0ce3dd">
           <NavigationalProperty Id="3d1dda5e-02b9-4605-b00c-b7257299e7dc" name="BaseVisitType" type="BaseVisitType" label="BaseVisitType : BaseVisitType" nullable="true" kind="Persistent" fieldName="baseVisitType" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="adca7e36-23d7-4c5e-8584-0b41aafce6d2">
+          <NavigationalProperty Id="fd28e587-5ff0-4cfe-b547-07e3e7639726" name="Patient" type="Patient" label="Patient : Patient" nullable="true" kind="Persistent" fieldName="patient" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1d205b6a-d6a0-45be-8a79-32e41b867876">
+          <NavigationalProperty Id="f6c0b4af-3e0b-461a-b4f6-2bf9ea71e8ca" name="Professional" type="Professional" label="Professional : Professional" nullable="true" kind="Persistent" fieldName="professional" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

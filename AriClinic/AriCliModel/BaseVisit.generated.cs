@@ -102,32 +102,6 @@ namespace AriCliModel
 			}
 		}
 		
-		private Patient patient;
-		public virtual Patient Patient
-		{
-			get
-			{
-				return this.patient;
-			}
-			set
-			{
-				this.patient = value;
-			}
-		}
-		
-		private Professional professional;
-		public virtual Professional Professional
-		{
-			get
-			{
-				return this.professional;
-			}
-			set
-			{
-				this.professional = value;
-			}
-		}
-		
 		private VisitReason visitReason;
 		public virtual VisitReason VisitReason
 		{
@@ -164,6 +138,32 @@ namespace AriCliModel
 			set
 			{
 				this.baseVisitType = value;
+			}
+		}
+		
+		private Patient patient;
+		public virtual Patient Patient
+		{
+			get
+			{
+				return this.patient;
+			}
+			set
+			{
+				this.patient = value;
+			}
+		}
+		
+		private Professional professional;
+		public virtual Professional Professional
+		{
+			get
+			{
+				return this.professional;
+			}
+			set
+			{
+				this.professional = value;
 			}
 		}
 		

@@ -10,6 +10,8 @@ namespace AriCliReport
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptDayAppointment));
+            Telerik.Reporting.Group group1 = new Telerik.Reporting.Group();
+            Telerik.Reporting.Group group2 = new Telerik.Reporting.Group();
             Telerik.Reporting.ReportParameter reportParameter1 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.ReportParameter reportParameter2 = new Telerik.Reporting.ReportParameter();
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
@@ -27,12 +29,10 @@ namespace AriCliReport
             this.textBox10 = new Telerik.Reporting.TextBox();
             this.textBox13 = new Telerik.Reporting.TextBox();
             this.labelsGroupFooter = new Telerik.Reporting.GroupFooterSection();
-            this.labelsGroup = new Telerik.Reporting.Group();
             this.diary_nameGroupHeader = new Telerik.Reporting.GroupHeaderSection();
             this.textBox7 = new Telerik.Reporting.TextBox();
             this.comercial_nameDataTextBox = new Telerik.Reporting.TextBox();
             this.diary_nameGroupFooter = new Telerik.Reporting.GroupFooterSection();
-            this.diary_nameGroup = new Telerik.Reporting.Group();
             this.pageHeader = new Telerik.Reporting.PageHeaderSection();
             this.pictureBox1 = new Telerik.Reporting.PictureBox();
             this.textBox1 = new Telerik.Reporting.TextBox();
@@ -162,12 +162,6 @@ namespace AriCliReport
             this.labelsGroupFooter.Name = "labelsGroupFooter";
             this.labelsGroupFooter.Style.Visible = false;
             // 
-            // labelsGroup
-            // 
-            this.labelsGroup.GroupFooter = this.labelsGroupFooter;
-            this.labelsGroup.GroupHeader = this.labelsGroupHeader;
-            this.labelsGroup.Name = "labelsGroup";
-            // 
             // diary_nameGroupHeader
             // 
             this.diary_nameGroupHeader.Height = Telerik.Reporting.Drawing.Unit.Inch(0.54552155733108521D);
@@ -200,14 +194,6 @@ namespace AriCliReport
             // 
             this.diary_nameGroupFooter.Height = Telerik.Reporting.Drawing.Unit.Inch(0.28125D);
             this.diary_nameGroupFooter.Name = "diary_nameGroupFooter";
-            // 
-            // diary_nameGroup
-            // 
-            this.diary_nameGroup.GroupFooter = this.diary_nameGroupFooter;
-            this.diary_nameGroup.GroupHeader = this.diary_nameGroupHeader;
-            this.diary_nameGroup.Groupings.AddRange(new Telerik.Reporting.Grouping[] {
-            new Telerik.Reporting.Grouping("=Fields.diary_name")});
-            this.diary_nameGroup.Name = "diary_nameGroup";
             // 
             // pageHeader
             // 
@@ -405,9 +391,16 @@ namespace AriCliReport
             // RptDayAppointment
             // 
             this.DataSource = this.sqlAppointments;
+            group1.GroupFooter = this.labelsGroupFooter;
+            group1.GroupHeader = this.labelsGroupHeader;
+            group1.Name = "labelsGroup";
+            group2.GroupFooter = this.diary_nameGroupFooter;
+            group2.GroupHeader = this.diary_nameGroupHeader;
+            group2.Groupings.Add(new Telerik.Reporting.Grouping("=Fields.diary_name"));
+            group2.Name = "diary_nameGroup";
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
-            this.labelsGroup,
-            this.diary_nameGroup});
+            group1,
+            group2});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.labelsGroupHeader,
             this.labelsGroupFooter,
@@ -417,11 +410,9 @@ namespace AriCliReport
             this.pageFooter,
             this.reportFooter,
             this.detail});
+            this.Name = "RptDayAppointment";
             this.PageSettings.Landscape = true;
-            this.PageSettings.Margins.Bottom = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Left = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Right = Telerik.Reporting.Drawing.Unit.Mm(5D);
-            this.PageSettings.Margins.Top = Telerik.Reporting.Drawing.Unit.Mm(5D);
+            this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             reportParameter1.Name = "SDate";
             reportParameter1.Text = "Fecha";
