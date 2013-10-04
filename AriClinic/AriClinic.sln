@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliModel", "AriCliModel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliReport", "AriCliReport\AriCliReport.csproj", "{AFF8F504-D105-456C-889C-23E901358A9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AriCliSMS", "AriCliSMS\AriCliSMS.csproj", "{766E50BE-1261-4E6B-807D-3D0E16A41B57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{AFF8F504-D105-456C-889C-23E901358A9F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AFF8F504-D105-456C-889C-23E901358A9F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AFF8F504-D105-456C-889C-23E901358A9F}.Release|x86.ActiveCfg = Release|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{766E50BE-1261-4E6B-807D-3D0E16A41B57}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

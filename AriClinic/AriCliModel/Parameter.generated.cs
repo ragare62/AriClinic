@@ -63,6 +63,45 @@ namespace AriCliModel
 			}
 		}
 		
+		private string smsEmail;
+		public virtual string SmsEmail
+		{
+			get
+			{
+				return this.smsEmail;
+			}
+			set
+			{
+				this.smsEmail = value;
+			}
+		}
+		
+		private string smsClave;
+		public virtual string SmsClave
+		{
+			get
+			{
+				return this.smsClave;
+			}
+			set
+			{
+				this.smsClave = value;
+			}
+		}
+		
+		private string smsRemitente;
+		public virtual string SmsRemitente
+		{
+			get
+			{
+				return this.smsRemitente;
+			}
+			set
+			{
+				this.smsRemitente = value;
+			}
+		}
+		
 		private Service painPump;
 		public virtual Service PainPump
 		{

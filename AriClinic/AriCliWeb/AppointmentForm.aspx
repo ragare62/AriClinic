@@ -138,7 +138,7 @@
                                                      OnClientClick="searchPatient();" TabIndex="100" />
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcPatient" Height="100px" 
-                                        Width="350px" ItemsPerRequest="10" 
+                                        Width="99%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                                          EmptyMessage="Escriba aquí ..." TabIndex="1" AutoPostBack="True"
                                                          onitemsrequested="rdcPatient_ItemsRequested" 
@@ -160,7 +160,7 @@
                                                      ToolTip="Haga clic aquí para buscar una agenda" 
                                         TabIndex="100" />
                                     <br />
-                                    <telerik:RadComboBox runat="server" ID="rdcDiary" Height="100px" Width="350px" ItemsPerRequest="10" 
+                                    <telerik:RadComboBox runat="server" ID="rdcDiary" Height="100px" Width="99%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                                          EmptyMessage="Escriba aquí ..." TabIndex="2" AutoPostBack="True"
                                                          onitemsrequested="rdcDiary_ItemsRequested" 
@@ -184,7 +184,7 @@
                                         TabIndex="100" />
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcAppointmentType" AutoPostBack="true" 
-                                                         Height="100px" Width="350px" ItemsPerRequest="10" 
+                                                         Height="100px" Width="99%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                                          EmptyMessage="Escriba aquí ..." TabIndex="3"
                                                          onitemsrequested="rdcAppointmentType_ItemsRequested" 
@@ -209,7 +209,7 @@
                                                      OnClientClick="searchProfessional();" TabIndex="100" />
                                     <br />
                                     <telerik:RadComboBox runat="server" ID="rdcProfessional" Height="100px" 
-                                        Width="350px" ItemsPerRequest="10" 
+                                        Width="99%" ItemsPerRequest="10" 
                                                          EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true"
                                                          EmptyMessage="Escriba aquí ..." TabIndex="4" AutoPostBack="True"
                                                          onitemsrequested="rdcProfessional_ItemsRequested" 
@@ -217,7 +217,6 @@
                                     </telerik:RadComboBox>
                                 </div>
                             </td>
-
                         </tr>
                         <tr>
                             <td>
@@ -309,7 +308,7 @@
                                                ToolTip="Este es el texto que aparecerá en el calendario"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtSubject" runat="server" Enabled="false" 
-                                                 TabIndex="12" Width="507px" Height="23px"></asp:TextBox>
+                                                 TabIndex="12" Width="99%" Height="23px"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -320,7 +319,7 @@
                                                ToolTip="Este es el texto que aparecerá en el calendario"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtDescription" runat="server" Enabled="false" 
-                                                 TabIndex="12" Width="507px" Height="23px"></asp:TextBox>
+                                                 TabIndex="12" Width="99%" Height="23px"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -331,8 +330,27 @@
                                                ToolTip="Observaciones"></asp:Label>
                                     <br />
                                     <asp:TextBox ID="txtComments" runat="server" 
-                                                 TabIndex="13" Width="507px" Height="70px" TextMode="MultiLine"></asp:TextBox>
+                                                 TabIndex="13" Width="99%" Height="50px" TextMode="MultiLine"></asp:TextBox>
                                 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div id="SMS" class="normalTextBlue">Recordatorio SMS</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
                             </td>
                         </tr>
                         <tr>

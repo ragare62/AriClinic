@@ -165,6 +165,60 @@ public partial class ParameterForm {
     protected global::System.Web.UI.WebControls.CheckBox chkAppointmentExtension;
     
     /// <summary>
+    /// Control lblSmsEmail.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblSmsEmail;
+    
+    /// <summary>
+    /// Control txtSmsEmail.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtSmsEmail;
+    
+    /// <summary>
+    /// Control lblSmsClave.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblSmsClave;
+    
+    /// <summary>
+    /// Control txtSmsClave.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtSmsClave;
+    
+    /// <summary>
+    /// Control lblSmsRemitente.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblSmsRemitente;
+    
+    /// <summary>
+    /// Control txtSmsRemitente.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtSmsRemitente;
+    
+    /// <summary>
     /// Control btnAccept.
     /// </summary>
     /// <remarks>

@@ -186,7 +186,7 @@
           }
           function LaunchParameter()
           {
-              var w1 = window.open("ParameterForm.aspx", "PARAMETER", "width=400, height=300,resizable=1")
+              var w1 = window.open("ParameterForm.aspx", "PARAMETER", "width=400, height=350,resizable=1")
               w1.focus();
           }
           function LaunchRProfessionalSrv()

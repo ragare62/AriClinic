@@ -80,13 +80,13 @@ public partial class ParameterForm : System.Web.UI.Page
     #region Auxiliary functions
     protected bool DataOk()
     {
-        if (txtServiceId.Text == "")
-        {
-            RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','warning',null,0,0);"
-                ,Resources.GeneralResource.Warning
-                ,Resources.GeneralResource.ServiceNeeded));
-            return false;
-        }
+        //if (txtServiceId.Text == "")
+        //{
+        //    RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','warning',null,0,0);"
+        //        ,Resources.GeneralResource.Warning
+        //        ,Resources.GeneralResource.ServiceNeeded));
+        //    return false;
+        //}
 
         return true;
     }
@@ -114,6 +114,9 @@ public partial class ParameterForm : System.Web.UI.Page
             txtServiceName.Text = parameter.PainPump.Name;
         }
         chkChecked.Checked = parameter.UseNomenclator;
+        txtSmsEmail.Text = parameter.SmsEmail;
+        txtSmsClave.Text = parameter.SmsClave;
+        txtSmsRemitente.Text = parameter.SmsRemitente;
     }
 
     protected void UnloadData(AriCliModel.Parameter parameter)
@@ -124,6 +127,9 @@ public partial class ParameterForm : System.Web.UI.Page
         parameter.PainPump = ser;
         parameter.UseNomenclator = chkChecked.Checked;
         parameter.AppointmentExtension = chkAppointmentExtension.Checked;
+        parameter.SmsEmail = txtSmsEmail.Text;
+        parameter.SmsClave = txtSmsClave.Text;
+        parameter.SmsRemitente = txtSmsRemitente.Text;
     }
 
 
