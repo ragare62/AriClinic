@@ -1293,7 +1293,7 @@
           <orm:column name="sms_clave" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         </orm:field>
         <orm:field name="smsRemitente" property="SmsRemitente" uniqueId="459d9d31-75d4-4149-9e68-a28719bbeac1" type="System.String">
-          <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="sms_remitente" ado-type="" />
+          <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="painPump" property="PainPump" behavior="readwrite" null-value="none" uniqueId="4d62ae2b-a6d3-4bf3-82d4-e861278d28f9" type="AriCliModel.Service">
           <orm:reference uniqueId="85a162eb-942f-40d4-8aa9-5e1d2f3ed7c7" />
@@ -1473,6 +1473,9 @@
         </orm:field>
         <orm:field name="subject" property="Subject" behavior="readwrite" uniqueId="d8600f00-1108-4baf-9f77-6a9f83516c74" type="System.String">
           <orm:column name="subject" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
+        </orm:field>
+        <orm:field name="sms" property="Sms" uniqueId="7fca2a1c-2d62-46fb-b17b-52d50792f77e" type="System.Boolean">
+          <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="sms" ado-type="" />
         </orm:field>
         <orm:field name="appointmentType" property="AppointmentType" behavior="readwrite" uniqueId="ee5cbf1a-b2d5-4773-a960-85c62a66c8ea" type="AriCliModel.AppointmentType">
           <orm:reference uniqueId="ca9145d4-4355-4e75-a009-6dfd48ea83b1" />
@@ -1901,6 +1904,11 @@
           <orm:reference uniqueId="af7e9085-cc3e-4f63-aa24-1d6c68f711f6" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_glasses_test_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="ContactLensesTest" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="7b1d9965-d616-4e2b-a91e-54810d093626">
         <orm:identity>
@@ -1935,6 +1943,11 @@
           <orm:reference uniqueId="979f0350-7f05-4e61-8e75-b3aab98d9d74" />
         </orm:field>
         <orm:implements name="AriCliModel.BasicOpticalTest" />
+        <orm:index name="idx_contact_lenses_test_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="OpticalObjectiveExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="9d01f009-036a-4e73-82c0-cce42caa4998">
         <orm:identity>
@@ -2074,6 +2087,11 @@
           <orm:reference uniqueId="691c2ba5-eb22-416c-a5bb-3d50d4f61cab" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_optical_objective_examination_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="SubjectiveOpticalExamination" update-schema="true" behavior="readwrite" use-default-mapping="true" uniqueId="fe353f33-341f-4144-9eab-3c5a20ab69bc">
         <orm:identity>
@@ -2201,6 +2219,11 @@
           <orm:reference uniqueId="2520f8e6-7612-496c-8eff-d79648a81438" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_subjective_optical_examination_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="PrescriptionGlasses" update-schema="true" behavior="readwrite" uniqueId="316f1351-4de8-430e-b241-7f579f1a68d0">
         <orm:table name="prescription_glasses" />
@@ -2465,6 +2488,11 @@
           <orm:reference uniqueId="f1067528-c77a-4dad-922f-e84be3c90b22" />
         </orm:field>
         <orm:implements name="AriCliModel.OpticalTest" />
+        <orm:index name="idx_cycloplegia_examination_assigned_id">
+          <orm:columnMapping>
+            <orm:column name="examination_assigned_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
       </orm:class>
       <orm:class name="LabTest" update-schema="true" behavior="readwrite" uniqueId="b7dada9f-074d-4016-97c2-c4cfa89b4e32">
         <orm:table name="lab_test" />
@@ -4305,6 +4333,7 @@
         <orm:column name="father_appointment_appointment_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="person_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="person_id2" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="bit" name="sms" ado-type="" />
         <orm:index name="idx_appointment_info_appointment_type_id">
           <orm:columnMapping>
             <orm:column name="appointment_type_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -4601,7 +4630,7 @@
         <orm:column name="service_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
         <orm:column name="sms_email" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="sms_clave" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
-        <orm:column nullable="true" scale="0" length="255" sql-type="varchar" name="sms_remitente" ado-type="" />
+        <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         <orm:index name="idx_parameter_service_id">
           <orm:columnMapping>
             <orm:column name="service_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -6276,6 +6305,7 @@
       <Property Id="da79b214-6ec0-4349-b9f5-e9e668f4d973" name="Status" label="Status : String" kind="Persistent" fieldName="status" />
       <Property Id="a9409d83-beda-40a6-9c0c-bb7815ed13ec" name="Duration" type="Int32" label="Duration : Int32" kind="Persistent" fieldName="duration" />
       <Property Id="d8600f00-1108-4baf-9f77-6a9f83516c74" name="Subject" label="Subject : String" kind="Persistent" fieldName="subject" />
+      <Property Id="7fca2a1c-2d62-46fb-b17b-52d50792f77e" name="Sms" type="Boolean" label="Sms : Boolean" fieldName="sms" />
       <AssociationTargets>
         <Association Id="ca9145d4-4355-4e75-a009-6dfd48ea83b1" SourceMultiplicity="ZeroOne" name="AppointmentInfoHasAppointmentType">
           <DomainClassMoniker name="/AriClinicContext/AppointmentType" />

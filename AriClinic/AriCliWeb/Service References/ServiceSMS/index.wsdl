@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.afilnet.com:9999/ws/v2/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.afilnet.com:9999/ws/v2/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.afilnet.com:9999/ws/v2/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Mobiles">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Columnas">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Grupo">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="grupo" type="xsd:string" />
+          <xsd:element name="usuarios" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Envio">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="titulo" type="xsd:string" />
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="sms" type="xsd:int" />
+          <xsd:element name="destino" type="xsd:int" />
+          <xsd:element name="grupo" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="SMS">
+        <xsd:all>
+          <xsd:element name="sms" type="xsd:string" />
+          <xsd:element name="mobile" type="xsd:string" />
+          <xsd:element name="date" type="xsd:string" />
+          <xsd:element name="status" type="xsd:int" />
+          <xsd:element name="report" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="BulkSMS">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:SMS[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Stats">
+        <xsd:all>
+          <xsd:element name="numsms" type="xsd:int" />
+          <xsd:element name="Sends" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Country">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="pais" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="User">
+        <xsd:all>
+          <xsd:element name="nombre" type="xsd:string" />
+          <xsd:element name="apellidos" type="xsd:string" />
+          <xsd:element name="empresa" type="xsd:string" />
+          <xsd:element name="email" type="xsd:string" />
+          <xsd:element name="movil" type="xsd:string" />
+          <xsd:element name="telefono" type="xsd:string" />
+          <xsd:element name="domicilio" type="xsd:string" />
+          <xsd:element name="localidad" type="xsd:string" />
+          <xsd:element name="ciudad" type="xsd:string" />
+          <xsd:element name="pais" type="xsd:string" />
+          <xsd:element name="prefijo_pais" type="xsd:string" />
+          <xsd:element name="dni" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Countries">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:Country[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Envios">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:Envio[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Grupos">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:Grupo[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AddCreditsRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="creditos" type="xsd:int" />
+    <wsdl:part name="usuario" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="AddCreditsResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionRequest" />
+  <wsdl:message name="GetVersionResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateGroupRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="columnas" type="tns:Columnas" />
+  </wsdl:message>
+  <wsdl:message name="CreateGroupResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsResponse">
+    <wsdl:part name="return" type="tns:Stats" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="columnas" type="tns:Columnas" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="columnas" type="tns:Columnas" />
+    <wsdl:part name="datos" type="tns:Columnas" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="LoginRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="GetUserRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserResponse">
+    <wsdl:part name="return" type="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="remitente" type="xsd:string" />
+    <wsdl:part name="pais" type="xsd:string" />
+    <wsdl:part name="destino" type="xsd:string" />
+    <wsdl:part name="sms" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSPlusRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="remitente" type="xsd:string" />
+    <wsdl:part name="pais" type="xsd:string" />
+    <wsdl:part name="destino" type="xsd:string" />
+    <wsdl:part name="sms" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:int" />
+    <wsdl:part name="ahora" type="xsd:int" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSPlusResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSPlusArrayRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="remitente" type="xsd:string" />
+    <wsdl:part name="pais" type="xsd:string" />
+    <wsdl:part name="array" type="tns:Mobiles" />
+    <wsdl:part name="sms" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:int" />
+    <wsdl:part name="ahora" type="xsd:int" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSPlusArrayResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendBulkSMSRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="remitente" type="xsd:string" />
+    <wsdl:part name="pais" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="sms" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendBulkSMSResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="SendBulkSMSPlusRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="remitente" type="xsd:string" />
+    <wsdl:part name="pais" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="sms" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:int" />
+    <wsdl:part name="ahora" type="xsd:int" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SendBulkSMSPlusResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ProcessSMSBulkRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ProcessSMSBulkResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="CreditsRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="CreditsResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupRegisterRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="columnas" type="tns:Columnas" />
+    <wsdl:part name="datos" type="tns:Columnas" />
+  </wsdl:message>
+  <wsdl:message name="AddGroupRegisterResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupRegisterRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="registro" type="xsd:int" />
+    <wsdl:part name="columnas" type="tns:Columnas" />
+    <wsdl:part name="datos" type="tns:Columnas" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupRegisterResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupRegisterRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="grupo" type="xsd:int" />
+    <wsdl:part name="registro" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupRegisterResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDataRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDataResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRechargeURLRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRechargeURLResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckStatusRequest">
+    <wsdl:part name="tipo" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="CheckStatusResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupRequest">
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupResponse">
+    <wsdl:part name="return" type="tns:Grupo" />
+  </wsdl:message>
+  <wsdl:message name="GetCountriesRequest" />
+  <wsdl:message name="GetCountriesResponse">
+    <wsdl:part name="return" type="tns:Countries" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupsRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupsResponse">
+    <wsdl:part name="return" type="tns:Grupos" />
+  </wsdl:message>
+  <wsdl:message name="SendsRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="SendsResponse">
+    <wsdl:part name="return" type="tns:Envios" />
+  </wsdl:message>
+  <wsdl:message name="SMSRequest">
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="clave" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="SMSResponse">
+    <wsdl:part name="return" type="tns:BulkSMS" />
+  </wsdl:message>
+  <wsdl:portType name="ApplicationServicesPortType">
+    <wsdl:operation name="AddCredits">
+      <documentation>Transfiere Creditos de un Usuario a Otro. Puede devolver: 1 = Realizado Correctamente, 0 = Creditos Insuficientes, -1 = Error de login</documentation>
+      <wsdl:input message="tns:AddCreditsRequest" />
+      <wsdl:output message="tns:AddCreditsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <documentation>Obtiene la version del Software / Servicio Web</documentation>
+      <wsdl:input message="tns:GetVersionRequest" />
+      <wsdl:output message="tns:GetVersionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGroup">
+      <documentation>Crea un Grupo de Registros, puede devolver: 1 = Realizado correctamente, 0 = Faltan datos o datos incorrectos, -1 = Error de login, &gt; 0 = Identificador del grupo creado</documentation>
+      <wsdl:input message="tns:CreateGroupRequest" />
+      <wsdl:output message="tns:CreateGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStats">
+      <documentation>Obtiene Stats generales sobre los Envíos realizados</documentation>
+      <wsdl:input message="tns:GetStatsRequest" />
+      <wsdl:output message="tns:GetStatsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroup">
+      <documentation>Elimina el Grupo Seleccionado, puede devolver: 1 = Realizado correctamente, -1 = Error de login</documentation>
+      <wsdl:input message="tns:DeleteGroupRequest" />
+      <wsdl:output message="tns:DeleteGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <documentation>Actualiza la información del Grupo, puede devolver: 1 = Realizado correctamente, 0 = Faltan datos o datos incorrectos, -1 = Error de login</documentation>
+      <wsdl:input message="tns:UpdateGroupRequest" />
+      <wsdl:output message="tns:UpdateGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGroup">
+      <documentation>Agrega un Registro al Grupo, puede devolver: 1 = Realizado correctamente, 0 = El grupo no pertenece a este usuario, -1 = Error de login</documentation>
+      <wsdl:input message="tns:AddGroupRequest" />
+      <wsdl:output message="tns:AddGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <documentation>Comprueba los datos de Acceso del Usuario, puede devolver: &gt; 0 = Identificador de Usuario, 0 = Error de login</documentation>
+      <wsdl:input message="tns:LoginRequest" />
+      <wsdl:output message="tns:LoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <documentation>Comprueba los datos de Acceso del Usuario, puede devolver: Array = Devuelve los datos del usuario, null = Error de login</documentation>
+      <wsdl:input message="tns:GetUserRequest" />
+      <wsdl:output message="tns:GetUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <documentation>Enviar un SMS, puede devolver: OK = Envio Correcto, Sin creditos = El usuario no dispone de créditos para el envio, -1 = Error de login</documentation>
+      <wsdl:input message="tns:SendSMSRequest" />
+      <wsdl:output message="tns:SendSMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSPlus">
+      <documentation>Enviar un SMS de forma avanzada, se puede realizar Envíos sin remitente y programar Envíos a una fecha determinad, puede devolver: OK = Envio Correcto, Sin creditos = El usuario no dispone de créditos para el envio, -1 = Error de login</documentation>
+      <wsdl:input message="tns:SendSMSPlusRequest" />
+      <wsdl:output message="tns:SendSMSPlusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSPlusArray">
+      <documentation>Envia un SMS a un array de destinatarios, puede devolver: OK = Envio Correcto, Sin creditos = El usuario no dispone de créditos para el envio, -1 = Error de login</documentation>
+      <wsdl:input message="tns:SendSMSPlusArrayRequest" />
+      <wsdl:output message="tns:SendSMSPlusArrayResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBulkSMS">
+      <documentation>Envio de SMS Masivo, puede devolver: OK = Envio Correcto, Sin creditos = El usuario no dispone de créditos para el envio, -1 = Error de login</documentation>
+      <wsdl:input message="tns:SendBulkSMSRequest" />
+      <wsdl:output message="tns:SendBulkSMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBulkSMSPlus">
+      <documentation>Enviar un SMS Masivo de forma avanzada, se debe indicar el tipo de SMS, y la fecha, puede devolver: OK = Envio Correcto, Sin creditos = El usuario no dispone de créditos para el envio, -1 = Error de login</documentation>
+      <wsdl:input message="tns:SendBulkSMSPlusRequest" />
+      <wsdl:output message="tns:SendBulkSMSPlusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessSMSBulk">
+      <documentation>Funcion que realiza el envio masivo anteriormente creado, la función devuelve el número de SMS pendientes de enviar, puede devolver: &gt; 0 = Numero de SMS que faltan por enviar, -1 = Error de login, 0 = Envio finalizado</documentation>
+      <wsdl:input message="tns:ProcessSMSBulkRequest" />
+      <wsdl:output message="tns:ProcessSMSBulkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Credits">
+      <documentation>Obtiene la Cantidad Restante de Creditos del Usuario</documentation>
+      <wsdl:input message="tns:CreditsRequest" />
+      <wsdl:output message="tns:CreditsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGroupRegister">
+      <documentation>Inserta el registro en la BD, puede devolver: 1 = Realizado correctamente, -1 = Error de Login, -2 = No tiene permiso para editar dicho grupo, -3 = Error al aplicar la acción (posiblemente campos incorrectos)</documentation>
+      <wsdl:input message="tns:AddGroupRegisterRequest" />
+      <wsdl:output message="tns:AddGroupRegisterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroupRegister">
+      <documentation>Actualiza los campos seleccionados de un registro de un determinado grupo, puede devolver: 1 = Realizado correctamente, -1 = Error de Login, -2 = No tiene permiso para editar dicho grupo, -3 = Error al aplicar la acción (posiblemente campos incorrectos)</documentation>
+      <wsdl:input message="tns:UpdateGroupRegisterRequest" />
+      <wsdl:output message="tns:UpdateGroupRegisterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroupRegister">
+      <documentation>Elimina un registro de un determinado grupo, puede devolver: 1 = Realizado correctamente, -1 = Error de Login, -2 = No tiene permiso para editar dicho grupo, -3 = Error al aplicar la acción</documentation>
+      <wsdl:input message="tns:DeleteGroupRegisterRequest" />
+      <wsdl:output message="tns:DeleteGroupRegisterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupData">
+      <documentation>Obtiene todos los datos de un determinado grupo, devuelve un XML con todos la informacion de los registros: moviles y campos asociados</documentation>
+      <wsdl:input message="tns:GetGroupDataRequest" />
+      <wsdl:output message="tns:GetGroupDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRechargeURL">
+      <documentation>Obtiene la URL de Recarga de Creditos del Usuario, devuelve una URL</documentation>
+      <wsdl:input message="tns:GetRechargeURLRequest" />
+      <wsdl:output message="tns:GetRechargeURLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <documentation>Obtiene el estado del sistema para el envio de SMS con remite y sin remite, el valor de entrada es el tipo: 0 - sin remite y 1 - con remite, devuelve true o false dependiendo de si está activo o no el servicio</documentation>
+      <wsdl:input message="tns:CheckStatusRequest" />
+      <wsdl:output message="tns:CheckStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <documentation>Obtiene el Grupo Seleccionado</documentation>
+      <wsdl:input message="tns:GetGroupRequest" />
+      <wsdl:output message="tns:GetGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <documentation>Obtiene el Listado de Todos los Paises</documentation>
+      <wsdl:input message="tns:GetCountriesRequest" />
+      <wsdl:output message="tns:GetCountriesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroups">
+      <documentation>Obtiene el Listado de Grupos del Usuario</documentation>
+      <wsdl:input message="tns:GetGroupsRequest" />
+      <wsdl:output message="tns:GetGroupsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Sends">
+      <documentation>Obtiene informacion sobre los Envios</documentation>
+      <wsdl:input message="tns:SendsRequest" />
+      <wsdl:output message="tns:SendsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SMS">
+      <documentation>Obtiene los SMS enviados de un determinado envío</documentation>
+      <wsdl:input message="tns:SMSRequest" />
+      <wsdl:output message="tns:SMSResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApplicationServicesBinding" type="tns:ApplicationServicesPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="AddCredits">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/AddCredits" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetVersion" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGroup">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/CreateGroup" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStats">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetStats" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroup">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/DeleteGroup" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/UpdateGroup" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroup">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/AddGroup" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/Login" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SendSMS" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSPlus">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SendSMSPlus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSPlusArray">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SendSMSPlusArray" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBulkSMS">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SendBulkSMS" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBulkSMSPlus">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SendBulkSMSPlus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessSMSBulk">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/ProcessSMSBulk" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Credits">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/Credits" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroupRegister">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/AddGroupRegister" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroupRegister">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/UpdateGroupRegister" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroupRegister">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/DeleteGroupRegister" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupData">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetGroupData" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRechargeURL">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetRechargeURL" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/CheckStatus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetGroup" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetCountries" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroups">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/GetGroups" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sends">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/Sends" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SMS">
+      <soap:operation soapAction="http://www.afilnet.com/ws/v2/index.php/SMS" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.afilnet.com:9999/ws/v2/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApplicationServices">
+    <wsdl:port name="ApplicationServicesPort" binding="tns:ApplicationServicesBinding">
+      <soap:address location="http://www.afilnet.com/ws/v2/index.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

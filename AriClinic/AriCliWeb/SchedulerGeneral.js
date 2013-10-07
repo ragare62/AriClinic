@@ -9,7 +9,7 @@ function printDiary(dt, diary) {
 }
 
 function openAppointment(url) {
-    w = window.open(url, "scheduler", "width=600,height=550,resizable=1");
+    w = window.open(url, "scheduler", "width=600,height=700,resizable=1");
     w.focus();
 }
 function AppointmentEditing(sender, eventArgs) {

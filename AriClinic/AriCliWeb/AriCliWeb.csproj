@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -278,6 +280,11 @@
     </Compile>
     <Compile Include="AmendmentInvoiceNewForm.aspx.designer.cs">
       <DependentUpon>AmendmentInvoiceNewForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceSMS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UscAmendmentInvoiceLineGrid.ascx.cs">
       <DependentUpon>UscAmendmentInvoiceLineGrid.ascx</DependentUpon>
@@ -1288,6 +1295,30 @@
     <Content Include="AmendmentInvoiceForm.aspx" />
     <Content Include="AmendmentInvoiceLineForm.aspx" />
     <Content Include="AmendmentInvoiceNewForm.aspx" />
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Envio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Grupo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.SMS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Stats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceSMS\configuration91.svcinfo" />
+    <Content Include="Service References\ServiceSMS\configuration.svcinfo" />
+    <Content Include="Service References\ServiceSMS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="UscAmendmentInvoiceLineGrid.ascx" />
     <Content Include="ServiceSubCategoryForm.aspx" />
     <Content Include="ServiceSubCategoryGrid.aspx" />
@@ -1506,6 +1537,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\AriClinic2013.pubxml" />
     <None Include="Properties\PublishProfiles\AriClinicW8.pubxml" />
+    <Content Include="Service References\ServiceSMS\index.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AriCliModel\AriCliModel.csproj">
@@ -1574,6 +1606,12 @@
       <LastGenOutput>RadEditor.Dialogs.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceSMS\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1607,7 +1645,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">

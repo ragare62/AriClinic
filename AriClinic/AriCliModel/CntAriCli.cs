@@ -2255,6 +2255,17 @@ namespace AriCliModel
             ctx.SaveChanges();
             return aInv;
         }
+
+        public static string GetPrimaryPhone(Patient p, AriClinicContext ctx)
+        {
+            string telNumber = "";
+            Telephone tel = (from t in ctx.Telephones
+                             where t.Person.PersonId == p.PersonId
+                             && t.Type == "Primary"
+                             select t).FirstOrDefault<Telephone>();
+            if (tel != null) telNumber = tel.Number;
+            return telNumber;
+        }
         #endregion
     }
 }

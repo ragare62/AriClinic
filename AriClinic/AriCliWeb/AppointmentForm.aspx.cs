@@ -68,7 +68,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             appId = int.Parse(Request.QueryString["AppointmentId"]);
             app = CntAriCli.GetAppointment(appId, ctx);
         }
-
+        HideSms();
         LoadData(app);
 
         // Must be check after load data.
@@ -120,6 +120,10 @@ public partial class AppointmentForm : System.Web.UI.Page
             command = "CloseAndRebind();";
         if (!CreateChange())
             return;
+        if (chkSMS.Enabled && chkSMS.Checked)
+        {
+            SendSmS();
+        }
         RadAjaxManager1.ResponseScripts.Add(command);
     }
 
@@ -263,6 +267,8 @@ public partial class AppointmentForm : System.Web.UI.Page
         }
         btnVisit.OnClientClick = command;
         btnVisit.Visible = true;
+        chkSMS.Checked = app.Sms;
+        if (app.Sms) chkSMS.Enabled = false;
     }
 
     protected void UnloadData(AppointmentInfo app)
@@ -281,6 +287,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             app.Arrival = DateTime.Parse("01/01/0001 00:00:00");
         app.Subject = CntAriCli.GetAppointmentSubject(app);
         app.Comments = txtComments.Text;
+        app.Sms = chkSMS.Checked;
     }
      
     protected void LoadStatusCombo(AppointmentInfo app)
@@ -455,5 +462,88 @@ public partial class AppointmentForm : System.Web.UI.Page
         }
     }
 
+    #region SMS
+    protected void chkSMS_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkSMS.Checked)
+        {
+            if (!DataOk())
+            {
+                chkSMS.Checked = false;
+                return;
+            }
+            ShowSms();
+            LoadSmsData();
+        }
+        else
+        {
+            HideSms();
+        }
+    }
+    protected void HideSms()
+    {
+        LblMovilSms.Visible = false;
+        txtMovilSms.Visible = false;
+        lblRemitenteSms.Visible = false;
+        txtRemitenteSms.Visible = false;
+        lblSendDateTime.Visible = false;
+        rddtSendDateTime.Visible = false;
+        lblSmsMessage.Visible = false;
+        txtSmsMessage.Visible = false;
+    }
+    protected void ShowSms()
+    {
+        LblMovilSms.Visible = true;
+        txtMovilSms.Visible = true;
+        lblRemitenteSms.Visible = true;
+        txtRemitenteSms.Visible = true;
+        lblSendDateTime.Visible = true;
+        rddtSendDateTime.Visible = true;
+        lblSmsMessage.Visible = true;
+        txtSmsMessage.Visible = true;
+    }
+
+    protected void LoadSmsData()
+    {
+        if (!DataOk()) return;
+        // search for primary telephone
+        Patient p = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
+        Diary d = CntAriCli.GetDiary(int.Parse(rdcDiary.SelectedValue), ctx);
+        txtMovilSms.Text = CntAriCli.GetPrimaryPhone(p, ctx);
+        AriCliModel.Parameter param = CntAriCli.GetParameter(ctx);
+        if (param.SmsEmail == "" || param.SmsClave == "")
+        {
+            chkSMS.Checked = false;
+            string command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
+                                                , Resources.GeneralResource.Warning
+                                                , Resources.GeneralResource.SmsParameterNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return;
+        }
+        txtRemitenteSms.Text = param.SmsRemitente;
+        DateTime fromDateTime = (DateTime)rddtBeginDateTime.SelectedDate;
+        DateTime sendDateTime = fromDateTime.AddHours(-24);
+        rddtSendDateTime.SelectedDate = sendDateTime;
+        string m = String.Format("Le recordamos su cita en/con {0} el dia {1:dd/MM/yyyy} a las {1:HH:mm}",d.Name,fromDateTime);
+        txtSmsMessage.Text = m;
+    }
+    protected void SendSmS()
+    {
+        AriCliWeb.ServiceSMS.ApplicationServicesPortTypeClient client = new AriCliWeb.ServiceSMS.ApplicationServicesPortTypeClient();
+        AriCliModel.Parameter param = CntAriCli.GetParameter(ctx);
+        string emailSms = param.SmsEmail;
+        string claveSms = param.SmsClave;
+        string remitSms = txtRemitenteSms.Text;
+        string phoneSms = txtMovilSms.Text;
+        string messageSms = txtSmsMessage.Text;
+        DateTime sendTime = (DateTime)rddtSendDateTime.SelectedDate;
+        string sendSms = String.Format("dd/MM/yyyy hh:mm", sendTime);
+        string res = client.SendSMSPlus(emailSms, claveSms, remitSms, "0034", phoneSms, messageSms, 1, 0, sendSms);
+        if (res.ToUpper() != "OK")
+        {
+        }
+    }
+
+    #endregion 
 
 }

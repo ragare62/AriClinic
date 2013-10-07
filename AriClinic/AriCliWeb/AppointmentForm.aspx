@@ -336,21 +336,59 @@
                         </tr>
                         <tr>
                             <td colspan="4">
-                                <div id="SMS" class="normalTextBlue">Recordatorio SMS</div>
+                                <div id="SMS" class="normalTextBlue">
+                                    <asp:CheckBox ID="chkSMS" runat="server" Text="Mandar recordatorio SMS" OnCheckedChanged="chkSMS_CheckedChanged" AutoPostBack="true" />
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-
+                                <div ID="MovilSMS" class="normalText">
+                                    <asp:Label ID="LblMovilSms" runat="server" Text="Móvil"
+                                               ToolTip="Número de móvil al que se enviará el mensaje"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtMovilSms" runat="server" AutoPostBack="True" 
+                                                 Width="99%" ></asp:TextBox>
+                                </div>
                             </td>
                             <td>
-
+                                <div ID="RemitenteSMS" class="normalText">
+                                    <asp:Label ID="lblRemitenteSms" runat="server" Text="Remitente" 
+                                               ToolTip="Remitente que figuraré en el mensaje SMS"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtRemitenteSms" runat="server" AutoPostBack="True" 
+                                                 Width="99%" ></asp:TextBox>
+                                </div>
                             </td>
-                            <td>
-
+                            <td colspan="2">
+                                <div id="SendDateTime" class="normalText">
+                                    <asp:Label ID="lblSendDateTime" runat="server" Text="Fecha y hora de envío"></asp:Label>
+                                    <br />
+                                    <telerik:RadDateTimePicker ID="rddtSendDateTime" runat="server" TabIndex="6" 
+                                                               AutoPostBackControl="Both">
+                                        <TimeView CellSpacing="-1" Culture="es-ES">
+                                        </TimeView>
+                                        <TimePopupButton HoverImageUrl="" ImageUrl="" />
+                                        <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                                                  ViewSelectorText="x">
+                                        </Calendar>
+                                        <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="6" 
+                                                   AutoPostBack="True">
+                                        </DateInput>
+                                        <DatePopupButton HoverImageUrl="" ImageUrl="" TabIndex="5" />
+                                    </telerik:RadDateTimePicker>
+                                </div>
                             </td>
-                            <td>
-
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div ID="SmsMessage" class="normalText">
+                                    <asp:Label ID="lblSmsMessage" runat="server" Text="Mensaje SMS" 
+                                               ToolTip="SMS a enviar"></asp:Label>
+                                    <br />
+                                    <asp:TextBox ID="txtSmsMessage" runat="server" 
+                                                 TabIndex="13" Width="99%" Height="50px" TextMode="MultiLine"></asp:TextBox>
+                                </div>
                             </td>
                         </tr>
                         <tr>

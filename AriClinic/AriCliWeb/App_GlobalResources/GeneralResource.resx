@@ -366,4 +366,7 @@
   <data name="RequestInformationNeeded" xml:space="preserve">
     <value>Se necesitan la información solicitada.</value>
   </data>
+  <data name="SmsParameterNeeded" xml:space="preserve">
+    <value>Se necesitan parámetros SMS para esta opción.</value>
+  </data>
 </root>

@@ -42,6 +42,7 @@
                                     document.getElementById('<%= txtInsuranceServiceName.ClientID %>').value = v3;
                                     document.getElementById('<%= txtDescription.ClientID %>').value = v3;
                                     document.getElementById('<%= txtPrice.ClientID %>').value = v2;
+                                    document.getElementById('<%= txtDiscount.ClientID %>').value = 0;
                                     document.getElementById('<%= txtAmount.ClientID %>').value = v2;
                                     break;
                                 case "Professional":

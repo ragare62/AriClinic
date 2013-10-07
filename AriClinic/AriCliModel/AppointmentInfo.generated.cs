@@ -141,6 +141,19 @@ namespace AriCliModel
 			}
 		}
 		
+		private bool sms;
+		public virtual bool Sms
+		{
+			get
+			{
+				return this.sms;
+			}
+			set
+			{
+				this.sms = value;
+			}
+		}
+		
 		private AppointmentType appointmentType;
 		public virtual AppointmentType AppointmentType
 		{
