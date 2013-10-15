@@ -141,6 +141,9 @@
   <data name="Secondary" xml:space="preserve">
     <value>Secundario</value>
   </data>
+  <data name="SmSMessage" xml:space="preserve">
+    <value>Clínica Miestetic le recuerda su cita de hoy con {0} a las {1:HH:mm}</value>
+  </data>
   <data name="Woman" xml:space="preserve">
     <value>Mujer</value>
   </data>

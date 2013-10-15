@@ -78,6 +78,11 @@
                         var w2 = window.open("VisitTab.aspx?VisitId= " + id + "&Caller=Appointment", "VISIT", "width=800, height=500,resizable=1");
                         w2.focus;
                     }
+                    function JSendSmsOK() {
+                        $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("SmsOK");
+                    }
+                    function doNothing() {
+                    }
                 </script>
             </telerik:RadScriptBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" 
@@ -107,6 +112,7 @@
                     <Validation IsRequired="True"></Validation>
                 </telerik:NumericTextBoxSetting>
             </telerik:RadInputManager>
+            <telerik:RadWindowManager ID="RadWindowManager1" runat="server"></telerik:RadWindowManager>
             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                 <div>
                     <table style="width: 100%;">

@@ -14,6 +14,7 @@ using Telerik.Web.UI;
 public partial class AppointmentForm : System.Web.UI.Page 
 {
     #region Variables declarations
+    
     AriClinicContext ctx = null;
     User user = null;
     Patient pat = null;
@@ -24,12 +25,13 @@ public partial class AppointmentForm : System.Web.UI.Page
     Permission per = null;
     Professional professional = null;
     AppointmentInfo app = null;
-    DateTime? beginDateTime= null; DateTime? endDateTime = null;
+    DateTime? beginDateTime = null; DateTime? endDateTime = null;
     string type = "";
-
+    
     #endregion Variables declarations
-
+    
     #region Init Load Unload events
+    
     protected void Page_Init(object sender, EventArgs e)
     {
         ctx = new AriClinicContext("AriClinicContext");
@@ -70,7 +72,7 @@ public partial class AppointmentForm : System.Web.UI.Page
         }
         HideSms();
         LoadData(app);
-
+        
         // Must be check after load data.
         if (Request.QueryString["BeginDateTime"] != null)
         {
@@ -100,19 +102,20 @@ public partial class AppointmentForm : System.Web.UI.Page
             txtDuration.Text = d.ToString();
         }
     }
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+    
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
         if (ctx != null)
             ctx.Dispose();
     }
-
+    
     #endregion Init Load Unload events
+        
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CloseAndRebind('new');";
@@ -123,89 +126,93 @@ public partial class AppointmentForm : System.Web.UI.Page
         if (chkSMS.Enabled && chkSMS.Checked)
         {
             SendSmS();
+            return;
         }
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+        
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CloseAndRebind();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
+        
     protected void btnMedicalRecord_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CloseAndRebind();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
+        
     protected void btnVisit_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CloseAndRebind();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     protected void btnServiceId_Click(object sender, ImageClickEventArgs e)
     {
     }
-
+    
     #region Auxiliary functions
+        
     protected bool DataOk()
     {
         string command = "";
         // patient needed
         if (rdcPatient.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.PatientNeeded);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.PatientNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         // diary needed
         if (rdcDiary.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.DiaryNeeded);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.DiaryNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         // professional needed
         if (rdcProfessional.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.ProfessionalNeeded);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.ProfessionalNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         // appointment type needed
         if (rdcAppointmentType.SelectedValue == "")
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.AppointmentTypeNeeded);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.AppointmentTypeNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         if (rddtBeginDateTime.SelectedDate == null || rddtEndDateTime.SelectedDate == null)
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.BeginEndDateTimeNeeded);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.BeginEndDateTimeNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         if (rddtBeginDateTime.SelectedDate > rddtEndDateTime.SelectedDate)
         {
-            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                    , Resources.GeneralResource.Warning
-                                    , Resources.GeneralResource.BeginGreaterThanEndDates);
+            command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.BeginGreaterThanEndDates);
             RadAjaxManager1.ResponseScripts.Add(command);
             return false;
         }
         return true;
     }
-
+    
     /// <summary>
     /// As its name suggest if there isn't an object
     /// it'll create it. If exists It modifies it.
@@ -229,7 +236,7 @@ public partial class AppointmentForm : System.Web.UI.Page
         }
         return true;
     }
-
+        
     protected void LoadData(AppointmentInfo app)
     {
         LoadStatusCombo(app);
@@ -237,7 +244,8 @@ public partial class AppointmentForm : System.Web.UI.Page
         {
             LoadProfessionalCombo(professional);
         }
-        if (app == null) return; // There isn't any agenda to show
+        if (app == null)
+            return; // There isn't any agenda to show
         txtAppointmentId.Text = String.Format("{0:00000000}", app.AppointmentId);
         LoadPatientCombo(app.Patient);
         LoadDiaryCombo(app.Diary);
@@ -268,9 +276,10 @@ public partial class AppointmentForm : System.Web.UI.Page
         btnVisit.OnClientClick = command;
         btnVisit.Visible = true;
         chkSMS.Checked = app.Sms;
-        if (app.Sms) chkSMS.Enabled = false;
+        if (app.Sms)
+            chkSMS.Enabled = false;
     }
-
+        
     protected void UnloadData(AppointmentInfo app)
     {
         app.Patient = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
@@ -287,14 +296,14 @@ public partial class AppointmentForm : System.Web.UI.Page
             app.Arrival = DateTime.Parse("01/01/0001 00:00:00");
         app.Subject = CntAriCli.GetAppointmentSubject(app);
         app.Comments = txtComments.Text;
-        app.Sms = chkSMS.Checked;
+        //app.Sms = chkSMS.Checked;
     }
-     
+        
     protected void LoadStatusCombo(AppointmentInfo app)
     {
         // Status are hard coded
         ddlStatus.Items.Clear(); // erase all previous codes
-        ddlStatus.Items.Add(new ListItem( "Programada","1"));
+        ddlStatus.Items.Add(new ListItem("Programada","1"));
         ddlStatus.Items.Add(new ListItem("Sala de espera","2"));
         ddlStatus.Items.Add(new ListItem("Atendida", "3"));
         ddlStatus.Items.Add(new ListItem("No presentado","4"));
@@ -309,30 +318,31 @@ public partial class AppointmentForm : System.Web.UI.Page
             ddlStatus.SelectedValue = "1";
         }
     }
+            
     protected DateTime GetCorrectDateTime(string s)
     {
         return new DateTime(
-            int.Parse(s.Substring(0, 4))
-            , int.Parse(s.Substring(4, 2))
-            , int.Parse(s.Substring(6, 2))
-            , int.Parse(s.Substring(8, 2))
-            , int.Parse(s.Substring(10, 2))
-            , 0);
-
+            int.Parse(s.Substring(0, 4)) ,
+            int.Parse(s.Substring(4, 2)) ,
+            int.Parse(s.Substring(6, 2)) ,
+            int.Parse(s.Substring(8, 2)) ,
+            int.Parse(s.Substring(10, 2)) ,
+            0);
     }
+            
     protected void TimeCalculation(AppointmentType apptype)
     {
-        if (apptype == null) return;
+        if (apptype == null)
+            return;
         txtDuration.Text = apptype.Duration.ToString();
         DateTime start = (DateTime)rddtBeginDateTime.SelectedDate;
         rddtEndDateTime.SelectedDate = start.AddMinutes(apptype.Duration);
     }
 
     #endregion Auxiliary functions
-
+    
     #region Searching outside
-
-
+        
     protected void txtDuration_TextChanged(object sender, EventArgs e)
     {
         // We must recalulate end date time, if there's a begin date time selected
@@ -340,12 +350,14 @@ public partial class AppointmentForm : System.Web.UI.Page
         {
             DateTime start = (DateTime)rddtBeginDateTime.SelectedDate;
             int dur = 0;
-            if (txtDuration.Text != "") dur = int.Parse(txtDuration.Text);
+            if (txtDuration.Text != "")
+                dur = int.Parse(txtDuration.Text);
             rddtEndDateTime.SelectedDate = start.AddMinutes(dur);
         }
     }
+    
     #endregion
-
+        
     protected void rddtBeginDateTime_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
     {
         // We check if an appointment type is selected
@@ -356,36 +368,40 @@ public partial class AppointmentForm : System.Web.UI.Page
                 TimeCalculation(apptype);
         }
     }
-    
+        
     // Combo controls
     protected void LoadPatientCombo(Patient patient)
     {
         rdcPatient.Items.Clear();
-        rdcPatient.Items.Add(new RadComboBoxItem( patient.FullName, patient.PersonId.ToString()));
+        rdcPatient.Items.Add(new RadComboBoxItem(patient.FullName, patient.PersonId.ToString()));
         rdcPatient.SelectedValue = patient.PersonId.ToString();
     }
+        
     protected void LoadDiaryCombo(Diary diary)
     {
         rdcDiary.Items.Clear();
         rdcDiary.Items.Add(new RadComboBoxItem(diary.Name, diary.DiaryId.ToString()));
         rdcDiary.SelectedValue = diary.DiaryId.ToString();
     }
+        
     protected void LoadProfessionalCombo(Professional professional)
     {
         rdcProfessional.Items.Clear();
         rdcProfessional.Items.Add(new RadComboBoxItem(professional.FullName, professional.PersonId.ToString()));
         rdcProfessional.SelectedValue = professional.PersonId.ToString();
     }
+        
     protected void LoadAppointmentTypeCombo(AppointmentType apptype)
     {
         rdcAppointmentType.Items.Clear();
         rdcAppointmentType.Items.Add(new RadComboBoxItem(apptype.Name, apptype.AppointmentTypeId.ToString()));
         rdcAppointmentType.SelectedValue = apptype.AppointmentTypeId.ToString();
     }
-
+            
     protected void rdcPatient_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from c in ctx.Patients
@@ -396,10 +412,11 @@ public partial class AppointmentForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(pat.FullName, pat.PersonId.ToString()));
         }
     }
-
+            
     protected void rdcDiary_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from c in ctx.Diaries
@@ -410,10 +427,11 @@ public partial class AppointmentForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(dia.Name, dia.DiaryId.ToString()));
         }
     }
-
+            
     protected void rdcAppointmentType_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from c in ctx.AppointmentTypes
@@ -424,10 +442,11 @@ public partial class AppointmentForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(apptype.Name, apptype.AppointmentTypeId.ToString()));
         }
     }
-
+            
     protected void rdcProfessional_ItemsRequested(object sender, RadComboBoxItemsRequestedEventArgs e)
     {
-        if (e.Text == "") return;
+        if (e.Text == "")
+            return;
         RadComboBox combo = (RadComboBox)sender;
         combo.Items.Clear();
         var rs = from c in ctx.Professionals
@@ -438,12 +457,19 @@ public partial class AppointmentForm : System.Web.UI.Page
             combo.Items.Add(new RadComboBoxItem(prf.FullName, prf.PersonId.ToString()));
         }
     }
-
+    
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-
+        switch (e.Argument)
+        {
+            case "SmsOK":
+                // se ha enviado el SMS correctamente
+                string command = "CloseAndRebind();";
+                RadAjaxManager1.ResponseScripts.Add(command);
+                break;
+        }
     }
-
+        
     protected void rdcAppointmentType_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
         if (rdcAppointmentType.SelectedValue != "")
@@ -451,9 +477,8 @@ public partial class AppointmentForm : System.Web.UI.Page
             AppointmentType apptype = CntAriCli.GetAppointmentType(int.Parse(rdcAppointmentType.SelectedValue), ctx);
             TimeCalculation(apptype);
         }
-        
     }
-
+        
     protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (ddlStatus.SelectedValue == "2")
@@ -461,8 +486,9 @@ public partial class AppointmentForm : System.Web.UI.Page
             rddtArrival.SelectedDate = DateTime.Now;
         }
     }
-
+        
     #region SMS
+            
     protected void chkSMS_CheckedChanged(object sender, EventArgs e)
     {
         if (chkSMS.Checked)
@@ -480,6 +506,7 @@ public partial class AppointmentForm : System.Web.UI.Page
             HideSms();
         }
     }
+        
     protected void HideSms()
     {
         LblMovilSms.Visible = false;
@@ -491,6 +518,7 @@ public partial class AppointmentForm : System.Web.UI.Page
         lblSmsMessage.Visible = false;
         txtSmsMessage.Visible = false;
     }
+        
     protected void ShowSms()
     {
         LblMovilSms.Visible = true;
@@ -502,31 +530,35 @@ public partial class AppointmentForm : System.Web.UI.Page
         lblSmsMessage.Visible = true;
         txtSmsMessage.Visible = true;
     }
-
+        
     protected void LoadSmsData()
     {
-        if (!DataOk()) return;
+        if (!DataOk())
+            return;
         // search for primary telephone
         Patient p = CntAriCli.GetPatient(int.Parse(rdcPatient.SelectedValue), ctx);
         Diary d = CntAriCli.GetDiary(int.Parse(rdcDiary.SelectedValue), ctx);
+        Professional pr = CntAriCli.GetProfessional(int.Parse(rdcProfessional.SelectedValue), ctx);
         txtMovilSms.Text = CntAriCli.GetPrimaryPhone(p, ctx);
         AriCliModel.Parameter param = CntAriCli.GetParameter(ctx);
         if (param.SmsEmail == "" || param.SmsClave == "")
         {
             chkSMS.Checked = false;
-            string command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);"
-                                                , Resources.GeneralResource.Warning
-                                                , Resources.GeneralResource.SmsParameterNeeded);
+            string command = String.Format("showDialog('{0}', '{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.SmsParameterNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return;
         }
         txtRemitenteSms.Text = param.SmsRemitente;
         DateTime fromDateTime = (DateTime)rddtBeginDateTime.SelectedDate;
-        DateTime sendDateTime = fromDateTime.AddHours(-24);
+        DateTime sendDateTime = new DateTime(fromDateTime.Year, fromDateTime.Month, fromDateTime.Day, 9, 0, 0);
         rddtSendDateTime.SelectedDate = sendDateTime;
-        string m = String.Format("Le recordamos su cita en/con {0} el dia {1:dd/MM/yyyy} a las {1:HH:mm}",d.Name,fromDateTime);
+        // Clínica Miestetic le recuerda su cita de hoy con el dr.xxxxx a las xxxxh. Un saludo.
+        string m = String.Format(Resources.ConstantsResource.SmSMessage, pr.ComercialName, fromDateTime);
         txtSmsMessage.Text = m;
     }
+        
     protected void SendSmS()
     {
         AriCliWeb.ServiceSMS.ApplicationServicesPortTypeClient client = new AriCliWeb.ServiceSMS.ApplicationServicesPortTypeClient();
@@ -537,13 +569,30 @@ public partial class AppointmentForm : System.Web.UI.Page
         string phoneSms = txtMovilSms.Text;
         string messageSms = txtSmsMessage.Text;
         DateTime sendTime = (DateTime)rddtSendDateTime.SelectedDate;
-        string sendSms = String.Format("dd/MM/yyyy hh:mm", sendTime);
+        string sendSms = String.Format("{0:dd/MM/yyyy HH:mm:ss}", sendTime);
         string res = client.SendSMSPlus(emailSms, claveSms, remitSms, "0034", phoneSms, messageSms, 1, 0, sendSms);
         if (res.ToUpper() != "OK")
         {
+            string m1 = "DESCONOCIDO";
+            switch (res.ToUpper())
+            {
+                case "-1":
+                    m1 = "Usuario o clave incorrectos";
+                    break;
+                case "SIN CREDITOS":
+                    m1 = "No hay SMS disponibles";
+                    break;
+            }
+            string m2 = String.Format("El SMS no ha podido ser programado ({0}), desmarque la casilla y haga clic en ACEPTAR", m1);
+            RadWindowManager1.RadAlert(m2, null, null, "AVISO", "doNothing");
+        }
+        else
+        {
+            app.Sms = true;
+            ctx.SaveChanges();
+            RadWindowManager1.RadAlert("Su mensaje SMS ha sido programado correctamente el " + sendSms, null, null, "AVISO", "JSendSmsOK");
         }
     }
 
     #endregion 
-
 }
