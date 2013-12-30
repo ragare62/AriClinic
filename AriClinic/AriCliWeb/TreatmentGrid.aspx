@@ -176,7 +176,7 @@
                                          FilterControlToolTip="Filtrar por fecha de diagnóstico" FilterImageToolTip="Filtro"
                                          HeaderText="Fecha" 
                                          meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" 
-                                         SortExpression="TreatmentDate" UniqueName="DiagnosticDate">
+                                         SortExpression="TreatmentDate" UniqueName="TreatmentDate">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="Drug.Name" 
                                          FilterControlToolTip="Filtrar por fármaco" FilterImageToolTip="Filtro"

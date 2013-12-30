@@ -379,36 +379,36 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
 
     protected void txtInsuranceServiceId_TextChanged(object sender, EventArgs e)
     {
-        // check before go to search thats a policy selected
-        if (rdcbPolicy.SelectedValue == "")
-        {
-            string command = string.Format("dialogShow('{0}','{1}','warning',null,0,0);"
-                , Resources.GeneralResource.Warning
-                , Resources.GeneralResource.PolicyNeeded);
-            RadAjaxManager1.ResponseScripts.Add(command);
-            return;
-        }
-        // insurance selected
-        policyId = Int32.Parse(rdcbPolicy.SelectedValue);
-        pol = CntAriCli.GetPolicy(policyId, ctx);
-        insurance = pol.Insurance;
-        // serach for Insurance Service
-        insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
-        insuranceService = CntAriCli.GetInsuranceService(insuranceServiceId,insurance, ctx);
-        if (insuranceService != null)
-        {
-            txtInsuranceServiceId.Text = insuranceService.InsuranceServiceId.ToString();
-            txtInsuranceServiceName.Text = insuranceService.Service.Name;
-            txtDescription.Text = insuranceService.Service.Name;
-            
-            //txtAmount.Text = String.Format("{0:###,##0.00}", insuranceService.Price);
-            txtAmount.Text = insuranceService.Price.ToString();
-        }
-        else
-        {
-            txtInsuranceServiceId.Text = "";
-            txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
-        }
+        LoadRelatedValues();
+        //// check before go to search thats a policy selected
+        //if (rdcbPolicy.SelectedValue == "")
+        //{
+        //    string command = string.Format("dialogShow('{0}','{1}','warning',null,0,0);"
+        //        , Resources.GeneralResource.Warning
+        //        , Resources.GeneralResource.PolicyNeeded);
+        //    RadAjaxManager1.ResponseScripts.Add(command);
+        //    return;
+        //}
+        //// insurance selected
+        //policyId = Int32.Parse(rdcbPolicy.SelectedValue);
+        //pol = CntAriCli.GetPolicy(policyId, ctx);
+        //insurance = pol.Insurance;
+        //// serach for Insurance Service
+        //insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
+        //insuranceService = CntAriCli.GetInsuranceService(insuranceServiceId,insurance, ctx);
+        //if (insuranceService != null)
+        //{
+        //    txtInsuranceServiceId.Text = insuranceService.InsuranceServiceId.ToString();
+        //    txtInsuranceServiceName.Text = insuranceService.Service.Name;
+        //    txtDescription.Text = insuranceService.Service.Name;
+        //    //txtAmount.Text = String.Format("{0:###,##0.00}", insuranceService.Price);
+        //    txtAmount.Text = insuranceService.Price.ToString();
+        //}
+        //else
+        //{
+        //    txtInsuranceServiceId.Text = "";
+        //    txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
+        //}
 
     }
     protected void btnInsuranceServiceId_Click(object sender, ImageClickEventArgs e)
@@ -464,6 +464,8 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         {
             txtProcedureId.Text = proc.ProcedureId.ToString();
             txtProcedureName.Text = proc.Name;
+            // Cambiamos el servicio, el precio y la descripción
+            txtDescription.Text = proc.Name;
         }
         else
         {
@@ -480,5 +482,37 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         LoadPolicyCombo(null);
     }
 
+    protected void LoadRelatedValues()
+    {
+        // check before go to search thats a policy selected
+        if (rdcbPolicy.SelectedValue == "")
+        {
+            string command = string.Format("dialogShow('{0}','{1}','warning',null,0,0);"
+                , Resources.GeneralResource.Warning
+                , Resources.GeneralResource.PolicyNeeded);
+            RadAjaxManager1.ResponseScripts.Add(command);
+            return;
+        }
+        // insurance selected
+        policyId = Int32.Parse(rdcbPolicy.SelectedValue);
+        pol = CntAriCli.GetPolicy(policyId, ctx);
+        insurance = pol.Insurance;
+        // serach for Insurance Service
+        insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
+        insuranceService = CntAriCli.GetInsuranceService(insuranceServiceId, insurance, ctx);
+        if (insuranceService != null)
+        {
+            txtInsuranceServiceId.Text = insuranceService.InsuranceServiceId.ToString();
+            txtInsuranceServiceName.Text = insuranceService.Service.Name;
+            //txtDescription.Text = insuranceService.Service.Name;
+            //txtAmount.Text = String.Format("{0:###,##0.00}", insuranceService.Price);
+            txtAmount.Text = insuranceService.Price.ToString();
+        }
+        else
+        {
+            txtInsuranceServiceId.Text = "";
+            txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
+        }
+    }
 
 }

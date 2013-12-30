@@ -831,6 +831,7 @@ namespace AriCliModel
             if (insuranceId == 0)
             {
                 var rs = from t in ctx.Tickets
+                         orderby t.TicketDate
                          where t.TicketDate >= fromDate &&
                                t.TicketDate <= toDate
                          select t;
@@ -839,6 +840,7 @@ namespace AriCliModel
             else
             {
                 var rs = from t in ctx.Tickets
+                         orderby t.TicketDate
                          where t.TicketDate >= fromDate &&
                                t.TicketDate <= toDate &&
                                t.Policy.Insurance.InsuranceId == insuranceId
@@ -853,6 +855,7 @@ namespace AriCliModel
             if (noVoucher != 0)
             {
                 mTickets = (from t in mTickets
+                            orderby t.TicketDate
                             where t.Checked == false
                             select t).ToList<Ticket>();
             }

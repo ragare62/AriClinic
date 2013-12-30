@@ -200,8 +200,7 @@ public partial class TreatmentForm : System.Web.UI.Page
             rdcProfessional.Items.Add(new RadComboBoxItem(tr.Professional.FullName, tr.Professional.PersonId.ToString()));
             rdcProfessional.SelectedValue = tr.Professional.PersonId.ToString();
         }
-
-        rdpTreatmentDate.SelectedDate = tr.TreatmentDate;
+        rdpTreatmentDate.SelectedDate = CntAriCli.IsDateNull(tr.TreatmentDate); 
         txtRecommend.Text = tr.Recommend;
         if (tr.Quantity != 0)
             txtQuantity.Value = (double)tr.Quantity;

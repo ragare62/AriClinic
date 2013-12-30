@@ -64,7 +64,40 @@
               var w2 = window.open("TicketForm.aspx?CustomerId=" + gup('CustomerId')
                                    + "&TicketId=" + id, "tcktb_er", "width=750, height=320,resizable=1");
               w2.focus();
-          } 
+          }
+
+          function NewAnestheticTicketRecord() {
+              var w1 = window.open("AnestheticTicketForm.aspx", "atck_nr1", "width=720, height=520,resizable=1");
+              w1.focus();
+          }
+          function EditAnestheticTicketRecord(id) {
+              var w2 = window.open("AnestheticTicketForm.aspx?TicketId=" + id, "atck_er1", "width=720, height=520,resizable=1");
+              w2.focus();
+          }
+          function NewAnestheticTicketRecordInTab() {
+              var w1 = window.open("AnestheticTicketForm.aspx?CustomerId=" + gup('CustomerId')
+                                   , "atcktb_nr", "width=720, height=520,resizable=1");
+              w1.focus();
+          }
+          function EditAnestheticTicketRecordInTab(id) {
+              var w2 = window.open("AnestheticTicketForm.aspx?CustomerId=" + gup('CustomerId')
+                                   + "&AnestheticTicketId=" + id, "atcktb_er", "width=720, height=520,resizable=1");
+              w2.focus();
+          }
+
+          function NewAnestheticTicketRecordServiceNote(id) {
+              var w1 = window.open("AnestheticTicketForm.aspx?AnestheticServiceNoteId=" + id
+                                   , "atcktb_nr", "width=720, height=520,resizable=1");
+              w1.focus();
+          }
+          function EditAnestheticTicketRecordServiceNote(id, id2) {
+              var w2 = window.open("AnestheticTicketForm.aspx?AnestheticServiceNoteId=" + id
+                                   + "&AnestheticTicketId=" + id2, "atcktb_er", "width=720, height=520,resizable=1");
+              w2.focus();
+          }
+
+
+
           function CloseWindow()
           {
               window.close();

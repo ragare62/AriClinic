@@ -118,7 +118,9 @@ public partial class TreatmentGrid : System.Web.UI.Page
             if (visit != null)
                 command = String.Format("return EditTreatmentRecordInVisit({0});", id);
             imgb.OnClientClick = command;
-
+            // control null dates
+            if (gdi["TreatmentDate"].Text == "01/01/0001")
+                gdi["TreatmentDate"].Text = null;
             // assigning javascript functions to delete button
             imgb = (ImageButton)e.Item.FindControl("Delete");
             string message = Resources.GeneralResource.DeleteRecordQuestion;

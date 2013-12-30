@@ -95,6 +95,8 @@ public partial class TicketForm : System.Web.UI.Page
                 txtProfessionalName.Text = prof.FullName; txtProfessionalName.Enabled = false;
             }
             rddpTicketDate.SelectedDate = sn.ServiceNoteDate;
+            // fix date when it comes from service note
+            rddpTicketDate.Enabled = false;
         }
         // 
         if (Request.QueryString["TicketId"] != null)

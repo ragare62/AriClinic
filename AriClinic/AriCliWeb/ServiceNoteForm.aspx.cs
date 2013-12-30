@@ -203,6 +203,7 @@ public partial class ServiceNoteForm : System.Web.UI.Page
         rdcComercialName.SelectedValue = sn.Customer.PersonId.ToString();
         //txtComercialName.Text = sn.Customer.FullName;
         rddpServiceNoteDate.SelectedDate = sn.ServiceNoteDate;
+        
         LoadClinicCombo(sn);
         txtTotal.Text = String.Format("{0:0.00}", sn.Total);
         txtPaid.Text = String.Format("{0:0.00}", sn.Paid);
