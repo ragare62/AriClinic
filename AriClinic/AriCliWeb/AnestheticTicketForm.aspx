@@ -232,7 +232,7 @@ width: 674px;
                       case "Customer":
                           document.getElementById('<%= txtCustomerId.ClientID %>').value = v1;
                           document.getElementById('<%= txtComercialName.ClientID %>').value = v3;
-                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(v1);
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(type + "@" + v1);
                           break;
                       case "InsuranceService":
                           document.getElementById('<%= txtInsuranceServiceId.ClientID %>').value = v1;
@@ -251,6 +251,7 @@ width: 674px;
                       case "Procedure":
                           document.getElementById('<%= txtProcedureId.ClientID %>').value = v1;
                           document.getElementById('<%= txtProcedureName.ClientID %>').value = v3;
+                          $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(type + "@" + v1);
                           break;
                   }
               }
@@ -263,9 +264,22 @@ width: 674px;
         <AjaxSettings>
           <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
             <UpdatedControls>
-              <telerik:AjaxUpdatedControl ControlID="rdcbPolicy" />
+              <telerik:AjaxUpdatedControl ControlID="txtProcedureId" />
+                <telerik:AjaxUpdatedControl ControlID="txtProcedureName" UpdatePanelCssClass="" />
+                <telerik:AjaxUpdatedControl ControlID="rdcbPolicy" UpdatePanelCssClass="" />
+                <telerik:AjaxUpdatedControl ControlID="txtInsuranceServiceId" UpdatePanelCssClass="" />
+                <telerik:AjaxUpdatedControl ControlID="txtInsuranceServiceName" UpdatePanelCssClass="" />
+                <telerik:AjaxUpdatedControl ControlID="txtDescription" UpdatePanelCssClass="" />
+                <telerik:AjaxUpdatedControl ControlID="txtAmount" UpdatePanelCssClass="" />
             </UpdatedControls>
           </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="txtInsuranceServiceId">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="txtInsuranceServiceName" UpdatePanelCssClass="" />
+                    <telerik:AjaxUpdatedControl ControlID="txtDescription" UpdatePanelCssClass="" />
+                    <telerik:AjaxUpdatedControl ControlID="txtAmount" UpdatePanelCssClass="" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">

@@ -14,6 +14,7 @@ using Telerik.Web.UI;
 public partial class AnestheticTicketForm : System.Web.UI.Page 
 {
     #region Variables declarations
+    
     AriClinicContext ctx = null;
     User user = null;
     Clinic cl = null;
@@ -35,9 +36,11 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
     int procedureId = 0;
     int anestheticTicketId = 0;
     Permission per = null;
-
+    
     #endregion Variables declarations
+    
     #region Init Load Unload events
+    
     protected void Page_Init(object sender, EventArgs e)
     {
         ctx = new AriClinicContext("AriClinicContext");
@@ -95,7 +98,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             anestheticTicketId = int.Parse(Request.QueryString["AnestheticTicketId"]);
             ticketId = anestheticTicketId; 
             tck = (AnestheticTicket)CntAriCli.GetTicket(anestheticTicketId, ctx);
-
+            
             LoadData(tck);
             //rddpTicketDate.SelectedDate = tck.TicketDate;
             //txtCustomerId.Text = tck.Policy.Customer.PersonId.ToString();
@@ -147,54 +150,56 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         //    SetFocus(FindControl("txtInsuranceServiceId"));
         //}
     }
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+    
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
         if (ctx != null)
             ctx.Dispose();
     }
-
+    
     #endregion Init Load Unload events
     
     #region Page events (clics)
+    
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "";
         if (pol == null)
             command = "CloseAndRebind('new')";
         else
-            command = "CloseAndRebind('')";
+            command = "CloseAndRebind('edit')";
         if (!CreateChange())
             return;
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     #endregion Page events (clics)
-
+    
     #region Auxiliary functions
+    
     protected bool DataOk()
     {
         if (txtInsuranceServiceId.Text == "")
         {
-            RadAjaxManager1.ResponseScripts.Add(String.Format("dialogShow('{0}','{1}','warning',null,0,0)"
-                , Resources.GeneralResource.Warning
-                , Resources.GeneralResource.InsuranceServiceNeeded));
+            RadAjaxManager1.ResponseScripts.Add(String.Format("dialogShow('{0}','{1}','warning',null,0,0)",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.InsuranceServiceNeeded));
             return false;
         }
         return true;
     }
-
+    
     protected bool CreateChange()
     {
         if (!DataOk())
@@ -213,7 +218,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
-
+    
     protected void LoadData(AnestheticTicket tck)
     {
         txtTicketId.Text = tck.TicketId.ToString();
@@ -245,7 +250,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         txtAmount.Text = tck.Amount.ToString();    
         txtComments.Text = tck.Comments;
     }
-
+    
     protected void UnloadData(AnestheticTicket tck)
     {
         tck.TicketDate = (DateTime)rddpTicketDate.SelectedDate;
@@ -294,9 +299,8 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             asn = CntAriCli.GetAnestheticServiceNote(asn.AnestheticServiceNoteId, ctx);
             tck.AnestheticServiceNote = asn;
         }
-
     }
-
+    
     protected void LoadPolicyCombo(Ticket tck)
     {
         string desc = "";
@@ -305,9 +309,9 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         {
             foreach (Policy p in tck.Policy.Customer.Policies)
             {
-                desc = String.Format("{0} [{1} - {2}]", p.Insurance.Name
-                                     , CntAriCli.DateNullFormat(p.BeginDate)
-                                     , CntAriCli.DateNullFormat(p.EndDate));
+                desc = String.Format("{0} [{1} - {2}]", p.Insurance.Name,
+                    CntAriCli.DateNullFormat(p.BeginDate),
+                    CntAriCli.DateNullFormat(p.EndDate));
                 rdcbPolicy.Items.Add(new RadComboBoxItem(desc, p.PolicyId.ToString()));
             }
             rdcbPolicy.SelectedValue = tck.Policy.PolicyId.ToString();
@@ -318,9 +322,9 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             {
                 foreach (Policy p in cus.Policies)
                 {
-                    desc = String.Format("{0} [{1} - {2}]", p.Insurance.Name
-                                         , CntAriCli.DateNullFormat(p.BeginDate)
-                                         , CntAriCli.DateNullFormat(p.EndDate));
+                    desc = String.Format("{0} [{1} - {2}]", p.Insurance.Name,
+                        CntAriCli.DateNullFormat(p.BeginDate),
+                        CntAriCli.DateNullFormat(p.EndDate));
                     rdcbPolicy.Items.Add(new RadComboBoxItem(desc, p.PolicyId.ToString()));
                     if (p.Type == Resources.ConstantsResource.Primary)
                         rdcbPolicy.SelectedValue = p.PolicyId.ToString();
@@ -328,7 +332,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             }
         }
     }
-
+    
     protected void LoadClinicCombo(Ticket tck)
     {
         // clear previous items 
@@ -354,9 +358,11 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             }
         }
     }
+    
     #endregion Auxiliary functions
-
+    
     #region Searching outside
+    
     protected void txtCustomerId_TextChanged(object sender, EventArgs e)
     {
         // search for a Customer
@@ -374,12 +380,11 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         }
         // load policy combo
         LoadPolicyCombo(null);
-
     }
-
+    
     protected void txtInsuranceServiceId_TextChanged(object sender, EventArgs e)
     {
-        LoadRelatedValues();
+        LoadRelatedValues(0);
         //// check before go to search thats a policy selected
         //if (rdcbPolicy.SelectedValue == "")
         //{
@@ -409,16 +414,16 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         //    txtInsuranceServiceId.Text = "";
         //    txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
         //}
-
     }
+    
     protected void btnInsuranceServiceId_Click(object sender, ImageClickEventArgs e)
     {
         // check before go to search thats a policy selected
         if (rdcbPolicy.SelectedValue == "")
         {
-            RadAjaxManager1.ResponseScripts.Add(String.Format("dialogShow('{0}','{1}','warning',null,0,0);"
-                , Resources.GeneralResource.Warning
-                , Resources.GeneralResource.PolicyNeeded));
+            RadAjaxManager1.ResponseScripts.Add(String.Format("dialogShow('{0}','{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.PolicyNeeded));
             return;
         }
         policyId = Int32.Parse(rdcbPolicy.SelectedValue);
@@ -426,6 +431,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         string command = String.Format("searchInsuranceService({0});", pol.Insurance.InsuranceId);
         RadAjaxManager1.ResponseScripts.Add(command);
     }
+    
     protected void txtProfessionalId_TextChanged(object sender, EventArgs e)
     {
         professionalId = Int32.Parse(txtProfessionalId.Text);
@@ -441,6 +447,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             txtProfessionalName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
         }
     }
+    
     protected void txtSurgeonId_TextChanged(object sender, EventArgs e)
     {
         surgeonId = Int32.Parse(txtSurgeonId.Text);
@@ -456,6 +463,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             txtSurgeonName.Text = Resources.GeneralResource.ProfessionalDoesNotExists;
         }
     }
+    
     protected void txtProcedureId_TextChanged(object sender, EventArgs e)
     {
         procedureId = Int32.Parse(txtProcedureId.Text);
@@ -465,6 +473,7 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             txtProcedureId.Text = proc.ProcedureId.ToString();
             txtProcedureName.Text = proc.Name;
             // Cambiamos el servicio, el precio y la descripción
+            LoadRelatedValues(proc.Service.ServiceId);
             txtDescription.Text = proc.Name;
         }
         else
@@ -473,23 +482,51 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             txtProcedureName.Text = Resources.GeneralResource.ProcedureDoesNotExists;
         }
     }
+    
     #endregion
-   
+    
     protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
     {
-        customerId = Int32.Parse(e.Argument);
-        cus = CntAriCli.GetCustomer(customerId, ctx);
-        LoadPolicyCombo(null);
+        string[] values = e.Argument.Split('@');
+        // at least 2 values
+        if (values.Length > 1)
+        {
+            string type = values[0];
+            int id = int.Parse(values[1]);
+            switch(type)
+            {
+                case "Customer":
+                    cus = CntAriCli.GetCustomer(id, ctx);
+                    LoadPolicyCombo(null);
+                    break;
+                case "Procedure":
+                    proc = CntAriCli.GetProcedure(id, ctx);
+                    if (proc != null)
+                    {
+                        txtProcedureId.Text = proc.ProcedureId.ToString();
+                        txtProcedureName.Text = proc.Name;
+                        // Cambiamos el servicio, el precio y la descripción
+                        LoadRelatedValues(proc.Service.ServiceId);
+                        txtDescription.Text = proc.Name;
+                    }
+                    else
+                    {
+                        txtProcedureId.Text = "";
+                        txtProcedureName.Text = Resources.GeneralResource.ProcedureDoesNotExists;
+                    }
+                    break;
+            }
+        }
     }
-
-    protected void LoadRelatedValues()
+    
+    protected void LoadRelatedValues(int id)
     {
         // check before go to search thats a policy selected
         if (rdcbPolicy.SelectedValue == "")
         {
-            string command = string.Format("dialogShow('{0}','{1}','warning',null,0,0);"
-                , Resources.GeneralResource.Warning
-                , Resources.GeneralResource.PolicyNeeded);
+            string command = string.Format("dialogShow('{0}','{1}','warning',null,0,0);",
+                Resources.GeneralResource.Warning,
+                Resources.GeneralResource.PolicyNeeded);
             RadAjaxManager1.ResponseScripts.Add(command);
             return;
         }
@@ -497,9 +534,20 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
         policyId = Int32.Parse(rdcbPolicy.SelectedValue);
         pol = CntAriCli.GetPolicy(policyId, ctx);
         insurance = pol.Insurance;
-        // serach for Insurance Service
-        insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
-        insuranceService = CntAriCli.GetInsuranceService(insuranceServiceId, insurance, ctx);
+        if (id == 0)
+        {
+            // serach for Insurance Service
+            insuranceServiceId = Int32.Parse(txtInsuranceServiceId.Text);
+            insuranceService = CntAriCli.GetInsuranceService(insuranceServiceId, insurance, ctx);
+        }
+        else
+        {
+            // id means ServiceId
+            insuranceService = (from ins in ctx.InsuranceServices
+                                where ins.Insurance.InsuranceId == insurance.InsuranceId &&
+                                      ins.Service.ServiceId == id
+                                select ins).FirstOrDefault<InsuranceService>();
+        }
         if (insuranceService != null)
         {
             txtInsuranceServiceId.Text = insuranceService.InsuranceServiceId.ToString();
@@ -514,5 +562,4 @@ public partial class AnestheticTicketForm : System.Web.UI.Page
             txtInsuranceServiceName.Text = Resources.GeneralResource.InsuranceServiceDoesNotExists;
         }
     }
-
 }

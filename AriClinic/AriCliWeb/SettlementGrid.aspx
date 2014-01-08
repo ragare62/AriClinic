@@ -39,7 +39,7 @@
               }
               else
               {
-                  $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("new");
+                  $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest(arg);
               }
           }
           function NewTicketRecord()
