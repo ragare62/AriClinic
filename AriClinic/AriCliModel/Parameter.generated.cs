@@ -102,6 +102,32 @@ namespace AriCliModel
 			}
 		}
 		
+		private DateTime? smSTime;
+		public virtual DateTime? SmSTime
+		{
+			get
+			{
+				return this.smSTime;
+			}
+			set
+			{
+				this.smSTime = value;
+			}
+		}
+		
+		private int smSNumHours;
+		public virtual int SmSNumHours
+		{
+			get
+			{
+				return this.smSNumHours;
+			}
+			set
+			{
+				this.smSNumHours = value;
+			}
+		}
+		
 		private Service painPump;
 		public virtual Service PainPump
 		{

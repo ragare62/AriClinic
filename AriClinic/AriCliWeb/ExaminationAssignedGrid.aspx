@@ -379,7 +379,7 @@
                 <telerik:GridBoundColumn DataField="Examination.ExaminationType.Code" 
                                          FilterControlToolTip="Filtrar por exploración" FilterImageToolTip="Filtro"
                                          HeaderText="Codigo Tipo" 
-                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" Visible="false"
+                                         meta:resourceKey="GridBoundColumnResource2" ReadOnly="True" Visible="true"
                                          SortExpression="Examination.ExaminationType.Code"
                                          UniqueName="Examination.ExaminationType.Code">
                 </telerik:GridBoundColumn>

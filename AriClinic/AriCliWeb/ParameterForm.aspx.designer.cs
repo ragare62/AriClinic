@@ -57,6 +57,15 @@ public partial class ParameterForm {
     protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
     
     /// <summary>
+    /// Control RadWindowManager1.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
+    
+    /// <summary>
     /// Control RadAjaxPanel1.
     /// </summary>
     /// <remarks>
@@ -217,6 +226,24 @@ public partial class ParameterForm {
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtSmsRemitente;
+    
+    /// <summary>
+    /// Control rdSmsTime.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadTimePicker rdSmsTime;
+    
+    /// <summary>
+    /// Control txtSmsNumHours.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadNumericTextBox txtSmsNumHours;
     
     /// <summary>
     /// Control btnAccept.

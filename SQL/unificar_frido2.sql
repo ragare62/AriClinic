@@ -92,3 +92,6 @@ ALTER TABLE ticket
   
   -- Update price in  ticket
   UPDATE ticket SET price = amount;
+
+-- Update full_name in patient
+UPDATE patient SET full_name = CONCAT(surname1," ", surname2,", ", `name`);

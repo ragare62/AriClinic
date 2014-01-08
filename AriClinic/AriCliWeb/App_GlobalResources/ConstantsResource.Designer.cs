@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Clínica Miestetic le recuerda su cita de hoy con {0} a las {1:HH:mm}.
+        ///   Busca una cadena traducida similar a Clínica RyD le recuerda su cita con {0} el dia {1:dd/MM/yyyy} a las {1:HH:mm}.
         /// </summary>
         internal static string SmSMessage {
             get {

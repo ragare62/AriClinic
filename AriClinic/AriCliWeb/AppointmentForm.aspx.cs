@@ -551,8 +551,23 @@ public partial class AppointmentForm : System.Web.UI.Page
             return;
         }
         txtRemitenteSms.Text = param.SmsRemitente;
+        DateTime sendDateTime = DateTime.Now;
         DateTime fromDateTime = (DateTime)rddtBeginDateTime.SelectedDate;
-        DateTime sendDateTime = new DateTime(fromDateTime.Year, fromDateTime.Month, fromDateTime.Day, 9, 0, 0);
+        // para ofrecer el envío hay que mirar en parámetros
+        if (param.SmSTime != null)
+        {
+            // el mismo día a la hora que se indica
+            DateTime sendHour = (DateTime)param.SmSTime;
+            sendDateTime = new DateTime(fromDateTime.Year, fromDateTime.Month, fromDateTime.Day, sendHour.Hour, 0, 0);
+        }
+        else
+        {
+            // con un númerod de horas de antelación
+            double minusHours = param.SmSNumHours;
+            DateTime sendDate = fromDateTime.AddHours(-minusHours);
+            sendDateTime = new DateTime(sendDate.Year, sendDate.Month, sendDate.Day, sendDate.Hour, 0, 0);
+        }
+        
         rddtSendDateTime.SelectedDate = sendDateTime;
         // Clínica Miestetic le recuerda su cita de hoy con el dr.xxxxx a las xxxxh. Un saludo.
         string m = String.Format(Resources.ConstantsResource.SmSMessage, pr.ComercialName, fromDateTime);

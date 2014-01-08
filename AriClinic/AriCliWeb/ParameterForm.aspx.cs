@@ -4,7 +4,6 @@ using System.Web;
 using System.Web.UI;
 using AriCliModel;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Configuration;
 using System.Web.Security;
@@ -15,6 +14,7 @@ using Telerik.Web.UI;
 public partial class ParameterForm : System.Web.UI.Page 
 {
     #region Variables declarations
+    
     AriClinicContext ctx = null;
     User user = null;
     HealthcareCompany hc = null;
@@ -22,9 +22,11 @@ public partial class ParameterForm : System.Web.UI.Page
     int parameterId = 0;
     Permission per = null;
     string type = "";
+    
     #endregion Variables declarations
-
+    
     #region Init Load Unload events
+    
     protected void Page_Init(object sender, EventArgs e)
     {
         ctx = new AriClinicContext("AriClinicContext");
@@ -40,25 +42,25 @@ public partial class ParameterForm : System.Web.UI.Page
             per = CntAriCli.GetPermission(user.UserGroup, proc, ctx);
             btnAccept.Visible = per.Modify;
         }
-
+        
         // There aren't query strings the object is read directly
         parameter = CntAriCli.GetParameter(ctx);
         LoadData(parameter);
-
     }
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+    
     protected void Page_Unload(object sender, EventArgs e)
     {
         // close context to release resources
         if (ctx != null)
             ctx.Dispose();
     }
-
+    
     #endregion Init Load Unload events
+        
     protected void btnAccept_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
@@ -66,31 +68,47 @@ public partial class ParameterForm : System.Web.UI.Page
             return;
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+        
     protected void btnCancel_Click(object sender, ImageClickEventArgs e)
     {
         string command = "CancelEdit();";
         RadAjaxManager1.ResponseScripts.Add(command);
     }
-
+    
     protected void btnServiceId_Click(object sender, ImageClickEventArgs e)
     {
-
     }
+    
     #region Auxiliary functions
+        
     protected bool DataOk()
     {
-        //if (txtServiceId.Text == "")
-        //{
-        //    RadAjaxManager1.ResponseScripts.Add(String.Format("showDialog('{0}','{1}','warning',null,0,0);"
-        //        ,Resources.GeneralResource.Warning
-        //        ,Resources.GeneralResource.ServiceNeeded));
-        //    return false;
-        //}
+        // There can't be values for SmsTime and SmsNumHours at the same time
+        int numHours = (int)txtSmsNumHours.Value;
+        DateTime? smsTime = rdSmsTime.SelectedDate;
+        if (txtSmsEmail.Text != "")
+        {
+            if (numHours > 0)
+            {
+                if (smsTime != null)
+                {
+                    RadWindowManager1.RadAlert("No puede elegir horas de antelación y envío el mismo día", null, null, "AVISO", "doNothing");
+                    return false;
+                }
+            }
+            else
+            {
+                if (smsTime == null)
+                {
+                    RadWindowManager1.RadAlert("Si elige envío el mismo dia debe dar una hora", null, null, "AVISO", "doNothing");
+                    return false;
+                }
+            }
 
+        }
         return true;
     }
-
+    
     /// <summary>
     /// As its name suggest if there isn't an object
     /// it'll create it. If exists It modifies it.
@@ -105,7 +123,7 @@ public partial class ParameterForm : System.Web.UI.Page
         ctx.SaveChanges();
         return true;
     }
-
+        
     protected void LoadData(AriCliModel.Parameter parameter)
     {
         if (parameter.PainPump != null)
@@ -117,8 +135,16 @@ public partial class ParameterForm : System.Web.UI.Page
         txtSmsEmail.Text = parameter.SmsEmail;
         txtSmsClave.Text = parameter.SmsClave;
         txtSmsRemitente.Text = parameter.SmsRemitente;
+        if (parameter.SmSTime != null)
+        {
+            rdSmsTime.SelectedDate = parameter.SmSTime;
+        }
+        if (parameter.SmSNumHours != null)
+        {
+            txtSmsNumHours.Value = parameter.SmSNumHours;
+        }
     }
-
+        
     protected void UnloadData(AriCliModel.Parameter parameter)
     {
         Service ser = null;
@@ -130,12 +156,26 @@ public partial class ParameterForm : System.Web.UI.Page
         parameter.SmsEmail = txtSmsEmail.Text;
         parameter.SmsClave = txtSmsClave.Text;
         parameter.SmsRemitente = txtSmsRemitente.Text;
+        if (rdSmsTime.SelectedDate != null)
+        {
+            parameter.SmSTime = (DateTime)rdSmsTime.SelectedDate;
+        }
+        else
+        {
+            parameter.SmSTime = null;
+        }
+        if (txtSmsNumHours.Value != null)
+            parameter.SmSNumHours = (int)txtSmsNumHours.Value;
+        else
+        {
+            parameter.SmSNumHours = 0;
+        }
     }
-
-
+    
     #endregion Auxiliary functions
-
+        
     #region Searching outside
+        
     protected void txtServiceId_TextChanged(object sender, EventArgs e)
     {
         // search for a service

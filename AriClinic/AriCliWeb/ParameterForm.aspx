@@ -34,10 +34,12 @@
                             }
                         }
                     }
+                    function doNothing() { }
                 </script>
             </telerik:RadScriptBlock>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
             </telerik:RadAjaxManager>
+            <telerik:RadWindowManager ID="RadWindowManager1" runat="server"></telerik:RadWindowManager>
             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                 <div>
                     <table style="width: 100%;">
@@ -137,6 +139,43 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td class="normalText">
+                                Enviar SMS el mismo dia de la cita a las
+                                <telerik:RadTimePicker ID="rdSmsTime" runat="server" TabIndex="8">
+                                    <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
+                                              ViewSelectorText="x">
+                                    </Calendar>
+                                    <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" TabIndex="9" 
+                                                     Visible="False" />
+                                    <TimeView CellSpacing="-1" Culture="es-ES">
+                                    </TimeView>
+                                    <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                                    <DateInput DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy" TabIndex="10" 
+                                               Width="">
+                                    </DateInput>
+                                </telerik:RadTimePicker>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="normalText">
+                                Enviar SMS con <telerik:RadNumericTextBox ID="txtSmsNumHours" runat="server" MaxValue="24" MinValue="0" Width="50px" DataType="System.Int32">
+                                    <NegativeStyle Resize="None" />
+                                    <NumberFormat DecimalDigits="0" ZeroPattern="n" />
+                                    <EmptyMessageStyle Resize="None" />
+                                    <ReadOnlyStyle Resize="None" />
+                                    <FocusedStyle Resize="None" />
+                                    <DisabledStyle Resize="None" />
+                                    <InvalidStyle Resize="None" />
+                                    <HoveredStyle Resize="None" />
+                                    <EnabledStyle Resize="None" />
+                                </telerik:RadNumericTextBox>
+                                horas de antelación a la cita.
+                            </td>
+                        </tr>
+
                         <tr>
                             <td colspan="3">
                                 <div ID="Buttons" class="buttonsFomat">

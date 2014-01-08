@@ -1295,6 +1295,12 @@
         <orm:field name="smsRemitente" property="SmsRemitente" uniqueId="459d9d31-75d4-4149-9e68-a28719bbeac1" type="System.String">
           <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
+        <orm:field name="smSTime" property="SmSTime" uniqueId="a3133160-6139-48dd-a30b-38f1bd5bce3b" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column nullable="false" scale="0" length="0" sql-type="datetime" name="sms_time" ado-type="" />
+        </orm:field>
+        <orm:field name="smSNumHours" property="SmSNumHours" uniqueId="7b607adf-c234-4c5c-b79c-f986893bb4af" type="System.Int32">
+          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="sms_num_hours" ado-type="" />
+        </orm:field>
         <orm:field name="painPump" property="PainPump" behavior="readwrite" null-value="none" uniqueId="4d62ae2b-a6d3-4bf3-82d4-e861278d28f9" type="AriCliModel.Service">
           <orm:reference uniqueId="85a162eb-942f-40d4-8aa9-5e1d2f3ed7c7" />
         </orm:field>
@@ -4631,6 +4637,8 @@
         <orm:column name="sms_email" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="sms_clave" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="datetime" name="sms_time" ado-type="" />
+        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="sms_num_hours" ado-type="" />
         <orm:index name="idx_parameter_service_id">
           <orm:columnMapping>
             <orm:column name="service_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -6133,6 +6141,8 @@
       <Property Id="e2172dfe-07a0-4e93-bb6c-7b97d6efcb2d" name="SmsEmail" label="SmsEmail : String" fieldName="smsEmail" />
       <Property Id="3b8fec6a-2f4b-4084-ac64-12d8440612c7" name="SmsClave" label="SmsClave : String" fieldName="smsClave" />
       <Property Id="459d9d31-75d4-4149-9e68-a28719bbeac1" name="SmsRemitente" label="SmsRemitente : String" fieldName="smsRemitente" />
+      <Property Id="a3133160-6139-48dd-a30b-38f1bd5bce3b" name="SmSTime" type="DateTime" label="SmSTime : DateTime" nullable="true" fieldName="smSTime" />
+      <Property Id="7b607adf-c234-4c5c-b79c-f986893bb4af" name="SmSNumHours" type="Int32" label="SmSNumHours : Int32" fieldName="smSNumHours" />
       <AssociationTargets>
         <Association Id="85a162eb-942f-40d4-8aa9-5e1d2f3ed7c7" SourceMultiplicity="ZeroOne" name="ParameterHasService">
           <DomainClassMoniker name="/AriClinicContext/Service" />
