@@ -95,3 +95,15 @@ ALTER TABLE ticket
 
 -- Update full_name in patient
 UPDATE patient SET full_name = CONCAT(surname1," ", surname2,", ", `name`);
+
+--
+-- Alter table "appointment"
+--
+ALTER TABLE appointment
+  CHANGE COLUMN SUBJECT SUBJECT VARCHAR(255) DEFAULT NULL,
+  CHANGE COLUMN STATUS STATUS VARCHAR(255) DEFAULT NULL,
+  CHANGE COLUMN recurrence recurrence VARCHAR(255) DEFAULT NULL,
+  CHANGE COLUMN comments comments TEXT DEFAULT NULL,
+  ADD COLUMN sms BIT(1) DEFAULT b'0' AFTER appointment_id,
+  CHARACTER SET utf8,
+  COLLATE utf8_general_ci;

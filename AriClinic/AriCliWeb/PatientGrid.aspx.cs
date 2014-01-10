@@ -171,19 +171,19 @@ public partial class PatientGrid : System.Web.UI.Page
 
     protected void rdcInsurance_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
     {
-        //if (e.Value == "")
-        //{
-        //    RadGrid1.DataSource = CntAriCli.GetPatients(ctx);
-        //}
-        //else
-        //{
-        //    Insurance insurance = CntAriCli.GetInsurance(int.Parse(e.Value), ctx);
-        //    if (insurance != null)
-        //    {
-        //        RadGrid1.DataSource = CntAriCli.GetPatients(insurance, ctx);
-        //    }
-        //}
-        //RadGrid1.Rebind();
+        if (e.Value == "")
+        {
+            RadGrid1.DataSource = CntAriCli.GetPatients(ctx);
+        }
+        else
+        {
+            Insurance insurance = CntAriCli.GetInsurance(int.Parse(e.Value), ctx);
+            if (insurance != null)
+            {
+                RadGrid1.DataSource = CntAriCli.GetPatients(insurance, ctx);
+            }
+        }
+        RadGrid1.Rebind();
     }
 
 }

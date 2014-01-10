@@ -386,7 +386,10 @@
               var w1 = window.open("RptView.aspx?Report=rptpricelist", "RPTPRICELIST", "width=800, height=600,resizable=1");
               w1.focus();
           }
-
+          function LaunchSmsGes() {
+              var w1 = window.open("http://www.pasarelasms.com/?rev=2057", "SMSGES", "width=900, height=700,resizable=1, scrollbars=YES");
+              w1.focus();
+          }
         </script>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         </telerik:RadAjaxManager>
@@ -447,6 +450,8 @@
                   </telerik:RadMenuItem>
                   <telerik:RadMenuItem runat="server" Text="Procedimientos" Value="procedure">
                   </telerik:RadMenuItem>
+                    <telerik:RadMenuItem runat="server" Text="Gestión SMS" Value="smsges">
+                    </telerik:RadMenuItem>
                 </Items>
               </telerik:RadMenuItem>
               <telerik:RadMenuItem runat="server" Text="Facturación" 

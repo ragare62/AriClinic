@@ -87,11 +87,6 @@
               <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
             </UpdatedControls>
           </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="rdcInsurance">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
         </AjaxSettings>
       </telerik:RadAjaxManager>
       <telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="Office2007">
@@ -111,8 +106,7 @@
           <br />
           <telerik:RadComboBox ID="rdcInsurance" runat="server" Width="100%" 
                                EnableLoadOnDemand="True" ShowMoreResultsBox="True" EnableVirtualScrolling="True"
-                               ItemsPerRequest="10" Height="100px" AutoPostBack="true" 
-                onselectedindexchanged="rdcInsurance_SelectedIndexChanged">
+                               ItemsPerRequest="10" Height="100px" AutoPostBack="true" OnSelectedIndexChanged="rdcInsurance_SelectedIndexChanged">
           </telerik:RadComboBox>
         </div>
         <div id="GridArea" class="normalText" style="width:100%">

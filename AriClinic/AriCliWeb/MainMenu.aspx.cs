@@ -302,6 +302,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptpricelist":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptPriceList();");
                 break;
+            case "smsges":
+                RadAjaxManager1.ResponseScripts.Add("LaunchSmsGes();");
+                break;
             default:
                 break;
         }

@@ -161,7 +161,7 @@
                         <tr>
                             <td></td>
                             <td class="normalText">
-                                Enviar SMS con <telerik:RadNumericTextBox ID="txtSmsNumHours" runat="server" MaxValue="24" MinValue="0" Width="50px" DataType="System.Int32">
+                                Enviar SMS con <telerik:RadNumericTextBox ID="txtSmsNumHours" runat="server" MaxValue="120" MinValue="0" Width="50px" DataType="System.Int32">
                                     <NegativeStyle Resize="None" />
                                     <NumberFormat DecimalDigits="0" ZeroPattern="n" />
                                     <EmptyMessageStyle Resize="None" />
