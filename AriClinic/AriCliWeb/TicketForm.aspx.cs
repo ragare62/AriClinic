@@ -441,6 +441,15 @@ public partial class TicketForm : System.Web.UI.Page
         }
     }
 
+    protected void txtAmount_TextChanged(object sender, EventArgs e)
+    {
+        // recalcular el descuento a partir del importe.
+        decimal importe = decimal.Parse(txtAmount.Text);
+        decimal precio = decimal.Parse(txtPrice.Text);
+        decimal descuento = precio - importe;
+        txtDiscount.Text = descuento.ToString();
+    }
+
 
 
 

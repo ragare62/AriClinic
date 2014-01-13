@@ -94,10 +94,10 @@
                         <td colspan="2">
                             <div ID="Insurance" class="normalText">
                                 <asp:Label ID="lblInsurance" runat="server" Text="Insuranceo:" 
-                                           ToolTip="Nombre a asignar a la Patienta"></asp:Label>
+                                           ToolTip="Seleccine la aseguradora / tarifa"></asp:Label>
                                 <br />
                                 <telerik:RadComboBox ID="rdcbInsurance" runat="server" Width="100%" 
-                                                     Skin="Office2007" TabIndex="9" Culture="es-ES">
+                                                     Skin="Office2007" TabIndex="9" Culture="es-ES" AutoPostBack="True" OnSelectedIndexChanged="rdcbInsurance_SelectedIndexChanged">
                                 </telerik:RadComboBox>
                             </div>
                         </td>

@@ -235,5 +235,10 @@ public partial class EstimateLineForm : System.Web.UI.Page
         }
     }
 
+    protected void rdcbInsurance_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        // 
+    }
+
 
 }

@@ -261,7 +261,7 @@
                                            ToolTip="Importe del ticket"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="txtAmount" runat="server"
-                                             TabIndex="12" Width="98px" style="text-align:right" Enabled="False" ></asp:TextBox>
+                                             TabIndex="12" Width="98px" style="text-align:right" AutoPostBack="True" OnTextChanged="txtAmount_TextChanged" ></asp:TextBox>
                             </div>
                         </td>
                     </tr>
