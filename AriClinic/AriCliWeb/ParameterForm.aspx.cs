@@ -132,6 +132,7 @@ public partial class ParameterForm : System.Web.UI.Page
             txtServiceName.Text = parameter.PainPump.Name;
         }
         chkChecked.Checked = parameter.UseNomenclator;
+        chkAppointmentExtension.Checked = parameter.AppointmentExtension;
         txtSmsEmail.Text = parameter.SmsEmail;
         txtSmsClave.Text = parameter.SmsClave;
         txtSmsRemitente.Text = parameter.SmsRemitente;

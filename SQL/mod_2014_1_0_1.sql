@@ -1,1 +1,2 @@
 ALTER TABLE `parameter` ADD COLUMN `sms_time` DATETIME NULL AFTER `sms_remitente`, ADD COLUMN `sms_num_hours` INT(11) NULL AFTER `sms_time`;
+ALTER TABLE `estimate` CHANGE `comments` `comments` TEXT CHARSET utf8 COLLATE utf8_general_ci NULL; 

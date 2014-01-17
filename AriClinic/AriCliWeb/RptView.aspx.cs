@@ -463,8 +463,15 @@ public partial class RptView : System.Web.UI.Page
 
     private void LoadSrvComparer()
     {
-        RptServicesComparer rtsc = new RptServicesComparer(ctx);
-        ReportViewer1.Report = rtsc;
+        try
+        {
+            //RptServicesComparer rtsc = new RptServicesComparer(ctx);
+            RptPriceComparer rtsc = new RptPriceComparer();
+            ReportViewer1.Report = rtsc;
+        }
+        catch (Exception ex)
+        {
+        }
     }
 
     private void LoadInvoicePeriod()
