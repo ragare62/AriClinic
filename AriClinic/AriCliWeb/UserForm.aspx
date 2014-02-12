@@ -129,6 +129,7 @@
                       <asp:ListItem Value="0">Medico - administrativo</asp:ListItem>
                       <asp:ListItem Selected="True" Value="1">Médico</asp:ListItem>
                       <asp:ListItem Value="2">Administrativo</asp:ListItem>
+                      <asp:ListItem Value="3">Administrativo - Clínica</asp:ListItem>
                   </asp:DropDownList>
                </div>
             </td>
@@ -147,6 +148,18 @@
         </tr>
         <tr>
             <td colspan="10">
+               <div ID="Clinic" class="normalText">
+                  <asp:Label ID="lblClini" runat="server" Text="Clínica del usuario:" 
+                             ToolTip="Clínica del usuario"></asp:Label>
+                  <br />
+                  <asp:DropDownList ID="ddlClinic" runat="server" Height="22px" Width="386px" 
+                        TabIndex="7">
+                  </asp:DropDownList>
+               </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10">
                 <div ID="Message" class="messageText">
                   <asp:Label ID="lblMessage" runat="server" Text="Mensajes:"></asp:Label>
                 </div>
@@ -156,11 +169,11 @@
             <td colspan="10">
                 <div ID="Buttons" class="buttonsFomat">
                   <asp:ImageButton ID="btnAccept" runat="server" 
-                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" TabIndex="7" />
+                                   ImageUrl="~/images/document_ok.png" onclick="btnAccept_Click" ToolTip="Guardar y salir" TabIndex="8" />
                   &nbsp;
                   <asp:ImageButton ID="btnCancel" runat="server" 
                                    ImageUrl="~/images/document_out.png" CausesValidation="False" 
-                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar"  TabIndex="8"/>
+                                   onclick="btnCancel_Click" ToolTip="Salir sin guardar"  TabIndex="9"/>
                 </div>
             </td>
         </tr>

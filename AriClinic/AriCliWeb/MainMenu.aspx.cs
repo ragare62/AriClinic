@@ -365,6 +365,10 @@ public partial class MainMenu : System.Web.UI.Page
             case 2:
                 RadMenu1.Items[4].Visible = false;
                 break;
+            case 3:
+                RadMenu1.Items[0].Visible = true;
+                RadToolBar1.Visible = true;
+                break;
         }
     }
     protected void CheckPermissions(UserGroup ug, RadToolBar rdt)

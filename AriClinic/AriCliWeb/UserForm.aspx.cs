@@ -56,6 +56,7 @@ public partial class UserForm : System.Web.UI.Page
         {
             LoadGroupCombo(null);
             LoadBaseVisitType(null);
+            LoadClinic(null);
         }
     }
 
@@ -109,6 +110,16 @@ public partial class UserForm : System.Web.UI.Page
                 return false;
             }
         }
+        if (ddlProfile.SelectedValue == "3")
+        {
+            // se trata del nuevo usuario administrativo y debe
+            // tener una clínica asociada.
+            if (ddlClinic.SelectedValue == "")
+            {
+                lblMessage.Text = Resources.GeneralResource.ClinicNeeded;
+                return false;
+            }
+        }
         return true;
     }
         
@@ -141,6 +152,7 @@ public partial class UserForm : System.Web.UI.Page
         LoadGroupCombo(u);
         LoadProfessional(u);
         LoadBaseVisitType(u);
+        LoadClinic(u);
         ddlProfile.SelectedValue = u.Profile.ToString();
     }
             
@@ -164,6 +176,11 @@ public partial class UserForm : System.Web.UI.Page
         u.BaseVisitType = (from bvt in ctx.BaseVisitTypes
                            where bvt.Code == ddlBaseVisitType.SelectedValue
                            select bvt).FirstOrDefault<BaseVisitType>();
+        if (u.Profile == 3)
+        {
+            // nuevo usuario administrativo asociado a clínica
+            u.Clinic = CntAriCli.GetClinic(int.Parse(ddlClinic.SelectedValue), ctx);
+        }
     }
             
     protected void LoadGroupCombo(User u)
@@ -189,6 +206,21 @@ public partial class UserForm : System.Web.UI.Page
         if (u != null)
         {
             ddlBaseVisitType.SelectedValue = u.BaseVisitType.Code;
+        }
+    }
+
+    protected void LoadClinic(User u)
+    {
+        ddlClinic.Items.Clear();
+        foreach (Clinic clinic in ctx.Clinics)
+        {
+            ddlClinic.Items.Add(new ListItem(clinic.Name, clinic.ClinicId.ToString()));
+        }
+        ddlClinic.Items.Add(new ListItem("",""));
+        ddlClinic.SelectedValue = "";
+        if (u != null && u.Clinic != null)
+        {
+            ddlClinic.SelectedValue = u.Clinic.ClinicId.ToString();
         }
     }
             

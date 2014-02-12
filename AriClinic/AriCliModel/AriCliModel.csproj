@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.6.5\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -40,14 +44,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.OpenAccess, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.OpenAccess.40.Extensions, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>C:\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.40.Extensions.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\OpenAccess ORM\bin\Telerik.OpenAccess.35.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
