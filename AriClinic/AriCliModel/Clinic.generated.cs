@@ -153,6 +153,15 @@ namespace AriCliModel
 			}
 		}
 		
+		private IList<User> users = new List<User>();
+		public virtual IList<User> Users
+		{
+			get
+			{
+				return this.users;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

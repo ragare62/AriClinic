@@ -1857,6 +1857,7 @@ namespace AriCliModel
             policy.Insurance = insurance;
             policy.Customer = patient.Customer;
             ctx.Add(policy);
+            ctx.SaveChanges();
         }
             
         public static PreviousMedicalRecord GetPreviousMedicalRecord(int patientId, AriClinicContext ctx)
@@ -1941,6 +1942,23 @@ namespace AriCliModel
             return (from c in ctx.Requests
                     select c).ToList<Request>();
         }
+
+        public static void DeleteRequest(Request r, AriClinicContext ctx)
+        {
+            if (r == null) return;
+            // delete associate replays
+            foreach (Replay rpl in r.Replays)
+            {
+                ctx.Delete(rpl);
+            }
+            // now estimates
+            foreach (Estimate e in r.Estimates)
+            {
+                DeleteEstimate(e, ctx);
+            }
+            ctx.Delete(r);
+            ctx.SaveChanges();
+        }
                     
         public static IList<Request> GetRequestsByStatus(string status, AriClinicContext ctx)
         {
@@ -1989,6 +2007,20 @@ namespace AriCliModel
                     where c.EstimateId == id
                     select c).FirstOrDefault<Estimate>();
         }
+
+        public static void DeleteEstimate(Estimate e, AriClinicContext ctx)
+        {
+            // there's nothing to delete if it's null
+            if (e == null) return;
+            // delete associate estimate lines
+            foreach (EstimateLine el in e.EstimateLines)
+            {
+                ctx.Delete(el);
+            }
+            ctx.Delete(e);
+            ctx.SaveChanges();
+        }
+
         public static IList<EstimateLine> GetEstimateLines(AriClinicContext ctx)
         {
             return (from c in ctx.EstimateLines

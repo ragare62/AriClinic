@@ -65,6 +65,9 @@
         <orm:field name="amendmentInvoiceLines" property="AmendmentInvoiceLines" behavior="readwrite" uniqueId="1c1a5309-1022-4084-ba61-e584ee161455" type="AriCliModel.AmendmentInvoiceLine">
           <orm:collection element-class="AriCliModel.AmendmentInvoiceLine" inverse-field="user" order-by="" uniqueId="01e34fa5-c83e-4108-9db6-a925e3fc69df" />
         </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="a22f464d-8893-44a6-8440-c78773692566" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="63671718-0c8b-44bb-8286-97462817c518" />
+        </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">
         <orm:table name="user_group" />
@@ -388,6 +391,9 @@
         </orm:field>
         <orm:field name="requests" property="Requests" behavior="readwrite" uniqueId="2bf5f2f3-d657-4d9a-a59d-6f09b8a2ce9b" type="AriCliModel.Request">
           <orm:collection element-class="AriCliModel.Request" inverse-field="clinic" order-by="" uniqueId="124cfe72-b451-4fd1-82d1-8a1b24fa432c" />
+        </orm:field>
+        <orm:field name="users" property="Users" behavior="readwrite" uniqueId="79b3a235-3b04-4392-9129-102bef12e208" type="AriCliModel.User">
+          <orm:collection element-class="AriCliModel.User" inverse-field="clinic" order-by="" uniqueId="63671718-0c8b-44bb-8286-97462817c518" />
         </orm:field>
       </orm:class>
       <orm:class name="Person" discriminator-value="AriCliModel.Person" behavior="readwrite" uniqueId="3c11c626-c882-4fff-b20b-04a6e1273531">
@@ -1296,10 +1302,10 @@
           <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="smSTime" property="SmSTime" uniqueId="a3133160-6139-48dd-a30b-38f1bd5bce3b" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column nullable="false" scale="0" length="0" sql-type="datetime" name="sms_time" ado-type="" />
+          <orm:column name="sms_time" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="smSNumHours" property="SmSNumHours" uniqueId="7b607adf-c234-4c5c-b79c-f986893bb4af" type="System.Int32">
-          <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="sms_num_hours" ado-type="" />
+          <orm:column name="sms_num_hours" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         </orm:field>
         <orm:field name="painPump" property="PainPump" behavior="readwrite" null-value="none" uniqueId="4d62ae2b-a6d3-4bf3-82d4-e861278d28f9" type="AriCliModel.Service">
           <orm:reference uniqueId="85a162eb-942f-40d4-8aa9-5e1d2f3ed7c7" />
@@ -4637,8 +4643,8 @@
         <orm:column name="sms_email" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="sms_clave" sql-type="varchar" nullable="true" length="255" scale="0" converter="OpenAccessRuntime.Data.VariableLengthStringConverter" ado-type="Varchar" />
         <orm:column name="sms_remitente" sql-type="varchar" nullable="true" length="255" scale="0" ado-type="" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="datetime" name="sms_time" ado-type="" />
-        <orm:column nullable="false" scale="0" length="0" sql-type="integer" name="sms_num_hours" ado-type="" />
+        <orm:column name="sms_time" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="" />
+        <orm:column name="sms_num_hours" sql-type="integer" nullable="false" length="0" scale="0" ado-type="" />
         <orm:index name="idx_parameter_service_id">
           <orm:columnMapping>
             <orm:column name="service_id" sql-type="integer" nullable="true" length="0" scale="0" converter="OpenAccessRuntime.Data.IntConverter" ado-type="Int32" />
@@ -4718,6 +4724,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="63671718-0c8b-44bb-8286-97462817c518" SourceMultiplicity="ZeroOne" name="UserHasClinic">
+          <DomainClassMoniker name="/AriClinicContext/Clinic" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="57a6e6da-5828-4df4-a9ed-19d9098d3fac">
+              <NavigationalPropertyMoniker name="/AriClinicContext/Clinic/Users" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="44269073-2d4a-490d-86bc-7e2533ca6cbf">
+              <NavigationalPropertyMoniker name="/AriClinicContext/User/Clinic" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="21c34b37-0c6e-4792-8db1-c47de729b244">
@@ -4761,6 +4780,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="d2971c11-c294-4449-a8ad-469970e8aef0">
           <NavigationalProperty Id="1c1a5309-1022-4084-ba61-e584ee161455" name="AmendmentInvoiceLines" type="IList&lt;AmendmentInvoiceLine&gt;" label="AmendmentInvoiceLines : IList&lt;AmendmentInvoiceLine&gt;" nullable="true" kind="Persistent" fieldName="amendmentInvoiceLines" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="05a0fe94-1699-44dc-bcde-08acda43e468">
+          <NavigationalProperty Id="a22f464d-8893-44a6-8440-c78773692566" name="Clinic" type="Clinic" label="Clinic : Clinic" nullable="true" kind="Persistent" fieldName="clinic" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -5106,6 +5128,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="7eaa0291-e9ba-4de3-bd99-b24a91786990">
           <NavigationalProperty Id="2bf5f2f3-d657-4d9a-a59d-6f09b8a2ce9b" name="Requests" type="IList&lt;Request&gt;" label="Requests : IList&lt;Request&gt;" nullable="true" kind="Persistent" fieldName="requests" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c5f38c44-28d4-4864-8f70-2c8ab7c6cb6a">
+          <NavigationalProperty Id="79b3a235-3b04-4392-9129-102bef12e208" name="Users" type="IList&lt;User&gt;" label="Users : IList&lt;User&gt;" nullable="true" kind="Persistent" fieldName="users" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

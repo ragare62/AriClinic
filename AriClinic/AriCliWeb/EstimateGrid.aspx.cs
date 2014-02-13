@@ -112,8 +112,7 @@ public partial class EstimateGrid : System.Web.UI.Page
                     Estimate est = (from es in ctx.Estimates
                                    where es.EstimateId == id
                                    select es).FirstOrDefault<Estimate>();
-                    ctx.Delete(est);
-                    ctx.SaveChanges();
+                    CntAriCli.DeleteEstimate(est, ctx);
                     RefreshGrid();
                     break;
             }

@@ -245,6 +245,12 @@
     <Compile Include="RptVatResume2.Designer.cs">
       <DependentUpon>RptVatResume2.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptVisitByReason.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptVisitByReason.Designer.cs">
+      <DependentUpon>RptVisitByReason.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubProfessionalInvoiceFooter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -515,6 +521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptVatResume2.resx">
       <DependentUpon>RptVatResume2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptVisitByReason.resx">
+      <DependentUpon>RptVisitByReason.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubProfessionalInvoiceFooter.resx">
       <DependentUpon>SubProfessionalInvoiceFooter.cs</DependentUpon>

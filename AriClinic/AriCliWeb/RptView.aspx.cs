@@ -222,6 +222,11 @@ public partial class RptView : System.Web.UI.Page
                         RptPatientBySource rptpbs = new RptPatientBySource();
                         ReportViewer1.Report = rptpbs;
                         break;
+                    case "rptvisitbyreason":
+                        this.Title = "Visitas por motivo";
+                        RptVisitByReason rptvbr = new RptVisitByReason();
+                        ReportViewer1.Report = rptvbr;
+                        break;
                     case "prescriptionglasses":
                         this.Title = "Receta de gafas";
                         RptPrescriptionGlasses rpresglasses = new RptPrescriptionGlasses();

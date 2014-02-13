@@ -115,6 +115,19 @@ namespace AriCliModel
 			}
 		}
 		
+		private Clinic clinic;
+		public virtual Clinic Clinic
+		{
+			get
+			{
+				return this.clinic;
+			}
+			set
+			{
+				this.clinic = value;
+			}
+		}
+		
 		private IList<InvoiceLine> invoiceLines = new List<InvoiceLine>();
 		public virtual IList<InvoiceLine> InvoiceLines
 		{

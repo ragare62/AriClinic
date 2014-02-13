@@ -130,8 +130,7 @@ public partial class RequestGrid : System.Web.UI.Page
                     Request chn = (from c in ctx.Requests
                                    where c.RequestId == id
                                    select c).FirstOrDefault<Request>();
-                    ctx.Delete(chn);
-                    ctx.SaveChanges();
+                    CntAriCli.DeleteRequest(chn, ctx);
                     RefreshGrid();
                     break;
             }

@@ -350,6 +350,10 @@
               var w1 = window.open("RptView.aspx?Report=rptpatientbysource", "RPTPATIENTBYSOURCE", "width=800, height=600,resizable=1");
               w1.focus();
           }
+          function LaunchRptVisitByReason() {
+              var w1 = window.open("RptView.aspx?Report=rptvisitbyreason", "RPTVISITBYREASON", "width=800, height=600,resizable=1");
+              w1.focus();
+          }
           function LaunchTemplate() {
               var w1 = window.open("TemplateGrid.aspx", "TEMPLATE", "width=650, height=400,resizable=1")
               w1.focus();
@@ -517,6 +521,8 @@
                         <Items>
                             <telerik:RadMenuItem runat="server" Text="Pacientes por procedencia" 
                                 Value="rptpatientbysource">
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem runat="server" Text="Visitas por motivo" Value="rptvisitbyreason">
                             </telerik:RadMenuItem>
                         </Items>
                     </telerik:RadMenuItem>
