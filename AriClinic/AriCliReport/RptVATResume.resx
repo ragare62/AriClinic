@@ -254,7 +254,7 @@
         RGF0YVNvdXJjZVBhcmFtZXRlcgMAAAACAAAACQQAAAAFBAAAAEtTeXN0ZW0uQ29sbGVjdGlvbnMuR2Vu
         ZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVwb3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIDAAAABl9p
         dGVtcwVfc2l6ZQhfdmVyc2lvbgQAACpUZWxlcmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1l
-        dGVyW10CAAAACAgDAAAACQUAAAADAAAABwAAAAcFAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9ydGlu
+        dGVyW10CAAAACAgDAAAACQUAAAADAAAACwAAAAcFAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9ydGlu
         Zy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkGAAAACQcAAAAJCAAAAAoMCQAAAE5TeXN0ZW0uRGF0
         YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2
         MTkzNGUwODkMCgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
@@ -262,19 +262,21 @@
         dXJjZVBhcmFtZXRlcgQAAAAGZGJUeXBlGERhdGFTb3VyY2VQYXJhbWV0ZXIrbmFtZRlEYXRhU291cmNl
         UGFyYW1ldGVyK3ZhbHVlI0RhdGFTb3VyY2VQYXJhbWV0ZXIrUHJvcGVydHlDaGFuZ2VkBAECBBJTeXN0
         ZW0uRGF0YS5EYlR5cGUJAAAAMVN5c3RlbS5Db21wb25lbnRNb2RlbC5Qcm9wZXJ0eUNoYW5nZWRFdmVu
-        dEhhbmRsZXIKAAAAAgAAAAX1////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAICQAAAAUA
-        AAAGDAAAAAZARkRhdGUGDQAAAAoyMDEyLTAxLTAxCgEHAAAABgAAAAHy////9f///wUAAAAGDwAAAAZA
-        VERhdGUGEAAAAAoyMDEyLTEyLTMxCgEIAAAABgAAAAHv////9f///wsAAAAGEgAAAApAVGF4VHlwZUlk
-        BhMAAAABMQoL
+        dEhhbmRsZXIKAAAAAgAAAAX1////ElN5c3RlbS5EYXRhLkRiVHlwZQEAAAAHdmFsdWVfXwAICQAAAAsA
+        AAAGDAAAAApAVGF4VHlwZUlkBg0AAAACMTAKAQcAAAAGAAAAAfL////1////BQAAAAYPAAAABkBGRGF0
+        ZQYQAAAACjIwMTItMDEtMDEKAQgAAAAGAAAAAe/////1////BQAAAAYSAAAABkBURGF0ZQYTAAAACjIw
+        MTItMTItMzEKCw==
 </value>
   </metadata>
   <data name="sqlVATResume.SelectCommand" xml:space="preserve">
-    <value>SELECT il.invoice_id, il.tax_percentage AS pr, tax.name, i.invoice_date, i.invoice_key,
+    <value>SELECT il.invoice_id, il.tax_percentage AS pr, tax.name, i.invoice_date, i.invoice_key,cli.name AS cliname,
 SUM(amount) AS pvp, SUM(amount) / (1 + tax_percentage / 100) AS b, SUM(amount) - (SUM(amount) / (1 + tax_percentage / 100)) AS c
-FROM invoice_line AS il, invoice AS i, tax_type AS tax
+FROM invoice_line AS il, invoice AS i, tax_type AS tax, service_note AS s, clinic AS cli
 WHERE i.invoice_id = il.invoice_id
 AND il.tax_type_id IN (@TaxTypeId)
 AND tax.tax_type_id = il.tax_type_id
+AND s.invoice_id = i.invoice_id
+AND cli.clinic_id = s.clinic_id
 AND (i.invoice_date &gt;= @FDate AND i.invoice_date &lt;= @TDate)
 GROUP BY il.invoice_id, il.tax_percentage, tax.name;</value>
   </data>

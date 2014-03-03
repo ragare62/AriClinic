@@ -272,6 +272,9 @@ public partial class MainMenu : System.Web.UI.Page
             case "rptvatresume":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptVATResume();");
                 break;
+            case "rptvatresumecli":
+                RadAjaxManager1.ResponseScripts.Add("LaunchRptVATResumeCli();");
+                break;
             case "rptpatientbysource":
                 RadAjaxManager1.ResponseScripts.Add("LaunchRptPatientBySource();");
                 break;
