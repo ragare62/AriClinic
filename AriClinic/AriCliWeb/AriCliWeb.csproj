@@ -281,6 +281,13 @@
     <Compile Include="AmendmentInvoiceNewForm.aspx.designer.cs">
       <DependentUpon>AmendmentInvoiceNewForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SchedulerView.aspx.cs">
+      <DependentUpon>SchedulerView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchedulerView.aspx.designer.cs">
+      <DependentUpon>SchedulerView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceSMS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1295,6 +1302,7 @@
     <Content Include="AmendmentInvoiceForm.aspx" />
     <Content Include="AmendmentInvoiceLineForm.aspx" />
     <Content Include="AmendmentInvoiceNewForm.aspx" />
+    <Content Include="SchedulerView.aspx" />
     <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Country.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1612,6 +1620,9 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceSMS\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\SchedulerView.aspx.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1645,7 +1656,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
