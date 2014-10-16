@@ -368,8 +368,7 @@ namespace AriCliReport
             // 
             this.sqlAInvoice.ConnectionString = "AriClinicContext";
             this.sqlAInvoice.Name = "sqlAInvoice";
-            this.sqlAInvoice.SelectCommand = "SELECT        amendment_invoice_id, concat(srial,\"-\",  yr, \"-\",invoice_number) as" +
-    " clave\r\nFROM            amendment_invoice";
+            this.sqlAInvoice.SelectCommand = "SELECT        amendment_invoice_id\r\nFROM            amendment_invoice";
             // 
             // pageHeaderSection1
             // 
@@ -452,13 +451,10 @@ namespace AriCliReport
             this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             reportParameter1.AvailableValues.DataSource = this.sqlAInvoice;
-            reportParameter1.AvailableValues.DisplayMember = "= Fields.clave";
-            reportParameter1.AvailableValues.Sortings.Add(new Telerik.Reporting.Sorting("=Fields.clave", Telerik.Reporting.SortDirection.Desc));
             reportParameter1.AvailableValues.ValueMember = "= Fields.amendment_invoice_id";
             reportParameter1.Name = "AInvoice";
             reportParameter1.Text = "Factura rectificativa:";
             reportParameter1.Type = Telerik.Reporting.ReportParameterType.Integer;
-            reportParameter1.Visible = true;
             this.ReportParameters.Add(reportParameter1);
             this.Style.BackgroundColor = System.Drawing.Color.White;
             styleRule1.Selectors.AddRange(new Telerik.Reporting.Drawing.ISelector[] {
