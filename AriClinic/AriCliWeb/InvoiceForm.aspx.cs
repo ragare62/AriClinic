@@ -64,6 +64,17 @@ public partial class InvoiceForm : System.Web.UI.Page
 
         if (Session["Clinic"] != null)
             cl = (Clinic)Session["Clinic"];
+
+        if (Request.QueryString["CustomerId"] != null)
+        {
+            customerId = Int32.Parse(Request.QueryString["CustomerId"]);
+            cus = CntAriCli.GetCustomer(customerId, ctx);
+            if (cus != null)
+            {
+                txtCustomerId.Text = cus.PersonId.ToString();
+                txtCustomerName.Text = cus.ComercialName;
+            }
+        }
         // always read Healt care company
     }
 
