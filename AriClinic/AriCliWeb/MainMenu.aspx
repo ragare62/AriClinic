@@ -297,6 +297,10 @@
                         var w1 = window.open("RptView.aspx?Report=rptvatresumecli", "RPTVATRESUMECLI", "width=800, height=600,resizable=1");
                         w1.focus();
                     }
+                    function LaunchRptVATResumeCat() {
+                        var w1 = window.open("RptView.aspx?Report=rptvatresumecat", "RPTVATRESUMECAT", "width=800, height=600,resizable=1");
+                        w1.focus();
+                    }
                     function LaunchRptPatientBySource() {
                         var w1 = window.open("RptView.aspx?Report=rptpatientbysource", "RPTPATIENTBYSOURCE", "width=800, height=600,resizable=1");
                         w1.focus();
@@ -511,6 +515,8 @@
                                             </telerik:RadMenuItem>
                                             <telerik:RadMenuItem runat="server" Text="Liquidación de IVA (Clinicas)" 
                                                                  Value="rptvatresumecli">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" Text="Liquidacion IVA (Categorias)" Value="rptvatresumecat">
                                             </telerik:RadMenuItem>
                                             <telerik:RadMenuItem runat="server" Text="Tarifario" Value="rptpricelist">
                                             </telerik:RadMenuItem>

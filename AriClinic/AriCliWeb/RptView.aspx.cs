@@ -222,6 +222,11 @@ public partial class RptView : System.Web.UI.Page
                         RptVATResume rptvrcli = new RptVATResume();
                         ReportViewer1.Report = rptvrcli;
                         break;
+                    case "rptvatresumecat":
+                        this.Title = "Liquidación de IVA por periodo y categoria";
+                        RptVATResumeCat rptvrcat = new RptVATResumeCat();
+                        ReportViewer1.Report = rptvrcat;
+                        break;
                     case "rptpatientbysource":
                         this.Title = "Pacientes por procedencia";
                         RptPatientBySource rptpbs = new RptPatientBySource();

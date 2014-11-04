@@ -54,6 +54,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RptVATResumeCat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptVATResumeCat.Designer.cs">
+      <DependentUpon>RptVATResumeCat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -429,6 +435,9 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RptVATResumeCat.resx">
+      <DependentUpon>RptVATResumeCat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReptAnesTicketProfessional.resx">
       <DependentUpon>ReptAnesTicketProfessional.cs</DependentUpon>
     </EmbeddedResource>
