@@ -1302,6 +1302,7 @@
     <Content Include="AmendmentInvoiceForm.aspx" />
     <Content Include="AmendmentInvoiceLineForm.aspx" />
     <Content Include="AmendmentInvoiceNewForm.aspx" />
+    <Content Include="images\EmailMiestetic2.jpg" />
     <Content Include="SchedulerView.aspx" />
     <Content Include="Service References\ServiceSMS\AriCliWeb.ServiceSMS.Country.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1327,6 +1328,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="sms.html" />
     <Content Include="UscAmendmentInvoiceLineGrid.ascx" />
     <Content Include="ServiceSubCategoryForm.aspx" />
     <Content Include="ServiceSubCategoryGrid.aspx" />
@@ -1656,7 +1658,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
