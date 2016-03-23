@@ -54,6 +54,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RptInsAppointment.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptInsAppointment.Designer.cs">
+      <DependentUpon>RptInsAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptVATResumeCat.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -435,6 +441,9 @@
     <Content Include="images\logo_web.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RptInsAppointment.resx">
+      <DependentUpon>RptInsAppointment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptVATResumeCat.resx">
       <DependentUpon>RptVATResumeCat.cs</DependentUpon>
     </EmbeddedResource>

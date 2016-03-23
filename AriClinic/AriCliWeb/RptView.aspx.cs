@@ -173,6 +173,17 @@ public partial class RptView : System.Web.UI.Page
                         }
                         ReportViewer1.Report = rdap;
                         break;
+                    case "rappointmentins":
+                        this.Title = "Citas diarias por agenda /aseguradora";
+                        RptInsAppointment rdapins = new RptInsAppointment();
+                        rdapins.ReportParameters["SDate"].Value = fDate;
+                        if (diary != null)
+                        {
+                            rdapins.ReportParameters["Diary"].MultiValue = false;
+                            rdapins.ReportParameters["Diary"].Value = diary.DiaryId;
+                        }
+                        ReportViewer1.Report = rdapins;
+                        break;
                     case "prescription":
                         this.Title = "Recetas";
                         RptPrescription rprescription = new RptPrescription();

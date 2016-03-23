@@ -281,6 +281,10 @@
                         var w1 = window.open("RptView.aspx?Report=rappointmentday", "RAPTDAY", "width=800, height=600,resizable=1");
                         w1.focus();
                     }
+                    function LaunchRAppointmentIns() {
+                        var w1 = window.open("RptView.aspx?Report=rappointmentins", "RAPTINS", "width=800, height=600,resizable=1");
+                        w1.focus();
+                    }
                     function LaunchRptGPByClinic() {
                         var w1 = window.open("RptView.aspx?Report=rptgpbyclinic", "RAPTGPCLINIC", "width=800, height=600,resizable=1");
                         w1.focus();
@@ -558,6 +562,9 @@
                                         <Items>
                                             <telerik:RadMenuItem runat="server" Text="Citas diarias por agenda" 
                                                                  Value="rappointmentday">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" Text="Citas diarias por agenda / aseguradora" 
+                                                                 Value="rappointmentins">
                                             </telerik:RadMenuItem>
                                         </Items>
                                     </telerik:RadMenuItem>
