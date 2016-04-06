@@ -283,8 +283,7 @@
                                     </telerik:RadComboBox>
                                 </div>
                             </td>
-                            <td colspan="2">
-
+                            <td>
                                 <div ID="Source" class="normalText">
                                     <asp:Label ID="lblSource" runat="server" Text="Procedencia:" 
                                                ToolTip="Procedencia"></asp:Label>
@@ -294,6 +293,17 @@
                                     </telerik:RadComboBox>
                                 </div>
                             </td>
+                            <td>
+                                <div ID="Insurance" class="normalText">
+                                    <asp:Label ID="lblInsurance" runat="server" Text="Aseguradora:" 
+                                               ToolTip="Aseguradora"></asp:Label>
+                                    <br />
+                                    <telerik:RadComboBox ID="rdcbInsurance" runat="server" Width="189px" 
+                                                         Skin="Office2007" TabIndex="8" Height="100px">
+                                    </telerik:RadComboBox>
+                                </div>
+                            </td>
+
                             <td>
                                 <div ID="Age" class="normalText" style="text-align:center">
                                     <asp:Label ID="lblAge" runat="server" Text="Edad:" 

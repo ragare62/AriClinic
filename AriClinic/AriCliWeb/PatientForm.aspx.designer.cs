@@ -327,6 +327,24 @@ public partial class PatientForm {
     protected global::Telerik.Web.UI.RadComboBox rdcbProcedencia;
     
     /// <summary>
+    /// Control lblInsurance.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblInsurance;
+    
+    /// <summary>
+    /// Control rdcbInsurance.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::Telerik.Web.UI.RadComboBox rdcbInsurance;
+    
+    /// <summary>
     /// Control lblAge.
     /// </summary>
     /// <remarks>

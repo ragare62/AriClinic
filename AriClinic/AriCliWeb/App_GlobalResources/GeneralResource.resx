@@ -369,4 +369,7 @@
   <data name="SmsParameterNeeded" xml:space="preserve">
     <value>Se necesitan parámetros SMS para esta opción.</value>
   </data>
+  <data name="InsuranceNeeded" xml:space="preserve">
+    <value>Se necesita una aseguradora.</value>
+  </data>
 </root>

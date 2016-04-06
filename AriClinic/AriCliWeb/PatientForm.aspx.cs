@@ -19,6 +19,7 @@ public partial class PatientForm : System.Web.UI.Page
     User user = null;
     HealthcareCompany hc = null;
     Patient pat = null;
+    Policy pol = null;
     Customer cus = null;
     int hcID = 0;
     int patientId = 0;
@@ -49,6 +50,8 @@ public partial class PatientForm : System.Web.UI.Page
         {
             patientId = Int32.Parse(Request.QueryString["PatientId"]);
             pat = CntAriCli.GetPatient(patientId, ctx);
+            // fix combo for insurance
+            rdcbInsurance.Enabled = false;
             LoadData(pat);
         }
         else
@@ -56,6 +59,7 @@ public partial class PatientForm : System.Web.UI.Page
             LoadSexCombo(null);
             LoadSourceCombo(null);
             LoadClinicCombo(null);
+            LoadInsuranceCombo(null);
             txtFrn.Text = String.Format("{0:0}", CntAriCli.NextFrn(ctx));
             rdtOpenDate.SelectedDate = DateTime.Now;
         }
@@ -140,6 +144,11 @@ public partial class PatientForm : System.Web.UI.Page
             RadAjaxManager1.Alert(Resources.GeneralResource.ClinicNeeded);
             return false;
         }
+        if (rdcbInsurance.SelectedValue == "")
+        {
+            RadAjaxManager1.Alert(Resources.GeneralResource.InsuranceNeeded);
+            return false;
+        }
         //if (rddpBornDate.SelectedDate == null) 
         //{
         //    lblMessage.Text = Resources.GeneralResource.BornDateNeeded;
@@ -161,6 +170,18 @@ public partial class PatientForm : System.Web.UI.Page
         {
             pat = new Patient();
             UnloadData(pat);
+            // -- create associate policy
+            
+            if (rdcbInsurance.SelectedValue != "")
+            {
+                Policy pol = new Policy();
+                pol.Insurance = CntAriCli.GetInsurance(int.Parse(rdcbInsurance.SelectedValue), ctx);
+                pol.PolicyNumber = "0000";
+                pol.Customer = pat.Customer;
+                pol.Type = "Primary";
+                ctx.Add(pol);
+            }
+            // --
             ctx.Add(pat);
         }
         else
@@ -195,6 +216,7 @@ public partial class PatientForm : System.Web.UI.Page
         LoadSexCombo(pat);
         LoadSourceCombo(pat);
         LoadClinicCombo(pat);
+        LoadInsuranceCombo(pat);
         txtComments.Text = pat.Comments;
         if (pat.Customer != null)
             txtVATIN.Text = pat.Customer.VATIN;
@@ -276,6 +298,22 @@ public partial class PatientForm : System.Web.UI.Page
         if (pat != null && pat.Clinic != null)
         {
             rdcbClinic.SelectedValue = pat.Clinic.ClinicId.ToString();
+        }
+    }
+
+
+    protected void LoadInsuranceCombo(Patient pat)
+    {
+        rdcbInsurance.Items.Clear();
+        foreach (Insurance ins in CntAriCli.GetInsurances(ctx))
+        {
+            rdcbInsurance.Items.Add(new RadComboBoxItem(ins.Name, ins.InsuranceId.ToString()));
+        }
+        rdcbInsurance.Items.Add(new RadComboBoxItem(" ", ""));
+        rdcbInsurance.SelectedValue = "";
+        if (pat != null && pat.Customer.Policies.Count > 0)
+        {
+            rdcbInsurance.SelectedValue = pat.Customer.Policies[0].Insurance.InsuranceId.ToString();
         }
     }
 

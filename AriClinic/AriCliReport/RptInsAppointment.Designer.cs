@@ -27,11 +27,13 @@ namespace AriCliReport
             this.textBox6 = new Telerik.Reporting.TextBox();
             this.textBox8 = new Telerik.Reporting.TextBox();
             this.textBox10 = new Telerik.Reporting.TextBox();
-            this.textBox13 = new Telerik.Reporting.TextBox();
             this.diary_nameGroupFooter = new Telerik.Reporting.GroupFooterSection();
             this.diary_nameGroupHeader = new Telerik.Reporting.GroupHeaderSection();
             this.textBox7 = new Telerik.Reporting.TextBox();
             this.comercial_nameDataTextBox = new Telerik.Reporting.TextBox();
+            this.groupFooterSection = new Telerik.Reporting.GroupFooterSection();
+            this.groupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
+            this.textBox18 = new Telerik.Reporting.TextBox();
             this.sqlDiaries = new Telerik.Reporting.SqlDataSource();
             this.sqlAppointments = new Telerik.Reporting.SqlDataSource();
             this.pageHeader = new Telerik.Reporting.PageHeaderSection();
@@ -52,10 +54,6 @@ namespace AriCliReport
             this.ticket_idDataTextBox = new Telerik.Reporting.TextBox();
             this.textBox9 = new Telerik.Reporting.TextBox();
             this.textBox14 = new Telerik.Reporting.TextBox();
-            this.textBox15 = new Telerik.Reporting.TextBox();
-            this.groupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
-            this.groupFooterSection = new Telerik.Reporting.GroupFooterSection();
-            this.textBox18 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // labelsGroupFooter
@@ -73,8 +71,7 @@ namespace AriCliReport
             this.textBox2,
             this.textBox6,
             this.textBox8,
-            this.textBox10,
-            this.textBox13});
+            this.textBox10});
             this.labelsGroupHeader.Name = "labelsGroupHeader";
             this.labelsGroupHeader.PrintOnEveryPage = true;
             // 
@@ -82,7 +79,7 @@ namespace AriCliReport
             // 
             this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.35433068871498108D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.4015746116638184D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.0456697940826416D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox4.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox4.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox4.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -90,9 +87,9 @@ namespace AriCliReport
             // 
             // textBox3
             // 
-            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8346455097198486D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.4000790119171143D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90551203489303589D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.66535460948944092D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox3.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox3.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox3.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -101,9 +98,9 @@ namespace AriCliReport
             // 
             // textBox2
             // 
-            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7402362823486328D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
+            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.0655124187469482D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90551203489303589D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.63448798656463623D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox2.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox2.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox2.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -112,9 +109,9 @@ namespace AriCliReport
             // 
             // textBox6
             // 
-            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.6458268165588379D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7000792026519775D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.800000011920929D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.69992077350616455D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox6.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox6.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox6.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -123,9 +120,9 @@ namespace AriCliReport
             // 
             // textBox8
             // 
-            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.5511813163757324D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.4000792503356934D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.3998421430587769D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox8.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox8.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox8.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -133,23 +130,13 @@ namespace AriCliReport
             // 
             // textBox10
             // 
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(7.4409451484680176D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.9000000953674316D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.9000004529953003D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox10.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox10.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox10.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox10.Value = "Observaciones";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(9.4331197738647461D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox13.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox13.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox13.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox13.Value = "Profesional";
             // 
             // diary_nameGroupFooter
             // 
@@ -168,7 +155,7 @@ namespace AriCliReport
             // 
             this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0445048026740551D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(11.160268783569336D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
+            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.7554965019226074D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
             this.textBox7.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox7.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox7.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -183,6 +170,31 @@ namespace AriCliReport
             this.comercial_nameDataTextBox.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
             this.comercial_nameDataTextBox.StyleName = "Data";
             this.comercial_nameDataTextBox.Value = "= Fields.diary_name";
+            // 
+            // groupFooterSection
+            // 
+            this.groupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.11875025182962418D);
+            this.groupFooterSection.Name = "groupFooterSection";
+            // 
+            // groupHeaderSection
+            // 
+            this.groupHeaderSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.30708661675453186D);
+            this.groupHeaderSection.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
+            this.textBox18});
+            this.groupHeaderSection.Name = "groupHeaderSection";
+            // 
+            // textBox18
+            // 
+            this.textBox18.CanGrow = true;
+            this.textBox18.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.35433068871498108D), Telerik.Reporting.Drawing.Unit.Inch(0.0070867538452148438D));
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.4456706047058105D), Telerik.Reporting.Drawing.Unit.Inch(0.26033785939216614D));
+            this.textBox18.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox18.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
+            this.textBox18.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.textBox18.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
+            this.textBox18.StyleName = "Data";
+            this.textBox18.Value = "= Fields.insurance_name";
             // 
             // sqlDiaries
             // 
@@ -220,9 +232,9 @@ namespace AriCliReport
             // 
             // textBox1
             // 
-            this.textBox1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.6458268165588379D), Telerik.Reporting.Drawing.Unit.Inch(7.8757606388535351E-05D));
+            this.textBox1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.9999998807907105D), Telerik.Reporting.Drawing.Unit.Inch(7.8757606388535351E-05D));
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(6.59088659286499D), Telerik.Reporting.Drawing.Unit.Inch(0.40000000596046448D));
+            this.textBox1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(5.8000006675720215D), Telerik.Reporting.Drawing.Unit.Inch(0.40000000596046448D));
             this.textBox1.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox1.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(20D);
             this.textBox1.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
@@ -233,7 +245,7 @@ namespace AriCliReport
             this.textBox17.Format = "{0:dd/MM/yyyy}";
             this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0445048026740551D), Telerik.Reporting.Drawing.Unit.Inch(0.40015736222267151D));
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.3963618278503418D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
+            this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.255495548248291D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
             this.textBox17.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.textBox17.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(18D);
             this.textBox17.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
@@ -242,7 +254,7 @@ namespace AriCliReport
             // textBox16
             // 
             this.textBox16.Format = "{0:dd/MM/yyyy}";
-            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(7.4409451484680176D), Telerik.Reporting.Drawing.Unit.Inch(0.40015736222267151D));
+            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.0361728668212891D), Telerik.Reporting.Drawing.Unit.Inch(0.40015736222267151D));
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.7638273239135742D), Telerik.Reporting.Drawing.Unit.Inch(0.40003934502601624D));
             this.textBox16.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
@@ -312,8 +324,7 @@ namespace AriCliReport
             this.textBox5,
             this.ticket_idDataTextBox,
             this.textBox9,
-            this.textBox14,
-            this.textBox15});
+            this.textBox14});
             this.detail.Name = "detail";
             // 
             // expr1DataTextBox
@@ -321,7 +332,7 @@ namespace AriCliReport
             this.expr1DataTextBox.CanGrow = true;
             this.expr1DataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.35433068871498108D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.expr1DataTextBox.Name = "expr1DataTextBox";
-            this.expr1DataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.4015746116638184D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.expr1DataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.0456697940826416D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.expr1DataTextBox.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.expr1DataTextBox.StyleName = "Data";
             this.expr1DataTextBox.Value = "= Fields.patient_name";
@@ -330,9 +341,9 @@ namespace AriCliReport
             // 
             this.ticket_dateDataTextBox.CanGrow = true;
             this.ticket_dateDataTextBox.Format = "{0:hh:mm}";
-            this.ticket_dateDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8346455097198486D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.ticket_dateDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.4000790119171143D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.ticket_dateDataTextBox.Name = "ticket_dateDataTextBox";
-            this.ticket_dateDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90551191568374634D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.ticket_dateDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.66535449028015137D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.ticket_dateDataTextBox.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.ticket_dateDataTextBox.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.ticket_dateDataTextBox.StyleName = "Data";
@@ -342,9 +353,9 @@ namespace AriCliReport
             // 
             this.textBox5.CanGrow = true;
             this.textBox5.Format = "{0:hh:mm}";
-            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7402362823486328D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.0655124187469482D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90551191568374634D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.textBox5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.63448816537857056D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.textBox5.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.textBox5.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox5.StyleName = "Data";
@@ -354,9 +365,9 @@ namespace AriCliReport
             // 
             this.ticket_idDataTextBox.CanGrow = true;
             this.ticket_idDataTextBox.Format = "{0:0}";
-            this.ticket_idDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.6458268165588379D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.ticket_idDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7000796794891357D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.ticket_idDataTextBox.Name = "ticket_idDataTextBox";
-            this.ticket_idDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.79999995231628418D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.ticket_idDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.69992071390151978D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.ticket_idDataTextBox.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.ticket_idDataTextBox.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.ticket_idDataTextBox.StyleName = "Data";
@@ -365,9 +376,9 @@ namespace AriCliReport
             // textBox9
             // 
             this.textBox9.CanGrow = true;
-            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.5511813163757324D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.4000792503356934D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.3998421430587769D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.textBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.textBox9.StyleName = "Data";
             this.textBox9.Value = "= Fields.apptype_name";
@@ -375,47 +386,12 @@ namespace AriCliReport
             // textBox14
             // 
             this.textBox14.CanGrow = true;
-            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(7.4409451484680176D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.9000000953674316D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.9000004529953003D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.textBox14.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
             this.textBox14.StyleName = "Data";
             this.textBox14.Value = "= Fields.comments";
-            // 
-            // textBox15
-            // 
-            this.textBox15.CanGrow = true;
-            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(9.4331197738647461D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.7716536521911621D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.textBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(10D);
-            this.textBox15.StyleName = "Data";
-            this.textBox15.Value = "= Fields.prof_name";
-            // 
-            // groupHeaderSection
-            // 
-            this.groupHeaderSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.30708661675453186D);
-            this.groupHeaderSection.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox18});
-            this.groupHeaderSection.Name = "groupHeaderSection";
-            // 
-            // groupFooterSection
-            // 
-            this.groupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.11875025182962418D);
-            this.groupFooterSection.Name = "groupFooterSection";
-            // 
-            // textBox18
-            // 
-            this.textBox18.CanGrow = true;
-            this.textBox18.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.35433068871498108D), Telerik.Reporting.Drawing.Unit.Inch(0.0070867538452148438D));
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.850440979003906D), Telerik.Reporting.Drawing.Unit.Inch(0.26033785939216614D));
-            this.textBox18.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox18.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox18.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox18.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
-            this.textBox18.StyleName = "Data";
-            this.textBox18.Value = "= Fields.insurance_name";
             // 
             // RptInsAppointment
             // 
@@ -440,14 +416,14 @@ namespace AriCliReport
             this.labelsGroupFooter,
             this.diary_nameGroupHeader,
             this.diary_nameGroupFooter,
+            this.groupHeaderSection,
+            this.groupFooterSection,
             this.pageHeader,
             this.pageFooter,
             this.reportFooter,
-            this.detail,
-            this.groupHeaderSection,
-            this.groupFooterSection});
+            this.detail});
             this.Name = "RptInsAppointment";
-            this.PageSettings.Landscape = true;
+            this.PageSettings.Landscape = false;
             this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D), Telerik.Reporting.Drawing.Unit.Mm(5D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.A4;
             reportParameter1.Name = "SDate";
@@ -495,7 +471,7 @@ namespace AriCliReport
             styleRule2,
             styleRule3,
             styleRule4});
-            this.Width = Telerik.Reporting.Drawing.Unit.Inch(11.299174308776856D);
+            this.Width = Telerik.Reporting.Drawing.Unit.Inch(7.874016284942627D);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -532,9 +508,7 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox8;
         private Telerik.Reporting.TextBox textBox9;
         private Telerik.Reporting.TextBox textBox10;
-        private Telerik.Reporting.TextBox textBox13;
         private Telerik.Reporting.TextBox textBox14;
-        private Telerik.Reporting.TextBox textBox15;
         private Telerik.Reporting.SqlDataSource sqlDiaries;
         private Telerik.Reporting.TextBox textBox16;
         private Telerik.Reporting.GroupHeaderSection groupHeaderSection;
