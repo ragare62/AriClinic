@@ -78,9 +78,14 @@
                         return false;
                     }
                     function PatientRecord(id) {
-                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=770, height=680,resizable=1");
+                        var w2 = window.open("PatientForm.aspx?PatientId=" + id, "NPAT", "width=1000, height=680,resizable=1");
                         w2.focus();
                         //window.close();
+                    }
+                    function ViewHisAdm(id) {
+                        var w2 = window.open("PatientTab.aspx?PatientId=" + id, null, "width=1024, height=650,resizable=1, scrollbars=1");
+                        w2.focus();
+                        window.close();
                     }
                 </script>
                 <script type="text/javascript">

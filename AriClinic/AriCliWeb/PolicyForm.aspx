@@ -189,7 +189,7 @@
                      ToolTip="Fecha de inicio de la póliza"></asp:Label>
           <br />
           <telerik:RadDatePicker ID="rddpBeginDate" Runat="server" TabIndex="4" 
-                                 Culture="es-ES" MinDate="1900-01-01" >
+                                 Culture="es-ES" MaxDate="2500-12-31" >
             <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                       ViewSelectorText="x">
             </Calendar>
@@ -203,7 +203,7 @@
                      ToolTip="Fecha fin de la póliza"></asp:Label>
           <br />
           <telerik:RadDatePicker ID="rddpEndDate" Runat="server" TabIndex="5" 
-                                 Culture="es-ES" MinDate="1900-01-01" >
+                                 Culture="es-ES" MaxDate="2500-12-31"  >
             <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False" 
                       ViewSelectorText="x">
             </Calendar>

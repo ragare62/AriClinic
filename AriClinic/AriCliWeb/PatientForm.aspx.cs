@@ -117,7 +117,8 @@ public partial class PatientForm : System.Web.UI.Page
         }
         if (nuevo)
         {
-            command = String.Format("PatientRecord({0});", pat.PersonId);
+            //command = String.Format("PatientRecord({0});", pat.PersonId);
+            command = String.Format("return ViewHisAdm({0});", pat.PersonId);
         }
         if (!withRequests)
             RadAjaxManager1.ResponseScripts.Add(command);
@@ -378,7 +379,8 @@ public partial class PatientForm : System.Web.UI.Page
         }
         if (nuevo)
         {
-            command = String.Format("PatientRecord({0});", pat.PersonId);
+            // command = String.Format("PatientRecord({0});", pat.PersonId);
+            command = String.Format("return ViewHisAdm({0});", pat.PersonId);
         }
         if (!withRequests)
             RadAjaxManager1.ResponseScripts.Add(command);

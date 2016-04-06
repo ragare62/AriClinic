@@ -88,7 +88,7 @@
                         w1.focus();
                     }
                     function LaunchPatient() {
-                        var w1 = window.open("PatientGrid.aspx", "PAT", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("PatientGrid.aspx", "PAT", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchProfessional() {
@@ -100,23 +100,23 @@
                         w1.focus();
                     }
                     function LaunchTicket() {
-                        var w1 = window.open("TicketGrid.aspx", "TICKET", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("TicketGrid.aspx", "TICKET", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchSettlement() {
-                        var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("SettlementGrid.aspx", "SETTLEMENT", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchChecks() {
-                        var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("SettlementGrid.aspx?type=comprobante", "CHECKS", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchInvoice() {
-                        var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("InvoiceGrid.aspx", "INVOICE", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchPayment() {
-                        var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("PaymentGrid.aspx", "PAYMENT", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchRTickets() {
@@ -128,23 +128,23 @@
                         w1.focus();
                     }
                     function LaunchRTicketProfessional() {
-                        var w1 = window.open("RptView.aspx?Report=rticketprofessional", "RTCKPROF", "width=900, height=600,resizable=1")
+                        var w1 = window.open("RptView.aspx?Report=rticketprofessional", "RTCKPROF", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchRAnesTckProf() {
-                        var w1 = window.open("RptView.aspx?Report=ranestckprof", "ANESTCKPROF", "width=900, height=600,resizable=1")
+                        var w1 = window.open("RptView.aspx?Report=ranestckprof", "ANESTCKPROF", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchRrisk() {
-                        var w1 = window.open("RptView.aspx?Report=rrisk", "RRISK", "width=900, height=600,resizable=1")
+                        var w1 = window.open("RptView.aspx?Report=rrisk", "RRISK", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchRPCA() {
-                        var w1 = window.open("RptView.aspx?Report=rpca", "RPCAF", "width=900, height=600,resizable=1")
+                        var w1 = window.open("RptView.aspx?Report=rpca", "RPCAF", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchRTckSrg() {
-                        var w1 = window.open("RptView.aspx?Report=rtcksrg", "RTCKSRG", "width=900, height=600,resizable=1")
+                        var w1 = window.open("RptView.aspx?Report=rtcksrg", "RTCKSRG", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchProcedure() {
@@ -156,7 +156,7 @@
                         w1.focus();
                     }
                     function LaunchServiceNote() {
-                        var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=900, height=600,resizable=1,scrollbars=1")
+                        var w1 = window.open("ServiceNoteGrid.aspx", "SN", "width=1000, height=600,resizable=1,scrollbars=1")
                         w1.focus();
                     }
                     function LaunchParameter() {
@@ -204,7 +204,7 @@
                         w1.focus();
                     }
                     function LaunchAppointment() {
-                        var w1 = window.open("AppointmentGrid.aspx", "APPOINTMENT", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("AppointmentGrid.aspx", "APPOINTMENT", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     function LaunchDocuments() {
@@ -241,7 +241,7 @@
                     }
                     
                     function LaunchProfiIvoice() {
-                        var w1 = window.open("ProfessionalInvoiceGrid.aspx", "PROFINV", "width=900, height=650,resizable=1, scrollbars=1")
+                        var w1 = window.open("ProfessionalInvoiceGrid.aspx", "PROFINV", "width=1000, height=650,resizable=1, scrollbars=1")
                         w1.focus();
                     }
                     
@@ -254,11 +254,11 @@
                         w1.focus();
                     }
                     function LaunchLabTestAssigned() {
-                        var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=900, height=600,resizable=1")
+                        var w1 = window.open("LabTestAssignedGrid.aspx", "LABTESTASSIGNED", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchProcedureAssigned() {
-                        var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=900, height=600,resizable=1")
+                        var w1 = window.open("ProcedureAssignedGrid.aspx", "PROCEDUREASSIGNED", "width=1000, height=600,resizable=1")
                         w1.focus();
                     }
                     function LaunchVisitReason() {
@@ -350,7 +350,7 @@
                         w1.focus();
                     }
                     function LaunchSmsGes() {
-                        var w1 = window.open("http://www.pasarelasms.com/?rev=2057", "SMSGES", "width=900, height=700,resizable=1, scrollbars=YES");
+                        var w1 = window.open("http://www.pasarelasms.com/?rev=2057", "SMSGES", "width=1000, height=700,resizable=1, scrollbars=YES");
                         w1.focus();
                     }
                 </script>

@@ -44,13 +44,13 @@
           }
           function NewPolicyRecord()
           {
-              var w1 = window.open("PolicyForm.aspx?CustomerId=" + gup('CustomerId'), "pol_nr", "width=560, height=280,resizable=1");
+              var w1 = window.open("PolicyForm.aspx?CustomerId=" + gup('CustomerId'), "pol_nr", "width=700, height=300,resizable=1");
               w1.focus();
           }
           function EditPolicyRecord(id)
           {
               var w2 = window.open("PolicyForm.aspx?CustomerId=" + gup('CustomerId')
-                                   + "&PolicyId=" + id, "pol_er", "width=560, height=280,resizable=1");
+                                   + "&PolicyId=" + id, "pol_er", "width=700, height=300,resizable=1");
               w2.focus();
           }
           function CloseWindow()
