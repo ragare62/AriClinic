@@ -238,17 +238,36 @@
         RGF0YVNvdXJjZVBhcmFtZXRlcgMAAAACAAAACQQAAAAFBAAAAEtTeXN0ZW0uQ29sbGVjdGlvbnMuR2Vu
         ZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVwb3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIDAAAABl9p
         dGVtcwVfc2l6ZQhfdmVyc2lvbgQAACpUZWxlcmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1l
-        dGVyW10CAAAACAgDAAAACQUAAAAAAAAAAwAAAAcFAAAAAAEAAAAAAAAABChUZWxlcmlrLlJlcG9ydGlu
+        dGVyW10CAAAACAgDAAAACQUAAAAAAAAABQAAAAcFAAAAAAEAAAAAAAAABChUZWxlcmlrLlJlcG9ydGlu
         Zy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
 </value>
   </metadata>
   <data name="sqlDebtByCustomer.SelectCommand" xml:space="preserve">
-    <value>SELECT        person.person_id, person.full_name, ticket.ticket_id, ticket.ticket_date, ticket.description, ticket.comments, ticket.amount, ticket.paid, service_note.service_note_id, 
-                         service_note.service_note_date, ticket.amount - ticket.paid AS debt, healthcare_company.name AS company_name
-FROM            ticket INNER JOIN
-                         service_note ON ticket.service_note_id = service_note.service_note_id INNER JOIN
-                         person ON service_note.person_id = person.person_id, healthcare_company
-WHERE        (ticket.amount - ticket.paid &lt;&gt; 0)</value>
+    <value>SELECT
+p.person_id, 
+p.full_name, 
+t.ticket_id, 
+t.ticket_date, 
+t.description, 
+t.comments, 
+t.amount, 
+t.paid, 
+sn.service_note_id, 
+sn.service_note_date, 
+t.amount - t.paid AS debt, 
+s.saldo,
+hc.name AS company_name
+FROM
+ticket AS t
+LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
+LEFT JOIN person AS p ON p.person_id = sn.person_id
+LEFT JOIN (SELECT SUM(t.amount-t.paid) AS saldo, sn.person_id 
+FROM ticket AS t
+LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
+WHERE NOT sn.person_id IS NULL
+GROUP BY sn.person_id) AS s ON s.person_id = sn.person_id
+, healthcare_company AS hc
+WHERE (t.amount - t.paid &lt;&gt; 0)</value>
   </data>
   <metadata name="$this.ShowSnapGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

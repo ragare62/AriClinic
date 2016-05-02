@@ -10,26 +10,15 @@ namespace AriCliReport
         private void InitializeComponent()
         {
             Telerik.Reporting.Drawing.FormattingRule formattingRule1 = new Telerik.Reporting.Drawing.FormattingRule();
-            Telerik.Reporting.Drawing.FormattingRule formattingRule2 = new Telerik.Reporting.Drawing.FormattingRule();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptDebtByCustomer));
-            Telerik.Reporting.Drawing.FormattingRule formattingRule3 = new Telerik.Reporting.Drawing.FormattingRule();
+            Telerik.Reporting.Drawing.FormattingRule formattingRule2 = new Telerik.Reporting.Drawing.FormattingRule();
             Telerik.Reporting.Group group1 = new Telerik.Reporting.Group();
-            Telerik.Reporting.Group group2 = new Telerik.Reporting.Group();
             this.groupFooterSection1 = new Telerik.Reporting.GroupFooterSection();
             this.groupHeaderSection1 = new Telerik.Reporting.GroupHeaderSection();
             this.textBox9 = new Telerik.Reporting.TextBox();
             this.comercial_nameDataTextBox = new Telerik.Reporting.TextBox();
             this.textBox7 = new Telerik.Reporting.TextBox();
             this.textBox19 = new Telerik.Reporting.TextBox();
-            this.groupFooterSection2 = new Telerik.Reporting.GroupFooterSection();
-            this.groupHeaderSection2 = new Telerik.Reporting.GroupHeaderSection();
-            this.textBox16 = new Telerik.Reporting.TextBox();
-            this.textBox4 = new Telerik.Reporting.TextBox();
-            this.textBox6 = new Telerik.Reporting.TextBox();
-            this.textBox12 = new Telerik.Reporting.TextBox();
-            this.textBox10 = new Telerik.Reporting.TextBox();
-            this.textBox14 = new Telerik.Reporting.TextBox();
-            this.textBox2 = new Telerik.Reporting.TextBox();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.pictureBox1 = new Telerik.Reporting.PictureBox();
@@ -61,7 +50,7 @@ namespace AriCliReport
             // 
             // groupHeaderSection1
             // 
-            formattingRule1.Filters.Add(new Telerik.Reporting.Filter("= Sum(Fields.debt)", Telerik.Reporting.FilterOperator.Equal, "0"));
+            formattingRule1.Filters.Add(new Telerik.Reporting.Filter("=Fields.saldo", Telerik.Reporting.FilterOperator.Equal, "0"));
             formattingRule1.Style.Visible = false;
             this.groupHeaderSection1.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
             formattingRule1});
@@ -116,107 +105,7 @@ namespace AriCliReport
             this.textBox19.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(11D);
             this.textBox19.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox19.StyleName = "Data";
-            this.textBox19.Value = "= Sum(Fields.debt)";
-            // 
-            // groupFooterSection2
-            // 
-            this.groupFooterSection2.Height = Telerik.Reporting.Drawing.Unit.Inch(0.20000012218952179D);
-            this.groupFooterSection2.Name = "groupFooterSection2";
-            this.groupFooterSection2.Style.Visible = false;
-            // 
-            // groupHeaderSection2
-            // 
-            formattingRule2.Filters.Add(new Telerik.Reporting.Filter("= Sum(Fields.debt)", Telerik.Reporting.FilterOperator.Equal, "0"));
-            formattingRule2.Style.Visible = false;
-            this.groupHeaderSection2.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
-            formattingRule2});
-            this.groupHeaderSection2.Height = Telerik.Reporting.Drawing.Unit.Inch(0.30000004172325134D);
-            this.groupHeaderSection2.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox16,
-            this.textBox4,
-            this.textBox6,
-            this.textBox12,
-            this.textBox10,
-            this.textBox14,
-            this.textBox2});
-            this.groupHeaderSection2.Name = "groupHeaderSection2";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.9198317527771D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox16.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox16.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox16.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox16.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox16.Value = "Pendiente";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.70000004768371582D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.59999990463256836D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox4.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox4.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox4.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox4.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox4.Value = "TCK-ID";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.4000000953674316D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox6.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox6.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox6.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox6.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox6.Value = "Fecha";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox12.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox12.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox12.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox12.Value = "Importe";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.3000001907348633D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.5999603271484375D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox10.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox10.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox10.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
-            this.textBox10.Value = "Descripción";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.9000000953674316D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox14.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox14.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox14.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox14.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox14.Value = "Pagado";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.1000000610947609D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.5D), Telerik.Reporting.Drawing.Unit.Inch(0.19999997317790985D));
-            this.textBox2.Style.BorderColor.Default = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox2.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox2.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
-            this.textBox2.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox2.Value = "NS-ID";
+            this.textBox19.Value = "= Fields.saldo";
             // 
             // pageHeaderSection1
             // 
@@ -259,10 +148,10 @@ namespace AriCliReport
             // 
             // detail
             // 
-            formattingRule3.Filters.Add(new Telerik.Reporting.Filter("= Sum(Fields.debt)", Telerik.Reporting.FilterOperator.Equal, "0"));
-            formattingRule3.Style.Visible = false;
+            formattingRule2.Filters.Add(new Telerik.Reporting.Filter("=Fields.saldo", Telerik.Reporting.FilterOperator.Equal, "0"));
+            formattingRule2.Style.Visible = false;
             this.detail.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
-            formattingRule3});
+            formattingRule2});
             this.detail.Height = Telerik.Reporting.Drawing.Unit.Inch(0.30000019073486328D);
             this.detail.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox3,
@@ -448,17 +337,11 @@ namespace AriCliReport
             group1.GroupHeader = this.groupHeaderSection1;
             group1.Groupings.Add(new Telerik.Reporting.Grouping("=Fields.full_name"));
             group1.Name = "grp_paciente";
-            group2.GroupFooter = this.groupFooterSection2;
-            group2.GroupHeader = this.groupHeaderSection2;
-            group2.Name = "grp_labels";
             this.Groups.AddRange(new Telerik.Reporting.Group[] {
-            group1,
-            group2});
+            group1});
             this.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.groupHeaderSection1,
             this.groupFooterSection1,
-            this.groupHeaderSection2,
-            this.groupFooterSection2,
             this.pageHeaderSection1,
             this.detail,
             this.pageFooterSection1,
@@ -492,16 +375,9 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox5;
         private Telerik.Reporting.TextBox textBox8;
         private Telerik.Reporting.TextBox textBox11;
-        private Telerik.Reporting.TextBox textBox2;
-        private Telerik.Reporting.TextBox textBox4;
-        private Telerik.Reporting.TextBox textBox6;
-        private Telerik.Reporting.TextBox textBox10;
         private Telerik.Reporting.TextBox textBox13;
         private Telerik.Reporting.TextBox textBox15;
         private Telerik.Reporting.TextBox textBox18;
-        private Telerik.Reporting.TextBox textBox12;
-        private Telerik.Reporting.TextBox textBox14;
-        private Telerik.Reporting.TextBox textBox16;
         private Telerik.Reporting.TextBox textBox22;
         private Telerik.Reporting.TextBox pageInfoTextBox;
         private Telerik.Reporting.TextBox textBox21;
@@ -511,7 +387,5 @@ namespace AriCliReport
         private Telerik.Reporting.TextBox textBox20;
         private Telerik.Reporting.TextBox textBox23;
         private Telerik.Reporting.Group grp_labels;
-        private Telerik.Reporting.GroupFooterSection groupFooterSection2;
-        private Telerik.Reporting.GroupHeaderSection groupHeaderSection2;
     }
 }
