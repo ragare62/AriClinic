@@ -133,21 +133,17 @@ FROM            ticket INNER JOIN
                          professional professional_1 ON anesthetic_service_note.surgeon_person_id = professional_1.person_id, healthcare_company
 WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @HDate) AND (insurance.insurance_id IN (@Insurance))</value>
   </data>
-  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=7.1.13.612, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
-  <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
-    <value>0.1in</value>
-  </data>
   <data name="sqlInsurance.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjEuMTMuNjEy
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIuMTMuMTEw
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUFAQAAADJUZWxl
         cmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyQ29sbGVjdGlvbgEAAAASQ29sbGVjdGlv
         bmAxK2l0ZW1zA6YBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tUZWxlcmlrLlJlcG9y
-        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjEu
-        MTMuNjEyLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
+        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIu
+        MTMuMTEwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
         AAAJAwAAAAQDAAAApgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVw
-        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTcu
-        MS4xMy42MTIsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTYu
+        Mi4xMy4xMTAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
         AwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJj
         ZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAAEgAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAAJBwAAAAoMCAAAAE5TeXN0ZW0u
@@ -161,6 +157,10 @@ WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @HD
         AAUAAAAGCwAAAAZARkRhdGUKCgEGAAAABQAAAAH0////9v///wUAAAAGDQAAAAZAVERhdGUKCgEHAAAA
         BQAAAAHy////9v///wsAAAAGDwAAAApASW5zdXJhbmNlCgoL
 </value>
+  </data>
+  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=6.2.13.110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+  <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
+    <value>0.1in</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -273,15 +273,15 @@ WHERE        (ticket.ticket_date &gt;= @FDate) AND (ticket.ticket_date &lt;= @HD
   </data>
   <data name="sqlPCA.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjEuMTMuNjEy
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIuMTMuMTEw
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUFAQAAADJUZWxl
         cmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyQ29sbGVjdGlvbgEAAAASQ29sbGVjdGlv
         bmAxK2l0ZW1zA6YBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tUZWxlcmlrLlJlcG9y
-        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjEu
-        MTMuNjEyLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
+        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIu
+        MTMuMTEwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
         AAAJAwAAAAQDAAAApgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVw
-        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTcu
-        MS4xMy42MTIsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTYu
+        Mi4xMy4xMTAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
         AwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJj
         ZVBhcmFtZXRlcltdAgAAAAgICQQAAAADAAAAGgAAAAcEAAAAAAEAAAAEAAAABChUZWxlcmlrLlJlcG9y
         dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAkFAAAACQYAAAAJBwAAAAoMCAAAAE5TeXN0ZW0u

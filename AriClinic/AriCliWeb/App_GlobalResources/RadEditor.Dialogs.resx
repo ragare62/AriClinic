@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Copyright" xml:space="preserve">
-    <value>Copyright 2002-2013 ©Telerik  All rights reserved.</value>
+    <value>Copyright 2002-2012 ©Telerik  All rights reserved.</value>
   </data>
   <data name="About_Title" xml:space="preserve">
     <value>RadEditor by Telerik</value>
@@ -2011,50 +2011,5 @@ Press "OK" to confirm deletion.</value>
   </data>
   <data name="ImageEditor_Common_FileExists" xml:space="preserve">
     <value>A file with a name same as the target already exists!</value>
-  </data>
-  <data name="Common_ImageTitleText" xml:space="preserve">
-    <value>Title Text</value>
-  </data>
-  <data name="ImageMap_Title" xml:space="preserve">
-    <value>Title Text</value>
-  </data>
-  <data name="InsertSelectDialog_ManageOptions" xml:space="preserve">
-    <value>Add/Remove Options</value>
-  </data>
-  <data name="InsertSelectDialog_Multiple" xml:space="preserve">
-    <value>Multiple</value>
-  </data>
-  <data name="InsertSelectDialog_Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="InsertSelectDialog_Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="InsertSelectDialog_PixelsOrPercents" xml:space="preserve">
-    <value>pixels, %</value>
-  </data>
-  <data name="InsertSelectDialog_Size" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="InsertSelectDialog_Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="InsertSelectDialog_Value" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="InsertSelectDialog_AddOption" xml:space="preserve">
-    <value>Add Option</value>
-  </data>
-  <data name="InsertSelectDialog_RemoveOption" xml:space="preserve">
-    <value>Remove Option</value>
-  </data>
-  <data name="ImageEditor_OpacityNotSupported" xml:space="preserve">
-    <value>The current image format does not support opacity.</value>
-  </data>
-  <data name="TrackChangesDialog_Obsolete" xml:space="preserve">
-    <value>The Track Changes dialog is obsolete. Please, use the &lt;a href="http://www.telerik.com/help/aspnet-ajax/editor-track-changes.html" target="blank"&gt;EnableTrackChanges property&lt;/a&gt; to enable an improved track changes functionality that offers better interaction and usability.</value>
-  </data>
-  <data name="Common_FileListSummary" xml:space="preserve">
-    <value>Table that lists the contents of the current directory</value>
   </data>
 </root>

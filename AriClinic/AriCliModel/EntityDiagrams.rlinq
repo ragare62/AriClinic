@@ -29,6 +29,9 @@
         <orm:field name="baseVisitType" property="BaseVisitType" behavior="readwrite" uniqueId="a8b04954-87f7-42f7-85ac-a8fc3049a0d0" type="AriCliModel.BaseVisitType">
           <orm:reference uniqueId="b55c3857-3ec8-44d1-9fdd-bc51d97c7a47" />
         </orm:field>
+        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="a22f464d-8893-44a6-8440-c78773692566" type="AriCliModel.Clinic">
+          <orm:reference uniqueId="63671718-0c8b-44bb-8286-97462817c518" />
+        </orm:field>
         <orm:field name="invoiceLines" property="InvoiceLines" behavior="readwrite" null-value="none" uniqueId="ba6a3c78-04cb-45f4-926f-60e23d90e081" type="AriCliModel.InvoiceLine">
           <orm:collection element-class="AriCliModel.InvoiceLine" inverse-field="user" managed="true" order-by="" uniqueId="68d5dd58-f695-41bf-8e00-952e31ed8fd4" />
         </orm:field>
@@ -64,9 +67,6 @@
         </orm:field>
         <orm:field name="amendmentInvoiceLines" property="AmendmentInvoiceLines" behavior="readwrite" uniqueId="1c1a5309-1022-4084-ba61-e584ee161455" type="AriCliModel.AmendmentInvoiceLine">
           <orm:collection element-class="AriCliModel.AmendmentInvoiceLine" inverse-field="user" order-by="" uniqueId="01e34fa5-c83e-4108-9db6-a925e3fc69df" />
-        </orm:field>
-        <orm:field name="clinic" property="Clinic" behavior="readwrite" uniqueId="a22f464d-8893-44a6-8440-c78773692566" type="AriCliModel.Clinic">
-          <orm:reference uniqueId="63671718-0c8b-44bb-8286-97462817c518" />
         </orm:field>
       </orm:class>
       <orm:class name="UserGroup" behavior="readwrite" uniqueId="23bdd3fa-fadd-455d-b4a1-3dcbd5917df5">

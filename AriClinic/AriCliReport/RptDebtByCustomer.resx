@@ -117,6 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="sqlDebtByCustomer.SelectCommand" xml:space="preserve">
+    <value>SELECT
+p.person_id, 
+p.full_name, 
+t.ticket_id, 
+t.ticket_date, 
+t.description, 
+t.comments, 
+t.amount, 
+t.paid, 
+sn.service_note_id, 
+sn.service_note_date, 
+t.amount - t.paid AS debt, 
+s.saldo,
+hc.name AS company_name
+FROM
+ticket AS t
+LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
+LEFT JOIN person AS p ON p.person_id = sn.person_id
+LEFT JOIN (SELECT SUM(t.amount-t.paid) AS saldo, sn.person_id 
+FROM ticket AS t
+LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
+WHERE NOT sn.person_id IS NULL
+GROUP BY sn.person_id) AS s ON s.person_id = sn.person_id
+, healthcare_company AS hc
+WHERE (t.amount - t.paid &lt;&gt; 0)</value>
+  </data>
+  <assembly alias="Telerik.Reporting" name="Telerik.Reporting, Version=6.2.13.110, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+  <data name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting">
+    <value>0.1in</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Value" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -226,53 +257,24 @@
         kf8HET1XQngtTzQAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="sqlDebtByCustomer.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="sqlDebtByCustomer.DefaultValues" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj03LjEuMTMuNjEy
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUMAwAAAKYBVGVs
-        ZXJpay5SZXBvcnRpbmcsIFZlcnNpb249Ny4xLjEzLjYxMiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNL
-        ZXlUb2tlbj1hOWQ3OTgzZGZjYzI2MWJlXV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1
-        cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAMlRlbGVyaWsuUmVw
-        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXJDb2xsZWN0aW9uAQAAABJDb2xsZWN0aW9uYDEraXRl
-        bXMES1N5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbVGVsZXJpay5SZXBvcnRpbmcuU3Fs
-        RGF0YVNvdXJjZVBhcmFtZXRlcgMAAAACAAAACQQAAAAFBAAAAEtTeXN0ZW0uQ29sbGVjdGlvbnMuR2Vu
-        ZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVwb3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIDAAAABl9p
-        dGVtcwVfc2l6ZQhfdmVyc2lvbgQAACpUZWxlcmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1l
-        dGVyW10CAAAACAgDAAAACQUAAAAAAAAABQAAAAcFAAAAAAEAAAAAAAAABChUZWxlcmlrLlJlcG9ydGlu
-        Zy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIuMTMuMTEw
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmUFAQAAADJUZWxl
+        cmlrLlJlcG9ydGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyQ29sbGVjdGlvbgEAAAASQ29sbGVjdGlv
+        bmAxK2l0ZW1zA6YBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tUZWxlcmlrLlJlcG9y
+        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyLCBUZWxlcmlrLlJlcG9ydGluZywgVmVyc2lvbj02LjIu
+        MTMuMTEwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWE5ZDc5ODNkZmNjMjYxYmVdXQIA
+        AAAJAwAAAAQDAAAApgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1RlbGVyaWsuUmVw
+        b3J0aW5nLlNxbERhdGFTb3VyY2VQYXJhbWV0ZXIsIFRlbGVyaWsuUmVwb3J0aW5nLCBWZXJzaW9uPTYu
+        Mi4xMy4xMTAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YTlkNzk4M2RmY2MyNjFiZV1d
+        AwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAqVGVsZXJpay5SZXBvcnRpbmcuU3FsRGF0YVNvdXJj
+        ZVBhcmFtZXRlcltdAgAAAAgICQQAAAAAAAAABQAAAAcEAAAAAAEAAAAAAAAABChUZWxlcmlrLlJlcG9y
+        dGluZy5TcWxEYXRhU291cmNlUGFyYW1ldGVyAgAAAAs=
 </value>
-  </metadata>
-  <data name="sqlDebtByCustomer.SelectCommand" xml:space="preserve">
-    <value>SELECT
-p.person_id, 
-p.full_name, 
-t.ticket_id, 
-t.ticket_date, 
-t.description, 
-t.comments, 
-t.amount, 
-t.paid, 
-sn.service_note_id, 
-sn.service_note_date, 
-t.amount - t.paid AS debt, 
-s.saldo,
-hc.name AS company_name
-FROM
-ticket AS t
-LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
-LEFT JOIN person AS p ON p.person_id = sn.person_id
-LEFT JOIN (SELECT SUM(t.amount-t.paid) AS saldo, sn.person_id 
-FROM ticket AS t
-LEFT JOIN service_note AS sn ON sn.service_note_id = t.service_note_id
-WHERE NOT sn.person_id IS NULL
-GROUP BY sn.person_id) AS s ON s.person_id = sn.person_id
-, healthcare_company AS hc
-WHERE (t.amount - t.paid &lt;&gt; 0)</value>
   </data>
-  <metadata name="$this.ShowSnapGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ShowSnapGrid" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=7.1.13.612, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
-    <value>0.1in</value>
-  </metadata>
+  </data>
 </root>

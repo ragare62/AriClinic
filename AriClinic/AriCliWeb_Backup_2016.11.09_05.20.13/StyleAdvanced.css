@@ -1,0 +1,23 @@
+﻿body 
+{
+    padding:2px;
+}
+#main-container td
+{
+    vertical-align:top;
+}
+.myCenter
+{
+    vertical-align:middle;
+    text-align:center;
+}
+#appointment-container
+{
+}
+#appointment-subject
+{
+}
+#appointment-description
+{
+    border-top:1px solid grey;
+}
